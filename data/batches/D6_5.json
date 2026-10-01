@@ -1,0 +1,722 @@
+[
+  {
+    "id": "D6-0091",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Assessment strategy",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "A manufacturer sends its own auditors to assess a supplier's security controls under their contract. What type of audit is this?",
+    "options": {
+      "A": "Second-party audit",
+      "B": "First-party audit performed by the supplier's own internal staff",
+      "C": "Third-party audit performed by an independent certification body",
+      "D": "Regulatory audit performed by a government agency"
+    },
+    "answer": "A",
+    "explanation": "A second-party audit is performed by an organization on its supplier or partner, usually under contractual rights.",
+    "distractor_rationales": {
+      "B": "A first-party audit is an organization assessing itself.",
+      "C": "A third-party audit is performed by an independent party.",
+      "D": "Regulatory audits are carried out by authorities, not customers."
+    },
+    "references_topic": "Second-party audits",
+    "version": "1.0"
+  },
+  {
+    "id": "D6-0092",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Vulnerability assessment",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "What is the purpose of a CVE identifier?",
+    "options": {
+      "A": "To score the severity of a vulnerability on a scale from 0 to 10",
+      "B": "To give each publicly known vulnerability a unique, common name",
+      "C": "To describe the patch that fixes a vulnerability step by step",
+      "D": "To rate how likely a vulnerability is to be exploited next month"
+    },
+    "answer": "B",
+    "explanation": "CVE provides a standard identifier for each publicly disclosed vulnerability, so tools, vendors, and advisories can refer to the same issue.",
+    "distractor_rationales": {
+      "A": "Severity scoring is done with CVSS.",
+      "C": "Patch instructions come from vendor advisories.",
+      "D": "Exploitation likelihood is estimated by models such as EPSS."
+    },
+    "references_topic": "CVE identifiers",
+    "version": "1.0"
+  },
+  {
+    "id": "D6-0093",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Log review",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "What is a clipping level in log review?",
+    "options": {
+      "A": "The maximum size a log file may reach before it is automatically deleted",
+      "B": "The encryption strength required for stored log files",
+      "C": "A threshold of normal activity below which events are not flagged",
+      "D": "The number of analysts assigned to review each log source"
+    },
+    "answer": "C",
+    "explanation": "Clipping levels set a baseline, such as three failed logins, so routine errors are ignored and only activity above the threshold is flagged for review.",
+    "distractor_rationales": {
+      "A": "File size limits are a storage setting.",
+      "B": "Encryption strength is unrelated.",
+      "D": "Staffing is not a clipping level."
+    },
+    "references_topic": "Clipping levels",
+    "version": "1.0"
+  },
+  {
+    "id": "D6-0094",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Synthetic transactions and RUM",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "Which monitoring approach can test an application's key user journeys before it has any real users?",
+    "options": {
+      "A": "Real user monitoring of live customer sessions",
+      "B": "Surveys of customers after they use the new application",
+      "C": "Reviewing the application's support tickets from last month",
+      "D": "Synthetic transaction monitoring"
+    },
+    "answer": "D",
+    "explanation": "Synthetic monitoring runs scripted journeys whenever scheduled, so it works before launch and during quiet periods when there is no real traffic.",
+    "distractor_rationales": {
+      "A": "Real user monitoring needs real users.",
+      "B": "Surveys require users who have used the application.",
+      "C": "A new application has no past tickets."
+    },
+    "references_topic": "Monitoring before launch",
+    "version": "1.0"
+  },
+  {
+    "id": "D6-0095",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Interface testing",
+    "difficulty": "easy",
+    "type": "application",
+    "stem": "A tester calls an internal API endpoint without any token and receives a full list of customer records. What is the finding?",
+    "options": {
+      "A": "Missing authentication on the API endpoint",
+      "B": "A slow response time from the API server",
+      "C": "An outdated TLS certificate on the API gateway",
+      "D": "Too much logging on the API server"
+    },
+    "answer": "A",
+    "explanation": "The endpoint returns sensitive data to anyone who asks, so it lacks authentication. Every API endpoint handling data must verify the caller.",
+    "distractor_rationales": {
+      "B": "Response time is a performance issue.",
+      "C": "Certificate age is unrelated to missing authentication.",
+      "D": "Logging volume is not the problem."
+    },
+    "references_topic": "Missing API authentication",
+    "version": "1.0"
+  },
+  {
+    "id": "D6-0096",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Security process data and metrics",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "Which of these is a leading indicator of security risk?",
+    "options": {
+      "A": "The number of breaches reported to regulators last year",
+      "B": "The growing backlog of unpatched critical vulnerabilities",
+      "C": "The total cost of incidents that occurred last quarter",
+      "D": "The number of customer complaints the company received after a breach"
+    },
+    "answer": "B",
+    "explanation": "Leading indicators signal risk before harm occurs. A rising patch backlog points to future incidents; the others measure harm that already happened.",
+    "distractor_rationales": {
+      "A": "Past breaches are a lagging indicator.",
+      "C": "Incident costs are lagging.",
+      "D": "Complaints after a breach are lagging."
+    },
+    "references_topic": "Leading and lagging indicators",
+    "version": "1.0"
+  },
+  {
+    "id": "D6-0097",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Backup and recovery verification",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "What does a restore test prove that a successful backup job log does not?",
+    "options": {
+      "A": "That the backup software license is still valid for the year",
+      "B": "That the backup job ran at the scheduled time last night",
+      "C": "That the data can actually be recovered and used",
+      "D": "That the backup storage has enough free space left"
+    },
+    "answer": "C",
+    "explanation": "A job log shows that a backup ran. Only restoring and checking the data shows it is complete, uncorrupted, and usable.",
+    "distractor_rationales": {
+      "A": "License validity is unrelated.",
+      "B": "The job log already shows timing.",
+      "D": "Free space does not prove recoverability."
+    },
+    "references_topic": "What restore tests prove",
+    "version": "1.0"
+  },
+  {
+    "id": "D6-0098",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Reporting and remediation",
+    "difficulty": "easy",
+    "type": "managerial_best_first_most",
+    "stem": "Which assessment finding should generally be fixed FIRST?",
+    "options": {
+      "A": "A low-severity issue on an internal test server",
+      "B": "A cosmetic error message on the public website",
+      "C": "A medium-severity issue in a system scheduled for retirement next week",
+      "D": "A critical, easily exploited flaw on an internet-facing system"
+    },
+    "answer": "D",
+    "explanation": "Severity, exploitability, and exposure together determine priority. A critical, exploitable, internet-facing flaw carries the most immediate risk.",
+    "distractor_rationales": {
+      "A": "Low severity on a test system is lower risk.",
+      "B": "A cosmetic issue is not a security priority.",
+      "C": "A soon-retired system with a medium issue is less urgent."
+    },
+    "references_topic": "Prioritizing findings",
+    "version": "1.0"
+  },
+  {
+    "id": "D6-0099",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Audits and SOC reports",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "Under which attestation standard are SOC reports issued in the United States?",
+    "options": {
+      "A": "SSAE 18",
+      "B": "ISO/IEC 27001",
+      "C": "PCI DSS",
+      "D": "NIST SP 800-53"
+    },
+    "answer": "A",
+    "explanation": "SOC reports are attestation engagements performed under the AICPA's SSAE 18. ISAE 3402 is the international counterpart for service organization controls.",
+    "distractor_rationales": {
+      "B": "ISO/IEC 27001 is a management system standard with its own certification.",
+      "C": "PCI DSS is a payment card security standard.",
+      "D": "NIST SP 800-53 is a control catalog."
+    },
+    "references_topic": "SSAE 18",
+    "version": "1.0"
+  },
+  {
+    "id": "D6-0100",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Assessment strategy",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "Stakeholders keep adding systems to a planned security assessment, and the team cannot finish on time. What is the BEST way to set scope?",
+    "options": {
+      "A": "Include every system anyone mentions, even if the deadline slips by several months",
+      "B": "Agree scope with stakeholders based on the assessment's objectives and risk",
+      "C": "Let the assessors choose whichever systems are easiest to test",
+      "D": "Assess only the systems that passed their last assessment"
+    },
+    "answer": "B",
+    "explanation": "Scope should follow the assessment's purpose and the highest risks, and be agreed in writing so the work is focused and achievable.",
+    "distractor_rationales": {
+      "A": "Unlimited scope leads to shallow or late results.",
+      "C": "Ease of testing does not reflect risk.",
+      "D": "Previously passing systems are not necessarily the highest risk."
+    },
+    "references_topic": "Scoping assessments",
+    "version": "1.0"
+  },
+  {
+    "id": "D6-0101",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Vulnerability assessment",
+    "difficulty": "medium",
+    "type": "knowledge",
+    "stem": "Which scoring system estimates the probability that a vulnerability will be exploited in the wild in the near future?",
+    "options": {
+      "A": "CVSS base score",
+      "B": "Common Weakness Enumeration",
+      "C": "Exploit Prediction Scoring System (EPSS)",
+      "D": "Common Platform Enumeration (CPE) product naming"
+    },
+    "answer": "C",
+    "explanation": "EPSS uses data on real-world activity to estimate the likelihood of exploitation, which complements CVSS severity when prioritizing.",
+    "distractor_rationales": {
+      "A": "The CVSS base score measures severity, not likelihood of exploitation.",
+      "B": "CWE classifies types of weaknesses.",
+      "D": "CPE names products and platforms."
+    },
+    "references_topic": "Exploit Prediction Scoring System",
+    "version": "1.0"
+  },
+  {
+    "id": "D6-0102",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Penetration testing",
+    "difficulty": "medium",
+    "type": "knowledge",
+    "stem": "In which type of test do the testers have no prior knowledge of the target, and the target's security staff are not told the test is happening?",
+    "options": {
+      "A": "White-box test with full documentation",
+      "B": "Gray-box test with partial knowledge",
+      "C": "Announced test with full staff awareness",
+      "D": "Double-blind test"
+    },
+    "answer": "D",
+    "explanation": "A double-blind test checks both how well an unknown outsider can attack and how the defenders detect and respond without warning.",
+    "distractor_rationales": {
+      "A": "White-box testers have full information.",
+      "B": "Gray-box testers have partial information.",
+      "C": "Announced tests tell the defenders."
+    },
+    "references_topic": "Double-blind testing",
+    "version": "1.0"
+  },
+  {
+    "id": "D6-0103",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Log review",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "Logs show a VPN sign-in to an employee's account from a country they have never visited, followed within minutes by downloads of thousands of files. What should the analyst do?",
+    "options": {
+      "A": "Escalate it as a possible account compromise and begin incident response",
+      "B": "Close it, since the employee has a valid VPN account",
+      "C": "Wait a week to see whether the downloads happen again",
+      "D": "Delete the logs to save storage space on the SIEM"
+    },
+    "answer": "A",
+    "explanation": "An unusual location combined with bulk data access is a strong sign of compromise and possible exfiltration, which calls for immediate escalation.",
+    "distractor_rationales": {
+      "B": "A valid account can be used by an attacker.",
+      "C": "Waiting allows more data to leave.",
+      "D": "Deleting logs destroys evidence."
+    },
+    "references_topic": "Correlating suspicious events",
+    "version": "1.0"
+  },
+  {
+    "id": "D6-0104",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Synthetic transactions and RUM",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "A synthetic monitor reported the store as healthy, but customers could not complete checkout for six hours. The monitor only checked that the home page loaded. What is the BEST fix?",
+    "options": {
+      "A": "Check the home page more frequently, such as every thirty seconds",
+      "B": "Script critical journeys such as login, cart, and checkout end to end",
+      "C": "Replace synthetic monitoring with a weekly manual test of the whole site",
+      "D": "Monitor only the web server's CPU usage instead"
+    },
+    "answer": "B",
+    "explanation": "Synthetic tests should follow the journeys that matter to the business. A home page check cannot detect a broken checkout.",
+    "distractor_rationales": {
+      "A": "More frequent home page checks still miss checkout.",
+      "C": "Weekly manual tests are too slow.",
+      "D": "CPU usage does not show functional failures."
+    },
+    "references_topic": "Scripting critical journeys",
+    "version": "1.0"
+  },
+  {
+    "id": "D6-0105",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Code review and testing",
+    "difficulty": "medium",
+    "type": "knowledge",
+    "stem": "Which code review method is a formal process with defined roles and stages such as planning, preparation, an inspection meeting, rework, and follow-up?",
+    "options": {
+      "A": "Informal over-the-shoulder review by a nearby teammate",
+      "B": "Automated static analysis run on each commit",
+      "C": "Fagan inspection",
+      "D": "Fuzz testing of the compiled application"
+    },
+    "answer": "C",
+    "explanation": "Fagan inspection is a structured review with assigned roles, entry and exit criteria, and follow-up, which makes it thorough but time-consuming.",
+    "distractor_rationales": {
+      "A": "Over-the-shoulder reviews are informal.",
+      "B": "Static analysis is automated, not a formal meeting-based review.",
+      "D": "Fuzzing is dynamic testing."
+    },
+    "references_topic": "Fagan inspection",
+    "version": "1.0"
+  },
+  {
+    "id": "D6-0106",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Misuse cases and coverage analysis",
+    "difficulty": "medium",
+    "type": "knowledge",
+    "stem": "Which technique measures how good a test suite is by making small deliberate changes to the code and checking whether the tests catch them?",
+    "options": {
+      "A": "Statement coverage analysis",
+      "B": "Load testing",
+      "C": "Regression testing",
+      "D": "Mutation testing"
+    },
+    "answer": "D",
+    "explanation": "Mutation testing introduces small faults. If the tests still pass, they are too weak to detect real defects in that code.",
+    "distractor_rationales": {
+      "A": "Statement coverage shows what ran, not whether tests detect faults.",
+      "B": "Load testing measures performance.",
+      "C": "Regression testing rechecks existing behavior after changes."
+    },
+    "references_topic": "Mutation testing",
+    "version": "1.0"
+  },
+  {
+    "id": "D6-0107",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Misuse cases and coverage analysis",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "A threat model notes that attackers could learn valid usernames from the password reset page. Which test case BEST reflects this abuse case?",
+    "options": {
+      "A": "Submit valid and invalid usernames and expect identical responses and timing",
+      "B": "Submit a valid username and confirm the reset email arrives quickly",
+      "C": "Confirm that the reset page uses the company's brand colors",
+      "D": "Measure how many resets the page can process per second"
+    },
+    "answer": "A",
+    "explanation": "The abuse case is information disclosure through different responses. The test checks that valid and invalid usernames produce the same message and timing.",
+    "distractor_rationales": {
+      "B": "Normal function testing does not test the abuse.",
+      "C": "Branding is unrelated.",
+      "D": "Throughput is a performance measure."
+    },
+    "references_topic": "Username enumeration abuse case",
+    "version": "1.0"
+  },
+  {
+    "id": "D6-0108",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Interface testing",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "An API's design says it limits each client to 100 requests per minute. How should testers verify this control?",
+    "options": {
+      "A": "Read the design document again to confirm the stated limit",
+      "B": "Send requests above the limit and confirm they are rejected",
+      "C": "Ask the developers whether they implemented the limit",
+      "D": "Check that the API's documentation page loads correctly in a browser"
+    },
+    "answer": "B",
+    "explanation": "Controls should be tested by exercising them. Exceeding the limit and observing rejections proves it is enforced.",
+    "distractor_rationales": {
+      "A": "Documents describe intent, not behavior.",
+      "C": "Developer statements are not evidence.",
+      "D": "Documentation pages do not show enforcement."
+    },
+    "references_topic": "Testing API rate limits",
+    "version": "1.0"
+  },
+  {
+    "id": "D6-0109",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Breach and attack simulation",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "Breach and attack simulation results are mapped to the MITRE ATT&CK framework. What is the BEST use of this mapping?",
+    "options": {
+      "A": "Proving to auditors that the organization is fully compliant with every regulation",
+      "B": "Ranking employees by how many of the simulated attacks they personally noticed",
+      "C": "Showing detection and prevention coverage by technique to prioritize gaps",
+      "D": "Replacing the need for any vulnerability management program"
+    },
+    "answer": "C",
+    "explanation": "ATT&CK mapping shows which attacker techniques are blocked, detected, or missed, so teams can focus on the gaps most relevant to their threats.",
+    "distractor_rationales": {
+      "A": "ATT&CK coverage is not regulatory compliance.",
+      "B": "It measures controls, not individual employees.",
+      "D": "Simulation complements vulnerability management; it does not replace it."
+    },
+    "references_topic": "Mapping results to ATT&CK",
+    "version": "1.0"
+  },
+  {
+    "id": "D6-0110",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Security process data and metrics",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "Leadership wants to set a target for reducing phishing click rates but has no historical data. What should happen FIRST?",
+    "options": {
+      "A": "Set a target of zero clicks, since any click is unacceptable",
+      "B": "Copy another company's published target without adjustment",
+      "C": "Skip targets and simply report the number each quarter",
+      "D": "Measure a baseline before setting improvement targets"
+    },
+    "answer": "D",
+    "explanation": "Targets need a starting point. A baseline shows current performance so goals are realistic and progress is measurable.",
+    "distractor_rationales": {
+      "A": "Zero is unrealistic and discourages reporting.",
+      "B": "Other organizations' targets may not fit this one.",
+      "C": "Numbers without targets do not show whether performance is acceptable."
+    },
+    "references_topic": "Establishing metric baselines",
+    "version": "1.0"
+  },
+  {
+    "id": "D6-0111",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Security process data and metrics",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "Mean time to remediate critical vulnerabilities has risen from 10 to 45 days over two quarters. What should the security team do?",
+    "options": {
+      "A": "Investigate where the delay occurs, such as change windows or ownership",
+      "B": "Remove critical vulnerabilities from the metric so the number looks better",
+      "C": "Report the metric less often so the trend is less visible",
+      "D": "Increase the time target to 60 days so the metric is met again"
+    },
+    "answer": "A",
+    "explanation": "A rising trend is a signal to find the root cause, such as unclear ownership, change freezes, or testing delays, and fix it.",
+    "distractor_rationales": {
+      "B": "Excluding criticals hides the most important risk.",
+      "C": "Reporting less often hides the problem.",
+      "D": "Moving the target does not reduce risk."
+    },
+    "references_topic": "Investigating remediation bottlenecks",
+    "version": "1.0"
+  },
+  {
+    "id": "D6-0112",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Reporting and remediation",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "A system owner marks a critical finding as fixed and asks to close it. What should happen before closure?",
+    "options": {
+      "A": "Close it immediately, since the owner is accountable for the system and its fixes",
+      "B": "Verify the fix with a retest or evidence that the issue is resolved",
+      "C": "Wait until the next annual penetration test to decide",
+      "D": "Lower the finding's severity so closure is less important"
+    },
+    "answer": "B",
+    "explanation": "Findings should be closed only when the fix is verified, for example by a targeted retest, so the risk is actually gone.",
+    "distractor_rationales": {
+      "A": "Unverified closure may leave the risk in place.",
+      "C": "Waiting a year delays confirmation of a critical fix.",
+      "D": "Changing severity misrepresents the risk."
+    },
+    "references_topic": "Verifying remediation before closure",
+    "version": "1.0"
+  },
+  {
+    "id": "D6-0113",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Audits and SOC reports",
+    "difficulty": "medium",
+    "type": "knowledge",
+    "stem": "In a SOC report, what does an unqualified opinion from the service auditor mean?",
+    "options": {
+      "A": "The auditor was not qualified to perform the engagement",
+      "B": "The auditor found so many exceptions that no opinion could be given",
+      "C": "The controls were fairly described and suitably designed, and, for Type II, operated effectively",
+      "D": "The report was issued without any testing of controls at all"
+    },
+    "answer": "C",
+    "explanation": "An unqualified, or clean, opinion means the auditor found no material problems with the description, design, and, in a Type II, operating effectiveness.",
+    "distractor_rationales": {
+      "A": "\"Unqualified\" refers to the opinion, not the auditor's credentials.",
+      "B": "Inability to form an opinion is a disclaimer.",
+      "D": "SOC reports involve evaluation and, for Type II, testing."
+    },
+    "references_topic": "Unqualified audit opinions",
+    "version": "1.0"
+  },
+  {
+    "id": "D6-0114",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Vulnerability assessment",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "An active vulnerability scan crashed several PLCs on a production line last year. The plant still needs to know its vulnerabilities. What is the BEST approach?",
+    "options": {
+      "A": "Run the same active scans again but only on weekends",
+      "B": "Stop all vulnerability assessment of operational technology permanently",
+      "C": "Scan the PLCs with the most aggressive settings to finish quickly",
+      "D": "Use passive monitoring and asset data, with any active tests planned with operations"
+    },
+    "answer": "D",
+    "explanation": "Many OT devices cannot handle active scans. Passive discovery and vendor advisories, plus carefully coordinated low-impact tests, provide visibility without disruption.",
+    "distractor_rationales": {
+      "A": "Weekend scans can still crash devices.",
+      "B": "Stopping assessment leaves risk unknown.",
+      "C": "Aggressive scans make crashes more likely."
+    },
+    "references_topic": "Scanning fragile OT devices",
+    "version": "1.0"
+  },
+  {
+    "id": "D6-0115",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Penetration testing",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "During a penetration test, testers discover a likely vulnerability in a third-party SaaS integration that is not in scope. What should they do?",
+    "options": {
+      "A": "Stop, avoid exploiting it, and report it to the client to raise with the vendor",
+      "B": "Exploit it to prove the risk, since the client would certainly want to know the impact",
+      "C": "Ignore it, since it is outside the agreed scope and not their concern",
+      "D": "Contact the vendor directly and publish the details if they do not respond"
+    },
+    "answer": "A",
+    "explanation": "Testers must stay within authorization. They should record the observation and inform the client, who can pursue it with the vendor under its own agreements.",
+    "distractor_rationales": {
+      "B": "Exploiting out-of-scope systems is unauthorized.",
+      "C": "Ignoring it withholds useful information from the client.",
+      "D": "Contacting and publishing without the client's direction breaches the engagement."
+    },
+    "references_topic": "Out-of-scope third-party findings",
+    "version": "1.0"
+  },
+  {
+    "id": "D6-0116",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Log review",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "A company collects 10 million log events per day, and two analysts are supposed to review them manually. What is the BEST approach?",
+    "options": {
+      "A": "Hire enough analysts to read every event by hand each day",
+      "B": "Automate correlation and alerting, and focus manual review on high-risk events",
+      "C": "Stop collecting logs from all but the three most important systems",
+      "D": "Review a random sample of 100 events each day and ignore the rest"
+    },
+    "answer": "B",
+    "explanation": "Automation handles volume, and people add value where judgment matters, such as high-risk alerts and privileged activity.",
+    "distractor_rationales": {
+      "A": "Manual review of millions of events is impractical.",
+      "C": "Dropping sources creates blind spots.",
+      "D": "Random sampling misses targeted attacks."
+    },
+    "references_topic": "Scaling log review",
+    "version": "1.0"
+  },
+  {
+    "id": "D6-0117",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Code review and testing",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "The security team can manually review only about 10% of pull requests. What is the BEST way to use this capacity?",
+    "options": {
+      "A": "Review pull requests in the order they are submitted until the team runs out of time",
+      "B": "Review only pull requests from the newest developers on each team",
+      "C": "Focus on sensitive components, rely on automation elsewhere, and train reviewers",
+      "D": "Review a different random 10% each week without regard to content"
+    },
+    "answer": "C",
+    "explanation": "Risk-based review focuses scarce experts on authentication, authorization, cryptography, and similar code, while automation and trained peer reviewers cover the rest.",
+    "distractor_rationales": {
+      "A": "Arrival order ignores risk.",
+      "B": "Experienced developers also introduce flaws in sensitive code.",
+      "D": "Random selection may miss the riskiest changes."
+    },
+    "references_topic": "Risk-based security code review",
+    "version": "1.0"
+  },
+  {
+    "id": "D6-0118",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Breach and attack simulation",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "Breach and attack simulation shows that 60% of tested techniques are prevented. The board asks the team to reach 100%. What is the BEST response?",
+    "options": {
+      "A": "Commit to 100% prevention within one quarter, whatever the cost",
+      "B": "Remove the failed techniques from future simulations",
+      "C": "Stop running simulations, since the results worry the board",
+      "D": "Prioritize gaps by relevance to real threats, combining prevention and detection"
+    },
+    "answer": "D",
+    "explanation": "Perfect prevention is unrealistic. Closing the gaps most relevant to likely attackers, and making sure other techniques are detected, gives the best risk reduction.",
+    "distractor_rationales": {
+      "A": "100% prevention is not achievable, and chasing it wastes resources.",
+      "B": "Hiding failures hides risk.",
+      "C": "Stopping simulation removes visibility."
+    },
+    "references_topic": "Prioritizing simulation gaps",
+    "version": "1.0"
+  },
+  {
+    "id": "D6-0119",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Backup and recovery verification",
+    "difficulty": "hard",
+    "type": "application",
+    "stem": "Restore tests show that databases restored from nightly backups are often corrupted, because snapshots are taken while transactions are in progress. What is the BEST fix?",
+    "options": {
+      "A": "Use application-consistent backups that quiesce or use the database's backup tools",
+      "B": "Run the backup job twice each night and keep whichever copy looks better",
+      "C": "Compress the backup files so they take less time to write to storage",
+      "D": "Move the backup window to a different time zone's midnight"
+    },
+    "answer": "A",
+    "explanation": "Databases need backups that capture a consistent state, either by pausing writes or by using the database's own backup mechanism.",
+    "distractor_rationales": {
+      "B": "Two crash-consistent copies can both be corrupt.",
+      "C": "Compression does not fix consistency.",
+      "D": "Changing the time does not stop in-flight transactions."
+    },
+    "references_topic": "Application-consistent backups",
+    "version": "1.0"
+  },
+  {
+    "id": "D6-0120",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Audits and SOC reports",
+    "difficulty": "hard",
+    "type": "application",
+    "stem": "A vendor provides a SOC 2 Type II report, but it covers only the vendor's payroll product, not the analytics service your company uses. What should your company do?",
+    "options": {
+      "A": "Accept the report, since it shows the vendor has strong controls overall",
+      "B": "Seek assurance for the analytics service specifically, since the report does not cover it",
+      "C": "Ask the vendor's auditors to add the analytics service to the existing report",
+      "D": "Assume the analytics service uses the same controls as the payroll product"
+    },
+    "answer": "B",
+    "explanation": "A SOC report provides assurance only for the systems in scope. The customer needs evidence covering the service it actually uses.",
+    "distractor_rationales": {
+      "A": "Assurance does not carry over to services outside scope.",
+      "C": "Auditors cannot simply add scope to a completed report.",
+      "D": "Controls may differ between services."
+    },
+    "references_topic": "Checking SOC report scope",
+    "version": "1.0"
+  }
+]

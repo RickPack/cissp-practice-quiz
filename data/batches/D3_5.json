@@ -1,0 +1,770 @@
+[
+  {
+    "id": "D3-0099",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Secure design principles",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "Which design principle requires that every access to every object be checked for authorization, rather than relying on an earlier cached decision?",
+    "options": {
+      "A": "Complete mediation",
+      "B": "Psychological acceptability",
+      "C": "Least common mechanism",
+      "D": "Economy of mechanism"
+    },
+    "answer": "A",
+    "explanation": "Complete mediation means each access is checked against current authorization, so revoked rights take effect and cached decisions cannot be abused.",
+    "distractor_rationales": {
+      "B": "Psychological acceptability means security should be easy to use correctly.",
+      "C": "Least common mechanism limits shared mechanisms between users.",
+      "D": "Economy of mechanism means keeping designs simple."
+    },
+    "references_topic": "Complete mediation",
+    "version": "1.0"
+  },
+  {
+    "id": "D3-0100",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Evaluation and certification",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "In a Common Criteria evaluation, what is the target of evaluation (TOE)?",
+    "options": {
+      "A": "The protection profile written for a whole category of products",
+      "B": "The specific product or system being evaluated",
+      "C": "The laboratory that performs the evaluation",
+      "D": "The customer who plans to buy the product"
+    },
+    "answer": "B",
+    "explanation": "The TOE is the product or system under evaluation, together with its documentation, in the configuration described by the security target.",
+    "distractor_rationales": {
+      "A": "A protection profile defines requirements for a product category.",
+      "C": "The lab is the evaluator, not the target.",
+      "D": "The buyer is not part of the evaluation."
+    },
+    "references_topic": "Target of evaluation",
+    "version": "1.0"
+  },
+  {
+    "id": "D3-0101",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Hardware security capabilities",
+    "difficulty": "easy",
+    "type": "application",
+    "stem": "A mobile banking app must protect its signing keys even if the phone's operating system is compromised. Which hardware capability BEST supports this?",
+    "options": {
+      "A": "A larger battery that allows the phone to run longer between charges",
+      "B": "A faster processor that completes cryptographic operations more quickly",
+      "C": "A trusted execution environment or secure enclave",
+      "D": "A higher-resolution screen for displaying transaction details"
+    },
+    "answer": "C",
+    "explanation": "A trusted execution environment isolates code and keys from the main operating system, so malware in the OS cannot read them.",
+    "distractor_rationales": {
+      "A": "Battery capacity has no security effect.",
+      "B": "Speed does not isolate keys.",
+      "D": "Screen resolution does not protect keys."
+    },
+    "references_topic": "Trusted execution environments",
+    "version": "1.0"
+  },
+  {
+    "id": "D3-0102",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Virtualization, containers, and serverless",
+    "difficulty": "easy",
+    "type": "managerial_best_first_most",
+    "stem": "Critical patches are released for the hypervisor and for one application running in a guest VM. Which should generally be patched FIRST?",
+    "options": {
+      "A": "The guest application, since users interact with it directly",
+      "B": "Both together during the next scheduled quarterly maintenance window",
+      "C": "Neither, since virtualization isolates the host from every guest",
+      "D": "The hypervisor, since compromising it affects every VM on the host"
+    },
+    "answer": "D",
+    "explanation": "The hypervisor controls every guest on the host. A flaw there can break isolation for all of them, so it usually carries the greater risk.",
+    "distractor_rationales": {
+      "A": "A single guest application affects fewer systems.",
+      "B": "Waiting for a quarterly window leaves a critical flaw open.",
+      "C": "Hypervisor flaws are exactly what can break isolation."
+    },
+    "references_topic": "Prioritizing hypervisor patches",
+    "version": "1.0"
+  },
+  {
+    "id": "D3-0103",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Cloud and distributed systems",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "What security risk does multi-tenancy introduce in public cloud services?",
+    "options": {
+      "A": "Data could leak between customers if isolation fails",
+      "B": "Customers can no longer encrypt their own data",
+      "C": "The provider must reveal every customer's identity publicly",
+      "D": "Cloud services become unavailable to more than one customer"
+    },
+    "answer": "A",
+    "explanation": "Multiple customers share infrastructure, so the provider's isolation between tenants is critical. A flaw could expose one tenant's data to another.",
+    "distractor_rationales": {
+      "B": "Customers can still encrypt their data.",
+      "C": "Providers do not publish customer identities.",
+      "D": "Sharing is how cloud serves many customers; it does not block them."
+    },
+    "references_topic": "Multi-tenancy risk",
+    "version": "1.0"
+  },
+  {
+    "id": "D3-0104",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Symmetric and asymmetric cryptography",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "What does the Diffie-Hellman algorithm provide?",
+    "options": {
+      "A": "A digital signature that proves who sent a message",
+      "B": "A way for two parties to agree on a shared secret over an insecure channel",
+      "C": "A hash value that detects changes to a file",
+      "D": "Bulk encryption of large files using a shared key"
+    },
+    "answer": "B",
+    "explanation": "Diffie-Hellman lets two parties derive the same secret without sending it. On its own it does not authenticate either party, so it is combined with signatures or certificates.",
+    "distractor_rationales": {
+      "A": "Signatures come from algorithms such as RSA or ECDSA.",
+      "C": "Hashing is a separate function.",
+      "D": "Bulk encryption uses symmetric ciphers such as AES."
+    },
+    "references_topic": "Diffie-Hellman key agreement",
+    "version": "1.0"
+  },
+  {
+    "id": "D3-0105",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Hashing, signatures, and integrity",
+    "difficulty": "easy",
+    "type": "application",
+    "stem": "A review of a password database shows that users with the same password have identical stored hashes. What should be added?",
+    "options": {
+      "A": "A shorter hash output so the database takes up less space",
+      "B": "The same fixed value appended to every password before hashing",
+      "C": "A unique random salt for each password, with a slow hashing algorithm",
+      "D": "Encryption of the usernames column in the password database"
+    },
+    "answer": "C",
+    "explanation": "A unique salt makes identical passwords produce different hashes and defeats precomputed tables. A slow, adaptive algorithm also makes guessing expensive.",
+    "distractor_rationales": {
+      "A": "Shorter hashes weaken security.",
+      "B": "A fixed value applied to every password still gives identical hashes for identical passwords.",
+      "D": "Encrypting usernames does not change the password hashes."
+    },
+    "references_topic": "Salting password hashes",
+    "version": "1.0"
+  },
+  {
+    "id": "D3-0106",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Site and facility design",
+    "difficulty": "easy",
+    "type": "application",
+    "stem": "Employees report feeling unsafe walking to a dark parking lot at night, and the cameras there cannot see anything after sunset. Which control BEST addresses both problems?",
+    "options": {
+      "A": "A sign stating that the parking lot is monitored at all times",
+      "B": "A policy that staff must leave before sunset",
+      "C": "Painting the parking lot lines a brighter color",
+      "D": "Adequate, continuous lighting across the lot"
+    },
+    "answer": "D",
+    "explanation": "Good lighting deters crime, helps people feel safe, and lets cameras and guards actually see what is happening.",
+    "distractor_rationales": {
+      "A": "A sign without effective monitoring is weak.",
+      "B": "Restricting work hours is impractical.",
+      "C": "Paint does not light the area."
+    },
+    "references_topic": "Perimeter lighting",
+    "version": "1.0"
+  },
+  {
+    "id": "D3-0107",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Environmental and physical controls",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "What is the term for a prolonged period of low voltage from the power supply?",
+    "options": {
+      "A": "Brownout",
+      "B": "Power spike",
+      "C": "Blackout",
+      "D": "Fault"
+    },
+    "answer": "A",
+    "explanation": "A brownout is a prolonged drop in voltage. A sag is a momentary drop, a spike is a momentary rise, a blackout is a prolonged loss of power, and a fault is a momentary loss.",
+    "distractor_rationales": {
+      "B": "A spike is a brief increase in voltage.",
+      "C": "A blackout is a prolonged complete loss of power.",
+      "D": "A fault is a momentary complete loss of power."
+    },
+    "references_topic": "Power anomalies",
+    "version": "1.0"
+  },
+  {
+    "id": "D3-0108",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Secure design principles",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "A new network appliance ships with its web console, SSH, SNMP, and Telnet all enabled. Administrators need only SSH. What should be done?",
+    "options": {
+      "A": "Leave all services running so future administrators have more options",
+      "B": "Disable the web console, SNMP, and Telnet, and restrict SSH to admin networks",
+      "C": "Change the default port numbers of all four services",
+      "D": "Enable a login banner on each of the four services"
+    },
+    "answer": "B",
+    "explanation": "Every unused service is an extra way in. Disabling what is not needed, and restricting what remains, reduces the attack surface.",
+    "distractor_rationales": {
+      "A": "Unneeded services add risk without benefit.",
+      "C": "Nonstandard ports are obscurity.",
+      "D": "Banners do not reduce exposure."
+    },
+    "references_topic": "Attack surface reduction",
+    "version": "1.0"
+  },
+  {
+    "id": "D3-0109",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Zero trust and secure access architecture",
+    "difficulty": "medium",
+    "type": "knowledge",
+    "stem": "Which approach keeps application services invisible to unauthenticated users and opens network access only after identity and device checks succeed?",
+    "options": {
+      "A": "A flat network with a single strong perimeter firewall at the internet edge",
+      "B": "A demilitarized zone that exposes all public services to anyone on the internet",
+      "C": "A software-defined perimeter",
+      "D": "A site-to-site VPN that connects every branch to the main office network"
+    },
+    "answer": "C",
+    "explanation": "A software-defined perimeter hides services behind a controller. Only authenticated, verified users and devices are allowed to connect, so attackers cannot even see the targets.",
+    "distractor_rationales": {
+      "A": "A flat network trusts everything inside the perimeter.",
+      "B": "A DMZ exposes services publicly.",
+      "D": "Site-to-site VPNs connect networks, not individual verified sessions."
+    },
+    "references_topic": "Software-defined perimeter",
+    "version": "1.0"
+  },
+  {
+    "id": "D3-0110",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Security models",
+    "difficulty": "medium",
+    "type": "knowledge",
+    "stem": "Which security model uses a directed graph to show how rights can be passed from one subject to another?",
+    "options": {
+      "A": "Bell-LaPadula confidentiality model",
+      "B": "Biba integrity model",
+      "C": "Clark-Wilson integrity model",
+      "D": "Take-Grant model"
+    },
+    "answer": "D",
+    "explanation": "The Take-Grant model represents subjects and objects as nodes and rights as edges, with rules such as take and grant that show how rights can spread.",
+    "distractor_rationales": {
+      "A": "Bell-LaPadula uses security levels and read/write rules for confidentiality.",
+      "B": "Biba uses integrity levels and read/write rules.",
+      "C": "Clark-Wilson uses well-formed transactions and separation of duties."
+    },
+    "references_topic": "Take-Grant model",
+    "version": "1.0"
+  },
+  {
+    "id": "D3-0111",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Evaluation and certification",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "A system was formally authorized to operate two years ago. It has since moved to the cloud with a new architecture. What should happen?",
+    "options": {
+      "A": "Reassess its security and obtain a new authorization decision",
+      "B": "Keep the existing authorization, since it has not yet expired",
+      "C": "Ask the cloud provider to authorize the system on the company's behalf",
+      "D": "Remove the system from the inventory, since it is now in the cloud"
+    },
+    "answer": "A",
+    "explanation": "Authorization is based on a specific design and risk picture. A major change invalidates those assumptions, so the system must be reassessed and reauthorized.",
+    "distractor_rationales": {
+      "B": "Authorization assumes the system is as it was assessed.",
+      "C": "The provider cannot accept the company's risk.",
+      "D": "Cloud systems still belong in the inventory."
+    },
+    "references_topic": "Reauthorization after major change",
+    "version": "1.0"
+  },
+  {
+    "id": "D3-0112",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Hardware security capabilities",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "An attacker steals a laptop that was left in sleep mode, chills its memory, and recovers the disk encryption key. Which practice BEST reduces this risk?",
+    "options": {
+      "A": "Use a longer screen saver password on the laptop",
+      "B": "Shut down or hibernate instead of sleeping, and require pre-boot authentication",
+      "C": "Store the laptop in a warmer room when it is not in use",
+      "D": "Replace full-disk encryption with file-level encryption for all documents"
+    },
+    "answer": "B",
+    "explanation": "In sleep mode, keys stay in memory. Shutting down or hibernating clears them, and pre-boot authentication means the key is not loaded until the user unlocks the drive.",
+    "distractor_rationales": {
+      "A": "A screen saver password does not remove keys from memory.",
+      "C": "Room temperature is not a practical control.",
+      "D": "File-level encryption keys can also sit in memory."
+    },
+    "references_topic": "Cold boot attacks",
+    "version": "1.0"
+  },
+  {
+    "id": "D3-0113",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Virtualization, containers, and serverless",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "A container runs as root and mounts the host's root file system. What is the BEST fix?",
+    "options": {
+      "A": "Give the container a longer and more descriptive name in the orchestrator",
+      "B": "Run the container on a larger host so it has more memory available",
+      "C": "Run as a non-root user, drop extra capabilities, and remove host mounts",
+      "D": "Restart the container every day so any attacker loses access"
+    },
+    "answer": "C",
+    "explanation": "Root inside a container plus access to the host file system makes escape and host takeover easy. Least privilege settings remove that path.",
+    "distractor_rationales": {
+      "A": "The name has no effect on security.",
+      "B": "More memory does not reduce privilege.",
+      "D": "Restarting does not remove the underlying weakness."
+    },
+    "references_topic": "Hardening container runtime settings",
+    "version": "1.0"
+  },
+  {
+    "id": "D3-0114",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Cloud and distributed systems",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "A company depends entirely on one SaaS provider for its core operations and has no plan if the provider fails or raises prices sharply. What is the BEST action?",
+    "options": {
+      "A": "Sign a longer contract so that the provider cannot walk away from the relationship",
+      "B": "Stop using cloud services and return to on-premises systems",
+      "C": "Rely on the provider's reputation, since large providers do not fail",
+      "D": "Build an exit plan with tested data export, portable formats, and exit terms"
+    },
+    "answer": "D",
+    "explanation": "An exit strategy makes sure the company can move its data and operations if needed. Testing exports and securing contract terms for termination support makes the plan real.",
+    "distractor_rationales": {
+      "A": "A longer contract does not protect against failure.",
+      "B": "Abandoning cloud entirely is disproportionate.",
+      "C": "Any provider can fail or change terms."
+    },
+    "references_topic": "Cloud exit strategy",
+    "version": "1.0"
+  },
+  {
+    "id": "D3-0115",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "ICS, IoT, and embedded systems",
+    "difficulty": "medium",
+    "type": "knowledge",
+    "stem": "In the Purdue model for industrial control systems, at which level do controllers such as PLCs and RTUs sit?",
+    "options": {
+      "A": "Level 1, basic control",
+      "B": "Level 0, the physical process with sensors and actuators",
+      "C": "Level 3, site operations and manufacturing management",
+      "D": "Level 4, enterprise business systems"
+    },
+    "answer": "A",
+    "explanation": "Level 1 holds the controllers that directly manage the physical process. Level 0 is the process itself, and levels 3 and above hold operations and business systems.",
+    "distractor_rationales": {
+      "B": "Level 0 is the physical equipment, such as sensors and valves.",
+      "C": "Level 3 holds site-wide operations systems.",
+      "D": "Level 4 holds enterprise IT."
+    },
+    "references_topic": "Purdue model levels",
+    "version": "1.0"
+  },
+  {
+    "id": "D3-0116",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Database and web architecture vulnerabilities",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "A web application stores the user's role in an unsigned cookie. A tester changes the value from \"user\" to \"admin\" and gains administrator access. What is the BEST fix?",
+    "options": {
+      "A": "Base64-encode the cookie value so the role is harder to read",
+      "B": "Keep authorization data on the server, or sign and verify any client-side state",
+      "C": "Rename the cookie so testers cannot find it easily",
+      "D": "Set the cookie to expire after five minutes"
+    },
+    "answer": "B",
+    "explanation": "Anything stored on the client can be changed. Authorization decisions must rely on server-side data, or on state that is cryptographically signed and checked.",
+    "distractor_rationales": {
+      "A": "Encoding is not protection.",
+      "C": "Renaming is obscurity.",
+      "D": "A short lifetime still allows tampering within that time."
+    },
+    "references_topic": "Client-side session state",
+    "version": "1.0"
+  },
+  {
+    "id": "D3-0117",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Symmetric and asymmetric cryptography",
+    "difficulty": "medium",
+    "type": "knowledge",
+    "stem": "Which statement BEST describes a stream cipher?",
+    "options": {
+      "A": "It encrypts fixed-size blocks of data, such as 128 bits at a time",
+      "B": "It uses a public key to encrypt and a private key to decrypt",
+      "C": "It combines plaintext with a keystream one bit or byte at a time",
+      "D": "It produces a fixed-length digest that cannot be reversed"
+    },
+    "answer": "C",
+    "explanation": "A stream cipher generates a keystream and combines it with the plaintext, usually by XOR, one bit or byte at a time.",
+    "distractor_rationales": {
+      "A": "Fixed-size blocks describe a block cipher.",
+      "B": "Public and private keys describe asymmetric encryption.",
+      "D": "A fixed-length irreversible digest describes a hash."
+    },
+    "references_topic": "Stream and block ciphers",
+    "version": "1.0"
+  },
+  {
+    "id": "D3-0118",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Symmetric and asymmetric cryptography",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "A code review finds that an application encrypts every message with AES-GCM using the same key and the same nonce. What is the impact?",
+    "options": {
+      "A": "None, since AES-GCM is secure regardless of how nonces are chosen",
+      "B": "Messages will take longer to encrypt, but the security of the data is unaffected",
+      "C": "The ciphertext will be larger than usual, which wastes storage",
+      "D": "It can expose plaintext relationships and let attackers forge messages"
+    },
+    "answer": "D",
+    "explanation": "GCM requires a unique nonce for every message under a key. Reuse leaks information about the plaintexts and can reveal the authentication key, allowing forgeries.",
+    "distractor_rationales": {
+      "A": "GCM's security depends on nonce uniqueness.",
+      "B": "Reuse is a security failure, not a performance issue.",
+      "C": "Ciphertext size is unaffected."
+    },
+    "references_topic": "Nonce reuse in AES-GCM",
+    "version": "1.0"
+  },
+  {
+    "id": "D3-0119",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Hashing, signatures, and integrity",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "An internal certificate authority still signs certificates using SHA-1. What should the security team do?",
+    "options": {
+      "A": "Migrate to SHA-256 or stronger, since SHA-1 collisions are practical",
+      "B": "Keep SHA-1, since it is still approved for all digital signatures",
+      "C": "Switch to MD5, since it produces a shorter and faster hash",
+      "D": "Stop using certificates internally and rely on passwords for all authentication instead"
+    },
+    "answer": "A",
+    "explanation": "Practical SHA-1 collisions let attackers forge signed objects. Moving to SHA-256 or stronger restores signature integrity.",
+    "distractor_rationales": {
+      "B": "SHA-1 is deprecated for signatures.",
+      "C": "MD5 is even weaker than SHA-1.",
+      "D": "Dropping certificates weakens authentication."
+    },
+    "references_topic": "Retiring SHA-1",
+    "version": "1.0"
+  },
+  {
+    "id": "D3-0120",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "PKI and key management",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "A company uses one wildcard certificate for *.example.com on 60 servers, including low-security test hosts. What is the BEST improvement?",
+    "options": {
+      "A": "Use the same wildcard certificate on even more servers to simplify management",
+      "B": "Limit wildcards and give sensitive services their own certificates and keys",
+      "C": "Publish the wildcard private key so every team can deploy it easily",
+      "D": "Extend the wildcard certificate's validity to ten years to avoid renewals"
+    },
+    "answer": "B",
+    "explanation": "The same private key on 60 servers means a compromise of any one, including a weak test host, exposes every subdomain. Separate certificates limit the blast radius.",
+    "distractor_rationales": {
+      "A": "Wider use increases exposure.",
+      "C": "Publishing a private key destroys its security.",
+      "D": "Long validity increases the window of misuse."
+    },
+    "references_topic": "Limiting wildcard certificates",
+    "version": "1.0"
+  },
+  {
+    "id": "D3-0121",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "PKI and key management",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "The company's payment site went offline because its TLS certificate expired without anyone noticing. What is the BEST long-term fix?",
+    "options": {
+      "A": "Buy certificates with the longest validity period available on the market",
+      "B": "Ask the web team to put certificate renewal dates on their personal calendars",
+      "C": "Keep a certificate inventory with automated renewal and expiry alerts",
+      "D": "Disable certificate validation in the browsers used by customers"
+    },
+    "answer": "C",
+    "explanation": "A central inventory with automated renewal, such as ACME, and alerts well before expiry prevents surprise outages.",
+    "distractor_rationales": {
+      "A": "Longer validity delays but does not prevent the problem.",
+      "B": "Personal calendars are unreliable and leave with people.",
+      "D": "Customers' browsers cannot be changed, and disabling validation is dangerous."
+    },
+    "references_topic": "Automated certificate renewal",
+    "version": "1.0"
+  },
+  {
+    "id": "D3-0122",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Cryptanalytic attacks",
+    "difficulty": "medium",
+    "type": "knowledge",
+    "stem": "Which attack uses large precomputed tables of hash chains to reverse unsalted password hashes quickly?",
+    "options": {
+      "A": "Birthday attack",
+      "B": "Replay attack",
+      "C": "Side-channel attack on the hashing hardware",
+      "D": "Rainbow table attack"
+    },
+    "answer": "D",
+    "explanation": "Rainbow tables trade storage for speed by precomputing hashes for many possible passwords. Unique salts make them useless.",
+    "distractor_rationales": {
+      "A": "A birthday attack looks for collisions.",
+      "B": "A replay attack resends captured messages.",
+      "C": "A side-channel attack uses physical signals such as timing or power."
+    },
+    "references_topic": "Rainbow tables",
+    "version": "1.0"
+  },
+  {
+    "id": "D3-0123",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Site and facility design",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "An architect proposes a large illuminated sign with the company's name and \"Data Center\" on its new facility. What should the security team recommend?",
+    "options": {
+      "A": "A low-profile building with no signage identifying its purpose",
+      "B": "A larger sign so emergency services can find the building",
+      "C": "A sign listing the security measures in place",
+      "D": "Moving the sign onto the roof so it is visible from much farther away"
+    },
+    "answer": "A",
+    "explanation": "Advertising a data center invites targeting. Keeping sensitive facilities inconspicuous is a common physical security practice, with location shared through proper channels.",
+    "distractor_rationales": {
+      "B": "Emergency services can be informed without public signs.",
+      "C": "Listing defenses helps attackers plan.",
+      "D": "More visibility increases targeting."
+    },
+    "references_topic": "Low-profile facilities",
+    "version": "1.0"
+  },
+  {
+    "id": "D3-0124",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Zero trust and secure access architecture",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "Under a zero trust design, a user signs in successfully from London. Twenty minutes later, the same session makes requests from an IP address in another continent. What is the BEST response?",
+    "options": {
+      "A": "Allow the session to continue, since the user authenticated successfully at sign-in",
+      "B": "Re-evaluate the session, requiring step-up authentication or ending it",
+      "C": "Block the user's account permanently without investigation",
+      "D": "Log the event for review at the end of the quarter"
+    },
+    "answer": "B",
+    "explanation": "Zero trust keeps verifying during a session. A sudden change in risk signals should trigger re-authentication or termination rather than relying on the initial login.",
+    "distractor_rationales": {
+      "A": "Trust from sign-in should not persist when risk changes.",
+      "C": "Permanent blocking without investigation is excessive.",
+      "D": "Quarterly review is far too slow."
+    },
+    "references_topic": "Continuous verification",
+    "version": "1.0"
+  },
+  {
+    "id": "D3-0125",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Security models",
+    "difficulty": "hard",
+    "type": "knowledge",
+    "stem": "In the Clark-Wilson model, which element confirms that constrained data items are in a valid state?",
+    "options": {
+      "A": "Transformation procedure",
+      "B": "Unconstrained data item",
+      "C": "Integrity verification procedure",
+      "D": "Access triple"
+    },
+    "answer": "C",
+    "explanation": "Integrity verification procedures check that constrained data items are valid. Transformation procedures are the only way to change them.",
+    "distractor_rationales": {
+      "A": "Transformation procedures change data in well-formed ways.",
+      "B": "Unconstrained data items are inputs not yet validated.",
+      "D": "The access triple links users, programs, and data items."
+    },
+    "references_topic": "Clark-Wilson integrity verification procedures",
+    "version": "1.0"
+  },
+  {
+    "id": "D3-0126",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Cloud and distributed systems",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "Microservices share a message queue, and any service can publish any message type. An attacker who compromised a low-value service published fake payment approvals. What is the BEST fix?",
+    "options": {
+      "A": "Move the message queue to a larger cluster so it can handle more traffic",
+      "B": "Encrypt the queue's storage disks at rest",
+      "C": "Make the queue's name harder to guess",
+      "D": "Authorize publishers per message type and verify message authenticity"
+    },
+    "answer": "D",
+    "explanation": "Each service should be allowed to publish only the messages it owns, and consumers should verify authenticity, so one compromised service cannot impersonate others.",
+    "distractor_rationales": {
+      "A": "Capacity does not control who can publish.",
+      "B": "Disk encryption does not stop authorized-looking fake messages.",
+      "C": "Obscurity does not provide authorization."
+    },
+    "references_topic": "Securing message queues",
+    "version": "1.0"
+  },
+  {
+    "id": "D3-0127",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "ICS, IoT, and embedded systems",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "Testers found that field devices accept any firmware image uploaded to them, with no verification. What is the BEST long-term fix?",
+    "options": {
+      "A": "Require digitally signed firmware and verify signatures before installing",
+      "B": "Hide the firmware upload page behind an unusual URL",
+      "C": "Allow firmware uploads only on weekdays",
+      "D": "Ask all technicians to promise in writing to use only official vendor firmware"
+    },
+    "answer": "A",
+    "explanation": "Signature verification means only firmware from the legitimate vendor can be installed, which stops malicious or tampered images.",
+    "distractor_rationales": {
+      "B": "A hidden URL is obscurity.",
+      "C": "Timing restrictions do not stop malicious firmware.",
+      "D": "A promise does not stop attackers."
+    },
+    "references_topic": "Signed firmware updates",
+    "version": "1.0"
+  },
+  {
+    "id": "D3-0128",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Database and web architecture vulnerabilities",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "A mobile app connects directly to the company's database over the internet, using database credentials embedded in the app. What is the BEST architectural change?",
+    "options": {
+      "A": "Obfuscate the app so the embedded credentials are harder to extract",
+      "B": "Put an API tier in front, with per-user authorization and no database credentials in the app",
+      "C": "Change the database password every month and push an app update each time",
+      "D": "Restrict database access to users with the latest version of the app"
+    },
+    "answer": "B",
+    "explanation": "Anything embedded in a distributed app can be extracted. An API layer authenticates each user and enforces authorization, while the database stays off the internet.",
+    "distractor_rationales": {
+      "A": "Obfuscation delays extraction but does not prevent it.",
+      "C": "Rotating a shared embedded credential does not stop extraction.",
+      "D": "App version checks are easily bypassed."
+    },
+    "references_topic": "Adding an API tier",
+    "version": "1.0"
+  },
+  {
+    "id": "D3-0129",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Cryptanalytic attacks",
+    "difficulty": "hard",
+    "type": "knowledge",
+    "stem": "Why does double DES provide little more security than single DES?",
+    "options": {
+      "A": "Double DES uses a shorter key than single DES does",
+      "B": "Double DES is vulnerable to birthday attacks on its output",
+      "C": "A meet-in-the-middle attack reduces its effective strength to about 57 bits",
+      "D": "Double DES cannot be implemented in hardware"
+    },
+    "answer": "C",
+    "explanation": "By encrypting from one side and decrypting from the other and matching in the middle, an attacker needs roughly 2^57 operations, not 2^112, which is why Triple DES was used instead.",
+    "distractor_rationales": {
+      "A": "Double DES uses two keys, giving a longer key length on paper.",
+      "B": "The weakness is meet-in-the-middle, not birthday collisions.",
+      "D": "Double DES can be implemented in hardware."
+    },
+    "references_topic": "Meet-in-the-middle attack",
+    "version": "1.0"
+  },
+  {
+    "id": "D3-0130",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Environmental and physical controls",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "A data center wants the earliest possible warning of smoldering electrical fires, before visible smoke or flames. Which detection system is BEST?",
+    "options": {
+      "A": "Heat detectors that activate when the temperature reaches a set point",
+      "B": "Flame detectors that respond to infrared light from open flames",
+      "C": "Manual pull stations near each exit door",
+      "D": "Aspirating smoke detection that samples air for tiny particles"
+    },
+    "answer": "D",
+    "explanation": "Aspirating systems draw air through sampling pipes and detect very small amounts of smoke, often long before other detectors react.",
+    "distractor_rationales": {
+      "A": "Heat detectors respond late, after the fire has grown.",
+      "B": "Flame detectors need visible flames.",
+      "C": "Pull stations depend on a person noticing the fire."
+    },
+    "references_topic": "Very early smoke detection",
+    "version": "1.0"
+  }
+]

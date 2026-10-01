@@ -1,0 +1,362 @@
+[
+  {
+    "id": "D2-0011",
+    "domain": 2,
+    "domain_name": "Asset Security",
+    "subtopic": "Asset inventory and ownership",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "Why is an accurate asset inventory considered a foundational security control?",
+    "options": {
+      "A": "It removes the need for regular vulnerability scanning of every system",
+      "B": "It is needed only to support insurance claims",
+      "C": "An organization cannot protect assets it does not know exist",
+      "D": "It replaces the need to classify data by sensitivity"
+    },
+    "answer": "C",
+    "explanation": "Assets that nobody knows about are not patched, monitored, backed up, or protected. The inventory underpins risk, vulnerability, and configuration management.",
+    "distractor_rationales": {
+      "A": "Scanning is still required. The inventory tells you what to scan.",
+      "B": "Insurance support is a minor use of an inventory, not its main security value.",
+      "D": "Classification decides how much protection each asset needs. The inventory only records what exists."
+    },
+    "references_topic": "Asset inventory as a foundational control",
+    "version": "0.2"
+  },
+  {
+    "id": "D2-0012",
+    "domain": 2,
+    "domain_name": "Asset Security",
+    "subtopic": "Asset handling and labeling",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "What is the primary purpose of labeling media with its classification level?",
+    "options": {
+      "A": "To track the media's purchase cost for accounting",
+      "B": "To make the media easier to sanitize at disposal time",
+      "C": "To encrypt the stored data automatically",
+      "D": "To tell handlers which protection requirements apply"
+    },
+    "answer": "D",
+    "explanation": "A classification label tells everyone who handles the media which storage, transport, access, and destruction rules apply.",
+    "distractor_rationales": {
+      "A": "Cost tracking is an accounting function, not the purpose of classification labels.",
+      "B": "A label does not change how media is sanitized.",
+      "C": "Labels do not encrypt anything."
+    },
+    "references_topic": "Media labeling",
+    "version": "0.2"
+  },
+  {
+    "id": "D2-0013",
+    "domain": 2,
+    "domain_name": "Asset Security",
+    "subtopic": "Data remanence and destruction",
+    "difficulty": "easy",
+    "type": "application",
+    "stem": "An organization will reuse hard drives internally, within the same security domain and at the same classification level. Which sanitization approach is generally appropriate?",
+    "options": {
+      "A": "Clear, such as overwriting with standard write commands",
+      "B": "Destroy, by shredding or incinerating the drives",
+      "C": "Purge, by degaussing each drive with an approved degausser",
+      "D": "No sanitization, since the drives stay in-house"
+    },
+    "answer": "A",
+    "explanation": "Clearing protects against simple, non-invasive recovery and is appropriate when media stays under the organization's control at the same classification. Purging is for media leaving that control or holding more sensitive data, and destruction is for media that cannot otherwise be sanitized.",
+    "distractor_rationales": {
+      "B": "Destruction prevents the planned reuse and costs more than necessary.",
+      "C": "Degaussing renders modern hard drives unusable, which defeats reuse, and exceeds what this situation requires.",
+      "D": "Leftover data could be exposed to internal users who have no need to know it."
+    },
+    "references_topic": "Sanitization levels (clear, purge, destroy)",
+    "version": "0.2"
+  },
+  {
+    "id": "D2-0014",
+    "domain": 2,
+    "domain_name": "Asset Security",
+    "subtopic": "Data states and protection",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "Which control primarily protects data in transit?",
+    "options": {
+      "A": "Self-encrypting drives with full-disk encryption",
+      "B": "Transport Layer Security (TLS)",
+      "C": "Database field tokenization",
+      "D": "Hardware secure enclaves"
+    },
+    "answer": "B",
+    "explanation": "TLS encrypts and authenticates data as it moves across a network.",
+    "distractor_rationales": {
+      "A": "Full-disk encryption protects data at rest on the drive.",
+      "C": "Tokenization protects stored values by replacing them with tokens.",
+      "D": "Secure enclaves protect data in use while it is being processed."
+    },
+    "references_topic": "Protecting data in transit",
+    "version": "0.2"
+  },
+  {
+    "id": "D2-0015",
+    "domain": 2,
+    "domain_name": "Asset Security",
+    "subtopic": "Asset inventory and ownership",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "A company's cloud environment has hundreds of storage buckets, many with no identified owner and unknown contents. What should the security manager do FIRST?",
+    "options": {
+      "A": "Delete every bucket that does not have an identified owner today",
+      "B": "Move all bucket data into one shared archive account",
+      "C": "Inventory the buckets and assign an owner to each",
+      "D": "Encrypt all buckets with a single shared key"
+    },
+    "answer": "C",
+    "explanation": "Ownership establishes accountability. Discover what exists, identify its contents, and assign an accountable owner who can then decide classification, protection, and retention.",
+    "distractor_rationales": {
+      "A": "Deleting unowned buckets could destroy data the business depends on.",
+      "B": "Consolidating unknown data concentrates risk and breaks applications that use the buckets.",
+      "D": "A single shared key concentrates risk and still leaves nobody accountable for the data."
+    },
+    "references_topic": "Asset ownership in cloud environments",
+    "version": "0.2"
+  },
+  {
+    "id": "D2-0016",
+    "domain": 2,
+    "domain_name": "Asset Security",
+    "subtopic": "Data classification",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "An employee combines several reports, each classified Internal, into a single dataset that reveals the company's complete customer pricing strategy. How should the combined dataset be classified?",
+    "options": {
+      "A": "Internal, since every source report is classified as Internal",
+      "B": "Public, since the underlying data already exists",
+      "C": "At the lowest classification among its sources",
+      "D": "By the impact of the combined data, possibly higher"
+    },
+    "answer": "D",
+    "explanation": "Aggregation can create information more sensitive than any single part. The combined dataset should be classified by the impact its disclosure would cause, which here is likely higher than Internal.",
+    "distractor_rationales": {
+      "A": "Inheriting the source label ignores the aggregation effect.",
+      "B": "Existing somewhere internally does not make information public.",
+      "C": "Taking the lowest classification is backward. Combined data is at least as sensitive as its parts."
+    },
+    "references_topic": "Aggregation and classification",
+    "version": "0.2"
+  },
+  {
+    "id": "D2-0017",
+    "domain": 2,
+    "domain_name": "Asset Security",
+    "subtopic": "Data retention",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "A company keeps all customer records indefinitely \"just in case.\" Legal counsel says financial records must be kept for seven years. What is the BEST action?",
+    "options": {
+      "A": "Set retention periods by record type and dispose on schedule",
+      "B": "Keep everything indefinitely, because cloud storage is inexpensive",
+      "C": "Delete all records older than one year",
+      "D": "Move old records to backup tapes and keep them there"
+    },
+    "answer": "A",
+    "explanation": "Over-retention increases breach impact, legal discovery cost, and privacy exposure. A schedule based on legal and business need, followed by secure disposal, reduces risk and is defensible.",
+    "distractor_rationales": {
+      "B": "Storage cost is not the only cost. Every retained record adds breach and discovery exposure.",
+      "C": "Deleting after one year violates the seven-year requirement for financial records.",
+      "D": "Records on tape are still retained and still discoverable."
+    },
+    "references_topic": "Retention schedules and defensible disposal",
+    "version": "0.2"
+  },
+  {
+    "id": "D2-0018",
+    "domain": 2,
+    "domain_name": "Asset Security",
+    "subtopic": "Asset handling and labeling",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "Backup tapes containing Confidential data must be moved to an offsite storage facility. Which handling practice is MOST important?",
+    "options": {
+      "A": "Label each tape with the names of the customers it contains",
+      "B": "Encrypt the tapes and use a bonded courier with tracked custody",
+      "C": "Send the tapes by ordinary postal mail so they attract less attention",
+      "D": "Let any available employee carry the tapes in a personal car"
+    },
+    "answer": "B",
+    "explanation": "Encryption protects the data if a tape is lost or stolen, and a bonded courier with documented custody provides accountability at every hand-off.",
+    "distractor_rationales": {
+      "A": "Labels that reveal contents increase risk. Tapes should carry an identifier and classification, not customer names.",
+      "C": "Ordinary mail provides no tracking or accountability.",
+      "D": "An untracked employee transport offers no accountability and higher loss risk."
+    },
+    "references_topic": "Protecting media in transit",
+    "version": "0.2"
+  },
+  {
+    "id": "D2-0019",
+    "domain": 2,
+    "domain_name": "Asset Security",
+    "subtopic": "Data roles",
+    "difficulty": "medium",
+    "type": "knowledge",
+    "stem": "Which role is responsible for day-to-day technical protection of data, such as performing backups and maintaining access controls as directed by the owner?",
+    "options": {
+      "A": "Data subject",
+      "B": "Data controller",
+      "C": "Data custodian",
+      "D": "Data steward"
+    },
+    "answer": "C",
+    "explanation": "Custodians implement and operate the protections that owners decide on, including backups, storage, and access control configuration.",
+    "distractor_rationales": {
+      "A": "The data subject is the individual the data describes.",
+      "B": "A controller decides the purposes and means of processing personal data.",
+      "D": "A data steward focuses on data quality, definitions, and governance rather than technical protection."
+    },
+    "references_topic": "Data custodian role",
+    "version": "0.2"
+  },
+  {
+    "id": "D2-0020",
+    "domain": 2,
+    "domain_name": "Asset Security",
+    "subtopic": "DLP, DRM, and CASB",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "A company deploys endpoint DLP and immediately blocks all transfers of files containing nine-digit numbers. Help desk tickets surge because legitimate work is blocked. What should the security team do FIRST?",
+    "options": {
+      "A": "Disable the DLP deployment entirely until next year",
+      "B": "Keep blocking and make every user request a separate exception",
+      "C": "Expand the rule to block additional number patterns",
+      "D": "Switch to monitor mode and tune the rules before blocking"
+    },
+    "answer": "D",
+    "explanation": "Effective DLP starts in monitor mode. The team tunes detections, for example with context and validation checks, to cut false positives, and only then enforces blocking.",
+    "distractor_rationales": {
+      "A": "Disabling DLP removes the protection altogether.",
+      "B": "Case-by-case exceptions overwhelm users and the help desk and encourage workarounds.",
+      "C": "Broader patterns would create even more false positives."
+    },
+    "references_topic": "Tuning DLP policies",
+    "version": "0.2"
+  },
+  {
+    "id": "D2-0021",
+    "domain": 2,
+    "domain_name": "Asset Security",
+    "subtopic": "Data states and protection",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "A healthcare startup wants analysts to query patient records for research without exposing patient identities. Which approach BEST reduces privacy risk while preserving analytical value?",
+    "options": {
+      "A": "Pseudonymize records and keep re-identification keys separate",
+      "B": "Give analysts full patient records under a signed NDA",
+      "C": "Encrypt the database at rest with strong keys",
+      "D": "Remove every column except the patients' admission and discharge dates"
+    },
+    "answer": "A",
+    "explanation": "Pseudonymization replaces direct identifiers with tokens while keeping records linkable for analysis. Re-identification keys are held separately under strict access control.",
+    "distractor_rationales": {
+      "B": "An NDA still exposes identities that the analysis does not need.",
+      "C": "Encryption at rest does not stop authorized analysts from seeing identities.",
+      "D": "Stripping nearly every field destroys the data's research value."
+    },
+    "references_topic": "Pseudonymization",
+    "version": "0.2"
+  },
+  {
+    "id": "D2-0022",
+    "domain": 2,
+    "domain_name": "Asset Security",
+    "subtopic": "Scoping, tailoring, and baselines",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "An organization adopts an industry control baseline. One required control, hardware tokens for all remote access, is infeasible for a group of field technicians. What should the security manager do?",
+    "options": {
+      "A": "Remove the control from the baseline for all users company-wide",
+      "B": "Document a compensating control that meets the intent",
+      "C": "Let the technicians skip the requirement without documentation",
+      "D": "Block remote access for the technicians until tokens are feasible"
+    },
+    "answer": "B",
+    "explanation": "Tailoring allows a documented, approved compensating control that meets the original control's intent, such as another phishing-resistant authenticator, for the affected group only.",
+    "distractor_rationales": {
+      "A": "Removing the control for everyone weakens protection far beyond the affected group.",
+      "C": "An undocumented deviation is unmanaged risk.",
+      "D": "Blocking access stops the technicians from working when a compensating control would suffice."
+    },
+    "references_topic": "Tailoring with compensating controls",
+    "version": "0.2"
+  },
+  {
+    "id": "D2-0023",
+    "domain": 2,
+    "domain_name": "Asset Security",
+    "subtopic": "End-of-life assets",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "A company is decommissioning a leased storage array that held regulated financial data, and the array will be returned to the leasing company. What is the BEST approach?",
+    "options": {
+      "A": "Reformat all of the array's volumes before returning it",
+      "B": "Return it as-is, since the lessor promises to wipe the drives",
+      "C": "Purge the drives and get a certificate of sanitization",
+      "D": "Encrypt the remaining data on the array after decommissioning"
+    },
+    "answer": "C",
+    "explanation": "The media is leaving the organization's control, so it must be purged (for example by verified cryptographic erase) or the drives retained, with a documented certificate of sanitization.",
+    "distractor_rationales": {
+      "A": "Reformatting leaves the data recoverable.",
+      "B": "A third party's promise does not transfer the organization's accountability, and it provides no verification.",
+      "D": "Encrypting leftover data after the fact does not remove what is already on the drives."
+    },
+    "references_topic": "Decommissioning leased storage",
+    "version": "0.2"
+  },
+  {
+    "id": "D2-0024",
+    "domain": 2,
+    "domain_name": "Asset Security",
+    "subtopic": "Data classification",
+    "difficulty": "hard",
+    "type": "application",
+    "stem": "An insurer's classification scheme has four levels. An auditor finds that 80% of documents are labeled Restricted, the highest level, and staff routinely bypass controls to share them. What is the MOST likely root cause, and the best fix?",
+    "options": {
+      "A": "Too few classification levels; add three more levels to the scheme",
+      "B": "Weak encryption; upgrade the algorithms used for Restricted data",
+      "C": "Poor passwords; enforce stronger password complexity",
+      "D": "Over-classification; train owners on criteria and fix defaults"
+    },
+    "answer": "D",
+    "explanation": "When most documents are labeled at the highest level, controls become so burdensome that people route around them. Classify by impact, set sensible default labels, and review existing labels.",
+    "distractor_rationales": {
+      "A": "More levels add complexity without fixing the mislabeling.",
+      "B": "Encryption strength has nothing to do with why staff bypass controls.",
+      "C": "Password strength is unrelated to classification practices."
+    },
+    "references_topic": "Over-classification",
+    "version": "0.2"
+  },
+  {
+    "id": "D2-0025",
+    "domain": 2,
+    "domain_name": "Asset Security",
+    "subtopic": "DLP, DRM, and CASB",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "An architecture firm must share design documents with external partners and wants to be able to revoke access when projects end, even for copies partners have already downloaded. Which technology BEST meets this requirement?",
+    "options": {
+      "A": "Digital rights management (DRM)",
+      "B": "A CASB in API mode",
+      "C": "Network DLP at the egress point",
+      "D": "Full-disk encryption on partner laptops"
+    },
+    "answer": "A",
+    "explanation": "DRM (information rights management) attaches usage policy to the file itself, so access can be revoked centrally even after a copy is downloaded.",
+    "distractor_rationales": {
+      "B": "A CASB governs use of cloud applications. It cannot control files already downloaded to partner devices.",
+      "C": "Network DLP inspects traffic leaving your network. Once a file is shared, it has no further control.",
+      "D": "Encryption of partner laptops protects against device theft, not revocation, and is outside the firm's control."
+    },
+    "references_topic": "Digital rights management",
+    "version": "0.2"
+  }
+]

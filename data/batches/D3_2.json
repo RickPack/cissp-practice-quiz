@@ -1,0 +1,554 @@
+[
+  {
+    "id": "D3-0011",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Evaluation and certification",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "Under the Common Criteria, what does a product's Evaluation Assurance Level (EAL) indicate?",
+    "options": {
+      "A": "How strong the product's encryption algorithms are",
+      "B": "How rigorously the product's security claims were evaluated",
+      "C": "How many security features the product includes",
+      "D": "How quickly the vendor releases security patches"
+    },
+    "answer": "B",
+    "explanation": "An EAL, from 1 to 7, describes the depth and rigor of the evaluation of a product's security claims (its security target). It does not measure how secure or feature-rich the product is.",
+    "distractor_rationales": {
+      "A": "The EAL does not rate cryptographic strength.",
+      "C": "Security functions are described in the security target or protection profile. The EAL does not count them.",
+      "D": "Patch cadence is not part of an EAL rating."
+    },
+    "references_topic": "Common Criteria assurance levels",
+    "version": "0.2"
+  },
+  {
+    "id": "D3-0012",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Hardware security capabilities",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "Which component on a laptop's motherboard securely stores keys and the boot measurements used to verify that the boot process has not been tampered with?",
+    "options": {
+      "A": "Hardware security module",
+      "B": "Memory management unit",
+      "C": "Trusted Platform Module",
+      "D": "Baseboard management controller"
+    },
+    "answer": "C",
+    "explanation": "A TPM stores keys and platform measurements in its registers, supports measured and secure boot, and can seal secrets such as disk encryption keys to a known-good boot state.",
+    "distractor_rationales": {
+      "A": "An HSM is a dedicated appliance or card for enterprise key management, not a chip on a laptop motherboard.",
+      "B": "The MMU translates virtual addresses and enforces memory protection. It does not store keys.",
+      "D": "A BMC provides out-of-band management for servers."
+    },
+    "references_topic": "Trusted Platform Module",
+    "version": "0.2"
+  },
+  {
+    "id": "D3-0013",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Cloud and distributed systems",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "In an Infrastructure as a Service (IaaS) model, which responsibility typically belongs to the customer rather than the provider?",
+    "options": {
+      "A": "Physical security of the data center",
+      "B": "Maintenance of the hypervisor",
+      "C": "Replacement of failed storage hardware",
+      "D": "Patching the guest operating systems and applications"
+    },
+    "answer": "D",
+    "explanation": "In IaaS the customer manages the guest operating systems, middleware, applications, data, and their configuration. The provider manages the facility, hardware, and virtualization layer.",
+    "distractor_rationales": {
+      "A": "Physical data center security is the provider's responsibility.",
+      "B": "The provider maintains the hypervisor.",
+      "C": "The provider replaces failed hardware."
+    },
+    "references_topic": "Shared responsibility model (IaaS)",
+    "version": "0.2"
+  },
+  {
+    "id": "D3-0014",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Site and facility design",
+    "difficulty": "easy",
+    "type": "application",
+    "stem": "A company plants low hedges, installs bright lighting, and positions windows so that employees can easily observe the parking lot. Which approach is this?",
+    "options": {
+      "A": "Crime Prevention Through Environmental Design (CPTED)",
+      "B": "Defense in depth",
+      "C": "Security through obscurity",
+      "D": "Mantrap design"
+    },
+    "answer": "A",
+    "explanation": "CPTED uses the physical environment to discourage crime through natural surveillance, natural access control, and territorial reinforcement. Clear sight lines and lighting are natural surveillance.",
+    "distractor_rationales": {
+      "B": "Defense in depth is layering controls in general. This scenario is specifically environmental design.",
+      "C": "Obscurity hides details, the opposite of making an area easy to observe.",
+      "D": "A mantrap is a double-door entry control for a secured space."
+    },
+    "references_topic": "CPTED natural surveillance",
+    "version": "0.2"
+  },
+  {
+    "id": "D3-0015",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Symmetric and asymmetric cryptography",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "How many unique secret keys are needed for 10 users to communicate privately in pairs, every user with every other user, using only symmetric encryption?",
+    "options": {
+      "A": "10",
+      "B": "45",
+      "C": "20",
+      "D": "90"
+    },
+    "answer": "B",
+    "explanation": "Each pair of users needs its own key, so the count is n(n - 1)/2 = 10 x 9 / 2 = 45.",
+    "distractor_rationales": {
+      "A": "One key per user would let every user read everyone's traffic, so it does not give pairwise privacy.",
+      "C": "20 is the number of keys for 10 users with asymmetric key pairs (2n).",
+      "D": "90 counts every pair twice."
+    },
+    "references_topic": "Symmetric key scaling",
+    "version": "0.2"
+  },
+  {
+    "id": "D3-0016",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Security models",
+    "difficulty": "easy",
+    "type": "application",
+    "stem": "A logistics system must ensure that data from unverified field sensors cannot corrupt a highly trusted planning database. Which security model's rules address this requirement?",
+    "options": {
+      "A": "Bell-LaPadula",
+      "B": "Brewer-Nash",
+      "C": "Biba",
+      "D": "Take-Grant"
+    },
+    "answer": "C",
+    "explanation": "Biba protects integrity. Its star integrity rule (no write up) prevents low-integrity subjects, such as unverified sensors, from writing to higher-integrity objects.",
+    "distractor_rationales": {
+      "A": "Bell-LaPadula protects confidentiality, not integrity.",
+      "B": "Brewer-Nash prevents conflicts of interest.",
+      "D": "Take-Grant models how access rights are transferred between subjects."
+    },
+    "references_topic": "Biba integrity model",
+    "version": "0.2"
+  },
+  {
+    "id": "D3-0017",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Database and web architecture vulnerabilities",
+    "difficulty": "easy",
+    "type": "application",
+    "stem": "A user without access to salary data runs many permitted queries on department headcounts and average salaries, and from the results deduces one executive's exact salary. What is this called?",
+    "options": {
+      "A": "SQL injection",
+      "B": "Polyinstantiation",
+      "C": "Privilege escalation",
+      "D": "Inference"
+    },
+    "answer": "D",
+    "explanation": "Inference is deriving sensitive information from data the user is allowed to see. The user never exceeded their permissions.",
+    "distractor_rationales": {
+      "A": "SQL injection manipulates query structure. The user ran legitimate queries.",
+      "B": "Polyinstantiation is a defense that keeps multiple versions of a record at different classification levels.",
+      "C": "No additional privileges were gained."
+    },
+    "references_topic": "Inference attacks",
+    "version": "0.2"
+  },
+  {
+    "id": "D3-0018",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Cloud and distributed systems",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "A company is moving a customer-facing application to a public cloud Platform as a Service (PaaS). Which action should the security architect take FIRST?",
+    "options": {
+      "A": "Map the company's control requirements to the provider's shared responsibility matrix",
+      "B": "Encrypt all application data with company-managed keys",
+      "C": "Negotiate the right to perform physical audits of provider sites",
+      "D": "Deploy a host-based IDS on the provider's servers"
+    },
+    "answer": "A",
+    "explanation": "The architect must first understand which controls the provider handles and which remain with the customer. The gaps then drive the security design.",
+    "distractor_rationales": {
+      "B": "Customer-managed encryption may be valuable, but deciding on it before knowing the responsibility split is premature.",
+      "C": "Providers rarely allow customer physical audits. Customers rely on independent attestations instead.",
+      "D": "In PaaS, customers cannot install agents on provider-managed hosts."
+    },
+    "references_topic": "Shared responsibility mapping",
+    "version": "0.2"
+  },
+  {
+    "id": "D3-0019",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Hardware security capabilities",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "A payment company must protect its master encryption keys so they can never be exported in plaintext, even by administrators, and it needs validated tamper resistance. Which solution BEST meets these needs?",
+    "options": {
+      "A": "Storing keys in an encrypted configuration file",
+      "B": "A hardware security module (HSM)",
+      "C": "A password-protected key vault on a file server",
+      "D": "The TPM in each application server"
+    },
+    "answer": "B",
+    "explanation": "HSMs generate and store keys inside tamper-resistant, validated hardware, perform cryptographic operations internally, and can mark keys as non-exportable.",
+    "distractor_rationales": {
+      "A": "The key protecting the configuration file becomes another secret that administrators can read.",
+      "C": "A software vault on a file server lacks tamper resistance, and privileged administrators may be able to extract keys.",
+      "D": "A TPM protects keys for a single device. It is not designed to serve as a centralized, high-throughput store for master keys."
+    },
+    "references_topic": "Hardware security modules",
+    "version": "0.2"
+  },
+  {
+    "id": "D3-0020",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Evaluation and certification",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "A government agency's new system has passed its technical security testing. Before it can go into production, what must happen?",
+    "options": {
+      "A": "The vendor must publish a press release about it",
+      "B": "The system must first receive an EAL7 rating",
+      "C": "An authorizing official must accept the residual risk",
+      "D": "Every future user must complete security training first"
+    },
+    "answer": "C",
+    "explanation": "Certification is the technical evaluation. Authorization (accreditation) is a management decision: a senior official accepts the residual risk and approves the system to operate.",
+    "distractor_rationales": {
+      "A": "Publicity has nothing to do with authorization.",
+      "B": "EAL ratings apply to evaluated products, and EAL7 is rarely required or achieved.",
+      "D": "Training may be required, but it is not the gate that authorizes the system to operate."
+    },
+    "references_topic": "Certification versus authorization",
+    "version": "0.2"
+  },
+  {
+    "id": "D3-0021",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "PKI and key management",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "Browsers connecting to a busy web server check certificate revocation, which adds latency and exposes users' browsing to the certificate authority. Which technique addresses both issues?",
+    "options": {
+      "A": "Downloading the full CRL on every connection",
+      "B": "Disabling revocation checks in the browser",
+      "C": "Using self-signed server certificates",
+      "D": "OCSP stapling"
+    },
+    "answer": "D",
+    "explanation": "With OCSP stapling, the server periodically fetches a signed, time-stamped OCSP response and presents it during the TLS handshake. Clients no longer contact the CA, which reduces latency and protects privacy.",
+    "distractor_rationales": {
+      "A": "Full CRLs are large and would increase latency.",
+      "B": "Disabling revocation checks removes the protection entirely.",
+      "C": "Self-signed certificates break the chain of trust."
+    },
+    "references_topic": "OCSP stapling",
+    "version": "0.2"
+  },
+  {
+    "id": "D3-0022",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Cryptanalytic attacks",
+    "difficulty": "medium",
+    "type": "knowledge",
+    "stem": "An attacker obtains several encrypted messages along with their matching plaintext and uses them to try to recover the key. What type of attack is this?",
+    "options": {
+      "A": "Known-plaintext attack",
+      "B": "Ciphertext-only attack",
+      "C": "Chosen-ciphertext attack",
+      "D": "Side-channel attack"
+    },
+    "answer": "A",
+    "explanation": "In a known-plaintext attack, the attacker has plaintext and ciphertext pairs but did not choose them, and analyzes them to recover the key.",
+    "distractor_rationales": {
+      "B": "In a ciphertext-only attack, the attacker has no plaintext at all.",
+      "C": "In a chosen-ciphertext attack, the attacker chooses ciphertexts and obtains their decryptions.",
+      "D": "A side-channel attack uses physical leakage, such as timing or power, rather than plaintext and ciphertext pairs."
+    },
+    "references_topic": "Known-plaintext attack",
+    "version": "0.2"
+  },
+  {
+    "id": "D3-0023",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Site and facility design",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "A company is choosing where to put a new server room in a multi-story office building. Which location is BEST?",
+    "options": {
+      "A": "The basement, where it is hardest for intruders to reach",
+      "B": "An interior room on a middle floor, away from plumbing",
+      "C": "The top floor, next to the roof access hatch",
+      "D": "A room beside the main lobby for easy deliveries"
+    },
+    "answer": "B",
+    "explanation": "An interior room on a middle floor avoids basement flooding, roof leaks and roof access, exterior walls, and heavy public traffic.",
+    "distractor_rationales": {
+      "A": "Basements are prone to flooding and water damage.",
+      "C": "Top floors are exposed to roof leaks, and roof access is an intrusion path.",
+      "D": "A lobby location exposes the room to heavy foot traffic and visitors."
+    },
+    "references_topic": "Server room placement",
+    "version": "0.2"
+  },
+  {
+    "id": "D3-0024",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Database and web architecture vulnerabilities",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "A multilevel database must let both Secret and Unclassified users see a record for a ship's location, without revealing to Unclassified users that a Secret version of the record exists. Which technique supports this?",
+    "options": {
+      "A": "Aggregation",
+      "B": "Normalization",
+      "C": "Polyinstantiation",
+      "D": "Data mining"
+    },
+    "answer": "C",
+    "explanation": "Polyinstantiation stores multiple instances of the same record at different classification levels. Lower-cleared users see a cover version, which prevents them from inferring that sensitive data exists.",
+    "distractor_rationales": {
+      "A": "Aggregation is combining data, which creates a risk rather than addressing one.",
+      "B": "Normalization reduces redundancy in database design.",
+      "D": "Data mining discovers patterns in large data sets."
+    },
+    "references_topic": "Polyinstantiation",
+    "version": "0.2"
+  },
+  {
+    "id": "D3-0025",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Secure design principles",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "A vendor is preparing to ship a new network appliance. Which design choice BEST reflects the principle of secure defaults?",
+    "options": {
+      "A": "Enable every feature so customers can choose which ones to turn off",
+      "B": "Ship with a common default admin password documented in the manual",
+      "C": "Allow unauthenticated management from any network until configured",
+      "D": "Disable unneeded services and force a new admin password at setup"
+    },
+    "answer": "D",
+    "explanation": "Secure by default means a minimal attack surface and strong settings out of the box: unnecessary services off and no shared default credentials.",
+    "distractor_rationales": {
+      "A": "Enabling everything maximizes the attack surface.",
+      "B": "Documented default passwords are among the most exploited weaknesses.",
+      "C": "Open, unauthenticated management invites takeover before the owner configures the device."
+    },
+    "references_topic": "Secure defaults",
+    "version": "0.2"
+  },
+  {
+    "id": "D3-0026",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "ICS, IoT, and embedded systems",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "A hospital deploys hundreds of networked infusion pumps whose firmware cannot be updated frequently. Which control provides the MOST risk reduction?",
+    "options": {
+      "A": "Isolate the pumps on a segment allowing only required flows",
+      "B": "Install antivirus software on each individual pump",
+      "C": "Rotate the shared Wi-Fi password used by the pumps every month",
+      "D": "Turn off pump logging to conserve network bandwidth"
+    },
+    "answer": "A",
+    "explanation": "Segmentation with allow-listed flows limits who can reach devices that cannot be patched quickly and prevents lateral movement. Monitoring the segment adds detection.",
+    "distractor_rationales": {
+      "B": "Embedded pumps generally cannot run antivirus, and adding software may affect their certification.",
+      "C": "Rotating a password does not address firmware vulnerabilities.",
+      "D": "Disabling logging reduces visibility without reducing risk."
+    },
+    "references_topic": "Segmenting medical IoT devices",
+    "version": "0.2"
+  },
+  {
+    "id": "D3-0027",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Symmetric and asymmetric cryptography",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "An analyst notices that an encrypted image still shows the outline of the original picture. Which block cipher mode was MOST likely used?",
+    "options": {
+      "A": "Galois/Counter Mode (GCM)",
+      "B": "Electronic Codebook (ECB)",
+      "C": "Cipher Block Chaining (CBC)",
+      "D": "Counter (CTR)"
+    },
+    "answer": "B",
+    "explanation": "ECB encrypts identical plaintext blocks into identical ciphertext blocks, so patterns in the input remain visible in the output.",
+    "distractor_rationales": {
+      "A": "GCM uses a counter-based keystream that hides patterns, and it adds authentication.",
+      "C": "CBC chains each block with the previous ciphertext and an IV, which hides repeated patterns.",
+      "D": "CTR mode generates a keystream that hides patterns."
+    },
+    "references_topic": "ECB mode weakness",
+    "version": "0.2"
+  },
+  {
+    "id": "D3-0028",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Virtualization, containers, and serverless",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "A cloud provider announces a critical hypervisor vulnerability that could let a guest VM escape and access other tenants' VMs. You run sensitive workloads on shared hosts. What is the BEST immediate action?",
+    "options": {
+      "A": "Encrypt all data stored inside each of your virtual machines right away",
+      "B": "Increase the memory allocated to each virtual machine",
+      "C": "Confirm the patch timeline; consider dedicated hosts meanwhile",
+      "D": "Disable snapshots for all of your virtual machines"
+    },
+    "answer": "C",
+    "explanation": "The customer cannot patch the provider's hypervisor. The practical step is to confirm the provider's remediation timeline and reduce exposure, for example by moving the most sensitive workloads to dedicated hosts until the fix is applied.",
+    "distractor_rationales": {
+      "A": "An escaped attacker may read memory where data is already decrypted, so encryption at rest does not stop this threat.",
+      "B": "Memory allocation has no bearing on the vulnerability.",
+      "D": "Snapshots are unrelated to VM escape."
+    },
+    "references_topic": "VM escape and tenant isolation",
+    "version": "0.2"
+  },
+  {
+    "id": "D3-0029",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Hashing, signatures, and integrity",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "Two internal services exchange API messages. The team needs to verify that messages are not altered and come from a service holding a shared secret, with minimal overhead. What is the BEST choice?",
+    "options": {
+      "A": "Append a SHA-256 hash of each message",
+      "B": "Encrypt each message with AES in ECB mode",
+      "C": "Sign each message with RSA-4096",
+      "D": "Attach an HMAC computed with the shared secret"
+    },
+    "answer": "D",
+    "explanation": "An HMAC combines the message with a secret key, so only holders of the key can produce a valid tag. It gives integrity and origin authentication cheaply.",
+    "distractor_rationales": {
+      "A": "An attacker who modifies a message can simply recompute a plain hash, because no key is involved.",
+      "B": "ECB encryption provides no integrity protection and leaks patterns.",
+      "C": "RSA signatures would work but are much heavier, and nonrepudiation is not needed between two internal services sharing a secret."
+    },
+    "references_topic": "HMAC message authentication",
+    "version": "0.2"
+  },
+  {
+    "id": "D3-0030",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Cryptanalytic attacks",
+    "difficulty": "hard",
+    "type": "application",
+    "stem": "A system uses a 64-bit hash to detect duplicate records. Roughly how many random records must be hashed before there is about a 50% chance that two share the same hash?",
+    "options": {
+      "A": "About 2^32",
+      "B": "About 2^64",
+      "C": "About 2^63",
+      "D": "About 2^16"
+    },
+    "answer": "A",
+    "explanation": "By the birthday paradox, a collision becomes likely after roughly the square root of the number of possible values: sqrt(2^64) = 2^32.",
+    "distractor_rationales": {
+      "B": "2^64 is the total number of possible hash values, far more than needed for a collision.",
+      "C": "2^63 is roughly the average effort to find a match for one specific hash, not any collision.",
+      "D": "2^16 is far too few to make a collision likely in a 64-bit space."
+    },
+    "references_topic": "Birthday attack",
+    "version": "0.2"
+  },
+  {
+    "id": "D3-0031",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Zero trust and secure access architecture",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "An architect is designing zero trust access for hundreds of internal applications and wants access decisions to be consistent across all of them. Which design is BEST?",
+    "options": {
+      "A": "Build separate access logic into each of the hundreds of applications",
+      "B": "Centralize decisions in a PDP, enforced by PEPs at each resource",
+      "C": "Trust any device that is connected to the corporate network",
+      "D": "Require a VPN connection for all application access"
+    },
+    "answer": "B",
+    "explanation": "A central policy decision point evaluates identity, device posture, and context for each request, and policy enforcement points in front of each resource apply the decision. This gives consistent, per-request control.",
+    "distractor_rationales": {
+      "A": "Separate logic in every application is inconsistent and hard to maintain.",
+      "C": "Trusting network location is exactly what zero trust rejects.",
+      "D": "A VPN grants broad network access. It does not make per-request, per-resource decisions."
+    },
+    "references_topic": "Zero trust policy decision and enforcement points",
+    "version": "0.2"
+  },
+  {
+    "id": "D3-0032",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "PKI and key management",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "A company encrypts employee laptops with full-disk encryption. An employee leaves unexpectedly, and the laptop holds critical project files. Which practice would MOST reliably have preserved access to the data?",
+    "options": {
+      "A": "Asking employees to write their passwords on a card in their desk",
+      "B": "Using weaker encryption so the drive can be cracked if needed",
+      "C": "Escrowing recovery keys centrally under dual control",
+      "D": "Exempting senior staff laptops from encryption"
+    },
+    "answer": "C",
+    "explanation": "Central recovery key escrow, protected by dual control or split knowledge, preserves business access to data without weakening the encryption.",
+    "distractor_rationales": {
+      "A": "Written passwords are insecure and may be lost or discarded.",
+      "B": "Weak encryption undermines protection on every laptop.",
+      "D": "Exempting senior staff removes protection from some of the most sensitive devices."
+    },
+    "references_topic": "Key escrow and recovery",
+    "version": "0.2"
+  },
+  {
+    "id": "D3-0033",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Security models",
+    "difficulty": "hard",
+    "type": "knowledge",
+    "stem": "A consulting firm serves two competing banks. Once a consultant opens Bank A's files, the system must block that consultant from Bank B's files. Which security model enforces this?",
+    "options": {
+      "A": "Bell-LaPadula",
+      "B": "Biba",
+      "C": "Clark-Wilson",
+      "D": "Brewer-Nash"
+    },
+    "answer": "D",
+    "explanation": "Brewer-Nash (the Chinese Wall model) changes access dynamically based on what a subject has already accessed within a conflict-of-interest class.",
+    "distractor_rationales": {
+      "A": "Bell-LaPadula uses static labels to protect confidentiality. It does not react to prior access.",
+      "B": "Biba protects integrity.",
+      "C": "Clark-Wilson enforces integrity through well-formed transactions and separation of duties."
+    },
+    "references_topic": "Brewer-Nash (Chinese Wall) model",
+    "version": "0.2"
+  }
+]

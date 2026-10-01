@@ -1,0 +1,770 @@
+[
+  {
+    "id": "D4-0099",
+    "domain": 4,
+    "domain_name": "Communication and Network Security",
+    "subtopic": "OSI and TCP/IP models",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "Which OSI layer is responsible for data formatting, character encoding, compression, and encryption?",
+    "options": {
+      "A": "Presentation layer",
+      "B": "Session layer",
+      "C": "Transport layer",
+      "D": "Data link and physical layers"
+    },
+    "answer": "A",
+    "explanation": "The presentation layer (layer 6) translates data between the application and the network formats, including encoding, compression, and encryption.",
+    "distractor_rationales": {
+      "B": "The session layer manages dialogs between applications.",
+      "C": "The transport layer provides end-to-end delivery.",
+      "D": "The data link and physical layers handle frames and bits on the local link."
+    },
+    "references_topic": "OSI presentation layer",
+    "version": "1.0"
+  },
+  {
+    "id": "D4-0100",
+    "domain": 4,
+    "domain_name": "Communication and Network Security",
+    "subtopic": "IP networking and addressing",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "How long is an IPv6 address?",
+    "options": {
+      "A": "32 bits",
+      "B": "128 bits",
+      "C": "64 bits",
+      "D": "1,024 bits"
+    },
+    "answer": "B",
+    "explanation": "IPv6 addresses are 128 bits long, which provides a vastly larger address space than IPv4's 32 bits.",
+    "distractor_rationales": {
+      "A": "32 bits is the length of an IPv4 address.",
+      "C": "64 bits is the typical length of the interface identifier within an IPv6 address.",
+      "D": "1,024 bits is far longer than any IP address."
+    },
+    "references_topic": "IPv6 address length",
+    "version": "1.0"
+  },
+  {
+    "id": "D4-0101",
+    "domain": 4,
+    "domain_name": "Communication and Network Security",
+    "subtopic": "Secure protocols",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "Which protocol lets email clients retrieve messages from a mail server over an encrypted TLS connection?",
+    "options": {
+      "A": "POP3 on port 110 without any encryption",
+      "B": "SMTP relay on port 25 between mail servers",
+      "C": "IMAPS on port 993",
+      "D": "Telnet on port 23 to the mail server's console"
+    },
+    "answer": "C",
+    "explanation": "IMAPS wraps IMAP in TLS, protecting credentials and messages as clients retrieve mail.",
+    "distractor_rationales": {
+      "A": "Plain POP3 sends data in cleartext.",
+      "B": "SMTP on port 25 is for server-to-server delivery, not client retrieval.",
+      "D": "Telnet is cleartext and not a mail protocol."
+    },
+    "references_topic": "IMAP over TLS",
+    "version": "1.0"
+  },
+  {
+    "id": "D4-0102",
+    "domain": 4,
+    "domain_name": "Communication and Network Security",
+    "subtopic": "Network segmentation",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "What does \"east-west\" traffic refer to in a data center?",
+    "options": {
+      "A": "Traffic between the data center and the internet",
+      "B": "Traffic between two different cloud providers",
+      "C": "Traffic from users' home networks to the VPN",
+      "D": "Traffic between servers inside the data center"
+    },
+    "answer": "D",
+    "explanation": "East-west traffic flows laterally between systems inside the environment. North-south traffic crosses the boundary between the data center and outside networks.",
+    "distractor_rationales": {
+      "A": "Traffic to and from the internet is north-south.",
+      "B": "Traffic between providers crosses external boundaries.",
+      "C": "Remote access traffic enters from outside, so it is north-south."
+    },
+    "references_topic": "East-west traffic",
+    "version": "1.0"
+  },
+  {
+    "id": "D4-0103",
+    "domain": 4,
+    "domain_name": "Communication and Network Security",
+    "subtopic": "Wireless networks",
+    "difficulty": "easy",
+    "type": "application",
+    "stem": "A penetration tester recovered a small office's Wi-Fi passphrase within hours by brute-forcing the access point's eight-digit setup PIN. Which change BEST prevents this?",
+    "options": {
+      "A": "Disable Wi-Fi Protected Setup (WPS) on the access point",
+      "B": "Change the network name to something less obvious to outsiders",
+      "C": "Move the access point to the center of the office",
+      "D": "Reboot the access point every night"
+    },
+    "answer": "A",
+    "explanation": "The WPS PIN design lets attackers guess it in two halves, which makes brute force quick and reveals the passphrase. Turning WPS off removes that path.",
+    "distractor_rationales": {
+      "B": "The network name does not affect the PIN weakness.",
+      "C": "Placement does not fix a protocol flaw.",
+      "D": "Rebooting does not stop brute forcing."
+    },
+    "references_topic": "Disabling Wi-Fi Protected Setup",
+    "version": "1.0"
+  },
+  {
+    "id": "D4-0104",
+    "domain": 4,
+    "domain_name": "Communication and Network Security",
+    "subtopic": "Cellular and satellite",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "Which mobile generation first added mutual authentication, so the phone also verifies the network and fake base stations are harder to use?",
+    "options": {
+      "A": "2G (GSM)",
+      "B": "3G (UMTS)",
+      "C": "1G analog networks",
+      "D": "None; phones have never authenticated the network"
+    },
+    "answer": "B",
+    "explanation": "GSM authenticated only the phone to the network. 3G added mutual authentication, and later generations kept and strengthened it.",
+    "distractor_rationales": {
+      "A": "GSM lacked network authentication, which enabled fake base stations.",
+      "C": "1G analog networks had essentially no security.",
+      "D": "3G and later do authenticate the network."
+    },
+    "references_topic": "Mutual authentication in cellular networks",
+    "version": "1.0"
+  },
+  {
+    "id": "D4-0105",
+    "domain": 4,
+    "domain_name": "Communication and Network Security",
+    "subtopic": "Remote access and VPN",
+    "difficulty": "easy",
+    "type": "managerial_best_first_most",
+    "stem": "Employees often work from hotel and airport Wi-Fi. What is the BEST protection for their corporate traffic?",
+    "options": {
+      "A": "Ask employees to use only networks whose names sound official",
+      "B": "Tell employees to avoid opening any company websites while traveling",
+      "C": "An always-on VPN that connects before any traffic is sent",
+      "D": "Require employees to reboot their laptops after every trip"
+    },
+    "answer": "C",
+    "explanation": "An always-on VPN encrypts traffic from the start, so users on untrusted networks do not have to remember to connect.",
+    "distractor_rationales": {
+      "A": "Network names are easily faked.",
+      "B": "Avoiding work is impractical.",
+      "D": "Rebooting does not protect traffic."
+    },
+    "references_topic": "Always-on VPN for travelers",
+    "version": "1.0"
+  },
+  {
+    "id": "D4-0106",
+    "domain": 4,
+    "domain_name": "Communication and Network Security",
+    "subtopic": "Voice, video, and collaboration",
+    "difficulty": "easy",
+    "type": "application",
+    "stem": "The finance team receives a call in what sounds exactly like the CEO's voice, urgently requesting a wire transfer. What should the team do?",
+    "options": {
+      "A": "Make the transfer, since the voice was clearly the CEO's",
+      "B": "Ask the caller to confirm their date of birth before sending money",
+      "C": "Record the call and make the transfer as requested",
+      "D": "Verify through a call-back to a known number before any transfer"
+    },
+    "answer": "D",
+    "explanation": "Voices can be cloned convincingly. An independent verification step using known contact details defeats impersonation regardless of how real the voice sounds.",
+    "distractor_rationales": {
+      "A": "Voice alone is no longer reliable proof of identity.",
+      "B": "Personal details are often public or easy to find.",
+      "C": "Recording the call does not stop the fraud."
+    },
+    "references_topic": "Deepfake voice fraud",
+    "version": "1.0"
+  },
+  {
+    "id": "D4-0107",
+    "domain": 4,
+    "domain_name": "Communication and Network Security",
+    "subtopic": "Network attacks",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "Malware changes a user's local hosts file so that the bank's real domain name resolves to an attacker's server. What is this attack called?",
+    "options": {
+      "A": "Pharming",
+      "B": "Phishing",
+      "C": "War dialing",
+      "D": "Bluejacking"
+    },
+    "answer": "A",
+    "explanation": "Pharming redirects users to a fake site even when they type the correct address, by tampering with name resolution such as the hosts file or DNS.",
+    "distractor_rationales": {
+      "B": "Phishing tricks users into clicking deceptive links; pharming redirects correct addresses.",
+      "C": "War dialing searches for modems by calling phone numbers.",
+      "D": "Bluejacking sends unsolicited Bluetooth messages."
+    },
+    "references_topic": "Pharming",
+    "version": "1.0"
+  },
+  {
+    "id": "D4-0108",
+    "domain": 4,
+    "domain_name": "Communication and Network Security",
+    "subtopic": "OSI and TCP/IP models",
+    "difficulty": "medium",
+    "type": "knowledge",
+    "stem": "At which OSI layer does ICMP, used by ping and traceroute, operate?",
+    "options": {
+      "A": "Transport layer",
+      "B": "Network layer",
+      "C": "Application layer",
+      "D": "Physical layer"
+    },
+    "answer": "B",
+    "explanation": "ICMP carries error and diagnostic messages for IP and is part of the network layer, even though it is carried inside IP packets.",
+    "distractor_rationales": {
+      "A": "ICMP does not use transport layer ports like TCP or UDP.",
+      "C": "Ping is an application, but ICMP itself is a network layer protocol.",
+      "D": "The physical layer carries bits."
+    },
+    "references_topic": "ICMP at the network layer",
+    "version": "1.0"
+  },
+  {
+    "id": "D4-0109",
+    "domain": 4,
+    "domain_name": "Communication and Network Security",
+    "subtopic": "IP networking and addressing",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "A network segment must support 500 hosts. What is the smallest subnet that fits?",
+    "options": {
+      "A": "/24 (254 usable hosts)",
+      "B": "/22 (1,022 usable hosts)",
+      "C": "/23 (510 usable hosts)",
+      "D": "/25 (126 usable hosts)"
+    },
+    "answer": "C",
+    "explanation": "A /23 leaves 9 host bits, giving 512 addresses and 510 usable hosts, which fits 500. A /24 provides only 254.",
+    "distractor_rationales": {
+      "A": "A /24 has only 254 usable hosts.",
+      "B": "A /22 fits but is larger than needed, with 1,022 usable hosts.",
+      "D": "A /25 has only 126 usable hosts."
+    },
+    "references_topic": "Sizing a subnet for hosts",
+    "version": "1.0"
+  },
+  {
+    "id": "D4-0110",
+    "domain": 4,
+    "domain_name": "Communication and Network Security",
+    "subtopic": "Converged and multilayer protocols",
+    "difficulty": "medium",
+    "type": "knowledge",
+    "stem": "In a storage area network, which pair of controls limits which servers can see and access particular storage volumes?",
+    "options": {
+      "A": "Spanning Tree and link aggregation",
+      "B": "DHCP snooping and dynamic ARP inspection",
+      "C": "Port mirroring and NetFlow export",
+      "D": "Zoning and LUN masking"
+    },
+    "answer": "D",
+    "explanation": "Zoning controls which devices can talk to each other in the fabric, and LUN masking controls which servers can see specific volumes.",
+    "distractor_rationales": {
+      "A": "These manage loops and link bundling on Ethernet.",
+      "B": "These protect Ethernet networks from rogue DHCP and ARP spoofing.",
+      "C": "These copy or summarize traffic for monitoring."
+    },
+    "references_topic": "Fibre Channel zoning and LUN masking",
+    "version": "1.0"
+  },
+  {
+    "id": "D4-0111",
+    "domain": 4,
+    "domain_name": "Communication and Network Security",
+    "subtopic": "Converged and multilayer protocols",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "Building automation controllers that manage HVAC and lighting sit on the same flat network as employee laptops. What should be done FIRST?",
+    "options": {
+      "A": "Move them to a separate segment that allows only required management traffic",
+      "B": "Replace the controllers with newer models that include antivirus software",
+      "C": "Disconnect the controllers entirely and operate the building systems by hand",
+      "D": "Hide the controllers' IP addresses from the network's DHCP server"
+    },
+    "answer": "A",
+    "explanation": "Building systems often use weak protocols and are hard to patch. Segmenting them and allowing only required traffic stops laptop malware from reaching them.",
+    "distractor_rationales": {
+      "B": "Replacement is slow and antivirus is rarely available for such devices.",
+      "C": "Manual operation is impractical.",
+      "D": "Hiding addresses is obscurity and does not restrict traffic."
+    },
+    "references_topic": "Building automation on the corporate network",
+    "version": "1.0"
+  },
+  {
+    "id": "D4-0112",
+    "domain": 4,
+    "domain_name": "Communication and Network Security",
+    "subtopic": "Network segmentation",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "A company isolates its most critical control system with an air gap. Which risk remains MOST significant?",
+    "options": {
+      "A": "Attacks from the internet through the company's main firewall",
+      "B": "Malware carried in on removable media or maintenance laptops",
+      "C": "Denial-of-service attacks against the company's website",
+      "D": "Phishing emails sent to employees' corporate inboxes"
+    },
+    "answer": "B",
+    "explanation": "Air-gapped systems still receive updates and data through USB drives and technician laptops, which can carry malware across the gap.",
+    "distractor_rationales": {
+      "A": "The air gap removes direct internet paths.",
+      "C": "The website is separate from the isolated system.",
+      "D": "Email does not reach an air-gapped system directly."
+    },
+    "references_topic": "Limits of air gaps",
+    "version": "1.0"
+  },
+  {
+    "id": "D4-0113",
+    "domain": 4,
+    "domain_name": "Communication and Network Security",
+    "subtopic": "Wireless networks",
+    "difficulty": "medium",
+    "type": "knowledge",
+    "stem": "Which wireless feature protects against attackers sending forged deauthentication frames to knock clients off the network?",
+    "options": {
+      "A": "Hiding the SSID from beacon frames",
+      "B": "MAC address filtering on the access point",
+      "C": "Protected Management Frames (802.11w)",
+      "D": "Increasing the channel width to 80 MHz"
+    },
+    "answer": "C",
+    "explanation": "Protected Management Frames authenticate management traffic, so forged deauthentication and disassociation frames are rejected. WPA3 requires it.",
+    "distractor_rationales": {
+      "A": "Hiding the SSID does not protect management frames.",
+      "B": "MAC filtering is easily bypassed and does not authenticate frames.",
+      "D": "Channel width affects throughput, not frame authentication."
+    },
+    "references_topic": "Protected management frames",
+    "version": "1.0"
+  },
+  {
+    "id": "D4-0114",
+    "domain": 4,
+    "domain_name": "Communication and Network Security",
+    "subtopic": "Cellular and satellite",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "A bank learns that attackers are intercepting SMS one-time codes through weaknesses in carrier signaling networks. What is the BEST response?",
+    "options": {
+      "A": "Send the codes twice so that customers receive at least one of them",
+      "B": "Make the SMS codes longer, such as ten digits instead of six",
+      "C": "Ask customers to keep their phones switched off when not in use",
+      "D": "Move customers to app-based or phishing-resistant authentication"
+    },
+    "answer": "D",
+    "explanation": "SMS depends on carrier networks the bank does not control. Authenticator apps or phishing-resistant methods remove reliance on SMS delivery.",
+    "distractor_rationales": {
+      "A": "Duplicating messages does not stop interception.",
+      "B": "Longer codes are intercepted just as easily.",
+      "C": "Customers need their phones to sign in."
+    },
+    "references_topic": "Weaknesses of SMS one-time codes",
+    "version": "1.0"
+  },
+  {
+    "id": "D4-0115",
+    "domain": 4,
+    "domain_name": "Communication and Network Security",
+    "subtopic": "SDN, SD-WAN, and virtual networks",
+    "difficulty": "medium",
+    "type": "knowledge",
+    "stem": "What is the defining architectural feature of software-defined networking?",
+    "options": {
+      "A": "Separating the control plane from the data plane, with centralized control",
+      "B": "Replacing all routers with firewalls at every network boundary",
+      "C": "Encrypting all traffic between switches using a shared key",
+      "D": "Eliminating the need for any IP addressing in the network"
+    },
+    "answer": "A",
+    "explanation": "SDN moves forwarding decisions to a central controller, while switches simply forward traffic as instructed. This makes the controller a critical asset to protect.",
+    "distractor_rationales": {
+      "B": "SDN does not replace routers with firewalls.",
+      "C": "Encryption is not what defines SDN.",
+      "D": "SDN networks still use IP addressing."
+    },
+    "references_topic": "Control and data plane separation",
+    "version": "1.0"
+  },
+  {
+    "id": "D4-0116",
+    "domain": 4,
+    "domain_name": "Communication and Network Security",
+    "subtopic": "Network devices and NAC",
+    "difficulty": "medium",
+    "type": "knowledge",
+    "stem": "Which device separates broadcast domains by default?",
+    "options": {
+      "A": "Hub",
+      "B": "Router",
+      "C": "Unmanaged switch",
+      "D": "Repeater"
+    },
+    "answer": "B",
+    "explanation": "Routers do not forward broadcasts between interfaces, so each interface is its own broadcast domain.",
+    "distractor_rationales": {
+      "A": "A hub repeats everything to every port.",
+      "C": "A switch without VLANs forwards broadcasts to all ports.",
+      "D": "A repeater regenerates signals without separating domains."
+    },
+    "references_topic": "Routers and broadcast domains",
+    "version": "1.0"
+  },
+  {
+    "id": "D4-0117",
+    "domain": 4,
+    "domain_name": "Communication and Network Security",
+    "subtopic": "Network devices and NAC",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "The company's NAC requires an agent, but printers, cameras, and badge readers cannot run one. What is the BEST approach for these devices?",
+    "options": {
+      "A": "Exempt all devices that cannot run an agent from any network access control",
+      "B": "Replace every printer, camera, and badge reader with a model that runs the agent",
+      "C": "Profile them and admit them to restricted segments by device type",
+      "D": "Allow them on the network only after business hours"
+    },
+    "answer": "C",
+    "explanation": "Agentless profiling identifies device types from their network behavior and places them in restricted segments. MAC-based admission is weak alone, so the restriction matters.",
+    "distractor_rationales": {
+      "A": "Exempting them leaves an easy way onto the network.",
+      "B": "Replacement is costly and often impossible.",
+      "D": "Business hours have no bearing on device trust."
+    },
+    "references_topic": "NAC for devices without agents",
+    "version": "1.0"
+  },
+  {
+    "id": "D4-0118",
+    "domain": 4,
+    "domain_name": "Communication and Network Security",
+    "subtopic": "Transmission media",
+    "difficulty": "medium",
+    "type": "knowledge",
+    "stem": "What is the term for a signal on one wire pair interfering with the signal on a nearby pair in the same cable?",
+    "options": {
+      "A": "Attenuation",
+      "B": "Latency",
+      "C": "Jitter",
+      "D": "Crosstalk"
+    },
+    "answer": "D",
+    "explanation": "Crosstalk is interference between adjacent pairs. Twisting pairs and shielding reduce it.",
+    "distractor_rationales": {
+      "A": "Attenuation is loss of signal strength over distance.",
+      "B": "Latency is delay in transmission.",
+      "C": "Jitter is variation in delay between packets."
+    },
+    "references_topic": "Crosstalk",
+    "version": "1.0"
+  },
+  {
+    "id": "D4-0119",
+    "domain": 4,
+    "domain_name": "Communication and Network Security",
+    "subtopic": "Transmission media",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "A company links two buildings across a public street with a point-to-point wireless bridge. What is the MOST important protection for this link?",
+    "options": {
+      "A": "Strong encryption and authentication on the bridge traffic",
+      "B": "Painting the antennas to match the buildings' color",
+      "C": "Mounting the antennas as high as possible on the roofs",
+      "D": "Using the default settings supplied by the bridge's manufacturer"
+    },
+    "answer": "A",
+    "explanation": "Radio signals can be received by anyone in the path. Strong encryption and authentication protect the traffic, and fiber is an alternative where possible.",
+    "distractor_rationales": {
+      "B": "Painting antennas does not protect the signal.",
+      "C": "Height improves range, not confidentiality.",
+      "D": "Default settings are often weak."
+    },
+    "references_topic": "Wireless bridges between buildings",
+    "version": "1.0"
+  },
+  {
+    "id": "D4-0120",
+    "domain": 4,
+    "domain_name": "Communication and Network Security",
+    "subtopic": "Remote access and VPN",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "A scan shows that several servers expose Remote Desktop Protocol directly to the internet. What is the BEST action?",
+    "options": {
+      "A": "Change RDP to a nonstandard port and leave it exposed",
+      "B": "Remove direct exposure and require access through a gateway with MFA",
+      "C": "Add a login banner to each server's RDP session",
+      "D": "Increase the account lockout threshold on each server"
+    },
+    "answer": "B",
+    "explanation": "Internet-exposed RDP is a leading ransomware entry point. Access should go through a VPN or remote desktop gateway that enforces MFA and logging.",
+    "distractor_rationales": {
+      "A": "A different port is quickly found by scanners.",
+      "C": "Banners do not stop attacks.",
+      "D": "A higher lockout threshold makes guessing easier."
+    },
+    "references_topic": "Exposed remote desktop",
+    "version": "1.0"
+  },
+  {
+    "id": "D4-0121",
+    "domain": 4,
+    "domain_name": "Communication and Network Security",
+    "subtopic": "Voice, video, and collaboration",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "Video meetings are recorded automatically, and recordings of confidential board discussions are kept forever and viewable by the whole company. What is the BEST fix?",
+    "options": {
+      "A": "Stop using video conferencing for all board meetings",
+      "B": "Lower the recording resolution so less detail is captured",
+      "C": "Set retention and access controls for recordings based on sensitivity",
+      "D": "Rename the recordings so that they are harder to find"
+    },
+    "answer": "C",
+    "explanation": "Recordings are data and need classification, retention limits, and access restricted to those who need them.",
+    "distractor_rationales": {
+      "A": "Abandoning video meetings is disproportionate.",
+      "B": "Lower resolution still captures the discussion.",
+      "D": "Renaming is obscurity."
+    },
+    "references_topic": "Protecting meeting recordings",
+    "version": "1.0"
+  },
+  {
+    "id": "D4-0122",
+    "domain": 4,
+    "domain_name": "Communication and Network Security",
+    "subtopic": "Network attacks",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "A web server becomes unresponsive, although traffic volume is low. Logs show many connections that send HTTP headers very slowly and never finish. Which mitigation is MOST effective?",
+    "options": {
+      "A": "Increase the server's internet bandwidth to absorb the attack",
+      "B": "Block all traffic from outside the company's home country",
+      "C": "Add more DNS servers to the domain's configuration",
+      "D": "Tighten connection timeouts, or front the server with a reverse proxy"
+    },
+    "answer": "D",
+    "explanation": "Low-and-slow attacks such as Slowloris exhaust connection slots, not bandwidth. Shorter timeouts, connection limits, and a buffering reverse proxy defeat them.",
+    "distractor_rationales": {
+      "A": "Bandwidth is not the bottleneck.",
+      "B": "Geography blocking is crude and attackers can use local sources.",
+      "C": "DNS capacity does not affect held connections."
+    },
+    "references_topic": "Low-and-slow denial of service",
+    "version": "1.0"
+  },
+  {
+    "id": "D4-0123",
+    "domain": 4,
+    "domain_name": "Communication and Network Security",
+    "subtopic": "CDN and edge networks",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "What is the MAIN security benefit of running a web application firewall at the CDN edge?",
+    "options": {
+      "A": "Malicious requests are blocked before they reach the origin servers",
+      "B": "The origin servers no longer need any security patches",
+      "C": "Attackers can no longer find the website's domain name",
+      "D": "Users no longer need to authenticate to the application"
+    },
+    "answer": "A",
+    "explanation": "An edge WAF filters attacks close to their source, protecting origin capacity and applications, while origin security still matters.",
+    "distractor_rationales": {
+      "B": "Origins still need patching; a WAF does not stop every attack.",
+      "C": "The domain remains public.",
+      "D": "Authentication is still required."
+    },
+    "references_topic": "Edge web application firewalls",
+    "version": "1.0"
+  },
+  {
+    "id": "D4-0124",
+    "domain": 4,
+    "domain_name": "Communication and Network Security",
+    "subtopic": "Secure protocols",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "Internal web applications use plain HTTP because \"the internal network is trusted.\" What is the BEST response?",
+    "options": {
+      "A": "Agree, since firewalls keep attackers off the internal network",
+      "B": "Use TLS for internal traffic too, with certificates from an internal CA",
+      "C": "Encrypt only the traffic of the finance department's applications",
+      "D": "Ask users to avoid entering passwords into internal applications"
+    },
+    "answer": "B",
+    "explanation": "Attackers who get inside can sniff cleartext credentials and data. Encrypting internal traffic removes that opportunity and fits a zero trust approach.",
+    "distractor_rationales": {
+      "A": "Perimeter defenses do fail, and insiders exist.",
+      "C": "Other departments' credentials and data are also valuable.",
+      "D": "Users must be able to authenticate."
+    },
+    "references_topic": "Encrypting internal traffic",
+    "version": "1.0"
+  },
+  {
+    "id": "D4-0125",
+    "domain": 4,
+    "domain_name": "Communication and Network Security",
+    "subtopic": "Network segmentation",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "A company segmented its network two years ago. Since then, hundreds of firewall rule changes have been made. How can it confirm the segmentation still works?",
+    "options": {
+      "A": "Review the original segmentation design document from two years ago",
+      "B": "Ask the firewall administrators whether any risky rules were added",
+      "C": "Test the boundaries regularly, for example by attempting prohibited connections",
+      "D": "Count the number of firewall rules and compare it with the original count"
+    },
+    "answer": "C",
+    "explanation": "Segmentation must be verified by testing. Regular attempts to cross boundaries, such as during penetration tests, show whether unintended paths have appeared.",
+    "distractor_rationales": {
+      "A": "The original design does not reflect current rules.",
+      "B": "Self-reporting is unreliable.",
+      "D": "Rule count says nothing about what traffic is allowed."
+    },
+    "references_topic": "Validating segmentation",
+    "version": "1.0"
+  },
+  {
+    "id": "D4-0126",
+    "domain": 4,
+    "domain_name": "Communication and Network Security",
+    "subtopic": "Wireless networks",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "A wireless site survey shows the corporate network is usable from the public parking lot. What is the BEST response?",
+    "options": {
+      "A": "Turn off the wireless network completely and return to wired access only",
+      "B": "Rely on the signal range alone and remove the authentication for convenience",
+      "C": "Hide the SSID so that people in the parking lot cannot see it",
+      "D": "Adjust power and antenna placement, and keep strong 802.1X authentication"
+    },
+    "answer": "D",
+    "explanation": "Tuning coverage reduces exposure, but radio cannot be perfectly contained, so strong authentication and encryption remain the real protection.",
+    "distractor_rationales": {
+      "A": "Removing wireless is disproportionate.",
+      "B": "Range is not a security control.",
+      "C": "Hidden SSIDs are easily discovered."
+    },
+    "references_topic": "RF leakage and strong authentication",
+    "version": "1.0"
+  },
+  {
+    "id": "D4-0127",
+    "domain": 4,
+    "domain_name": "Communication and Network Security",
+    "subtopic": "SDN, SD-WAN, and virtual networks",
+    "difficulty": "hard",
+    "type": "application",
+    "stem": "A company stretches VXLAN overlays between two data centers over a leased WAN link from a third-party carrier. What is the BEST protection for this traffic?",
+    "options": {
+      "A": "Encrypt it between sites, for example with IPsec or MACsec",
+      "B": "Rely on VXLAN's segment IDs, which already encrypt tenant traffic",
+      "C": "Use larger VXLAN segment IDs so that attackers cannot guess them",
+      "D": "Move the VXLAN endpoints behind the internet-facing firewall"
+    },
+    "answer": "A",
+    "explanation": "VXLAN separates traffic logically but does not encrypt it. Encrypting links that cross third-party infrastructure protects confidentiality and integrity.",
+    "distractor_rationales": {
+      "B": "Segment IDs provide separation, not encryption.",
+      "C": "Larger IDs do not add encryption.",
+      "D": "Firewall placement does not encrypt traffic on the carrier's network."
+    },
+    "references_topic": "Encrypting overlay traffic",
+    "version": "1.0"
+  },
+  {
+    "id": "D4-0128",
+    "domain": 4,
+    "domain_name": "Communication and Network Security",
+    "subtopic": "Voice, video, and collaboration",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "Employees have installed dozens of third-party bots and integrations in the collaboration platform, some with permission to read every channel. What is the BEST control?",
+    "options": {
+      "A": "Allow all integrations, since they make employees more productive",
+      "B": "Require approval for integrations and grant the minimum scopes needed",
+      "C": "Remove every integration and ban them permanently",
+      "D": "Ask integration vendors to promise not to read any confidential channels"
+    },
+    "answer": "B",
+    "explanation": "Integrations can see and export data. An approval process with least-privilege scopes, plus periodic review, keeps useful tools while limiting exposure.",
+    "distractor_rationales": {
+      "A": "Unreviewed broad access creates serious data exposure.",
+      "C": "A permanent ban removes legitimate value.",
+      "D": "Promises are not controls."
+    },
+    "references_topic": "Governing collaboration app integrations",
+    "version": "1.0"
+  },
+  {
+    "id": "D4-0129",
+    "domain": 4,
+    "domain_name": "Communication and Network Security",
+    "subtopic": "Network attacks",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "A retailer's website was taken down by a large DDoS attack, and it took hours to arrange help from its ISP. What is the BEST preparation for next time?",
+    "options": {
+      "A": "Buy a larger internet connection to absorb any future attack",
+      "B": "Change the website's IP address after each attack",
+      "C": "Pre-arrange upstream scrubbing or a DDoS service, with a tested runbook",
+      "D": "Wait until the next attack to evaluate DDoS service providers"
+    },
+    "answer": "C",
+    "explanation": "Large attacks must be absorbed upstream. Contracts and runbooks agreed in advance let mitigation start in minutes.",
+    "distractor_rationales": {
+      "A": "Attacks can exceed any single connection.",
+      "B": "Attackers can follow a changed address quickly.",
+      "D": "Evaluating providers during an attack wastes critical time."
+    },
+    "references_topic": "Preparing for DDoS attacks",
+    "version": "1.0"
+  },
+  {
+    "id": "D4-0130",
+    "domain": 4,
+    "domain_name": "Communication and Network Security",
+    "subtopic": "CDN and edge networks",
+    "difficulty": "hard",
+    "type": "application",
+    "stem": "A tester sends a request with a crafted header that the application reflects into the page. The CDN ignores that header when building cache keys, so it caches the poisoned page and serves it to everyone. What is the BEST fix?",
+    "options": {
+      "A": "Remove the CDN and serve all traffic directly from the origin servers",
+      "B": "Shorten cache lifetimes to one minute across the whole site",
+      "C": "Block all requests that contain any HTTP headers at all",
+      "D": "Stop reflecting unkeyed headers, or include them in the cache key"
+    },
+    "answer": "D",
+    "explanation": "Cache poisoning exploits inputs that affect the response but not the cache key. Either the application stops trusting those inputs or the cache keys on them.",
+    "distractor_rationales": {
+      "A": "Removing the CDN loses its benefits without fixing the application.",
+      "B": "Short lifetimes reduce but do not remove exposure.",
+      "C": "Every HTTP request contains headers."
+    },
+    "references_topic": "Web cache poisoning",
+    "version": "1.0"
+  }
+]

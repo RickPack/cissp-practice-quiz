@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; worker-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'">
+  <meta name="referrer" content="no-referrer">
+  <meta name="description" content="Unofficial CISSP practice exam with a per-domain diagnostic report. Original questions.">
+  <title>CISSP Practice Diagnostic</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231c5cab'/%3E%3Cpath d='M9 17l5 5 9-11' stroke='white' stroke-width='3.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+  <script type="module" src="app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="wrap">
+      <p class="brand">CISSP Practice Diagnostic</p>
+    </div>
+  </header>
+
+  <main id="main" class="wrap" tabindex="-1">
+    <p id="loading" class="loading" role="status">Loading question bank…</p>
+    <div id="load-error" class="notice notice-error" role="alert" hidden></div>
+
+    <!-- Start screen -->
+    <section id="start" hidden aria-labelledby="start-title">
+      <h1 id="start-title">Practice exam and domain diagnostic</h1>
+      <div class="notice" id="disclaimer">
+        <p><strong>Unofficial practice tool.</strong> Not affiliated with or endorsed by ISC2. CISSP is a registered mark of ISC2.
+        Scores here are for study planning only and do not predict results on the real exam.</p>
+      </div>
+
+      <div id="resume-card" class="card" hidden>
+        <h2>Resume your session</h2>
+        <p id="resume-text"></p>
+        <div class="actions">
+          <button type="button" class="btn btn-primary" id="resume-btn">Resume</button>
+          <button type="button" class="btn" id="discard-btn">Discard and start over</button>
+        </div>
+      </div>
+
+      <div id="last-report-card" class="card" hidden>
+        <h2>Your last report</h2>
+        <p id="last-report-text"></p>
+        <div class="actions">
+          <button type="button" class="btn" id="view-last-btn">View report</button>
+        </div>
+      </div>
+
+      <form id="start-form" class="card" novalidate>
+        <h2>New session</h2>
+        <p class="hint">Questions are drawn at random in proportion to the exam's domain weights and a 30/45/25 easy/medium/hard mix. You can submit once you have answered at least 20.</p>
+        <div class="field">
+          <label for="length-range">Number of questions</label>
+          <div class="length-row">
+            <input type="range" id="length-range" min="20" max="100" step="1" aria-describedby="length-help">
+            <input type="number" id="length-number" min="20" max="100" step="1" inputmode="numeric" aria-label="Number of questions" aria-describedby="length-help">
+          </div>
+          <p class="hint" id="length-help"></p>
+        </div>
+        <details class="field">
+          <summary>Advanced: reproducible seed</summary>
+          <label for="seed-input">Session seed (optional)</label>
+          <input type="text" id="seed-input" maxlength="40" autocomplete="off" spellcheck="false" aria-describedby="seed-help">
+          <p class="hint" id="seed-help">The same seed, length, and bank version always produce the same questions in the same order.</p>
+        </details>
+        <div class="actions">
+          <button type="submit" class="btn btn-primary" id="start-btn">Start practice exam</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- Quiz screen -->
+    <section id="quiz" hidden aria-labelledby="q-heading">
+      <div class="quiz-status">
+        <p id="q-heading" class="q-count">Question <span id="q-index">1</span> of <span id="q-total">1</span></p>
+        <p class="q-answered"><span id="answered-count">0</span> answered</p>
+      </div>
+      <div class="progress" role="progressbar" id="progress" aria-label="Questions answered" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+        <div class="progress-fill" id="progress-fill"></div>
+      </div>
+
+      <p class="sr-only" id="q-live" aria-live="polite"></p>
+      <article class="card question-card" aria-labelledby="q-heading">
+        <p class="flag-badge" id="flag-badge" hidden>Flagged for review</p>
+        <p class="stem" id="stem"></p>
+        <fieldset class="options" id="options">
+          <legend class="sr-only">Answer choices</legend>
+        </fieldset>
+      </article>
+
+      <div class="quiz-nav">
+        <button type="button" class="btn" id="prev-btn" aria-keyshortcuts="ArrowLeft">&larr; Previous</button>
+        <button type="button" class="btn" id="flag-btn" aria-pressed="false" aria-keyshortcuts="F">Flag for review</button>
+        <button type="button" class="btn" id="next-btn" aria-keyshortcuts="ArrowRight">Next &rarr;</button>
+      </div>
+
+      <p class="hint kbd-hint">Keyboard: <kbd>1</kbd>–<kbd>4</kbd> or <kbd>A</kbd>–<kbd>D</kbd> to answer, <kbd>&larr;</kbd> <kbd>&rarr;</kbd> to move, <kbd>F</kbd> to flag.</p>
+
+      <details class="navigator-wrap">
+        <summary>Jump to a question</summary>
+        <ol class="navigator" id="navigator"></ol>
+      </details>
+
+      <div class="submit-row">
+        <span class="tooltip-wrap" id="submit-wrap">
+          <button type="button" class="btn btn-primary" id="submit-btn" aria-describedby="submit-help">Submit and Finish</button>
+        </span>
+        <p class="hint" id="submit-help"></p>
+        <button type="button" class="btn btn-quiet" id="exit-btn">Save and exit</button>
+      </div>
+    </section>
+
+    <!-- Report screen -->
+    <section id="report" hidden aria-labelledby="report-title">
+      <h1 id="report-title" tabindex="-1">Diagnostic report</h1>
+      <p class="hint" id="report-meta"></p>
+      <div class="notice"><p><strong>Unofficial practice tool.</strong> Not affiliated with or endorsed by ISC2. These results are for study planning only and do not predict exam results.</p></div>
+
+      <div class="tiles" id="score-tiles"></div>
+
+      <h2>Results by domain</h2>
+      <div class="notice notice-plain" id="rule-text"></div>
+      <div class="table-scroll">
+        <table class="data-table" id="domain-table">
+          <caption class="sr-only">Results by domain</caption>
+          <thead><tr><th scope="col">Domain</th><th scope="col" class="num">Answered</th><th scope="col" class="num">Correct</th><th scope="col" class="num">95% interval</th><th scope="col" class="num">Weighted</th><th scope="col">Status</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+
+      <figure class="viz" id="domain-chart">
+        <figcaption>
+          <span class="viz-title">Percent correct by domain</span>
+          <span class="viz-sub">Bars show percent correct. Whiskers show the 95% interval. The vertical line marks the 70% target.</span>
+        </figcaption>
+      </figure>
+
+      <figure class="viz" id="difficulty-chart">
+        <figcaption>
+          <span class="viz-title">Percent correct by difficulty</span>
+          <span class="viz-sub">Bars show percent correct. Whiskers show the 95% interval.</span>
+        </figcaption>
+      </figure>
+
+      <h2>Where to focus</h2>
+      <div id="guidance"></div>
+
+      <div id="unanswered-block" hidden>
+        <h2>Unanswered questions</h2>
+        <p class="hint">These were excluded from every score.</p>
+        <ul id="unanswered-list" class="plain-list"></ul>
+      </div>
+
+      <h2>Question review</h2>
+      <p class="hint">Missed and flagged questions, with explanations. Letters match the order you saw during the session.</p>
+      <div class="filters" role="group" aria-label="Review filters">
+        <label>Show
+          <select id="filter-kind">
+            <option value="missed-flagged">Missed and flagged</option>
+            <option value="missed">Missed only</option>
+            <option value="flagged">Flagged only</option>
+            <option value="all">All questions</option>
+          </select>
+        </label>
+        <label>Domain
+          <select id="filter-domain"><option value="">All domains</option></select>
+        </label>
+        <label>Difficulty
+          <select id="filter-difficulty">
+            <option value="">All difficulties</option>
+            <option value="easy">Easy</option>
+            <option value="medium">Medium</option>
+            <option value="hard">Hard</option>
+          </select>
+        </label>
+      </div>
+      <p class="hint" id="review-count" role="status"></p>
+      <ol class="review-list" id="review-list"></ol>
+
+      <div class="actions report-actions">
+        <button type="button" class="btn btn-primary" id="retake-btn" aria-describedby="retake-help">Retake focusing on weak domains</button>
+        <button type="button" class="btn" id="export-btn">Export results (JSON)</button>
+        <button type="button" class="btn" id="print-btn">Print</button>
+        <button type="button" class="btn" id="new-btn">New session</button>
+      </div>
+      <p class="hint" id="retake-help"></p>
+    </section>
+
+    <dialog id="confirm-dialog" aria-labelledby="confirm-title" aria-describedby="confirm-text">
+      <h2 id="confirm-title">Submit with unanswered questions?</h2>
+      <p id="confirm-text"></p>
+      <div class="actions">
+        <button type="button" class="btn" id="confirm-cancel" autofocus>Keep answering</button>
+        <button type="button" class="btn btn-primary" id="confirm-ok">Submit anyway</button>
+      </div>
+    </dialog>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p id="bank-info">Bank loading…</p>
+      <p>Unofficial practice tool. Not affiliated with or endorsed by ISC2. CISSP is a registered mark of ISC2.</p>
+      <p><a href="https://github.com/RickPack/cissp-practice-quiz">Source code</a> (MIT) · Questions licensed CC BY 4.0</p>
+    </div>
+  </footer>
+</body>
+</html>

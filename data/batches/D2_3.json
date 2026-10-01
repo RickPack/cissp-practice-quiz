@@ -1,0 +1,602 @@
+[
+  {
+    "id": "D2-0026",
+    "domain": 2,
+    "domain_name": "Asset Security",
+    "subtopic": "Data lifecycle and collection",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "Which is the FIRST phase of the data lifecycle?",
+    "options": {
+      "A": "Archive",
+      "B": "Use",
+      "C": "Create (or collect)",
+      "D": "Destroy"
+    },
+    "answer": "C",
+    "explanation": "Data enters the lifecycle when it is created or collected. It then moves through storage, use, sharing, archiving, and finally destruction.",
+    "distractor_rationales": {
+      "A": "Archiving comes late, after active use.",
+      "B": "Data must exist before it can be used.",
+      "D": "Destruction is the final phase."
+    },
+    "references_topic": "Data lifecycle phases",
+    "version": "0.3"
+  },
+  {
+    "id": "D2-0027",
+    "domain": 2,
+    "domain_name": "Asset Security",
+    "subtopic": "Asset inventory and ownership",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "Which information should an asset inventory record, at a minimum, for each asset?",
+    "options": {
+      "A": "Only the purchase price",
+      "B": "Only the serial number",
+      "C": "Only the IT team's notes about it",
+      "D": "Asset identity, owner, location, and classification or criticality"
+    },
+    "answer": "D",
+    "explanation": "An inventory must identify each asset, say who is accountable for it, show where it is, and record how sensitive or critical it is, so that the right protections can be applied.",
+    "distractor_rationales": {
+      "A": "Price supports accounting, not protection.",
+      "B": "A serial number identifies an asset but leaves out ownership and criticality.",
+      "C": "Informal notes cannot be relied on for accountability."
+    },
+    "references_topic": "Asset inventory contents",
+    "version": "0.3"
+  },
+  {
+    "id": "D2-0028",
+    "domain": 2,
+    "domain_name": "Asset Security",
+    "subtopic": "Asset handling and labeling",
+    "difficulty": "easy",
+    "type": "application",
+    "stem": "A printed report marked Confidential is found left on a shared printer. Which handling rule was MOST likely violated?",
+    "options": {
+      "A": "Collect classified printouts promptly and secure them",
+      "B": "Only color printers may be used for classified reports",
+      "C": "Classified reports must include page numbers",
+      "D": "Classified reports must be printed double-sided"
+    },
+    "answer": "A",
+    "explanation": "Handling rules for classified output typically require prompt collection, often with secure print release, and secure storage so the material is not exposed to people without a need to know.",
+    "distractor_rationales": {
+      "B": "Printer type has nothing to do with protecting classified output.",
+      "C": "Page numbering does not protect confidentiality.",
+      "D": "Duplex printing does not protect confidentiality."
+    },
+    "references_topic": "Handling classified output",
+    "version": "0.3"
+  },
+  {
+    "id": "D2-0029",
+    "domain": 2,
+    "domain_name": "Asset Security",
+    "subtopic": "End-of-life assets",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "What does end of support (EOS) mean for a software product?",
+    "options": {
+      "A": "The vendor stops selling new licenses for the product",
+      "B": "The vendor stops providing patches and support",
+      "C": "The software stops working on that date",
+      "D": "The license becomes free to use"
+    },
+    "answer": "B",
+    "explanation": "At end of support, the vendor no longer issues security patches or provides technical support, so new vulnerabilities stay unfixed.",
+    "distractor_rationales": {
+      "A": "Ending sales (end of life or end of sale) often happens before support ends.",
+      "C": "The software keeps running. It just stops receiving fixes.",
+      "D": "License terms do not change at end of support."
+    },
+    "references_topic": "End-of-support meaning",
+    "version": "0.3"
+  },
+  {
+    "id": "D2-0030",
+    "domain": 2,
+    "domain_name": "Asset Security",
+    "subtopic": "Data retention",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "What is a legal hold?",
+    "options": {
+      "A": "Encryption applied to documents held by the legal department",
+      "B": "A rule that the legal department owns all company data",
+      "C": "A requirement to preserve relevant information because of pending or anticipated litigation",
+      "D": "A schedule for shredding paper records"
+    },
+    "answer": "C",
+    "explanation": "A legal hold suspends normal deletion so that information relevant to pending or reasonably anticipated litigation or investigation is preserved.",
+    "distractor_rationales": {
+      "A": "A legal hold concerns preservation, not encryption.",
+      "B": "It does not change data ownership.",
+      "D": "A shredding schedule is the opposite of preservation."
+    },
+    "references_topic": "Legal hold",
+    "version": "0.3"
+  },
+  {
+    "id": "D2-0031",
+    "domain": 2,
+    "domain_name": "Asset Security",
+    "subtopic": "Data remanence and destruction",
+    "difficulty": "easy",
+    "type": "application",
+    "stem": "An employee deletes a file and empties the recycle bin on a laptop with a traditional hard drive. Can the data be recovered?",
+    "options": {
+      "A": "No, because deletion overwrites the data",
+      "B": "No, because emptying the recycle bin erases the data",
+      "C": "Only if the laptop is less than a year old",
+      "D": "Yes, because deletion usually removes only references, leaving data until overwritten"
+    },
+    "answer": "D",
+    "explanation": "Deleting a file normally removes only the file system's pointers to it. The data stays on the disk until it is overwritten, so recovery tools can often restore it.",
+    "distractor_rationales": {
+      "A": "Ordinary deletion does not overwrite data.",
+      "B": "Emptying the recycle bin is still only deletion of references.",
+      "C": "The laptop's age is irrelevant."
+    },
+    "references_topic": "Deleted data remanence",
+    "version": "0.3"
+  },
+  {
+    "id": "D2-0032",
+    "domain": 2,
+    "domain_name": "Asset Security",
+    "subtopic": "Scoping, tailoring, and baselines",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "What is the purpose of a security control baseline?",
+    "options": {
+      "A": "To set a minimum set of controls for a given impact level",
+      "B": "To list every threat an organization could face",
+      "C": "To replace the need for any risk assessment of individual systems",
+      "D": "To set the security budget for each department"
+    },
+    "answer": "A",
+    "explanation": "A baseline provides a starting set of minimum controls for systems of a given impact or sensitivity level. Organizations then scope and tailor it.",
+    "distractor_rationales": {
+      "B": "A threat catalog is a different artifact.",
+      "C": "Baselines are tailored using risk assessment. They do not replace it.",
+      "D": "Baselines define controls, not budgets."
+    },
+    "references_topic": "Control baselines",
+    "version": "0.3"
+  },
+  {
+    "id": "D2-0033",
+    "domain": 2,
+    "domain_name": "Asset Security",
+    "subtopic": "Data roles",
+    "difficulty": "easy",
+    "type": "application",
+    "stem": "An employee asks the company to show what personal data it holds about them. In privacy terms, what is the employee's role here?",
+    "options": {
+      "A": "Data processor",
+      "B": "Data subject",
+      "C": "Data custodian",
+      "D": "Data controller"
+    },
+    "answer": "B",
+    "explanation": "The data subject is the individual the personal data describes, and data subjects typically have a right to access their data.",
+    "distractor_rationales": {
+      "A": "A processor handles data on a controller's behalf.",
+      "C": "A custodian maintains the data's technical protections.",
+      "D": "The company, which decides how the data is used, is the controller."
+    },
+    "references_topic": "Data subject",
+    "version": "0.3"
+  },
+  {
+    "id": "D2-0034",
+    "domain": 2,
+    "domain_name": "Asset Security",
+    "subtopic": "Data lifecycle and collection",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "A mobile app team wants to collect users' precise location continuously \"for future features.\" What should the privacy lead advise?",
+    "options": {
+      "A": "Collect it now, since storage is inexpensive and it may help later",
+      "B": "Collect it quietly, without mentioning it in the privacy notice",
+      "C": "Collect only what current, stated purposes need",
+      "D": "Collect it now and decide how to anonymize it later"
+    },
+    "answer": "C",
+    "explanation": "Collection limitation and data minimization mean collecting only what defined, current purposes require, with proper notice and consent where needed. \"Future features\" is not a defined purpose.",
+    "distractor_rationales": {
+      "A": "Low storage cost does not justify collecting sensitive data without a purpose.",
+      "B": "Undisclosed collection violates transparency requirements.",
+      "D": "Collecting first and anonymizing later still gathers unnecessary sensitive data."
+    },
+    "references_topic": "Collection limitation",
+    "version": "0.3"
+  },
+  {
+    "id": "D2-0035",
+    "domain": 2,
+    "domain_name": "Asset Security",
+    "subtopic": "Asset inventory and ownership",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "A network scan finds dozens of servers that are not in the configuration management database (CMDB). What should happen NEXT?",
+    "options": {
+      "A": "Shut down every one of the unrecorded servers immediately, whatever they run",
+      "B": "Ignore them, since the scan may have been wrong",
+      "C": "Add them to the CMDB with the owner field left blank",
+      "D": "Find each server's owner and purpose, then record or retire it"
+    },
+    "answer": "D",
+    "explanation": "Unknown assets need an accountable owner and a known purpose. Once identified, each server is recorded and brought under management, including patching, monitoring, and classification, or else decommissioned.",
+    "distractor_rationales": {
+      "A": "Shutting everything down could break critical services.",
+      "B": "Ignoring unknown assets leaves them unpatched and unmonitored.",
+      "C": "A record with no owner leaves no one accountable."
+    },
+    "references_topic": "Handling unknown assets",
+    "version": "0.3"
+  },
+  {
+    "id": "D2-0036",
+    "domain": 2,
+    "domain_name": "Asset Security",
+    "subtopic": "Asset handling and labeling",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "Employees routinely email Confidential spreadsheets to personal accounts so they can work from home. What is the BEST response?",
+    "options": {
+      "A": "Offer a secure remote option and enforce rules with DLP",
+      "B": "Ban remote work entirely for anyone who handles such data",
+      "C": "Send an annual reminder about the handling rules",
+      "D": "Allow it to continue, since the work gets done"
+    },
+    "answer": "A",
+    "explanation": "People route around controls when there is no approved way to do their jobs. Provide a secure, sanctioned remote work option and enforce handling rules with technical controls such as DLP.",
+    "distractor_rationales": {
+      "B": "A blanket ban harms the business and invites workarounds.",
+      "C": "An annual reminder does not change behavior when no alternative exists.",
+      "D": "Letting it continue exposes Confidential data outside company control."
+    },
+    "references_topic": "Enabling secure handling",
+    "version": "0.3"
+  },
+  {
+    "id": "D2-0037",
+    "domain": 2,
+    "domain_name": "Asset Security",
+    "subtopic": "End-of-life assets",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "A company's email servers reach end of support in three months, but migrating to a new platform will take six. What is the BEST action?",
+    "options": {
+      "A": "Keep running the servers after support ends without changes",
+      "B": "Buy extended support and add controls while migrating",
+      "C": "Shut down email until the migration is complete",
+      "D": "Stop applying patches now, since support is ending anyway"
+    },
+    "answer": "B",
+    "explanation": "Extended support, where available, keeps patches flowing during the gap. Compensating controls such as tighter filtering and monitoring reduce the remaining risk while the migration speeds up.",
+    "distractor_rationales": {
+      "A": "Running unsupported servers without changes leaves new vulnerabilities unfixed.",
+      "C": "Shutting down email is unacceptable for the business.",
+      "D": "Stopping patches early makes the exposure worse."
+    },
+    "references_topic": "Extended support and compensating controls",
+    "version": "0.3"
+  },
+  {
+    "id": "D2-0038",
+    "domain": 2,
+    "domain_name": "Asset Security",
+    "subtopic": "Data retention",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "The retention schedule says marketing lead data must be deleted after two years. A sales director asks to keep it indefinitely. What should the security manager do?",
+    "options": {
+      "A": "Keep the data indefinitely, since the sales director has stated a business reason",
+      "B": "Delete the data today to prove the schedule is enforced",
+      "C": "Route it to the data owner and legal as an exception request",
+      "D": "Quietly move the data to backup tapes instead"
+    },
+    "answer": "C",
+    "explanation": "Retention exceptions are decided by the data owner with legal review, weighing the business case against privacy law and the approved schedule. The security manager should route the request, not decide it alone.",
+    "distractor_rationales": {
+      "A": "One person's business reason does not override an approved schedule or privacy law.",
+      "B": "Deleting early without following the process is also inappropriate.",
+      "D": "Moving data to tapes is still retention, and doing it quietly bypasses governance."
+    },
+    "references_topic": "Retention exceptions",
+    "version": "0.3"
+  },
+  {
+    "id": "D2-0039",
+    "domain": 2,
+    "domain_name": "Asset Security",
+    "subtopic": "Data remanence and destruction",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "A company wants to sanitize self-encrypting SSDs before sending them to a recycler. Which method is MOST efficient and effective?",
+    "options": {
+      "A": "Degaussing each drive",
+      "B": "A quick format of each drive",
+      "C": "Overwriting each drive seven separate times with random patterns",
+      "D": "Cryptographic erase of the drive's media encryption key"
+    },
+    "answer": "D",
+    "explanation": "Self-encrypting drives store all data encrypted under an internal media key. Securely destroying that key (cryptographic erase), followed by verification, makes the data unrecoverable almost instantly.",
+    "distractor_rationales": {
+      "A": "SSDs are not magnetic, so degaussing does not erase them.",
+      "B": "A quick format leaves the data in place.",
+      "C": "Repeated overwrites are slow and, on SSDs, may miss over-provisioned areas."
+    },
+    "references_topic": "Cryptographic erase",
+    "version": "0.3"
+  },
+  {
+    "id": "D2-0040",
+    "domain": 2,
+    "domain_name": "Asset Security",
+    "subtopic": "Scoping, tailoring, and baselines",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "A company launching a new cloud-only business must choose a security control framework. What should drive the choice FIRST?",
+    "options": {
+      "A": "The organization's legal, regulatory, contractual, and business requirements",
+      "B": "Which framework is currently the most popular",
+      "C": "Which framework has the fewest controls",
+      "D": "Which framework a cloud vendor recommends"
+    },
+    "answer": "A",
+    "explanation": "A framework should fit the obligations and objectives the organization actually has: its laws, regulations, contracts, and business goals.",
+    "distractor_rationales": {
+      "B": "Popularity does not mean the framework fits these obligations.",
+      "C": "Fewer controls may leave required areas uncovered.",
+      "D": "A vendor's recommendation may reflect its own interests."
+    },
+    "references_topic": "Framework selection",
+    "version": "0.3"
+  },
+  {
+    "id": "D2-0041",
+    "domain": 2,
+    "domain_name": "Asset Security",
+    "subtopic": "Data roles",
+    "difficulty": "medium",
+    "type": "knowledge",
+    "stem": "Under privacy regulations, what role does a cloud email provider play when it processes customer data only on the customer's instructions?",
+    "options": {
+      "A": "Data controller",
+      "B": "Data processor",
+      "C": "Data subject",
+      "D": "Data owner"
+    },
+    "answer": "B",
+    "explanation": "A processor handles personal data on behalf of, and as instructed by, the controller. The customer remains the controller.",
+    "distractor_rationales": {
+      "A": "The customer decides the purposes and means, so the customer is the controller.",
+      "C": "Data subjects are the individuals the data describes.",
+      "D": "Data owner is an internal accountability role, not a regulatory processing role."
+    },
+    "references_topic": "Data processor role",
+    "version": "0.3"
+  },
+  {
+    "id": "D2-0042",
+    "domain": 2,
+    "domain_name": "Asset Security",
+    "subtopic": "Data classification",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "A new HR analytics dataset combines salaries and performance ratings. The database administrator asks what classification to apply. Who should decide?",
+    "options": {
+      "A": "The database administrator who will store it",
+      "B": "The security team, which sets the classification scheme",
+      "C": "The data owner, usually the HR business leader",
+      "D": "Any analyst who works with the dataset"
+    },
+    "answer": "C",
+    "explanation": "The data owner is accountable for the dataset and assigns its classification using the organization's scheme, with advice from security.",
+    "distractor_rationales": {
+      "A": "The DBA is a custodian who implements the owner's decisions.",
+      "B": "Security defines the scheme and advises, but the owner applies it to specific data.",
+      "D": "Users of the data do not decide its classification."
+    },
+    "references_topic": "Who assigns classification",
+    "version": "0.3"
+  },
+  {
+    "id": "D2-0043",
+    "domain": 2,
+    "domain_name": "Asset Security",
+    "subtopic": "Data states and protection",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "A company uses a cloud database with provider-managed encryption at rest. A regulator requires that the provider be unable to access plaintext data. What is the BEST approach?",
+    "options": {
+      "A": "Rely on the provider's default encryption at rest",
+      "B": "Use longer keys for the provider-managed encryption",
+      "C": "Enable TLS on all connections to the database",
+      "D": "Encrypt with keys the provider cannot access"
+    },
+    "answer": "D",
+    "explanation": "Encrypting with customer-held keys, for example client-side encryption or keys held in a customer-controlled HSM outside the provider, means the provider cannot decrypt the data.",
+    "distractor_rationales": {
+      "A": "With provider-managed keys, the provider can technically decrypt the data.",
+      "B": "Key length does not change who holds the key.",
+      "C": "TLS protects data in transit, not stored data from the provider."
+    },
+    "references_topic": "Customer-managed encryption keys",
+    "version": "0.3"
+  },
+  {
+    "id": "D2-0044",
+    "domain": 2,
+    "domain_name": "Asset Security",
+    "subtopic": "DLP, DRM, and CASB",
+    "difficulty": "medium",
+    "type": "knowledge",
+    "stem": "Which type of DLP inspects data as it leaves the network, such as email and web uploads, at egress points?",
+    "options": {
+      "A": "Network DLP",
+      "B": "Endpoint DLP",
+      "C": "Storage (data-at-rest) DLP discovery",
+      "D": "Cloud API DLP"
+    },
+    "answer": "A",
+    "explanation": "Network DLP sits at egress points and inspects outbound traffic such as email and web uploads for sensitive content.",
+    "distractor_rationales": {
+      "B": "Endpoint DLP runs on devices and controls actions such as copying to USB.",
+      "C": "Storage DLP scans repositories to find sensitive data at rest.",
+      "D": "Cloud API DLP inspects content inside sanctioned cloud services through their APIs."
+    },
+    "references_topic": "Network DLP",
+    "version": "0.3"
+  },
+  {
+    "id": "D2-0045",
+    "domain": 2,
+    "domain_name": "Asset Security",
+    "subtopic": "Data lifecycle and collection",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "A company acquires another firm and inherits ten years of customer data collected under a different privacy notice. What should the privacy officer do FIRST?",
+    "options": {
+      "A": "Merge all of the inherited customer data into the main CRM right away",
+      "B": "Inventory it and confirm the purposes and basis for each use",
+      "C": "Delete all of the inherited data immediately",
+      "D": "Sell the data that the company does not plan to use"
+    },
+    "answer": "B",
+    "explanation": "Inherited data carries the original notice and lawful basis. Inventory it, confirm the purposes it was collected for, and decide what can be used as-is, what needs new consent or notice, and what must be deleted.",
+    "distractor_rationales": {
+      "A": "Merging data without checking its basis may process it unlawfully.",
+      "C": "Deleting everything may destroy valuable data that could be used lawfully, and may breach retention rules.",
+      "D": "Selling data collected under another notice is likely unlawful."
+    },
+    "references_topic": "Inherited data after acquisition",
+    "version": "0.3"
+  },
+  {
+    "id": "D2-0046",
+    "domain": 2,
+    "domain_name": "Asset Security",
+    "subtopic": "Data retention",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "A company must be able to prove that customer records were destroyed on schedule. What is the BEST evidence?",
+    "options": {
+      "A": "Verbal confirmation from the records team",
+      "B": "A screenshot of an empty folder",
+      "C": "Destruction logs or certificates recording what, when, and how",
+      "D": "A written retention policy stating that records are always destroyed on time"
+    },
+    "answer": "C",
+    "explanation": "Destruction records or certificates documenting what was destroyed, when, by what method, and by whom provide auditable proof.",
+    "distractor_rationales": {
+      "A": "Verbal confirmation leaves no auditable trail.",
+      "B": "A screenshot of an empty folder does not show what was destroyed or how.",
+      "D": "A policy states intent. It does not prove the policy was followed."
+    },
+    "references_topic": "Evidence of destruction",
+    "version": "0.3"
+  },
+  {
+    "id": "D2-0047",
+    "domain": 2,
+    "domain_name": "Asset Security",
+    "subtopic": "Asset handling and labeling",
+    "difficulty": "hard",
+    "type": "application",
+    "stem": "Classified documents must travel between two offices, and couriers occasionally deliver packages to the wrong desk. Which control BEST provides accountability?",
+    "options": {
+      "A": "Plain unmarked envelopes that do not attract attention",
+      "B": "Outer labels listing the full contents of each package",
+      "C": "Regular interoffice mail with no tracking of any kind",
+      "D": "Tamper-evident packaging with signed receipts at each hand-off"
+    },
+    "answer": "D",
+    "explanation": "Signed receipts at every hand-off create an accountable chain of custody, and tamper-evident packaging shows whether anyone opened the package along the way.",
+    "distractor_rationales": {
+      "A": "Plain envelopes reduce attention but provide no accountability.",
+      "B": "Listing contents on the outside increases exposure.",
+      "C": "Untracked mail provides no accountability."
+    },
+    "references_topic": "Accountable transfer of classified material",
+    "version": "0.3"
+  },
+  {
+    "id": "D2-0048",
+    "domain": 2,
+    "domain_name": "Asset Security",
+    "subtopic": "Asset inventory and ownership",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "Two business units both claim ownership of a shared customer database and disagree about who may access it. What should the security manager do?",
+    "options": {
+      "A": "Escalate so senior management names one accountable owner",
+      "B": "Let each business unit grant access independently as it sees fit",
+      "C": "Have the security team decide access for both units",
+      "D": "Split the database into two separate copies"
+    },
+    "answer": "A",
+    "explanation": "Every data set needs a single accountable owner. Resolving the dispute is a governance decision for senior management, and the other unit can be a consulted stakeholder.",
+    "distractor_rationales": {
+      "B": "Two owners granting access independently produces inconsistent access and no accountability.",
+      "C": "Security advises, but it should not own business data decisions.",
+      "D": "Duplicating data creates consistency and protection problems."
+    },
+    "references_topic": "Resolving ownership disputes",
+    "version": "0.3"
+  },
+  {
+    "id": "D2-0049",
+    "domain": 2,
+    "domain_name": "Asset Security",
+    "subtopic": "Data remanence and destruction",
+    "difficulty": "hard",
+    "type": "application",
+    "stem": "A company running on cloud IaaS wants assurance that data on its decommissioned virtual disks cannot be recovered by other tenants. What is the MOST practical approach?",
+    "options": {
+      "A": "Demand that the provider physically shred its shared disks",
+      "B": "Encrypt volumes and destroy the keys when decommissioning",
+      "C": "Overwrite the virtual disks once before deleting them",
+      "D": "Ask the provider to ship the physical disks to the company"
+    },
+    "answer": "B",
+    "explanation": "Encrypting volumes with keys the customer controls and destroying those keys at decommissioning (crypto-shredding) makes any remnants unreadable. The provider's attested sanitization practices add assurance.",
+    "distractor_rationales": {
+      "A": "Shared physical disks hold many tenants' data, so providers will not shred them for one customer.",
+      "C": "Overwriting a virtual disk may not reach the underlying physical blocks.",
+      "D": "Providers do not hand over shared physical media."
+    },
+    "references_topic": "Crypto-shredding in the cloud",
+    "version": "0.3"
+  },
+  {
+    "id": "D2-0050",
+    "domain": 2,
+    "domain_name": "Asset Security",
+    "subtopic": "Scoping, tailoring, and baselines",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "A small clinic adopts a control baseline designed for large hospitals. Several controls, such as a 24x7 in-house SOC, are unaffordable, but the clinic stores patient data. What should it do?",
+    "options": {
+      "A": "Drop every control it cannot afford right now, without any further analysis",
+      "B": "Adopt every control regardless of cost",
+      "C": "Tailor it by risk, choose proportionate options, and document",
+      "D": "Delay adopting any baseline until it can afford all of it"
+    },
+    "answer": "C",
+    "explanation": "Tailoring uses risk assessment to choose proportionate controls, for example a managed detection service instead of an in-house SOC, and documents each decision.",
+    "distractor_rationales": {
+      "A": "Dropping controls without analysis leaves patient data unprotected.",
+      "B": "Adopting everything regardless of cost is not sustainable.",
+      "D": "Delaying leaves the data unprotected in the meantime."
+    },
+    "references_topic": "Proportionate tailoring",
+    "version": "0.3"
+  }
+]

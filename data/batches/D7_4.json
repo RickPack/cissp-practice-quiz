@@ -1,0 +1,770 @@
+[
+  {
+    "id": "D7-0066",
+    "domain": 7,
+    "domain_name": "Security Operations",
+    "subtopic": "Investigations and evidence",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "Badge logs show that a suspect entered the server room shortly before a device went missing. No one saw the suspect take it. What type of evidence are the badge logs?",
+    "options": {
+      "A": "Direct evidence",
+      "B": "Best evidence",
+      "C": "Hearsay evidence from a coworker",
+      "D": "Circumstantial evidence"
+    },
+    "answer": "D",
+    "explanation": "Circumstantial evidence supports a conclusion by inference. The logs show presence and timing but do not directly prove the suspect took the device.",
+    "distractor_rationales": {
+      "A": "Direct evidence proves a fact without inference, such as an eyewitness account of the theft.",
+      "B": "Best evidence refers to original documents rather than copies.",
+      "C": "Hearsay is an out-of-court statement offered for its truth."
+    },
+    "references_topic": "Circumstantial evidence",
+    "version": "0.4"
+  },
+  {
+    "id": "D7-0067",
+    "domain": 7,
+    "domain_name": "Security Operations",
+    "subtopic": "Digital forensics",
+    "difficulty": "easy",
+    "type": "application",
+    "stem": "An analyst has imaged a suspect's drive. How can the analyst show that the image is an exact copy of the original?",
+    "options": {
+      "A": "Compute cryptographic hashes of the original and the image and show they match",
+      "B": "Compare the total file counts on the original drive and on the image",
+      "C": "Open several documents on the image to confirm that they display correctly",
+      "D": "Check that the image file is exactly the same size as the drive's advertised capacity"
+    },
+    "answer": "A",
+    "explanation": "Matching cryptographic hashes show that every bit is identical. Recording the hashes also lets the analyst prove later that the image has not changed.",
+    "distractor_rationales": {
+      "B": "Equal file counts do not prove the contents are identical.",
+      "C": "Opening sample files does not verify the whole image and may alter metadata.",
+      "D": "Equal size does not prove identical content."
+    },
+    "references_topic": "Hashing forensic images",
+    "version": "0.4"
+  },
+  {
+    "id": "D7-0068",
+    "domain": 7,
+    "domain_name": "Security Operations",
+    "subtopic": "SIEM, SOAR, and threat intelligence",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "Which pair of standards is commonly used to describe threat intelligence and exchange it between organizations?",
+    "options": {
+      "A": "SAML and OAuth",
+      "B": "STIX and TAXII",
+      "C": "SNMP and syslog",
+      "D": "CVSS and CVE"
+    },
+    "answer": "B",
+    "explanation": "STIX is a structured language for describing threat intelligence, and TAXII is a protocol for exchanging it between systems.",
+    "distractor_rationales": {
+      "A": "SAML and OAuth are federation and authorization standards.",
+      "C": "SNMP and syslog are management and logging protocols.",
+      "D": "CVSS scores vulnerabilities and CVE identifies them; neither is for exchanging threat intelligence."
+    },
+    "references_topic": "STIX and TAXII",
+    "version": "0.4"
+  },
+  {
+    "id": "D7-0069",
+    "domain": 7,
+    "domain_name": "Security Operations",
+    "subtopic": "Foundational security operations",
+    "difficulty": "easy",
+    "type": "application",
+    "stem": "A database administrator with full technical access asks HR for a copy of the salary table to \"check the data quality.\" The task is not part of their job. How should HR respond?",
+    "options": {
+      "A": "Provide it, since the administrator already has technical access to the database",
+      "B": "Provide it, but ask the administrator to delete it once the check is complete",
+      "C": "Decline, since the administrator has no business need to know the salaries",
+      "D": "Provide only the salaries of the administrator's own team members"
+    },
+    "answer": "C",
+    "explanation": "Having technical access or seniority does not create a need to know. Access to sensitive data should be limited to what a role actually requires.",
+    "distractor_rationales": {
+      "A": "Technical ability to reach data is not a business reason to use it.",
+      "B": "Deleting afterward does not justify the disclosure.",
+      "D": "Partial disclosure still lacks a business need."
+    },
+    "references_topic": "Need to know",
+    "version": "0.4"
+  },
+  {
+    "id": "D7-0070",
+    "domain": 7,
+    "domain_name": "Security Operations",
+    "subtopic": "Incident management",
+    "difficulty": "easy",
+    "type": "managerial_best_first_most",
+    "stem": "Two incidents are reported at the same time: a defaced internal wiki page and ransomware spreading on file servers. How should the team decide which to handle first?",
+    "options": {
+      "A": "Handle them in the order the reports arrived",
+      "B": "Handle the one that is easier to fix first",
+      "C": "Handle the one reported by the most senior manager",
+      "D": "Handle the one with the greater impact and urgency"
+    },
+    "answer": "D",
+    "explanation": "Triage ranks incidents by impact and urgency. Spreading ransomware threatens the business far more than a defaced internal page.",
+    "distractor_rationales": {
+      "A": "Arrival order ignores severity.",
+      "B": "Ease of fixing does not reflect risk.",
+      "C": "Seniority of the reporter does not determine severity."
+    },
+    "references_topic": "Incident triage",
+    "version": "0.4"
+  },
+  {
+    "id": "D7-0071",
+    "domain": 7,
+    "domain_name": "Security Operations",
+    "subtopic": "Change management",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "Why should a change request include a backout plan?",
+    "options": {
+      "A": "To restore the previous working state if the change fails",
+      "B": "To identify who will be blamed if the change causes an outage",
+      "C": "To document the budget that was approved for the change",
+      "D": "To remove the need for any testing before the change is made"
+    },
+    "answer": "A",
+    "explanation": "A backout plan describes how to reverse the change quickly and safely if it causes problems, limiting downtime.",
+    "distractor_rationales": {
+      "B": "Change management is about controlling risk, not assigning blame.",
+      "C": "Budget is not the purpose of a backout plan.",
+      "D": "Backout planning complements testing; it does not replace it."
+    },
+    "references_topic": "Backout plans",
+    "version": "0.4"
+  },
+  {
+    "id": "D7-0072",
+    "domain": 7,
+    "domain_name": "Security Operations",
+    "subtopic": "Backup and recovery strategies",
+    "difficulty": "easy",
+    "type": "managerial_best_first_most",
+    "stem": "What is the BEST backup strategy for a small company that wants to survive both hardware failure and site loss?",
+    "options": {
+      "A": "One backup copy kept on the same server as the data",
+      "B": "Three copies on two media types, with one copy off-site",
+      "C": "Two copies kept on the same external drive in the office",
+      "D": "A single cloud sync folder that mirrors deletions instantly"
+    },
+    "answer": "B",
+    "explanation": "The 3-2-1 approach keeps three copies of data on two different types of media, with one copy off-site, so no single failure destroys every copy.",
+    "distractor_rationales": {
+      "A": "A copy on the same server fails with it.",
+      "C": "Both copies are lost if the drive or the office is lost.",
+      "D": "A sync folder replicates deletions and corruption immediately."
+    },
+    "references_topic": "3-2-1 backup rule",
+    "version": "0.4"
+  },
+  {
+    "id": "D7-0073",
+    "domain": 7,
+    "domain_name": "Security Operations",
+    "subtopic": "Disaster recovery",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "What is the main weakness of a reciprocal agreement, in which two companies agree to host each other's operations in a disaster?",
+    "options": {
+      "A": "It is always more expensive than building a dedicated hot site",
+      "B": "It requires both companies to use identical accounting software",
+      "C": "The host may lack capacity, and a regional disaster may hit both",
+      "D": "It is illegal in most countries to share facilities with another company"
+    },
+    "answer": "C",
+    "explanation": "Reciprocal agreements are cheap but hard to enforce. The partner may not have spare capacity when needed, and both sites may be affected by the same event.",
+    "distractor_rationales": {
+      "A": "Reciprocal agreements are usually cheaper, not more expensive.",
+      "B": "Identical software is not the main issue.",
+      "D": "Such agreements are not generally illegal."
+    },
+    "references_topic": "Reciprocal agreements",
+    "version": "0.4"
+  },
+  {
+    "id": "D7-0074",
+    "domain": 7,
+    "domain_name": "Security Operations",
+    "subtopic": "Physical security operations",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "What advantage do security guards have over automated physical controls such as cameras and locks?",
+    "options": {
+      "A": "They cost much less than automated controls over the long term",
+      "B": "They never make mistakes when checking identification",
+      "C": "They are unaffected by social engineering attempts",
+      "D": "They can use judgment to respond to unexpected situations"
+    },
+    "answer": "D",
+    "explanation": "Guards can assess unusual situations, make decisions, and respond in ways fixed systems cannot. Their main drawbacks are cost and susceptibility to error or manipulation.",
+    "distractor_rationales": {
+      "A": "Guards are usually more expensive over time.",
+      "B": "People make mistakes.",
+      "C": "Guards can be targeted by social engineering."
+    },
+    "references_topic": "Security guards",
+    "version": "0.4"
+  },
+  {
+    "id": "D7-0075",
+    "domain": 7,
+    "domain_name": "Security Operations",
+    "subtopic": "Personnel safety",
+    "difficulty": "easy",
+    "type": "managerial_best_first_most",
+    "stem": "During a building evacuation, what is a floor warden's MOST important duty?",
+    "options": {
+      "A": "Make sure everyone has left the area and report anyone unaccounted for",
+      "B": "Collect laptops and important documents from each desk on the floor",
+      "C": "Shut down the servers on the floor to protect the data on them",
+      "D": "Stay at their desk and answer phones until the alarm stops"
+    },
+    "answer": "A",
+    "explanation": "Floor wardens guide people out and confirm that the area is clear, so responders know if anyone is missing.",
+    "distractor_rationales": {
+      "B": "Collecting equipment delays evacuation and risks lives.",
+      "C": "Shutting down servers is not a life safety duty.",
+      "D": "Staying behind puts the warden at risk."
+    },
+    "references_topic": "Floor wardens",
+    "version": "0.4"
+  },
+  {
+    "id": "D7-0076",
+    "domain": 7,
+    "domain_name": "Security Operations",
+    "subtopic": "Digital forensics",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "A compromised production database server cannot be taken offline without stopping the business. How should the forensic team collect evidence?",
+    "options": {
+      "A": "Power off the server anyway, since only a powered-off disk image is valid evidence",
+      "B": "Capture memory and volatile data live, then image it with minimal disruption, documenting each step",
+      "C": "Skip evidence collection until the next planned maintenance window next quarter",
+      "D": "Copy only the application's error log to a USB drive and restore the server"
+    },
+    "answer": "B",
+    "explanation": "Live acquisition collects volatile data and disk contents while the system runs. Careful documentation of each action preserves the evidence's credibility.",
+    "distractor_rationales": {
+      "A": "Live acquisition is accepted when documented, and powering off loses volatile evidence.",
+      "C": "Waiting lets evidence disappear.",
+      "D": "One log file is far from sufficient."
+    },
+    "references_topic": "Live acquisition of critical systems",
+    "version": "0.4"
+  },
+  {
+    "id": "D7-0077",
+    "domain": 7,
+    "domain_name": "Security Operations",
+    "subtopic": "Logging and monitoring",
+    "difficulty": "medium",
+    "type": "knowledge",
+    "stem": "Which set of details should a security log entry include at minimum to support investigations?",
+    "options": {
+      "A": "Only the user's name and the name of the application",
+      "B": "The server's model number and total disk space",
+      "C": "Who acted, what they did, when, where from, and the outcome",
+      "D": "The user's job title and department"
+    },
+    "answer": "C",
+    "explanation": "Useful log entries answer who, what, when, where, and whether it succeeded, so events can be correlated and attributed.",
+    "distractor_rationales": {
+      "A": "A name and application say nothing about the action, time, or result.",
+      "B": "Hardware details do not describe an event.",
+      "D": "Job title and department are directory data, not event data."
+    },
+    "references_topic": "Minimum contents of security logs",
+    "version": "0.4"
+  },
+  {
+    "id": "D7-0078",
+    "domain": 7,
+    "domain_name": "Security Operations",
+    "subtopic": "SIEM, SOAR, and threat intelligence",
+    "difficulty": "medium",
+    "type": "knowledge",
+    "stem": "What is threat hunting?",
+    "options": {
+      "A": "Waiting for the SIEM to raise alerts and then investigating each one",
+      "B": "Running a vulnerability scanner across the whole network each week",
+      "C": "Buying threat intelligence feeds from several commercial vendors",
+      "D": "Searching proactively for undetected threats based on a hypothesis"
+    },
+    "answer": "D",
+    "explanation": "Threat hunting assumes some threats have evaded automated detection. Hunters form hypotheses about attacker behavior and search the data for evidence.",
+    "distractor_rationales": {
+      "A": "Responding to alerts is reactive monitoring, not hunting.",
+      "B": "Scanning finds weaknesses, not active attackers.",
+      "C": "Buying feeds is an input to hunting, not the activity itself."
+    },
+    "references_topic": "Threat hunting",
+    "version": "0.4"
+  },
+  {
+    "id": "D7-0079",
+    "domain": 7,
+    "domain_name": "Security Operations",
+    "subtopic": "Configuration management",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "File integrity monitoring alerts that a web server's configuration file changed. There is no matching change record. What should happen FIRST?",
+    "options": {
+      "A": "Compare it to the baseline and investigate who made the change and why",
+      "B": "Approve the change after the fact, since the server is still running",
+      "C": "Restore the file immediately and close the alert without any further review",
+      "D": "Disable file integrity monitoring on the server to stop future alerts"
+    },
+    "answer": "A",
+    "explanation": "An unexplained change could be an error or an attack. Comparing against the baseline and tracing the change determines whether to restore, investigate further, or record it properly.",
+    "distractor_rationales": {
+      "B": "Retroactive approval without review ignores a possible attack.",
+      "C": "Restoring without review may destroy evidence and miss a wider compromise.",
+      "D": "Disabling monitoring removes visibility."
+    },
+    "references_topic": "Responding to unauthorized configuration changes",
+    "version": "0.4"
+  },
+  {
+    "id": "D7-0080",
+    "domain": 7,
+    "domain_name": "Security Operations",
+    "subtopic": "Configuration management",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "A core router failed, and engineers had to rebuild its replacement from memory, which took hours and introduced errors. What control would have helped MOST?",
+    "options": {
+      "A": "A spare router kept in its original box in the storage room",
+      "B": "Automated configuration backups with version history",
+      "C": "A printed network diagram posted in the server room",
+      "D": "A support contract with a faster hardware replacement time"
+    },
+    "answer": "B",
+    "explanation": "Stored, versioned configurations let engineers restore a known-good setup quickly and accurately onto replacement hardware.",
+    "distractor_rationales": {
+      "A": "Spare hardware still needs the right configuration.",
+      "C": "A diagram does not contain the device configuration.",
+      "D": "Faster hardware delivery does not restore the configuration."
+    },
+    "references_topic": "Configuration backups",
+    "version": "0.4"
+  },
+  {
+    "id": "D7-0081",
+    "domain": 7,
+    "domain_name": "Security Operations",
+    "subtopic": "Foundational security operations",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "A managed security provider takes up to six hours to escalate critical alerts, and the contract says nothing about timing. What is the BEST fix?",
+    "options": {
+      "A": "Stop using the provider and build an in-house SOC within the next month",
+      "B": "Ask the provider informally to try to escalate critical alerts faster",
+      "C": "Add measured SLAs for escalation times, with reporting and remedies",
+      "D": "Accept the delay, since providers cannot be held to specific times"
+    },
+    "answer": "C",
+    "explanation": "Service level agreements define measurable expectations, such as escalating critical alerts within minutes, with reporting and consequences if they are missed.",
+    "distractor_rationales": {
+      "A": "Building a SOC in a month is unrealistic and may not be needed.",
+      "B": "Informal requests are not enforceable.",
+      "D": "Providers routinely commit to response times in contracts."
+    },
+    "references_topic": "Service level agreements with providers",
+    "version": "0.4"
+  },
+  {
+    "id": "D7-0082",
+    "domain": 7,
+    "domain_name": "Security Operations",
+    "subtopic": "Resource and media protection",
+    "difficulty": "medium",
+    "type": "knowledge",
+    "stem": "Why does a media library keep a log of when backup tapes are checked out and returned?",
+    "options": {
+      "A": "To calculate the storage cost of each tape for the finance team",
+      "B": "To make sure every tape is overwritten on the same day each month",
+      "C": "To remove the need for encrypting the data stored on the tapes",
+      "D": "To maintain accountability for who has each tape at all times"
+    },
+    "answer": "D",
+    "explanation": "A check-out log records who took each item and when, so missing media can be traced and custody is always known.",
+    "distractor_rationales": {
+      "A": "Cost allocation is not the security purpose.",
+      "B": "Rotation schedules are separate from custody tracking.",
+      "C": "Logging does not replace encryption."
+    },
+    "references_topic": "Media check-out logs",
+    "version": "0.4"
+  },
+  {
+    "id": "D7-0083",
+    "domain": 7,
+    "domain_name": "Security Operations",
+    "subtopic": "Resource and media protection",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "Staff regularly copy files to personal USB drives, and several drives have been lost. Which control BEST reduces this risk?",
+    "options": {
+      "A": "Block unapproved USB storage and allow only encrypted company-issued drives",
+      "B": "Ask staff to label their personal USB drives with their names",
+      "C": "Require staff to report lost drives within one week",
+      "D": "Buy larger USB drives so that staff need fewer of them"
+    },
+    "answer": "A",
+    "explanation": "Endpoint controls can block unknown storage devices while allowing managed, encrypted drives, so lost media does not expose data.",
+    "distractor_rationales": {
+      "B": "Labels identify owners but do not protect data.",
+      "C": "Reporting helps response but does not protect the data on lost drives.",
+      "D": "Larger drives hold more data to lose."
+    },
+    "references_topic": "Controlling removable media",
+    "version": "0.4"
+  },
+  {
+    "id": "D7-0084",
+    "domain": 7,
+    "domain_name": "Security Operations",
+    "subtopic": "Detective and preventive controls",
+    "difficulty": "medium",
+    "type": "knowledge",
+    "stem": "Which control is BEST suited to detecting unauthorized changes to critical system files on a single server?",
+    "options": {
+      "A": "A network intrusion detection sensor on the core switch",
+      "B": "A host-based intrusion detection system on the server",
+      "C": "A web application firewall in front of the server",
+      "D": "A honeypot placed elsewhere in the data center"
+    },
+    "answer": "B",
+    "explanation": "A host-based IDS monitors the server itself, including file changes, logs, and processes, which network sensors cannot see.",
+    "distractor_rationales": {
+      "A": "A network sensor sees traffic, not file changes on the host.",
+      "C": "A WAF filters web requests, not file changes.",
+      "D": "A honeypot detects attackers who interact with it, not changes on other servers."
+    },
+    "references_topic": "Host-based intrusion detection",
+    "version": "0.4"
+  },
+  {
+    "id": "D7-0085",
+    "domain": 7,
+    "domain_name": "Security Operations",
+    "subtopic": "Patch and vulnerability management",
+    "difficulty": "medium",
+    "type": "knowledge",
+    "stem": "What is virtual patching?",
+    "options": {
+      "A": "Installing patches on virtual machines instead of on physical servers",
+      "B": "Scheduling patches to be installed automatically at a later date",
+      "C": "Blocking exploit attempts with an IPS or WAF rule until a patch is applied",
+      "D": "Marking a vulnerability as fixed in the tracking system before actually patching it"
+    },
+    "answer": "C",
+    "explanation": "Virtual patching uses a network or application control to block known exploit patterns, which reduces risk while a real patch is tested or awaited.",
+    "distractor_rationales": {
+      "A": "Virtual patching is not about the type of machine.",
+      "B": "Scheduling is not virtual patching.",
+      "D": "Closing a ticket early misrepresents the risk."
+    },
+    "references_topic": "Virtual patching",
+    "version": "0.4"
+  },
+  {
+    "id": "D7-0086",
+    "domain": 7,
+    "domain_name": "Security Operations",
+    "subtopic": "Change management",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "Developers can deploy straight to production without a change ticket, and several outages were traced to unreviewed changes. What is the BEST control?",
+    "options": {
+      "A": "Ask developers to open change tickets after each deployment is finished",
+      "B": "Hold a monthly meeting to discuss the changes that caused problems",
+      "C": "Remove all developers' access to every environment, including development",
+      "D": "Require an approved change record before the pipeline deploys to production"
+    },
+    "answer": "D",
+    "explanation": "Building the approval check into the deployment pipeline makes change control automatic: nothing reaches production without an approved change.",
+    "distractor_rationales": {
+      "A": "After-the-fact tickets do not prevent bad changes.",
+      "B": "Monthly discussion reacts after outages happen.",
+      "C": "Removing all access blocks development work."
+    },
+    "references_topic": "Enforcing change control through pipelines",
+    "version": "0.4"
+  },
+  {
+    "id": "D7-0087",
+    "domain": 7,
+    "domain_name": "Security Operations",
+    "subtopic": "Backup and recovery strategies",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "A team relies on virtual machine snapshots stored on the same storage array as the VMs as its only backups. What is the MAIN problem?",
+    "options": {
+      "A": "Losing the array would destroy both the VMs and their snapshots",
+      "B": "Snapshots are always larger than the virtual machines themselves",
+      "C": "Snapshots cannot be taken while the virtual machines are running",
+      "D": "Snapshots violate every software license agreement"
+    },
+    "answer": "A",
+    "explanation": "Snapshots on the same storage share its fate. A real backup strategy keeps separate copies on independent storage, including off-site.",
+    "distractor_rationales": {
+      "B": "Snapshots are usually smaller, as they record changes.",
+      "C": "Snapshots are commonly taken while VMs run.",
+      "D": "Snapshots do not generally violate licenses."
+    },
+    "references_topic": "Snapshots are not backups",
+    "version": "0.4"
+  },
+  {
+    "id": "D7-0088",
+    "domain": 7,
+    "domain_name": "Security Operations",
+    "subtopic": "Disaster recovery",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "Only one administrator knows how to recover the company's core application. What is the BEST way to reduce this risk?",
+    "options": {
+      "A": "Offer that administrator a large retention bonus",
+      "B": "Document recovery runbooks and cross-train other staff",
+      "C": "Ask the administrator to avoid traveling at the same time as their manager",
+      "D": "Keep the administrator's personal phone number in the DR plan"
+    },
+    "answer": "B",
+    "explanation": "Documented procedures and trained backups remove a single point of failure in people, so recovery does not depend on one person's availability.",
+    "distractor_rationales": {
+      "A": "A bonus does not help if the person is unavailable during a disaster.",
+      "C": "Travel rules do not remove the dependency.",
+      "D": "Contact details do not help if the person cannot be reached."
+    },
+    "references_topic": "Runbooks and cross-training",
+    "version": "0.4"
+  },
+  {
+    "id": "D7-0089",
+    "domain": 7,
+    "domain_name": "Security Operations",
+    "subtopic": "DR plan testing",
+    "difficulty": "medium",
+    "type": "knowledge",
+    "stem": "Which DR test has teams act out a specific disaster scenario and perform recovery tasks up to the point of actually relocating operations?",
+    "options": {
+      "A": "Checklist review",
+      "B": "Full-interruption test",
+      "C": "Simulation test",
+      "D": "Parallel test"
+    },
+    "answer": "C",
+    "explanation": "A simulation walks through a realistic scenario with practical actions, but stops short of moving operations to the recovery site.",
+    "distractor_rationales": {
+      "A": "A checklist review only confirms plan contents.",
+      "B": "Full interruption shuts down the primary site.",
+      "D": "A parallel test runs operations at the recovery site alongside production."
+    },
+    "references_topic": "Simulation tests",
+    "version": "0.4"
+  },
+  {
+    "id": "D7-0090",
+    "domain": 7,
+    "domain_name": "Security Operations",
+    "subtopic": "Investigations and evidence",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "The company wants to use email monitoring records as evidence in an employee misconduct case. Its policies never told employees that email could be monitored. What is the BEST long-term correction?",
+    "options": {
+      "A": "Stop all monitoring permanently to avoid legal questions in the future",
+      "B": "Monitor secretly in the future so that employees cannot change their behavior",
+      "C": "Destroy the existing monitoring records so they cannot be challenged",
+      "D": "Publish a policy and login banner stating that systems may be monitored"
+    },
+    "answer": "D",
+    "explanation": "Clear notice through policy and banners removes any reasonable expectation of privacy on company systems, which supports lawful monitoring and the use of its records.",
+    "distractor_rationales": {
+      "A": "Stopping monitoring removes a useful control.",
+      "B": "Secret monitoring increases legal risk.",
+      "C": "Destroying records may be spoliation and does not fix the policy gap."
+    },
+    "references_topic": "Monitoring notice and expectation of privacy",
+    "version": "0.4"
+  },
+  {
+    "id": "D7-0091",
+    "domain": 7,
+    "domain_name": "Security Operations",
+    "subtopic": "Logging and monitoring",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "SIEM licensing costs are rising, and an engineer proposes dropping authentication logs because they are the largest source. What is the BEST response?",
+    "options": {
+      "A": "Keep authentication logs and cut low-value sources such as verbose debug logs",
+      "B": "Drop authentication logs, since they rarely show anything useful",
+      "C": "Drop all logs except firewall logs to cut costs as far as possible",
+      "D": "Keep everything and ignore the cost, since security always justifies spending"
+    },
+    "answer": "A",
+    "explanation": "Authentication logs are among the most valuable for detecting account compromise. Cost should be reduced by filtering low-value data, not by removing key security sources.",
+    "distractor_rationales": {
+      "B": "Authentication logs are central to detecting misuse.",
+      "C": "Firewall logs alone miss most account-based attacks.",
+      "D": "Cost must be managed; ignoring it is not sustainable."
+    },
+    "references_topic": "Prioritizing log sources under cost pressure",
+    "version": "0.4"
+  },
+  {
+    "id": "D7-0092",
+    "domain": 7,
+    "domain_name": "Security Operations",
+    "subtopic": "Incident management",
+    "difficulty": "hard",
+    "type": "application",
+    "stem": "After malware was removed from compromised servers, the attackers returned within days using valid administrator accounts. What was MOST likely missed during eradication?",
+    "options": {
+      "A": "Reinstalling the antivirus software on each affected server",
+      "B": "Resetting compromised credentials and revoking attacker access tokens",
+      "C": "Updating the incident report with the date the malware was found",
+      "D": "Notifying the hardware vendor about the servers involved"
+    },
+    "answer": "B",
+    "explanation": "Attackers often steal credentials. Eradication must include resetting passwords, keys, and tokens they may hold, or they can simply log back in.",
+    "distractor_rationales": {
+      "A": "Antivirus does not remove stolen credentials.",
+      "C": "Documentation does not remove attacker access.",
+      "D": "The hardware vendor is not involved in credential theft."
+    },
+    "references_topic": "Credential resets during eradication",
+    "version": "0.4"
+  },
+  {
+    "id": "D7-0093",
+    "domain": 7,
+    "domain_name": "Security Operations",
+    "subtopic": "Detective and preventive controls",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "A newly deployed inline IPS blocked legitimate payroll traffic, causing a costly outage. What is the BEST way to deploy IPS rules going forward?",
+    "options": {
+      "A": "Remove the IPS permanently and rely on the network firewall alone",
+      "B": "Enable every rule in blocking mode and fix any false positives when users complain",
+      "C": "Run new rules in detect-only mode, tune them, then enable blocking selectively",
+      "D": "Place the IPS out of band so that it can never affect production traffic"
+    },
+    "answer": "C",
+    "explanation": "Observing rules in detect-only mode reveals false positives in the real environment. Blocking can then be enabled for rules proven accurate.",
+    "distractor_rationales": {
+      "A": "Removing the IPS gives up valuable prevention.",
+      "B": "Letting users find false positives means more outages.",
+      "D": "Out-of-band placement turns the IPS into an IDS and gives up blocking."
+    },
+    "references_topic": "Tuning IPS before blocking",
+    "version": "0.4"
+  },
+  {
+    "id": "D7-0094",
+    "domain": 7,
+    "domain_name": "Security Operations",
+    "subtopic": "Patch and vulnerability management",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "Users have local administrator rights and install their own software, so the patch team cannot keep third-party applications up to date. What is the BEST long-term fix?",
+    "options": {
+      "A": "Scan user laptops weekly and email users the list of outdated applications",
+      "B": "Allow users to keep installing software but ask them to enable auto-update",
+      "C": "Block all third-party applications, including those the business relies on",
+      "D": "Remove local admin rights and deploy approved software centrally"
+    },
+    "answer": "D",
+    "explanation": "Without local admin rights, users cannot install unmanaged software, and central deployment gives the patch team an inventory it can keep current.",
+    "distractor_rationales": {
+      "A": "Emails put patching on users and do not scale.",
+      "B": "Auto-update is inconsistent and leaves unknown software in place.",
+      "C": "Blocking needed applications disrupts the business."
+    },
+    "references_topic": "Local admin rights and third-party patching",
+    "version": "0.4"
+  },
+  {
+    "id": "D7-0095",
+    "domain": 7,
+    "domain_name": "Security Operations",
+    "subtopic": "DR plan testing",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "A DR simulation found outdated contact lists, a missing encryption key, and unclear roles. What should happen next?",
+    "options": {
+      "A": "Update the plan, assign owners to each fix, and retest the affected areas",
+      "B": "File the results, since finding issues shows that the test worked well",
+      "C": "Cancel future tests until the whole plan can be rewritten from scratch",
+      "D": "Blame the team members whose sections of the plan were incorrect"
+    },
+    "answer": "A",
+    "explanation": "Tests are valuable only when their findings lead to changes. Tracked fixes with owners and a follow-up test confirm the plan now works.",
+    "distractor_rationales": {
+      "B": "Filing results without action leaves the gaps in place.",
+      "C": "Stopping tests prevents improvement.",
+      "D": "Blame discourages honest reporting."
+    },
+    "references_topic": "Acting on DR test results",
+    "version": "0.4"
+  },
+  {
+    "id": "D7-0096",
+    "domain": 7,
+    "domain_name": "Security Operations",
+    "subtopic": "Physical security operations",
+    "difficulty": "hard",
+    "type": "application",
+    "stem": "An audit finds that no one knows how many master keys to the data center exist or who holds them. What should the organization do?",
+    "options": {
+      "A": "Label the master keys clearly so that they can be found more easily",
+      "B": "Rekey the locks and issue new keys under a logged key control process",
+      "C": "Ask current staff whether they have any master keys and trust their answers",
+      "D": "Leave the locks as they are, since the badge readers are the main control"
+    },
+    "answer": "B",
+    "explanation": "If key holders are unknown, the existing keys must be assumed compromised. Rekeying and tracking every new key restores control.",
+    "distractor_rationales": {
+      "A": "Labels make lost keys more useful to finders.",
+      "C": "Self-reporting does not account for former staff or copies.",
+      "D": "Keyed locks can bypass badge readers, so they matter."
+    },
+    "references_topic": "Physical key control",
+    "version": "0.4"
+  },
+  {
+    "id": "D7-0097",
+    "domain": 7,
+    "domain_name": "Security Operations",
+    "subtopic": "Personnel safety",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "An employee reports that a former partner has threatened to come to the office and hurt them. What is the BEST response?",
+    "options": {
+      "A": "Advise the employee to handle the matter privately outside of work",
+      "B": "Tell the employee to work from home indefinitely without further steps",
+      "C": "Coordinate security, HR, and law enforcement on a protective plan",
+      "D": "Post the former partner's photo in the lobby without telling anyone why"
+    },
+    "answer": "C",
+    "explanation": "Credible threats call for a coordinated plan, such as alerting reception, controlling access, and involving law enforcement, to protect the employee and colleagues.",
+    "distractor_rationales": {
+      "A": "The threat affects workplace safety, so the employer must act.",
+      "B": "Remote work may help but is not a full plan on its own.",
+      "D": "An unexplained posting is uncoordinated and may create other problems."
+    },
+    "references_topic": "Responding to workplace violence threats",
+    "version": "0.4"
+  }
+]

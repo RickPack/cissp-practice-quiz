@@ -1,0 +1,362 @@
+[
+  {
+    "id": "D8-0011",
+    "domain": 8,
+    "domain_name": "Software Development Security",
+    "subtopic": "Application security testing",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "Which testing technique identifies known vulnerabilities in the third-party libraries an application depends on?",
+    "options": {
+      "A": "Static application security testing",
+      "B": "Dynamic application security testing",
+      "C": "Penetration testing",
+      "D": "Software composition analysis"
+    },
+    "answer": "D",
+    "explanation": "Software composition analysis inventories an application's dependencies and matches their versions against vulnerability databases. It often checks licenses as well.",
+    "distractor_rationales": {
+      "A": "SAST looks for insecure patterns in the team's own code rather than inventorying dependency versions.",
+      "B": "DAST probes the running application from outside and does not inventory libraries.",
+      "C": "Penetration testing is broad and largely manual, not a dependency inventory."
+    },
+    "references_topic": "Software composition analysis",
+    "version": "0.2"
+  },
+  {
+    "id": "D8-0012",
+    "domain": 8,
+    "domain_name": "Software Development Security",
+    "subtopic": "Change and release management",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "Why should development, test, and production environments be kept separate?",
+    "options": {
+      "A": "To keep untested changes and developer access from affecting production systems and data",
+      "B": "To reduce hardware and licensing costs",
+      "C": "To let developers work directly in production",
+      "D": "To remove the need for version control"
+    },
+    "answer": "A",
+    "explanation": "Separation protects the integrity of production. Changes must pass through testing and change control, and developers do not need standing access to production data.",
+    "distractor_rationales": {
+      "B": "Separate environments usually cost more, not less.",
+      "C": "Separation exists precisely to keep developers out of production.",
+      "D": "Version control is still required."
+    },
+    "references_topic": "Environment separation",
+    "version": "0.2"
+  },
+  {
+    "id": "D8-0013",
+    "domain": 8,
+    "domain_name": "Software Development Security",
+    "subtopic": "Secure coding practices",
+    "difficulty": "easy",
+    "type": "application",
+    "stem": "A form field should accept only a five-digit postal code. Which validation approach is MOST secure?",
+    "options": {
+      "A": "Reject input containing known-bad characters such as quotes",
+      "B": "Allow only input that matches exactly five digits",
+      "C": "Validate the field only in the user's browser",
+      "D": "Accept any input and clean it up later"
+    },
+    "answer": "B",
+    "explanation": "Allow-list (positive) validation on the server accepts only input matching the expected format and rejects everything else.",
+    "distractor_rationales": {
+      "A": "Deny-lists miss alternate encodings and unanticipated characters.",
+      "C": "Browser-side checks are easily bypassed.",
+      "D": "Deferring validation lets dangerous input into the system."
+    },
+    "references_topic": "Allow-list input validation",
+    "version": "0.2"
+  },
+  {
+    "id": "D8-0014",
+    "domain": 8,
+    "domain_name": "Software Development Security",
+    "subtopic": "Source code weaknesses",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "A C program copies user input into a fixed-size array without checking its length, letting attackers overwrite adjacent memory. What is this weakness?",
+    "options": {
+      "A": "SQL injection",
+      "B": "Cross-site scripting",
+      "C": "Buffer overflow",
+      "D": "Race condition"
+    },
+    "answer": "C",
+    "explanation": "Writing past the end of a fixed-size buffer is a buffer overflow. Bounds checking, safe library functions, and memory-safe languages prevent it.",
+    "distractor_rationales": {
+      "A": "SQL injection alters database queries.",
+      "B": "Cross-site scripting injects script into web pages.",
+      "D": "A race condition depends on the timing of operations, not their size."
+    },
+    "references_topic": "Buffer overflows",
+    "version": "0.2"
+  },
+  {
+    "id": "D8-0015",
+    "domain": 8,
+    "domain_name": "Software Development Security",
+    "subtopic": "Application security testing",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "A company wants developers to fix code-level security flaws as early and cheaply as possible. Where should static analysis (SAST) run?",
+    "options": {
+      "A": "Once before each annual major release",
+      "B": "Only against the production environment",
+      "C": "Only as part of the yearly penetration test",
+      "D": "Automatically on every pull request, with findings sent to the author"
+    },
+    "answer": "D",
+    "explanation": "Running SAST on each pull request gives developers feedback while the code is fresh in their minds, when fixes are cheapest.",
+    "distractor_rationales": {
+      "A": "Annual scanning finds flaws months after they were written.",
+      "B": "SAST analyzes source code, not a production environment.",
+      "C": "Penetration testing is a different, late-stage activity."
+    },
+    "references_topic": "SAST in the CI pipeline",
+    "version": "0.2"
+  },
+  {
+    "id": "D8-0016",
+    "domain": 8,
+    "domain_name": "Software Development Security",
+    "subtopic": "Source code weaknesses",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "A comment feature displays user-submitted text on a page, and testers inject a script that runs in other users' browsers. What is the PRIMARY fix?",
+    "options": {
+      "A": "Encode user content for its output context when rendering",
+      "B": "Encrypt every stored comment in the database with AES",
+      "C": "Rate-limit how many comments each individual user may post per hour",
+      "D": "Serve the page over HTTPS"
+    },
+    "answer": "A",
+    "explanation": "This is stored cross-site scripting. Context-aware output encoding makes the browser treat user content as text rather than code. Sanitizing rich text and a content security policy add defense in depth.",
+    "distractor_rationales": {
+      "B": "Encryption at rest does not change what is rendered to other users.",
+      "C": "Rate limiting reduces volume but does not stop a single malicious comment.",
+      "D": "HTTPS protects the connection, but the script is still delivered and executed."
+    },
+    "references_topic": "Stored XSS prevention",
+    "version": "0.2"
+  },
+  {
+    "id": "D8-0017",
+    "domain": 8,
+    "domain_name": "Software Development Security",
+    "subtopic": "Change and release management",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "A release that passed testing causes errors in production, and the team spends six hours building a fix while users are affected. Which practice would MOST have reduced the downtime?",
+    "options": {
+      "A": "Assigning more developers to write the fix",
+      "B": "A tested rollback plan for every release",
+      "C": "Bundling changes into larger releases made less often",
+      "D": "Skipping code review to ship fixes faster"
+    },
+    "answer": "B",
+    "explanation": "A tested rollback plan restores the previous working version quickly. The team can then build the fix without users waiting.",
+    "distractor_rationales": {
+      "A": "More developers may not speed up a fix, and users stay affected in the meantime.",
+      "C": "Larger, rarer releases carry more risk per release.",
+      "D": "Skipping review increases the chance of further defects."
+    },
+    "references_topic": "Release rollback planning",
+    "version": "0.2"
+  },
+  {
+    "id": "D8-0018",
+    "domain": 8,
+    "domain_name": "Software Development Security",
+    "subtopic": "Development methodologies",
+    "difficulty": "medium",
+    "type": "knowledge",
+    "stem": "Which statement BEST describes DevSecOps?",
+    "options": {
+      "A": "Security reviews happen only after development is finished",
+      "B": "The security team writes and owns all application code",
+      "C": "Security is automated in the pipeline and shared by all teams",
+      "D": "Operations staff handle all security after deployment"
+    },
+    "answer": "C",
+    "explanation": "DevSecOps builds security practices such as automated testing, policy checks, and monitoring into the continuous delivery pipeline and makes security a shared responsibility of development, security, and operations.",
+    "distractor_rationales": {
+      "A": "End-of-cycle reviews are the opposite of DevSecOps.",
+      "B": "Developers write the code. Security enables and guides them.",
+      "D": "Leaving security until after deployment misses the \"shift left\" principle."
+    },
+    "references_topic": "DevSecOps",
+    "version": "0.2"
+  },
+  {
+    "id": "D8-0019",
+    "domain": 8,
+    "domain_name": "Software Development Security",
+    "subtopic": "Source code weaknesses",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "A program checks that a user may write to a file and then opens the file a moment later. An attacker swaps the file for a link to a system file between the check and the open. What is this vulnerability?",
+    "options": {
+      "A": "Integer overflow",
+      "B": "Cross-site request forgery (CSRF)",
+      "C": "Format string vulnerability",
+      "D": "A time-of-check to time-of-use (TOCTOU) race condition"
+    },
+    "answer": "D",
+    "explanation": "The state changed between the check and the use. The fix is to make the operation atomic, for example by opening the file first and then checking permissions on the open handle.",
+    "distractor_rationales": {
+      "A": "An integer overflow is arithmetic exceeding a type's range.",
+      "B": "CSRF tricks a browser into sending unwanted requests.",
+      "C": "A format string flaw passes user input as a format specifier."
+    },
+    "references_topic": "TOCTOU race conditions",
+    "version": "0.2"
+  },
+  {
+    "id": "D8-0020",
+    "domain": 8,
+    "domain_name": "Software Development Security",
+    "subtopic": "Software composition and supply chain",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "A developer wants to add a new open-source package to a production application. What should the team do FIRST?",
+    "options": {
+      "A": "Vet its maintainers, vulnerabilities, license, and exact name",
+      "B": "Install the newest version directly from whichever mirror is fastest",
+      "C": "Copy the package's code into the repository without tracking it",
+      "D": "Choose the most downloaded package with a similar name"
+    },
+    "answer": "A",
+    "explanation": "Vetting catches abandoned or vulnerable packages, license conflicts, and typosquatting impostors before they reach production. Pinning versions and recording the package in the SBOM follow.",
+    "distractor_rationales": {
+      "B": "Unverified mirrors and unpinned versions invite tampered or breaking releases.",
+      "C": "Untracked copies cannot be scanned or updated.",
+      "D": "Popularity is not vetting, and typosquats imitate popular names."
+    },
+    "references_topic": "Vetting open-source dependencies",
+    "version": "0.2"
+  },
+  {
+    "id": "D8-0021",
+    "domain": 8,
+    "domain_name": "Software Development Security",
+    "subtopic": "API security",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "A login API receives millions of requests using username and password pairs leaked from other companies' breaches. Which control BEST reduces successful account takeovers without blocking legitimate users?",
+    "options": {
+      "A": "Return detailed errors saying whether the username or password was wrong",
+      "B": "Rate limiting and bot detection on login, plus MFA",
+      "C": "Disable the login API until the attack stops",
+      "D": "Increase the minimum password length for new accounts"
+    },
+    "answer": "B",
+    "explanation": "Credential stuffing is countered by rate limiting and bot detection at the login endpoint, checks against known breached passwords, and MFA so that a correct password alone is not enough.",
+    "distractor_rationales": {
+      "A": "Detailed errors help attackers confirm valid usernames.",
+      "C": "Disabling login locks out legitimate users.",
+      "D": "Reused passwords from other breaches stay valid regardless of new length rules."
+    },
+    "references_topic": "Credential stuffing defenses",
+    "version": "0.2"
+  },
+  {
+    "id": "D8-0022",
+    "domain": 8,
+    "domain_name": "Software Development Security",
+    "subtopic": "Acquired software security",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "A business unit wants to adopt a SaaS tool that will process customer data, and the vendor offers only a marketing security whitepaper. What should the security manager require BEFORE approval?",
+    "options": {
+      "A": "Nothing further, since SaaS vendors handle security themselves",
+      "B": "A full review of the vendor's application source code",
+      "C": "Independent assurance, a requirements review, and contract terms",
+      "D": "A penetration test of the vendor's production systems by the business unit"
+    },
+    "answer": "C",
+    "explanation": "Due diligence for SaaS means independent assurance (for example a SOC 2 Type II report or equivalent certification), a review against the company's security requirements, and contract terms covering breach notification, data handling, and exit.",
+    "distractor_rationales": {
+      "A": "The company remains accountable for customer data it places with a vendor.",
+      "B": "SaaS vendors rarely share source code, and it is not needed for this decision.",
+      "D": "Testing a vendor's production systems without permission is unauthorized."
+    },
+    "references_topic": "SaaS security due diligence",
+    "version": "0.2"
+  },
+  {
+    "id": "D8-0023",
+    "domain": 8,
+    "domain_name": "Software Development Security",
+    "subtopic": "Source code weaknesses",
+    "difficulty": "hard",
+    "type": "application",
+    "stem": "A banking site uses session cookies. An attacker's web page makes a victim's browser submit a hidden funds-transfer form to the bank while the victim is logged in. Which defense BEST prevents this?",
+    "options": {
+      "A": "Longer, more random session identifiers in the cookie",
+      "B": "Serving the entire site over HTTPS",
+      "C": "Input validation on the transfer amount field",
+      "D": "Anti-CSRF tokens plus SameSite session cookies"
+    },
+    "answer": "D",
+    "explanation": "This is cross-site request forgery. An unpredictable token tied to the session on every state-changing request, together with SameSite cookie settings, ensures the request really came from the bank's own pages.",
+    "distractor_rationales": {
+      "A": "The browser still sends the cookie automatically, however long it is.",
+      "B": "HTTPS does not stop cross-site form submission.",
+      "C": "Validating the amount does not confirm that the user intended the request."
+    },
+    "references_topic": "Cross-site request forgery",
+    "version": "0.2"
+  },
+  {
+    "id": "D8-0024",
+    "domain": 8,
+    "domain_name": "Software Development Security",
+    "subtopic": "CI/CD and pipeline security",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "A CI/CD pipeline stores long-lived cloud administrator keys as plaintext environment variables, and many contributors can edit the pipeline files. What is the BEST improvement?",
+    "options": {
+      "A": "Use short-lived, scoped credentials via workload identity",
+      "B": "Keep the same keys but rotate them once every year",
+      "C": "Base64-encode the keys so they are not stored in plaintext",
+      "D": "Move the keys into the repository README for visibility"
+    },
+    "answer": "A",
+    "explanation": "Workload identity federation issues short-lived, narrowly scoped credentials to each pipeline run, so there are no long-lived secrets to steal. Restricting who can change pipeline definitions closes the other half of the risk.",
+    "distractor_rationales": {
+      "B": "Annual rotation leaves a long exposure window for the same powerful keys.",
+      "C": "Base64 is an encoding, not encryption, and is trivially reversed.",
+      "D": "Putting keys in the README exposes them to anyone who can read the repository."
+    },
+    "references_topic": "Pipeline secrets and workload identity",
+    "version": "0.2"
+  },
+  {
+    "id": "D8-0025",
+    "domain": 8,
+    "domain_name": "Software Development Security",
+    "subtopic": "Secure coding practices",
+    "difficulty": "hard",
+    "type": "application",
+    "stem": "An application accepts serialized objects from clients and reconstructs them on the server. Testers achieve remote code execution by sending a crafted object. What is the BEST fix?",
+    "options": {
+      "A": "Compress the serialized objects before sending them",
+      "B": "Stop native deserialization of untrusted input; use validated JSON",
+      "C": "Give the server more memory to process the objects",
+      "D": "Encrypt the objects with a symmetric key that is embedded in the client application"
+    },
+    "answer": "B",
+    "explanation": "Native deserialization of untrusted data can instantiate attacker-chosen objects. Use a data-only format such as JSON with schema validation, or at minimum strict type allow-lists and integrity checks.",
+    "distractor_rationales": {
+      "A": "Compression does not change what the server reconstructs.",
+      "C": "Memory has nothing to do with this vulnerability.",
+      "D": "A key embedded in the client can be extracted, so attackers can still craft encrypted objects."
+    },
+    "references_topic": "Insecure deserialization",
+    "version": "0.2"
+  }
+]

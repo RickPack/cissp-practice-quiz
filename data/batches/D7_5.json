@@ -1,0 +1,794 @@
+[
+  {
+    "id": "D7-0098",
+    "domain": 7,
+    "domain_name": "Security Operations",
+    "subtopic": "Investigations and evidence",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "Which principle states that a person who commits a crime leaves something behind at the scene and takes something away?",
+    "options": {
+      "A": "The best evidence rule",
+      "B": "The prudent person rule",
+      "C": "The principle of least privilege",
+      "D": "Locard's exchange principle"
+    },
+    "answer": "D",
+    "explanation": "Locard's exchange principle underpins forensic work: every contact leaves traces, including digital ones such as logs and artifacts.",
+    "distractor_rationales": {
+      "A": "The best evidence rule prefers original documents.",
+      "B": "The prudent person rule describes reasonable care by management.",
+      "C": "Least privilege limits access rights."
+    },
+    "references_topic": "Locard's exchange principle",
+    "version": "1.0"
+  },
+  {
+    "id": "D7-0099",
+    "domain": 7,
+    "domain_name": "Security Operations",
+    "subtopic": "Digital forensics",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "Where might a forensic examiner find fragments of old data at the end of a file's last disk cluster?",
+    "options": {
+      "A": "Slack space",
+      "B": "The system's swap file configuration settings",
+      "C": "The network interface card's firmware",
+      "D": "The computer's BIOS password store"
+    },
+    "answer": "A",
+    "explanation": "When a file does not fill its last cluster, the leftover space, called slack space, can still hold data from earlier files.",
+    "distractor_rationales": {
+      "B": "Swap configuration settings do not hold old file fragments.",
+      "C": "NIC firmware does not store file data.",
+      "D": "A BIOS password store holds only settings."
+    },
+    "references_topic": "File slack space",
+    "version": "1.0"
+  },
+  {
+    "id": "D7-0100",
+    "domain": 7,
+    "domain_name": "Security Operations",
+    "subtopic": "Logging and monitoring",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "What information does NetFlow-style flow data provide?",
+    "options": {
+      "A": "The full contents of every packet, including any attachments and file transfers",
+      "B": "Metadata about connections, such as addresses, ports, and volumes",
+      "C": "The passwords users type into websites",
+      "D": "The configuration of each network device"
+    },
+    "answer": "B",
+    "explanation": "Flow records summarize who talked to whom, when, on which ports, and how much data moved, without storing packet contents.",
+    "distractor_rationales": {
+      "A": "Full packet capture records contents; flow data does not.",
+      "C": "Flow data does not capture passwords.",
+      "D": "Device configuration is not part of flow data."
+    },
+    "references_topic": "Flow data",
+    "version": "1.0"
+  },
+  {
+    "id": "D7-0101",
+    "domain": 7,
+    "domain_name": "Security Operations",
+    "subtopic": "Configuration management",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "Which is a widely used, consensus-based source of secure configuration guidance for operating systems and applications?",
+    "options": {
+      "A": "The OWASP Top 10 list of web application security risks",
+      "B": "The Common Vulnerabilities and Exposures list of known flaws",
+      "C": "CIS Benchmarks",
+      "D": "The MITRE ATT&CK matrix of adversary techniques"
+    },
+    "answer": "C",
+    "explanation": "CIS Benchmarks give detailed hardening settings for many platforms, and organizations often base their baselines on them.",
+    "distractor_rationales": {
+      "A": "The OWASP Top 10 describes web risks, not configuration settings.",
+      "B": "CVE lists vulnerabilities.",
+      "D": "ATT&CK catalogs attacker behavior."
+    },
+    "references_topic": "CIS Benchmarks",
+    "version": "1.0"
+  },
+  {
+    "id": "D7-0102",
+    "domain": 7,
+    "domain_name": "Security Operations",
+    "subtopic": "Resource and media protection",
+    "difficulty": "easy",
+    "type": "managerial_best_first_most",
+    "stem": "Which protection is MOST important for backup tapes stored in an off-site vault?",
+    "options": {
+      "A": "Labeling each tape with the names of the systems and files it holds",
+      "B": "Keeping the tapes in the same room as the primary servers",
+      "C": "Allowing any employee to borrow tapes without signing them out",
+      "D": "Controlled access and suitable environmental conditions"
+    },
+    "answer": "D",
+    "explanation": "Stored media needs restricted access and stable temperature and humidity so it is both secure and readable when needed.",
+    "distractor_rationales": {
+      "A": "Detailed labels help attackers find valuable tapes.",
+      "B": "Storing tapes with the servers defeats off-site protection.",
+      "C": "Uncontrolled borrowing breaks custody."
+    },
+    "references_topic": "Protecting stored backup media",
+    "version": "1.0"
+  },
+  {
+    "id": "D7-0103",
+    "domain": 7,
+    "domain_name": "Security Operations",
+    "subtopic": "Detective and preventive controls",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "What is the main advantage of anomaly-based intrusion detection over signature-based detection?",
+    "options": {
+      "A": "It can detect new attacks that have no known signature",
+      "B": "It never produces false positives once it has been tuned and installed",
+      "C": "It needs no baseline of normal activity to work",
+      "D": "It is always cheaper to deploy and maintain"
+    },
+    "answer": "A",
+    "explanation": "Anomaly detection flags deviations from a learned baseline, so it can catch novel attacks, although it tends to produce more false positives.",
+    "distractor_rationales": {
+      "B": "Anomaly detection often produces more false positives.",
+      "C": "It depends on a baseline of normal activity.",
+      "D": "Cost varies and is not the main advantage."
+    },
+    "references_topic": "Signature and anomaly detection",
+    "version": "1.0"
+  },
+  {
+    "id": "D7-0104",
+    "domain": 7,
+    "domain_name": "Security Operations",
+    "subtopic": "Patch and vulnerability management",
+    "difficulty": "easy",
+    "type": "application",
+    "stem": "A critical patch was installed on a server last week, but the vulnerability scanner still reports the flaw. What is the MOST likely cause?",
+    "options": {
+      "A": "The scanner has a bug and should be uninstalled",
+      "B": "The server has not been rebooted to complete the patch",
+      "C": "The patch was too small to fix the problem",
+      "D": "The vulnerability has been renamed by the vendor since the patch was released"
+    },
+    "answer": "B",
+    "explanation": "Many patches take effect only after a restart. Patch verification should confirm reboots and rescan to prove the fix is active.",
+    "distractor_rationales": {
+      "A": "Removing the scanner hides the issue.",
+      "C": "Patch size is irrelevant.",
+      "D": "Renaming does not change scan results."
+    },
+    "references_topic": "Verifying patch installation",
+    "version": "1.0"
+  },
+  {
+    "id": "D7-0105",
+    "domain": 7,
+    "domain_name": "Security Operations",
+    "subtopic": "Change management",
+    "difficulty": "easy",
+    "type": "managerial_best_first_most",
+    "stem": "Who should approve a normal change to a production system?",
+    "options": {
+      "A": "The engineer who will implement the change",
+      "B": "Any user who will be affected by the change once it goes live",
+      "C": "The change advisory board or designated change authority",
+      "D": "The vendor that sold the system to the company"
+    },
+    "answer": "C",
+    "explanation": "Approval by a change authority, independent of the implementer, makes sure risk, testing, and backout plans are reviewed before the change.",
+    "distractor_rationales": {
+      "A": "Self-approval removes independent review.",
+      "B": "Individual users lack authority and full context.",
+      "D": "Vendors do not govern the organization's changes."
+    },
+    "references_topic": "Who approves normal changes",
+    "version": "1.0"
+  },
+  {
+    "id": "D7-0106",
+    "domain": 7,
+    "domain_name": "Security Operations",
+    "subtopic": "Backup and recovery strategies",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "Which backup type gives the fastest and simplest restore?",
+    "options": {
+      "A": "Incremental backups taken every day since the last full backup",
+      "B": "Differential backups taken since the last full backup",
+      "C": "A mix of weekly differential and daily incremental backups",
+      "D": "A full backup"
+    },
+    "answer": "D",
+    "explanation": "A full backup contains everything, so a restore needs only one set. Incremental and differential schemes save backup time but require more sets to restore.",
+    "distractor_rationales": {
+      "A": "Incrementals require the full backup plus every incremental.",
+      "B": "Differentials require the full backup plus the latest differential.",
+      "C": "Mixed schemes require several sets."
+    },
+    "references_topic": "Full backup restore speed",
+    "version": "1.0"
+  },
+  {
+    "id": "D7-0107",
+    "domain": 7,
+    "domain_name": "Security Operations",
+    "subtopic": "Investigations and evidence",
+    "difficulty": "medium",
+    "type": "knowledge",
+    "stem": "When building a case against a suspected insider, investigators often examine means, opportunity, and what else?",
+    "options": {
+      "A": "Motive",
+      "B": "Media",
+      "C": "Metadata",
+      "D": "Mitigation"
+    },
+    "answer": "A",
+    "explanation": "Means, opportunity, and motive help investigators assess whether a suspect could and would have committed the act.",
+    "distractor_rationales": {
+      "B": "Media may hold evidence but is not one of the three elements.",
+      "C": "Metadata is a type of evidence, not a case element.",
+      "D": "Mitigation relates to response, not suspect analysis."
+    },
+    "references_topic": "Means, opportunity, and motive",
+    "version": "1.0"
+  },
+  {
+    "id": "D7-0108",
+    "domain": 7,
+    "domain_name": "Security Operations",
+    "subtopic": "Digital forensics",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "Investigators seize a suspect's smartphone that is still powered on. What should they do to protect the evidence?",
+    "options": {
+      "A": "Turn on airplane mode by unlocking the phone with the suspect's help",
+      "B": "Place it in a signal-blocking Faraday bag and keep it powered",
+      "C": "Plug it into an office computer to back it up right away",
+      "D": "Remove the SIM card and battery at once"
+    },
+    "answer": "B",
+    "explanation": "A Faraday bag blocks network signals, preventing remote wipe or new data, while keeping the phone powered preserves volatile data and its unlocked state.",
+    "distractor_rationales": {
+      "A": "Relying on the suspect and interacting with the phone risks alteration.",
+      "C": "Syncing to an office computer changes data and is not forensically sound.",
+      "D": "Removing power loses volatile data and may lock the device."
+    },
+    "references_topic": "Isolating seized mobile devices",
+    "version": "1.0"
+  },
+  {
+    "id": "D7-0109",
+    "domain": 7,
+    "domain_name": "Security Operations",
+    "subtopic": "SIEM, SOAR, and threat intelligence",
+    "difficulty": "medium",
+    "type": "knowledge",
+    "stem": "Which capability detects threats by learning each user's normal behavior and flagging significant deviations?",
+    "options": {
+      "A": "Signature-based antivirus",
+      "B": "Network address translation",
+      "C": "User and entity behavior analytics (UEBA)",
+      "D": "Static application security testing of source code"
+    },
+    "answer": "C",
+    "explanation": "UEBA builds baselines for users and devices and highlights unusual activity, such as odd access times or large downloads, that rules may miss.",
+    "distractor_rationales": {
+      "A": "Signatures match known malware.",
+      "B": "NAT translates addresses.",
+      "D": "SAST analyzes source code."
+    },
+    "references_topic": "User and entity behavior analytics",
+    "version": "1.0"
+  },
+  {
+    "id": "D7-0110",
+    "domain": 7,
+    "domain_name": "Security Operations",
+    "subtopic": "Configuration management",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "During an outage, an engineer changed a server's configuration directly to restore service. What should happen afterward?",
+    "options": {
+      "A": "Nothing, since the outage has been resolved",
+      "B": "Revert the change immediately, even if the outage returns",
+      "C": "Leave the change undocumented, since it was an emergency",
+      "D": "Record it and update the baseline or configuration code, or revert it"
+    },
+    "answer": "D",
+    "explanation": "Emergency changes must still be recorded and reviewed. The baseline or infrastructure code should be updated or the change reversed, or drift will creep in.",
+    "distractor_rationales": {
+      "A": "Undocumented changes cause drift and surprises.",
+      "B": "Blind reversion could restart the outage.",
+      "C": "Emergencies do not remove the need for records."
+    },
+    "references_topic": "Reconciling emergency configuration changes",
+    "version": "1.0"
+  },
+  {
+    "id": "D7-0111",
+    "domain": 7,
+    "domain_name": "Security Operations",
+    "subtopic": "Foundational security operations",
+    "difficulty": "medium",
+    "type": "knowledge",
+    "stem": "A master encryption key is divided so that three custodians each hold one part, and no single custodian knows the whole key. What is this control called?",
+    "options": {
+      "A": "Split knowledge",
+      "B": "Job rotation",
+      "C": "Mandatory vacation",
+      "D": "Least privilege"
+    },
+    "answer": "A",
+    "explanation": "Split knowledge ensures no one person has the complete secret. It is often paired with dual control, which requires several people to act together.",
+    "distractor_rationales": {
+      "B": "Job rotation moves people between roles.",
+      "C": "Mandatory vacation forces time away to expose fraud.",
+      "D": "Least privilege limits rights, but does not split a secret."
+    },
+    "references_topic": "Split knowledge",
+    "version": "1.0"
+  },
+  {
+    "id": "D7-0112",
+    "domain": 7,
+    "domain_name": "Security Operations",
+    "subtopic": "Foundational security operations",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "The security team promises customers that critical vulnerabilities will be patched within 7 days, but the internal IT operations team has no commitment to that timeline. What is the BEST fix?",
+    "options": {
+      "A": "Ask customers to accept longer patch times",
+      "B": "Agree an operational level agreement with IT operations that supports the commitment",
+      "C": "Have the security team patch all servers itself without telling operations",
+      "D": "Remove the patching commitment from customer contracts"
+    },
+    "answer": "B",
+    "explanation": "External service commitments depend on internal teams. An operational level agreement defines what each internal team must deliver to meet them.",
+    "distractor_rationales": {
+      "A": "Customers were promised a specific timeline.",
+      "C": "Bypassing operations creates change and stability risks.",
+      "D": "Dropping the commitment avoids the issue instead of solving it."
+    },
+    "references_topic": "Operational level agreements",
+    "version": "1.0"
+  },
+  {
+    "id": "D7-0113",
+    "domain": 7,
+    "domain_name": "Security Operations",
+    "subtopic": "Resource and media protection",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "A drive from a system processing Secret data is needed in an Unclassified lab. What is the correct handling?",
+    "options": {
+      "A": "Reformat it quickly and use it in the lab",
+      "B": "Label it Unclassified and use it right away",
+      "C": "Only reuse it after an approved purge, or destroy it",
+      "D": "Use it as is, since the lab is inside the same building"
+    },
+    "answer": "C",
+    "explanation": "Moving media to a lower classification requires approved sanitization, and many policies simply require destruction. A quick format leaves data recoverable.",
+    "distractor_rationales": {
+      "A": "Reformatting does not remove data.",
+      "B": "Relabeling does not change the contents.",
+      "D": "Location does not change classification."
+    },
+    "references_topic": "Reusing media across classification levels",
+    "version": "1.0"
+  },
+  {
+    "id": "D7-0114",
+    "domain": 7,
+    "domain_name": "Security Operations",
+    "subtopic": "Incident management",
+    "difficulty": "medium",
+    "type": "knowledge",
+    "stem": "A hacking group publicly announces it will attack companies in the retailer's industry next week. For the retailer, what is this announcement?",
+    "options": {
+      "A": "An indicator that an incident has already occurred",
+      "B": "A confirmed incident requiring containment",
+      "C": "A false positive from the intrusion detection system",
+      "D": "A precursor that an incident may occur"
+    },
+    "answer": "D",
+    "explanation": "A precursor suggests an incident may happen in the future. An indicator suggests one may have occurred or be under way.",
+    "distractor_rationales": {
+      "A": "Nothing has happened yet, so it is not an indicator.",
+      "B": "There is no confirmed incident.",
+      "C": "The announcement is not an IDS alert."
+    },
+    "references_topic": "Precursors and indicators",
+    "version": "1.0"
+  },
+  {
+    "id": "D7-0115",
+    "domain": 7,
+    "domain_name": "Security Operations",
+    "subtopic": "Detective and preventive controls",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "A security team plants a fake administrator credential in a configuration file that no legitimate process uses. What is the purpose?",
+    "options": {
+      "A": "To trigger an alert if anyone tries to use it",
+      "B": "To give administrators a backup login if they forget their password",
+      "C": "To slow down legitimate users who read the file",
+      "D": "To store the real administrator password in a hidden place"
+    },
+    "answer": "A",
+    "explanation": "A honeytoken has no legitimate use, so any attempt to use it signals an intruder with high confidence.",
+    "distractor_rationales": {
+      "B": "A fake credential is not a real backup login.",
+      "C": "It has no effect on legitimate users.",
+      "D": "It is a decoy, not the real password."
+    },
+    "references_topic": "Honeytokens",
+    "version": "1.0"
+  },
+  {
+    "id": "D7-0116",
+    "domain": 7,
+    "domain_name": "Security Operations",
+    "subtopic": "Change management",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "A post-implementation review found that a network change quietly removed a firewall rule that blocked access to a database. What should the organization change in its process?",
+    "options": {
+      "A": "Stop doing post-implementation reviews, since they only ever find new problems",
+      "B": "Include security review in the CAB for changes that affect security controls",
+      "C": "Ban all network changes for the rest of the year",
+      "D": "Ask engineers to be more careful without changing any process"
+    },
+    "answer": "B",
+    "explanation": "Changes that touch security controls need security input before approval. Post-implementation reviews then confirm nothing was weakened.",
+    "distractor_rationales": {
+      "A": "Reviews found the problem; they are valuable.",
+      "C": "A change ban is impractical.",
+      "D": "Relying on care without process change will repeat the mistake."
+    },
+    "references_topic": "Post-implementation reviews",
+    "version": "1.0"
+  },
+  {
+    "id": "D7-0117",
+    "domain": 7,
+    "domain_name": "Security Operations",
+    "subtopic": "Backup and recovery strategies",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "Backups were encrypted, but the only copy of the encryption key was on the backup server, which ransomware also encrypted. What should the design include?",
+    "options": {
+      "A": "A shorter encryption key that is easier to remember",
+      "B": "Unencrypted backups, so no key is ever needed",
+      "C": "Key escrow or storage separate from the backup system",
+      "D": "A second copy of the key saved on the same backup server"
+    },
+    "answer": "C",
+    "explanation": "Keys must survive the loss of the systems they protect. Storing them in a separate key management service or escrow keeps backups recoverable.",
+    "distractor_rationales": {
+      "A": "Shorter keys weaken encryption.",
+      "B": "Unencrypted backups expose data.",
+      "D": "A copy on the same server is lost with it."
+    },
+    "references_topic": "Protecting backup encryption keys",
+    "version": "1.0"
+  },
+  {
+    "id": "D7-0118",
+    "domain": 7,
+    "domain_name": "Security Operations",
+    "subtopic": "Disaster recovery",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "After a data center loss, teams begin restoring business applications first, but none work because authentication and DNS are still down. What should the DR plan have specified?",
+    "options": {
+      "A": "Restoring applications in alphabetical order",
+      "B": "Letting each team restore its systems whenever it is ready",
+      "C": "Restoring the largest systems first, since they take longest",
+      "D": "A recovery order based on dependencies, starting with core services"
+    },
+    "answer": "D",
+    "explanation": "Applications depend on core infrastructure such as identity, DNS, and networking. The plan should sequence recovery by dependency and business priority.",
+    "distractor_rationales": {
+      "A": "Alphabetical order ignores dependencies.",
+      "B": "Uncoordinated recovery wastes time.",
+      "C": "Size does not determine dependency."
+    },
+    "references_topic": "Recovery sequencing",
+    "version": "1.0"
+  },
+  {
+    "id": "D7-0119",
+    "domain": 7,
+    "domain_name": "Security Operations",
+    "subtopic": "DR plan testing",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "A company wants to confirm that its emergency contact list is current and that people can be reached quickly. Which test fits BEST?",
+    "options": {
+      "A": "A call tree or notification test that actually contacts everyone on the list",
+      "B": "A full-interruption test that shuts down the primary data center",
+      "C": "A parallel test that processes live transactions at the recovery site alongside production",
+      "D": "A code review of the recovery scripts"
+    },
+    "answer": "A",
+    "explanation": "A notification test exercises the communication plan itself, revealing wrong numbers and slow responses without disrupting operations.",
+    "distractor_rationales": {
+      "B": "Full interruption is disruptive and not needed for this goal.",
+      "C": "A parallel test focuses on system recovery.",
+      "D": "Code review does not test contact information."
+    },
+    "references_topic": "Call tree tests",
+    "version": "1.0"
+  },
+  {
+    "id": "D7-0120",
+    "domain": 7,
+    "domain_name": "Security Operations",
+    "subtopic": "Physical security operations",
+    "difficulty": "medium",
+    "type": "knowledge",
+    "stem": "Which is primarily a detective physical control?",
+    "options": {
+      "A": "A locked door on the server room",
+      "B": "Monitored CCTV cameras with intrusion alarms",
+      "C": "A fence around the parking lot",
+      "D": "Bollards in front of the building's main entrance doors"
+    },
+    "answer": "B",
+    "explanation": "Monitored cameras and alarms detect and alert on events. Locks, fences, and bollards mainly prevent or delay entry.",
+    "distractor_rationales": {
+      "A": "A lock is preventive.",
+      "C": "A fence is preventive or deterrent.",
+      "D": "Bollards are preventive."
+    },
+    "references_topic": "Detective physical controls",
+    "version": "1.0"
+  },
+  {
+    "id": "D7-0121",
+    "domain": 7,
+    "domain_name": "Security Operations",
+    "subtopic": "Physical security operations",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "An employee realizes on Monday that they lost their access badge on Friday but did not report it. What control would have reduced the exposure?",
+    "options": {
+      "A": "A policy to replace badges once every five years",
+      "B": "Printing the company's address on each badge",
+      "C": "A requirement to report lost badges immediately, with prompt deactivation",
+      "D": "Allowing employees to share badges when one is lost"
+    },
+    "answer": "C",
+    "explanation": "The faster a lost badge is reported and deactivated, the shorter the window for misuse. Clear reporting requirements and an easy process make this happen.",
+    "distractor_rationales": {
+      "A": "Replacement schedules do not address lost badges.",
+      "B": "An address on the badge helps a finder misuse it.",
+      "D": "Sharing badges destroys accountability."
+    },
+    "references_topic": "Reporting lost badges",
+    "version": "1.0"
+  },
+  {
+    "id": "D7-0122",
+    "domain": 7,
+    "domain_name": "Security Operations",
+    "subtopic": "Personnel safety",
+    "difficulty": "medium",
+    "type": "knowledge",
+    "stem": "A chemical spill on the highway next to the office releases toxic fumes. Emergency services tell nearby businesses to keep people indoors. What is this response called?",
+    "options": {
+      "A": "Full evacuation to the assembly point",
+      "B": "Lockdown against an active intruder",
+      "C": "Invoking the disaster recovery site",
+      "D": "Shelter in place"
+    },
+    "answer": "D",
+    "explanation": "Shelter in place keeps people indoors, often with ventilation shut down, when going outside would be more dangerous.",
+    "distractor_rationales": {
+      "A": "Evacuating would expose people to the fumes.",
+      "B": "Lockdown responds to a threat inside or near the building, such as an intruder.",
+      "C": "DR invocation is about IT recovery, not personal safety."
+    },
+    "references_topic": "Shelter in place",
+    "version": "1.0"
+  },
+  {
+    "id": "D7-0123",
+    "domain": 7,
+    "domain_name": "Security Operations",
+    "subtopic": "Investigations and evidence",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "An investigation needs logs held by a SaaS provider that the company cannot access directly, and the provider deletes them after 30 days. What should the company do FIRST?",
+    "options": {
+      "A": "Send the provider a preservation request through counsel and follow the contract terms",
+      "B": "Wait until the investigation is complete before contacting the provider",
+      "C": "Ask a friend who works at the provider to copy the logs unofficially",
+      "D": "Assume the logs are unavailable and continue without them"
+    },
+    "answer": "A",
+    "explanation": "Time-limited evidence must be preserved quickly. A formal preservation request, backed by the contract or legal process, keeps the logs available and admissible.",
+    "distractor_rationales": {
+      "B": "Waiting may let the logs be deleted.",
+      "C": "Unofficial copies may be unlawful and inadmissible.",
+      "D": "Giving up loses potentially critical evidence."
+    },
+    "references_topic": "Preserving cloud evidence",
+    "version": "1.0"
+  },
+  {
+    "id": "D7-0124",
+    "domain": 7,
+    "domain_name": "Security Operations",
+    "subtopic": "Logging and monitoring",
+    "difficulty": "hard",
+    "type": "application",
+    "stem": "A review finds that cloud API audit logging is enabled in only two of the company's eight cloud regions, and an attacker created resources in an unmonitored region. What is the BEST fix?",
+    "options": {
+      "A": "Stop using the unmonitored regions and do nothing else",
+      "B": "Enable audit logging in all regions centrally and alert if it is disabled",
+      "C": "Review the two monitored regions' logs more frequently",
+      "D": "Ask engineers to report any cloud resources they create in other regions themselves"
+    },
+    "answer": "B",
+    "explanation": "Attackers use blind spots. Organization-wide logging that cannot be turned off locally, with alerts on changes, closes them.",
+    "distractor_rationales": {
+      "A": "Unused regions can still be used by attackers unless restricted and monitored.",
+      "C": "More review of monitored regions does not cover the gap.",
+      "D": "Attackers will not self-report."
+    },
+    "references_topic": "Organization-wide cloud audit logging",
+    "version": "1.0"
+  },
+  {
+    "id": "D7-0125",
+    "domain": 7,
+    "domain_name": "Security Operations",
+    "subtopic": "SIEM, SOAR, and threat intelligence",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "After a log source changed its format, several SIEM detections silently stopped working for months. What is the BEST prevention?",
+    "options": {
+      "A": "Stop updating log sources so formats never change",
+      "B": "Review each detection rule by hand once a year",
+      "C": "Treat detections as code and test them regularly with sample events",
+      "D": "Add more detection rules so that missing ones matter less"
+    },
+    "answer": "C",
+    "explanation": "Detections should be version-controlled and tested automatically against known-bad events, so a broken rule is noticed quickly.",
+    "distractor_rationales": {
+      "A": "Freezing updates is impractical and insecure.",
+      "B": "Annual reviews let failures last for months.",
+      "D": "More rules do not fix broken ones."
+    },
+    "references_topic": "Testing detections",
+    "version": "1.0"
+  },
+  {
+    "id": "D7-0126",
+    "domain": 7,
+    "domain_name": "Security Operations",
+    "subtopic": "Incident management",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "Ransomware has encrypted key systems, and the attackers demand payment. Who should decide whether to pay, and on what basis?",
+    "options": {
+      "A": "The security analyst who first detected the attack, based on how urgent it seems",
+      "B": "The IT help desk, based on how many users are calling in about the outage",
+      "C": "The attackers, based on how quickly the company responds to their demand",
+      "D": "Senior management with legal counsel, weighing law, sanctions, and recovery options"
+    },
+    "answer": "D",
+    "explanation": "Paying ransom has legal, sanctions, ethical, and business implications. Senior leaders should decide with legal advice and a clear view of recovery alternatives.",
+    "distractor_rationales": {
+      "A": "Analysts lack the authority.",
+      "B": "The help desk lacks authority and context.",
+      "C": "The decision belongs to the organization, not the attackers."
+    },
+    "references_topic": "Ransom payment decisions",
+    "version": "1.0"
+  },
+  {
+    "id": "D7-0127",
+    "domain": 7,
+    "domain_name": "Security Operations",
+    "subtopic": "Patch and vulnerability management",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "A holiday change freeze is in place when a critical, actively exploited vulnerability is announced for the company's web servers. What is the BEST approach?",
+    "options": {
+      "A": "Use a pre-defined emergency path that allows critical patches during freezes",
+      "B": "Wait until the freeze ends in three weeks, as the change policy strictly requires",
+      "C": "Patch secretly without any record, to avoid breaking the freeze",
+      "D": "Take the web servers offline for the entire freeze period"
+    },
+    "answer": "A",
+    "explanation": "Freeze policies should include an emergency process for urgent security fixes, with approval and records, so risk is managed without abandoning control.",
+    "distractor_rationales": {
+      "B": "Waiting leaves an actively exploited flaw open.",
+      "C": "Unrecorded changes undermine control and troubleshooting.",
+      "D": "Taking servers offline for weeks is disproportionate."
+    },
+    "references_topic": "Patching during change freezes",
+    "version": "1.0"
+  },
+  {
+    "id": "D7-0128",
+    "domain": 7,
+    "domain_name": "Security Operations",
+    "subtopic": "Disaster recovery",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "During a DR test, the company failed over to its cloud recovery region and found it lacked the logging, WAF, and monitoring used in production. What is the BEST fix?",
+    "options": {
+      "A": "Accept the gap, since the DR region is used only during disasters",
+      "B": "Build equivalent security controls into the DR environment and test them",
+      "C": "Disable security controls in production so that both environments match exactly",
+      "D": "Plan to add the controls during an actual disaster if needed"
+    },
+    "answer": "B",
+    "explanation": "Attackers often strike during disruption. The recovery environment must carry the same security controls, and DR tests should verify them.",
+    "distractor_rationales": {
+      "A": "Disasters are exactly when protection matters.",
+      "C": "Weakening production is the wrong direction.",
+      "D": "There is no time to build controls during a disaster."
+    },
+    "references_topic": "Security controls in the DR environment",
+    "version": "1.0"
+  },
+  {
+    "id": "D7-0129",
+    "domain": 7,
+    "domain_name": "Security Operations",
+    "subtopic": "DR plan testing",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "A DR test met every system's recovery time, but the business still could not operate because a SaaS provider it depends on was not included. What is the BEST improvement?",
+    "options": {
+      "A": "Declare the test a success, since every internal system met its target",
+      "B": "Remove the SaaS provider from the business process",
+      "C": "Include critical third-party dependencies in DR planning and tests",
+      "D": "Ask the SaaS provider to take over the company's entire DR plan"
+    },
+    "answer": "C",
+    "explanation": "Recovery is measured by the business process, not individual systems. Tests should include critical providers, with contacts, failover options, and workarounds.",
+    "distractor_rationales": {
+      "A": "System targets met, but the business goal was not.",
+      "B": "Removing a critical provider may be impractical.",
+      "D": "The company remains accountable for its own recovery."
+    },
+    "references_topic": "Including third parties in DR tests",
+    "version": "1.0"
+  },
+  {
+    "id": "D7-0130",
+    "domain": 7,
+    "domain_name": "Security Operations",
+    "subtopic": "Personnel safety",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "Technicians often work alone overnight at remote substations with poor phone coverage. What is the BEST safety control?",
+    "options": {
+      "A": "Ask technicians to post their location on social media",
+      "B": "Assign technicians to work only during daylight hours in summer",
+      "C": "Tell technicians to handle emergencies by themselves",
+      "D": "Scheduled check-ins with escalation if missed, plus a duress or man-down alarm"
+    },
+    "answer": "D",
+    "explanation": "Lone worker programs use regular check-ins, escalation when someone does not respond, and alarms that summon help automatically.",
+    "distractor_rationales": {
+      "A": "Public posting exposes workers to additional risk.",
+      "B": "Restricting hours may be impossible for operational work.",
+      "C": "Leaving workers without support endangers them."
+    },
+    "references_topic": "Lone worker safety",
+    "version": "1.0"
+  }
+]

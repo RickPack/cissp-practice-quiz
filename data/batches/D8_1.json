@@ -1,0 +1,242 @@
+[
+  {
+    "id": "D8-0001",
+    "domain": 8,
+    "domain_name": "Software Development Security",
+    "subtopic": "Source code weaknesses",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "Which coding practice is the MOST effective defense against SQL injection?",
+    "options": {
+      "A": "Escaping single quote characters with a custom string function",
+      "B": "Hiding database error messages from users",
+      "C": "Using parameterized queries (prepared statements)",
+      "D": "Storing the database on a separate server"
+    },
+    "answer": "C",
+    "explanation": "Parameterized queries keep code and data separate, so user input can never change the structure of the query.",
+    "distractor_rationales": {
+      "A": "Hand-written escaping is error-prone and can be bypassed through alternate encodings or numeric contexts.",
+      "B": "Hiding errors slows an attacker's reconnaissance but does not prevent injection. Blind SQL injection still works.",
+      "D": "Where the database runs has no effect on how queries are built."
+    },
+    "references_topic": "SQL injection prevention",
+    "version": "0.1"
+  },
+  {
+    "id": "D8-0002",
+    "domain": 8,
+    "domain_name": "Software Development Security",
+    "subtopic": "Development methodologies",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "Which software development methodology delivers working software in short, time-boxed iterations and welcomes changing requirements throughout the project?",
+    "options": {
+      "A": "Waterfall",
+      "B": "V-model",
+      "C": "Cleanroom",
+      "D": "Agile"
+    },
+    "answer": "D",
+    "explanation": "Agile methods deliver working software in short iterations, such as sprints, and adapt to changing requirements throughout the project.",
+    "distractor_rationales": {
+      "A": "Waterfall moves through sequential phases, and late requirement changes are costly.",
+      "B": "The V-model is sequential, pairing each development phase with a matching verification phase.",
+      "C": "Cleanroom focuses on formal methods and statistical quality certification to prevent defects, not on accommodating changing requirements."
+    },
+    "references_topic": "Agile development",
+    "version": "0.1"
+  },
+  {
+    "id": "D8-0003",
+    "domain": 8,
+    "domain_name": "Software Development Security",
+    "subtopic": "Software composition and supply chain",
+    "difficulty": "easy",
+    "type": "application",
+    "stem": "A development team wants to know which open-source libraries and versions its application includes, so it can respond quickly when new vulnerabilities are announced. Which artifact BEST supports this?",
+    "options": {
+      "A": "A software bill of materials (SBOM)",
+      "B": "A data flow diagram of the application's components",
+      "C": "A service-level agreement",
+      "D": "A code-signing certificate"
+    },
+    "answer": "A",
+    "explanation": "An SBOM lists the components, versions, and dependencies in a piece of software, allowing fast impact analysis when a new vulnerability is published.",
+    "distractor_rationales": {
+      "B": "A data flow diagram shows how data moves, not which component versions are present.",
+      "C": "A service-level agreement defines service commitments, not software contents.",
+      "D": "Code signing proves who published the software and that it was not modified. It does not inventory what is inside."
+    },
+    "references_topic": "Software bill of materials",
+    "version": "0.1"
+  },
+  {
+    "id": "D8-0004",
+    "domain": 8,
+    "domain_name": "Software Development Security",
+    "subtopic": "SDLC integration",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "An organization finds that most security defects are discovered during pre-release penetration testing, causing costly delays. What should the application security lead do to reduce these delays MOST effectively?",
+    "options": {
+      "A": "Schedule the penetration test later so that more features can be tested at once",
+      "B": "Shift security left with threat modeling and automated tests",
+      "C": "Hire a second penetration testing firm to run tests in parallel",
+      "D": "Lower the severity ratings of findings so they do not block releases"
+    },
+    "answer": "B",
+    "explanation": "Defects are cheaper to fix the earlier they are found. Adding security requirements, design-time threat modeling, and automated testing in the pipeline catches most issues long before the final penetration test.",
+    "distractor_rationales": {
+      "A": "Testing even later increases rework cost and delay.",
+      "C": "A second firm still tests at the end of the cycle, when fixes are most expensive.",
+      "D": "Downgrading ratings hides risk instead of reducing it."
+    },
+    "references_topic": "Shifting security left in the SDLC",
+    "version": "0.1"
+  },
+  {
+    "id": "D8-0005",
+    "domain": 8,
+    "domain_name": "Software Development Security",
+    "subtopic": "API security",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "A mobile banking API returns account details when a client requests /api/accounts/{id}. Testers find that any authenticated user can view other customers' accounts by changing the ID. Which vulnerability is this, and what is the correct fix?",
+    "options": {
+      "A": "Cross-site scripting; encode output in the mobile app",
+      "B": "SQL injection; use parameterized queries in the API",
+      "C": "Broken object-level authorization; verify ownership on the server",
+      "D": "Weak transport security; disable older TLS versions and weak cipher suites"
+    },
+    "answer": "C",
+    "explanation": "This is broken object-level authorization (also called an insecure direct object reference). The server must check on every request that the caller is authorized for the specific object requested, rather than relying on hard-to-guess identifiers.",
+    "distractor_rationales": {
+      "A": "Cross-site scripting injects script into pages. Changing an ID to another valid ID is an authorization failure.",
+      "B": "SQL injection alters query structure. Here the query works as designed; it simply lacks an authorization check.",
+      "D": "TLS protects data in transit. It has no bearing on which records a user may request."
+    },
+    "references_topic": "Broken object-level authorization",
+    "version": "0.1"
+  },
+  {
+    "id": "D8-0006",
+    "domain": 8,
+    "domain_name": "Software Development Security",
+    "subtopic": "Software maturity models",
+    "difficulty": "medium",
+    "type": "knowledge",
+    "stem": "Which of the following is an open framework that helps organizations assess and improve their software security practices across business functions such as governance, design, implementation, verification, and operations?",
+    "options": {
+      "A": "Common Vulnerability Scoring System (CVSS)",
+      "B": "STRIDE threat classification",
+      "C": "Information Technology Infrastructure Library (ITIL)",
+      "D": "Software Assurance Maturity Model (SAMM)"
+    },
+    "answer": "D",
+    "explanation": "SAMM is an open maturity model that organizes software security practices into business functions (governance, design, implementation, verification, and operations) and helps organizations measure and plan improvements.",
+    "distractor_rationales": {
+      "A": "CVSS scores the severity of individual vulnerabilities. It does not assess program maturity.",
+      "B": "STRIDE categorizes threats during threat modeling.",
+      "C": "ITIL is an IT service management framework, not a software security maturity model."
+    },
+    "references_topic": "Software assurance maturity models",
+    "version": "0.1"
+  },
+  {
+    "id": "D8-0007",
+    "domain": 8,
+    "domain_name": "Software Development Security",
+    "subtopic": "Acquired software security",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "A company plans to buy a commercial off-the-shelf HR application that will store employee personal data. The vendor refuses to share source code. What is the BEST way to evaluate the software's security before purchase?",
+    "options": {
+      "A": "Request third-party test results and secure development attestations",
+      "B": "Decompile the application to review its code without the vendor's permission",
+      "C": "Rely on the vendor's marketing materials describing its security features",
+      "D": "Skip evaluation, because commercial software is tested by the vendor"
+    },
+    "answer": "A",
+    "explanation": "Without source access, rely on independent evidence: third-party penetration test or certification reports, secure development attestations, and an SBOM, backed by contract terms for vulnerability notification, patch timelines, and audit rights.",
+    "distractor_rationales": {
+      "B": "Decompiling without permission is likely to breach the license and possibly the law.",
+      "C": "Marketing materials are not independent assurance.",
+      "D": "Vendor testing is unverified, and the buyer remains accountable for protecting the data."
+    },
+    "references_topic": "Evaluating commercial software security",
+    "version": "0.1"
+  },
+  {
+    "id": "D8-0008",
+    "domain": 8,
+    "domain_name": "Software Development Security",
+    "subtopic": "CI/CD and pipeline security",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "Attackers compromised a build server at a software vendor and inserted malicious code into signed releases distributed to customers. Which control would BEST have prevented the tampered builds from being released?",
+    "options": {
+      "A": "Requiring developers to use complex passwords for the source repository",
+      "B": "Hardened build systems with independently verified, reproducible builds",
+      "C": "Scanning the final release with antivirus before publishing it",
+      "D": "Increasing the key length of the code-signing certificate"
+    },
+    "answer": "B",
+    "explanation": "When the build server itself is compromised, code signing simply certifies the malicious output. Hardened, isolated build infrastructure plus reproducible builds that are verified independently (with provenance attestations) reveals unauthorized changes before release.",
+    "distractor_rationales": {
+      "A": "Repository passwords do not protect the build server that was compromised.",
+      "C": "Antivirus is unlikely to recognize a custom implant built into the product.",
+      "D": "Key length is irrelevant when the signing process itself signs the malicious code."
+    },
+    "references_topic": "Build integrity and reproducible builds",
+    "version": "0.1"
+  },
+  {
+    "id": "D8-0009",
+    "domain": 8,
+    "domain_name": "Software Development Security",
+    "subtopic": "Secure coding practices",
+    "difficulty": "hard",
+    "type": "application",
+    "stem": "A web application stores user passwords as unsalted SHA-256 hashes. After a database breach, attackers crack most of the passwords within hours. Which change would BEST protect passwords in the future?",
+    "options": {
+      "A": "Switch to unsalted SHA-512 hashes",
+      "B": "Encrypt the passwords with AES using a key stored in the application configuration",
+      "C": "Use a slow, salted password hashing function such as Argon2id or bcrypt",
+      "D": "Store passwords in plaintext in a separate, access-restricted database"
+    },
+    "answer": "C",
+    "explanation": "Adaptive, salted password hashing functions such as Argon2id, bcrypt, scrypt, or PBKDF2 make each guess expensive, and unique salts defeat precomputed tables.",
+    "distractor_rationales": {
+      "A": "SHA-512 is still a fast general-purpose hash, and without salt it remains vulnerable to precomputed tables.",
+      "B": "Encryption is reversible, and a key stored in the application configuration is likely to be stolen along with the database.",
+      "D": "Plaintext storage would make any breach catastrophic."
+    },
+    "references_topic": "Password storage with adaptive hashing",
+    "version": "0.1"
+  },
+  {
+    "id": "D8-0010",
+    "domain": 8,
+    "domain_name": "Software Development Security",
+    "subtopic": "Development ecosystem security",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "A developer accidentally committed a cloud access key to a public code repository. The commit was removed 10 minutes later. What should the security team do FIRST?",
+    "options": {
+      "A": "Rewrite the repository history to purge the commit completely",
+      "B": "Search the internet to determine whether anyone copied the key",
+      "C": "Train the developer on secure coding practices",
+      "D": "Revoke and rotate the exposed key, then review its activity logs"
+    },
+    "answer": "D",
+    "explanation": "Automated scanners harvest keys from public repositories within minutes, so the key must be treated as compromised. Revoke and rotate it immediately, then review activity logs for misuse. Purging history and adding secret scanning follow.",
+    "distractor_rationales": {
+      "A": "Purging history does not invalidate the key, and copies may already exist.",
+      "B": "There is no reliable way to know who copied it, and searching only delays the response.",
+      "C": "Training is a sensible long-term follow-up, not the first response."
+    },
+    "references_topic": "Responding to exposed secrets",
+    "version": "0.1"
+  }
+]

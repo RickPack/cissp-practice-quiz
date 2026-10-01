@@ -1,0 +1,554 @@
+[
+  {
+    "id": "D4-0011",
+    "domain": 4,
+    "domain_name": "Communication and Network Security",
+    "subtopic": "Transmission media",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "Which transmission medium is MOST resistant to electromagnetic interference and hardest to tap without detection?",
+    "options": {
+      "A": "Fiber-optic cable",
+      "B": "Unshielded twisted pair",
+      "C": "Coaxial cable",
+      "D": "Wi-Fi (802.11)"
+    },
+    "answer": "A",
+    "explanation": "Fiber carries light rather than electrical signals, so it is immune to electromagnetic interference, and tapping it requires physical intrusion that causes measurable signal loss.",
+    "distractor_rationales": {
+      "B": "Unshielded twisted pair is susceptible to interference and emits signals that can be intercepted.",
+      "C": "Coaxial cable is susceptible to interference and relatively easy to tap.",
+      "D": "Wi-Fi is broadcast radio that anyone in range can receive."
+    },
+    "references_topic": "Transmission media security",
+    "version": "0.2"
+  },
+  {
+    "id": "D4-0012",
+    "domain": 4,
+    "domain_name": "Communication and Network Security",
+    "subtopic": "Network devices and NAC",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "What does a stateful firewall do that a simple packet filter does not?",
+    "options": {
+      "A": "Inspect the full application payload of every packet for malware",
+      "B": "Track connections and allow only return traffic for established sessions",
+      "C": "Encrypt traffic passing between two networks",
+      "D": "Assign IP addresses to hosts on each segment"
+    },
+    "answer": "B",
+    "explanation": "A stateful firewall keeps a state table of connections, so it can allow return traffic only when it belongs to a session that was legitimately established.",
+    "distractor_rationales": {
+      "A": "Full payload inspection is a feature of next-generation or application-layer firewalls, not the defining feature of stateful inspection.",
+      "C": "Encryption between networks is done by VPN gateways.",
+      "D": "Address assignment is done by DHCP."
+    },
+    "references_topic": "Stateful inspection firewalls",
+    "version": "0.2"
+  },
+  {
+    "id": "D4-0013",
+    "domain": 4,
+    "domain_name": "Communication and Network Security",
+    "subtopic": "Cellular and satellite",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "An attacker convinces a mobile carrier to move a victim's phone number to a SIM card the attacker controls. Which authentication method is MOST directly undermined?",
+    "options": {
+      "A": "Hardware security key (FIDO2)",
+      "B": "Biometric unlock on the phone",
+      "C": "One-time codes sent by SMS",
+      "D": "Smart card with a PIN"
+    },
+    "answer": "C",
+    "explanation": "A SIM swap redirects the victim's calls and texts to the attacker, who then receives any one-time codes sent by SMS.",
+    "distractor_rationales": {
+      "A": "A FIDO2 key is bound to the physical key and the site's origin, not to a phone number.",
+      "B": "The biometric protects the victim's own device, which the attacker does not have.",
+      "D": "A smart card is a physical token unaffected by phone number changes."
+    },
+    "references_topic": "SIM swapping",
+    "version": "0.2"
+  },
+  {
+    "id": "D4-0014",
+    "domain": 4,
+    "domain_name": "Communication and Network Security",
+    "subtopic": "CDN and edge networks",
+    "difficulty": "easy",
+    "type": "application",
+    "stem": "An online retailer expects huge traffic during a holiday sale and worries about volumetric DDoS attacks. Which service BEST absorbs attack traffic before it reaches the origin servers?",
+    "options": {
+      "A": "A larger single web server",
+      "B": "An internal intrusion detection system",
+      "C": "A stronger database password",
+      "D": "A content delivery network with DDoS protection"
+    },
+    "answer": "D",
+    "explanation": "A CDN spreads traffic across many edge locations with enormous combined capacity, caches content, and filters attack traffic before it reaches the origin.",
+    "distractor_rationales": {
+      "A": "A single server, however large, cannot absorb a volumetric flood.",
+      "B": "An IDS can detect attacks but cannot absorb traffic volume.",
+      "C": "Database passwords do nothing against traffic floods."
+    },
+    "references_topic": "CDN DDoS absorption",
+    "version": "0.2"
+  },
+  {
+    "id": "D4-0015",
+    "domain": 4,
+    "domain_name": "Communication and Network Security",
+    "subtopic": "OSI and TCP/IP models",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "Which protocol maps an IPv4 address to a MAC address on a local network segment?",
+    "options": {
+      "A": "ARP",
+      "B": "DNS",
+      "C": "DHCP",
+      "D": "ICMP"
+    },
+    "answer": "A",
+    "explanation": "ARP resolves IPv4 addresses to MAC addresses within a broadcast domain.",
+    "distractor_rationales": {
+      "B": "DNS maps host names to IP addresses.",
+      "C": "DHCP assigns IP configuration to hosts.",
+      "D": "ICMP carries error and diagnostic messages, such as ping."
+    },
+    "references_topic": "Address Resolution Protocol",
+    "version": "0.2"
+  },
+  {
+    "id": "D4-0016",
+    "domain": 4,
+    "domain_name": "Communication and Network Security",
+    "subtopic": "Secure protocols",
+    "difficulty": "easy",
+    "type": "application",
+    "stem": "A partner must upload payroll files to a company server. Which protocol provides encrypted file transfer?",
+    "options": {
+      "A": "TFTP",
+      "B": "SFTP",
+      "C": "FTP",
+      "D": "Telnet"
+    },
+    "answer": "B",
+    "explanation": "SFTP runs over SSH, encrypting both credentials and file contents and authenticating the server.",
+    "distractor_rationales": {
+      "A": "TFTP has no authentication and sends data in cleartext.",
+      "C": "FTP sends credentials and data in cleartext.",
+      "D": "Telnet is a cleartext remote shell, not a file transfer protocol."
+    },
+    "references_topic": "Secure file transfer protocols",
+    "version": "0.2"
+  },
+  {
+    "id": "D4-0017",
+    "domain": 4,
+    "domain_name": "Communication and Network Security",
+    "subtopic": "Wireless networks",
+    "difficulty": "easy",
+    "type": "application",
+    "stem": "A company wants each employee to authenticate to Wi-Fi with individual credentials rather than a shared password, so access can be revoked person by person. Which approach should it use?",
+    "options": {
+      "A": "WPA2-Personal with a long passphrase",
+      "B": "A hidden SSID",
+      "C": "WPA3-Enterprise with 802.1X and a RADIUS server",
+      "D": "MAC address filtering"
+    },
+    "answer": "C",
+    "explanation": "Enterprise mode uses 802.1X with EAP, so each user authenticates with their own credentials against a RADIUS server, and any one user's access can be revoked.",
+    "distractor_rationales": {
+      "A": "Personal mode uses a single shared passphrase for everyone.",
+      "B": "Hiding the SSID is not authentication, and hidden networks are still easy to discover.",
+      "D": "MAC filtering identifies devices, not people, and MAC addresses are easily spoofed."
+    },
+    "references_topic": "802.1X enterprise Wi-Fi",
+    "version": "0.2"
+  },
+  {
+    "id": "D4-0018",
+    "domain": 4,
+    "domain_name": "Communication and Network Security",
+    "subtopic": "Network devices and NAC",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "A company wants to keep laptops that lack current patches or endpoint protection off the internal network, while still letting them get fixed. What should it implement?",
+    "options": {
+      "A": "A stronger perimeter firewall at the internet edge",
+      "B": "MAC address filtering on access switches",
+      "C": "Monthly vulnerability scans of all laptops",
+      "D": "NAC with posture checks and a remediation VLAN"
+    },
+    "answer": "D",
+    "explanation": "Network access control checks each device's posture at connection time, admits compliant devices, and places noncompliant ones on a remediation network where they can receive updates.",
+    "distractor_rationales": {
+      "A": "A perimeter firewall does not evaluate internal endpoints as they connect.",
+      "B": "MAC filtering identifies a device but says nothing about its patch or protection status.",
+      "C": "Scans find problems after devices are already connected. They do not gate admission."
+    },
+    "references_topic": "NAC posture assessment",
+    "version": "0.2"
+  },
+  {
+    "id": "D4-0019",
+    "domain": 4,
+    "domain_name": "Communication and Network Security",
+    "subtopic": "Transmission media",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "A factory runs Ethernet cables alongside heavy electric motors and sees frequent packet errors on those links. Which change BEST fixes the problem?",
+    "options": {
+      "A": "Replace the copper runs with fiber-optic cable",
+      "B": "Use longer unshielded twisted-pair runs",
+      "C": "Replace the switches with hubs",
+      "D": "Increase the switch port speed to 10 Gbps"
+    },
+    "answer": "A",
+    "explanation": "Motors generate electromagnetic interference that corrupts signals on copper. Fiber is immune to it (shielded cable is a partial alternative).",
+    "distractor_rationales": {
+      "B": "Longer runs increase attenuation and exposure to interference.",
+      "C": "Hubs add collisions and remove switching benefits.",
+      "D": "Higher speeds are more sensitive to signal noise, not less."
+    },
+    "references_topic": "EMI and media selection",
+    "version": "0.2"
+  },
+  {
+    "id": "D4-0020",
+    "domain": 4,
+    "domain_name": "Communication and Network Security",
+    "subtopic": "Cellular and satellite",
+    "difficulty": "medium",
+    "type": "knowledge",
+    "stem": "What does an IMSI catcher (a fake cellular base station) primarily exploit?",
+    "options": {
+      "A": "Weak passwords on nearby Wi-Fi access points",
+      "B": "Phones trusting nearby towers, especially on older protocols",
+      "C": "Insecure Bluetooth pairing between nearby devices",
+      "D": "Spoofed GPS signals that alter a phone's location"
+    },
+    "answer": "B",
+    "explanation": "An IMSI catcher impersonates a cell tower. Older cellular generations do not authenticate the network to the phone, so attackers can force a downgrade and intercept traffic. Newer generations add mutual authentication and identifier concealment.",
+    "distractor_rationales": {
+      "A": "IMSI catchers work on cellular radio, not Wi-Fi.",
+      "C": "Bluetooth pairing is a separate technology.",
+      "D": "GPS spoofing manipulates location data, not cellular connections."
+    },
+    "references_topic": "IMSI catchers",
+    "version": "0.2"
+  },
+  {
+    "id": "D4-0021",
+    "domain": 4,
+    "domain_name": "Communication and Network Security",
+    "subtopic": "CDN and edge networks",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "A company puts its web application behind a CDN that terminates TLS at the edge. Traffic from the CDN to the origin server currently travels over plain HTTP across the internet. What is the BEST improvement?",
+    "options": {
+      "A": "Turn off TLS at the edge so traffic is handled consistently",
+      "B": "Remove the CDN and serve traffic directly from the origin",
+      "C": "Use TLS to the origin and accept only CDN traffic there",
+      "D": "Increase the cache lifetime for all content"
+    },
+    "answer": "C",
+    "explanation": "Encrypting the CDN-to-origin leg protects data across the internet, and restricting the origin to CDN traffic (by allow-listing or authenticated requests) prevents attackers from bypassing the edge.",
+    "distractor_rationales": {
+      "A": "Removing edge TLS exposes users' traffic, the opposite of the goal.",
+      "B": "Removing the CDN gives up its performance and DDoS benefits and still leaves the origin exposed.",
+      "D": "Cache lifetime does not affect how traffic to the origin is protected."
+    },
+    "references_topic": "Securing CDN-to-origin connections",
+    "version": "0.2"
+  },
+  {
+    "id": "D4-0022",
+    "domain": 4,
+    "domain_name": "Communication and Network Security",
+    "subtopic": "Network attacks",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "A company's DNS servers answer recursive queries from any internet address. Attackers send small spoofed queries that trigger large responses aimed at a victim. What is this, and what is the best fix on the company's side?",
+    "options": {
+      "A": "DNS tunneling; block all TXT record lookups at the firewall",
+      "B": "Cache poisoning; deploy DNSSEC on the company's zones",
+      "C": "SYN flood; enable SYN cookies on the DNS servers",
+      "D": "DNS amplification; stop open recursion and rate-limit"
+    },
+    "answer": "D",
+    "explanation": "Open resolvers are abused for reflection and amplification. Restricting recursion to internal clients and enabling response rate limiting stops the servers from being used as weapons.",
+    "distractor_rationales": {
+      "A": "DNS tunneling hides data inside DNS queries. It is not a reflection attack.",
+      "B": "Cache poisoning inserts forged records. It does not describe amplified responses sent to a victim.",
+      "C": "A SYN flood exploits the TCP handshake, not DNS responses."
+    },
+    "references_topic": "DNS amplification",
+    "version": "0.2"
+  },
+  {
+    "id": "D4-0023",
+    "domain": 4,
+    "domain_name": "Communication and Network Security",
+    "subtopic": "Network segmentation",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "A company hosts a public web server that must query an internal customer database. Which architecture BEST limits exposure?",
+    "options": {
+      "A": "Web server in a DMZ, allowed only the database port inward",
+      "B": "Place the web server directly on the internal network",
+      "C": "Move the database into the DMZ alongside the web server",
+      "D": "Permit all traffic between the DMZ and the internal network for simplicity"
+    },
+    "answer": "A",
+    "explanation": "A screened subnet (DMZ) isolates the internet-facing server, and a strict rule allows only the specific database connection from it to the internal database.",
+    "distractor_rationales": {
+      "B": "An internet-facing server on the internal network gives an attacker direct internal access if it is compromised.",
+      "C": "Putting the customer database in the DMZ exposes it to the internet-facing zone.",
+      "D": "Allowing all traffic defeats the purpose of the DMZ."
+    },
+    "references_topic": "DMZ (screened subnet) design",
+    "version": "0.2"
+  },
+  {
+    "id": "D4-0024",
+    "domain": 4,
+    "domain_name": "Communication and Network Security",
+    "subtopic": "IP networking and addressing",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "A company believes it runs only IPv4, but a scan shows many hosts with active IPv6 addresses and some IPv6 tunneling interfaces. What should the security team do FIRST?",
+    "options": {
+      "A": "Ignore IPv6, since the company never deliberately deployed it",
+      "B": "Assess IPv6 use and secure or disable it deliberately",
+      "C": "Renumber every host on the network with new IPv4 addresses",
+      "D": "Block all IPv4 traffic and move entirely to IPv6"
+    },
+    "answer": "B",
+    "explanation": "Unmanaged IPv6 and tunnels can bypass controls that only inspect IPv4. Find where it is used, then either apply equivalent filtering and monitoring or disable it where it is not needed.",
+    "distractor_rationales": {
+      "A": "Unmanaged IPv6 is a blind spot that attackers can exploit.",
+      "C": "Renumbering IPv4 addresses does nothing about IPv6 exposure.",
+      "D": "Blocking IPv4 would break the network."
+    },
+    "references_topic": "IPv6 security considerations",
+    "version": "0.2"
+  },
+  {
+    "id": "D4-0025",
+    "domain": 4,
+    "domain_name": "Communication and Network Security",
+    "subtopic": "Secure protocols",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "Customers of a bank are redirected to a fake site because attackers inserted forged records into a resolver's cache. Which technology would let resolvers detect the forged records?",
+    "options": {
+      "A": "DNS over HTTPS",
+      "B": "Split-horizon DNS",
+      "C": "DNSSEC",
+      "D": "DHCP snooping"
+    },
+    "answer": "C",
+    "explanation": "DNSSEC signs DNS records, so validating resolvers can detect and reject forged data.",
+    "distractor_rationales": {
+      "A": "DNS over HTTPS encrypts the connection between client and resolver. It does not prove that records are authentic.",
+      "B": "Split-horizon DNS returns different answers to internal and external clients. It does not validate records.",
+      "D": "DHCP snooping blocks rogue DHCP servers and is unrelated to DNS record integrity."
+    },
+    "references_topic": "DNSSEC",
+    "version": "0.2"
+  },
+  {
+    "id": "D4-0026",
+    "domain": 4,
+    "domain_name": "Communication and Network Security",
+    "subtopic": "Remote access and VPN",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "A vendor needs occasional remote access to maintain a single industrial control server. What is the BEST approach?",
+    "options": {
+      "A": "Give the vendor a permanent site-to-site VPN into the plant network",
+      "B": "Share a domain administrator account with the vendor",
+      "C": "Expose RDP on the server to the internet with a strong password",
+      "D": "Grant time-limited access via a monitored jump host"
+    },
+    "answer": "D",
+    "explanation": "A jump host with MFA, least-privilege reach to the one server, session recording, and access enabled only when needed gives the vendor what they need while limiting exposure.",
+    "distractor_rationales": {
+      "A": "A permanent tunnel gives the vendor standing access to the whole plant network.",
+      "B": "Shared administrator credentials destroy accountability and grant far more than needed.",
+      "C": "Internet-exposed RDP is a frequent target for attackers."
+    },
+    "references_topic": "Third-party remote access",
+    "version": "0.2"
+  },
+  {
+    "id": "D4-0027",
+    "domain": 4,
+    "domain_name": "Communication and Network Security",
+    "subtopic": "Converged and multilayer protocols",
+    "difficulty": "medium",
+    "type": "knowledge",
+    "stem": "Which protocol encrypts and authenticates the voice media stream in a VoIP call?",
+    "options": {
+      "A": "SRTP",
+      "B": "SIP",
+      "C": "RTCP",
+      "D": "H.323"
+    },
+    "answer": "A",
+    "explanation": "Secure RTP adds encryption, message authentication, and replay protection to the RTP media stream.",
+    "distractor_rationales": {
+      "B": "SIP sets up and tears down calls. It carries signaling, not the voice stream.",
+      "C": "RTCP carries control and quality statistics for RTP sessions.",
+      "D": "H.323 is a legacy suite of signaling protocols."
+    },
+    "references_topic": "Secure RTP",
+    "version": "0.2"
+  },
+  {
+    "id": "D4-0028",
+    "domain": 4,
+    "domain_name": "Communication and Network Security",
+    "subtopic": "Network devices and NAC",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "During a firewall review, auditors find 400 rules, many undocumented, and an \"allow any to any\" rule near the bottom. What should the network security manager do FIRST?",
+    "options": {
+      "A": "Delete every undocumented rule immediately to reduce the attack surface",
+      "B": "Use hit counts and owners to clean up rules under change control",
+      "C": "Move the allow-any rule to the top so it is easier to monitor",
+      "D": "Replace the firewall with a newer next-generation model"
+    },
+    "answer": "B",
+    "explanation": "Use evidence such as rule hit counts and traffic logs, confirm business owners, and then remove unused and overly permissive rules, including the allow-any rule, through change management so that legitimate traffic is not broken.",
+    "distractor_rationales": {
+      "A": "Deleting rules blindly can break business-critical traffic.",
+      "C": "Moving the allow-any rule to the top would permit everything.",
+      "D": "A new firewall would inherit the same poor rule set."
+    },
+    "references_topic": "Firewall rule base review",
+    "version": "0.2"
+  },
+  {
+    "id": "D4-0029",
+    "domain": 4,
+    "domain_name": "Communication and Network Security",
+    "subtopic": "Network attacks",
+    "difficulty": "hard",
+    "type": "application",
+    "stem": "A web server's connection table fills with half-open TCP connections from spoofed addresses, and legitimate users cannot connect. Which server-side mitigation is MOST effective?",
+    "options": {
+      "A": "Increase the TCP half-open connection timeout",
+      "B": "Block all ICMP traffic at the firewall",
+      "C": "Enable SYN cookies",
+      "D": "Disable HTTP keep-alive"
+    },
+    "answer": "C",
+    "explanation": "This is a SYN flood. SYN cookies encode connection state in the sequence number, so the server keeps no table entry until the handshake completes.",
+    "distractor_rationales": {
+      "A": "A longer timeout makes half-open connections last longer, which worsens the problem.",
+      "B": "ICMP is unrelated to half-open TCP connections.",
+      "D": "Keep-alive affects established HTTP connections, not the TCP handshake."
+    },
+    "references_topic": "SYN flood mitigation",
+    "version": "0.2"
+  },
+  {
+    "id": "D4-0030",
+    "domain": 4,
+    "domain_name": "Communication and Network Security",
+    "subtopic": "Wireless networks",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "At a conference, employees connect to an access point broadcasting the company's SSID, and their credentials are captured. The corporate Wi-Fi uses WPA2-Enterprise with PEAP. What is the BEST long-term fix?",
+    "options": {
+      "A": "Rename the corporate SSID to something less obvious",
+      "B": "Hide the SSID so it is not broadcast to nearby devices",
+      "C": "Switch to WPA2-Personal with a strong shared passphrase",
+      "D": "Enforce server certificate validation, ideally with EAP-TLS"
+    },
+    "answer": "D",
+    "explanation": "The evil twin succeeds because clients do not validate the authentication server's certificate. Enforcing validation, or moving to certificate-based EAP-TLS with mutual authentication, stops clients from handing credentials to an impostor.",
+    "distractor_rationales": {
+      "A": "An attacker can copy any SSID name.",
+      "B": "Clients still probe for hidden networks, and attackers can still impersonate them.",
+      "C": "A shared passphrase lets anyone who knows it impersonate the network, which is worse."
+    },
+    "references_topic": "Evil twin and EAP server validation",
+    "version": "0.2"
+  },
+  {
+    "id": "D4-0031",
+    "domain": 4,
+    "domain_name": "Communication and Network Security",
+    "subtopic": "Cellular and satellite",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "A field sales team uses company phones on public 5G networks to reach a cloud CRM. Leadership asks for the BEST way to protect CRM data in transit, regardless of which carrier network is used.",
+    "options": {
+      "A": "Use TLS with certificate validation end to end",
+      "B": "Rely on the carrier's built-in 5G radio encryption",
+      "C": "Require sales staff to connect only through home Wi-Fi",
+      "D": "Disable cellular data on all company phones"
+    },
+    "answer": "A",
+    "explanation": "Carrier encryption protects only the radio link and ends inside the carrier network. End-to-end TLS with certificate validation protects the data all the way to the CRM.",
+    "distractor_rationales": {
+      "B": "Radio-link encryption does not protect data beyond the carrier's network.",
+      "C": "Home Wi-Fi is also untrusted and impractical for field staff.",
+      "D": "Disabling data stops the team from working."
+    },
+    "references_topic": "End-to-end encryption over mobile networks",
+    "version": "0.2"
+  },
+  {
+    "id": "D4-0032",
+    "domain": 4,
+    "domain_name": "Communication and Network Security",
+    "subtopic": "SDN, SD-WAN, and virtual networks",
+    "difficulty": "hard",
+    "type": "application",
+    "stem": "A retailer moves to SD-WAN, and branch stores now send internet-bound traffic directly out of each branch instead of backhauling it through headquarters. Which security change is MOST needed?",
+    "options": {
+      "A": "Remove the branch firewalls, since HQ no longer sees traffic",
+      "B": "Inspect branch internet traffic locally or in the cloud",
+      "C": "Add more internet bandwidth at headquarters",
+      "D": "Disable encryption on links between branches"
+    },
+    "answer": "B",
+    "explanation": "Direct internet breakout bypasses the headquarters security stack. Equivalent inspection must happen at each branch or in a cloud security service.",
+    "distractor_rationales": {
+      "A": "Removing branch firewalls leaves the new internet paths unprotected.",
+      "C": "Headquarters bandwidth no longer matters for this traffic.",
+      "D": "Encryption between sites is still needed."
+    },
+    "references_topic": "SD-WAN direct internet access security",
+    "version": "0.2"
+  },
+  {
+    "id": "D4-0033",
+    "domain": 4,
+    "domain_name": "Communication and Network Security",
+    "subtopic": "CDN and edge networks",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "A company's website sits behind a CDN with a web application firewall, but attackers are sending exploits directly to the origin server's public IP address, bypassing the WAF. What should the security team do FIRST?",
+    "options": {
+      "A": "Add more signatures to the CDN's WAF rules",
+      "B": "Change the website's domain name",
+      "C": "Allow origin traffic only from the CDN's address ranges",
+      "D": "Move the WAF so it sits behind the origin server"
+    },
+    "answer": "C",
+    "explanation": "Locking the origin down so it accepts traffic only from the CDN (and ideally rotating the exposed IP) forces every request through the WAF.",
+    "distractor_rationales": {
+      "A": "More WAF rules do not help when attackers bypass the WAF entirely.",
+      "B": "Attackers are targeting the IP address directly, so a new domain name changes nothing.",
+      "D": "A WAF placed behind the origin cannot inspect traffic before it reaches the application."
+    },
+    "references_topic": "Origin lockdown behind a CDN",
+    "version": "0.2"
+  }
+]

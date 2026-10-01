@@ -1,0 +1,242 @@
+[
+  {
+    "id": "D2-0001",
+    "domain": 2,
+    "domain_name": "Asset Security",
+    "subtopic": "Data roles",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "Under common privacy frameworks, which role determines the purposes and means of processing personal data?",
+    "options": {
+      "A": "Data processor",
+      "B": "Data custodian",
+      "C": "Data controller",
+      "D": "Data subject"
+    },
+    "answer": "C",
+    "explanation": "The data controller decides why and how personal data is processed and carries primary accountability for that processing. Processors act on the controller's behalf and under its instructions.",
+    "distractor_rationales": {
+      "A": "A processor handles personal data on behalf of, and as instructed by, the controller. It does not decide the purposes.",
+      "B": "A custodian implements and maintains technical protections such as storage and backups, as directed by the owner.",
+      "D": "The data subject is the individual the personal data describes."
+    },
+    "references_topic": "Data controller and processor roles",
+    "version": "0.1"
+  },
+  {
+    "id": "D2-0002",
+    "domain": 2,
+    "domain_name": "Asset Security",
+    "subtopic": "Data remanence and destruction",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "Which sanitization method is MOST appropriate for ensuring that data on a failed solid-state drive containing sensitive data cannot be recovered before disposal?",
+    "options": {
+      "A": "Degaussing the drive with a high-strength degausser",
+      "B": "Overwriting all sectors three times with random data",
+      "C": "Performing a quick format of the file system",
+      "D": "Physically shredding or disintegrating the drive"
+    },
+    "answer": "D",
+    "explanation": "A failed SSD cannot accept overwrite or secure-erase commands, and flash memory does not store data magnetically. Physical destruction to a small particle size is the reliable option.",
+    "distractor_rationales": {
+      "A": "Degaussing works on magnetic media. Flash memory cells are not magnetic, so degaussing leaves the data intact.",
+      "B": "Overwriting requires a working drive. Even on a working SSD, wear leveling and over-provisioning can leave data in cells the host cannot address.",
+      "C": "A quick format rewrites only file-system structures. The underlying data remains recoverable."
+    },
+    "references_topic": "Media sanitization for flash storage",
+    "version": "0.1"
+  },
+  {
+    "id": "D2-0003",
+    "domain": 2,
+    "domain_name": "Asset Security",
+    "subtopic": "Data classification",
+    "difficulty": "easy",
+    "type": "application",
+    "stem": "A company's classification scheme defines Public (no harm), Internal (minor harm), Confidential (serious harm), and Restricted (severe harm or legal and regulatory consequences). Disclosure of its unannounced product roadmap would cause serious competitive damage but no legal harm. Which classification fits BEST?",
+    "options": {
+      "A": "Confidential",
+      "B": "Internal",
+      "C": "Restricted",
+      "D": "Public"
+    },
+    "answer": "A",
+    "explanation": "Classification follows the impact of unauthorized disclosure. Serious competitive harm with no legal or regulatory consequence matches the Confidential definition in this scheme.",
+    "distractor_rationales": {
+      "B": "Internal covers only minor harm. The roadmap's disclosure would cause serious harm.",
+      "C": "Restricted is reserved for severe or legally consequential harm. Over-classifying adds handling cost and slows legitimate sharing.",
+      "D": "Public means disclosure causes no harm, which is clearly not the case."
+    },
+    "references_topic": "Impact-based data classification",
+    "version": "0.1"
+  },
+  {
+    "id": "D2-0004",
+    "domain": 2,
+    "domain_name": "Asset Security",
+    "subtopic": "Data roles",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "A hospital's analytics team wants to copy patient records into a new cloud data warehouse. The database administrator asks who should approve which fields may be copied and who may access them. Who should make this decision?",
+    "options": {
+      "A": "The database administrator, as the data custodian with technical control",
+      "B": "The data owner, the business leader accountable for patient records",
+      "C": "The cloud provider, because it operates the storage infrastructure",
+      "D": "The CISO, because that role sets the security policy"
+    },
+    "answer": "B",
+    "explanation": "Data owners are the senior business representatives accountable for a data set. They decide its classification, permitted uses, and who may access it. Custodians such as database administrators implement those decisions.",
+    "distractor_rationales": {
+      "A": "The custodian implements the owner's decisions. Technical control does not confer the authority to decide on use or access.",
+      "C": "Under shared responsibility, the provider runs the infrastructure but does not decide which customer data is copied or who may see it.",
+      "D": "The CISO sets policy and advises, but does not own the business data or make specific access decisions for it."
+    },
+    "references_topic": "Data owner accountability",
+    "version": "0.1"
+  },
+  {
+    "id": "D2-0005",
+    "domain": 2,
+    "domain_name": "Asset Security",
+    "subtopic": "Data states and protection",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "A fintech startup encrypts its database at rest with AES-256 and uses TLS 1.3 for all connections. An auditor notes that card numbers are still exposed in plaintext in application server memory while being processed. Which technology BEST protects data in this state?",
+    "options": {
+      "A": "Full-disk encryption on the application servers",
+      "B": "Mutual TLS between application and database",
+      "C": "Confidential computing with hardware enclaves",
+      "D": "Longer key lengths for the database encryption"
+    },
+    "answer": "C",
+    "explanation": "Data being processed is data in use. Confidential computing processes it inside hardware-based trusted execution environments that isolate memory from the operating system, the hypervisor, and other tenants.",
+    "distractor_rationales": {
+      "A": "Full-disk encryption protects data at rest on disk. Data is decrypted into memory for processing.",
+      "B": "Mutual TLS protects data in transit and authenticates both ends. It does not protect data while it is being processed.",
+      "D": "Longer keys strengthen encryption at rest but do nothing for decrypted data in memory."
+    },
+    "references_topic": "Protecting data in use",
+    "version": "0.1"
+  },
+  {
+    "id": "D2-0006",
+    "domain": 2,
+    "domain_name": "Asset Security",
+    "subtopic": "Data retention",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "A legal team instructs IT to preserve all email relating to a pending lawsuit. The organization's retention policy automatically deletes email after 90 days. What should the security manager do FIRST?",
+    "options": {
+      "A": "Continue automated deletion, since the retention policy was approved by management",
+      "B": "Export all mailboxes to offline storage and delete the originals",
+      "C": "Ask the legal team to narrow the request before taking any action",
+      "D": "Suspend automated deletion for the relevant custodians and data under a legal hold"
+    },
+    "answer": "D",
+    "explanation": "A legal hold overrides normal retention. Relevant data must be preserved immediately to avoid spoliation, so automated deletion for the affected custodians and data must stop first. Scope can be refined with counsel afterward.",
+    "distractor_rationales": {
+      "A": "Continuing deletion after notice of litigation can be treated as spoliation of evidence and lead to court sanctions.",
+      "B": "Exporting and deleting originals risks losing metadata and weakens chain of custody. It is also broader than necessary.",
+      "C": "Clarifying scope is reasonable, but preservation cannot wait. Data could be deleted while the request is being narrowed."
+    },
+    "references_topic": "Legal hold and spoliation",
+    "version": "0.1"
+  },
+  {
+    "id": "D2-0007",
+    "domain": 2,
+    "domain_name": "Asset Security",
+    "subtopic": "Scoping, tailoring, and baselines",
+    "difficulty": "medium",
+    "type": "knowledge",
+    "stem": "An organization adopts a published security control baseline but removes the controls for wireless networking because it operates no wireless infrastructure. What is this activity called?",
+    "options": {
+      "A": "Scoping",
+      "B": "Tailoring",
+      "C": "Compensating",
+      "D": "Benchmarking"
+    },
+    "answer": "A",
+    "explanation": "Scoping reviews a baseline and keeps only the controls that apply to the systems in scope. Removing wireless controls where no wireless exists is scoping.",
+    "distractor_rationales": {
+      "B": "Tailoring modifies the applicable controls, for example by adjusting parameters, so they fit the organization's mission and environment.",
+      "C": "Compensating controls are alternatives used when a primary control cannot be implemented. Nothing is being substituted here.",
+      "D": "Benchmarking compares configurations or performance against a reference. It does not remove controls from a baseline."
+    },
+    "references_topic": "Scoping a control baseline",
+    "version": "0.1"
+  },
+  {
+    "id": "D2-0008",
+    "domain": 2,
+    "domain_name": "Asset Security",
+    "subtopic": "DLP, DRM, and CASB",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "Employees at an engineering firm increasingly upload design files to unsanctioned personal cloud storage. Leadership wants visibility into which cloud services are used and the ability to enforce data policies on sanctioned SaaS applications, without blocking all internet access. Which solution BEST meets these requirements?",
+    "options": {
+      "A": "Deploy a network-based IDS at the internet egress point",
+      "B": "Implement a cloud access security broker (CASB)",
+      "C": "Enable full-disk encryption on all engineering laptops",
+      "D": "Apply a digital rights management (DRM) wrapper to every design file"
+    },
+    "answer": "B",
+    "explanation": "A CASB discovers shadow IT by showing which cloud services are in use, and it enforces policies such as DLP, access control, and activity monitoring on sanctioned SaaS through API or proxy modes.",
+    "distractor_rationales": {
+      "A": "An IDS detects attack signatures. It does not provide cloud application discovery with policy enforcement.",
+      "C": "Full-disk encryption protects lost or stolen laptops. It does not govern what users upload.",
+      "D": "DRM controls how files are used, but it gives no visibility into which cloud services are in use and is burdensome to apply to every file."
+    },
+    "references_topic": "Cloud access security broker capabilities",
+    "version": "0.1"
+  },
+  {
+    "id": "D2-0009",
+    "domain": 2,
+    "domain_name": "Asset Security",
+    "subtopic": "End-of-life assets",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "A manufacturer relies on a plant-floor application that runs only on an operating system whose vendor support ended last year. Replacing the application will take 18 months. What is the BEST approach in the meantime?",
+    "options": {
+      "A": "Keep the system unchanged, since it has been stable for several years",
+      "B": "Immediately upgrade the operating system, accepting the application may fail",
+      "C": "Isolate it on a restricted network segment with added monitoring",
+      "D": "Purchase cyber insurance to transfer the risk of compromise"
+    },
+    "answer": "C",
+    "explanation": "When an end-of-support asset cannot be replaced yet, apply compensating controls such as network isolation, strict access, and monitoring (and extended support if available). Document the risk acceptance with a firm replacement date.",
+    "distractor_rationales": {
+      "A": "Without patches the system's exposure grows over time. Stability is not the same as security.",
+      "B": "Breaking a critical production application creates an availability impact that outweighs the benefit.",
+      "D": "Insurance may soften the financial impact, but it does not reduce the likelihood of compromise. Transfer alone is not enough for an unsupported system on a production network."
+    },
+    "references_topic": "Compensating controls for unsupported systems",
+    "version": "0.1"
+  },
+  {
+    "id": "D2-0010",
+    "domain": 2,
+    "domain_name": "Asset Security",
+    "subtopic": "Data lifecycle and collection",
+    "difficulty": "hard",
+    "type": "application",
+    "stem": "A retailer's loyalty app collects customers' full birth dates, but the only business use is sending a discount during the customer's birthday month. A privacy review asks for a change that reduces risk while keeping the feature. Which change BEST applies data minimization?",
+    "options": {
+      "A": "Encrypt the full birth date field with a strong algorithm",
+      "B": "Restrict access to the birth date field to the marketing team",
+      "C": "Delete birth dates after customers have been members for five years",
+      "D": "Collect only the birth month instead of the full date of birth"
+    },
+    "answer": "D",
+    "explanation": "Data minimization means collecting only what the stated purpose requires. The birth month is enough for the feature, and not collecting the full date removes the risk instead of merely protecting the data.",
+    "distractor_rationales": {
+      "A": "Encryption protects the data but still collects more than the purpose needs.",
+      "B": "Restricting access limits exposure but does not reduce what is collected.",
+      "C": "A retention limit shortens exposure, yet unnecessary detail is still collected and kept for years."
+    },
+    "references_topic": "Data minimization",
+    "version": "0.1"
+  }
+]

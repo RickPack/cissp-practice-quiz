@@ -1,0 +1,242 @@
+[
+  {
+    "id": "D1-0001",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Security concepts",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "An online bank adds a mechanism so that a customer cannot later credibly deny having authorized a funds transfer. Which security property does this mechanism primarily provide?",
+    "options": {
+      "A": "Nonrepudiation",
+      "B": "Confidentiality",
+      "C": "Availability",
+      "D": "Authorization"
+    },
+    "answer": "A",
+    "explanation": "Nonrepudiation produces evidence that binds an action to the party who performed it, typically through digital signatures tied to a verified identity plus reliable logging. The customer therefore cannot plausibly deny having authorized the transfer.",
+    "distractor_rationales": {
+      "B": "Confidentiality prevents unauthorized disclosure. It does nothing to prove who performed an action.",
+      "C": "Availability keeps the service accessible when needed. It does not create proof of who authorized a transaction.",
+      "D": "Authorization decides what an authenticated subject may do. It does not by itself produce evidence that binds the action to the customer."
+    },
+    "references_topic": "Nonrepudiation",
+    "version": "0.1"
+  },
+  {
+    "id": "D1-0002",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Policies, standards, procedures, and guidelines",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "Which type of governance document is mandatory and specifies uniform requirements, such as a required minimum encryption key length, that support a higher-level policy?",
+    "options": {
+      "A": "Guideline",
+      "B": "Standard",
+      "C": "Procedure",
+      "D": "Policy"
+    },
+    "answer": "B",
+    "explanation": "Standards are mandatory documents that set specific, uniform technical or operational requirements, such as minimum key lengths, so that a policy is implemented consistently across the organization.",
+    "distractor_rationales": {
+      "A": "Guidelines are recommendations. They are advisory, not mandatory.",
+      "C": "Procedures are step-by-step instructions for performing a task. They describe how to do something rather than setting uniform parameter requirements.",
+      "D": "The policy is the higher-level statement of management intent that the standard supports, so it cannot be the supporting document."
+    },
+    "references_topic": "Security policy framework hierarchy",
+    "version": "0.1"
+  },
+  {
+    "id": "D1-0003",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Business continuity and BIA",
+    "difficulty": "easy",
+    "type": "application",
+    "stem": "During a business impact analysis, a payroll team states that payroll processing can be down for no more than 48 hours before penalties and employee hardship become unacceptable. Which metric has the team just described?",
+    "options": {
+      "A": "Recovery point objective (RPO)",
+      "B": "Mean time between failures (MTBF)",
+      "C": "Maximum tolerable downtime (MTD)",
+      "D": "Work recovery time (WRT)"
+    },
+    "answer": "C",
+    "explanation": "Maximum tolerable downtime (also called the maximum tolerable period of disruption) is the longest a business function can be unavailable before the consequences become unacceptable. The recovery time objective must be set at or below it.",
+    "distractor_rationales": {
+      "A": "RPO is the maximum acceptable amount of data loss, measured in time. It does not describe how long the function can be down.",
+      "B": "MTBF is a hardware reliability measure. It is not a business tolerance for disruption.",
+      "D": "WRT is the time needed after systems are restored to verify data and resume work. It is one component that must fit inside the MTD."
+    },
+    "references_topic": "Business impact analysis recovery metrics",
+    "version": "0.1"
+  },
+  {
+    "id": "D1-0004",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Security governance and roles",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "A mid-size retailer's new CISO finds that security initiatives are routinely delayed because business units see them as IT projects with no business owner. What should the CISO do FIRST to improve alignment?",
+    "options": {
+      "A": "Mandate that every business unit complete security awareness training within the next 30 days",
+      "B": "Purchase an integrated risk management platform to track initiative status",
+      "C": "Report the delays to the external auditor so they appear as a formal finding",
+      "D": "Establish a governance steering committee with business leaders who own risk decisions"
+    },
+    "answer": "D",
+    "explanation": "The root problem is governance: no business owner is accountable. A steering committee with senior business representation gives business leaders decision rights over risk and priorities, which aligns security with business objectives. The other actions depend on that foundation.",
+    "distractor_rationales": {
+      "A": "Training raises awareness but does not create business ownership or decision rights.",
+      "B": "A tool can track delays, but it cannot fix the lack of ownership. Buying tools before establishing governance is premature.",
+      "C": "Going to the external auditor bypasses internal governance and damages relationships. It still would not create business ownership."
+    },
+    "references_topic": "Security governance alignment with business strategy",
+    "version": "0.1"
+  },
+  {
+    "id": "D1-0005",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Risk assessment and analysis",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "A regional distributor values a warehouse management server at $200,000. A flood would destroy 40% of its value, and floods of that severity are expected once every 20 years. What is the annualized loss expectancy (ALE) for this risk?",
+    "options": {
+      "A": "$4,000",
+      "B": "$80,000",
+      "C": "$10,000",
+      "D": "$16,000"
+    },
+    "answer": "A",
+    "explanation": "Single loss expectancy = asset value x exposure factor = $200,000 x 0.40 = $80,000. The annualized rate of occurrence is 1/20 = 0.05. ALE = SLE x ARO = $80,000 x 0.05 = $4,000.",
+    "distractor_rationales": {
+      "B": "$80,000 is the single loss expectancy for one flood. It has not been annualized.",
+      "C": "$10,000 applies the ARO to the full asset value and ignores the 40% exposure factor.",
+      "D": "$16,000 uses an ARO of 0.2 (once every 5 years) instead of 0.05."
+    },
+    "references_topic": "Quantitative risk analysis (SLE, ARO, ALE)",
+    "version": "0.1"
+  },
+  {
+    "id": "D1-0006",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Due care and due diligence",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "A healthcare clinic's risk assessment identified that backups are never tested. Six months later, leadership has not acted, and a ransomware attack reveals the backups are unusable. From a legal and governance standpoint, what did leadership MOST clearly fail to demonstrate?",
+    "options": {
+      "A": "Due diligence in selecting the backup vendor",
+      "B": "Due care in acting on a known, identified risk",
+      "C": "Separation of duties among backup administrators",
+      "D": "Adequate cyber insurance coverage for ransomware"
+    },
+    "answer": "B",
+    "explanation": "Due care means taking the reasonable, prudent action expected once a risk is known. Leadership had done the investigative work (the assessment identified the risk) but did not act on it. That failure to act is the classic lapse of due care and creates negligence exposure.",
+    "distractor_rationales": {
+      "A": "Nothing in the scenario points to vendor selection. The failure was not acting on an internal risk that had already been identified.",
+      "C": "Separation of duties addresses fraud or error by a single person. It has nothing to do with untested backups.",
+      "D": "Insurance can transfer part of the financial impact, but it does not satisfy the duty to act on known risks, and it was not the failure described."
+    },
+    "references_topic": "Due care versus due diligence",
+    "version": "0.1"
+  },
+  {
+    "id": "D1-0007",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Threat modeling",
+    "difficulty": "medium",
+    "type": "knowledge",
+    "stem": "While threat modeling a payment API with STRIDE, the team identifies that an attacker could change the transaction amount in a request while it is in transit, because the request body has no integrity protection. Under which STRIDE category does this threat belong?",
+    "options": {
+      "A": "Spoofing",
+      "B": "Repudiation",
+      "C": "Tampering",
+      "D": "Elevation of privilege"
+    },
+    "answer": "C",
+    "explanation": "Tampering is the unauthorized modification of data in transit or at rest. The matching countermeasures are integrity controls such as message authentication codes or digital signatures.",
+    "distractor_rationales": {
+      "A": "Spoofing is pretending to be another identity. The attacker here changes data rather than impersonating someone.",
+      "B": "Repudiation is denying an action when the system cannot prove otherwise. That is not what is described.",
+      "D": "Elevation of privilege means gaining capabilities beyond those authorized. Changing a field value is data modification, not privilege gain."
+    },
+    "references_topic": "STRIDE threat classification",
+    "version": "0.1"
+  },
+  {
+    "id": "D1-0008",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Supply chain risk management",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "A logistics company plans to outsource its customer support platform to a SaaS provider that will store customer personal data. The provider's SOC 2 Type II report is 14 months old and carves out the third-party data center the provider uses. What is the BEST action before signing the contract?",
+    "options": {
+      "A": "Proceed, since a SOC 2 Type II report demonstrates the operating effectiveness of controls",
+      "B": "Reject the provider outright, because any assurance report older than twelve months is considered invalid",
+      "C": "Perform an on-site penetration test of the provider's production environment",
+      "D": "Request a bridge letter or current report, plus assurance for the carved-out data center"
+    },
+    "answer": "D",
+    "explanation": "The report's age leaves a gap in the assurance period, and the carve-out means the data center's controls were never tested. The prudent step is to close both gaps, for example with a bridge (gap) letter or a newer report and the data center's own assurance report, and then add right-to-audit and breach-notification terms to the contract.",
+    "distractor_rationales": {
+      "A": "A Type II report speaks to operating effectiveness only for the period and scope it covers. A stale report with a carve-out leaves material gaps.",
+      "B": "Reports do not automatically become invalid at 12 months. The right response is to close the gap rather than reject the provider by rule.",
+      "C": "Providers rarely permit customers to test their production environments, and a penetration test would not evaluate governance controls. It is a disproportionate first step."
+    },
+    "references_topic": "Third-party assurance and SOC report scope",
+    "version": "0.1"
+  },
+  {
+    "id": "D1-0009",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Professional ethics",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "During an authorized assessment, a security consultant discovers that the client is knowingly storing patient data in violation of law and intends to hide this from regulators. The client asks the consultant to leave it out of the report. Under the priority order of a typical professional security code of ethics, which duty should weigh MOST in the consultant's decision?",
+    "options": {
+      "A": "Protecting society, the common good, and public trust",
+      "B": "Acting honorably, honestly, and within the law",
+      "C": "Providing diligent, competent, and confidential service to the client",
+      "D": "Advancing and protecting the security profession"
+    },
+    "answer": "A",
+    "explanation": "When duties conflict, the higher-ranked duty prevails. Protecting society and public trust ranks first, above honesty toward others, service to the client, and the profession. Hiding an ongoing legal violation that harms patients conflicts directly with that first duty.",
+    "distractor_rationales": {
+      "B": "Honesty and legality also apply here, but that duty ranks second. The question asks which duty weighs most.",
+      "C": "Duty to the client ranks below duties to society and to honesty. It cannot justify concealing wrongdoing.",
+      "D": "Protecting the profession ranks lowest of the four duties."
+    },
+    "references_topic": "Professional code of ethics canons",
+    "version": "0.1"
+  },
+  {
+    "id": "D1-0010",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Risk response and control selection",
+    "difficulty": "hard",
+    "type": "application",
+    "stem": "A company faces a risk with an ALE of $50,000. Control X costs $30,000 per year and reduces the ALE to $15,000. Control Y costs $12,000 per year and reduces the ALE to $30,000. Based solely on cost-benefit analysis, which option provides the greatest annual value?",
+    "options": {
+      "A": "Control X, with a net annual value of $5,000",
+      "B": "Control Y, with a net annual value of $8,000",
+      "C": "Control X, because it produces the lowest residual ALE",
+      "D": "Neither, because both leave residual risk above zero"
+    },
+    "answer": "B",
+    "explanation": "Safeguard value = (ALE before - ALE after) - annual cost of the safeguard. Control X: ($50,000 - $15,000) - $30,000 = $5,000. Control Y: ($50,000 - $30,000) - $12,000 = $8,000. Control Y delivers more net value.",
+    "distractor_rationales": {
+      "A": "Control X does have positive value, but $5,000 is less than Control Y's $8,000.",
+      "C": "The lowest residual risk is not the same as the best value. X's extra risk reduction costs more than it saves.",
+      "D": "Some residual risk always remains. A control is justified whenever its net value is positive."
+    },
+    "references_topic": "Cost-benefit analysis of safeguards",
+    "version": "0.1"
+  }
+]

@@ -1,0 +1,184 @@
+{
+  "target_line": 0.70,
+  "min_domain_n": 4,
+  "difficulty_mix": { "easy": 0.30, "medium": 0.45, "hard": 0.25 },
+  "difficulty_weights": { "easy": 1.0, "medium": 1.5, "hard": 2.0 },
+  "managerial_min_share": 0.35,
+  "bank_milestones": { "0.1": 80, "0.2": 250, "0.3": 500, "0.4": 750, "1.0": 1000 },
+  "domains": {
+    "1": {
+      "name": "Security and Risk Management",
+      "weight": 0.16,
+      "target": 160,
+      "difficulty_targets": { "easy": 48, "medium": 72, "hard": 40 },
+      "subtopics": {
+        "Professional ethics": ["Rank conflicting duties using the priority order of a professional code of ethics", "Separate what the law requires from what professional ethics requires"],
+        "Security concepts": ["Match scenarios to confidentiality, integrity, availability, authenticity, and nonrepudiation", "Explain which control families support each security property"],
+        "Security governance and roles": ["Map governance roles (board, senior management, CISO, owners, custodians) to their decision rights", "Explain how a steering committee aligns security with business strategy"],
+        "Due care and due diligence": ["Distinguish investigating risk (due diligence) from acting on it (due care)", "Connect negligence exposure to failures to act on known risks"],
+        "Legal, regulatory, and contractual compliance": ["Differentiate statutory, regulatory, and contractual obligations", "Explain how compliance requirements drive control selection and evidence"],
+        "Privacy and transborder data flow": ["Apply privacy principles such as purpose limitation and data minimization", "Identify controls needed before transferring personal data across borders"],
+        "Intellectual property and licensing": ["Distinguish patents, copyrights, trademarks, and trade secrets", "Recognize license compliance and export control obligations"],
+        "Investigation types": ["Compare administrative, criminal, civil, and regulatory investigations and their standards of proof", "Know when to involve legal counsel or law enforcement"],
+        "Policies, standards, procedures, and guidelines": ["Classify documents as mandatory or advisory and by level of detail", "Trace how a policy is implemented through standards, baselines, and procedures"],
+        "Business continuity and BIA": ["Define MTD, RTO, RPO, and WRT and how they relate", "Walk through the steps of a business impact analysis"],
+        "Personnel security": ["Apply screening, onboarding, transfer, and separation controls", "Use job rotation, mandatory vacation, and separation of duties to deter fraud"],
+        "Risk assessment and analysis": ["Calculate SLE, ARO, and ALE from scenario data", "Contrast qualitative and quantitative risk analysis"],
+        "Risk response and control selection": ["Choose among mitigate, transfer, avoid, and accept based on risk appetite", "Compute safeguard value as ALE reduction minus annual cost"],
+        "Threat modeling": ["Classify threats with STRIDE and prioritize them", "Place threat modeling early in design and revisit it on change"],
+        "Supply chain risk management": ["Evaluate third-party assurance reports for scope, period, and carve-outs", "Build security requirements into contracts and ongoing vendor monitoring"],
+        "Security awareness, education, and training": ["Differentiate awareness, training, and education by audience and depth", "Measure program effectiveness with behavior-based metrics"]
+      }
+    },
+    "2": {
+      "name": "Asset Security",
+      "weight": 0.10,
+      "target": 100,
+      "difficulty_targets": { "easy": 30, "medium": 45, "hard": 25 },
+      "subtopics": {
+        "Data classification": ["Classify data by the impact of unauthorized disclosure or modification", "Avoid over-classification and its cost to usability"],
+        "Asset inventory and ownership": ["Maintain an accurate hardware, software, and data inventory with named owners", "Explain why unknown assets cannot be protected"],
+        "Data roles": ["Distinguish owner, controller, processor, custodian, steward, user, and subject", "Identify which role approves access versus which role implements it"],
+        "Data lifecycle and collection": ["Apply data minimization and purpose limitation at collection time", "Follow data through create, store, use, share, archive, and destroy"],
+        "Data retention": ["Balance legal, regulatory, and business retention requirements", "Apply legal holds and prevent spoliation"],
+        "Data remanence and destruction": ["Match sanitization methods (clear, purge, destroy) to media types", "Explain why SSD wear leveling defeats simple overwriting"],
+        "Data states and protection": ["Select controls for data at rest, in transit, and in use", "Know where confidential computing fits"],
+        "Scoping, tailoring, and baselines": ["Distinguish scoping from tailoring when adopting a control baseline", "Select standards and baselines that fit the environment"],
+        "DLP, DRM, and CASB": ["Compare DLP, DRM, and CASB capabilities and deployment modes", "Choose the tool that matches a visibility or enforcement requirement"],
+        "Asset handling and labeling": ["Apply marking, labeling, storage, and transport rules by classification", "Protect media in transit and in storage"],
+        "End-of-life assets": ["Manage end-of-life and end-of-support risk with compensating controls", "Plan secure decommissioning and disposal"]
+      }
+    },
+    "3": {
+      "name": "Security Architecture and Engineering",
+      "weight": 0.13,
+      "target": 130,
+      "difficulty_targets": { "easy": 39, "medium": 59, "hard": 32 },
+      "subtopics": {
+        "Secure design principles": ["Apply least privilege, defense in depth, secure defaults, and fail-secure design", "Recognize separation of duties, simplicity, and privacy by design in architectures"],
+        "Zero trust and secure access architecture": ["Explain how zero trust removes implicit trust based on network location", "Describe policy decision and enforcement points in access architectures"],
+        "Security models": ["Compare Bell-LaPadula, Biba, Clark-Wilson, and Brewer-Nash rules", "Map each model to the property it protects"],
+        "Evaluation and certification": ["Explain Common Criteria concepts such as protection profiles and assurance levels", "Distinguish certification from accreditation (authorization)"],
+        "Hardware security capabilities": ["Describe TPM, HSM, secure boot, and memory protection features", "Choose hardware roots of trust for key protection"],
+        "Virtualization, containers, and serverless": ["Identify isolation risks in hypervisors, containers, and serverless functions", "Harden container runtimes and images"],
+        "Cloud and distributed systems": ["Apply the shared responsibility model across IaaS, PaaS, and SaaS", "Recognize risks in distributed and microservice architectures"],
+        "ICS, IoT, and embedded systems": ["Prioritize safety and availability when securing operational technology", "Segment and monitor IoT and embedded devices that cannot be patched easily"],
+        "Database and web architecture vulnerabilities": ["Recognize aggregation and inference risks in databases", "Identify architectural weaknesses in client-server and web tiers"],
+        "Symmetric and asymmetric cryptography": ["Choose symmetric ciphers for bulk data and asymmetric for key exchange and signatures", "Compare modes of operation and key length trade-offs"],
+        "Hashing, signatures, and integrity": ["Walk through signature creation and verification with the correct keys", "Differentiate hashes, MACs, and digital signatures"],
+        "PKI and key management": ["Manage the certificate lifecycle including revocation via CRL and OCSP", "Apply key generation, storage, rotation, escrow, and destruction practices"],
+        "Cryptanalytic attacks": ["Recognize side-channel, fault injection, and implementation attacks", "Distinguish known-plaintext, chosen-plaintext, and chosen-ciphertext attacks"],
+        "Site and facility design": ["Apply CPTED and layered physical protections in site design", "Plan secure zones for server rooms, wiring closets, and media storage"],
+        "Environmental and physical controls": ["Select fire detection and suppression suitable for occupied equipment rooms", "Plan power, HVAC, and water-leak protections"]
+      }
+    },
+    "4": {
+      "name": "Communication and Network Security",
+      "weight": 0.13,
+      "target": 130,
+      "difficulty_targets": { "easy": 39, "medium": 59, "hard": 32 },
+      "subtopics": {
+        "OSI and TCP/IP models": ["Map devices, protocols, and attacks to OSI layers", "Relate the OSI model to the TCP/IP model"],
+        "IP networking and addressing": ["Calculate subnet sizes and usable host counts", "Compare IPv4 and IPv6 security considerations"],
+        "Secure protocols": ["Replace cleartext protocols with secure alternatives", "Know which ports and protocols provide confidentiality and integrity"],
+        "Converged and multilayer protocols": ["Explain iSCSI, FCoE, VoIP, and DNP3 and their security trade-offs", "Recognize risks when protocols span multiple layers"],
+        "Network segmentation": ["Use VLANs, firewalls, and micro-segmentation to limit lateral movement", "Place systems in zones by trust level and function"],
+        "Wireless networks": ["Compare WEP, WPA2, and WPA3 and enterprise authentication with 802.1X", "Recognize rogue access point and evil twin attacks"],
+        "Cellular and satellite": ["Understand security features and weaknesses of 4G and 5G", "Assess satellite link risks such as latency and interception"],
+        "SDN, SD-WAN, and virtual networks": ["Protect the SDN controller and its northbound and southbound interfaces", "Explain overlays such as VXLAN and SD-WAN security features"],
+        "Network devices and NAC": ["Explain what firewalls, proxies, and NAC enforce at each layer", "Use posture assessment to admit or quarantine endpoints"],
+        "Transmission media": ["Compare copper, fiber, and wireless media for eavesdropping and interference risk", "Protect cabling plants physically"],
+        "Remote access and VPN": ["Compare IPsec and TLS VPNs and full versus split tunneling", "Secure third-party and remote administrative connectivity"],
+        "Voice, video, and collaboration": ["Secure VoIP and conferencing against eavesdropping and unauthorized joining", "Apply access controls to collaboration platforms"],
+        "Network attacks": ["Recognize ARP spoofing, DNS poisoning, MAC flooding, and amplification attacks", "Match each network attack to its most effective countermeasure"],
+        "CDN and edge networks": ["Use CDNs and edge services for availability and DDoS absorption", "Understand trust and TLS termination at the edge"]
+      }
+    },
+    "5": {
+      "name": "Identity and Access Management",
+      "weight": 0.13,
+      "target": 130,
+      "difficulty_targets": { "easy": 39, "medium": 59, "hard": 32 },
+      "subtopics": {
+        "Physical and logical access control": ["Integrate physical and logical access for people, devices, and facilities", "Apply access controls to information, systems, and devices consistently"],
+        "Identification and authentication": ["Separate identification, authentication, authorization, and accounting", "Evaluate credential strength and error rates (FAR, FRR, CER)"],
+        "Multi-factor and passwordless authentication": ["Confirm that factors come from different categories", "Compare phishing-resistant methods such as FIDO2 passkeys"],
+        "Session management": ["Prevent session fixation and hijacking with proper token handling", "Set idle and absolute timeouts appropriate to risk"],
+        "Identity proofing and registration": ["Match identity proofing strength to assurance needs", "Secure account recovery and credential reset workflows"],
+        "Federation and SSO": ["Compare SAML, OAuth 2.0, and OpenID Connect roles and tokens", "Explain trust relationships between identity providers and relying parties"],
+        "Authorization models": ["Compare DAC, MAC, RBAC, rule-based, ABAC, and risk-based access control", "Select an authorization model for a given requirement"],
+        "Access policy enforcement": ["Describe policy decision points and policy enforcement points", "Apply least privilege and need to know consistently"],
+        "Provisioning lifecycle": ["Automate joiner, mover, and leaver processes", "Prevent privilege creep during transfers"],
+        "Access reviews": ["Design access reviews that are risk-based and understandable to reviewers", "Track revocations and exceptions from reviews"],
+        "Privileged and service accounts": ["Vault, rotate, and monitor privileged and service account credentials", "Scope non-human accounts to least privilege"],
+        "Authentication protocols": ["Trace Kerberos ticket flows and their weaknesses", "Compare RADIUS, TACACS+, and Diameter"],
+        "Just-in-time access": ["Replace standing privilege with time-bound, approved elevation", "Log and review elevated sessions"]
+      }
+    },
+    "6": {
+      "name": "Security Assessment and Testing",
+      "weight": 0.12,
+      "target": 120,
+      "difficulty_targets": { "easy": 36, "medium": 54, "hard": 30 },
+      "subtopics": {
+        "Assessment strategy": ["Choose internal, external, or third-party assessments for the assurance needed", "Protect auditor independence and objectivity"],
+        "Vulnerability assessment": ["Differentiate credentialed and uncredentialed scanning", "Prioritize findings with severity, exploitability, and asset context"],
+        "Penetration testing": ["Set scope, rules of engagement, and written authorization", "Compare black-box, gray-box, and white-box testing"],
+        "Log review": ["Recognize attack patterns such as password spraying in log data", "Prioritize which logs to review and how often"],
+        "Synthetic transactions and RUM": ["Contrast synthetic monitoring with real user monitoring", "Use synthetic tests to detect failures proactively"],
+        "Code review and testing": ["Compare SAST, DAST, IAST, and manual review", "Choose a testing technique based on access to code and runtime"],
+        "Misuse cases and coverage analysis": ["Write misuse and abuse cases from threat models", "Measure test coverage and interpret its limits"],
+        "Interface testing": ["Test APIs, user interfaces, and physical interfaces for security flaws", "Validate error handling across interface boundaries"],
+        "Breach and attack simulation": ["Use automated attack simulation to validate controls continuously", "Compare breach simulation with red and purple team exercises"],
+        "Security process data and metrics": ["Select outcome-based KPIs and KRIs for leadership", "Avoid vanity metrics that measure activity rather than risk"],
+        "Backup and recovery verification": ["Verify recoverability with test restores and integrity checks", "Confirm backups meet RPO and RTO requirements"],
+        "Reporting and remediation": ["Handle exceptions with time-bound approvals and compensating controls", "Write findings that non-technical owners can act on"],
+        "Audits and SOC reports": ["Distinguish SOC 1, SOC 2, and SOC 3 and Type I versus Type II", "Evaluate report scope, period, and carve-outs"]
+      }
+    },
+    "7": {
+      "name": "Security Operations",
+      "weight": 0.13,
+      "target": 130,
+      "difficulty_targets": { "easy": 39, "medium": 59, "hard": 32 },
+      "subtopics": {
+        "Investigations and evidence": ["Maintain chain of custody and evidence integrity", "Understand admissibility and types of evidence"],
+        "Digital forensics": ["Collect evidence in order of volatility", "Use write blockers and verified hashes when imaging media"],
+        "Logging and monitoring": ["Synchronize time sources to support correlation", "Monitor egress and privileged activity"],
+        "SIEM, SOAR, and threat intelligence": ["Tune SIEM correlation rules to reduce false positives", "Automate repeatable responses with SOAR playbooks"],
+        "Configuration management": ["Establish and enforce secure baselines", "Detect configuration drift automatically"],
+        "Foundational security operations": ["Apply need to know, least privilege, separation of duties, and job rotation", "Manage privileged accounts and service-level agreements"],
+        "Resource and media protection": ["Protect media throughout storage, transport, and reuse", "Apply controls to data at rest and in transit in operations"],
+        "Incident management": ["Follow detection, response, mitigation, reporting, recovery, remediation, and lessons learned", "Prioritize containment before recovery"],
+        "Detective and preventive controls": ["Compare IDS, IPS, allow-listing, sandboxing, and honeypots", "Place controls to detect and stop attacks at the right layer"],
+        "Patch and vulnerability management": ["Prioritize patching by exploitability and asset criticality", "Test patches before broad deployment"],
+        "Change management": ["Handle emergency changes with retroactive review", "Use a change advisory board to assess risk"],
+        "Backup and recovery strategies": ["Compare full, incremental, and differential backups", "Select backup storage and rotation strategies"],
+        "Disaster recovery": ["Choose hot, warm, cold, or cloud recovery sites to meet RTO and RPO", "Assign DR roles and communication plans"],
+        "DR plan testing": ["Compare checklist, tabletop, simulation, parallel, and full-interruption tests", "Choose a test type by risk tolerance and maturity"],
+        "Physical security operations": ["Operate perimeter and internal physical controls", "Manage visitors, badges, and guard procedures"],
+        "Personnel safety": ["Put life safety ahead of assets in every emergency", "Protect travelers and staff under duress"]
+      }
+    },
+    "8": {
+      "name": "Software Development Security",
+      "weight": 0.10,
+      "target": 100,
+      "difficulty_targets": { "easy": 30, "medium": 45, "hard": 25 },
+      "subtopics": {
+        "SDLC integration": ["Build security requirements, design review, and testing into every SDLC phase", "Explain why fixing defects earlier costs less"],
+        "Development methodologies": ["Compare waterfall, agile, spiral, and DevOps from a security view", "Fit security activities into iterative delivery"],
+        "Software maturity models": ["Use models such as SAMM or BSIMM to benchmark practices", "Plan maturity improvements incrementally"],
+        "Development ecosystem security": ["Protect repositories, IDEs, and developer credentials", "Scan for secrets and enforce branch protection"],
+        "CI/CD and pipeline security": ["Harden build systems and verify build provenance", "Protect signing keys and pipeline secrets"],
+        "Application security testing": ["Place SAST, DAST, IAST, and SCA in the pipeline", "Triage automated findings efficiently"],
+        "Software composition and supply chain": ["Maintain an SBOM and track component vulnerabilities", "Vet open-source dependencies before adoption"],
+        "Acquired software security": ["Evaluate COTS and SaaS security without source code access", "Write vendor security requirements into contracts"],
+        "Secure coding practices": ["Apply input validation, output encoding, and safe password storage", "Handle errors and secrets safely in code"],
+        "Source code weaknesses": ["Recognize injection, buffer overflow, and race condition flaws", "Match each weakness class to its root-cause fix"],
+        "API security": ["Enforce object-level and function-level authorization in APIs", "Apply rate limiting, authentication, and schema validation to APIs"],
+        "Change and release management": ["Control releases with approvals, versioning, and rollback plans", "Separate development, test, and production environments"]
+      }
+    }
+  }
+}

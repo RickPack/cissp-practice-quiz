@@ -1,0 +1,602 @@
+[
+  {
+    "id": "D2-0051",
+    "domain": 2,
+    "domain_name": "Asset Security",
+    "subtopic": "Data classification",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "What is the main benefit of a data classification program?",
+    "options": {
+      "A": "It lets the organization stop using encryption for most of its data",
+      "B": "It removes the need to keep an inventory of data and systems",
+      "C": "It guarantees that no sensitive data will ever be disclosed",
+      "D": "It applies protection in proportion to the data's value and sensitivity"
+    },
+    "answer": "D",
+    "explanation": "Classification groups data by the harm its disclosure or alteration would cause, so stronger controls go where they matter and less-sensitive data is not over-protected.",
+    "distractor_rationales": {
+      "A": "Classification decides where encryption is needed; it does not remove the need.",
+      "B": "Inventory is still required to know where classified data lives.",
+      "C": "No program can guarantee zero disclosure."
+    },
+    "references_topic": "Purpose of classification",
+    "version": "0.4"
+  },
+  {
+    "id": "D2-0052",
+    "domain": 2,
+    "domain_name": "Asset Security",
+    "subtopic": "Asset inventory and ownership",
+    "difficulty": "easy",
+    "type": "managerial_best_first_most",
+    "stem": "Expense reports reveal that several teams pay for SaaS tools that IT has never reviewed. What should happen FIRST?",
+    "options": {
+      "A": "Add them to the inventory, assign owners, and assess their risk",
+      "B": "Cancel every one of the subscriptions immediately without discussion",
+      "C": "Ignore them, since SaaS providers are responsible for their own security",
+      "D": "Ask each team to stop filing expense reports for software purchases"
+    },
+    "answer": "A",
+    "explanation": "Unknown assets cannot be protected. Recording them, naming an owner, and assessing the risk brings them under governance before deciding what to keep.",
+    "distractor_rationales": {
+      "B": "Cancelling without review may disrupt business and push usage further underground.",
+      "C": "The organization remains responsible for its data in SaaS tools.",
+      "D": "Hiding the purchases makes the problem worse."
+    },
+    "references_topic": "Shadow IT discovery",
+    "version": "0.4"
+  },
+  {
+    "id": "D2-0053",
+    "domain": 2,
+    "domain_name": "Asset Security",
+    "subtopic": "Data roles",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "Which role is responsible for data quality, business definitions, and metadata for a data set, on behalf of the data owner?",
+    "options": {
+      "A": "Data subject",
+      "B": "Data steward",
+      "C": "Data processor",
+      "D": "Data custodian"
+    },
+    "answer": "B",
+    "explanation": "A data steward manages the data's content and quality, such as definitions and metadata, so it is used consistently and correctly.",
+    "distractor_rationales": {
+      "A": "The data subject is the person the data describes.",
+      "C": "A data processor handles personal data on behalf of a controller.",
+      "D": "The custodian handles technical safekeeping, such as storage and backups."
+    },
+    "references_topic": "Data steward",
+    "version": "0.4"
+  },
+  {
+    "id": "D2-0054",
+    "domain": 2,
+    "domain_name": "Asset Security",
+    "subtopic": "Data lifecycle and collection",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "In the data lifecycle, what is the phase called when data is no longer in active use but is moved to long-term, lower-cost storage for later retrieval?",
+    "options": {
+      "A": "Create",
+      "B": "Share",
+      "C": "Archive",
+      "D": "Destruction"
+    },
+    "answer": "C",
+    "explanation": "Archiving retains data that is no longer used day to day but must be kept, typically on cheaper storage, until it can be destroyed.",
+    "distractor_rationales": {
+      "A": "Create is when data is first generated or collected.",
+      "B": "Share is when data is made available to others.",
+      "D": "Destruction is the final phase, when data is permanently removed."
+    },
+    "references_topic": "Archive phase",
+    "version": "0.4"
+  },
+  {
+    "id": "D2-0055",
+    "domain": 2,
+    "domain_name": "Asset Security",
+    "subtopic": "Data remanence and destruction",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "On which type of media is degaussing ineffective as a sanitization method?",
+    "options": {
+      "A": "Magnetic hard disk drives used in older servers",
+      "B": "Magnetic backup tapes stored in an off-site vault",
+      "C": "Floppy disks that were kept for legacy system recovery",
+      "D": "Solid-state drives"
+    },
+    "answer": "D",
+    "explanation": "Degaussing disrupts magnetic fields. Solid-state drives store data in flash memory cells, so degaussing does not erase them.",
+    "distractor_rationales": {
+      "A": "Degaussing does work on magnetic hard drives, although it usually renders them unusable.",
+      "B": "Magnetic tape can be degaussed.",
+      "C": "Floppy disks are magnetic media."
+    },
+    "references_topic": "Limits of degaussing",
+    "version": "0.4"
+  },
+  {
+    "id": "D2-0056",
+    "domain": 2,
+    "domain_name": "Asset Security",
+    "subtopic": "Data states and protection",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "Full-disk encryption on a laptop protects data in which state?",
+    "options": {
+      "A": "At rest",
+      "B": "In transit across the corporate network",
+      "C": "In use while the user has the laptop unlocked",
+      "D": "In transit between the laptop and a cloud service"
+    },
+    "answer": "A",
+    "explanation": "Full-disk encryption protects stored data when the device is powered off or locked, such as when a laptop is lost.",
+    "distractor_rationales": {
+      "B": "Network encryption such as TLS or a VPN protects data in transit.",
+      "C": "Once the user unlocks the laptop, data is decrypted for use.",
+      "D": "Traffic to cloud services needs transport encryption."
+    },
+    "references_topic": "Full-disk encryption",
+    "version": "0.4"
+  },
+  {
+    "id": "D2-0057",
+    "domain": 2,
+    "domain_name": "Asset Security",
+    "subtopic": "Asset handling and labeling",
+    "difficulty": "easy",
+    "type": "application",
+    "stem": "An unlabeled USB drive is found in a secure area that handles restricted data. How should it be handled?",
+    "options": {
+      "A": "Plug it into a workstation to find out who owns it",
+      "B": "Treat it as holding the highest classification until it is examined safely",
+      "C": "Throw it away, since unlabeled media is assumed to be empty",
+      "D": "Give it to the nearest employee to use as spare storage"
+    },
+    "answer": "B",
+    "explanation": "Unlabeled media in a sensitive area could contain restricted data or malware. It should be protected at the highest level present and examined in a controlled way.",
+    "distractor_rationales": {
+      "A": "Plugging in unknown media risks malware infection.",
+      "C": "Discarding it could expose restricted data and destroy evidence.",
+      "D": "Reusing it could spread data or malware."
+    },
+    "references_topic": "Handling unlabeled media",
+    "version": "0.4"
+  },
+  {
+    "id": "D2-0058",
+    "domain": 2,
+    "domain_name": "Asset Security",
+    "subtopic": "Data classification",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "Product specifications were classified as confidential before launch. The product has now been announced, and the specifications are published on the company's website. What should happen to the classification?",
+    "options": {
+      "A": "Keep them confidential permanently, since they were confidential when they were created",
+      "B": "Raise them to restricted to protect them from competitors after launch",
+      "C": "Have the owner downgrade them, since disclosure would no longer cause harm",
+      "D": "Delete all internal copies, since the public web version is now the only one"
+    },
+    "answer": "C",
+    "explanation": "Classification should reflect current sensitivity. Once information is public, the owner should declassify it so it is not over-protected at unnecessary cost.",
+    "distractor_rationales": {
+      "A": "Over-classifying public information wastes resources and hinders use.",
+      "B": "Raising the level makes no sense for published information.",
+      "D": "Internal copies may still be needed for business and records purposes."
+    },
+    "references_topic": "Reclassification over time",
+    "version": "0.4"
+  },
+  {
+    "id": "D2-0059",
+    "domain": 2,
+    "domain_name": "Asset Security",
+    "subtopic": "Asset inventory and ownership",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "The hardware inventory is kept in a spreadsheet that is always out of date. Which approach BEST keeps it accurate?",
+    "options": {
+      "A": "Ask every employee to update the spreadsheet whenever they receive new equipment",
+      "B": "Rebuild the spreadsheet from scratch once a year during the external audit",
+      "C": "Limit the inventory to servers, since laptops and phones change too often to track",
+      "D": "Use automated discovery tools and reconcile their results with the inventory"
+    },
+    "answer": "D",
+    "explanation": "Automated discovery finds devices continuously, and reconciling results with the inventory catches assets that were never registered.",
+    "distractor_rationales": {
+      "A": "Relying on individuals produces gaps.",
+      "B": "An annual rebuild is out of date soon after it is finished.",
+      "C": "Leaving out endpoints leaves many assets unprotected."
+    },
+    "references_topic": "Automated asset discovery",
+    "version": "0.4"
+  },
+  {
+    "id": "D2-0060",
+    "domain": 2,
+    "domain_name": "Asset Security",
+    "subtopic": "Data roles",
+    "difficulty": "medium",
+    "type": "knowledge",
+    "stem": "Which role is responsible for a system that processes data, including making sure it is patched and meets security requirements, as distinct from the owner of the data itself?",
+    "options": {
+      "A": "System owner",
+      "B": "Data subject",
+      "C": "Data owner",
+      "D": "Data processor"
+    },
+    "answer": "A",
+    "explanation": "The system owner is accountable for the system's security and operation. The data owner is accountable for the data the system processes.",
+    "distractor_rationales": {
+      "B": "The data subject is the person described by personal data.",
+      "C": "The data owner decides classification and access for the data, not the system's upkeep.",
+      "D": "A data processor handles personal data on behalf of a controller; it is not the internal role responsible for the system."
+    },
+    "references_topic": "System owner",
+    "version": "0.4"
+  },
+  {
+    "id": "D2-0061",
+    "domain": 2,
+    "domain_name": "Asset Security",
+    "subtopic": "Data lifecycle and collection",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "Marketing wants to use recordings of customer support calls to train a new AI model. The recordings were collected for quality assurance. What should happen FIRST?",
+    "options": {
+      "A": "Start training right away, since the company already holds all of the recordings",
+      "B": "Review whether the new use is compatible with the original purpose and notices",
+      "C": "Delete all recordings to avoid any possible privacy problem in the future",
+      "D": "Let the AI vendor decide whether the recordings can be used for training"
+    },
+    "answer": "B",
+    "explanation": "Using data for a new purpose requires checking it against the purpose it was collected for and what customers were told. A privacy review decides whether new notice or consent is needed.",
+    "distractor_rationales": {
+      "A": "Holding data does not permit any use of it.",
+      "C": "Deleting the recordings may break legitimate quality and retention needs.",
+      "D": "The company, not its vendor, is accountable for how its data is used."
+    },
+    "references_topic": "Reusing data for new purposes",
+    "version": "0.4"
+  },
+  {
+    "id": "D2-0062",
+    "domain": 2,
+    "domain_name": "Asset Security",
+    "subtopic": "Data retention",
+    "difficulty": "medium",
+    "type": "knowledge",
+    "stem": "Why should an organization avoid keeping data longer than its retention requirements?",
+    "options": {
+      "A": "Older data is automatically less accurate and must be deleted for that reason",
+      "B": "Storage vendors require customers to delete data after a fixed number of years",
+      "C": "Excess data increases breach exposure and discovery costs",
+      "D": "Keeping data longer always violates the organization's backup policy"
+    },
+    "answer": "C",
+    "explanation": "Every record kept is something that could be breached or must be searched in litigation. Disposing of data when retention ends reduces both.",
+    "distractor_rationales": {
+      "A": "Age alone does not make data inaccurate.",
+      "B": "Storage vendors do not dictate customers' retention.",
+      "D": "Backup policy is not the reason for retention limits."
+    },
+    "references_topic": "Benefits of limiting retention",
+    "version": "0.4"
+  },
+  {
+    "id": "D2-0063",
+    "domain": 2,
+    "domain_name": "Asset Security",
+    "subtopic": "Data remanence and destruction",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "A company has hundreds of old DVDs containing confidential project files. Which method BEST destroys the data?",
+    "options": {
+      "A": "Degaussing each disc with a high-strength degausser",
+      "B": "Overwriting the discs with random data using a disc burner",
+      "C": "Deleting the files through the operating system's file manager",
+      "D": "Shredding the discs in a shredder rated for optical media"
+    },
+    "answer": "D",
+    "explanation": "Most DVDs are read-only and non-magnetic, so they cannot be overwritten or degaussed. Physical destruction with an optical-media shredder is the reliable method.",
+    "distractor_rationales": {
+      "A": "Optical discs are not magnetic, so degaussing has no effect.",
+      "B": "Read-only discs cannot be overwritten.",
+      "C": "Deleting files from read-only media is not possible and would not remove data anyway."
+    },
+    "references_topic": "Destroying optical media",
+    "version": "0.4"
+  },
+  {
+    "id": "D2-0064",
+    "domain": 2,
+    "domain_name": "Asset Security",
+    "subtopic": "Data states and protection",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "A database encrypts card numbers at rest, but the application server writes full card numbers into its debug logs. What is the BEST fix?",
+    "options": {
+      "A": "Mask or remove card numbers before they are written to logs",
+      "B": "Encrypt the database with a longer key so the logs are protected too",
+      "C": "Move the log files to a different folder on the same application server",
+      "D": "Keep debug logging but delete the logs manually once a month"
+    },
+    "answer": "A",
+    "explanation": "Protection must follow the data wherever it goes. Masking or removing sensitive values at the point of logging stops the exposure at its source.",
+    "distractor_rationales": {
+      "B": "Database encryption has no effect on separate log files.",
+      "C": "Moving logs does not protect their contents.",
+      "D": "Monthly deletion leaves the data exposed in the meantime."
+    },
+    "references_topic": "Sensitive data in logs",
+    "version": "0.4"
+  },
+  {
+    "id": "D2-0065",
+    "domain": 2,
+    "domain_name": "Asset Security",
+    "subtopic": "Scoping, tailoring, and baselines",
+    "difficulty": "medium",
+    "type": "knowledge",
+    "stem": "An organization adopts a control baseline but raises the required password length from 12 to 16 characters to meet its own risk needs. What is this adjustment called?",
+    "options": {
+      "A": "Scoping, because it removes a control that does not apply to the environment",
+      "B": "Tailoring",
+      "C": "Baselining, because it creates a brand-new baseline from scratch",
+      "D": "Compensating, because it replaces a control that cannot be implemented"
+    },
+    "answer": "B",
+    "explanation": "Tailoring adjusts baseline controls, such as their parameters, to fit the organization's risk and environment.",
+    "distractor_rationales": {
+      "A": "Scoping removes controls that do not apply; this adjusts one.",
+      "C": "The organization is adapting an existing baseline, not creating a new one.",
+      "D": "A compensating control replaces one that cannot be met."
+    },
+    "references_topic": "Tailoring control parameters",
+    "version": "0.4"
+  },
+  {
+    "id": "D2-0066",
+    "domain": 2,
+    "domain_name": "Asset Security",
+    "subtopic": "Scoping, tailoring, and baselines",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "An auditor asks why several controls in the company's adopted baseline were removed or changed, but no one remembers. What practice would have prevented this?",
+    "options": {
+      "A": "Keeping the original baseline unchanged, so that no tailoring decisions are ever needed",
+      "B": "Asking the security team to explain each decision from memory during every audit",
+      "C": "Recording each scoping and tailoring decision with rationale and approval",
+      "D": "Allowing each system administrator to adjust the baseline without documentation"
+    },
+    "answer": "C",
+    "explanation": "Documented rationale and approval show that each change was deliberate and risk-based, and give auditors the evidence they need.",
+    "distractor_rationales": {
+      "A": "Refusing to tailor ignores legitimate differences in environment and risk.",
+      "B": "Memory is unreliable and not auditable.",
+      "D": "Undocumented changes are exactly the problem."
+    },
+    "references_topic": "Documenting tailoring decisions",
+    "version": "0.4"
+  },
+  {
+    "id": "D2-0067",
+    "domain": 2,
+    "domain_name": "Asset Security",
+    "subtopic": "DLP, DRM, and CASB",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "A company wants to find sensitive files already stored in its sanctioned cloud file-sharing service, including files shared before any controls were in place. Which CASB approach fits BEST?",
+    "options": {
+      "A": "A forward proxy that inspects new uploads from managed laptops only",
+      "B": "A reverse proxy that controls access from unmanaged devices at login",
+      "C": "Network DLP on the corporate internet link that watches outgoing traffic",
+      "D": "An API-based CASB connected directly to the cloud service"
+    },
+    "answer": "D",
+    "explanation": "API-based CASBs connect to the service and can scan data at rest, including existing files and sharing settings. Proxies see only new traffic passing through them.",
+    "distractor_rationales": {
+      "A": "A forward proxy sees only traffic from managed devices going forward.",
+      "B": "A reverse proxy controls sessions but does not scan files already stored.",
+      "C": "Network DLP sees only traffic crossing the corporate link."
+    },
+    "references_topic": "API-mode CASB",
+    "version": "0.4"
+  },
+  {
+    "id": "D2-0068",
+    "domain": 2,
+    "domain_name": "Asset Security",
+    "subtopic": "Asset handling and labeling",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "Staff regularly email confidential documents to personal accounts so they can work from home. What is the BEST response?",
+    "options": {
+      "A": "Provide approved secure remote access, and monitor or block personal forwarding",
+      "B": "Tell staff in a memo that working from home is no longer allowed for anyone at all",
+      "C": "Allow the practice, as long as staff delete the emails when they finish",
+      "D": "Ask staff to password-protect the documents before emailing them home"
+    },
+    "answer": "A",
+    "explanation": "People use workarounds when they lack a safe way to work. Giving them an approved channel and controlling the unsafe one addresses both need and risk.",
+    "distractor_rationales": {
+      "B": "Banning remote work is disproportionate and invites more workarounds.",
+      "C": "Personal accounts are outside company control, and deletion cannot be verified.",
+      "D": "Document passwords are weak and still put data in personal accounts."
+    },
+    "references_topic": "Removing the need for unsafe workarounds",
+    "version": "0.4"
+  },
+  {
+    "id": "D2-0069",
+    "domain": 2,
+    "domain_name": "Asset Security",
+    "subtopic": "End-of-life assets",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "Several critical systems reached end of support with no replacement budget, surprising leadership. What practice would BEST prevent this?",
+    "options": {
+      "A": "Buy only products from vendors that promise never to end support",
+      "B": "Track vendor end-of-life dates in the inventory and budget ahead",
+      "C": "Keep systems running until they fail, then replace them as needed",
+      "D": "Ask vendors to extend support for free each time a date approaches"
+    },
+    "answer": "B",
+    "explanation": "Recording lifecycle dates in the inventory gives leadership time to plan and budget replacements before support ends.",
+    "distractor_rationales": {
+      "A": "No vendor supports products forever.",
+      "C": "Running to failure leaves unsupported systems exposed.",
+      "D": "Free extensions are rarely available and cannot be relied upon."
+    },
+    "references_topic": "Planning for end of support",
+    "version": "0.4"
+  },
+  {
+    "id": "D2-0070",
+    "domain": 2,
+    "domain_name": "Asset Security",
+    "subtopic": "Data classification",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "After a merger, one company uses four classification levels and the other uses three. What is the BEST way to combine them?",
+    "options": {
+      "A": "Keep both schemes in use permanently so that neither company has to change its labels",
+      "B": "Relabel everything with the stricter company's names without comparing definitions",
+      "C": "Map levels by their impact definitions, agree on one scheme, and have owners approve",
+      "D": "Classify all data at the highest level until a new scheme can be designed in some years"
+    },
+    "answer": "C",
+    "explanation": "Levels with similar names may mean different things. Mapping by the harm each level represents, then having owners confirm, produces a single consistent scheme.",
+    "distractor_rationales": {
+      "A": "Two schemes cause confusion and inconsistent protection.",
+      "B": "Matching names without comparing definitions can misclassify data.",
+      "D": "Over-classifying everything for years is costly and hinders work."
+    },
+    "references_topic": "Merging classification schemes",
+    "version": "0.4"
+  },
+  {
+    "id": "D2-0071",
+    "domain": 2,
+    "domain_name": "Asset Security",
+    "subtopic": "Data lifecycle and collection",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "A university research partner asks for a copy of the company's customer data set for a joint study. What is the BEST approach?",
+    "options": {
+      "A": "Send the full data set by email, since the partner is a trusted academic institution",
+      "B": "Give the partner direct read access to the production customer database",
+      "C": "Decline, since customer data can never be shared with third parties under any terms",
+      "D": "Share a minimized, de-identified extract under an agreement covering use and deletion"
+    },
+    "answer": "D",
+    "explanation": "Sharing should be limited to what the study needs, reduced in identifiability, and governed by an agreement on permitted use, protection, and destruction.",
+    "distractor_rationales": {
+      "A": "Full data by email over-shares and uses an insecure channel.",
+      "B": "Production access exposes far more than the study needs.",
+      "C": "Sharing can be lawful and valuable with proper controls."
+    },
+    "references_topic": "Controlled data sharing with partners",
+    "version": "0.4"
+  },
+  {
+    "id": "D2-0072",
+    "domain": 2,
+    "domain_name": "Asset Security",
+    "subtopic": "Data retention",
+    "difficulty": "hard",
+    "type": "application",
+    "stem": "The retention schedule says customer records must be deleted after three years, but backup tapes are kept for ten years. What is the BEST fix?",
+    "options": {
+      "A": "Align backup retention with the schedule, or document why longer retention is required",
+      "B": "Keep the ten-year tapes, since backups are exempt from all retention schedules",
+      "C": "Delete production records after three years and assume no one will restore old tapes",
+      "D": "Extend the retention schedule to ten years so that it matches the backup tapes"
+    },
+    "answer": "A",
+    "explanation": "Data in backups is still data. Backup retention must follow the schedule, or any legitimate reason for a longer period must be documented and controlled.",
+    "distractor_rationales": {
+      "B": "Backups are not exempt from retention requirements.",
+      "C": "Old tapes still hold the records and can be discovered or breached.",
+      "D": "Extending retention for convenience increases exposure without a business reason."
+    },
+    "references_topic": "Backups and retention schedules",
+    "version": "0.4"
+  },
+  {
+    "id": "D2-0073",
+    "domain": 2,
+    "domain_name": "Asset Security",
+    "subtopic": "DLP, DRM, and CASB",
+    "difficulty": "hard",
+    "type": "application",
+    "stem": "Network DLP stopped detecting sensitive uploads after most web traffic moved to HTTPS. What is the BEST way to restore coverage?",
+    "options": {
+      "A": "Block all HTTPS traffic so that uploads must fall back to unencrypted HTTP",
+      "B": "Add TLS inspection at the proxy with privacy exceptions, or deploy endpoint DLP",
+      "C": "Raise the DLP alert thresholds so fewer uploads trigger alerts",
+      "D": "Accept the gap, since encrypted traffic is secure by definition"
+    },
+    "answer": "B",
+    "explanation": "DLP needs to see content. Inspecting TLS at a controlled point, with exceptions for sensitive categories such as banking and health, or inspecting on the endpoint before encryption, restores visibility.",
+    "distractor_rationales": {
+      "A": "Blocking HTTPS would break the web and weaken security.",
+      "C": "Raising thresholds reduces detection further.",
+      "D": "Encryption protects the channel, not against an insider uploading data."
+    },
+    "references_topic": "DLP and encrypted traffic",
+    "version": "0.4"
+  },
+  {
+    "id": "D2-0074",
+    "domain": 2,
+    "domain_name": "Asset Security",
+    "subtopic": "End-of-life assets",
+    "difficulty": "hard",
+    "type": "application",
+    "stem": "A retired application server was powered off and left in the rack. Months later, its DNS name, service accounts, and TLS certificate were all still active. What should the decommissioning process include?",
+    "options": {
+      "A": "Powering off the server and adding a \"do not use\" sticker to the front panel",
+      "B": "Leaving everything in place in case the application needs to come back later",
+      "C": "Revoking its accounts and certificates, removing DNS and inventory entries, and sanitizing drives",
+      "D": "Deleting only the application files and leaving the operating system installed"
+    },
+    "answer": "C",
+    "explanation": "Decommissioning must remove everything that could be reused by an attacker, including credentials, certificates, and name records, and must sanitize storage before disposal.",
+    "distractor_rationales": {
+      "A": "A sticker does not remove credentials or data.",
+      "B": "Leftover accounts and certificates are attack paths.",
+      "D": "The remaining system still holds credentials and possibly data."
+    },
+    "references_topic": "Decommissioning checklist",
+    "version": "0.4"
+  },
+  {
+    "id": "D2-0075",
+    "domain": 2,
+    "domain_name": "Asset Security",
+    "subtopic": "DLP, DRM, and CASB",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "A company shares design documents with external manufacturers and needs to revoke access or set expiry dates after the files have been sent. Which technology BEST meets this need?",
+    "options": {
+      "A": "Network DLP that blocks design files from leaving the corporate network",
+      "B": "A CASB that monitors which cloud applications employees are using",
+      "C": "Full-disk encryption on the laptops of the engineers who send the files",
+      "D": "Digital rights management applied to the documents"
+    },
+    "answer": "D",
+    "explanation": "DRM keeps protection attached to the file wherever it goes, so access can be revoked or expire after delivery.",
+    "distractor_rationales": {
+      "A": "DLP controls data leaving, not what happens after it is sent.",
+      "B": "A CASB governs cloud service use, not files already held by partners.",
+      "C": "Disk encryption protects the sender's laptops, not the shared files."
+    },
+    "references_topic": "Choosing DRM for post-delivery control",
+    "version": "0.4"
+  }
+]

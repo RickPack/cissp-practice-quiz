@@ -1,0 +1,530 @@
+[
+  {
+    "id": "D7-0011",
+    "domain": 7,
+    "domain_name": "Security Operations",
+    "subtopic": "SIEM, SOAR, and threat intelligence",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "What is the primary purpose of a security information and event management (SIEM) system?",
+    "options": {
+      "A": "Blocking malicious traffic at the network perimeter",
+      "B": "Collecting and correlating security events from many sources to detect incidents",
+      "C": "Encrypting log files stored on servers",
+      "D": "Managing user identities and passwords"
+    },
+    "answer": "B",
+    "explanation": "A SIEM aggregates and normalizes events from many sources, correlates them to detect incidents, raises alerts, and supports investigations and log retention.",
+    "distractor_rationales": {
+      "A": "Blocking traffic is the job of firewalls and intrusion prevention systems.",
+      "C": "Encrypting logs is not a SIEM's primary purpose.",
+      "D": "Identity and password management belongs to IAM systems."
+    },
+    "references_topic": "SIEM purpose",
+    "version": "0.2"
+  },
+  {
+    "id": "D7-0012",
+    "domain": 7,
+    "domain_name": "Security Operations",
+    "subtopic": "Configuration management",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "In configuration management, what is a security baseline?",
+    "options": {
+      "A": "A list of every employee who administers the systems",
+      "B": "The maximum network bandwidth allowed for each system",
+      "C": "An approved minimum set of security settings for systems",
+      "D": "The first full backup taken after a system is built"
+    },
+    "answer": "C",
+    "explanation": "A security baseline is a documented, approved set of minimum security settings that systems of a given type must meet, which gives a reference for building and auditing them.",
+    "distractor_rationales": {
+      "A": "A list of administrators is an access record, not a baseline.",
+      "B": "Bandwidth limits are a performance setting.",
+      "D": "A first backup is a recovery artifact."
+    },
+    "references_topic": "Security baselines",
+    "version": "0.2"
+  },
+  {
+    "id": "D7-0013",
+    "domain": 7,
+    "domain_name": "Security Operations",
+    "subtopic": "Foundational security operations",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "Besides spreading knowledge so the organization does not depend on one person, what security benefit does job rotation provide?",
+    "options": {
+      "A": "Lower payroll costs",
+      "B": "Faster onboarding of new hires",
+      "C": "Fewer accounts to manage",
+      "D": "A chance to detect fraud or errors when someone new takes over the duties"
+    },
+    "answer": "D",
+    "explanation": "When a different person takes over a role, irregularities left by the previous person are more likely to be noticed. Rotation also discourages long-running fraud and collusion.",
+    "distractor_rationales": {
+      "A": "Rotation does not reduce payroll.",
+      "B": "Rotation is about existing staff, not onboarding speed.",
+      "C": "Rotation does not reduce the number of accounts."
+    },
+    "references_topic": "Job rotation",
+    "version": "0.2"
+  },
+  {
+    "id": "D7-0014",
+    "domain": 7,
+    "domain_name": "Security Operations",
+    "subtopic": "Resource and media protection",
+    "difficulty": "easy",
+    "type": "application",
+    "stem": "A company ships backup drives to a recovery site every week. Which control BEST protects the data if a drive is lost in transit?",
+    "options": {
+      "A": "Encrypting the drives",
+      "B": "Labeling the drives \"Confidential\"",
+      "C": "Using padded shipping boxes",
+      "D": "Shipping only on weekends"
+    },
+    "answer": "A",
+    "explanation": "Encryption keeps the data unreadable to anyone who finds or steals a lost drive.",
+    "distractor_rationales": {
+      "B": "A label may attract attention and does not protect the data.",
+      "C": "Padding protects against physical damage, not disclosure.",
+      "D": "The day of shipment does not protect the data."
+    },
+    "references_topic": "Encrypting media in transit",
+    "version": "0.2"
+  },
+  {
+    "id": "D7-0015",
+    "domain": 7,
+    "domain_name": "Security Operations",
+    "subtopic": "Patch and vulnerability management",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "What is a zero-day vulnerability?",
+    "options": {
+      "A": "A flaw that the vendor patches on the same day it is disclosed",
+      "B": "A flaw with no vendor patch available yet",
+      "C": "A flaw with a CVSS score of zero",
+      "D": "A flaw found on the first day of a penetration test"
+    },
+    "answer": "B",
+    "explanation": "A zero-day is a vulnerability that is unknown to the vendor or has no patch available, so defenders have had \"zero days\" to fix it.",
+    "distractor_rationales": {
+      "A": "Same-day patching describes a fast response, not a zero-day.",
+      "C": "A CVSS score of zero would mean no severity at all.",
+      "D": "When a tester finds a flaw has nothing to do with the term."
+    },
+    "references_topic": "Zero-day vulnerabilities",
+    "version": "0.2"
+  },
+  {
+    "id": "D7-0016",
+    "domain": 7,
+    "domain_name": "Security Operations",
+    "subtopic": "Physical security operations",
+    "difficulty": "easy",
+    "type": "application",
+    "stem": "A visitor arrives for a meeting in a secure office area. Which procedure is MOST appropriate?",
+    "options": {
+      "A": "Let the visitor find the meeting room on their own",
+      "B": "Issue the visitor a permanent employee badge for convenience",
+      "C": "Log the visit, issue a visitor badge, and escort them",
+      "D": "Ask the visitor to wait inside the server room"
+    },
+    "answer": "C",
+    "explanation": "Visitors are signed in, given a visibly different temporary badge, and escorted, so their presence is recorded and their movement controlled.",
+    "distractor_rationales": {
+      "A": "Unescorted visitors can wander into restricted areas.",
+      "B": "A permanent employee badge grants far more access than a visitor needs.",
+      "D": "A server room is a restricted area, the last place to leave a visitor."
+    },
+    "references_topic": "Visitor management",
+    "version": "0.2"
+  },
+  {
+    "id": "D7-0017",
+    "domain": 7,
+    "domain_name": "Security Operations",
+    "subtopic": "Incident management",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "Which incident response activity focuses on identifying what went well, what failed, and how to improve?",
+    "options": {
+      "A": "Containment",
+      "B": "Eradication",
+      "C": "Detection",
+      "D": "Lessons learned"
+    },
+    "answer": "D",
+    "explanation": "The lessons learned review after an incident captures what worked and what did not and feeds improvements back into plans, controls, and training.",
+    "distractor_rationales": {
+      "A": "Containment limits the spread and impact of an incident.",
+      "B": "Eradication removes the cause, such as malware or an attacker's access.",
+      "C": "Detection identifies that an incident is occurring."
+    },
+    "references_topic": "Lessons learned",
+    "version": "0.2"
+  },
+  {
+    "id": "D7-0018",
+    "domain": 7,
+    "domain_name": "Security Operations",
+    "subtopic": "SIEM, SOAR, and threat intelligence",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "A SOC receives 300 user-reported phishing emails every day, and analysts spend hours checking links and attachments by hand. What is the BEST improvement?",
+    "options": {
+      "A": "Automate triage with a SOAR playbook and escalate unclear cases",
+      "B": "Stop accepting phishing reports from users so the queue stays manageable",
+      "C": "Hire enough analysts to review every report manually",
+      "D": "Disable all links in inbound email"
+    },
+    "answer": "A",
+    "explanation": "A SOAR playbook can automatically enrich, analyze, and quarantine reported messages and pass only uncertain cases to analysts, freeing their time for real investigation.",
+    "distractor_rationales": {
+      "B": "User reports are a valuable detection source. Rejecting them increases risk.",
+      "C": "More staff doing repetitive work is expensive and does not scale.",
+      "D": "Disabling all links disrupts legitimate business email."
+    },
+    "references_topic": "SOAR playbooks",
+    "version": "0.2"
+  },
+  {
+    "id": "D7-0019",
+    "domain": 7,
+    "domain_name": "Security Operations",
+    "subtopic": "Configuration management",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "Monthly audits keep finding servers whose settings no longer match the approved baseline because administrators make ad hoc changes. Which control BEST addresses this?",
+    "options": {
+      "A": "Switching to one comprehensive manual audit once a year",
+      "B": "Automated drift detection that restores the baseline",
+      "C": "Emailing administrators a reminder about the baseline",
+      "D": "Removing the baseline so audits stop failing"
+    },
+    "answer": "B",
+    "explanation": "Automated configuration management continuously compares systems to the desired state, alerts on drift, and restores the approved settings.",
+    "distractor_rationales": {
+      "A": "Less frequent audits let drift persist longer.",
+      "C": "Reminders do not enforce anything.",
+      "D": "Removing the standard hides the problem instead of fixing it."
+    },
+    "references_topic": "Configuration drift",
+    "version": "0.2"
+  },
+  {
+    "id": "D7-0020",
+    "domain": 7,
+    "domain_name": "Security Operations",
+    "subtopic": "Foundational security operations",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "A company's backup administrator can delete backups and change retention policies with no approval, and ransomware groups increasingly target backups. What is the BEST control?",
+    "options": {
+      "A": "Give several more administrators the same rights for coverage",
+      "B": "Encrypt all backup sets with a key held by the same administrator",
+      "C": "Require dual approval for deletions and make backups immutable",
+      "D": "Take backups less often to reduce the number of copies at risk"
+    },
+    "answer": "C",
+    "explanation": "Dual control (separation of duties) means one compromised account cannot destroy backups on its own, and immutable storage prevents deletion or alteration during the retention period.",
+    "distractor_rationales": {
+      "A": "More people with the same rights increases the risk.",
+      "B": "Encryption does not stop deletion, and the key is held by the same person.",
+      "D": "Fewer backups reduce recoverability."
+    },
+    "references_topic": "Dual control for backup deletion",
+    "version": "0.2"
+  },
+  {
+    "id": "D7-0021",
+    "domain": 7,
+    "domain_name": "Security Operations",
+    "subtopic": "Patch and vulnerability management",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "A vendor releases a patch for a database server that runs on 200 servers supporting critical applications. What is the BEST deployment approach?",
+    "options": {
+      "A": "Deploy the patch to all 200 servers at the same moment",
+      "B": "Wait for the next annual maintenance window",
+      "C": "Let each application owner decide whether to patch",
+      "D": "Test in staging, pilot, then roll out in stages"
+    },
+    "answer": "D",
+    "explanation": "Testing in a staging environment, deploying to a pilot group, and then rolling out in stages with rollback plans balances speed with the risk of a bad patch breaking critical applications.",
+    "distractor_rationales": {
+      "A": "Patching everything at once risks a simultaneous outage if the patch causes problems.",
+      "B": "A year of exposure is far too long.",
+      "C": "Optional patching leads to inconsistent coverage."
+    },
+    "references_topic": "Staged patch deployment",
+    "version": "0.2"
+  },
+  {
+    "id": "D7-0022",
+    "domain": 7,
+    "domain_name": "Security Operations",
+    "subtopic": "SIEM, SOAR, and threat intelligence",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "A threat intelligence feed provides thousands of IP addresses and file hashes each day, but attackers change them constantly. Which use of threat intelligence provides the MOST durable defensive value?",
+    "options": {
+      "A": "Detecting the adversary behaviors (TTPs) behind the indicators",
+      "B": "Permanently blocking every single IP address that appears in the feed",
+      "C": "Dropping the feed, since indicators change too quickly",
+      "D": "Matching file hashes only"
+    },
+    "answer": "A",
+    "explanation": "Tactics, techniques, and procedures are costly for attackers to change, so detections built on behavior remain useful long after IP addresses and hashes rotate.",
+    "distractor_rationales": {
+      "B": "IP addresses change and get reused, so permanent blocks cause false positives and quickly go stale.",
+      "C": "Intelligence still has value when used at the right level.",
+      "D": "Hashes change with trivial modifications to a file."
+    },
+    "references_topic": "Pyramid of pain",
+    "version": "0.2"
+  },
+  {
+    "id": "D7-0023",
+    "domain": 7,
+    "domain_name": "Security Operations",
+    "subtopic": "Backup and recovery strategies",
+    "difficulty": "medium",
+    "type": "knowledge",
+    "stem": "Which backup media rotation scheme uses daily, weekly, and monthly backup sets?",
+    "options": {
+      "A": "Round robin",
+      "B": "Grandfather-father-son",
+      "C": "Disk mirroring",
+      "D": "Continuous replication"
+    },
+    "answer": "B",
+    "explanation": "Grandfather-father-son rotation uses daily (son), weekly (father), and monthly (grandfather) backup sets to balance media use against how far back data can be restored.",
+    "distractor_rationales": {
+      "A": "Round robin simply cycles through the same set of media.",
+      "C": "Disk mirroring (RAID 1) is redundancy, not a media rotation scheme.",
+      "D": "Replication copies data continuously and does not rotate media sets."
+    },
+    "references_topic": "Grandfather-father-son rotation",
+    "version": "0.2"
+  },
+  {
+    "id": "D7-0024",
+    "domain": 7,
+    "domain_name": "Security Operations",
+    "subtopic": "Physical security operations",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "A guard notices an unknown person following an employee through a badge-controlled door without badging in. What should the guard do FIRST?",
+    "options": {
+      "A": "Call the police and report a trespasser immediately",
+      "B": "Do nothing, since the employee let the person in",
+      "C": "Stop the person politely and verify their authorization",
+      "D": "Disable the employee's badge until an investigation is done"
+    },
+    "answer": "C",
+    "explanation": "Tailgating must be challenged. The guard verifies who the person is and whether they are authorized, then badges, escorts, or removes them as policy requires.",
+    "distractor_rationales": {
+      "A": "Involving the police is premature. The person may be an authorized visitor.",
+      "B": "An employee holding the door does not authorize anyone.",
+      "D": "Disabling the badge punishes before the facts are known and does not deal with the person inside."
+    },
+    "references_topic": "Tailgating response",
+    "version": "0.2"
+  },
+  {
+    "id": "D7-0025",
+    "domain": 7,
+    "domain_name": "Security Operations",
+    "subtopic": "Detective and preventive controls",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "A retailer's in-store kiosks run a single ordering application but keep getting infected when customers plug in USB devices and run programs. Which control is MOST effective?",
+    "options": {
+      "A": "Antivirus software with fresh signature updates pushed several times daily",
+      "B": "Rebooting each kiosk every hour to clear infections",
+      "C": "A sign asking customers not to plug in USB devices",
+      "D": "Application allow-listing that permits only the ordering app"
+    },
+    "answer": "D",
+    "explanation": "On a single-purpose device, allow-listing lets only the approved application run, so anything a customer introduces cannot execute. Disabling USB storage adds another layer.",
+    "distractor_rationales": {
+      "A": "Signature-based antivirus misses new or modified malware.",
+      "B": "Rebooting does not prevent infection and may not clear persistent malware.",
+      "C": "A sign relies entirely on customer compliance."
+    },
+    "references_topic": "Application allow-listing",
+    "version": "0.2"
+  },
+  {
+    "id": "D7-0026",
+    "domain": 7,
+    "domain_name": "Security Operations",
+    "subtopic": "Incident management",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "During a data breach investigation, a reporter calls the SOC asking for details. What should the analyst do?",
+    "options": {
+      "A": "Refer the reporter to the designated communications contact without comment",
+      "B": "Share the preliminary technical findings to be transparent",
+      "C": "Deny that any incident has occurred",
+      "D": "Confirm the breach but ask the reporter not to name the analyst"
+    },
+    "answer": "A",
+    "explanation": "External communications during an incident are coordinated by authorized spokespeople working with legal and management. Analysts should refer inquiries without comment.",
+    "distractor_rationales": {
+      "B": "Preliminary findings may be wrong and can harm the investigation and legal position.",
+      "C": "A false denial damages credibility and may violate disclosure obligations.",
+      "D": "An analyst is not authorized to confirm anything, anonymously or otherwise."
+    },
+    "references_topic": "Incident communications",
+    "version": "0.2"
+  },
+  {
+    "id": "D7-0027",
+    "domain": 7,
+    "domain_name": "Security Operations",
+    "subtopic": "Backup and recovery strategies",
+    "difficulty": "medium",
+    "type": "knowledge",
+    "stem": "Which RAID level mirrors data across two disks so that either disk can fail without data loss?",
+    "options": {
+      "A": "RAID 0",
+      "B": "RAID 1",
+      "C": "RAID 5",
+      "D": "RAID 6"
+    },
+    "answer": "B",
+    "explanation": "RAID 1 writes identical data to two disks, so the array survives the failure of either one.",
+    "distractor_rationales": {
+      "A": "RAID 0 stripes data with no redundancy, so any disk failure loses data.",
+      "C": "RAID 5 stripes data with distributed parity across three or more disks. It does not mirror.",
+      "D": "RAID 6 uses dual parity across four or more disks. It does not mirror."
+    },
+    "references_topic": "RAID levels",
+    "version": "0.2"
+  },
+  {
+    "id": "D7-0028",
+    "domain": 7,
+    "domain_name": "Security Operations",
+    "subtopic": "SIEM, SOAR, and threat intelligence",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "A SIEM generates 5,000 alerts a day, analysts close 98% of them as false positives, and a real intrusion was missed last month. What should the SOC manager do FIRST?",
+    "options": {
+      "A": "Add more correlation rules to catch additional attack types",
+      "B": "Turn off the SIEM until the vendor fixes the problem",
+      "C": "Tune noisy rules using outcome data and add risk context",
+      "D": "Double the number of analysts on each shift"
+    },
+    "answer": "C",
+    "explanation": "The real problem is alert fatigue. Use outcome data to tune or retire the noisiest rules, and prioritize alerts by asset criticality and threat context so real incidents stand out.",
+    "distractor_rationales": {
+      "A": "More rules would add more noise.",
+      "B": "Turning off the SIEM removes detection entirely.",
+      "D": "More analysts reviewing poor alerts does not improve the signal."
+    },
+    "references_topic": "SIEM alert tuning",
+    "version": "0.2"
+  },
+  {
+    "id": "D7-0029",
+    "domain": 7,
+    "domain_name": "Security Operations",
+    "subtopic": "Patch and vulnerability management",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "During a holiday change freeze, a vulnerability in the company's internet-facing VPN appliance is confirmed to be actively exploited in the wild. What should the security manager do?",
+    "options": {
+      "A": "Wait until the change freeze ends in three weeks, then patch",
+      "B": "Disable the VPN permanently for all users",
+      "C": "Have an engineer quietly patch it without any change record",
+      "D": "Use the emergency change process to patch or mitigate now"
+    },
+    "answer": "D",
+    "explanation": "An actively exploited flaw on an internet-facing system is urgent. The emergency change process exists for this: expedited approval, rapid patching or vendor mitigation, and a rollback plan.",
+    "distractor_rationales": {
+      "A": "Three weeks of exposure to active exploitation is unacceptable.",
+      "B": "A permanent shutdown is disproportionate and stops remote work.",
+      "C": "Bypassing change control creates undocumented changes and new risk."
+    },
+    "references_topic": "Emergency patching",
+    "version": "0.2"
+  },
+  {
+    "id": "D7-0030",
+    "domain": 7,
+    "domain_name": "Security Operations",
+    "subtopic": "Logging and monitoring",
+    "difficulty": "hard",
+    "type": "application",
+    "stem": "An analyst sees a workstation sending thousands of DNS queries an hour for long, random-looking subdomains of one unfamiliar domain. What is the MOST likely activity, and what should be done?",
+    "options": {
+      "A": "DNS tunneling for exfiltration or C2; isolate and investigate",
+      "B": "Normal web browsing that uses a content delivery network",
+      "C": "A misconfigured internal DNS server that needs restarting",
+      "D": "Routine operating system update checks being made by the workstation's agent"
+    },
+    "answer": "A",
+    "explanation": "High volumes of long, high-entropy subdomains under a single domain are a classic sign of DNS tunneling, used for data exfiltration or command and control. The host should be isolated and investigated.",
+    "distractor_rationales": {
+      "B": "Normal browsing does not generate thousands of random subdomains for one domain.",
+      "C": "A server misconfiguration would not make one workstation generate this pattern.",
+      "D": "Update checks go to known vendor domains and do not look like this."
+    },
+    "references_topic": "DNS tunneling detection",
+    "version": "0.2"
+  },
+  {
+    "id": "D7-0031",
+    "domain": 7,
+    "domain_name": "Security Operations",
+    "subtopic": "Configuration management",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "A cloud team manages hundreds of servers built by hand, and their configurations differ widely. Which approach BEST improves consistency and security at scale?",
+    "options": {
+      "A": "Document every server's current settings in a shared spreadsheet",
+      "B": "Build from version-controlled templates and hardened images",
+      "C": "Assign one administrator to each server",
+      "D": "Rebuild every server by hand once a year"
+    },
+    "answer": "B",
+    "explanation": "Infrastructure-as-code templates and hardened golden images make builds reproducible, reviewable through version control, and checkable automatically for compliance.",
+    "distractor_rationales": {
+      "A": "A spreadsheet records the inconsistency without fixing it.",
+      "C": "One administrator per server multiplies inconsistency.",
+      "D": "Manual rebuilds reproduce the same inconsistency."
+    },
+    "references_topic": "Infrastructure as code",
+    "version": "0.2"
+  },
+  {
+    "id": "D7-0032",
+    "domain": 7,
+    "domain_name": "Security Operations",
+    "subtopic": "Physical security operations",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "A data center access review finds that 40% of people with badge access to the server hall have not entered it in a year and have no job need for access. What should the facility security manager do?",
+    "options": {
+      "A": "Leave access as is, since those people have not entered anyway",
+      "B": "Replace every lock and badge reader in the server hall",
+      "C": "Remove unneeded access and review physical access regularly",
+      "D": "Add more cameras to watch the people who keep access"
+    },
+    "answer": "C",
+    "explanation": "Least privilege applies to physical access too. Remove access that has no job need (after confirming with owners) and review physical access on a regular schedule.",
+    "distractor_rationales": {
+      "A": "Unused access is still exposure, for example if a badge is lost or stolen.",
+      "B": "New hardware does not fix who holds access.",
+      "D": "Cameras record events. They do not remove unnecessary access."
+    },
+    "references_topic": "Physical access reviews",
+    "version": "0.2"
+  }
+]

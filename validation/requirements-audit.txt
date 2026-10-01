@@ -1,0 +1,2 @@
+# Extra pin for the optional answer-key audit (validate_bank.ipynb / audit.py).
+anthropic==1.8.0

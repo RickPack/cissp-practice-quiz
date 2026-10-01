@@ -1,0 +1,602 @@
+[
+  {
+    "id": "D8-0051",
+    "domain": 8,
+    "domain_name": "Software Development Security",
+    "subtopic": "SDLC integration",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "Which is the BEST-written security requirement?",
+    "options": {
+      "A": "Accounts lock for 15 minutes after five failed logins within 10 minutes",
+      "B": "The application should be very secure against all kinds of attacks at all times",
+      "C": "Passwords must be strong enough to keep attackers out of accounts",
+      "D": "The system should use the latest security technology available"
+    },
+    "answer": "A",
+    "explanation": "Good requirements are specific and testable, so developers know what to build and testers can verify it.",
+    "distractor_rationales": {
+      "B": "\"Very secure\" cannot be designed or tested.",
+      "C": "\"Strong enough\" is vague and unmeasurable.",
+      "D": "\"Latest technology\" is not a verifiable requirement."
+    },
+    "references_topic": "Testable security requirements",
+    "version": "0.4"
+  },
+  {
+    "id": "D8-0052",
+    "domain": 8,
+    "domain_name": "Software Development Security",
+    "subtopic": "Development methodologies",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "Which development model repeats cycles of planning, risk analysis, engineering, and evaluation, with explicit risk analysis in every loop?",
+    "options": {
+      "A": "Waterfall, which completes each phase once before moving to the next",
+      "B": "Spiral",
+      "C": "Big bang, which builds everything at once with little planning",
+      "D": "Code-and-fix, which writes code first and repairs issues as they appear"
+    },
+    "answer": "B",
+    "explanation": "The spiral model is risk-driven: each loop starts by identifying and reducing the biggest risks before building the next increment.",
+    "distractor_rationales": {
+      "A": "Waterfall is sequential and has no repeated risk loops.",
+      "C": "Big bang has little formal planning or risk analysis.",
+      "D": "Code-and-fix lacks structured risk analysis."
+    },
+    "references_topic": "Spiral model",
+    "version": "0.4"
+  },
+  {
+    "id": "D8-0053",
+    "domain": 8,
+    "domain_name": "Software Development Security",
+    "subtopic": "Development ecosystem security",
+    "difficulty": "easy",
+    "type": "managerial_best_first_most",
+    "stem": "What is the BEST way to protect developers' accounts on the company's source code hosting platform?",
+    "options": {
+      "A": "Let developers share one account per team to simplify permission management",
+      "B": "Use long passwords that developers never change, so they are not forgotten",
+      "C": "Require SSO with MFA for all accounts on the code platform",
+      "D": "Allow access only from developers' personal email addresses"
+    },
+    "answer": "C",
+    "explanation": "Source code platforms hold valuable intellectual property and can inject code into builds. SSO with MFA ties access to managed identities and blocks most credential attacks.",
+    "distractor_rationales": {
+      "A": "Shared accounts destroy accountability.",
+      "B": "Unchanged passwords without MFA remain vulnerable to theft.",
+      "D": "Personal email accounts are outside company control."
+    },
+    "references_topic": "Protecting source code platform accounts",
+    "version": "0.4"
+  },
+  {
+    "id": "D8-0054",
+    "domain": 8,
+    "domain_name": "Software Development Security",
+    "subtopic": "Application security testing",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "Which check examines container images for vulnerable operating system packages and libraries before they are deployed?",
+    "options": {
+      "A": "Real user monitoring of the running application in production",
+      "B": "A load test of the container orchestration cluster at peak traffic",
+      "C": "A manual review of the application's user interface design",
+      "D": "Container image scanning"
+    },
+    "answer": "D",
+    "explanation": "Image scanners inspect the packages and libraries inside each image layer and compare them with vulnerability databases, so risky images can be blocked before deployment.",
+    "distractor_rationales": {
+      "A": "Real user monitoring measures user experience in production.",
+      "B": "Load tests measure performance.",
+      "C": "UI design review does not inspect image contents."
+    },
+    "references_topic": "Container image scanning",
+    "version": "0.4"
+  },
+  {
+    "id": "D8-0055",
+    "domain": 8,
+    "domain_name": "Software Development Security",
+    "subtopic": "Software composition and supply chain",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "A developer accidentally installs a malicious package named \"requets\" instead of the popular \"requests\" library. What is this attack called?",
+    "options": {
+      "A": "Typosquatting",
+      "B": "Dependency confusion caused by a private and a public package with the same name",
+      "C": "SQL injection against the package registry's database",
+      "D": "Cross-site scripting in the package manager's website"
+    },
+    "answer": "A",
+    "explanation": "Typosquatting publishes malicious packages with names close to popular ones, relying on typing mistakes.",
+    "distractor_rationales": {
+      "B": "Dependency confusion uses the exact name of an internal package, not a misspelling.",
+      "C": "No database injection is involved.",
+      "D": "No browser script injection is involved."
+    },
+    "references_topic": "Typosquatting",
+    "version": "0.4"
+  },
+  {
+    "id": "D8-0056",
+    "domain": 8,
+    "domain_name": "Software Development Security",
+    "subtopic": "Secure coding practices",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "What is the safest way to generate password reset tokens in code?",
+    "options": {
+      "A": "Use the current time in milliseconds as the token value",
+      "B": "Use a cryptographically secure random number generator",
+      "C": "Use the user's ID number combined with the date of the request",
+      "D": "Use a general-purpose random function seeded with a fixed value"
+    },
+    "answer": "B",
+    "explanation": "Security tokens must be unpredictable. A cryptographically secure random number generator produces values an attacker cannot guess or reproduce.",
+    "distractor_rationales": {
+      "A": "Timestamps are predictable.",
+      "C": "User IDs and dates are guessable.",
+      "D": "A fixed seed makes the sequence repeatable, and general-purpose generators are predictable."
+    },
+    "references_topic": "Secure random numbers for tokens",
+    "version": "0.4"
+  },
+  {
+    "id": "D8-0057",
+    "domain": 8,
+    "domain_name": "Software Development Security",
+    "subtopic": "API security",
+    "difficulty": "easy",
+    "type": "application",
+    "stem": "A partner integration sends its API key as a query string parameter in every request URL. What is the MAIN risk?",
+    "options": {
+      "A": "The key makes each request noticeably slower to process",
+      "B": "The key is too short to be secure, whatever length it is",
+      "C": "The key can leak through logs, browser history, and proxies",
+      "D": "The key prevents the API from using TLS encryption for the request at all"
+    },
+    "answer": "C",
+    "explanation": "URLs are recorded in many places, such as server logs, proxies, and analytics. Sending credentials in headers, or using token-based authentication, keeps them out of those records.",
+    "distractor_rationales": {
+      "A": "Performance is not the security concern.",
+      "B": "Length is not the issue; the placement is.",
+      "D": "URL parameters are still encrypted in transit by TLS, but they are logged at the endpoints."
+    },
+    "references_topic": "API keys in URLs",
+    "version": "0.4"
+  },
+  {
+    "id": "D8-0058",
+    "domain": 8,
+    "domain_name": "Software Development Security",
+    "subtopic": "SDLC integration",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "Releases often ship with known high-severity security findings because no one decides whether they block the release. What is the BEST fix?",
+    "options": {
+      "A": "Let each developer decide individually whether their own findings are serious",
+      "B": "Stop running security scans before release so that the findings do not delay it",
+      "C": "Delay every release until all findings of any severity have been fixed",
+      "D": "Define release criteria, such as no open high findings without an approved exception"
+    },
+    "answer": "D",
+    "explanation": "Clear, agreed release criteria make the decision consistent. High findings must be fixed or formally accepted by the right risk owner before release.",
+    "distractor_rationales": {
+      "A": "Individual judgment leads to inconsistent and self-interested decisions.",
+      "B": "Removing scans hides the risk.",
+      "C": "Blocking on every low finding is impractical."
+    },
+    "references_topic": "Security release criteria",
+    "version": "0.4"
+  },
+  {
+    "id": "D8-0059",
+    "domain": 8,
+    "domain_name": "Software Development Security",
+    "subtopic": "Software maturity models",
+    "difficulty": "medium",
+    "type": "knowledge",
+    "stem": "In the Capability Maturity Model, at which level are processes documented, standardized, and followed across the whole organization?",
+    "options": {
+      "A": "Defined (level 3)",
+      "B": "Initial (level 1), where processes are ad hoc and depend on individuals",
+      "C": "Repeatable (level 2), where basic project management is in place",
+      "D": "Optimizing (level 5), where continuous process improvement is the focus"
+    },
+    "answer": "A",
+    "explanation": "At the Defined level, processes are standardized and documented organization-wide, rather than project by project.",
+    "distractor_rationales": {
+      "B": "Initial is ad hoc and chaotic.",
+      "C": "Repeatable has basic project-level processes, not organization-wide standards.",
+      "D": "Optimizing focuses on continuous improvement beyond standardization."
+    },
+    "references_topic": "Capability maturity levels",
+    "version": "0.4"
+  },
+  {
+    "id": "D8-0060",
+    "domain": 8,
+    "domain_name": "Software Development Security",
+    "subtopic": "Software maturity models",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "After a software security maturity assessment, leadership sets improvement targets. What is the BEST way to track progress?",
+    "options": {
+      "A": "Ask each team to report its own maturity level whenever it feels ready",
+      "B": "Reassess periodically against the targets, using evidence of each practice",
+      "C": "Count the number of new security tools purchased since the first assessment took place",
+      "D": "Assume maturity has improved if no breaches have occurred in the meantime"
+    },
+    "answer": "B",
+    "explanation": "Periodic, evidence-based reassessment shows whether practices actually improved, instead of relying on self-reports or unrelated indicators.",
+    "distractor_rationales": {
+      "A": "Unverified self-reporting is unreliable.",
+      "C": "Tool purchases do not show that practices matured.",
+      "D": "Absence of breaches is not evidence of maturity."
+    },
+    "references_topic": "Measuring maturity progress",
+    "version": "0.4"
+  },
+  {
+    "id": "D8-0061",
+    "domain": 8,
+    "domain_name": "Software Development Security",
+    "subtopic": "CI/CD and pipeline security",
+    "difficulty": "medium",
+    "type": "knowledge",
+    "stem": "What is build provenance?",
+    "options": {
+      "A": "A list of the developers who were employed while the software was built",
+      "B": "The marketing history of a software product since its first release",
+      "C": "A verifiable record of how, where, and from what source an artifact was built",
+      "D": "A backup copy of the build server's operating system"
+    },
+    "answer": "C",
+    "explanation": "Provenance records the source revision, build steps, and build environment for an artifact, and it can be signed so consumers can verify the artifact came from the expected pipeline.",
+    "distractor_rationales": {
+      "A": "A staff list does not describe how an artifact was built.",
+      "B": "Marketing history is unrelated.",
+      "D": "A backup of the build server is not a record of a specific build."
+    },
+    "references_topic": "Build provenance",
+    "version": "0.4"
+  },
+  {
+    "id": "D8-0062",
+    "domain": 8,
+    "domain_name": "Software Development Security",
+    "subtopic": "Application security testing",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "A team is deciding which automated security findings should fail the build. What is the BEST policy?",
+    "options": {
+      "A": "Fail the build on every finding of any severity, including informational ones",
+      "B": "Never fail the build, and send all findings to a monthly report instead",
+      "C": "Fail the build only when the security team manually reviews it that week",
+      "D": "Fail on new high-severity findings with fixes available; ticket the rest"
+    },
+    "answer": "D",
+    "explanation": "Breaking on new, serious, fixable issues stops the worst problems without overwhelming developers. Lower-severity items are tracked and scheduled.",
+    "distractor_rationales": {
+      "A": "Failing on everything creates noise and encourages bypassing the checks.",
+      "B": "Never failing lets serious flaws ship.",
+      "C": "Manual review does not scale with frequent builds."
+    },
+    "references_topic": "Build-breaking thresholds",
+    "version": "0.4"
+  },
+  {
+    "id": "D8-0063",
+    "domain": 8,
+    "domain_name": "Software Development Security",
+    "subtopic": "Software composition and supply chain",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "A build automatically pulled a new minor version of a dependency that had been published by an attacker who took over the maintainer's account. Which practice BEST prevents this?",
+    "options": {
+      "A": "Pin exact versions with a lockfile and hashes, and review updates before accepting them",
+      "B": "Always install the newest version of every dependency at each build",
+      "C": "Delete the dependency cache on the build server before every build",
+      "D": "Run the build only at night, when attackers are less active"
+    },
+    "answer": "A",
+    "explanation": "Lockfiles with hashes make builds use exactly the reviewed versions. Updates then arrive through a deliberate, reviewed change rather than automatically.",
+    "distractor_rationales": {
+      "B": "Always taking the newest version is how the malicious release got in.",
+      "C": "Clearing the cache forces fresh downloads, which can include malicious versions.",
+      "D": "Attackers are not limited by time of day."
+    },
+    "references_topic": "Pinning dependencies with lockfiles",
+    "version": "0.4"
+  },
+  {
+    "id": "D8-0064",
+    "domain": 8,
+    "domain_name": "Software Development Security",
+    "subtopic": "Acquired software security",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "A company is negotiating a contract for commercial software that will process customer data. Which security term is MOST important to include?",
+    "options": {
+      "A": "A promise that the software will never contain any vulnerabilities",
+      "B": "Vulnerability notification and patch timelines based on severity",
+      "C": "A requirement that the vendor share its full source code publicly",
+      "D": "A discount if the vendor's stock price falls during the contract term"
+    },
+    "answer": "B",
+    "explanation": "No software is flawless. Commitments to notify the customer and patch within defined timelines give the customer a way to manage vulnerabilities as they appear.",
+    "distractor_rationales": {
+      "A": "No vendor can guarantee zero vulnerabilities.",
+      "C": "Public source code is rarely realistic for commercial vendors.",
+      "D": "Stock price has nothing to do with security."
+    },
+    "references_topic": "Vulnerability terms in software contracts",
+    "version": "0.4"
+  },
+  {
+    "id": "D8-0065",
+    "domain": 8,
+    "domain_name": "Software Development Security",
+    "subtopic": "Secure coding practices",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "When the authorization service times out, an application's code grants access so users are not blocked. What is the BEST fix?",
+    "options": {
+      "A": "Increase the timeout so that the authorization service is rarely slow enough to fail",
+      "B": "Log the timeout, but keep granting access so that users stay productive",
+      "C": "Deny access on timeout and handle the error with a clear message",
+      "D": "Cache every user's permissions permanently so the service is never needed"
+    },
+    "answer": "C",
+    "explanation": "Security checks should fail closed. If authorization cannot be confirmed, access should be denied and the error handled cleanly.",
+    "distractor_rationales": {
+      "A": "A longer timeout reduces but does not remove the fail-open behavior.",
+      "B": "Logging does not fix the insecure default.",
+      "D": "Permanent caching ignores permission changes and revocations."
+    },
+    "references_topic": "Failing securely",
+    "version": "0.4"
+  },
+  {
+    "id": "D8-0066",
+    "domain": 8,
+    "domain_name": "Software Development Security",
+    "subtopic": "Source code weaknesses",
+    "difficulty": "medium",
+    "type": "knowledge",
+    "stem": "An application fetches images from URLs that users supply. An attacker submits an internal address and makes the server retrieve data from the cloud metadata service. What is this weakness?",
+    "options": {
+      "A": "Cross-site scripting that runs in other users' browsers",
+      "B": "SQL injection against the application's image database",
+      "C": "Cross-site request forgery that abuses a user's logged-in session",
+      "D": "Server-side request forgery"
+    },
+    "answer": "D",
+    "explanation": "SSRF tricks the server into making requests on the attacker's behalf, reaching internal systems the attacker cannot reach directly. Allow-listing destinations and blocking internal ranges prevent it.",
+    "distractor_rationales": {
+      "A": "XSS runs scripts in browsers, not requests from the server.",
+      "B": "No database query is being injected.",
+      "C": "CSRF abuses a user's browser session, not the server's network position."
+    },
+    "references_topic": "Server-side request forgery",
+    "version": "0.4"
+  },
+  {
+    "id": "D8-0067",
+    "domain": 8,
+    "domain_name": "Software Development Security",
+    "subtopic": "API security",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "A company released version 2 of its API with stronger authentication, but the old version 1 endpoints are still live and forgotten. What is the BEST action?",
+    "options": {
+      "A": "Keep an API inventory, and retire old versions on a published schedule",
+      "B": "Leave version 1 running indefinitely, since some clients might still depend on it",
+      "C": "Hide version 1 by removing it from the public API documentation",
+      "D": "Add a banner to version 1 responses telling clients to upgrade"
+    },
+    "answer": "A",
+    "explanation": "Forgotten old API versions often lack newer protections. An inventory and a planned retirement schedule remove them while giving clients time to migrate.",
+    "distractor_rationales": {
+      "B": "Leaving weak endpoints live indefinitely keeps the exposure.",
+      "C": "Removing documentation does not stop attackers who find the endpoints.",
+      "D": "A banner does not remove the weak endpoints."
+    },
+    "references_topic": "Retiring old API versions",
+    "version": "0.4"
+  },
+  {
+    "id": "D8-0068",
+    "domain": 8,
+    "domain_name": "Software Development Security",
+    "subtopic": "Change and release management",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "The codebase contains hundreds of old feature flags, some of which switch on untested code paths. What is the BEST practice?",
+    "options": {
+      "A": "Leave all flags in place in case any feature needs to be switched back",
+      "B": "Give each flag an owner and removal date, and restrict who can change flags",
+      "C": "Allow any user to toggle flags in production to test new features",
+      "D": "Replace every flag with a separate branch that is merged at release"
+    },
+    "answer": "B",
+    "explanation": "Feature flags are changes to production behavior. Owners, expiry, and restricted, logged changes keep them from becoming hidden, untested paths.",
+    "distractor_rationales": {
+      "A": "Stale flags accumulate risk and complexity.",
+      "C": "Letting any user toggle flags bypasses change control.",
+      "D": "Long-lived branches create merge problems and do not address flag governance."
+    },
+    "references_topic": "Managing feature flags",
+    "version": "0.4"
+  },
+  {
+    "id": "D8-0069",
+    "domain": 8,
+    "domain_name": "Software Development Security",
+    "subtopic": "Change and release management",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "The test environment is refreshed every month with a full copy of production customer data, and many contractors can access it. What is the BEST fix?",
+    "options": {
+      "A": "Stop refreshing the test environment so that its data gets gradually older",
+      "B": "Ask contractors to sign an agreement not to look at any customer records",
+      "C": "Mask or replace sensitive data before it is loaded into test",
+      "D": "Give the test environment the same number of users as production"
+    },
+    "answer": "C",
+    "explanation": "Test environments usually have weaker controls and wider access. Masking or generating synthetic data keeps realistic test data without exposing real customers.",
+    "distractor_rationales": {
+      "A": "Old data is still real customer data.",
+      "B": "An agreement does not prevent exposure.",
+      "D": "Matching user counts does nothing to protect the data."
+    },
+    "references_topic": "Data in non-production environments",
+    "version": "0.4"
+  },
+  {
+    "id": "D8-0070",
+    "domain": 8,
+    "domain_name": "Software Development Security",
+    "subtopic": "Development methodologies",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "A company adopts DevOps, where teams build and run their own services. Who should own the security of each service?",
+    "options": {
+      "A": "The central security team alone, since developers lack security skills",
+      "B": "The operations team alone, since it runs the servers in production",
+      "C": "No one in particular, since automated tools handle security in DevOps",
+      "D": "The service team, with the security team providing guardrails and expertise"
+    },
+    "answer": "D",
+    "explanation": "In DevOps, the team that builds and runs a service is accountable for it, including security. The security team enables them with standards, tooling, and support.",
+    "distractor_rationales": {
+      "A": "A central team alone becomes a bottleneck and lacks service context.",
+      "B": "Operations alone lacks control over the code.",
+      "C": "Tools support security but do not own it."
+    },
+    "references_topic": "Security ownership in DevOps",
+    "version": "0.4"
+  },
+  {
+    "id": "D8-0071",
+    "domain": 8,
+    "domain_name": "Software Development Security",
+    "subtopic": "Development ecosystem security",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "A malicious IDE extension installed by several developers stole their source code platform tokens. What is the BEST preventive control?",
+    "options": {
+      "A": "Allow only approved extensions on managed developer workstations",
+      "B": "Ban IDEs entirely and require developers to use plain text editors",
+      "C": "Ask developers to read extension reviews before installing them",
+      "D": "Rotate all tokens once a year during the annual security review"
+    },
+    "answer": "A",
+    "explanation": "Developer tools run with the developer's access. Managing workstations and allowing only vetted extensions reduces this supply chain risk.",
+    "distractor_rationales": {
+      "B": "Banning IDEs is impractical and harms productivity.",
+      "C": "Reviews can be faked and do not reveal hidden malware.",
+      "D": "Annual rotation leaves stolen tokens usable for months."
+    },
+    "references_topic": "Controlling IDE extensions",
+    "version": "0.4"
+  },
+  {
+    "id": "D8-0072",
+    "domain": 8,
+    "domain_name": "Software Development Security",
+    "subtopic": "CI/CD and pipeline security",
+    "difficulty": "hard",
+    "type": "application",
+    "stem": "A shared, self-hosted CI runner keeps files and credentials between jobs from different projects. One project was compromised and its build script read another project's secrets from the runner. What is the BEST fix?",
+    "options": {
+      "A": "Add a cleanup script at the end of each job and trust that it always completes",
+      "B": "Use ephemeral, isolated runners that are created fresh for each job",
+      "C": "Limit the runner to jobs from projects whose names start with the same letter",
+      "D": "Increase the runner's disk size so that jobs do not overwrite each other"
+    },
+    "answer": "B",
+    "explanation": "Fresh, isolated runners start clean for each job and are destroyed afterward, so nothing from one job or project is left for another to read.",
+    "distractor_rationales": {
+      "A": "Cleanup scripts can fail or be skipped by a malicious job.",
+      "C": "Naming rules do not create isolation.",
+      "D": "Disk size does not prevent access to leftover data."
+    },
+    "references_topic": "Ephemeral build runners",
+    "version": "0.4"
+  },
+  {
+    "id": "D8-0073",
+    "domain": 8,
+    "domain_name": "Software Development Security",
+    "subtopic": "Software composition and supply chain",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "A critical open-source library the company depends on has been abandoned by its maintainer, and a known vulnerability remains unpatched. What is the BEST approach?",
+    "options": {
+      "A": "Keep using it unchanged, since open-source software is reviewed by the community",
+      "B": "Remove the library immediately, even if it breaks production applications",
+      "C": "Assess alternatives, then replace it or maintain a patched fork internally",
+      "D": "Ask the original maintainer to return and fix it within a week"
+    },
+    "answer": "C",
+    "explanation": "When a dependency loses its maintainer, the company must take ownership of the risk: move to a maintained alternative or take on the fix itself, and add project health to dependency reviews.",
+    "distractor_rationales": {
+      "A": "Community review does not happen for abandoned projects.",
+      "B": "Abrupt removal can cause outages.",
+      "D": "The company cannot compel a volunteer maintainer."
+    },
+    "references_topic": "Abandoned open-source dependencies",
+    "version": "0.4"
+  },
+  {
+    "id": "D8-0074",
+    "domain": 8,
+    "domain_name": "Software Development Security",
+    "subtopic": "Acquired software security",
+    "difficulty": "hard",
+    "type": "application",
+    "stem": "A security researcher discloses that a commercial product the company uses contains a hidden, hard-coded administrator account. The vendor has not released a fix. What should the company do FIRST?",
+    "options": {
+      "A": "Wait quietly for the vendor's next scheduled release to fix the problem",
+      "B": "Publish the account's credentials so that other customers can protect themselves",
+      "C": "Stop using all of the vendor's products across the company immediately",
+      "D": "Restrict access to the product's management interfaces and press the vendor to fix it"
+    },
+    "answer": "D",
+    "explanation": "Until a fix exists, the company should reduce exposure, for example by blocking network access to management interfaces and monitoring for use of the account, while escalating with the vendor under the contract.",
+    "distractor_rationales": {
+      "A": "Waiting leaves an easy backdoor open.",
+      "B": "Publishing credentials would expose everyone.",
+      "C": "Dropping every product at once is disproportionate before assessing impact."
+    },
+    "references_topic": "Responding to vendor backdoors",
+    "version": "0.4"
+  },
+  {
+    "id": "D8-0075",
+    "domain": 8,
+    "domain_name": "Software Development Security",
+    "subtopic": "Source code weaknesses",
+    "difficulty": "hard",
+    "type": "application",
+    "stem": "An application parses uploaded XML documents. A tester submits a document that defines an external entity pointing to a local file and receives that file's contents in the response. What is the BEST fix?",
+    "options": {
+      "A": "Disable external entity and DTD processing in the XML parser",
+      "B": "Increase the maximum allowed size of uploaded XML documents",
+      "C": "Convert all uploaded XML documents to uppercase before parsing them",
+      "D": "Store the uploaded XML files in a different folder on the same server"
+    },
+    "answer": "A",
+    "explanation": "XXE attacks abuse parser features that load external entities. Turning off DTD and external entity processing removes the attack.",
+    "distractor_rationales": {
+      "B": "Size limits do not stop entity expansion.",
+      "C": "Changing case does not disable entities and may break parsing.",
+      "D": "Storage location does not affect how the parser behaves."
+    },
+    "references_topic": "XML external entities",
+    "version": "0.4"
+  }
+]

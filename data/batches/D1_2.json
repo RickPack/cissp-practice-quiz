@@ -1,0 +1,722 @@
+[
+  {
+    "id": "D1-0011",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Legal, regulatory, and contractual compliance",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "Which category of law primarily governs disputes between private parties, such as a breach of a service contract, where the usual remedy is monetary damages?",
+    "options": {
+      "A": "Civil law",
+      "B": "Criminal law",
+      "C": "Administrative law",
+      "D": "Constitutional law"
+    },
+    "answer": "A",
+    "explanation": "Civil law, which includes contract and tort law, resolves disputes between private parties. Remedies are usually compensatory damages, and the standard of proof is a preponderance of the evidence.",
+    "distractor_rationales": {
+      "B": "Criminal law addresses offenses against society. The government prosecutes, and penalties can include imprisonment.",
+      "C": "Administrative (regulatory) law consists of rules issued by government agencies for the entities they regulate.",
+      "D": "Constitutional law defines the structure of government and fundamental rights. It does not govern private contract disputes."
+    },
+    "references_topic": "Categories of law",
+    "version": "0.2"
+  },
+  {
+    "id": "D1-0012",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Intellectual property and licensing",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "A company wants to protect a proprietary manufacturing process for as long as possible without publicly disclosing how it works. Which form of intellectual property protection fits BEST?",
+    "options": {
+      "A": "Utility patent",
+      "B": "Trade secret",
+      "C": "Copyright",
+      "D": "Trademark"
+    },
+    "answer": "B",
+    "explanation": "A trade secret is protected for as long as it stays secret and the owner takes reasonable measures to protect it, such as NDAs and access controls. No public disclosure is required.",
+    "distractor_rationales": {
+      "A": "A patent requires public disclosure of the invention and expires after a fixed term.",
+      "C": "Copyright protects the expression of ideas, such as text or code, not processes.",
+      "D": "Trademarks protect brand identifiers such as names and logos."
+    },
+    "references_topic": "Trade secret protection",
+    "version": "0.2"
+  },
+  {
+    "id": "D1-0013",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Investigation types",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "Which type of investigation typically requires the highest standard of proof, \"beyond a reasonable doubt\"?",
+    "options": {
+      "A": "Civil",
+      "B": "Administrative",
+      "C": "Criminal",
+      "D": "Regulatory"
+    },
+    "answer": "C",
+    "explanation": "Criminal investigations can lead to prosecution, and a conviction requires proof beyond a reasonable doubt, the highest standard in common legal systems.",
+    "distractor_rationales": {
+      "A": "Civil cases are generally decided on a preponderance of the evidence.",
+      "B": "Administrative investigations enforce internal policy and use the organization's own, less formal standards.",
+      "D": "Regulatory investigations vary by regulator, but they rarely require the criminal standard."
+    },
+    "references_topic": "Standards of proof by investigation type",
+    "version": "0.2"
+  },
+  {
+    "id": "D1-0014",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Personnel security",
+    "difficulty": "easy",
+    "type": "application",
+    "stem": "An employee in a company's accounts payable team is being terminated on unfriendly terms. When should the employee's system access be disabled?",
+    "options": {
+      "A": "At the end of the employee's final week",
+      "B": "After HR finishes processing the exit paperwork",
+      "C": "Within 30 days, as part of the next scheduled quarterly access review",
+      "D": "At or before the moment the employee is notified"
+    },
+    "answer": "D",
+    "explanation": "For involuntary terminations, access should be disabled at, or just before, the moment of notification. HR and IT coordinate the timing so that an upset employee has no window to take data or cause damage.",
+    "distractor_rationales": {
+      "A": "A week of remaining access gives a disgruntled employee ample opportunity to cause harm.",
+      "B": "Paperwork should never gate revocation of access.",
+      "C": "Periodic access reviews catch leftovers. They are not the mechanism for removing access at termination."
+    },
+    "references_topic": "Involuntary termination procedures",
+    "version": "0.2"
+  },
+  {
+    "id": "D1-0015",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Security awareness, education, and training",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "Which type of program is BEST described as helping all employees recognize security risks, such as phishing, through short and frequent messages?",
+    "options": {
+      "A": "Security awareness",
+      "B": "Formal security education",
+      "C": "Professional certification",
+      "D": "Role-based technical training"
+    },
+    "answer": "A",
+    "explanation": "Awareness programs aim at the whole workforce. Brief, frequent messages keep attention on security and shape everyday behavior, such as spotting and reporting phishing.",
+    "distractor_rationales": {
+      "B": "Education builds deep understanding of why security works as it does, usually for security professionals over a long period.",
+      "C": "Certification validates an individual professional's knowledge. It is not an organization-wide program.",
+      "D": "Role-based training teaches specific skills for particular jobs, not general risk recognition for everyone."
+    },
+    "references_topic": "Awareness, training, and education",
+    "version": "0.2"
+  },
+  {
+    "id": "D1-0016",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Privacy and transborder data flow",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "Which privacy principle states that personal data collected for one stated purpose should not be reused for an unrelated purpose without a lawful basis?",
+    "options": {
+      "A": "Data portability",
+      "B": "Purpose limitation",
+      "C": "Storage limitation",
+      "D": "Accuracy and rectification"
+    },
+    "answer": "B",
+    "explanation": "Purpose limitation requires that personal data be collected for specified, explicit purposes and not processed in ways incompatible with them.",
+    "distractor_rationales": {
+      "A": "Data portability is an individual's right to receive their data and move it to another provider.",
+      "C": "Storage limitation means keeping personal data no longer than necessary.",
+      "D": "Accuracy requires keeping personal data correct and up to date, with a way to fix errors."
+    },
+    "references_topic": "Purpose limitation principle",
+    "version": "0.2"
+  },
+  {
+    "id": "D1-0017",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Security concepts",
+    "difficulty": "easy",
+    "type": "application",
+    "stem": "An attacker floods a ticketing website with requests during a concert on-sale, and legitimate customers cannot reach the checkout page. Which security property is MOST directly affected?",
+    "options": {
+      "A": "Confidentiality",
+      "B": "Integrity",
+      "C": "Availability",
+      "D": "Nonrepudiation"
+    },
+    "answer": "C",
+    "explanation": "A flood of requests that keeps legitimate users from the service is a denial of service, which attacks availability.",
+    "distractor_rationales": {
+      "A": "Nothing is disclosed in the scenario, so confidentiality is not the main impact.",
+      "B": "No data is modified, so integrity is not the main impact.",
+      "D": "Nonrepudiation concerns proof of who performed an action. It is not affected by a flood of requests."
+    },
+    "references_topic": "CIA triad",
+    "version": "0.2"
+  },
+  {
+    "id": "D1-0018",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Policies, standards, procedures, and guidelines",
+    "difficulty": "easy",
+    "type": "application",
+    "stem": "A security team writes step-by-step instructions that tell help desk staff exactly how to verify a caller's identity before resetting a password. What type of document is this?",
+    "options": {
+      "A": "Policy",
+      "B": "Guideline",
+      "C": "Baseline",
+      "D": "Procedure"
+    },
+    "answer": "D",
+    "explanation": "A procedure is a mandatory, detailed, step-by-step description of how to perform a specific task.",
+    "distractor_rationales": {
+      "A": "A policy is a high-level statement of management intent, not step-by-step instructions.",
+      "B": "A guideline offers recommendations that staff may adapt. It is not a mandatory sequence of steps.",
+      "C": "A baseline defines a minimum security configuration for systems."
+    },
+    "references_topic": "Procedures",
+    "version": "0.2"
+  },
+  {
+    "id": "D1-0019",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Risk assessment and analysis",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "In risk management terms, what is a vulnerability?",
+    "options": {
+      "A": "A weakness that a threat could exploit",
+      "B": "A potential event or actor that could cause harm to assets",
+      "C": "The likelihood that harm will occur",
+      "D": "The value of an asset to the organization"
+    },
+    "answer": "A",
+    "explanation": "A vulnerability is a weakness or gap in protection. A threat exploits the vulnerability, and risk combines the likelihood and impact of that happening.",
+    "distractor_rationales": {
+      "B": "This describes a threat, not a vulnerability.",
+      "C": "Likelihood is one component of risk, not the weakness itself.",
+      "D": "Asset value feeds into impact estimates. It is not a vulnerability."
+    },
+    "references_topic": "Risk terminology",
+    "version": "0.2"
+  },
+  {
+    "id": "D1-0020",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Legal, regulatory, and contractual compliance",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "A payment processor operating in several countries learns that a new regulation will require breach notification to authorities within 72 hours. What should the security manager do FIRST?",
+    "options": {
+      "A": "Purchase a third-party breach notification service",
+      "B": "Analyze the requirement against current incident procedures",
+      "C": "Rewrite the entire incident response plan from scratch immediately",
+      "D": "Wait until a breach occurs to see how regulators respond"
+    },
+    "answer": "B",
+    "explanation": "Start with a gap analysis: understand exactly what the regulation requires and compare it with current detection, escalation, and notification procedures. The gaps then drive targeted updates.",
+    "distractor_rationales": {
+      "A": "Buying a service before understanding the requirement and the current gaps is premature.",
+      "C": "Rewriting everything wastes effort and may discard parts that already work. Analysis comes first.",
+      "D": "Waiting for a breach invites non-compliance and penalties."
+    },
+    "references_topic": "Regulatory gap analysis",
+    "version": "0.2"
+  },
+  {
+    "id": "D1-0021",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Privacy and transborder data flow",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "A multinational company plans to transfer employee personal data from a subsidiary in a jurisdiction with strict data export rules to an analytics provider in another country. What should the privacy officer ensure FIRST?",
+    "options": {
+      "A": "That the data is encrypted in transit with strong TLS settings",
+      "B": "That the provider holds an ISO 27001 certificate",
+      "C": "That a lawful cross-border transfer mechanism exists",
+      "D": "That employees are notified after the transfer is complete"
+    },
+    "answer": "C",
+    "explanation": "Cross-border transfers need a legal basis before any data moves, such as an adequacy finding, approved contractual clauses, or binding corporate rules. Technical safeguards come afterward.",
+    "distractor_rationales": {
+      "A": "Encryption is necessary but does not satisfy the legal requirement for the transfer itself.",
+      "B": "A certification shows a management system exists, but it is not a legal transfer mechanism.",
+      "D": "Notifying people after the fact does not create a lawful basis for the transfer."
+    },
+    "references_topic": "Transborder data transfer mechanisms",
+    "version": "0.2"
+  },
+  {
+    "id": "D1-0022",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Personnel security",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "A bank wants to reduce the risk of long-running fraud by trusted employees in its wire transfer department. Which control is MOST effective at detecting such fraud?",
+    "options": {
+      "A": "Stronger password requirements for wire system users",
+      "B": "Annual ethics training for the department",
+      "C": "Background checks on all new hires",
+      "D": "Mandatory vacations with duties covered by others"
+    },
+    "answer": "D",
+    "explanation": "Mandatory vacations (like job rotation) are a detective control. Fraud that needs the perpetrator's constant involvement tends to surface when someone else performs the duties for a period.",
+    "distractor_rationales": {
+      "A": "Passwords keep out outsiders. They do nothing about a trusted insider who already has access.",
+      "B": "Training raises awareness and may deter, but it does not detect fraud in progress.",
+      "C": "Background checks screen people at hiring. They do not detect fraud that begins later."
+    },
+    "references_topic": "Mandatory vacation as a detective control",
+    "version": "0.2"
+  },
+  {
+    "id": "D1-0023",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Investigation types",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "An employee reports that a coworker has been emailing offensive jokes to colleagues. This violates the acceptable use policy but no law. What type of investigation is MOST appropriate?",
+    "options": {
+      "A": "Administrative",
+      "B": "Criminal",
+      "C": "Civil",
+      "D": "Regulatory"
+    },
+    "answer": "A",
+    "explanation": "A violation of internal policy with no legal dimension is handled as an administrative investigation, typically led by HR and management.",
+    "distractor_rationales": {
+      "B": "No crime has been alleged, so a criminal investigation is not warranted.",
+      "C": "Civil matters involve a legal dispute between parties seeking a remedy, which is not the case here.",
+      "D": "A regulatory investigation involves a government regulator enforcing its rules."
+    },
+    "references_topic": "Administrative investigations",
+    "version": "0.2"
+  },
+  {
+    "id": "D1-0024",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Intellectual property and licensing",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "A startup's developers copied source code from a library under a strong copyleft license into the company's proprietary product, which is distributed to customers. What is the PRIMARY risk?",
+    "options": {
+      "A": "The copied code will make the product run more slowly",
+      "B": "The product may have to be released under the same license",
+      "C": "The license automatically transfers ownership of the startup's patents",
+      "D": "The library's authors can revoke the license at any time"
+    },
+    "answer": "B",
+    "explanation": "Strong copyleft licenses require that distributed derivative works be licensed under the same terms, which can mean releasing the product's source code. This is a license compliance and intellectual property risk.",
+    "distractor_rationales": {
+      "A": "A license has no effect on performance.",
+      "C": "Some licenses include patent grants, but none transfer ownership of the licensee's patents.",
+      "D": "Most open-source licenses are irrevocable for code already received, so revocation is not the main concern."
+    },
+    "references_topic": "Open-source license compliance",
+    "version": "0.2"
+  },
+  {
+    "id": "D1-0025",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Security awareness, education, and training",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "After an annual security training course, phishing-simulation click rates drop for about a month and then return to their previous level. What is the BEST way to improve the program?",
+    "options": {
+      "A": "Make the annual course longer and more detailed",
+      "B": "Discipline every employee who clicks a simulated phishing link",
+      "C": "Move to short, frequent sessions with immediate feedback",
+      "D": "Stop running phishing simulations altogether"
+    },
+    "answer": "C",
+    "explanation": "Knowledge fades quickly after a single annual event. Short, frequent, role-relevant reinforcement with feedback at the moment of a mistake sustains behavior change.",
+    "distractor_rationales": {
+      "A": "A longer annual course still leaves eleven months for the lesson to fade.",
+      "B": "Punishment discourages people from reporting mistakes and damages security culture.",
+      "D": "Stopping simulations removes both practice and the ability to measure progress."
+    },
+    "references_topic": "Sustaining awareness program effectiveness",
+    "version": "0.2"
+  },
+  {
+    "id": "D1-0026",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Business continuity and BIA",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "During a business impact analysis, the online ordering function has a maximum tolerable downtime (MTD) of 12 hours. Verifying data and resuming work after systems are rebuilt takes 4 hours. What is the MAXIMUM recovery time objective (RTO) the team can set?",
+    "options": {
+      "A": "12 hours",
+      "B": "16 hours",
+      "C": "4 hours",
+      "D": "8 hours"
+    },
+    "answer": "D",
+    "explanation": "The RTO plus the work recovery time must fit within the MTD. With an MTD of 12 hours and 4 hours of work recovery, the RTO can be at most 12 - 4 = 8 hours.",
+    "distractor_rationales": {
+      "A": "Setting the RTO equal to the MTD leaves no time for work recovery, so the MTD would be exceeded.",
+      "B": "16 hours adds the work recovery time instead of subtracting it.",
+      "C": "4 hours is the work recovery time, not the maximum RTO."
+    },
+    "references_topic": "MTD, RTO, and WRT relationship",
+    "version": "0.2"
+  },
+  {
+    "id": "D1-0027",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Risk response and control selection",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "Management reviews a risk with an annualized loss expectancy of $5,000. The only available control costs $40,000 per year, and the risk falls within the organization's documented risk appetite. What is the MOST appropriate response?",
+    "options": {
+      "A": "Formally accept the risk and document the decision",
+      "B": "Implement the control anyway to eliminate the risk",
+      "C": "Ignore the risk, since the expected loss is small",
+      "D": "Transfer the risk by purchasing a policy regardless of cost"
+    },
+    "answer": "A",
+    "explanation": "The control costs eight times the expected loss, and the risk is within appetite. The risk owner should formally accept the risk, document the rationale, and review it periodically.",
+    "distractor_rationales": {
+      "B": "Spending $40,000 a year to avoid $5,000 in expected losses is not justified.",
+      "C": "Ignoring a risk is not the same as accepting it. Acceptance is a documented decision by an accountable owner.",
+      "D": "Transferring the risk \"regardless of cost\" could also cost more than the risk itself."
+    },
+    "references_topic": "Risk acceptance",
+    "version": "0.2"
+  },
+  {
+    "id": "D1-0028",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Security governance and roles",
+    "difficulty": "medium",
+    "type": "knowledge",
+    "stem": "Which role is ultimately accountable for the protection of an organization's information assets?",
+    "options": {
+      "A": "The chief information security officer",
+      "B": "Senior management",
+      "C": "The IT operations manager",
+      "D": "Each individual data custodian"
+    },
+    "answer": "B",
+    "explanation": "Senior management, including the board and executives, holds ultimate accountability. They can delegate responsibility for security tasks, but not accountability for the outcome.",
+    "distractor_rationales": {
+      "A": "The CISO is responsible for running the security program and answers to senior management.",
+      "C": "IT operations implements controls but is not ultimately accountable.",
+      "D": "Custodians implement protections that others decide on."
+    },
+    "references_topic": "Accountability versus responsibility",
+    "version": "0.2"
+  },
+  {
+    "id": "D1-0029",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Supply chain risk management",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "A small software vendor that supplies a critical payroll integration has left a known vulnerability unpatched for six months and does not respond to inquiries. The contract has no security clauses. What should the security manager do FIRST?",
+    "options": {
+      "A": "Terminate the contract immediately and switch to a different vendor",
+      "B": "Publicly disclose the vulnerability to pressure the vendor",
+      "C": "Assess the exposure and apply compensating controls",
+      "D": "Take no action, because the vendor is responsible for its own software"
+    },
+    "answer": "C",
+    "explanation": "The company owns this risk no matter who wrote the software. Assess the impact, apply compensating controls such as restricted access and monitoring, keep escalating with the vendor, and plan contract changes and alternatives.",
+    "distractor_rationales": {
+      "A": "Abrupt termination could disrupt payroll, and a replacement takes time to put in place.",
+      "B": "Uncoordinated public disclosure can harm the company and other customers. It is not a first step.",
+      "D": "Accountability for protecting the company's data cannot be outsourced to a vendor."
+    },
+    "references_topic": "Managing vendor security risk",
+    "version": "0.2"
+  },
+  {
+    "id": "D1-0030",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Threat modeling",
+    "difficulty": "medium",
+    "type": "knowledge",
+    "stem": "A threat modeling team rates each identified threat on damage potential, reproducibility, exploitability, affected users, and discoverability. Which approach are they using?",
+    "options": {
+      "A": "STRIDE",
+      "B": "PASTA",
+      "C": "Attack trees",
+      "D": "DREAD"
+    },
+    "answer": "D",
+    "explanation": "DREAD scores threats on those five factors to help prioritize which to address first.",
+    "distractor_rationales": {
+      "A": "STRIDE categorizes threats by type. It does not score them on these factors.",
+      "B": "PASTA is a seven-stage, risk-centric threat modeling process, not a five-factor rating.",
+      "C": "Attack trees model the paths an attacker could take to reach a goal."
+    },
+    "references_topic": "DREAD risk rating",
+    "version": "0.2"
+  },
+  {
+    "id": "D1-0031",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Professional ethics",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "A security analyst learns that a colleague has been sharing a vendor's confidential pricing with a competitor in exchange for gifts. What should the analyst do FIRST?",
+    "options": {
+      "A": "Report it through the organization's ethics channel",
+      "B": "Confront the colleague privately and demand that it stop",
+      "C": "Post a warning about the colleague on a professional forum",
+      "D": "Ignore it, since it is not a technical security issue"
+    },
+    "answer": "A",
+    "explanation": "Acting honorably and protecting the organization means reporting through the proper channel, such as an ethics hotline, compliance, or management, so the matter is investigated fairly and evidence is preserved.",
+    "distractor_rationales": {
+      "B": "A private confrontation can tip off the colleague, lead to destroyed evidence, and escalate the situation.",
+      "C": "Public accusations harm reputations, may be defamatory, and breach confidentiality.",
+      "D": "Misuse of confidential information is squarely within a security professional's ethical responsibilities."
+    },
+    "references_topic": "Reporting ethical violations",
+    "version": "0.2"
+  },
+  {
+    "id": "D1-0032",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Due care and due diligence",
+    "difficulty": "medium",
+    "type": "knowledge",
+    "stem": "Which activity is the BEST example of due diligence?",
+    "options": {
+      "A": "Installing a firewall after a risk assessment recommends one",
+      "B": "Reviewing a vendor's security practices before signing",
+      "C": "Terminating an employee who violated security policy",
+      "D": "Applying a critical patch the day it is released"
+    },
+    "answer": "B",
+    "explanation": "Due diligence is the investigation and research that builds an understanding of risk before a decision, and the ongoing verification afterward. Reviewing a vendor before signing is exactly that.",
+    "distractor_rationales": {
+      "A": "Acting on a recommendation is due care: doing what a prudent organization would do once the risk is known.",
+      "C": "Enforcing policy is an action taken in due care.",
+      "D": "Prompt patching is an example of due care."
+    },
+    "references_topic": "Due diligence",
+    "version": "0.2"
+  },
+  {
+    "id": "D1-0033",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Risk assessment and analysis",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "A risk team has no reliable historical loss data but must quickly prioritize 40 risks for next year's budget. Which approach is MOST appropriate?",
+    "options": {
+      "A": "Quantitative analysis calculating an exact ALE for every risk",
+      "B": "Delay prioritization until loss data has been collected",
+      "C": "Qualitative ratings of likelihood and impact by experts",
+      "D": "Monte Carlo simulation using generic industry default values"
+    },
+    "answer": "C",
+    "explanation": "Qualitative analysis suits limited data and tight timelines. Subject matter experts rate likelihood and impact on defined scales, which is enough to rank the risks.",
+    "distractor_rationales": {
+      "A": "Exact ALE figures need reliable numeric inputs. Without them, the precision would be false.",
+      "B": "Delaying prioritization stalls budget decisions that must be made now.",
+      "D": "Generic defaults produce precise-looking numbers that do not reflect this organization's risks."
+    },
+    "references_topic": "Qualitative risk analysis",
+    "version": "0.2"
+  },
+  {
+    "id": "D1-0034",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Security concepts",
+    "difficulty": "hard",
+    "type": "knowledge",
+    "stem": "A software update server signs every update, and devices verify the signature before installing. An attacker who takes over a download mirror cannot get devices to install a modified update. Which properties does the signature check provide?",
+    "options": {
+      "A": "Confidentiality and availability",
+      "B": "Confidentiality and integrity",
+      "C": "Availability and authenticity",
+      "D": "Integrity and authenticity"
+    },
+    "answer": "D",
+    "explanation": "The signature proves the update came from the holder of the signing key (authenticity of origin) and that it was not modified afterward (integrity). It does not encrypt anything.",
+    "distractor_rationales": {
+      "A": "Signatures neither keep content secret nor keep the service available.",
+      "B": "Signing does not encrypt the update, so it provides no confidentiality.",
+      "C": "A compromised mirror could still refuse to serve updates, so availability is not protected."
+    },
+    "references_topic": "Digital signatures and authenticity",
+    "version": "0.2"
+  },
+  {
+    "id": "D1-0035",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Legal, regulatory, and contractual compliance",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "A cloud HR provider receives an order from a government authority requesting employee records it stores for a customer in that country. The customer contract promises to notify customers of such requests where legally permitted. What should the provider do FIRST?",
+    "options": {
+      "A": "Verify the request's legal validity with counsel before responding",
+      "B": "Refuse outright, because the data legally belongs to the customer, not to the provider",
+      "C": "Immediately provide all requested records to avoid penalties",
+      "D": "Delete the requested records to protect the employees' privacy"
+    },
+    "answer": "A",
+    "explanation": "First confirm with legal counsel that the request is authentic, within jurisdiction, and properly scoped. Then respond narrowly and notify the customer as the contract and law allow.",
+    "distractor_rationales": {
+      "B": "The provider is subject to local law, and an outright refusal may itself be unlawful.",
+      "C": "Handing over everything without validation risks breaching contracts and privacy laws.",
+      "D": "Destroying data subject to a legal order is obstruction and spoliation."
+    },
+    "references_topic": "Responding to lawful data requests",
+    "version": "0.2"
+  },
+  {
+    "id": "D1-0036",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Privacy and transborder data flow",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "A retail chain wants to use in-store cameras to analyze customer foot traffic, and privacy counsel requires a privacy impact assessment (PIA). When should the PIA be performed?",
+    "options": {
+      "A": "After deployment, once real data shows what is being collected",
+      "B": "During design, before the system is built or purchased",
+      "C": "Only if a customer files a complaint about the cameras",
+      "D": "At the next annual compliance audit"
+    },
+    "answer": "B",
+    "explanation": "Privacy by design places the PIA early, when its findings can still shape the system, for example through data minimization, anonymization, and notice, and when changes are cheapest.",
+    "distractor_rationales": {
+      "A": "After deployment, personal data has already been collected and the design is locked in.",
+      "C": "Waiting for a complaint is reactive and may mean unlawful processing has already occurred.",
+      "D": "An audit months later comes after the data has been collected."
+    },
+    "references_topic": "Privacy impact assessment timing",
+    "version": "0.2"
+  },
+  {
+    "id": "D1-0037",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Personnel security",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "A software company hires contractors from a staffing agency to work on a product that contains sensitive customer data. Which approach BEST manages the personnel risk?",
+    "options": {
+      "A": "Rely on the agency's assurance that its contractors are trustworthy",
+      "B": "Give contractors the same broad access as senior employees to speed onboarding",
+      "C": "Contract for equivalent screening, NDAs, and least-privilege access",
+      "D": "Prohibit contractors from accessing any company system"
+    },
+    "answer": "C",
+    "explanation": "Third-party staff should meet the same screening standards through contract terms, sign NDAs, receive only the access they need, be monitored, and lose access promptly when the engagement ends.",
+    "distractor_rationales": {
+      "A": "An unverified assurance from the agency is not a control.",
+      "B": "Broad access violates least privilege and magnifies the damage one person could do.",
+      "D": "Contractors cannot do the work without some access, so a total ban is impractical."
+    },
+    "references_topic": "Third-party personnel controls",
+    "version": "0.2"
+  },
+  {
+    "id": "D1-0038",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Business continuity and BIA",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "A company's business continuity plan was written three years ago. Since then, it has moved its core applications to a cloud provider and adopted remote work. What should the continuity manager do FIRST?",
+    "options": {
+      "A": "Run a full-interruption test of the existing continuity plan right away",
+      "B": "Distribute the existing plan to all employees",
+      "C": "Purchase additional cloud capacity for failover",
+      "D": "Update the business impact analysis for current dependencies"
+    },
+    "answer": "D",
+    "explanation": "Major changes in how the business operates invalidate the old BIA, and the BIA drives recovery priorities and strategies. Update it first, then revise the plan and test it.",
+    "distractor_rationales": {
+      "A": "Testing an outdated plan wastes effort, and a full-interruption test carries real business risk.",
+      "B": "Distributing an outdated plan spreads incorrect instructions.",
+      "C": "Buying capacity before knowing the recovery requirements is premature."
+    },
+    "references_topic": "Maintaining the business impact analysis",
+    "version": "0.2"
+  },
+  {
+    "id": "D1-0039",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Risk response and control selection",
+    "difficulty": "hard",
+    "type": "application",
+    "stem": "An e-commerce site faces an estimated ALE of $120,000 from payment fraud. A fraud-detection service costs $45,000 per year and is expected to cut the ALE to $30,000. Cyber insurance costs $20,000 per year and would reimburse 50% of losses. Based on annual cost-benefit, which option delivers the MOST value?",
+    "options": {
+      "A": "The fraud-detection service, with a net value of $45,000",
+      "B": "Cyber insurance, with a net value of $40,000",
+      "C": "Both together, with a net value of $55,000",
+      "D": "Neither option, because some residual risk would remain in both cases"
+    },
+    "answer": "A",
+    "explanation": "Service: ($120,000 - $30,000) - $45,000 = $45,000. Insurance: it cuts expected losses by $60,000 (50% of $120,000) for $20,000, a net of $40,000. The service alone delivers the most value.",
+    "distractor_rationales": {
+      "B": "Insurance nets $40,000, which is less than the service's $45,000.",
+      "C": "Combined, the residual loss is $15,000 (half of $30,000) and the cost is $65,000, so the net value is $120,000 - $15,000 - $65,000 = $40,000, not $55,000.",
+      "D": "Residual risk is normal. Both options have positive net value, so doing nothing is not the best choice."
+    },
+    "references_topic": "Comparing risk treatment options",
+    "version": "0.2"
+  },
+  {
+    "id": "D1-0040",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Investigation types",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "During an internal investigation of suspected data theft, the evidence begins to indicate that the employee may have committed a crime. What should the investigation lead do NEXT?",
+    "options": {
+      "A": "Finish the internal investigation completely before telling anyone else",
+      "B": "Consult legal counsel about involving law enforcement",
+      "C": "Confront the employee to obtain a confession",
+      "D": "Terminate the employee and close the case"
+    },
+    "answer": "B",
+    "explanation": "When an administrative matter may be criminal, counsel should decide whether to refer it to law enforcement, and evidence handling must meet criminal admissibility standards from that point on.",
+    "distractor_rationales": {
+      "A": "Continuing alone risks tainting evidence and delaying a required referral.",
+      "C": "Confrontation risks evidence destruction and can create legal problems such as claims of coercion.",
+      "D": "Premature termination can tip off the employee, lose evidence, and ignore legal obligations."
+    },
+    "references_topic": "Escalating an investigation to criminal",
+    "version": "0.2"
+  }
+]

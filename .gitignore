@@ -1,0 +1,29 @@
+# Secrets: never commit keys or environment files
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*.pfx
+secrets.*
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# Audit working files (flags.csv is committed after review; the cache is not)
+validation/.audit_cache.json
+
+# Node and build output
+node_modules/
+_site/
+coverage/
+
+# OS and sync clutter
+.DS_Store
+Thumbs.db
+desktop.ini
+*.log

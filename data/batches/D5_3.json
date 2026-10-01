@@ -1,0 +1,794 @@
+[
+  {
+    "id": "D5-0033",
+    "domain": 5,
+    "domain_name": "Identity and Access Management",
+    "subtopic": "Identification and authentication",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "Which activity is an example of accounting in the AAA framework?",
+    "options": {
+      "A": "Checking a user's password against the directory",
+      "B": "Granting a user read access to a shared folder",
+      "C": "Asking a user to type a username at the login screen",
+      "D": "Recording the commands a user runs for later review"
+    },
+    "answer": "D",
+    "explanation": "Accounting tracks what an authenticated user does, such as logging commands and session times, so actions can be reviewed and attributed.",
+    "distractor_rationales": {
+      "A": "Checking a password is authentication.",
+      "B": "Granting read access is authorization.",
+      "C": "Entering a username is identification."
+    },
+    "references_topic": "Accounting in AAA",
+    "version": "0.3"
+  },
+  {
+    "id": "D5-0034",
+    "domain": 5,
+    "domain_name": "Identity and Access Management",
+    "subtopic": "Multi-factor and passwordless authentication",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "When a user registers a passkey with a website, what does the user's device keep?",
+    "options": {
+      "A": "A private key for that site, while the site stores only the matching public key",
+      "B": "The user's password in encrypted form, which is synced to the website's server at each login",
+      "C": "A copy of the user's fingerprint image, which is sent to the website at every sign-in",
+      "D": "A list of one-time codes that the website texts to the user in advance"
+    },
+    "answer": "A",
+    "explanation": "A passkey is a FIDO2 key pair. The private key stays with the user's authenticator and signs a challenge from the site, which verifies it with the public key. A biometric or PIN only unlocks the key locally.",
+    "distractor_rationales": {
+      "B": "Passkeys involve no password at all, which is the point of passwordless sign-in.",
+      "C": "Biometric data stays on the device and only unlocks the private key.",
+      "D": "Texted codes are SMS one-time passwords, not passkeys."
+    },
+    "references_topic": "Passkey key pairs",
+    "version": "0.3"
+  },
+  {
+    "id": "D5-0035",
+    "domain": 5,
+    "domain_name": "Identity and Access Management",
+    "subtopic": "Authorization models",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "In which access control model do system-enforced labels and clearances decide access, with no ability for owners to change permissions at their discretion?",
+    "options": {
+      "A": "Discretionary access control",
+      "B": "Mandatory access control",
+      "C": "Role-based access control",
+      "D": "Rule-based access control"
+    },
+    "answer": "B",
+    "explanation": "Mandatory access control compares subject clearances with object labels, and the system enforces the result regardless of what the data owner might prefer.",
+    "distractor_rationales": {
+      "A": "Discretionary access control lets owners grant access at their discretion.",
+      "C": "Role-based access control assigns permissions by job role, not by labels and clearances.",
+      "D": "Rule-based access control applies global rules such as time or location conditions."
+    },
+    "references_topic": "Mandatory access control",
+    "version": "0.3"
+  },
+  {
+    "id": "D5-0036",
+    "domain": 5,
+    "domain_name": "Identity and Access Management",
+    "subtopic": "Provisioning lifecycle",
+    "difficulty": "easy",
+    "type": "application",
+    "stem": "An employee is being terminated for cause this afternoon. When should the employee's access be revoked?",
+    "options": {
+      "A": "At the end of the employee's final pay period",
+      "B": "Within 30 days, during the next access review",
+      "C": "At or just before the moment the employee is notified",
+      "D": "After the employee returns their laptop, badge, and other company equipment"
+    },
+    "answer": "C",
+    "explanation": "Access should be removed at or just before notification so a departing employee cannot take revenge or copy data in the window after learning the news.",
+    "distractor_rationales": {
+      "A": "Waiting until the pay period ends leaves an unhappy insider with access.",
+      "B": "A monthly review is far too slow for a termination for cause.",
+      "D": "Equipment return can be delayed, and access should not depend on it."
+    },
+    "references_topic": "Timely deprovisioning of leavers",
+    "version": "0.3"
+  },
+  {
+    "id": "D5-0037",
+    "domain": 5,
+    "domain_name": "Identity and Access Management",
+    "subtopic": "Authentication protocols",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "Which AAA protocol was designed as the successor to RADIUS and is widely used in mobile carrier networks over TCP or SCTP?",
+    "options": {
+      "A": "TACACS+",
+      "B": "Kerberos v5",
+      "C": "LDAP",
+      "D": "Diameter"
+    },
+    "answer": "D",
+    "explanation": "Diameter was designed to replace RADIUS, runs over reliable transports such as TCP and SCTP, and is used heavily in mobile networks for AAA.",
+    "distractor_rationales": {
+      "A": "TACACS+ is a device administration protocol, not RADIUS's successor.",
+      "B": "Kerberos is a ticket-based authentication protocol for enterprise networks.",
+      "C": "LDAP is a directory access protocol."
+    },
+    "references_topic": "Diameter",
+    "version": "0.3"
+  },
+  {
+    "id": "D5-0038",
+    "domain": 5,
+    "domain_name": "Identity and Access Management",
+    "subtopic": "Session management",
+    "difficulty": "easy",
+    "type": "managerial_best_first_most",
+    "stem": "Which session control is BEST for a high-risk administrative web console?",
+    "options": {
+      "A": "A short idle timeout plus an absolute session limit that forces reauthentication",
+      "B": "A single sign-on session that stays valid for thirty days on trusted devices",
+      "C": "A remember-me cookie so administrators do not have to log in again each day",
+      "D": "An idle timeout of eight hours so long-running tasks are never interrupted"
+    },
+    "answer": "A",
+    "explanation": "High-risk sessions need both an idle timeout, which closes abandoned sessions, and an absolute limit, which caps the life of any session so stolen tokens expire.",
+    "distractor_rationales": {
+      "B": "A thirty-day session gives a stolen token a long useful life.",
+      "C": "Remember-me cookies extend sessions and are unsuitable for privileged consoles.",
+      "D": "Eight hours of idle time leaves unattended consoles open."
+    },
+    "references_topic": "Idle and absolute session timeouts",
+    "version": "0.3"
+  },
+  {
+    "id": "D5-0039",
+    "domain": 5,
+    "domain_name": "Identity and Access Management",
+    "subtopic": "Physical and logical access control",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "Which badge system feature stops a person from entering a secure area and then handing their badge back through a door so a second person can enter?",
+    "options": {
+      "A": "Printing photos on every badge",
+      "B": "Anti-passback enforcement",
+      "C": "Automatic door closers",
+      "D": "Visitor escort logs"
+    },
+    "answer": "B",
+    "explanation": "Anti-passback requires a badge to be used to exit before it can be used to enter again, so a card passed back to someone else is refused.",
+    "distractor_rationales": {
+      "A": "Photos help guards verify identity but do not stop a badge from being reused.",
+      "C": "Door closers prevent doors from being left open, not badge reuse.",
+      "D": "Escort logs record visitors but do not stop badge passback."
+    },
+    "references_topic": "Anti-passback",
+    "version": "0.3"
+  },
+  {
+    "id": "D5-0040",
+    "domain": 5,
+    "domain_name": "Identity and Access Management",
+    "subtopic": "Privileged and service accounts",
+    "difficulty": "easy",
+    "type": "managerial_best_first_most",
+    "stem": "Administrators share the domain administrator password in a spreadsheet on a file server. What is the BEST fix?",
+    "options": {
+      "A": "Password-protect the spreadsheet and email that password to each administrator on the team",
+      "B": "Change the domain administrator password every year and update the spreadsheet",
+      "C": "Store it in a privileged access vault that logs checkouts and rotates it after use",
+      "D": "Print the password and keep it in a folder in the IT manager's desk drawer"
+    },
+    "answer": "C",
+    "explanation": "A privileged access vault controls who can retrieve the credential, logs each checkout, and rotates the password so a retrieved copy does not stay valid.",
+    "distractor_rationales": {
+      "A": "A password-protected spreadsheet is weak protection and emailing its password spreads it further.",
+      "B": "Annual rotation leaves a long window, and the spreadsheet remains exposed.",
+      "D": "A printed copy has no logging and depends only on a desk drawer."
+    },
+    "references_topic": "Privileged password vaulting",
+    "version": "0.3"
+  },
+  {
+    "id": "D5-0041",
+    "domain": 5,
+    "domain_name": "Identity and Access Management",
+    "subtopic": "Federation and SSO",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "What does OAuth 2.0 primarily provide?",
+    "options": {
+      "A": "A signed identity assertion that proves who the user is to a relying party website",
+      "B": "A directory for storing user accounts and group memberships",
+      "C": "A ticket-granting service for authentication in a Windows domain",
+      "D": "Delegated authorization so an app can access resources on a user's behalf"
+    },
+    "answer": "D",
+    "explanation": "OAuth 2.0 is an authorization framework. It lets a user grant a client limited access to resources through access tokens without sharing the user's password.",
+    "distractor_rationales": {
+      "A": "Identity assertions come from SAML or from OpenID Connect built on top of OAuth.",
+      "B": "Storing accounts and groups is the job of a directory service.",
+      "C": "Ticket-granting is a Kerberos function."
+    },
+    "references_topic": "OAuth 2.0 delegated authorization",
+    "version": "0.3"
+  },
+  {
+    "id": "D5-0042",
+    "domain": 5,
+    "domain_name": "Identity and Access Management",
+    "subtopic": "Access reviews",
+    "difficulty": "easy",
+    "type": "managerial_best_first_most",
+    "stem": "Who is BEST placed to confirm that a user still needs access to a finance application?",
+    "options": {
+      "A": "The user's manager or the application's data owner",
+      "B": "The help desk technician who originally created the account",
+      "C": "The user, through a self-attestation form",
+      "D": "The network team that manages the firewall"
+    },
+    "answer": "A",
+    "explanation": "Managers know what the user's job requires and data owners know who should see their data, so one of them should certify the access.",
+    "distractor_rationales": {
+      "B": "The help desk implements requests but does not know the business need.",
+      "C": "Users have an incentive to keep access and cannot certify themselves.",
+      "D": "The network team has no knowledge of the user's job duties."
+    },
+    "references_topic": "Choosing access reviewers",
+    "version": "0.3"
+  },
+  {
+    "id": "D5-0043",
+    "domain": 5,
+    "domain_name": "Identity and Access Management",
+    "subtopic": "Identification and authentication",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "A data center raises the sensitivity of its fingerprint readers after an unauthorized person was admitted. What effect should the security team expect?",
+    "options": {
+      "A": "The false acceptance rate and false rejection rate will both rise",
+      "B": "The false acceptance rate will fall and the false rejection rate will rise",
+      "C": "The false acceptance rate will rise while the false rejection rate will fall",
+      "D": "The crossover error rate will drop to zero once the change is complete"
+    },
+    "answer": "B",
+    "explanation": "Tighter matching rejects more impostors, lowering false acceptances, but also rejects more legitimate users, raising false rejections.",
+    "distractor_rationales": {
+      "A": "The two error rates move in opposite directions as sensitivity changes.",
+      "C": "Raising sensitivity reduces false acceptances rather than increasing them.",
+      "D": "The crossover error rate is a property of the device and never reaches zero."
+    },
+    "references_topic": "Biometric sensitivity and error rates",
+    "version": "0.3"
+  },
+  {
+    "id": "D5-0044",
+    "domain": 5,
+    "domain_name": "Identity and Access Management",
+    "subtopic": "Multi-factor and passwordless authentication",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "Attackers with stolen passwords are sending repeated MFA push requests until users approve one to make them stop. What is the BEST immediate improvement?",
+    "options": {
+      "A": "Send users an email reminding them to be careful with push notifications",
+      "B": "Switch the second factor to one-time codes sent by SMS messages",
+      "C": "Require number matching in push approvals and limit repeated prompts",
+      "D": "Disable MFA for users who report too many unexpected prompts"
+    },
+    "answer": "C",
+    "explanation": "Number matching forces the user to enter a code shown on the login screen, which an attacker cannot supply remotely, and rate limiting stops the flood. Phishing-resistant methods are the longer-term goal.",
+    "distractor_rationales": {
+      "A": "Awareness helps but does not stop a tired user from approving.",
+      "B": "SMS codes are weaker and open the door to SIM swapping.",
+      "D": "Disabling MFA rewards the attack and removes protection."
+    },
+    "references_topic": "MFA fatigue attacks",
+    "version": "0.3"
+  },
+  {
+    "id": "D5-0045",
+    "domain": 5,
+    "domain_name": "Identity and Access Management",
+    "subtopic": "Session management",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "A web app stores its session token in browser localStorage. A penetration test showed that a cross-site scripting flaw let the tester read and steal the token. Besides fixing the XSS, what change BEST protects the token?",
+    "options": {
+      "A": "Store the token in a hidden form field on every page of the application",
+      "B": "Encode the token in Base64 before saving it in localStorage",
+      "C": "Include the token in the URL query string of each request instead",
+      "D": "Store the token in a cookie marked HttpOnly, Secure, and SameSite"
+    },
+    "answer": "D",
+    "explanation": "An HttpOnly cookie cannot be read by page scripts, so XSS cannot steal it directly. Secure keeps it on HTTPS, and SameSite limits cross-site requests.",
+    "distractor_rationales": {
+      "A": "Hidden form fields are readable by any script on the page.",
+      "B": "Base64 is an encoding, not protection, and scripts can still read it.",
+      "C": "Tokens in URLs leak through logs, history, and referrer headers."
+    },
+    "references_topic": "Secure session token storage",
+    "version": "0.3"
+  },
+  {
+    "id": "D5-0046",
+    "domain": 5,
+    "domain_name": "Identity and Access Management",
+    "subtopic": "Identity proofing and registration",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "A company hires administrators who work fully remotely and never visit an office. What is the BEST way to proof their identity before issuing privileged credentials?",
+    "options": {
+      "A": "Verify a government ID with a live video check that matches the person to the document",
+      "B": "Accept a scanned copy of any photo ID that the new hire emails to human resources",
+      "C": "Ask the new hire to confirm their home address and date of birth over the phone",
+      "D": "Issue the credentials first and verify the person's identity at their first annual performance review"
+    },
+    "answer": "A",
+    "explanation": "Privileged access needs strong proofing. Validating a government document and matching it to the live person on video provides much higher assurance than self-asserted data.",
+    "distractor_rationales": {
+      "B": "Emailed scans are easily forged and are not matched to the person.",
+      "C": "Address and birth date are often public or easy to obtain.",
+      "D": "Issuing credentials before proofing defeats the purpose."
+    },
+    "references_topic": "Remote identity proofing",
+    "version": "0.3"
+  },
+  {
+    "id": "D5-0047",
+    "domain": 5,
+    "domain_name": "Identity and Access Management",
+    "subtopic": "Federation and SSO",
+    "difficulty": "medium",
+    "type": "knowledge",
+    "stem": "In an OpenID Connect sign-in, which token is meant to be presented to an API as proof of authorization, rather than consumed by the client to learn who the user is?",
+    "options": {
+      "A": "ID token",
+      "B": "Access token",
+      "C": "SAML assertion",
+      "D": "Authorization code"
+    },
+    "answer": "B",
+    "explanation": "The access token is presented to the resource server (API) to authorize calls. The ID token is meant for the client to learn who signed in.",
+    "distractor_rationales": {
+      "A": "The ID token is for the client, not for authorizing API calls.",
+      "C": "SAML assertions belong to a different federation protocol.",
+      "D": "The authorization code is a short-lived value exchanged for tokens, not presented to APIs."
+    },
+    "references_topic": "OAuth access tokens",
+    "version": "0.3"
+  },
+  {
+    "id": "D5-0048",
+    "domain": 5,
+    "domain_name": "Identity and Access Management",
+    "subtopic": "Authorization models",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "A policy states that no one may reach the payroll system outside 7 a.m. to 7 p.m. or from outside the corporate network, regardless of job role. Which access control model does this describe?",
+    "options": {
+      "A": "Discretionary access control",
+      "B": "Role-based access control",
+      "C": "Rule-based access control",
+      "D": "Mandatory access control"
+    },
+    "answer": "C",
+    "explanation": "Rule-based access control applies global rules, such as time and location conditions, to every subject regardless of identity or role.",
+    "distractor_rationales": {
+      "A": "Discretionary control is set by the data owner for individual users.",
+      "B": "Role-based control grants permissions by job function, while this rule applies to everyone.",
+      "D": "Mandatory control relies on labels and clearances."
+    },
+    "references_topic": "Rule-based access control",
+    "version": "0.3"
+  },
+  {
+    "id": "D5-0049",
+    "domain": 5,
+    "domain_name": "Identity and Access Management",
+    "subtopic": "Access policy enforcement",
+    "difficulty": "medium",
+    "type": "knowledge",
+    "stem": "An API gateway receives each request, asks a central authorization service whether it is allowed, and then forwards or blocks it. What role does the gateway play?",
+    "options": {
+      "A": "Policy administration point",
+      "B": "Policy information point",
+      "C": "Policy decision point",
+      "D": "Policy enforcement point"
+    },
+    "answer": "D",
+    "explanation": "The gateway intercepts requests and carries out the decision, which makes it the policy enforcement point. The central service that decides is the policy decision point.",
+    "distractor_rationales": {
+      "A": "The policy administration point is where policies are written and managed.",
+      "B": "The policy information point supplies attribute data for decisions.",
+      "C": "The central authorization service makes the decision, not the gateway."
+    },
+    "references_topic": "Policy enforcement points",
+    "version": "0.3"
+  },
+  {
+    "id": "D5-0050",
+    "domain": 5,
+    "domain_name": "Identity and Access Management",
+    "subtopic": "Provisioning lifecycle",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "An audit found dozens of contractor accounts still active months after their contracts ended. What is the BEST control to prevent this?",
+    "options": {
+      "A": "Set account expiry dates tied to contract end, renewable only by a named sponsor",
+      "B": "Ask contractors to email the help desk when they finish their assignments",
+      "C": "Review all contractor accounts once a year during the external audit",
+      "D": "Give contractors shared accounts so there are fewer accounts to track"
+    },
+    "answer": "A",
+    "explanation": "Automatic expiry ties access to the contract term, and sponsor renewal makes someone accountable for any extension. Accounts close by default rather than by memory.",
+    "distractor_rationales": {
+      "B": "Relying on contractors to self-report is unreliable.",
+      "C": "An annual review leaves accounts active for months.",
+      "D": "Shared accounts destroy accountability."
+    },
+    "references_topic": "Contractor account expiration",
+    "version": "0.3"
+  },
+  {
+    "id": "D5-0051",
+    "domain": 5,
+    "domain_name": "Identity and Access Management",
+    "subtopic": "Access reviews",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "After a quarterly access review, reviewers flagged 40 entitlements for removal. Three months later, 25 of them are still active. What should the organization do?",
+    "options": {
+      "A": "Repeat the access review with a new group of reviewers next quarter",
+      "B": "Track each revocation as a ticket to closure and verify removal in the target system",
+      "C": "Accept the remaining entitlements because the reviewers already signed off",
+      "D": "Reduce the frequency of reviews to make the workload easier to finish"
+    },
+    "answer": "B",
+    "explanation": "A review is only effective if its decisions are carried out. Tracking each revocation to closure and confirming it in the target system closes the gap.",
+    "distractor_rationales": {
+      "A": "A new review repeats the same decisions without fixing the execution gap.",
+      "C": "Sign-off means nothing if the access is never removed.",
+      "D": "Less frequent reviews make the problem worse."
+    },
+    "references_topic": "Tracking revocations from reviews",
+    "version": "0.3"
+  },
+  {
+    "id": "D5-0052",
+    "domain": 5,
+    "domain_name": "Identity and Access Management",
+    "subtopic": "Privileged and service accounts",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "Logs show administrators logging in to servers interactively with a backup service account because it has broad rights. What is the BEST control?",
+    "options": {
+      "A": "Rename the service account to something less obvious to administrators",
+      "B": "Grant every administrator the same broad rights so they stop borrowing it",
+      "C": "Deny interactive logon for the service account and alert on any attempt",
+      "D": "Remind administrators in a staff meeting that the account is for backups"
+    },
+    "answer": "C",
+    "explanation": "Service accounts should be restricted to the non-interactive use they exist for. Denying interactive logon enforces this, and alerts reveal misuse.",
+    "distractor_rationales": {
+      "A": "Renaming the account is obscurity and does not stop use.",
+      "B": "Expanding everyone's rights violates least privilege.",
+      "D": "A reminder does not enforce anything."
+    },
+    "references_topic": "Preventing interactive use of service accounts",
+    "version": "0.3"
+  },
+  {
+    "id": "D5-0053",
+    "domain": 5,
+    "domain_name": "Identity and Access Management",
+    "subtopic": "Authentication protocols",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "An attacker with a normal domain account requested service tickets for accounts with service principal names and cracked them offline. Which change MOST reduces this risk?",
+    "options": {
+      "A": "Shorten the lifetime of user ticket-granting tickets to one hour",
+      "B": "Disable Kerberos and fall back to NTLM authentication domain-wide",
+      "C": "Move all domain controllers to a separate network segment right away",
+      "D": "Use managed service accounts with long, random, automatically rotated passwords"
+    },
+    "answer": "D",
+    "explanation": "Kerberoasting works because service tickets are encrypted with the service account's password. Long random passwords that rotate automatically make offline cracking impractical.",
+    "distractor_rationales": {
+      "A": "Shorter ticket-granting ticket lifetimes do not affect offline cracking of service tickets.",
+      "B": "NTLM is weaker and introduces its own attacks.",
+      "C": "Segmenting domain controllers does not stop authenticated users from requesting tickets."
+    },
+    "references_topic": "Kerberoasting",
+    "version": "0.3"
+  },
+  {
+    "id": "D5-0054",
+    "domain": 5,
+    "domain_name": "Identity and Access Management",
+    "subtopic": "Just-in-time access",
+    "difficulty": "medium",
+    "type": "knowledge",
+    "stem": "What risk does just-in-time privileged access PRIMARILY reduce?",
+    "options": {
+      "A": "Standing privileges that an attacker can use at any time after compromising an account",
+      "B": "Weak passwords that users choose for their ordinary accounts",
+      "C": "Unencrypted traffic between administrators and the servers they manage",
+      "D": "Help desk delays when users forget their passwords on weekends"
+    },
+    "answer": "A",
+    "explanation": "Just-in-time access grants elevated rights only when approved and for a limited time, so a compromised account has no privileges to abuse most of the time.",
+    "distractor_rationales": {
+      "B": "Password strength is addressed by password policy and MFA.",
+      "C": "Encryption in transit is a separate control.",
+      "D": "Password reset delays are a self-service issue."
+    },
+    "references_topic": "Standing privilege risk",
+    "version": "0.3"
+  },
+  {
+    "id": "D5-0055",
+    "domain": 5,
+    "domain_name": "Identity and Access Management",
+    "subtopic": "Just-in-time access",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "An organization rolled out just-in-time elevation for cloud administrators. What should it add to get the full benefit?",
+    "options": {
+      "A": "Extend each elevation window to a full week to reduce repeated requests",
+      "B": "Log elevated sessions and review them against the approved request",
+      "C": "Let administrators approve their own elevation requests after hours",
+      "D": "Grant permanent elevation to the three most active administrators"
+    },
+    "answer": "B",
+    "explanation": "Elevation should be matched to what was approved. Logging and reviewing elevated sessions detects misuse and confirms that privileges were used as intended.",
+    "distractor_rationales": {
+      "A": "A week-long window turns just-in-time access back into standing privilege.",
+      "C": "Self-approval removes the separation that makes the control work.",
+      "D": "Permanent elevation defeats the purpose."
+    },
+    "references_topic": "Reviewing elevated sessions",
+    "version": "0.3"
+  },
+  {
+    "id": "D5-0056",
+    "domain": 5,
+    "domain_name": "Identity and Access Management",
+    "subtopic": "Physical and logical access control",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "Auditors found that data center staff sometimes lend their badges to coworkers to enter the server cage. Which control BEST addresses this?",
+    "options": {
+      "A": "Printing larger photos on the badges",
+      "B": "Posting a policy notice on the cage door",
+      "C": "Adding a PIN or biometric check at the cage reader",
+      "D": "Extending the badge expiration period to one full year"
+    },
+    "answer": "C",
+    "explanation": "A badge alone is something you have and can be lent. Adding something you know or something you are ties entry to the badge holder.",
+    "distractor_rationales": {
+      "A": "Photos help only when someone checks them.",
+      "B": "A notice does not enforce anything.",
+      "D": "Expiration dates are unrelated to lending badges."
+    },
+    "references_topic": "Multi-factor physical access",
+    "version": "0.3"
+  },
+  {
+    "id": "D5-0057",
+    "domain": 5,
+    "domain_name": "Identity and Access Management",
+    "subtopic": "Identification and authentication",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "Call center agents share one login per shift for a customer records system. An agent changed records improperly, but no one can tell who. What should be done FIRST?",
+    "options": {
+      "A": "Add a stronger password to the shared shift account",
+      "B": "Install cameras over each agent's workstation",
+      "C": "Turn on detailed logging for the shared account",
+      "D": "Issue a unique login to each agent"
+    },
+    "answer": "D",
+    "explanation": "Accountability starts with unique identification. Without individual accounts, logs and authentication controls cannot tie actions to a person.",
+    "distractor_rationales": {
+      "A": "A stronger password does not identify who used the account.",
+      "B": "Cameras are an indirect, costly workaround for missing identification.",
+      "C": "Logs still record only the shared account."
+    },
+    "references_topic": "Unique user identification",
+    "version": "0.3"
+  },
+  {
+    "id": "D5-0058",
+    "domain": 5,
+    "domain_name": "Identity and Access Management",
+    "subtopic": "Federation and SSO",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "A company federates with a partner's identity provider. The partner's assertions include a role claim, and one partner user's claim says \"admin.\" How should the company's application handle claims like this?",
+    "options": {
+      "A": "Validate the signature, audience, and expiry, then map partner claims to local roles",
+      "B": "Trust the role claim exactly as sent, because the partner's identity provider is already federated",
+      "C": "Reject all partner users until the partner moves them into the company's directory",
+      "D": "Grant every partner user the admin role, then remove it later during access reviews"
+    },
+    "answer": "A",
+    "explanation": "Federation establishes trust in authentication, not blanket trust in every attribute. The relying party should verify the assertion and decide locally what each partner claim is allowed to mean.",
+    "distractor_rationales": {
+      "B": "Accepting privilege claims as sent lets the partner, or an attacker in the partner's tenant, grant itself admin rights.",
+      "C": "Rejecting all partner users defeats the purpose of federation.",
+      "D": "Over-granting and cleaning up later leaves a window of excessive access."
+    },
+    "references_topic": "Validating partner federation claims",
+    "version": "0.3"
+  },
+  {
+    "id": "D5-0059",
+    "domain": 5,
+    "domain_name": "Identity and Access Management",
+    "subtopic": "Authorization models",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "A company's role-based model has grown to more than 3,000 roles because each combination of department, region, and data sensitivity became its own role. What is the BEST way forward?",
+    "options": {
+      "A": "Collapse all roles into a single employee role and rely on audits",
+      "B": "Keep coarse job roles and add attribute-based policies for context conditions",
+      "C": "Let data owners grant access directly to users at their discretion",
+      "D": "Create more roles so each new combination is covered precisely"
+    },
+    "answer": "B",
+    "explanation": "Role explosion happens when roles try to encode every condition. Keeping a manageable set of job roles and using attributes such as region and sensitivity in policy keeps access precise without thousands of roles.",
+    "distractor_rationales": {
+      "A": "A single role grants far more access than most users need.",
+      "C": "Discretionary grants are harder to govern and audit.",
+      "D": "More roles make the explosion worse."
+    },
+    "references_topic": "Combining RBAC with attributes",
+    "version": "0.3"
+  },
+  {
+    "id": "D5-0060",
+    "domain": 5,
+    "domain_name": "Identity and Access Management",
+    "subtopic": "Session management",
+    "difficulty": "hard",
+    "type": "application",
+    "stem": "A mobile app uses long-lived OAuth refresh tokens. The team worries that a stolen refresh token could be used for months without detection. Which control BEST addresses this?",
+    "options": {
+      "A": "Encrypt the refresh token with the same key embedded in every copy of the app",
+      "B": "Double the access token lifetime so the app has to request token refreshes less often",
+      "C": "Rotate refresh tokens on each use and revoke the token family if one is reused",
+      "D": "Store the refresh token in the app's shared preferences file with a new name"
+    },
+    "answer": "C",
+    "explanation": "With rotation, each use returns a new refresh token. If an old one is presented again, the server knows it was stolen and revokes the whole family, cutting off both copies.",
+    "distractor_rationales": {
+      "A": "A key embedded in every app is extractable and does not detect theft.",
+      "B": "Longer access tokens increase the window for abuse.",
+      "D": "Renaming the storage file is obscurity and adds no protection."
+    },
+    "references_topic": "Refresh token rotation",
+    "version": "0.3"
+  },
+  {
+    "id": "D5-0061",
+    "domain": 5,
+    "domain_name": "Identity and Access Management",
+    "subtopic": "Privileged and service accounts",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "A service account with domain-wide rights is embedded in 40 scripts, and its password has not changed in six years. What should happen FIRST?",
+    "options": {
+      "A": "Change the password immediately and fix whatever scripts break",
+      "B": "Delete the account and ask script owners to create their own accounts",
+      "C": "Add the account to a monitoring watchlist and leave it unchanged for now",
+      "D": "Inventory where it is used, then move it to vault-managed, rotated credentials"
+    },
+    "answer": "D",
+    "explanation": "Knowing every dependency comes first so the change does not cause outages. The credential can then move to a vault that rotates it, and its rights can be reduced to what each use actually needs.",
+    "distractor_rationales": {
+      "A": "An immediate change without knowing dependencies risks major outages.",
+      "B": "Deleting the account breaks production and scatters the problem.",
+      "C": "Monitoring alone leaves a six-year-old, over-privileged secret in place."
+    },
+    "references_topic": "Remediating a hard-coded service account",
+    "version": "0.3"
+  },
+  {
+    "id": "D5-0062",
+    "domain": 5,
+    "domain_name": "Identity and Access Management",
+    "subtopic": "Authentication protocols",
+    "difficulty": "hard",
+    "type": "knowledge",
+    "stem": "An attacker obtains the password hash of a single service account and forges service tickets for that service without ever contacting the key distribution center. What is this attack called?",
+    "options": {
+      "A": "Silver ticket",
+      "B": "Golden ticket",
+      "C": "Pass-the-hash to the domain controller",
+      "D": "Kerberos pre-authentication brute force"
+    },
+    "answer": "A",
+    "explanation": "A silver ticket is a forged service ticket made with a service account's key. Because it never touches the KDC, it is harder to detect than attacks that request tickets.",
+    "distractor_rationales": {
+      "B": "A golden ticket forges ticket-granting tickets with the KRBTGT account's key and affects the whole domain.",
+      "C": "Pass-the-hash reuses NTLM hashes for authentication and does not forge Kerberos tickets.",
+      "D": "Brute-forcing pre-authentication targets user passwords by contacting the KDC."
+    },
+    "references_topic": "Silver ticket attack",
+    "version": "0.3"
+  },
+  {
+    "id": "D5-0063",
+    "domain": 5,
+    "domain_name": "Identity and Access Management",
+    "subtopic": "Multi-factor and passwordless authentication",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "A company is moving all staff to phishing-resistant passkeys. What is the BEST recovery method when a user loses their only device?",
+    "options": {
+      "A": "Fall back to a password and a one-time code sent by SMS",
+      "B": "Require a second registered authenticator or strong identity re-proofing",
+      "C": "Let the help desk reset the account after the user answers security questions",
+      "D": "Allow the user to log in with a password for 30 days while they wait for a device"
+    },
+    "answer": "B",
+    "explanation": "Recovery is often the weakest point. A backup authenticator, or re-proofing at the same assurance level, keeps the phishing-resistant design from being bypassed through a weaker path.",
+    "distractor_rationales": {
+      "A": "SMS and passwords reintroduce the phishing and SIM swap risks that passkeys remove.",
+      "C": "Security questions are easy to research or guess.",
+      "D": "A month of password-only access creates a large, easy target."
+    },
+    "references_topic": "Passkey account recovery",
+    "version": "0.3"
+  },
+  {
+    "id": "D5-0064",
+    "domain": 5,
+    "domain_name": "Identity and Access Management",
+    "subtopic": "Access policy enforcement",
+    "difficulty": "hard",
+    "type": "application",
+    "stem": "Database administrators must maintain a customer database, but they have no need to know the card numbers stored in it. Which approach BEST enforces this?",
+    "options": {
+      "A": "Ask the database administrators to sign a confidentiality agreement",
+      "B": "Log all queries so card data access can be investigated afterward",
+      "C": "Tokenize or encrypt the card column with keys the administrators cannot access",
+      "D": "Remove administrator access and let developers maintain the database"
+    },
+    "answer": "C",
+    "explanation": "Encrypting or tokenizing the sensitive column, with keys held outside the DBA role, separates the ability to administer the database from the ability to read the data.",
+    "distractor_rationales": {
+      "A": "An agreement deters misuse but does not prevent access.",
+      "B": "Logging detects misuse after the fact but does not prevent it.",
+      "D": "Moving the duty to developers just shifts the same exposure to another group."
+    },
+    "references_topic": "Separating administration from data access",
+    "version": "0.3"
+  },
+  {
+    "id": "D5-0065",
+    "domain": 5,
+    "domain_name": "Identity and Access Management",
+    "subtopic": "Identity proofing and registration",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "Account takeovers are rising because attackers find answers to the security questions used for recovery on social media. What is the BEST replacement?",
+    "options": {
+      "A": "Add more security questions so attackers must answer five instead of three",
+      "B": "Let users write their own custom security questions instead of choosing from a fixed list",
+      "C": "Require users to change their security question answers once every year",
+      "D": "Recover accounts through a verified authenticator or re-proofing of identity"
+    },
+    "answer": "D",
+    "explanation": "Knowledge-based answers are often public or guessable. Recovery through a previously registered authenticator, or re-proofing identity, relies on something an attacker cannot look up.",
+    "distractor_rationales": {
+      "A": "More questions are still researchable.",
+      "B": "User-written questions are often just as guessable.",
+      "C": "Changing answers does not stop attackers who research new ones."
+    },
+    "references_topic": "Weaknesses of knowledge-based verification",
+    "version": "0.3"
+  }
+]

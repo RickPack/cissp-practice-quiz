@@ -1,0 +1,602 @@
+[
+  {
+    "id": "D8-0076",
+    "domain": 8,
+    "domain_name": "Software Development Security",
+    "subtopic": "SDLC integration",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "What does it mean for software to be \"secure by default\"?",
+    "options": {
+      "A": "It ships with every feature enabled so that users can choose what to turn off later",
+      "B": "It ships with secure settings enabled, so users must opt in to riskier options",
+      "C": "It can be made secure only after a consultant configures it on site",
+      "D": "It includes a user manual that explains how to secure the product"
+    },
+    "answer": "B",
+    "explanation": "Secure-by-default products protect users out of the box, for example with MFA on, unused services off, and no default passwords.",
+    "distractor_rationales": {
+      "A": "Enabling everything maximizes attack surface.",
+      "C": "Relying on expert setup leaves most deployments insecure.",
+      "D": "Documentation alone does not make the default configuration secure."
+    },
+    "references_topic": "Secure by default",
+    "version": "1.0"
+  },
+  {
+    "id": "D8-0077",
+    "domain": 8,
+    "domain_name": "Software Development Security",
+    "subtopic": "Development methodologies",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "Which development model pairs each development phase with a matching testing phase, such as requirements with acceptance testing?",
+    "options": {
+      "A": "Spiral model built around repeated risk-driven loops",
+      "B": "Agile Scrum with two-week sprints and a product backlog",
+      "C": "V-model",
+      "D": "Code-and-fix with no formal phases"
+    },
+    "answer": "C",
+    "explanation": "The V-model extends waterfall by linking each specification phase on one side of the V to a verification phase on the other.",
+    "distractor_rationales": {
+      "A": "Spiral is organized around risk-driven iterations.",
+      "B": "Scrum uses iterative sprints rather than paired phases.",
+      "D": "Code-and-fix has no structured phases."
+    },
+    "references_topic": "V-model",
+    "version": "1.0"
+  },
+  {
+    "id": "D8-0078",
+    "domain": 8,
+    "domain_name": "Software Development Security",
+    "subtopic": "Development ecosystem security",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "What is the main purpose of cryptographically signing commits in a source code repository?",
+    "options": {
+      "A": "To compress the repository so that it downloads more quickly for new developers",
+      "B": "To encrypt the source code so outsiders cannot read it",
+      "C": "To prevent anyone from ever reverting a commit",
+      "D": "To verify who authored each commit and that it has not been altered"
+    },
+    "answer": "D",
+    "explanation": "Commit signatures let reviewers and tools confirm that a change came from a trusted developer key, which helps detect impersonated or tampered commits.",
+    "distractor_rationales": {
+      "A": "Signing does not compress anything.",
+      "B": "Signing does not encrypt the code.",
+      "C": "Signed commits can still be reverted."
+    },
+    "references_topic": "Signed commits",
+    "version": "1.0"
+  },
+  {
+    "id": "D8-0079",
+    "domain": 8,
+    "domain_name": "Software Development Security",
+    "subtopic": "CI/CD and pipeline security",
+    "difficulty": "easy",
+    "type": "managerial_best_first_most",
+    "stem": "Who should be allowed to change the CI/CD pipeline definitions that build and deploy production software?",
+    "options": {
+      "A": "Only authorized people, with changes reviewed like application code",
+      "B": "Any developer, without review, so pipelines can change quickly",
+      "C": "Any contractor who has repository read access",
+      "D": "Anyone in the company, since pipelines are just ordinary configuration files"
+    },
+    "answer": "A",
+    "explanation": "Pipeline definitions control what reaches production. Changes should be restricted and reviewed so no one can quietly add malicious steps or skip checks.",
+    "distractor_rationales": {
+      "B": "Unreviewed changes can inject malicious build steps.",
+      "C": "Read access should not allow pipeline changes.",
+      "D": "Pipeline configuration is highly sensitive."
+    },
+    "references_topic": "Protecting pipeline definitions",
+    "version": "1.0"
+  },
+  {
+    "id": "D8-0080",
+    "domain": 8,
+    "domain_name": "Software Development Security",
+    "subtopic": "Software composition and supply chain",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "Which are common standard formats for a software bill of materials?",
+    "options": {
+      "A": "JSON Web Token and SAML",
+      "B": "SPDX and CycloneDX",
+      "C": "CVSS and EPSS",
+      "D": "STIX and TAXII"
+    },
+    "answer": "B",
+    "explanation": "SPDX and CycloneDX are widely used, machine-readable SBOM formats that list components, versions, and relationships.",
+    "distractor_rationales": {
+      "A": "JWT and SAML are identity token formats.",
+      "C": "CVSS and EPSS score vulnerabilities.",
+      "D": "STIX and TAXII describe and exchange threat intelligence."
+    },
+    "references_topic": "SBOM formats",
+    "version": "1.0"
+  },
+  {
+    "id": "D8-0081",
+    "domain": 8,
+    "domain_name": "Software Development Security",
+    "subtopic": "Secure coding practices",
+    "difficulty": "easy",
+    "type": "application",
+    "stem": "A code review finds that the login handler logs the full request body, including users' passwords, for debugging. What is the BEST fix?",
+    "options": {
+      "A": "Encrypt the log file with the same key used for the database",
+      "B": "Keep the logging but delete log files every month",
+      "C": "Remove or redact sensitive fields before anything is logged",
+      "D": "Move the logs to a folder that only developers can open"
+    },
+    "answer": "C",
+    "explanation": "Secrets should never be written to logs. Redacting sensitive fields at the source prevents exposure to anyone who reads or collects logs.",
+    "distractor_rationales": {
+      "A": "Encryption still leaves passwords in readable form to anyone with the key.",
+      "B": "Monthly deletion leaves weeks of exposure.",
+      "D": "Developers should not see users' passwords either."
+    },
+    "references_topic": "Keeping secrets out of logs",
+    "version": "1.0"
+  },
+  {
+    "id": "D8-0082",
+    "domain": 8,
+    "domain_name": "Software Development Security",
+    "subtopic": "API security",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "Which component commonly provides central authentication, rate limiting, and routing for many backend APIs?",
+    "options": {
+      "A": "A content delivery network cache",
+      "B": "A database connection pool",
+      "C": "A message queue broker",
+      "D": "An API gateway"
+    },
+    "answer": "D",
+    "explanation": "An API gateway sits in front of backend services and applies shared controls such as authentication, rate limiting, and logging.",
+    "distractor_rationales": {
+      "A": "A CDN caches content, mainly for performance.",
+      "B": "A connection pool manages database connections.",
+      "C": "A message broker passes messages between services."
+    },
+    "references_topic": "API gateways",
+    "version": "1.0"
+  },
+  {
+    "id": "D8-0083",
+    "domain": 8,
+    "domain_name": "Software Development Security",
+    "subtopic": "Change and release management",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "Which release technique runs two identical production environments and switches traffic from the old one to the new one, allowing a quick switch back?",
+    "options": {
+      "A": "Blue-green deployment",
+      "B": "Big-bang release",
+      "C": "Manual file copy to each server",
+      "D": "Waterfall release"
+    },
+    "answer": "A",
+    "explanation": "Blue-green deployment keeps the previous version ready, so a failed release can be rolled back simply by switching traffic back.",
+    "distractor_rationales": {
+      "B": "A big-bang release changes everything at once with no easy rollback.",
+      "C": "Manual copying is error-prone and hard to reverse.",
+      "D": "Waterfall is a development model, not a deployment technique."
+    },
+    "references_topic": "Blue-green deployment",
+    "version": "1.0"
+  },
+  {
+    "id": "D8-0084",
+    "domain": 8,
+    "domain_name": "Software Development Security",
+    "subtopic": "Development methodologies",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "A quick prototype built to demonstrate an idea was so popular that the business wants to put it straight into production. What should happen?",
+    "options": {
+      "A": "Deploy it as is, since users are already happy with it",
+      "B": "Treat it as a prototype and apply full security design, review, and testing first",
+      "C": "Deploy it but hide it from search engines until it is reviewed",
+      "D": "Rewrite only its user interface and deploy the rest unchanged"
+    },
+    "answer": "B",
+    "explanation": "Prototypes usually skip security work. Before production, the design and code need the same reviews and testing as any other system.",
+    "distractor_rationales": {
+      "A": "Happy users do not mean the code is secure.",
+      "C": "Hiding it does not fix security weaknesses.",
+      "D": "Security flaws are often in the back end, not the interface."
+    },
+    "references_topic": "Prototypes promoted to production",
+    "version": "1.0"
+  },
+  {
+    "id": "D8-0085",
+    "domain": 8,
+    "domain_name": "Software Development Security",
+    "subtopic": "Software maturity models",
+    "difficulty": "medium",
+    "type": "knowledge",
+    "stem": "Which set of business functions does OWASP SAMM use to organize software assurance practices?",
+    "options": {
+      "A": "Identify, protect, detect, respond, and recover",
+      "B": "Plan, do, check, and act",
+      "C": "Governance, design, implementation, verification, and operations",
+      "D": "Initial, repeatable, defined, managed, and optimizing"
+    },
+    "answer": "C",
+    "explanation": "SAMM groups its security practices under five business functions that follow the software lifecycle and its governance.",
+    "distractor_rationales": {
+      "A": "These are the NIST Cybersecurity Framework functions.",
+      "B": "This is the Deming improvement cycle.",
+      "D": "These are Capability Maturity Model levels."
+    },
+    "references_topic": "SAMM business functions",
+    "version": "1.0"
+  },
+  {
+    "id": "D8-0086",
+    "domain": 8,
+    "domain_name": "Software Development Security",
+    "subtopic": "Development ecosystem security",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "A developer's personal access token with full rights to every repository in the organization was leaked in a public forum post. What should be done now and for the future?",
+    "options": {
+      "A": "Ask the developer to delete the forum post and keep the token",
+      "B": "Change the developer's account password and leave the token active",
+      "C": "Remove the developer's access to all repositories permanently",
+      "D": "Revoke the token, and require narrowly scoped, short-lived tokens"
+    },
+    "answer": "D",
+    "explanation": "A leaked token must be revoked at once. Fine-grained tokens that expire limit the damage of any future leak.",
+    "distractor_rationales": {
+      "A": "The token may already have been copied.",
+      "B": "Password changes do not revoke separate tokens.",
+      "C": "Permanent removal is disproportionate; the token was the problem."
+    },
+    "references_topic": "Scoping developer access tokens",
+    "version": "1.0"
+  },
+  {
+    "id": "D8-0087",
+    "domain": 8,
+    "domain_name": "Software Development Security",
+    "subtopic": "CI/CD and pipeline security",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "A pipeline uses several third-party build actions referenced by the tag \"latest.\" What is the BEST improvement?",
+    "options": {
+      "A": "Pin each action to a specific reviewed version, such as a commit hash",
+      "B": "Keep using \"latest\" so the pipeline always gets the newest features and fixes",
+      "C": "Copy the actions' documentation into the repository",
+      "D": "Run the pipeline less often to reduce exposure"
+    },
+    "answer": "A",
+    "explanation": "A floating tag can change underneath the pipeline. Pinning to an immutable reference means only reviewed code runs with access to pipeline secrets.",
+    "distractor_rationales": {
+      "B": "\"latest\" lets a compromised release run automatically.",
+      "C": "Documentation does not control what code runs.",
+      "D": "Running less often does not stop a malicious update."
+    },
+    "references_topic": "Pinning third-party pipeline components",
+    "version": "1.0"
+  },
+  {
+    "id": "D8-0088",
+    "domain": 8,
+    "domain_name": "Software Development Security",
+    "subtopic": "Application security testing",
+    "difficulty": "medium",
+    "type": "knowledge",
+    "stem": "Which technology runs inside an application at runtime and can detect and block attacks, such as injection, as they happen?",
+    "options": {
+      "A": "Static application security testing of source code",
+      "B": "Runtime application self-protection (RASP)",
+      "C": "Software composition analysis",
+      "D": "Manual threat modeling"
+    },
+    "answer": "B",
+    "explanation": "RASP instruments the running application so it can see how input is used and block attacks in context.",
+    "distractor_rationales": {
+      "A": "SAST analyzes code before it runs.",
+      "C": "SCA identifies vulnerable components.",
+      "D": "Threat modeling is a design activity."
+    },
+    "references_topic": "Runtime application self-protection",
+    "version": "1.0"
+  },
+  {
+    "id": "D8-0089",
+    "domain": 8,
+    "domain_name": "Software Development Security",
+    "subtopic": "Software composition and supply chain",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "A vendor now delivers an SBOM with each release of its product. What is the BEST way to use it?",
+    "options": {
+      "A": "File it with the contract and refer to it only if an auditor asks to see it",
+      "B": "Delete it, since the vendor is responsible for its own components",
+      "C": "Ingest it and continuously check listed components for new vulnerabilities",
+      "D": "Publish it on the company website so customers can see it"
+    },
+    "answer": "C",
+    "explanation": "An SBOM is valuable when it is monitored. Matching components against new vulnerability data shows quickly when the product is affected.",
+    "distractor_rationales": {
+      "A": "A filed SBOM provides no ongoing protection.",
+      "B": "The company still carries the risk of the vendor's components.",
+      "D": "Publishing it serves no security purpose and may breach terms."
+    },
+    "references_topic": "Using vendor-supplied SBOMs",
+    "version": "1.0"
+  },
+  {
+    "id": "D8-0090",
+    "domain": 8,
+    "domain_name": "Software Development Security",
+    "subtopic": "Acquired software security",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "A SaaS scheduling tool asks for administrator-level OAuth access to the company's whole email tenant, although it only needs to read calendars. What should the company do?",
+    "options": {
+      "A": "Grant it, since the vendor is well known and trusted",
+      "B": "Grant it for a trial period and review it the following year",
+      "C": "Create a shared administrator account for the vendor to use in place of OAuth",
+      "D": "Require narrower permissions, or reject the tool if it cannot comply"
+    },
+    "answer": "D",
+    "explanation": "Third-party apps should get only the access their function needs. Tenant-wide admin rights would expose all mail if the vendor were compromised.",
+    "distractor_rationales": {
+      "A": "Reputation does not justify excessive access.",
+      "B": "A year of excessive access is still excessive.",
+      "C": "Shared admin accounts are worse and remove accountability."
+    },
+    "references_topic": "Least privilege for SaaS integrations",
+    "version": "1.0"
+  },
+  {
+    "id": "D8-0091",
+    "domain": 8,
+    "domain_name": "Software Development Security",
+    "subtopic": "Secure coding practices",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "A web application's JavaScript bundle contains an API secret for a paid third-party service. What is the BEST fix?",
+    "options": {
+      "A": "Move the call to the backend so the secret stays on the server",
+      "B": "Obfuscate the JavaScript bundle so the secret is harder for users to spot",
+      "C": "Rename the variable that holds the secret",
+      "D": "Split the secret into two parts in different files"
+    },
+    "answer": "A",
+    "explanation": "Anything sent to the browser can be read. Calls that need secrets belong on the server, which holds the secret and exposes only a safe interface.",
+    "distractor_rationales": {
+      "B": "Obfuscation delays but does not prevent extraction.",
+      "C": "Renaming does not hide the value.",
+      "D": "Splitting it still delivers both parts to the browser."
+    },
+    "references_topic": "Secrets in client-side code",
+    "version": "1.0"
+  },
+  {
+    "id": "D8-0092",
+    "domain": 8,
+    "domain_name": "Software Development Security",
+    "subtopic": "Source code weaknesses",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "An order form multiplies quantity by price using a fixed-size integer. A tester enters a huge quantity, and the total wraps around to a negative number, creating a credit. What is the weakness and fix?",
+    "options": {
+      "A": "Cross-site scripting; encode the output shown on the order page",
+      "B": "Integer overflow; validate input ranges and use checked arithmetic",
+      "C": "SQL injection; use parameterized queries when saving the order total",
+      "D": "Session fixation; issue a new session ID at login"
+    },
+    "answer": "B",
+    "explanation": "Values that exceed the integer's range wrap around. Enforcing sensible input limits and overflow-checked arithmetic prevents the error.",
+    "distractor_rationales": {
+      "A": "No script is injected.",
+      "C": "No database query is manipulated.",
+      "D": "Session handling is unrelated."
+    },
+    "references_topic": "Integer overflow",
+    "version": "1.0"
+  },
+  {
+    "id": "D8-0093",
+    "domain": 8,
+    "domain_name": "Software Development Security",
+    "subtopic": "Source code weaknesses",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "After login, an application redirects users to whatever URL is in the \"next\" parameter. Attackers send links that redirect to a phishing site. What is the BEST fix?",
+    "options": {
+      "A": "Add a warning banner to the login page about phishing",
+      "B": "Encrypt the \"next\" parameter with a shared key in the URL",
+      "C": "Allow redirects only to an allow-list of internal paths",
+      "D": "Remove the login page's HTTPS certificate"
+    },
+    "answer": "C",
+    "explanation": "Open redirects lend the trusted domain's credibility to attacker sites. Restricting redirect targets to known internal destinations removes the abuse.",
+    "distractor_rationales": {
+      "A": "A banner does not stop the redirect.",
+      "B": "Encryption does not validate the destination.",
+      "D": "Removing HTTPS weakens security and does not fix the redirect."
+    },
+    "references_topic": "Open redirects",
+    "version": "1.0"
+  },
+  {
+    "id": "D8-0094",
+    "domain": 8,
+    "domain_name": "Software Development Security",
+    "subtopic": "API security",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "A public GraphQL API allows deeply nested queries, and a single crafted query recently exhausted server resources. What is the BEST control?",
+    "options": {
+      "A": "Allow only one request per day from each client",
+      "B": "Move the API to a larger server with more memory",
+      "C": "Remove authentication so queries are processed faster",
+      "D": "Enforce query depth and complexity limits and restrict introspection in production"
+    },
+    "answer": "D",
+    "explanation": "Limiting depth and cost stops resource-exhaustion queries, and restricting introspection reduces what attackers can learn about the schema.",
+    "distractor_rationales": {
+      "A": "One request per day breaks legitimate use.",
+      "B": "More capacity raises the cost of attack but does not stop it.",
+      "C": "Removing authentication increases exposure."
+    },
+    "references_topic": "Limiting GraphQL query complexity",
+    "version": "1.0"
+  },
+  {
+    "id": "D8-0095",
+    "domain": 8,
+    "domain_name": "Software Development Security",
+    "subtopic": "SDLC integration",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "A penetration test two weeks before launch finds an architectural flaw that requires redesign. What is the BEST response now and for future projects?",
+    "options": {
+      "A": "Have the business owner make a documented risk decision now, and add design review early in future",
+      "B": "Launch on schedule and keep the finding confidential from management",
+      "C": "Cancel the project, since late flaws cannot be fixed safely",
+      "D": "Ask the testers to downgrade the finding so launch can proceed"
+    },
+    "answer": "A",
+    "explanation": "The risk owner must decide whether to delay, mitigate, or accept with full information. Earlier threat modeling and design review keep such flaws from surfacing so late.",
+    "distractor_rationales": {
+      "B": "Hiding findings prevents informed decisions.",
+      "C": "Cancellation is disproportionate without assessing options.",
+      "D": "Changing ratings misrepresents risk."
+    },
+    "references_topic": "Late discovery of design flaws",
+    "version": "1.0"
+  },
+  {
+    "id": "D8-0096",
+    "domain": 8,
+    "domain_name": "Software Development Security",
+    "subtopic": "Software maturity models",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "Leadership plans to use software security maturity scores to rank teams and cut bonuses for the lowest scorers. What is the BEST advice?",
+    "options": {
+      "A": "Proceed, since pressure is the fastest way to raise scores",
+      "B": "Use scores to guide improvement and investment, not to punish teams",
+      "C": "Keep the scores secret from teams so they cannot game them",
+      "D": "Stop measuring maturity altogether, since teams dislike being assessed"
+    },
+    "answer": "B",
+    "explanation": "Punitive use encourages inflated self-assessments and hides problems. Maturity scores are most useful for finding gaps and directing support.",
+    "distractor_rationales": {
+      "A": "Pressure tends to produce gaming, not real improvement.",
+      "C": "Secret scores cannot guide team improvement.",
+      "D": "Dropping measurement loses visibility."
+    },
+    "references_topic": "Using maturity assessments constructively",
+    "version": "1.0"
+  },
+  {
+    "id": "D8-0097",
+    "domain": 8,
+    "domain_name": "Software Development Security",
+    "subtopic": "CI/CD and pipeline security",
+    "difficulty": "hard",
+    "type": "application",
+    "stem": "Developers can push container images directly to the production registry, bypassing the pipeline's tests and scans. What is the BEST control?",
+    "options": {
+      "A": "Ask developers to run the tests locally before pushing images",
+      "B": "Scan the production registry once a month for vulnerable images",
+      "C": "Allow only images signed by the pipeline to be deployed, enforced by admission control",
+      "D": "Rename the production registry so developers cannot find it"
+    },
+    "answer": "C",
+    "explanation": "Signing images in the pipeline and verifying signatures at deployment means only artifacts that passed the pipeline can run in production.",
+    "distractor_rationales": {
+      "A": "Local testing is unenforced.",
+      "B": "Monthly scans detect problems long after deployment.",
+      "D": "Renaming is obscurity."
+    },
+    "references_topic": "Admission control for signed images",
+    "version": "1.0"
+  },
+  {
+    "id": "D8-0098",
+    "domain": 8,
+    "domain_name": "Software Development Security",
+    "subtopic": "Application security testing",
+    "difficulty": "hard",
+    "type": "application",
+    "stem": "A DAST scan of a single-page application reports few findings, but most of the app's functions are backend API calls the crawler never discovered. What is the BEST improvement?",
+    "options": {
+      "A": "Run the same scan more often with the default settings",
+      "B": "Replace DAST with a review of the front-end HTML files",
+      "C": "Scan only the login page, since that is where most attacks on the app begin",
+      "D": "Give the scanner the API specification and authenticated sessions"
+    },
+    "answer": "D",
+    "explanation": "Crawlers struggle with script-heavy apps. Supplying an OpenAPI definition and valid sessions lets the scanner test the real API surface.",
+    "distractor_rationales": {
+      "A": "Repeating a scan with the same coverage gap finds nothing new.",
+      "B": "The front-end HTML does not include backend API logic.",
+      "C": "Limiting scope to login misses most of the application."
+    },
+    "references_topic": "DAST coverage for API-driven apps",
+    "version": "1.0"
+  },
+  {
+    "id": "D8-0099",
+    "domain": 8,
+    "domain_name": "Software Development Security",
+    "subtopic": "Acquired software security",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "A vendor's software update added telemetry that sends customer names to the vendor's servers, which the contract does not allow. What is the BEST response and prevention?",
+    "options": {
+      "A": "Block the telemetry, enforce the contract, and test future updates in staging",
+      "B": "Accept it, since vendors decide what their products collect",
+      "C": "Stop applying all future updates from the vendor",
+      "D": "Uninstall the product immediately without any assessment"
+    },
+    "answer": "A",
+    "explanation": "The company must stop the unauthorized flow and hold the vendor to its terms. Testing updates in staging, including their network behavior, catches such changes earlier.",
+    "distractor_rationales": {
+      "B": "The contract governs what data the vendor may collect.",
+      "C": "Skipping updates leaves security flaws unpatched.",
+      "D": "Removal may be needed later, but first stop the flow and assess."
+    },
+    "references_topic": "Reviewing vendor updates",
+    "version": "1.0"
+  },
+  {
+    "id": "D8-0100",
+    "domain": 8,
+    "domain_name": "Software Development Security",
+    "subtopic": "Change and release management",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "A security hotfix was applied on a release branch, but the next regular release reintroduced the vulnerability because the fix never reached the main branch. What is the BEST process fix?",
+    "options": {
+      "A": "Stop making hotfixes and wait for regular releases instead",
+      "B": "Merge every hotfix into the main branch and add a regression test",
+      "C": "Ask developers to remember past hotfixes whenever they write new code",
+      "D": "Keep hotfixes only in production and never in source control"
+    },
+    "answer": "B",
+    "explanation": "Hotfixes must flow back to the main line, and a regression test confirms the vulnerability does not return in later releases.",
+    "distractor_rationales": {
+      "A": "Waiting delays urgent security fixes.",
+      "C": "Memory is unreliable.",
+      "D": "Fixes outside source control are lost and untraceable."
+    },
+    "references_topic": "Merging hotfixes back",
+    "version": "1.0"
+  }
+]

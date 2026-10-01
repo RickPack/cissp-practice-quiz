@@ -1,0 +1,962 @@
+[
+  {
+    "id": "D1-0121",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Professional ethics",
+    "difficulty": "easy",
+    "type": "managerial_best_first_most",
+    "stem": "A security manager joins a competitor. Their new boss asks them to share the former employer's internal incident reports \"to learn from their mistakes.\" What should the manager do?",
+    "options": {
+      "A": "Share the reports, since the information is useful and the old job has ended",
+      "B": "Share only the reports that do not name the former employer's customers",
+      "C": "Decline, since the reports remain confidential after leaving",
+      "D": "Share summaries from memory instead of the actual documents"
+    },
+    "answer": "C",
+    "explanation": "Confidentiality obligations survive a change of job. Using a former employer's confidential information would breach the manager's duties and professional ethics.",
+    "distractor_rationales": {
+      "A": "Leaving a job does not end confidentiality obligations.",
+      "B": "Removing customer names does not make the reports non-confidential.",
+      "D": "Disclosing from memory is still disclosure."
+    },
+    "references_topic": "Former employer's confidential information",
+    "version": "1.0"
+  },
+  {
+    "id": "D1-0122",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Security concepts",
+    "difficulty": "easy",
+    "type": "application",
+    "stem": "An email that appears to come from the CEO was actually sent by an attacker from a look-alike domain. Which security property does this attack MOST directly target?",
+    "options": {
+      "A": "Availability",
+      "B": "Integrity of the company's email server software",
+      "C": "Confidentiality of the CEO's mailbox contents",
+      "D": "Authenticity"
+    },
+    "answer": "D",
+    "explanation": "Authenticity is assurance that a message or party is genuine. Impersonating the CEO undermines trust in who really sent the message.",
+    "distractor_rationales": {
+      "A": "Nothing was made unavailable.",
+      "B": "The email server's software was not altered.",
+      "C": "The CEO's mailbox was not accessed."
+    },
+    "references_topic": "Authenticity",
+    "version": "1.0"
+  },
+  {
+    "id": "D1-0123",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Security governance and roles",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "Which framework is designed mainly for the governance and management of enterprise IT, aligning IT with business goals?",
+    "options": {
+      "A": "COBIT",
+      "B": "The OWASP Top 10 list of web application risks",
+      "C": "The Common Vulnerability Scoring System",
+      "D": "The STRIDE threat classification model"
+    },
+    "answer": "A",
+    "explanation": "COBIT is a framework for governing and managing enterprise IT, linking IT processes and controls to business objectives.",
+    "distractor_rationales": {
+      "B": "The OWASP Top 10 is an awareness list of web risks.",
+      "C": "CVSS scores the severity of vulnerabilities.",
+      "D": "STRIDE classifies threats during threat modeling."
+    },
+    "references_topic": "COBIT",
+    "version": "1.0"
+  },
+  {
+    "id": "D1-0124",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Due care and due diligence",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "Which action BEST demonstrates due care?",
+    "options": {
+      "A": "Reading industry reports to learn which threats are rising",
+      "B": "Applying a critical security patch promptly after it is released",
+      "C": "Asking an outside consultant to estimate the cost of a possible breach",
+      "D": "Listing all of the company's servers in an inventory"
+    },
+    "answer": "B",
+    "explanation": "Due care is acting reasonably on known risks. Applying an available critical patch is doing what a prudent organization would do.",
+    "distractor_rationales": {
+      "A": "Researching threats is due diligence.",
+      "C": "Estimating losses is part of assessment, or due diligence.",
+      "D": "An inventory supports assessment; it does not act on a specific known risk."
+    },
+    "references_topic": "Examples of due care",
+    "version": "1.0"
+  },
+  {
+    "id": "D1-0125",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Legal, regulatory, and contractual compliance",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "Which law requires publicly traded companies in the United States to maintain internal controls over financial reporting?",
+    "options": {
+      "A": "The Health Insurance Portability and Accountability Act",
+      "B": "The Family Educational Rights and Privacy Act",
+      "C": "The Sarbanes-Oxley Act",
+      "D": "The Children's Online Privacy Protection Act"
+    },
+    "answer": "C",
+    "explanation": "The Sarbanes-Oxley Act requires public companies to establish, assess, and report on internal controls over financial reporting, which includes IT general controls.",
+    "distractor_rationales": {
+      "A": "HIPAA covers health information.",
+      "B": "FERPA covers student education records.",
+      "D": "COPPA covers online collection of data from young children."
+    },
+    "references_topic": "Sarbanes-Oxley Act",
+    "version": "1.0"
+  },
+  {
+    "id": "D1-0126",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Privacy and transborder data flow",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "Under common privacy laws, which condition must valid consent meet?",
+    "options": {
+      "A": "It must be buried in the terms of service so that users do not have to read it",
+      "B": "It must be assumed whenever a user does not actively object",
+      "C": "It must be permanent and impossible for the person to withdraw",
+      "D": "It must be freely given, specific, informed, and clear"
+    },
+    "answer": "D",
+    "explanation": "Valid consent is a clear, affirmative choice based on understandable information about a specific purpose, and people must be able to withdraw it.",
+    "distractor_rationales": {
+      "A": "Hidden consent is not informed.",
+      "B": "Silence or inaction is not valid consent.",
+      "C": "Consent must be withdrawable."
+    },
+    "references_topic": "Valid consent",
+    "version": "1.0"
+  },
+  {
+    "id": "D1-0127",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Intellectual property and licensing",
+    "difficulty": "easy",
+    "type": "application",
+    "stem": "A company bought a 50-seat license for design software but has installed it on 80 computers. What is the issue?",
+    "options": {
+      "A": "A license violation that needs a true-up or removal of extra installs",
+      "B": "A copyright transfer, since the company paid for the software",
+      "C": "A patent infringement claim by the software vendor against the company",
+      "D": "No issue, since the license was paid for in full"
+    },
+    "answer": "A",
+    "explanation": "The license grants use on 50 seats. Using 80 exceeds the license, which exposes the company to penalties until it buys more seats or removes installs.",
+    "distractor_rationales": {
+      "B": "Buying a license does not transfer copyright.",
+      "C": "Patents are not the issue.",
+      "D": "Payment covers only the licensed number of seats."
+    },
+    "references_topic": "License overuse",
+    "version": "1.0"
+  },
+  {
+    "id": "D1-0128",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Policies, standards, procedures, and guidelines",
+    "difficulty": "easy",
+    "type": "managerial_best_first_most",
+    "stem": "Who should approve the organization's information security policy?",
+    "options": {
+      "A": "The network administrator who will implement most of its technical controls",
+      "B": "Senior management",
+      "C": "An external vendor who supplies the organization's firewalls",
+      "D": "Each employee, who votes on whether to accept the policy"
+    },
+    "answer": "B",
+    "explanation": "Policy sets direction and carries management's authority, so senior management must approve it and support its enforcement.",
+    "distractor_rationales": {
+      "A": "Administrators implement controls but lack authority to set organizational direction.",
+      "C": "Vendors have no authority over the organization's policy.",
+      "D": "Policy is not set by employee vote."
+    },
+    "references_topic": "Approving security policy",
+    "version": "1.0"
+  },
+  {
+    "id": "D1-0129",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Business continuity and BIA",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "How does a business continuity plan differ from a disaster recovery plan?",
+    "options": {
+      "A": "Business continuity covers only IT systems, while disaster recovery covers the whole business",
+      "B": "They are two names for exactly the same document and the same set of activities",
+      "C": "Continuity keeps critical business functions going; DR restores IT systems and data",
+      "D": "Disaster recovery is written first, and continuity planning is optional afterward"
+    },
+    "answer": "C",
+    "explanation": "Business continuity focuses on keeping essential business processes running during a disruption. Disaster recovery is the part focused on restoring IT systems and data.",
+    "distractor_rationales": {
+      "A": "The scopes are the other way around.",
+      "B": "They are related but distinct.",
+      "D": "Continuity planning is not optional; DR is a component of it."
+    },
+    "references_topic": "Business continuity versus disaster recovery",
+    "version": "1.0"
+  },
+  {
+    "id": "D1-0130",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Personnel security",
+    "difficulty": "easy",
+    "type": "managerial_best_first_most",
+    "stem": "What is the MOST important security purpose of an exit interview for a departing employee?",
+    "options": {
+      "A": "To ask the employee to recommend friends for the company's open positions",
+      "B": "To collect feedback on the office's furniture and layout",
+      "C": "To confirm the employee's new job title and salary",
+      "D": "To remind them of ongoing obligations and recover company assets"
+    },
+    "answer": "D",
+    "explanation": "An exit interview is the chance to remind departing staff of continuing duties, such as nondisclosure, and to recover badges, devices, and other property.",
+    "distractor_rationales": {
+      "A": "Recruiting referrals is not a security purpose.",
+      "B": "Facilities feedback is not a security purpose.",
+      "C": "New job details are not the organization's concern here."
+    },
+    "references_topic": "Exit interviews",
+    "version": "1.0"
+  },
+  {
+    "id": "D1-0131",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Risk assessment and analysis",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "When valuing an information asset for risk analysis, which factor should be included?",
+    "options": {
+      "A": "The cost to replace it and its value to competitors",
+      "B": "The color of the server rack that holds it",
+      "C": "The number of letters in the asset's name",
+      "D": "The age and job title of the employee who created the asset"
+    },
+    "answer": "A",
+    "explanation": "Asset value includes replacement cost, the revenue it supports, its value to competitors, and liability if it is exposed.",
+    "distractor_rationales": {
+      "B": "Rack color is irrelevant.",
+      "C": "Name length is irrelevant.",
+      "D": "The creator's age is irrelevant."
+    },
+    "references_topic": "Asset valuation factors",
+    "version": "1.0"
+  },
+  {
+    "id": "D1-0132",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Risk response and control selection",
+    "difficulty": "easy",
+    "type": "application",
+    "stem": "A company adds multi-factor authentication to its remote access service to reduce the chance of account takeover. Which risk response is this?",
+    "options": {
+      "A": "Risk transference",
+      "B": "Risk mitigation",
+      "C": "Risk acceptance",
+      "D": "Risk avoidance"
+    },
+    "answer": "B",
+    "explanation": "Adding a control that lowers likelihood or impact is risk mitigation.",
+    "distractor_rationales": {
+      "A": "Transfer shifts impact to another party, such as an insurer.",
+      "C": "Acceptance keeps the risk without new controls.",
+      "D": "Avoidance stops the risky activity entirely."
+    },
+    "references_topic": "Risk mitigation",
+    "version": "1.0"
+  },
+  {
+    "id": "D1-0133",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Professional ethics",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "A security analyst is invited to present research at a conference. Most of the research was done by a junior colleague. What should the analyst do?",
+    "options": {
+      "A": "Present it as their own work, since the colleague is junior and reports to them",
+      "B": "Decline the invitation so that no one has to decide who deserves credit",
+      "C": "Credit the colleague clearly, and invite them to co-present if possible",
+      "D": "Mention the colleague only if someone in the audience asks who did the research"
+    },
+    "answer": "C",
+    "explanation": "Honesty requires giving credit where it is due. Recognizing the colleague's work is ethical and advances the profession.",
+    "distractor_rationales": {
+      "A": "Seniority does not entitle someone to take credit for others' work.",
+      "B": "Declining avoids the issue instead of acting honestly.",
+      "D": "Credit should not depend on someone asking."
+    },
+    "references_topic": "Giving credit for others' work",
+    "version": "1.0"
+  },
+  {
+    "id": "D1-0134",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Security concepts",
+    "difficulty": "medium",
+    "type": "knowledge",
+    "stem": "How does privacy differ from confidentiality?",
+    "options": {
+      "A": "Privacy applies only to paper records, while confidentiality applies to digital records",
+      "B": "Privacy is a technical control, while confidentiality is a legal requirement",
+      "C": "They are identical terms, and security professionals use them interchangeably",
+      "D": "Privacy concerns people's rights over their personal data; confidentiality protects any data from disclosure"
+    },
+    "answer": "D",
+    "explanation": "Confidentiality protects information from unauthorized disclosure, whatever it is. Privacy concerns individuals' rights over how their personal information is collected, used, and shared.",
+    "distractor_rationales": {
+      "A": "Both apply to any format.",
+      "B": "Both involve legal and technical aspects.",
+      "C": "They overlap but are distinct."
+    },
+    "references_topic": "Privacy versus confidentiality",
+    "version": "1.0"
+  },
+  {
+    "id": "D1-0135",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Security governance and roles",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "A company has just acquired a smaller firm that has its own IT systems and no formal security program. What should the acquiring company's security leader do FIRST?",
+    "options": {
+      "A": "Assess the firm's security posture and bring it under the parent's governance",
+      "B": "Connect the firm's network directly to the parent's network to share tools",
+      "C": "Let the acquired firm continue unchanged for several years to avoid disruption",
+      "D": "Replace all of the acquired firm's staff with the parent's own employees"
+    },
+    "answer": "A",
+    "explanation": "The acquired firm's risks become the parent's risks. Assessing them and extending governance, including policies, ownership, and oversight, comes before integration.",
+    "distractor_rationales": {
+      "B": "Connecting networks before assessment can import threats.",
+      "C": "Leaving the firm ungoverned leaves unknown risks in place.",
+      "D": "Wholesale replacement is disproportionate and loses knowledge."
+    },
+    "references_topic": "Governance after an acquisition",
+    "version": "1.0"
+  },
+  {
+    "id": "D1-0136",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Due care and due diligence",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "Before outsourcing payroll processing, a company reviews the provider's SOC 2 report, security policies, and breach history. What does this review represent?",
+    "options": {
+      "A": "Due care, because it fixes the provider's weaknesses before signing",
+      "B": "Due diligence",
+      "C": "Risk acceptance, because the company is taking on the provider's risk",
+      "D": "Separation of duties between the company and the provider"
+    },
+    "answer": "B",
+    "explanation": "Due diligence is investigating and understanding risk before committing. Reviewing the provider's controls and history is exactly that.",
+    "distractor_rationales": {
+      "A": "No weaknesses are being fixed; information is being gathered.",
+      "C": "Acceptance is a decision made after assessment, not the assessment itself.",
+      "D": "Separation of duties splits tasks to prevent fraud."
+    },
+    "references_topic": "Vendor due diligence before outsourcing",
+    "version": "1.0"
+  },
+  {
+    "id": "D1-0137",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Legal, regulatory, and contractual compliance",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "A company passed its compliance audit last month but was breached this month through a weakness the audit did not cover. What lesson should leadership take?",
+    "options": {
+      "A": "Compliance audits are pointless and should be stopped to save money",
+      "B": "The auditors should be blamed and replaced for missing the weakness",
+      "C": "Compliance is a minimum baseline; risk must be managed beyond it",
+      "D": "The company should aim only for compliance, since it cannot prevent all breaches"
+    },
+    "answer": "C",
+    "explanation": "Compliance frameworks set minimum requirements for specific scopes. Real security requires managing the organization's full risk picture, beyond audit checklists.",
+    "distractor_rationales": {
+      "A": "Compliance still has legal and business value.",
+      "B": "The audit likely had a defined scope that did not include the weakness.",
+      "D": "Aiming only for compliance leaves risks unmanaged."
+    },
+    "references_topic": "Compliance is not the same as security",
+    "version": "1.0"
+  },
+  {
+    "id": "D1-0138",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Privacy and transborder data flow",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "A retailer decides to use purchase history for personalized advertising, which its privacy notice does not mention. What should it do before starting?",
+    "options": {
+      "A": "Start the advertising and update the notice at the end of the year",
+      "B": "Start the advertising, since customers already agreed to the original notice",
+      "C": "Hide the advertising use in a technical appendix that few customers read",
+      "D": "Update the notice and obtain any consent the new purpose requires"
+    },
+    "answer": "D",
+    "explanation": "People must be told about new uses of their data, and some purposes require fresh consent. The notice and any required consent should come before the processing starts.",
+    "distractor_rationales": {
+      "A": "Processing first and informing later breaches transparency.",
+      "B": "Agreement to the old notice does not cover a new purpose.",
+      "C": "Hiding the change defeats transparency."
+    },
+    "references_topic": "Updating privacy notices for new uses",
+    "version": "1.0"
+  },
+  {
+    "id": "D1-0139",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Intellectual property and licensing",
+    "difficulty": "medium",
+    "type": "knowledge",
+    "stem": "An employee writes software as part of their regular job duties. Who normally owns the copyright?",
+    "options": {
+      "A": "The employer, as work made for hire",
+      "B": "The employee, since they personally wrote the code",
+      "C": "The public, since software cannot be copyrighted",
+      "D": "The company that sold the employee their laptop"
+    },
+    "answer": "A",
+    "explanation": "Work created by an employee within the scope of employment is generally owned by the employer, and employment agreements usually confirm this.",
+    "distractor_rationales": {
+      "B": "Authorship does not give ownership when the work is made for hire.",
+      "C": "Software is protected by copyright.",
+      "D": "Hardware vendors have no claim to the code."
+    },
+    "references_topic": "Work for hire",
+    "version": "1.0"
+  },
+  {
+    "id": "D1-0140",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Investigation types",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "A regulator sends a formal inquiry asking for documents about a recent data breach. What should the company do FIRST?",
+    "options": {
+      "A": "Answer immediately with whatever documents the security team can find",
+      "B": "Involve legal counsel, preserve relevant records, and respond through counsel",
+      "C": "Ignore the letter until the regulator follows up a second time",
+      "D": "Ask employees to delete informal messages about the breach"
+    },
+    "answer": "B",
+    "explanation": "Regulatory inquiries have legal consequences. Counsel should guide the response, and relevant records must be preserved.",
+    "distractor_rationales": {
+      "A": "An unmanaged response may be incomplete or harmful.",
+      "C": "Ignoring a regulator can bring penalties.",
+      "D": "Deleting records is spoliation and may be illegal."
+    },
+    "references_topic": "Responding to a regulator's inquiry",
+    "version": "1.0"
+  },
+  {
+    "id": "D1-0141",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Policies, standards, procedures, and guidelines",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "A business unit cannot meet the encryption standard on a legacy system for the next year. What is the BEST way to handle this?",
+    "options": {
+      "A": "Let the business unit quietly ignore the standard until the system is replaced",
+      "B": "Change the standard for the whole organization so the legacy system complies",
+      "C": "Grant a documented exception with owner approval, compensating controls, and an expiry",
+      "D": "Shut down the legacy system today, even though the business depends on it"
+    },
+    "answer": "C",
+    "explanation": "A formal, time-limited exception makes the risk visible, assigns an accountable owner, and adds compensating controls until the system is fixed.",
+    "distractor_rationales": {
+      "A": "Silent non-compliance hides risk.",
+      "B": "Weakening the standard for everyone is not justified by one system.",
+      "D": "Immediate shutdown may cause more harm than the risk."
+    },
+    "references_topic": "Policy exception process",
+    "version": "1.0"
+  },
+  {
+    "id": "D1-0142",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Business continuity and BIA",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "During a continuity exercise, many staff did not know their roles or where to find the plan. What is the BEST improvement?",
+    "options": {
+      "A": "Rewrite the plan in more technical language",
+      "B": "Store the plan only with the continuity manager",
+      "C": "Stop exercising until the plan is rewritten",
+      "D": "Train staff on their roles and make the plan easy to find"
+    },
+    "answer": "D",
+    "explanation": "A plan works only if people know it. Regular training on roles, easy access to the plan, and repeated exercises build readiness.",
+    "distractor_rationales": {
+      "A": "More technical language makes the plan harder to use.",
+      "B": "Restricting access makes the problem worse.",
+      "C": "Exercises are how gaps like this are found and fixed."
+    },
+    "references_topic": "Plan awareness and training",
+    "version": "1.0"
+  },
+  {
+    "id": "D1-0143",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Risk assessment and analysis",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "A company rates likelihood and impact from 1 (low) to 3 (high) and multiplies them. Scores of 1–2 are low, 3–4 medium, and 6–9 high. A risk has high likelihood and low impact. What is its rating?",
+    "options": {
+      "A": "Medium",
+      "B": "Low",
+      "C": "High",
+      "D": "Critical"
+    },
+    "answer": "A",
+    "explanation": "High likelihood (3) × low impact (1) = 3, which falls in the 3–4 medium band.",
+    "distractor_rationales": {
+      "B": "Low covers scores of 1–2.",
+      "C": "High covers scores of 6–9.",
+      "D": "The matrix has no critical band."
+    },
+    "references_topic": "Qualitative risk matrix",
+    "version": "1.0"
+  },
+  {
+    "id": "D1-0144",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Risk response and control selection",
+    "difficulty": "medium",
+    "type": "knowledge",
+    "stem": "A login banner warns that all activity is monitored and misuse will be prosecuted. Which type of control is this?",
+    "options": {
+      "A": "Corrective",
+      "B": "Deterrent",
+      "C": "Recovery",
+      "D": "Compensating"
+    },
+    "answer": "B",
+    "explanation": "A deterrent control discourages people from attempting a violation by making the consequences clear.",
+    "distractor_rationales": {
+      "A": "Corrective controls fix problems after they occur.",
+      "C": "Recovery controls restore operations after an incident.",
+      "D": "Compensating controls substitute for a control that cannot be implemented."
+    },
+    "references_topic": "Deterrent controls",
+    "version": "1.0"
+  },
+  {
+    "id": "D1-0145",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Threat modeling",
+    "difficulty": "medium",
+    "type": "knowledge",
+    "stem": "Which threat modeling methodology is a seven-stage, risk-centric process that starts from business objectives?",
+    "options": {
+      "A": "STRIDE, which classifies threats into six categories",
+      "B": "DREAD, which scores threats on five rating factors",
+      "C": "PASTA (Process for Attack Simulation and Threat Analysis)",
+      "D": "CVSS, which scores the severity of individual vulnerabilities"
+    },
+    "answer": "C",
+    "explanation": "PASTA works through seven stages, from defining business objectives to analyzing risk and impact, so threats are tied to business risk.",
+    "distractor_rationales": {
+      "A": "STRIDE is a classification scheme, not a seven-stage process.",
+      "B": "DREAD is a rating model.",
+      "D": "CVSS scores vulnerabilities, not whole systems."
+    },
+    "references_topic": "PASTA methodology",
+    "version": "1.0"
+  },
+  {
+    "id": "D1-0146",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Threat modeling",
+    "difficulty": "medium",
+    "type": "knowledge",
+    "stem": "Which threat modeling technique places an attacker's goal at the root and breaks it into alternative ways to achieve it?",
+    "options": {
+      "A": "A data flow diagram showing processes, stores, and flows",
+      "B": "A risk register ranked by annualized loss expectancy",
+      "C": "A business impact analysis of critical processes",
+      "D": "An attack tree"
+    },
+    "answer": "D",
+    "explanation": "Attack trees show a goal at the root and the different paths to reach it as branches, which helps find the cheapest or likeliest attack paths.",
+    "distractor_rationales": {
+      "A": "Data flow diagrams model the system, not attacker goals.",
+      "B": "A risk register lists and rates risks.",
+      "C": "A BIA assesses the impact of disruptions."
+    },
+    "references_topic": "Attack trees",
+    "version": "1.0"
+  },
+  {
+    "id": "D1-0147",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Supply chain risk management",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "Why should a contract with a critical service provider include a right-to-audit clause?",
+    "options": {
+      "A": "It lets the customer verify controls, directly or through a third party",
+      "B": "It lets the provider audit the customer's finances every year",
+      "C": "It guarantees that the provider will never suffer a security breach of any kind",
+      "D": "It transfers all legal liability for breaches to the provider"
+    },
+    "answer": "A",
+    "explanation": "A right-to-audit clause gives the customer a contractual way to check that the provider meets its security obligations, often through independent auditors.",
+    "distractor_rationales": {
+      "B": "The clause benefits the customer, not the provider.",
+      "C": "No clause can guarantee no breaches.",
+      "D": "Audit rights do not transfer liability."
+    },
+    "references_topic": "Right-to-audit clauses",
+    "version": "1.0"
+  },
+  {
+    "id": "D1-0148",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Security awareness, education, and training",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "Attackers have started sending phishing emails with QR codes that bypass link scanning. What is the BEST awareness response?",
+    "options": {
+      "A": "Wait until next year's annual training to cover QR code phishing",
+      "B": "Send a short, targeted alert with examples and add QR codes to phishing simulations",
+      "C": "Ban all QR codes in the company, including those on product packaging",
+      "D": "Tell employees to stop reading any email that contains an image"
+    },
+    "answer": "B",
+    "explanation": "Timely, specific awareness helps people recognize a new technique now, and simulations reinforce it.",
+    "distractor_rationales": {
+      "A": "Waiting a year leaves staff unprepared.",
+      "C": "Banning all QR codes is impractical.",
+      "D": "Ignoring all images disrupts normal work."
+    },
+    "references_topic": "Timely awareness for new attack techniques",
+    "version": "1.0"
+  },
+  {
+    "id": "D1-0149",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Security awareness, education, and training",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "Few employees report suspicious emails, although simulations show many recognize them. What is the BEST way to increase reporting?",
+    "options": {
+      "A": "Discipline employees who fail to report a simulated phishing email",
+      "B": "Require employees to write a detailed report for every suspicious email",
+      "C": "Provide a one-click report button and thank people who report",
+      "D": "Send reporting instructions by email once a year"
+    },
+    "answer": "C",
+    "explanation": "Making reporting easy and rewarding it with quick feedback builds the habit. Penalties and friction discourage reporting.",
+    "distractor_rationales": {
+      "A": "Punishment discourages people from engaging.",
+      "B": "Detailed reports add friction.",
+      "D": "A yearly reminder is quickly forgotten."
+    },
+    "references_topic": "Encouraging incident reporting",
+    "version": "1.0"
+  },
+  {
+    "id": "D1-0150",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Security governance and roles",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "A company outsources its IT operations to a managed service provider. Who remains accountable for protecting the company's data?",
+    "options": {
+      "A": "The provider, since it now runs the systems day to day",
+      "B": "The provider's insurance company, since it covers breaches",
+      "C": "No one, since accountability ends when a function is outsourced",
+      "D": "The company's own senior management"
+    },
+    "answer": "D",
+    "explanation": "A company can outsource tasks and responsibilities, but not accountability. Senior management must still oversee the provider and the risk.",
+    "distractor_rationales": {
+      "A": "The provider is responsible for its duties under contract, but accountability stays with the company.",
+      "B": "Insurance covers some costs, not accountability.",
+      "C": "Accountability does not disappear."
+    },
+    "references_topic": "Accountability for outsourced functions",
+    "version": "1.0"
+  },
+  {
+    "id": "D1-0151",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Professional ethics",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "A security engineer finds that the company's medical device has a flaw that could harm patients. Management decides to ship without fixing it or telling customers. What should the engineer do?",
+    "options": {
+      "A": "Escalate internally in writing, then report to regulators if the risk is not addressed",
+      "B": "Stay silent, since management has made its decision",
+      "C": "Post the flaw's details publicly on social media at once",
+      "D": "Quietly fix the code without approval and ship the fix"
+    },
+    "answer": "A",
+    "explanation": "Protecting the public comes first. The engineer should use internal channels and, if they fail, report to the appropriate authority rather than leaking details or acting outside their authority.",
+    "distractor_rationales": {
+      "B": "Silence puts patients at risk.",
+      "C": "Public disclosure without a fix could help attackers and harm patients.",
+      "D": "Unapproved changes bypass controls and may introduce new risk."
+    },
+    "references_topic": "Raising safety concerns",
+    "version": "1.0"
+  },
+  {
+    "id": "D1-0152",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Legal, regulatory, and contractual compliance",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "A foreign authority requests customer data held in a country whose law forbids transferring it. What should the company do?",
+    "options": {
+      "A": "Transfer the data immediately, since the request came from a government",
+      "B": "Escalate to legal counsel to weigh both legal obligations",
+      "C": "Refuse and publish the request online to show support for privacy",
+      "D": "Delete the data so that neither law can be broken"
+    },
+    "answer": "B",
+    "explanation": "When laws conflict, legal counsel must assess the obligations, possible exceptions, and formal channels before any response.",
+    "distractor_rationales": {
+      "A": "Complying blindly may break the other country's law.",
+      "C": "Publishing may breach confidentiality obligations and escalate the conflict.",
+      "D": "Deleting data under a legal request may be illegal."
+    },
+    "references_topic": "Conflicting legal obligations",
+    "version": "1.0"
+  },
+  {
+    "id": "D1-0153",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Privacy and transborder data flow",
+    "difficulty": "hard",
+    "type": "application",
+    "stem": "A customer opted out of marketing, but still received emails for weeks because three marketing systems each keep their own contact lists. What is the BEST fix?",
+    "options": {
+      "A": "Ask the customer to opt out separately in each of the three systems",
+      "B": "Apologize to the customer and change nothing, since some delay is normal and expected",
+      "C": "Keep one preference record and sync opt-outs to every system automatically",
+      "D": "Stop all marketing for every customer to avoid any further complaints"
+    },
+    "answer": "C",
+    "explanation": "A central preference record synced to every system honors the opt-out everywhere promptly.",
+    "distractor_rationales": {
+      "A": "Making the customer repeat the request shifts the burden unfairly.",
+      "B": "Ignoring the gap continues violating the customer's rights.",
+      "D": "Stopping all marketing is disproportionate."
+    },
+    "references_topic": "Honoring objections across systems",
+    "version": "1.0"
+  },
+  {
+    "id": "D1-0154",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Investigation types",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "An internal investigation concerns possible misconduct by the head of IT operations. Who should lead it?",
+    "options": {
+      "A": "The head of IT operations, who knows the systems best",
+      "B": "A direct report of the head of IT operations",
+      "C": "A personal friend of the head of IT operations who works in another department",
+      "D": "An independent party, such as internal audit or an outside firm"
+    },
+    "answer": "D",
+    "explanation": "Investigators must be independent of the subject. People in the subject's reporting line or personal circle have conflicts of interest.",
+    "distractor_rationales": {
+      "A": "The subject cannot investigate themselves.",
+      "B": "A direct report may be pressured or biased.",
+      "C": "A personal relationship creates a conflict of interest."
+    },
+    "references_topic": "Independence of internal investigators",
+    "version": "1.0"
+  },
+  {
+    "id": "D1-0155",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Policies, standards, procedures, and guidelines",
+    "difficulty": "hard",
+    "type": "application",
+    "stem": "An audit finds that a published policy requiring clean desks is ignored throughout the company and has never been enforced. What is the BEST response?",
+    "options": {
+      "A": "Either enforce it with awareness and checks, or revise it to reflect accepted risk",
+      "B": "Keep the policy unchanged, since having it on paper satisfies auditors",
+      "C": "Remove the policy quietly without telling anyone",
+      "D": "Discipline every employee who has ever left papers on a desk"
+    },
+    "answer": "A",
+    "explanation": "A policy no one follows is a liability. Management should either commit to it with communication and monitoring, or formally revise it based on a risk decision.",
+    "distractor_rationales": {
+      "B": "Unenforced policy can increase liability and misleads auditors.",
+      "C": "Quiet removal skips governance and leaves the risk unassessed.",
+      "D": "Mass discipline for a never-enforced rule is unfair and damaging."
+    },
+    "references_topic": "Policies that are not followed",
+    "version": "1.0"
+  },
+  {
+    "id": "D1-0156",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Business continuity and BIA",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "A continuity plan covers loss of facilities and systems, but not a scenario where 40% of staff are unavailable because of illness. What is the BEST addition?",
+    "options": {
+      "A": "Add more backup servers to the recovery site to compensate",
+      "B": "Cross-train staff, identify critical roles, and define succession",
+      "C": "Assume staff will always be available, since illness affects few people",
+      "D": "Move all staff to a single office to simplify coordination"
+    },
+    "answer": "B",
+    "explanation": "People are a critical resource. Cross-training, backup personnel for critical roles, and succession plans keep essential functions running when many staff are absent.",
+    "distractor_rationales": {
+      "A": "Servers do not replace people.",
+      "C": "Large-scale absences do happen and need planning.",
+      "D": "Concentrating staff increases the risk of widespread illness."
+    },
+    "references_topic": "Planning for staff unavailability",
+    "version": "1.0"
+  },
+  {
+    "id": "D1-0157",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Personnel security",
+    "difficulty": "hard",
+    "type": "application",
+    "stem": "A disgruntled engineer who recently lost a promotion has started downloading large volumes of design files outside normal hours. What is the BEST response?",
+    "options": {
+      "A": "Confront the engineer publicly at the next team meeting",
+      "B": "Ignore it until the engineer actually leaves the company",
+      "C": "Coordinate security, HR, and legal on monitoring and restricting access",
+      "D": "Fire the engineer immediately without gathering any evidence"
+    },
+    "answer": "C",
+    "explanation": "Insider threat indicators call for a coordinated, lawful response: preserve evidence, monitor under policy, and limit exposure while HR and legal decide next steps.",
+    "distractor_rationales": {
+      "A": "Public confrontation can prompt destruction of evidence.",
+      "B": "Waiting may allow data theft.",
+      "D": "Acting without evidence invites legal problems."
+    },
+    "references_topic": "Responding to insider threat indicators",
+    "version": "1.0"
+  },
+  {
+    "id": "D1-0158",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Risk assessment and analysis",
+    "difficulty": "hard",
+    "type": "application",
+    "stem": "Twenty separate findings on the same payment system are each rated low. Together, they would let an attacker move from the internet to card data. How should the risk be treated?",
+    "options": {
+      "A": "As low, since each finding is individually rated low",
+      "B": "As low, but the findings should be fixed in alphabetical order",
+      "C": "As medium, since averaging twenty low risks produces a medium risk",
+      "D": "As high, since chained findings create a greater combined risk"
+    },
+    "answer": "D",
+    "explanation": "Risks that combine into an attack path must be assessed together. Individually low findings can form a high risk when chained.",
+    "distractor_rationales": {
+      "A": "Rating each alone hides the combined exposure.",
+      "B": "Alphabetical order ignores the attack path.",
+      "C": "Averaging does not reflect how chained weaknesses combine."
+    },
+    "references_topic": "Aggregated risk",
+    "version": "1.0"
+  },
+  {
+    "id": "D1-0159",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Risk response and control selection",
+    "difficulty": "hard",
+    "type": "application",
+    "stem": "A risk report shows a large risk reduction from a new data loss prevention tool, but the tool is still in monitor-only mode and has never been tested. How should the risk reduction be treated?",
+    "options": {
+      "A": "Not counted until the control is enforcing and its effectiveness is tested",
+      "B": "Counted in full, since the tool has been purchased and installed",
+      "C": "Counted twice, since DLP covers both email and web traffic",
+      "D": "Counted as half, since the tool is partly configured"
+    },
+    "answer": "A",
+    "explanation": "A control reduces risk only when it works as intended. Until it is enforcing and verified, the report should not claim the reduction.",
+    "distractor_rationales": {
+      "B": "Purchase and installation do not prove effectiveness.",
+      "C": "Double counting inflates the reduction.",
+      "D": "An arbitrary fraction is not based on evidence."
+    },
+    "references_topic": "Verifying control effectiveness",
+    "version": "1.0"
+  },
+  {
+    "id": "D1-0160",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Supply chain risk management",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "A contract with a SaaS provider that held customer data is ending. What should the offboarding process include?",
+    "options": {
+      "A": "Cancelling the invoice and letting the provider keep the data for its records",
+      "B": "Retrieving or certifying destruction of data, and removing all access and integrations",
+      "C": "Leaving API integrations active in case the company returns to the provider later",
+      "D": "Asking the provider to keep the data as a free backup"
+    },
+    "answer": "B",
+    "explanation": "Offboarding must get the data back or verify its destruction, and remove accounts, keys, and connections so the former provider has no ongoing access.",
+    "distractor_rationales": {
+      "A": "The provider should not retain customer data without a basis.",
+      "C": "Active integrations are an ongoing exposure.",
+      "D": "Using a former provider as an unmanaged backup keeps risk without oversight."
+    },
+    "references_topic": "Vendor offboarding",
+    "version": "1.0"
+  }
+]

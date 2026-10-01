@@ -1,0 +1,242 @@
+[
+  {
+    "id": "D6-0001",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Vulnerability assessment",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "What is the primary difference between a vulnerability assessment and a penetration test?",
+    "options": {
+      "A": "A vulnerability assessment is always performed by external parties",
+      "B": "A penetration test never requires management approval",
+      "C": "Only a penetration test actively exploits weaknesses",
+      "D": "A vulnerability assessment is conducted only after a breach"
+    },
+    "answer": "C",
+    "explanation": "A vulnerability assessment identifies, quantifies, and prioritizes weaknesses, often with scanning tools. A penetration test goes further and attempts to exploit them to show their real-world impact.",
+    "distractor_rationales": {
+      "A": "Either kind of assessment can be performed by internal or external teams.",
+      "B": "Penetration tests always require written authorization from management.",
+      "D": "Vulnerability assessments are routine and proactive, not only a post-breach activity."
+    },
+    "references_topic": "Vulnerability assessment versus penetration test",
+    "version": "0.1"
+  },
+  {
+    "id": "D6-0002",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Audits and SOC reports",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "A company wants to publish assurance about its cloud service's security controls on its website without disclosing detailed test results. Which report type is designed for this purpose?",
+    "options": {
+      "A": "SOC 1 Type II",
+      "B": "SOC 2 Type I",
+      "C": "SOC 2 Type II",
+      "D": "SOC 3"
+    },
+    "answer": "D",
+    "explanation": "A SOC 3 report is a general-use summary based on the Trust Services Criteria. It omits detailed test results, so it can be distributed publicly.",
+    "distractor_rationales": {
+      "A": "SOC 1 reports cover controls relevant to customers' financial reporting and are restricted in use.",
+      "B": "SOC 2 reports contain detailed control descriptions and are normally shared only under NDA.",
+      "C": "A SOC 2 Type II report includes detailed test results and has restricted distribution."
+    },
+    "references_topic": "SOC report types",
+    "version": "0.1"
+  },
+  {
+    "id": "D6-0003",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Synthetic transactions and RUM",
+    "difficulty": "easy",
+    "type": "application",
+    "stem": "An operations team runs scripted logins and checkouts against its e-commerce site every five minutes from several regions to detect problems before customers report them. What is this technique called?",
+    "options": {
+      "A": "Synthetic transaction monitoring",
+      "B": "Real user monitoring (RUM)",
+      "C": "Static application security testing",
+      "D": "Fuzz testing"
+    },
+    "answer": "A",
+    "explanation": "Synthetic monitoring runs scripted transactions on a schedule to test availability and functionality proactively, before real users hit the problem.",
+    "distractor_rationales": {
+      "B": "Real user monitoring passively records actual user sessions, so it only reflects problems once real users encounter them.",
+      "C": "Static testing analyzes source code without running the application.",
+      "D": "Fuzzing sends malformed or random input to find crashes and unexpected behavior."
+    },
+    "references_topic": "Synthetic transaction monitoring",
+    "version": "0.1"
+  },
+  {
+    "id": "D6-0004",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Penetration testing",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "A retailer has hired an external firm to perform a penetration test of its e-commerce platform. Which item is MOST important to have in place before testing begins?",
+    "options": {
+      "A": "A list of all vulnerabilities found by previous scans",
+      "B": "Signed authorization with agreed scope and rules of engagement",
+      "C": "A guarantee that the testers will find at least one critical issue",
+      "D": "Full administrator credentials for the testers on all systems"
+    },
+    "answer": "B",
+    "explanation": "Written authorization from someone with the authority to grant it, defining scope, timing, methods, and rules of engagement, is the legal and operational foundation of a test. Without it, testing may amount to unauthorized access.",
+    "distractor_rationales": {
+      "A": "Previous scan results are helpful context but are not a prerequisite.",
+      "C": "No ethical tester can guarantee findings.",
+      "D": "Whether credentials are provided depends on the type of test. They are not a universal prerequisite."
+    },
+    "references_topic": "Penetration test authorization and rules of engagement",
+    "version": "0.1"
+  },
+  {
+    "id": "D6-0005",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Log review",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "An analyst reviewing authentication logs sees 5,000 failed logins against 2,000 different accounts from one IP address over an hour, with only two or three attempts per account. Which activity do these logs MOST likely indicate?",
+    "options": {
+      "A": "A brute-force attack against a single privileged account",
+      "B": "Users who forgot their passwords after a policy change",
+      "C": "A password spraying attack",
+      "D": "A denial-of-service attack against the authentication server"
+    },
+    "answer": "C",
+    "explanation": "Password spraying tries a few common passwords against many accounts, keeping attempts per account below lockout thresholds. Few attempts per account across thousands of accounts from one source is the signature.",
+    "distractor_rationales": {
+      "A": "Brute force concentrates many attempts on one account. Here attempts are spread thinly across 2,000 accounts.",
+      "B": "Forgetful users would not all be logging in from a single IP address.",
+      "D": "The volume is modest and the pattern is credential guessing, not an attempt to exhaust the server."
+    },
+    "references_topic": "Password spraying detection",
+    "version": "0.1"
+  },
+  {
+    "id": "D6-0006",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Code review and testing",
+    "difficulty": "medium",
+    "type": "knowledge",
+    "stem": "Which testing technique analyzes an application while it is running, sending crafted requests to its interfaces without access to the source code?",
+    "options": {
+      "A": "Static application security testing (SAST)",
+      "B": "Manual peer code review",
+      "C": "Software composition analysis (SCA) of dependencies",
+      "D": "Dynamic application security testing (DAST)"
+    },
+    "answer": "D",
+    "explanation": "DAST tests a running application from the outside, sending requests and observing responses, without needing source code.",
+    "distractor_rationales": {
+      "A": "SAST examines source code or binaries without executing them.",
+      "B": "Peer review is people reading the code, which requires source access.",
+      "C": "SCA inventories third-party components and their known vulnerabilities rather than probing the running application."
+    },
+    "references_topic": "Dynamic application security testing",
+    "version": "0.1"
+  },
+  {
+    "id": "D6-0007",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Security process data and metrics",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "The board of a regional bank asks the CISO for a metric that shows whether the vulnerability management program is reducing risk over time. Which metric is MOST useful for this purpose?",
+    "options": {
+      "A": "Trend in time to remediate critical internet-facing vulnerabilities",
+      "B": "Total number of vulnerability scans performed each month",
+      "C": "Number of security tools deployed across the environment",
+      "D": "Percentage of staff who attended the annual all-hands security briefing"
+    },
+    "answer": "A",
+    "explanation": "A trend in remediation time for the most exposed, most severe vulnerabilities is an outcome-based, risk-relevant indicator. It shows whether exposure is actually shrinking.",
+    "distractor_rationales": {
+      "B": "Scan counts measure activity, not whether risk is going down.",
+      "C": "A tool count is an inventory figure, not an outcome.",
+      "D": "Briefing attendance has nothing to do with vulnerability management results."
+    },
+    "references_topic": "Outcome-based security metrics",
+    "version": "0.1"
+  },
+  {
+    "id": "D6-0008",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Reporting and remediation",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "A penetration test reveals a critical vulnerability in a legacy billing system. The system owner says a fix will take four months because the vendor must rebuild a component. What should the security manager do NEXT?",
+    "options": {
+      "A": "Close the finding, because the system owner has acknowledged it",
+      "B": "Record a time-bound exception with compensating controls and risk-owner sign-off",
+      "C": "Take the billing system offline until the vendor delivers the fix",
+      "D": "Escalate the finding directly to regulators to pressure the vendor into a faster fix"
+    },
+    "answer": "B",
+    "explanation": "When remediation cannot happen right away, formal exception handling documents the risk, applies compensating controls such as filtering rules, segmentation, or extra monitoring, sets an expiry date, and has the accountable risk owner accept the residual risk.",
+    "distractor_rationales": {
+      "A": "Acknowledging a finding is not remediating it. Closing it hides an open critical risk.",
+      "C": "Taking the system offline may cause unacceptable business harm. That is a business decision based on risk analysis, not a default response.",
+      "D": "Regulators are not a remediation lever, and going to them directly bypasses internal governance."
+    },
+    "references_topic": "Risk exceptions and compensating controls",
+    "version": "0.1"
+  },
+  {
+    "id": "D6-0009",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Backup and recovery verification",
+    "difficulty": "hard",
+    "type": "application",
+    "stem": "A company's backup software has reported 100% successful nightly jobs for a year. During a recovery exercise, the team finds the database backups cannot be restored because the files were copied while the database was writing, producing inconsistent copies. Which practice would MOST likely have detected this earlier?",
+    "options": {
+      "A": "Reviewing the backup software's job completion reports daily",
+      "B": "Increasing the backup frequency from nightly to hourly",
+      "C": "Performing periodic test restores and validating the restored data",
+      "D": "Encrypting all backup files with a strong key before they are sent offsite"
+    },
+    "answer": "C",
+    "explanation": "A successful job only confirms that files were copied. Regular test restores followed by integrity and application-level validation are the only way to confirm backups are actually recoverable.",
+    "distractor_rationales": {
+      "A": "The job reports already showed success, so reviewing them more often would not reveal the inconsistency.",
+      "B": "More frequent backups made the same way would be just as inconsistent.",
+      "D": "Encryption protects confidentiality. It does nothing for data consistency."
+    },
+    "references_topic": "Test restores and backup validation",
+    "version": "0.1"
+  },
+  {
+    "id": "D6-0010",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Assessment strategy",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "A company's internal audit function reports to the CIO, who also oversees the security team being audited. Leadership wants audit results that the audit committee can rely on. What is the BEST change?",
+    "options": {
+      "A": "Have the security team perform self-assessments and share them with the audit committee",
+      "B": "Rotate internal auditors among IT teams every six months",
+      "C": "Increase the number of controls tested in each audit cycle",
+      "D": "Make internal audit report to the audit committee, not the CIO"
+    },
+    "answer": "D",
+    "explanation": "Audit independence requires the audit function to sit outside the management chain it audits. Reporting functionally to the audit committee removes the CIO's conflict of interest.",
+    "distractor_rationales": {
+      "A": "Self-assessment by the audited team is not independent assurance.",
+      "B": "Rotating auditors does not change the conflicted reporting line.",
+      "C": "Testing more controls does not address independence, so the results remain open to question."
+    },
+    "references_topic": "Audit independence",
+    "version": "0.1"
+  }
+]

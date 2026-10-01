@@ -1,0 +1,770 @@
+[
+  {
+    "id": "D3-0034",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Secure design principles",
+    "difficulty": "easy",
+    "type": "application",
+    "stem": "An accounts payable clerk needs only to enter invoices but has been given rights to change system configuration settings and read all HR files. Which principle is violated?",
+    "options": {
+      "A": "Defense in depth",
+      "B": "Fail secure",
+      "C": "Economy of mechanism",
+      "D": "Least privilege"
+    },
+    "answer": "D",
+    "explanation": "Least privilege grants only the access needed to perform a job. The clerk's extra rights far exceed what invoice entry requires.",
+    "distractor_rationales": {
+      "A": "Defense in depth is about layering controls, not about the rights one user holds.",
+      "B": "Fail secure concerns how a system behaves when it fails.",
+      "C": "Economy of mechanism means keeping designs simple."
+    },
+    "references_topic": "Least privilege",
+    "version": "0.3"
+  },
+  {
+    "id": "D3-0035",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Zero trust and secure access architecture",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "Which statement BEST summarizes the core idea of zero trust?",
+    "options": {
+      "A": "Never trust by default; verify every access request explicitly",
+      "B": "Trust every device that is on the internal network",
+      "C": "Trust any user once they connect through the VPN",
+      "D": "Trust administrators without further checks"
+    },
+    "answer": "A",
+    "explanation": "Zero trust removes implicit trust based on location or prior access. Every request is authenticated, authorized, and evaluated in context.",
+    "distractor_rationales": {
+      "B": "Trusting the internal network is the perimeter model zero trust replaces.",
+      "C": "A VPN connection grants network access, not per-request trust.",
+      "D": "Administrators are high-value targets and need more verification, not less."
+    },
+    "references_topic": "Zero trust core principle",
+    "version": "0.3"
+  },
+  {
+    "id": "D3-0036",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Security models",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "Which security model enforces integrity through well-formed transactions and separation of duties, using access triples of subject, program, and object?",
+    "options": {
+      "A": "Biba",
+      "B": "Clark-Wilson",
+      "C": "Bell-LaPadula",
+      "D": "Graham-Denning"
+    },
+    "answer": "B",
+    "explanation": "Clark-Wilson requires users to access data only through approved programs (well-formed transactions) and enforces separation of duties, expressed as subject-program-object triples.",
+    "distractor_rationales": {
+      "A": "Biba protects integrity with level-based rules, not access triples and transactions.",
+      "C": "Bell-LaPadula protects confidentiality.",
+      "D": "Graham-Denning defines rules for securely creating and deleting subjects and objects and assigning rights."
+    },
+    "references_topic": "Clark-Wilson integrity model",
+    "version": "0.3"
+  },
+  {
+    "id": "D3-0037",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Evaluation and certification",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "In the Common Criteria, what is a protection profile?",
+    "options": {
+      "A": "A vendor's marketing summary of product features",
+      "B": "The evaluator's final report on a product",
+      "C": "An implementation-independent set of security requirements for a category of products",
+      "D": "A user's access profile in an evaluated system"
+    },
+    "answer": "C",
+    "explanation": "A protection profile states the security needs for a type of product, such as firewalls, independent of any vendor. A vendor's security target describes how a specific product meets them.",
+    "distractor_rationales": {
+      "A": "Marketing material is not part of the evaluation framework.",
+      "B": "The evaluation report is a separate artifact.",
+      "D": "User access profiles are unrelated to Common Criteria."
+    },
+    "references_topic": "Common Criteria protection profiles",
+    "version": "0.3"
+  },
+  {
+    "id": "D3-0038",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Hardware security capabilities",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "Which operating system feature prevents code from executing in memory regions marked for data, such as the stack?",
+    "options": {
+      "A": "Address space layout randomization (ASLR)",
+      "B": "Virtual memory paging",
+      "C": "Process scheduling",
+      "D": "Data execution prevention (DEP/NX)"
+    },
+    "answer": "D",
+    "explanation": "DEP, backed by the processor's no-execute (NX) bit, marks data pages as non-executable, blocking many code-injection attacks.",
+    "distractor_rationales": {
+      "A": "ASLR randomizes memory locations to make exploits unreliable. It does not mark pages non-executable.",
+      "B": "Paging manages memory but does not block execution.",
+      "C": "Scheduling decides which process runs, not what memory may execute."
+    },
+    "references_topic": "Data execution prevention",
+    "version": "0.3"
+  },
+  {
+    "id": "D3-0039",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Virtualization, containers, and serverless",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "What distinguishes a Type 1 hypervisor from a Type 2 hypervisor?",
+    "options": {
+      "A": "Type 1 runs directly on hardware; Type 2 runs on top of a host operating system",
+      "B": "Type 1 is designed only for desktop computers",
+      "C": "Type 2 cannot run any guest virtual machines",
+      "D": "Type 1 requires containers to operate"
+    },
+    "answer": "A",
+    "explanation": "A Type 1 (bare-metal) hypervisor runs directly on the hardware, giving a smaller attack surface. A Type 2 (hosted) hypervisor runs as an application on a host operating system.",
+    "distractor_rationales": {
+      "B": "Type 1 hypervisors are typical in data centers, not desktops.",
+      "C": "Type 2 hypervisors run guest VMs.",
+      "D": "Hypervisors do not require containers."
+    },
+    "references_topic": "Type 1 and Type 2 hypervisors",
+    "version": "0.3"
+  },
+  {
+    "id": "D3-0040",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Cloud and distributed systems",
+    "difficulty": "easy",
+    "type": "application",
+    "stem": "A company uses a SaaS CRM. Which security responsibility remains with the company?",
+    "options": {
+      "A": "Patching the CRM's application servers",
+      "B": "Managing its users' access and the data they enter",
+      "C": "Physical security of the provider's data centers and hardware",
+      "D": "Maintaining the provider's hypervisors"
+    },
+    "answer": "B",
+    "explanation": "In SaaS, the provider runs the application and infrastructure, but the customer remains responsible for who has access, how accounts are configured, and the data it puts in.",
+    "distractor_rationales": {
+      "A": "The provider patches its application servers.",
+      "C": "Data center security belongs to the provider.",
+      "D": "Hypervisors belong to the provider."
+    },
+    "references_topic": "Shared responsibility (SaaS)",
+    "version": "0.3"
+  },
+  {
+    "id": "D3-0041",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "ICS, IoT, and embedded systems",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "When securing industrial control systems, which security objective usually takes priority?",
+    "options": {
+      "A": "Confidentiality of process data",
+      "B": "Nonrepudiation of operator commands",
+      "C": "Availability and safety of the physical process",
+      "D": "Anonymity of plant operators"
+    },
+    "answer": "C",
+    "explanation": "In operational technology, an outage or unsafe state can injure people or damage equipment, so availability and safety normally come first.",
+    "distractor_rationales": {
+      "A": "Confidentiality matters, but it usually ranks below safety and availability in OT.",
+      "B": "Nonrepudiation is useful but is not the primary objective.",
+      "D": "Operator anonymity is not a goal in industrial control systems."
+    },
+    "references_topic": "OT security priorities",
+    "version": "0.3"
+  },
+  {
+    "id": "D3-0042",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Database and web architecture vulnerabilities",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "Which database transaction property ensures that a transaction either completes entirely or has no effect at all?",
+    "options": {
+      "A": "Consistency",
+      "B": "Isolation",
+      "C": "Durability",
+      "D": "Atomicity"
+    },
+    "answer": "D",
+    "explanation": "Atomicity means a transaction is all or nothing. If any part fails, the whole transaction is rolled back.",
+    "distractor_rationales": {
+      "A": "Consistency ensures a transaction moves the database from one valid state to another.",
+      "B": "Isolation keeps concurrent transactions from interfering with each other.",
+      "C": "Durability ensures committed transactions survive failures."
+    },
+    "references_topic": "ACID atomicity",
+    "version": "0.3"
+  },
+  {
+    "id": "D3-0043",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Symmetric and asymmetric cryptography",
+    "difficulty": "easy",
+    "type": "application",
+    "stem": "Alice wants to send Bob a message that only Bob can read, using public key cryptography. Which key should Alice use to encrypt it?",
+    "options": {
+      "A": "Bob's public key",
+      "B": "Alice's private key",
+      "C": "Alice's public key",
+      "D": "Bob's private key"
+    },
+    "answer": "A",
+    "explanation": "Anything encrypted with Bob's public key can be decrypted only with Bob's private key, which only Bob holds.",
+    "distractor_rationales": {
+      "B": "Encrypting with Alice's private key creates something anyone with her public key can read. That is a signature, not confidentiality.",
+      "C": "Only Alice could decrypt a message encrypted with her own public key.",
+      "D": "Alice does not, and should not, have Bob's private key."
+    },
+    "references_topic": "Public key encryption for confidentiality",
+    "version": "0.3"
+  },
+  {
+    "id": "D3-0044",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Hashing, signatures, and integrity",
+    "difficulty": "medium",
+    "type": "knowledge",
+    "stem": "Which hash function property makes it computationally infeasible to find two different inputs that produce the same output?",
+    "options": {
+      "A": "Preimage resistance",
+      "B": "Collision resistance",
+      "C": "The avalanche effect",
+      "D": "Fixed-length output for any input"
+    },
+    "answer": "B",
+    "explanation": "Collision resistance means it is infeasible to find any two distinct inputs with the same hash.",
+    "distractor_rationales": {
+      "A": "Preimage resistance means it is infeasible to find an input that produces a given hash.",
+      "C": "The avalanche effect means small input changes produce very different outputs. It helps, but it is not this guarantee.",
+      "D": "Fixed-length output is a characteristic of hashes, not a resistance property."
+    },
+    "references_topic": "Collision resistance",
+    "version": "0.3"
+  },
+  {
+    "id": "D3-0045",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "PKI and key management",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "An intermediate certificate authority that issues a company's internal certificates is found to be compromised. What must happen to the certificates it issued?",
+    "options": {
+      "A": "Nothing, because the root CA itself was not compromised",
+      "B": "They should simply be renewed as each one expires",
+      "C": "Revoke the intermediate and reissue its certificates",
+      "D": "The root CA should be deleted from all systems"
+    },
+    "answer": "C",
+    "explanation": "A compromised intermediate can issue fraudulent certificates. Revoke it and every certificate it issued, and reissue them under a new intermediate. The root remains trusted if it was not compromised.",
+    "distractor_rationales": {
+      "A": "The attacker can still misuse the intermediate even though the root is safe.",
+      "B": "Waiting for expiry leaves compromised trust in place for months or years.",
+      "D": "The root was not compromised, so there is no reason to delete it."
+    },
+    "references_topic": "Intermediate CA compromise",
+    "version": "0.3"
+  },
+  {
+    "id": "D3-0046",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Cryptanalytic attacks",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "An attacker captures a valid authentication message and resends it later to gain access. Which control BEST prevents this?",
+    "options": {
+      "A": "Requiring longer passwords for all users",
+      "B": "Encrypting the message with a stronger cipher",
+      "C": "Hashing the message before it is sent",
+      "D": "Nonces or timestamps that make each message single-use"
+    },
+    "answer": "D",
+    "explanation": "This is a replay attack. Including a nonce or timestamp, checked by the receiver, makes each message valid only once.",
+    "distractor_rationales": {
+      "A": "Password length does not stop a captured message from being replayed.",
+      "B": "An encrypted message can be replayed just as it is.",
+      "C": "A hashed message can also be replayed unchanged."
+    },
+    "references_topic": "Replay attack prevention",
+    "version": "0.3"
+  },
+  {
+    "id": "D3-0047",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Site and facility design",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "A company worries that a vehicle could be driven into the glass lobby of its headquarters. Which control BEST addresses this?",
+    "options": {
+      "A": "Bollards or reinforced planters along the approach",
+      "B": "Security window film applied to all of the glass in the lobby",
+      "C": "An additional guard at the lobby desk",
+      "D": "More cameras covering the entrance"
+    },
+    "answer": "A",
+    "explanation": "Bollards and reinforced planters physically stop vehicles before they reach the building.",
+    "distractor_rationales": {
+      "B": "Window film helps against shattering glass but will not stop a vehicle.",
+      "C": "A guard cannot physically stop a vehicle.",
+      "D": "Cameras record an attack but do not prevent it."
+    },
+    "references_topic": "Vehicle barriers",
+    "version": "0.3"
+  },
+  {
+    "id": "D3-0048",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Environmental and physical controls",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "A server room's humidity is very low. What is the PRIMARY risk?",
+    "options": {
+      "A": "Condensation forming and corroding the circuit boards",
+      "B": "Electrostatic discharge damaging components",
+      "C": "The fire suppression system failing to activate",
+      "D": "The servers overheating"
+    },
+    "answer": "B",
+    "explanation": "Dry air allows static electricity to build up, and electrostatic discharge can damage electronic components. Humidity is kept in a moderate range to avoid both static and condensation.",
+    "distractor_rationales": {
+      "A": "Condensation and corrosion come from humidity that is too high.",
+      "C": "Low humidity does not stop fire suppression from working.",
+      "D": "Humidity does not directly cause overheating."
+    },
+    "references_topic": "Humidity and electrostatic discharge",
+    "version": "0.3"
+  },
+  {
+    "id": "D3-0049",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Secure design principles",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "A web application's login page says \"user not found\" or \"wrong password,\" depending on the error. Which change BEST applies secure design?",
+    "options": {
+      "A": "Keep the messages, since they help legitimate users",
+      "B": "Add a CAPTCHA but keep the specific messages",
+      "C": "Return one generic message for both failures",
+      "D": "Lock each account permanently after a single failure"
+    },
+    "answer": "C",
+    "explanation": "Distinct messages let attackers confirm which usernames exist. A single generic message reveals nothing about which part was wrong.",
+    "distractor_rationales": {
+      "A": "The convenience comes at the cost of enabling username enumeration.",
+      "B": "A CAPTCHA slows automation, but the messages still leak valid usernames.",
+      "D": "Permanent lockout after one failure lets attackers lock out any user at will."
+    },
+    "references_topic": "Generic authentication errors",
+    "version": "0.3"
+  },
+  {
+    "id": "D3-0050",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Zero trust and secure access architecture",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "An organization beginning a zero trust program has a limited budget. What should it do FIRST?",
+    "options": {
+      "A": "Replace every firewall with a next-generation model",
+      "B": "Buy a larger VPN concentrator for all remote users",
+      "C": "Remove passwords from every system immediately",
+      "D": "Identify its most critical assets and how they are accessed"
+    },
+    "answer": "D",
+    "explanation": "Zero trust starts with the protect surface: the most critical data, applications, and services, and how they are accessed. That focuses limited resources where they matter most.",
+    "distractor_rationales": {
+      "A": "New firewalls without a plan do not create zero trust.",
+      "B": "A bigger VPN extends perimeter trust, the opposite of zero trust.",
+      "C": "Ripping out passwords without a plan breaks access."
+    },
+    "references_topic": "Starting a zero trust program",
+    "version": "0.3"
+  },
+  {
+    "id": "D3-0051",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Security models",
+    "difficulty": "medium",
+    "type": "knowledge",
+    "stem": "Which model requires that actions by higher-level subjects are neither visible to nor able to affect lower-level subjects, preventing covert inference?",
+    "options": {
+      "A": "Noninterference model",
+      "B": "Take-Grant model",
+      "C": "Access matrix model",
+      "D": "Graham-Denning model"
+    },
+    "answer": "A",
+    "explanation": "The noninterference model ensures that what happens at a higher security level cannot influence what lower-level subjects observe, which blocks inference through side effects.",
+    "distractor_rationales": {
+      "B": "Take-Grant models how rights are passed between subjects.",
+      "C": "An access matrix lists subjects' rights over objects.",
+      "D": "Graham-Denning defines rules for creating and deleting subjects and objects and assigning rights."
+    },
+    "references_topic": "Noninterference model",
+    "version": "0.3"
+  },
+  {
+    "id": "D3-0052",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Evaluation and certification",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "A government agency must buy firewalls for a classified network, and policy requires products evaluated against a specific protection profile. What should procurement do?",
+    "options": {
+      "A": "Choose the least expensive firewall that meets performance needs",
+      "B": "Choose products certified against that protection profile",
+      "C": "Choose whichever product has the highest EAL, regardless of profile",
+      "D": "Rely on each vendor's own security claims"
+    },
+    "answer": "B",
+    "explanation": "Only products certified against the required protection profile meet the policy. The team should also confirm that the deployed configuration matches the evaluated configuration.",
+    "distractor_rationales": {
+      "A": "Price does not satisfy the evaluation requirement.",
+      "C": "A high EAL against a different profile does not meet the specified requirements.",
+      "D": "Vendor claims are not independent evaluation."
+    },
+    "references_topic": "Procuring evaluated products",
+    "version": "0.3"
+  },
+  {
+    "id": "D3-0053",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Hardware security capabilities",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "Malware on a laptop has modified the bootloader so that it loads before the operating system. Which technology would BEST have prevented this?",
+    "options": {
+      "A": "Antivirus that scans files after the OS loads",
+      "B": "Full-disk encryption without any boot verification",
+      "C": "UEFI Secure Boot verifying signed boot components",
+      "D": "A BIOS setup password"
+    },
+    "answer": "C",
+    "explanation": "Secure Boot checks the digital signature of each boot component before running it, so a modified bootloader will not load.",
+    "distractor_rationales": {
+      "A": "The malware runs before the antivirus starts.",
+      "B": "Encryption protects data at rest but does not verify boot code.",
+      "D": "A setup password protects firmware settings, not the bootloader on disk."
+    },
+    "references_topic": "UEFI Secure Boot",
+    "version": "0.3"
+  },
+  {
+    "id": "D3-0054",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Virtualization, containers, and serverless",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "A development team pulls container images from public registries straight into production. What is the BEST control?",
+    "options": {
+      "A": "Always pull the latest tag so images stay current",
+      "B": "Run containers as root to avoid permission errors",
+      "C": "Turn off image pull logging to improve performance",
+      "D": "Allow only scanned, signed images from an approved registry"
+    },
+    "answer": "D",
+    "explanation": "An approved internal registry holding vulnerability-scanned, signed images, plus admission control that rejects anything else, keeps untrusted or tampered images out of production.",
+    "distractor_rationales": {
+      "A": "The latest tag is unpinned and may pull unexpected or malicious changes.",
+      "B": "Running as root increases the impact of a compromise.",
+      "C": "Disabling logging reduces visibility."
+    },
+    "references_topic": "Trusted container images",
+    "version": "0.3"
+  },
+  {
+    "id": "D3-0055",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Cloud and distributed systems",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "A security review finds that developers often create cloud storage buckets that are publicly readable by mistake. What is the BEST long-term control?",
+    "options": {
+      "A": "Org-level guardrails blocking public access, plus monitoring",
+      "B": "Manual reviews of every storage bucket's settings, performed once each month",
+      "C": "An annual training module for developers",
+      "D": "Deleting all buckets that developers have created"
+    },
+    "answer": "A",
+    "explanation": "Preventive guardrails, such as organization-wide policies that block public access unless explicitly approved, stop the mistake from happening. Continuous posture monitoring catches anything that slips through.",
+    "distractor_rationales": {
+      "B": "Monthly manual checks leave long exposure windows and do not scale.",
+      "C": "Training helps but does not prevent mistakes.",
+      "D": "Deleting buckets destroys legitimate work."
+    },
+    "references_topic": "Cloud guardrails and posture management",
+    "version": "0.3"
+  },
+  {
+    "id": "D3-0056",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Database and web architecture vulnerabilities",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "A reporting tool must let analysts see customer names and order totals, but not the credit card numbers stored in the same table. Which database feature BEST supports this?",
+    "options": {
+      "A": "A trigger that fires whenever a new row is inserted",
+      "B": "A view exposing only permitted columns",
+      "C": "An index on the credit card column",
+      "D": "A backup of the table"
+    },
+    "answer": "B",
+    "explanation": "A view presents only the permitted columns. Analysts are granted access to the view, not the underlying table.",
+    "distractor_rationales": {
+      "A": "Triggers run logic on data changes. They do not restrict what users can read.",
+      "C": "Indexes speed up queries and do not restrict access.",
+      "D": "A backup does not control read access."
+    },
+    "references_topic": "Database views for column-level restriction",
+    "version": "0.3"
+  },
+  {
+    "id": "D3-0057",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Symmetric and asymmetric cryptography",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "A company wants recorded TLS traffic to stay confidential even if the server's private key is stolen years later. Which feature provides this?",
+    "options": {
+      "A": "Longer RSA keys",
+      "B": "Certificate pinning",
+      "C": "Perfect forward secrecy using ephemeral key exchange",
+      "D": "OCSP stapling"
+    },
+    "answer": "C",
+    "explanation": "With forward secrecy, each session key comes from an ephemeral key exchange and is discarded afterward. Stealing the server's long-term key later does not reveal past session keys.",
+    "distractor_rationales": {
+      "A": "Longer keys are harder to break, but a stolen key still decrypts recorded sessions that used RSA key exchange.",
+      "B": "Pinning helps clients detect fraudulent certificates. It does not protect past traffic.",
+      "D": "OCSP stapling concerns revocation checking."
+    },
+    "references_topic": "Perfect forward secrecy",
+    "version": "0.3"
+  },
+  {
+    "id": "D3-0058",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Hashing, signatures, and integrity",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "A company must be able to prove, ten years from now, that a signed contract existed in its current form on today's date, even after the signing certificate has expired. What should it add?",
+    "options": {
+      "A": "An MD5 hash of the contract stored alongside it",
+      "B": "Encryption of the contract with a strong cipher",
+      "C": "Storage of the contract in a well-protected database",
+      "D": "A trusted timestamp on the signature"
+    },
+    "answer": "D",
+    "explanation": "A trusted timestamp from a timestamping authority proves that the signature, and therefore the document, existed at a specific time while the certificate was valid.",
+    "distractor_rationales": {
+      "A": "MD5 is broken for collision resistance, and a hash alone does not prove when the document existed.",
+      "B": "Encryption protects confidentiality, not proof of time or integrity.",
+      "C": "A database does not provide independent proof of time."
+    },
+    "references_topic": "Trusted timestamping",
+    "version": "0.3"
+  },
+  {
+    "id": "D3-0059",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "PKI and key management",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "The public certificate authority that issues a company's web certificates is found to have issued fraudulent certificates, and major browsers announce they will stop trusting it. What should the company do FIRST?",
+    "options": {
+      "A": "Replace its certificates using another trusted CA",
+      "B": "Wait, since existing certificates will keep working",
+      "C": "Switch to self-signed certificates",
+      "D": "Disable HTTPS until the situation is resolved"
+    },
+    "answer": "A",
+    "explanation": "When browsers distrust a CA, its certificates stop working. The company should obtain and deploy replacement certificates from a trusted CA before the distrust date.",
+    "distractor_rationales": {
+      "B": "Existing certificates will fail once browsers stop trusting the CA.",
+      "C": "Self-signed certificates trigger warnings for every visitor.",
+      "D": "Disabling HTTPS exposes all traffic."
+    },
+    "references_topic": "Responding to CA distrust",
+    "version": "0.3"
+  },
+  {
+    "id": "D3-0060",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Cryptanalytic attacks",
+    "difficulty": "hard",
+    "type": "application",
+    "stem": "An attacker in the middle of a connection manipulates the handshake so that the client and server agree on an old, weak protocol version. Which control BEST prevents this?",
+    "options": {
+      "A": "Requiring longer passwords for every user",
+      "B": "Disabling weak protocol versions and ciphers",
+      "C": "Serving the site over plain HTTP instead",
+      "D": "Renewing the server certificate more often"
+    },
+    "answer": "B",
+    "explanation": "A downgrade attack only works if both sides still accept weak options. Disabling old protocol versions and cipher suites on both ends leaves nothing weak to negotiate.",
+    "distractor_rationales": {
+      "A": "Passwords are unrelated to protocol negotiation.",
+      "C": "Plain HTTP removes protection entirely.",
+      "D": "Certificate renewal does not affect which protocol versions are accepted."
+    },
+    "references_topic": "Protocol downgrade attacks",
+    "version": "0.3"
+  },
+  {
+    "id": "D3-0061",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "ICS, IoT, and embedded systems",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "A manufacturer is connecting its plant control network to the corporate IT network so production data can feed business reports. Which architecture BEST limits risk?",
+    "options": {
+      "A": "A flat network that joins IT and OT directly",
+      "B": "Direct VPN access from corporate laptops to the PLCs",
+      "C": "An industrial DMZ brokering data between IT and OT",
+      "D": "A wireless bridge between the two buildings"
+    },
+    "answer": "C",
+    "explanation": "An industrial DMZ between IT and OT hosts brokered services, such as data historians, so no direct traffic flows from IT to control systems and data can be passed on in controlled ways.",
+    "distractor_rationales": {
+      "A": "A flat network lets IT threats reach control systems directly.",
+      "B": "Direct access to PLCs from corporate laptops exposes safety-critical devices.",
+      "D": "A wireless bridge adds exposure without segmentation."
+    },
+    "references_topic": "Industrial DMZ between IT and OT",
+    "version": "0.3"
+  },
+  {
+    "id": "D3-0062",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Environmental and physical controls",
+    "difficulty": "hard",
+    "type": "application",
+    "stem": "A data center experiences occasional brownouts and rare grid outages that last several hours. Which combination BEST protects availability?",
+    "options": {
+      "A": "Surge protectors on each rack and nothing else",
+      "B": "A standby generator alone, which starts after the power fails",
+      "C": "A battery UPS alone, sized for about 15 minutes",
+      "D": "A UPS for short events, backed by a tested generator"
+    },
+    "answer": "D",
+    "explanation": "A UPS conditions power and bridges brownouts and the seconds a generator needs to start. The generator carries the load through long outages. Regular testing makes sure both work when needed.",
+    "distractor_rationales": {
+      "A": "Surge protection does nothing during brownouts or outages.",
+      "B": "Without a UPS, equipment loses power before the generator starts.",
+      "C": "A 15-minute UPS cannot ride through a multi-hour outage."
+    },
+    "references_topic": "UPS and generator power protection",
+    "version": "0.3"
+  },
+  {
+    "id": "D3-0063",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Symmetric and asymmetric cryptography",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "A contractor stores data that must stay confidential for 25 years and transmits it using RSA key exchange. What is the BEST action regarding future quantum computing threats?",
+    "options": {
+      "A": "Inventory crypto use and plan a post-quantum migration",
+      "B": "Wait until large quantum computers actually exist",
+      "C": "Double the RSA key length and consider it solved",
+      "D": "Switch key exchange to Triple DES for more safety"
+    },
+    "answer": "A",
+    "explanation": "Adversaries can record encrypted traffic now and decrypt it later (\"harvest now, decrypt later\"). Long-lived secrets justify inventorying cryptographic use now and planning migration to post-quantum algorithms, starting with the most sensitive data.",
+    "distractor_rationales": {
+      "B": "Traffic captured today could be decrypted once quantum capability arrives.",
+      "C": "Larger RSA keys do not resist quantum attacks on RSA.",
+      "D": "Triple DES is a legacy symmetric cipher and cannot perform key exchange."
+    },
+    "references_topic": "Post-quantum migration planning",
+    "version": "0.3"
+  },
+  {
+    "id": "D3-0064",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Site and facility design",
+    "difficulty": "hard",
+    "type": "application",
+    "stem": "A company is choosing between two data center sites. Site 1 is cheaper but lies in a floodplain under an airport flight path. Site 2 costs more but has low natural hazard exposure and diverse utility feeds. Which factor MOST favors Site 2?",
+    "options": {
+      "A": "Being farther from the airport's passenger terminal",
+      "B": "Lower hazard exposure and redundant utility feeds",
+      "C": "The land at Site 2 being less expensive",
+      "D": "Being closer to downtown restaurants for staff"
+    },
+    "answer": "B",
+    "explanation": "Site selection weighs exposure to natural and man-made hazards and the resilience of utilities. Site 2's low hazard exposure and diverse feeds directly support availability.",
+    "distractor_rationales": {
+      "A": "The terminal's distance is not the concern. The flight path over Site 1 is.",
+      "C": "Site 2 is the more expensive option.",
+      "D": "Staff amenities are minor compared with hazard exposure."
+    },
+    "references_topic": "Site selection hazards",
+    "version": "0.3"
+  },
+  {
+    "id": "D3-0065",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Cloud and distributed systems",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "A company runs 80 microservices that call each other over the internal network with no authentication. What is the BEST improvement?",
+    "options": {
+      "A": "A stronger firewall at the network perimeter",
+      "B": "One shared API key that every service includes in calls",
+      "C": "Mutual TLS with a distinct identity for every service",
+      "D": "Moving the services to unusual port numbers"
+    },
+    "answer": "C",
+    "explanation": "Mutual TLS with per-service identities, often managed by a service mesh, authenticates and encrypts every call, and authorization policies then decide which services may call which.",
+    "distractor_rationales": {
+      "A": "A perimeter firewall does nothing about calls between internal services.",
+      "B": "A shared key means compromising any one service compromises them all.",
+      "D": "Obscure ports are not authentication."
+    },
+    "references_topic": "Service-to-service authentication",
+    "version": "0.3"
+  }
+]

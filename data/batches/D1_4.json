@@ -1,0 +1,962 @@
+[
+  {
+    "id": "D1-0081",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Professional ethics",
+    "difficulty": "easy",
+    "type": "managerial_best_first_most",
+    "stem": "A friend asks a security professional to \"just take a quick look\" for weaknesses in the website of the company where the friend works. The friend has no authority over the site. What should the professional do?",
+    "options": {
+      "A": "Run a light, non-intrusive scan, since the friend works at the company and is trying to help",
+      "B": "Test the site only outside business hours so that no customers are affected by any scanning",
+      "C": "Decline unless the site owner gives written authorization",
+      "D": "Test the site, but share the results only with the friend and not with the company itself"
+    },
+    "answer": "C",
+    "explanation": "Testing a system without the owner's permission can be illegal and breaks professional ethics, however good the intent. Only someone with authority over the system can authorize testing.",
+    "distractor_rationales": {
+      "A": "Good intentions and employment do not give the friend authority to approve testing.",
+      "B": "Timing does not make unauthorized testing acceptable.",
+      "D": "Keeping results private does not fix the lack of authorization and could harm the owner."
+    },
+    "references_topic": "Testing without owner authorization",
+    "version": "0.4"
+  },
+  {
+    "id": "D1-0082",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Professional ethics",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "A colleague preparing for a security certification asks you to share the actual questions you remember from your exam. What is the appropriate response?",
+    "options": {
+      "A": "Share the questions, since helping others advance in the profession is encouraged",
+      "B": "Share only the questions that you answered incorrectly on the exam",
+      "C": "Share the questions verbally but not in writing, to avoid leaving a record",
+      "D": "Decline, and point the colleague to the official study materials instead"
+    },
+    "answer": "D",
+    "explanation": "Certification candidates agree not to disclose exam content. Sharing questions breaches that agreement and the code of ethics, and undermines the credential's value.",
+    "distractor_rationales": {
+      "A": "Helping peers is encouraged, but not by breaking an exam nondisclosure agreement.",
+      "B": "Disclosing any exam content breaches the agreement.",
+      "C": "The medium does not matter; disclosure is still a breach."
+    },
+    "references_topic": "Protecting certification exam content",
+    "version": "0.4"
+  },
+  {
+    "id": "D1-0083",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Security concepts",
+    "difficulty": "easy",
+    "type": "application",
+    "stem": "Ransomware encrypts a clinic's scheduling database. Investigators confirm that no data left the network. Which security property was MOST directly affected?",
+    "options": {
+      "A": "Availability",
+      "B": "Confidentiality of the patient appointment records stored in the database",
+      "C": "Nonrepudiation of the staff members who booked the appointments",
+      "D": "Authenticity of the software that runs the clinic's scheduling system"
+    },
+    "answer": "A",
+    "explanation": "The data was not disclosed, but staff can no longer use it. Loss of access to systems and data is an availability impact.",
+    "distractor_rationales": {
+      "B": "With no data taken, confidentiality was not the main impact.",
+      "C": "Nonrepudiation concerns proof of who performed an action.",
+      "D": "Nothing indicates the software itself was not genuine."
+    },
+    "references_topic": "Ransomware and availability",
+    "version": "0.4"
+  },
+  {
+    "id": "D1-0084",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Security governance and roles",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "What is the main purpose of an information security steering committee?",
+    "options": {
+      "A": "To perform the daily monitoring of security alerts from across the enterprise",
+      "B": "To align security priorities with business strategy across departments",
+      "C": "To write and maintain the configuration standards for all network devices",
+      "D": "To conduct penetration tests of new applications before they go live"
+    },
+    "answer": "B",
+    "explanation": "A steering committee brings together leaders from across the business to set security direction, approve priorities, and resolve conflicts so security supports business goals.",
+    "distractor_rationales": {
+      "A": "Alert monitoring is a security operations function.",
+      "C": "Configuration standards are written by technical teams.",
+      "D": "Penetration testing is performed by testers, not a governance committee."
+    },
+    "references_topic": "Security steering committee",
+    "version": "0.4"
+  },
+  {
+    "id": "D1-0085",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Legal, regulatory, and contractual compliance",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "A merchant must comply with the Payment Card Industry Data Security Standard (PCI DSS). What type of obligation is this for the merchant?",
+    "options": {
+      "A": "A criminal statute passed by a national legislature",
+      "B": "A regulation issued by a government agency",
+      "C": "A contractual obligation enforced through card brand agreements",
+      "D": "A voluntary guideline with no consequences for noncompliance"
+    },
+    "answer": "C",
+    "explanation": "PCI DSS is an industry standard. Merchants are bound to it by their agreements with acquiring banks and card brands, which can impose fines or end card acceptance.",
+    "distractor_rationales": {
+      "A": "PCI DSS is not a law passed by a legislature.",
+      "B": "It is not issued by a government regulator, although some laws reference it.",
+      "D": "Noncompliance carries real contractual consequences."
+    },
+    "references_topic": "PCI DSS as a contractual obligation",
+    "version": "0.4"
+  },
+  {
+    "id": "D1-0086",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Privacy and transborder data flow",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "A newsletter signup form asks for name, email, birth date, gender, and household income, although only the email is needed to send the newsletter. Which privacy principle does this form violate?",
+    "options": {
+      "A": "Accuracy of personal data",
+      "B": "Storage limitation",
+      "C": "Transparency to data subjects",
+      "D": "Data minimization"
+    },
+    "answer": "D",
+    "explanation": "Data minimization means collecting only the personal data needed for the stated purpose. The extra fields are unnecessary for sending a newsletter.",
+    "distractor_rationales": {
+      "A": "Accuracy concerns keeping data correct, not how much is collected.",
+      "B": "Storage limitation concerns how long data is kept.",
+      "C": "Transparency concerns telling people how their data is used."
+    },
+    "references_topic": "Data minimization",
+    "version": "0.4"
+  },
+  {
+    "id": "D1-0087",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Intellectual property and licensing",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "Which form of intellectual property protection applies to a company's brand name and logo?",
+    "options": {
+      "A": "Trademark",
+      "B": "Patent covering the company's novel inventions and manufacturing processes",
+      "C": "Trade secret covering confidential formulas known only to employees",
+      "D": "Copyright covering the company's written documentation and source code"
+    },
+    "answer": "A",
+    "explanation": "Trademarks protect names, logos, and other marks that identify the source of goods or services.",
+    "distractor_rationales": {
+      "B": "Patents protect inventions, not brand names.",
+      "C": "Trade secrets protect confidential business information.",
+      "D": "Copyright protects original works of authorship, not brand identifiers."
+    },
+    "references_topic": "Trademarks",
+    "version": "0.4"
+  },
+  {
+    "id": "D1-0088",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Investigation types",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "Two companies disagree over whether one breached a contract to deliver secure software. Which type of investigation supports this dispute?",
+    "options": {
+      "A": "Criminal investigation",
+      "B": "Civil investigation",
+      "C": "Administrative investigation",
+      "D": "Regulatory investigation"
+    },
+    "answer": "B",
+    "explanation": "Disputes between private parties, such as breach of contract claims, are civil matters and are decided on the preponderance of the evidence.",
+    "distractor_rationales": {
+      "A": "Criminal investigations concern violations of criminal law prosecuted by the state.",
+      "C": "Administrative investigations are internal, such as employee policy violations.",
+      "D": "Regulatory investigations are driven by a government agency's authority."
+    },
+    "references_topic": "Civil investigations",
+    "version": "0.4"
+  },
+  {
+    "id": "D1-0089",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Policies, standards, procedures, and guidelines",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "What is the term for the minimum security configuration that every system of a given type must meet, such as all Windows servers?",
+    "options": {
+      "A": "Guideline",
+      "B": "Policy",
+      "C": "Baseline",
+      "D": "Procedure"
+    },
+    "answer": "C",
+    "explanation": "A baseline defines the minimum security settings required for a category of systems. Systems may exceed it but must not fall below it.",
+    "distractor_rationales": {
+      "A": "Guidelines are recommendations, not mandatory minimums.",
+      "B": "Policies are high-level statements of intent.",
+      "D": "Procedures are step-by-step instructions for performing tasks."
+    },
+    "references_topic": "Security baselines",
+    "version": "0.4"
+  },
+  {
+    "id": "D1-0090",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Business continuity and BIA",
+    "difficulty": "easy",
+    "type": "application",
+    "stem": "A business can tolerate losing no more than four hours of transaction data. Which approach meets this recovery point objective?",
+    "options": {
+      "A": "Nightly backups at midnight retained for thirty days",
+      "B": "Weekly full backups with daily differential backups in between",
+      "C": "A recovery site that can be running within four hours of a disaster",
+      "D": "Backups or replication at least every four hours"
+    },
+    "answer": "D",
+    "explanation": "The RPO is the maximum acceptable data loss measured in time, so data must be captured at least every four hours.",
+    "distractor_rationales": {
+      "A": "Nightly backups could lose up to 24 hours of data.",
+      "B": "Daily differentials could still lose a full day of data.",
+      "C": "Being running within four hours describes the recovery time objective, not the RPO."
+    },
+    "references_topic": "Recovery point objective",
+    "version": "0.4"
+  },
+  {
+    "id": "D1-0091",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Personnel security",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "Which document do new employees typically sign at onboarding to confirm they understand how they may and may not use company systems?",
+    "options": {
+      "A": "Acceptable use policy",
+      "B": "Business impact analysis",
+      "C": "Service level agreement with the organization's main vendors",
+      "D": "Disaster recovery plan for the primary data center"
+    },
+    "answer": "A",
+    "explanation": "An acceptable use policy defines permitted and prohibited use of company systems, and signing it records the employee's acknowledgment.",
+    "distractor_rationales": {
+      "B": "A business impact analysis assesses the effect of disruptions.",
+      "C": "SLAs define service commitments between organizations.",
+      "D": "A disaster recovery plan covers restoring systems after a disaster."
+    },
+    "references_topic": "Acceptable use policy",
+    "version": "0.4"
+  },
+  {
+    "id": "D1-0092",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Risk assessment and analysis",
+    "difficulty": "easy",
+    "type": "application",
+    "stem": "A server farm is valued at $500,000. A fire would destroy 30% of its value. What is the single loss expectancy (SLE)?",
+    "options": {
+      "A": "$350,000",
+      "B": "$150,000",
+      "C": "$15,000",
+      "D": "$1,666,667"
+    },
+    "answer": "B",
+    "explanation": "SLE = asset value × exposure factor = $500,000 × 0.30 = $150,000.",
+    "distractor_rationales": {
+      "A": "$350,000 is the value that would remain, not the loss.",
+      "C": "$15,000 misplaces the decimal point.",
+      "D": "$1,666,667 divides by the exposure factor instead of multiplying."
+    },
+    "references_topic": "Single loss expectancy",
+    "version": "0.4"
+  },
+  {
+    "id": "D1-0093",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Security concepts",
+    "difficulty": "medium",
+    "type": "knowledge",
+    "stem": "Which control PRIMARILY supports integrity rather than confidentiality?",
+    "options": {
+      "A": "Encrypting laptops so that data on lost devices cannot be read",
+      "B": "Classifying documents so that staff know who may view them",
+      "C": "File integrity monitoring that alerts on unauthorized changes",
+      "D": "Privacy screens that stop onlookers from reading a display"
+    },
+    "answer": "C",
+    "explanation": "File integrity monitoring detects unauthorized modification of files, which is an integrity concern.",
+    "distractor_rationales": {
+      "A": "Disk encryption protects confidentiality.",
+      "B": "Classification guides who may see data, supporting confidentiality.",
+      "D": "Privacy screens prevent disclosure, supporting confidentiality."
+    },
+    "references_topic": "Integrity controls",
+    "version": "0.4"
+  },
+  {
+    "id": "D1-0094",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Security concepts",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "Payment data is encrypted and access is restricted, yet an authorized clerk changed vendor bank details and diverted a payment. Which control would MOST directly have prevented this?",
+    "options": {
+      "A": "Stronger encryption of the payment database using longer key lengths",
+      "B": "Moving the payment system to a separate network segment behind a firewall",
+      "C": "Sending the clerk to additional security awareness training on phishing",
+      "D": "Requiring a second person to approve changes to vendor bank details"
+    },
+    "answer": "D",
+    "explanation": "The failure was an integrity problem caused by an authorized insider. Dual control on sensitive changes means one person cannot alter payment details alone.",
+    "distractor_rationales": {
+      "A": "Encryption protects confidentiality, and the clerk was already authorized.",
+      "B": "Segmentation does not stop an authorized user.",
+      "C": "Phishing training does not address insider changes."
+    },
+    "references_topic": "Protecting integrity with dual control",
+    "version": "0.4"
+  },
+  {
+    "id": "D1-0095",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Security governance and roles",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "A CISO is asked to brief the board on security. What should the briefing focus on?",
+    "options": {
+      "A": "Key risks in business terms, compared with the board's risk appetite",
+      "B": "The number of firewall rules changed and patches applied last quarter",
+      "C": "A detailed walk-through of the latest malware reverse-engineering results",
+      "D": "The technical specifications of the tools the security team plans to buy"
+    },
+    "answer": "A",
+    "explanation": "Boards govern risk. They need to understand the most important risks, their business impact, and whether the organization is within its appetite, so they can make decisions.",
+    "distractor_rationales": {
+      "B": "Activity counts do not tell the board whether risk is acceptable.",
+      "C": "Malware analysis detail is too technical for board decisions.",
+      "D": "Tool specifications are management detail, not board-level information."
+    },
+    "references_topic": "Reporting security to the board",
+    "version": "0.4"
+  },
+  {
+    "id": "D1-0096",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Due care and due diligence",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "Before acquiring a smaller company, the buyer's security team reviews the target's breach history, security controls, and open audit findings. Which concept does this review demonstrate?",
+    "options": {
+      "A": "Due care, because the buyer is fixing the target's weaknesses before the deal closes",
+      "B": "Due diligence",
+      "C": "Risk transfer, because the target's risks move to the seller's insurer",
+      "D": "Separation of duties between the two companies' security teams"
+    },
+    "answer": "B",
+    "explanation": "Due diligence is investigating and understanding risk before acting. Assessing the target before the deal is exactly that.",
+    "distractor_rationales": {
+      "A": "Due care is acting on known risks; this review gathers information before any action.",
+      "C": "Nothing here transfers risk to an insurer.",
+      "D": "Separation of duties splits tasks among people to prevent fraud."
+    },
+    "references_topic": "Due diligence in acquisitions",
+    "version": "0.4"
+  },
+  {
+    "id": "D1-0097",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Legal, regulatory, and contractual compliance",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "A company must comply with several overlapping security regulations and customer contracts, and each audit team tests the same controls separately. What is the BEST way to reduce this duplication?",
+    "options": {
+      "A": "Choose the single regulation with the largest fines and comply only with that one",
+      "B": "Assign a separate compliance team for each regulation so each can work independently",
+      "C": "Map all requirements to one set of controls and test each control once",
+      "D": "Ask the regulators to accept the company's own summary instead of an audit"
+    },
+    "answer": "C",
+    "explanation": "A common control framework maps many requirements to a single control set, so each control is implemented and evidenced once and reused across audits.",
+    "distractor_rationales": {
+      "A": "Ignoring other obligations creates noncompliance.",
+      "B": "Separate teams increase duplication.",
+      "D": "Regulators decide how they assess compliance."
+    },
+    "references_topic": "Common control frameworks",
+    "version": "0.4"
+  },
+  {
+    "id": "D1-0098",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Legal, regulatory, and contractual compliance",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "An auditor asks for proof that quarterly access reviews were performed last year. Which evidence is BEST?",
+    "options": {
+      "A": "A statement from the IT manager confirming that the reviews took place as planned",
+      "B": "The access review policy document describing how often reviews should be done",
+      "C": "A screenshot of the review tool's home page taken on the day of the audit",
+      "D": "Dated review records showing reviewers' decisions and resulting removals"
+    },
+    "answer": "D",
+    "explanation": "Dated records with reviewer decisions and follow-up actions show that each review actually happened and was acted on.",
+    "distractor_rationales": {
+      "A": "A verbal or written assurance is weak evidence.",
+      "B": "A policy shows intent, not performance.",
+      "C": "A current screenshot says nothing about last year's reviews."
+    },
+    "references_topic": "Retaining compliance evidence",
+    "version": "0.4"
+  },
+  {
+    "id": "D1-0099",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Privacy and transborder data flow",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "Analysts replace customer names with random tokens, while a separate team keeps the table that maps tokens back to names. How should this data set be treated?",
+    "options": {
+      "A": "As pseudonymized personal data that still needs protection",
+      "B": "As anonymous data that is no longer subject to privacy law",
+      "C": "As public data that can be published without restriction",
+      "D": "As encrypted data that can be shared freely with any vendor"
+    },
+    "answer": "A",
+    "explanation": "Because the mapping table exists, the data can be re-identified. Pseudonymization reduces risk, but the data is still personal data.",
+    "distractor_rationales": {
+      "B": "True anonymization is irreversible, which is not the case here.",
+      "C": "Pseudonymized data is not public.",
+      "D": "Tokenization is not encryption, and the data still needs controlled sharing."
+    },
+    "references_topic": "Pseudonymization",
+    "version": "0.4"
+  },
+  {
+    "id": "D1-0100",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Intellectual property and licensing",
+    "difficulty": "medium",
+    "type": "knowledge",
+    "stem": "Which statement about patents is TRUE?",
+    "options": {
+      "A": "They protect an invention indefinitely as long as it is kept confidential by the owner",
+      "B": "They grant exclusive rights for a limited term in exchange for public disclosure",
+      "C": "They protect the expression of an idea, such as source code, from being copied",
+      "D": "They protect a company's logo and product names used in the marketplace"
+    },
+    "answer": "B",
+    "explanation": "A patent gives its owner exclusive rights to an invention for a limited period, typically about 20 years, in exchange for publicly disclosing how it works.",
+    "distractor_rationales": {
+      "A": "Indefinite protection through secrecy describes a trade secret.",
+      "C": "Protecting the expression of an idea describes copyright.",
+      "D": "Logos and names are protected by trademarks."
+    },
+    "references_topic": "Patents",
+    "version": "0.4"
+  },
+  {
+    "id": "D1-0101",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Investigation types",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "After customer data is stolen, the company receives an extortion demand threatening to publish the data. What should the security team do?",
+    "options": {
+      "A": "Pay quickly and quietly, since involving outsiders will only increase the damage",
+      "B": "Contact the attackers directly to negotiate a lower price before telling anyone",
+      "C": "Escalate to legal counsel and senior management to decide on involving law enforcement",
+      "D": "Ignore the demand, since responding in any way encourages further extortion"
+    },
+    "answer": "C",
+    "explanation": "Extortion is a crime, and the decision to involve law enforcement has legal and business consequences. Counsel and senior management should make it with the facts in hand.",
+    "distractor_rationales": {
+      "A": "Paying without legal input may break laws and does not guarantee deletion.",
+      "B": "Unilateral negotiation bypasses leadership and legal advice.",
+      "D": "Ignoring the demand skips required legal and notification decisions."
+    },
+    "references_topic": "Involving law enforcement",
+    "version": "0.4"
+  },
+  {
+    "id": "D1-0102",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Policies, standards, procedures, and guidelines",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "The security policy was last updated six years ago and refers to technologies the company no longer uses. What is the BEST long-term fix?",
+    "options": {
+      "A": "Rewrite the policy now and then leave it unchanged until the next audit finding",
+      "B": "Delete the policy, since the technical standards already cover the same material",
+      "C": "Ask each department to write its own policy that matches its current technology",
+      "D": "Review the policy on a set schedule and after major changes, keeping it technology-neutral"
+    },
+    "answer": "D",
+    "explanation": "Policies should be reviewed regularly and when the business changes. Keeping them free of specific technologies means they stay valid while standards change underneath.",
+    "distractor_rationales": {
+      "A": "A one-time rewrite repeats the problem.",
+      "B": "Standards depend on policy for authority and direction.",
+      "C": "Separate departmental policies create inconsistency."
+    },
+    "references_topic": "Policy review cycles",
+    "version": "0.4"
+  },
+  {
+    "id": "D1-0103",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Policies, standards, procedures, and guidelines",
+    "difficulty": "medium",
+    "type": "knowledge",
+    "stem": "Which type of document is high-level, technology-neutral, and approved by senior management?",
+    "options": {
+      "A": "Policy",
+      "B": "Standard specifying approved encryption algorithms",
+      "C": "Procedure describing how to reset a user's password",
+      "D": "Guideline recommending good practices for home Wi-Fi"
+    },
+    "answer": "A",
+    "explanation": "Policies state management's intent and direction at a high level. Standards, procedures, and guidelines add the specific detail beneath them.",
+    "distractor_rationales": {
+      "B": "Standards are specific and often name technologies.",
+      "C": "Procedures are detailed step-by-step instructions.",
+      "D": "Guidelines are optional recommendations."
+    },
+    "references_topic": "Characteristics of policies",
+    "version": "0.4"
+  },
+  {
+    "id": "D1-0104",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Personnel security",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "A senior network administrator resigns with two weeks' notice to join a competitor. What is the BEST approach during the notice period?",
+    "options": {
+      "A": "Leave all access in place so the administrator can finish every open project",
+      "B": "Reduce privileged access to what handover needs and increase monitoring",
+      "C": "Escort the administrator out immediately and cancel the notice period",
+      "D": "Ask the administrator to promise not to take any company data"
+    },
+    "answer": "B",
+    "explanation": "A departing privileged user is a higher risk. Limiting access to what is needed for handover, with closer monitoring, balances continuity with protection.",
+    "distractor_rationales": {
+      "A": "Full access leaves unnecessary exposure during a risky period.",
+      "C": "Immediate removal may be justified in some cases but is not the default for a voluntary resignation.",
+      "D": "A promise is not a control."
+    },
+    "references_topic": "Privileged users giving notice",
+    "version": "0.4"
+  },
+  {
+    "id": "D1-0105",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Risk assessment and analysis",
+    "difficulty": "medium",
+    "type": "knowledge",
+    "stem": "What is a common weakness of purely quantitative risk analysis?",
+    "options": {
+      "A": "It cannot express risk in monetary terms that executives understand",
+      "B": "It ignores the value of assets when estimating the size of losses",
+      "C": "It relies on accurate probability and loss data that is often unavailable",
+      "D": "It can only be performed by external auditors under professional standards"
+    },
+    "answer": "C",
+    "explanation": "Quantitative analysis needs reliable numbers for asset values, exposure, and frequency. When data is sparse, the precise-looking results can be misleading.",
+    "distractor_rationales": {
+      "A": "Monetary results are a strength of quantitative analysis.",
+      "B": "Asset value is central to quantitative analysis.",
+      "D": "Internal teams can perform quantitative analysis."
+    },
+    "references_topic": "Limits of quantitative analysis",
+    "version": "0.4"
+  },
+  {
+    "id": "D1-0106",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Risk response and control selection",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "A company buys a cyber insurance policy that covers the costs of breach response and notification. Which risk response is this?",
+    "options": {
+      "A": "Risk avoidance",
+      "B": "Risk acceptance",
+      "C": "Risk mitigation",
+      "D": "Risk transfer"
+    },
+    "answer": "D",
+    "explanation": "Insurance shifts the financial impact of a loss to a third party, which is risk transfer. The company still owns the risk and its reputational effects.",
+    "distractor_rationales": {
+      "A": "Avoidance stops the activity that creates the risk.",
+      "B": "Acceptance keeps the risk without further action.",
+      "C": "Mitigation reduces likelihood or impact with controls."
+    },
+    "references_topic": "Risk transfer through insurance",
+    "version": "0.4"
+  },
+  {
+    "id": "D1-0107",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Risk response and control selection",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "The board has set a low appetite for regulatory risk. A project team proposes accepting a high compliance risk to meet a launch date. What should the security manager do?",
+    "options": {
+      "A": "Escalate the decision, since it exceeds the board's stated appetite",
+      "B": "Accept the risk on the team's behalf so the launch date can be met",
+      "C": "Approve the launch and schedule a compliance review for next year",
+      "D": "Ask the team to downgrade the risk rating so it fits the appetite"
+    },
+    "answer": "A",
+    "explanation": "A risk above the organization's appetite cannot be accepted at project level. It must go to leadership with authority to accept it or require treatment.",
+    "distractor_rationales": {
+      "B": "The security manager does not have authority to accept risk beyond appetite.",
+      "C": "Deferring review leaves a known high risk in place.",
+      "D": "Changing the rating to fit hides the risk."
+    },
+    "references_topic": "Risk appetite limits",
+    "version": "0.4"
+  },
+  {
+    "id": "D1-0108",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Threat modeling",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "Customers of an online store can place orders, but the system keeps no reliable record of who placed each one. A customer denies placing an order, and the store cannot prove otherwise. Which STRIDE category describes this threat?",
+    "options": {
+      "A": "Tampering",
+      "B": "Repudiation",
+      "C": "Information disclosure",
+      "D": "Denial of service"
+    },
+    "answer": "B",
+    "explanation": "Repudiation is the ability to deny having performed an action because there is no trustworthy evidence. Secure logging and signatures address it.",
+    "distractor_rationales": {
+      "A": "Tampering is unauthorized modification of data.",
+      "C": "Information disclosure is exposure of data to unauthorized parties.",
+      "D": "Denial of service makes a system unavailable."
+    },
+    "references_topic": "STRIDE repudiation",
+    "version": "0.4"
+  },
+  {
+    "id": "D1-0109",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Threat modeling",
+    "difficulty": "medium",
+    "type": "knowledge",
+    "stem": "When threat modeling from a data flow diagram, where should the team look MOST closely for threats?",
+    "options": {
+      "A": "Inside a single process where no data enters or leaves at any time",
+      "B": "At the icons used to represent external users in the diagram legend",
+      "C": "Where data crosses trust boundaries between components",
+      "D": "At the storage devices that are fully encrypted at rest"
+    },
+    "answer": "C",
+    "explanation": "Trust boundaries are where data moves between zones of different privilege, such as from the internet to an application. Most attacks target these crossings.",
+    "distractor_rationales": {
+      "A": "A process with no inputs or outputs presents little attack surface.",
+      "B": "Diagram notation is not a source of threats.",
+      "D": "Encrypted storage still matters, but boundary crossings are where threats concentrate."
+    },
+    "references_topic": "Trust boundaries in data flow diagrams",
+    "version": "0.4"
+  },
+  {
+    "id": "D1-0110",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Security awareness, education, and training",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "Attackers are sending convincing fake invoices and CEO payment requests to the finance team. General annual awareness training has not stopped the losses. What is the BEST next step?",
+    "options": {
+      "A": "Repeat the same general awareness training every month for all employees",
+      "B": "Block all email from outside the organization to the finance team",
+      "C": "Publicly name employees who pay fraudulent invoices as a deterrent",
+      "D": "Give finance staff targeted training plus a required call-back to verify payment changes"
+    },
+    "answer": "D",
+    "explanation": "Role-specific training for the people targeted, backed by a verification procedure, addresses business email compromise directly.",
+    "distractor_rationales": {
+      "A": "More generic training does not address the specific attack.",
+      "B": "Blocking all external email would stop legitimate business.",
+      "C": "Shaming discourages reporting and undermines a just culture."
+    },
+    "references_topic": "Targeted training for business email compromise",
+    "version": "0.4"
+  },
+  {
+    "id": "D1-0111",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Professional ethics",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "Management asks the security team to track employees' phone locations around the clock, including off duty. Local law allows it. What should the security professional do?",
+    "options": {
+      "A": "Advise limiting tracking to work needs, since legal is not the same as ethical",
+      "B": "Implement it as requested, since the law allows it and management has decided",
+      "C": "Refuse and report management to the regulator, since tracking is illegal",
+      "D": "Implement it quietly without telling employees to avoid complaints"
+    },
+    "answer": "A",
+    "explanation": "Ethics can require more than the law. The professional should advise limiting collection to legitimate business needs and being transparent, while respecting management's final authority.",
+    "distractor_rationales": {
+      "B": "Legality alone does not make excessive monitoring appropriate.",
+      "C": "The scenario states it is legal, so a regulator report is unfounded.",
+      "D": "Secret monitoring deepens the ethical problem."
+    },
+    "references_topic": "Legal but unethical monitoring",
+    "version": "0.4"
+  },
+  {
+    "id": "D1-0112",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Security governance and roles",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "After a cloud storage bucket was left public, the infrastructure team and the application team each said the other was responsible for its configuration. What should happen FIRST?",
+    "options": {
+      "A": "Discipline both team leads so that each team takes the issue seriously",
+      "B": "Have management define and document ownership, for example in a RACI chart",
+      "C": "Move all cloud resources to on-premises servers where ownership is clearer",
+      "D": "Ask the security team to take over configuration of every cloud resource"
+    },
+    "answer": "B",
+    "explanation": "The root cause is unclear accountability. Management should assign ownership explicitly so every resource has a responsible and accountable party.",
+    "distractor_rationales": {
+      "A": "Discipline does not fix the gap in ownership.",
+      "C": "Moving off the cloud is disproportionate and does not assign ownership.",
+      "D": "Centralizing all configuration in security creates a bottleneck and blurs accountability."
+    },
+    "references_topic": "Defining ownership with RACI",
+    "version": "0.4"
+  },
+  {
+    "id": "D1-0113",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Due care and due diligence",
+    "difficulty": "hard",
+    "type": "application",
+    "stem": "A vendor advisory warned of a critical flaw in a company's VPN appliance. The company logged the advisory but did not patch or mitigate for nine months, and attackers then used the flaw to steal customer data. What is the company's MAIN legal exposure?",
+    "options": {
+      "A": "None, since the company performed due diligence by logging the advisory",
+      "B": "Only the vendor is liable, because the flaw was in the vendor's product",
+      "C": "Negligence, because it knew the risk and failed to exercise due care",
+      "D": "Criminal liability for the attackers' actions carried out using the VPN"
+    },
+    "answer": "C",
+    "explanation": "Knowing about a risk and failing to act reasonably on it is a failure of due care, which supports a negligence claim.",
+    "distractor_rationales": {
+      "A": "Logging the advisory is awareness; failing to act on it is the problem.",
+      "B": "The vendor's flaw does not excuse the company's failure to act on a known fix.",
+      "D": "The company is not criminally liable for the attackers' crimes."
+    },
+    "references_topic": "Negligence from unaddressed known risk",
+    "version": "0.4"
+  },
+  {
+    "id": "D1-0114",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Privacy and transborder data flow",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "A customer submits a request to see all personal data the company holds about them. The data is spread across twelve systems. What should the privacy team do FIRST?",
+    "options": {
+      "A": "Export every table from all twelve systems and send them to the customer",
+      "B": "Reply that the data is too spread out to collect in a reasonable time",
+      "C": "Send only the data from the main customer database and close the request",
+      "D": "Verify the requester's identity, then use the data inventory to locate the data"
+    },
+    "answer": "D",
+    "explanation": "Verifying identity prevents disclosing data to an impostor. A data inventory then shows where the person's data lives, so the response is complete and limited to that person.",
+    "distractor_rationales": {
+      "A": "Exporting whole tables would disclose other people's data.",
+      "B": "Difficulty does not remove the obligation to respond.",
+      "C": "A partial response fails the request."
+    },
+    "references_topic": "Handling data subject access requests",
+    "version": "0.4"
+  },
+  {
+    "id": "D1-0115",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Risk assessment and analysis",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "Business units rate risks with different scales and definitions, so leadership cannot compare them in the enterprise risk register. What is the BEST fix?",
+    "options": {
+      "A": "Adopt one rating method with defined likelihood and impact criteria for everyone",
+      "B": "Let each unit keep its scale, but convert every rating to \"medium\" for reporting",
+      "C": "Remove the likelihood rating from the register and track only the impact rating",
+      "D": "Ask the external auditors to re-rate all of the risks once each year"
+    },
+    "answer": "A",
+    "explanation": "A common methodology with defined criteria makes ratings comparable, so leadership can prioritize across the whole organization.",
+    "distractor_rationales": {
+      "B": "Flattening ratings hides real differences.",
+      "C": "Dropping likelihood loses half of the risk picture.",
+      "D": "Annual external re-rating does not fix day-to-day consistency and removes ownership."
+    },
+    "references_topic": "Consistent risk rating criteria",
+    "version": "0.4"
+  },
+  {
+    "id": "D1-0116",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Risk response and control selection",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "Two years ago, leadership formally accepted the risk of an unpatched internal legacy server. The server has since been exposed to the internet for a new partner service. What should happen?",
+    "options": {
+      "A": "Nothing, since the risk was formally accepted and signed off by leadership",
+      "B": "Reassess the risk, since the original acceptance no longer reflects the exposure",
+      "C": "Patch the server immediately without informing the partner or leadership",
+      "D": "Move the acceptance paperwork into the new project's documentation folder"
+    },
+    "answer": "B",
+    "explanation": "Risk acceptance is based on conditions at the time. When exposure changes significantly, the risk must be reassessed and a new decision made.",
+    "distractor_rationales": {
+      "A": "The acceptance assumed internal-only exposure, which is no longer true.",
+      "C": "Remediation may be right, but the decision needs reassessment and communication.",
+      "D": "Moving paperwork does not address the changed risk."
+    },
+    "references_topic": "Revisiting accepted risks",
+    "version": "0.4"
+  },
+  {
+    "id": "D1-0117",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Business continuity and BIA",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "A company's order process depends on a third-party payment gateway, but the business impact analysis lists only internal systems. What is the BEST correction?",
+    "options": {
+      "A": "Remove the order process from the BIA, since part of it is outside the company's control",
+      "B": "Assume the payment gateway provider will handle any outage without the company's help",
+      "C": "Add upstream dependencies, including vendors, to the BIA and continuity plans",
+      "D": "Build an in-house payment gateway to replace the provider within one year"
+    },
+    "answer": "C",
+    "explanation": "A BIA must capture every dependency a critical process needs, including external providers, so continuity plans cover their failure.",
+    "distractor_rationales": {
+      "A": "Dropping a critical process from the BIA leaves it unplanned.",
+      "B": "Assuming the provider will cope ignores the company's own continuity needs.",
+      "D": "Rebuilding the service is disproportionate and does not fix the analysis gap."
+    },
+    "references_topic": "Third-party dependencies in the BIA",
+    "version": "0.4"
+  },
+  {
+    "id": "D1-0118",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Supply chain risk management",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "A cloud vendor that processes the company's customer data uses several subcontractors, which the company learned about only by accident. What contract provision BEST addresses this?",
+    "options": {
+      "A": "A clause requiring the vendor to send an annual thank-you letter to the company",
+      "B": "A lower monthly fee in exchange for the vendor's freedom to choose subcontractors",
+      "C": "A requirement that the company audit each subcontractor directly every month",
+      "D": "Disclosure and approval of subprocessors, with security terms flowed down"
+    },
+    "answer": "D",
+    "explanation": "The company must know who handles its data and ensure the same protections apply. Disclosure, approval rights, and flow-down clauses extend oversight to fourth parties.",
+    "distractor_rationales": {
+      "A": "A thank-you letter provides no oversight.",
+      "B": "Trading oversight for a discount increases risk.",
+      "C": "Monthly direct audits of every subcontractor are impractical."
+    },
+    "references_topic": "Subprocessor oversight",
+    "version": "0.4"
+  },
+  {
+    "id": "D1-0119",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Supply chain risk management",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "A small third-party risk team must oversee 500 vendors. What is the BEST approach?",
+    "options": {
+      "A": "Tier vendors by data access and criticality, and assess the highest tiers most deeply",
+      "B": "Send the same long questionnaire to all 500 vendors every year and review each one",
+      "C": "Review vendors in alphabetical order until the team runs out of time each year",
+      "D": "Assess only the vendors that have reported a security breach in the past"
+    },
+    "answer": "A",
+    "explanation": "Risk-based tiering puts limited effort where the exposure is greatest, with lighter review for low-risk vendors.",
+    "distractor_rationales": {
+      "B": "Treating every vendor the same wastes effort and overwhelms the team.",
+      "C": "Alphabetical order ignores risk.",
+      "D": "Past breaches are only one signal; high-risk vendors without breaches would be missed."
+    },
+    "references_topic": "Tiering vendors by risk",
+    "version": "0.4"
+  },
+  {
+    "id": "D1-0120",
+    "domain": 1,
+    "domain_name": "Security and Risk Management",
+    "subtopic": "Security awareness, education, and training",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "Development teams ignore generic security training, and security reviews keep finding the same flaws. What is the BEST way to improve secure development behavior?",
+    "options": {
+      "A": "Require each developer to repeat the same generic training module every month",
+      "B": "Build a security champions program with role-based training for developers",
+      "C": "Withhold bonuses from teams whose code has any security findings at all",
+      "D": "Have the security team rewrite all code before release to fix the flaws"
+    },
+    "answer": "B",
+    "explanation": "Champions embedded in each team, supported by role-specific training, bring security knowledge into daily work and scale the security team's reach.",
+    "distractor_rationales": {
+      "A": "Repeating generic training that already failed will not change behavior.",
+      "C": "Harsh penalties discourage reporting and collaboration.",
+      "D": "Central rewriting does not scale and does not build developer skill."
+    },
+    "references_topic": "Security champions",
+    "version": "0.4"
+  }
+]

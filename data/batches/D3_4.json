@@ -1,0 +1,794 @@
+[
+  {
+    "id": "D3-0066",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Secure design principles",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "Which design principle uses several independent layers of controls so that the failure of one layer does not expose the asset?",
+    "options": {
+      "A": "Security through obscurity",
+      "B": "Economy of mechanism",
+      "C": "Open design",
+      "D": "Defense in depth"
+    },
+    "answer": "D",
+    "explanation": "Defense in depth layers different controls, such as network filtering, authentication, and encryption, so an attacker must defeat several of them.",
+    "distractor_rationales": {
+      "A": "Obscurity relies on secrecy of design, which is not a layered control.",
+      "B": "Economy of mechanism means keeping designs simple.",
+      "C": "Open design means security should not depend on secret design."
+    },
+    "references_topic": "Defense in depth",
+    "version": "0.4"
+  },
+  {
+    "id": "D3-0067",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Security models",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "Which model concept holds that a system starts in a secure state and that every transition must also leave it in a secure state?",
+    "options": {
+      "A": "State machine model",
+      "B": "Take-Grant model for transferring rights between subjects",
+      "C": "Brewer-Nash model for preventing conflicts of interest",
+      "D": "Lattice-based model that uses upper and lower bounds of access"
+    },
+    "answer": "A",
+    "explanation": "The state machine model defines security by the system's states: if it starts secure and every transition preserves security, it can never enter an insecure state.",
+    "distractor_rationales": {
+      "B": "Take-Grant models how rights can be passed between subjects.",
+      "C": "Brewer-Nash prevents access that would create a conflict of interest.",
+      "D": "Lattice models define access by bounded levels, not by state transitions."
+    },
+    "references_topic": "State machine model",
+    "version": "0.4"
+  },
+  {
+    "id": "D3-0068",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Hardware security capabilities",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "What does address space layout randomization (ASLR) do?",
+    "options": {
+      "A": "Encrypts memory pages so that other processes cannot read them",
+      "B": "Randomizes where code and data are loaded in memory to hinder exploits",
+      "C": "Prevents code from running in memory regions marked as data only",
+      "D": "Stores encryption keys in a tamper-resistant chip on the motherboard"
+    },
+    "answer": "B",
+    "explanation": "ASLR places the stack, heap, and libraries at unpredictable addresses, so exploits that rely on known memory locations fail.",
+    "distractor_rationales": {
+      "A": "Memory encryption is a separate feature.",
+      "C": "Preventing execution in data regions describes data execution prevention.",
+      "D": "A tamper-resistant key chip describes a TPM."
+    },
+    "references_topic": "Address space layout randomization",
+    "version": "0.4"
+  },
+  {
+    "id": "D3-0069",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Cloud and distributed systems",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "Several regional hospitals share a cloud environment built for their common regulatory needs. Which deployment model is this?",
+    "options": {
+      "A": "Public cloud open to any customer",
+      "B": "Private cloud for a single organization",
+      "C": "Community cloud",
+      "D": "Hybrid cloud linking on-premises and public resources"
+    },
+    "answer": "C",
+    "explanation": "A community cloud is shared by organizations with common concerns, such as regulatory requirements, and may be managed by them or a third party.",
+    "distractor_rationales": {
+      "A": "A public cloud is open to the general public.",
+      "B": "A private cloud serves one organization.",
+      "D": "Hybrid cloud combines different models; it does not describe shared use by a community."
+    },
+    "references_topic": "Community cloud",
+    "version": "0.4"
+  },
+  {
+    "id": "D3-0070",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "ICS, IoT, and embedded systems",
+    "difficulty": "easy",
+    "type": "application",
+    "stem": "A company installs 200 smart building sensors. Scans show they all accept the manufacturer's default administrator password over Telnet. What should be done FIRST?",
+    "options": {
+      "A": "Put a sticker on each sensor reminding staff not to tamper with it",
+      "B": "Wait for the manufacturer to publish a firmware update before acting",
+      "C": "Move the sensors to the guest Wi-Fi network so they are separate from users",
+      "D": "Change the default credentials and disable Telnet on every sensor"
+    },
+    "answer": "D",
+    "explanation": "Default credentials on an exposed management service are an easy way in. Changing them and disabling unneeded, insecure services closes the obvious path.",
+    "distractor_rationales": {
+      "A": "A sticker does not change the device configuration.",
+      "B": "Waiting leaves an easily exploited weakness open.",
+      "C": "Guest Wi-Fi is not a secure segment and leaves the defaults in place."
+    },
+    "references_topic": "Hardening IoT devices",
+    "version": "0.4"
+  },
+  {
+    "id": "D3-0071",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Symmetric and asymmetric cryptography",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "Why does TLS use asymmetric cryptography to establish a session and then symmetric encryption for the data?",
+    "options": {
+      "A": "Asymmetric methods safely agree on a key, and symmetric ciphers encrypt bulk data quickly",
+      "B": "Symmetric encryption cannot protect data that is sent across public networks",
+      "C": "Asymmetric encryption is faster than symmetric encryption for large amounts of data",
+      "D": "Using both lets TLS avoid the need for any digital certificates at all"
+    },
+    "answer": "A",
+    "explanation": "Asymmetric cryptography solves key exchange and authentication, but it is slow. The agreed symmetric session key then encrypts the traffic efficiently.",
+    "distractor_rationales": {
+      "B": "Symmetric ciphers protect data on public networks well once the key is shared.",
+      "C": "Asymmetric encryption is much slower than symmetric encryption.",
+      "D": "Certificates are still used to authenticate the server."
+    },
+    "references_topic": "Hybrid cryptography",
+    "version": "0.4"
+  },
+  {
+    "id": "D3-0072",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Hashing, signatures, and integrity",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "Which hash function property means it is infeasible to find an input that produces a given hash value?",
+    "options": {
+      "A": "Collision resistance",
+      "B": "Preimage resistance",
+      "C": "Avalanche effect",
+      "D": "Key stretching"
+    },
+    "answer": "B",
+    "explanation": "Preimage resistance makes a hash one-way: given the output, an attacker cannot find an input that produces it.",
+    "distractor_rationales": {
+      "A": "Collision resistance means it is infeasible to find two inputs with the same hash.",
+      "C": "The avalanche effect means a small input change alters the output greatly.",
+      "D": "Key stretching slows password hashing; it is not a basic hash property."
+    },
+    "references_topic": "Preimage resistance",
+    "version": "0.4"
+  },
+  {
+    "id": "D3-0073",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "PKI and key management",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "In a PKI, which entity verifies the identity of certificate requesters before the certificate authority issues a certificate?",
+    "options": {
+      "A": "Online Certificate Status Protocol responder",
+      "B": "Certificate revocation list distribution point",
+      "C": "Registration authority",
+      "D": "Key escrow agent"
+    },
+    "answer": "C",
+    "explanation": "The registration authority checks the requester's identity and passes approved requests to the CA, which signs the certificate.",
+    "distractor_rationales": {
+      "A": "An OCSP responder reports whether certificates are revoked.",
+      "B": "A CRL distribution point publishes revoked certificates.",
+      "D": "A key escrow agent holds keys for recovery."
+    },
+    "references_topic": "Registration authority",
+    "version": "0.4"
+  },
+  {
+    "id": "D3-0074",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Site and facility design",
+    "difficulty": "easy",
+    "type": "managerial_best_first_most",
+    "stem": "Staff at a data center often let unknown people follow them through the entrance door. Which physical control BEST prevents this?",
+    "options": {
+      "A": "A sign reminding employees to challenge anyone they do not recognize",
+      "B": "A camera that records the entrance for review the next day",
+      "C": "A second badge reader placed further down the same hallway",
+      "D": "A mantrap that admits one person at a time"
+    },
+    "answer": "D",
+    "explanation": "A mantrap, or access control vestibule, has two interlocked doors and admits one authenticated person at a time, which physically prevents tailgating.",
+    "distractor_rationales": {
+      "A": "Signs depend on staff behavior that is already failing.",
+      "B": "Recording detects tailgating later but does not prevent it.",
+      "C": "Another reader can be tailgated just like the first."
+    },
+    "references_topic": "Mantraps",
+    "version": "0.4"
+  },
+  {
+    "id": "D3-0075",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Environmental and physical controls",
+    "difficulty": "easy",
+    "type": "application",
+    "stem": "A small fire starts in an energized server rack. A staff member grabs a water extinguisher. Why should they not use it?",
+    "options": {
+      "A": "Water conducts electricity and can shock the user",
+      "B": "Water extinguishers are too small to put out any fire in a server room",
+      "C": "Water will cause the fire to spread quickly to the room's ceiling tiles",
+      "D": "Water can only be used on fires that involve flammable liquids"
+    },
+    "answer": "A",
+    "explanation": "Water on energized equipment risks electrocution. An extinguisher rated for electrical fires, such as CO2 or a clean agent, should be used if it is safe to do so.",
+    "distractor_rationales": {
+      "B": "Size is not the reason; the electrical hazard is.",
+      "C": "Water does not make an electrical fire spread to ceiling tiles.",
+      "D": "Water should never be used on flammable liquid fires either."
+    },
+    "references_topic": "Extinguishers for electrical fires",
+    "version": "0.4"
+  },
+  {
+    "id": "D3-0076",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Secure design principles",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "Two designs for a new authentication service meet the requirements. One uses a large custom protocol with many options; the other uses a small, well-understood standard. Which should the architect choose?",
+    "options": {
+      "A": "The custom protocol, since attackers will not understand how it works",
+      "B": "The simpler standard, since less complexity means fewer flaws and easier review",
+      "C": "The custom protocol, since more options give administrators more flexibility",
+      "D": "Both, running side by side, so users can choose whichever they prefer"
+    },
+    "answer": "B",
+    "explanation": "Economy of mechanism favors simple designs: smaller, well-understood mechanisms have fewer places for flaws to hide and are easier to verify.",
+    "distractor_rationales": {
+      "A": "Relying on attackers not understanding the design is security through obscurity.",
+      "C": "More options increase complexity and the chance of misconfiguration.",
+      "D": "Running both doubles the attack surface."
+    },
+    "references_topic": "Economy of mechanism",
+    "version": "0.4"
+  },
+  {
+    "id": "D3-0077",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Zero trust and secure access architecture",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "Under a zero trust design, a user with valid credentials and MFA signs in from a personal, unmanaged laptop. What is the BEST response?",
+    "options": {
+      "A": "Grant full access, since the user has passed multi-factor authentication",
+      "B": "Block the user permanently, since any unmanaged device is a sign of attack",
+      "C": "Grant limited access, such as browser-only use, based on device posture",
+      "D": "Grant full access, but only if the user signs in during business hours"
+    },
+    "answer": "C",
+    "explanation": "Zero trust decisions combine identity with device and context signals. An unmanaged device can receive restricted access that limits data exposure instead of all or nothing.",
+    "distractor_rationales": {
+      "A": "Identity alone ignores device risk.",
+      "B": "Permanent blocking is excessive for a legitimate user.",
+      "D": "Time of day does not address device risk."
+    },
+    "references_topic": "Device posture in access decisions",
+    "version": "0.4"
+  },
+  {
+    "id": "D3-0078",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Security models",
+    "difficulty": "medium",
+    "type": "knowledge",
+    "stem": "Which security model defines a set of protection rules for how subjects and objects are securely created and deleted and how access rights are granted and transferred?",
+    "options": {
+      "A": "Bell-LaPadula confidentiality model",
+      "B": "Biba",
+      "C": "Clark-Wilson",
+      "D": "Graham-Denning"
+    },
+    "answer": "D",
+    "explanation": "The Graham-Denning model specifies eight protection rules covering the creation and deletion of subjects and objects and the granting, transferring, and deleting of rights.",
+    "distractor_rationales": {
+      "A": "Bell-LaPadula protects confidentiality with read and write rules.",
+      "B": "Biba protects integrity with read and write rules.",
+      "C": "Clark-Wilson enforces integrity through well-formed transactions and separation of duties."
+    },
+    "references_topic": "Graham-Denning model",
+    "version": "0.4"
+  },
+  {
+    "id": "D3-0079",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Evaluation and certification",
+    "difficulty": "medium",
+    "type": "knowledge",
+    "stem": "Under Common Criteria, which vendor document states the security claims for one specific product that will be evaluated?",
+    "options": {
+      "A": "Security target",
+      "B": "Protection profile written for a whole category of products",
+      "C": "Evaluation assurance level assigned after testing is complete",
+      "D": "Authorization to operate issued by the customer's senior official"
+    },
+    "answer": "A",
+    "explanation": "The security target describes the specific product (the target of evaluation) and its security functions and claims, often by conforming to a protection profile.",
+    "distractor_rationales": {
+      "B": "A protection profile defines requirements for a product category, not one product.",
+      "C": "The assurance level describes how rigorous the evaluation was.",
+      "D": "An authorization to operate is a customer decision, not part of the evaluation."
+    },
+    "references_topic": "Common Criteria security target",
+    "version": "0.4"
+  },
+  {
+    "id": "D3-0080",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Hardware security capabilities",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "A company wants its key management service to release keys only to servers that booted with known-good firmware and operating system components. Which capability BEST supports this?",
+    "options": {
+      "A": "Full-disk encryption using a password entered at each boot",
+      "B": "Measured boot with TPM-based remote attestation",
+      "C": "Address space layout randomization in the operating system",
+      "D": "A BIOS administrator password on every server"
+    },
+    "answer": "B",
+    "explanation": "Measured boot records hashes of each boot component in the TPM. Remote attestation lets a verifier check those measurements before releasing keys.",
+    "distractor_rationales": {
+      "A": "Disk encryption protects data at rest but does not prove what was booted.",
+      "C": "ASLR hardens memory layout but does not verify boot integrity.",
+      "D": "A BIOS password restricts setting changes but cannot prove the boot chain is unmodified."
+    },
+    "references_topic": "Measured boot and remote attestation",
+    "version": "0.4"
+  },
+  {
+    "id": "D3-0081",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Virtualization, containers, and serverless",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "An audit finds hundreds of virtual machines that no one can identify an owner for, many unpatched. What is the BEST long-term control?",
+    "options": {
+      "A": "Delete every virtual machine that is not patched by the end of the week",
+      "B": "Buy more hypervisor capacity so that the existing machines run faster",
+      "C": "Require an owner, purpose, and review date for every VM, with regular reviews",
+      "D": "Stop using virtualization and move all workloads to physical servers"
+    },
+    "answer": "C",
+    "explanation": "VM sprawl comes from how easy it is to create machines. Lifecycle controls, including a named owner, a purpose, and expiry or review, keep the estate known and maintained.",
+    "distractor_rationales": {
+      "A": "Mass deletion without checking could break business services.",
+      "B": "More capacity makes sprawl easier.",
+      "D": "Abandoning virtualization is disproportionate."
+    },
+    "references_topic": "VM sprawl",
+    "version": "0.4"
+  },
+  {
+    "id": "D3-0082",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Cloud and distributed systems",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "A law requires that certain citizen records stay within the country. The company is moving the records to a public cloud provider. What is the BEST approach?",
+    "options": {
+      "A": "Trust that the provider will keep data in the country without any commitment",
+      "B": "Encrypt the records and then store them in whichever region is the cheapest",
+      "C": "Keep the records on-premises forever, since no cloud can ever meet this law",
+      "D": "Use an in-country region and secure contract terms that keep the data there"
+    },
+    "answer": "D",
+    "explanation": "Region selection keeps primary storage in the country, and contract terms cover backups, support access, and replication so the requirement is met end to end.",
+    "distractor_rationales": {
+      "A": "Relying on assumptions does not meet a legal requirement.",
+      "B": "Encryption does not change where the data resides.",
+      "C": "Many providers offer in-country options that can meet residency requirements."
+    },
+    "references_topic": "Data residency in cloud",
+    "version": "0.4"
+  },
+  {
+    "id": "D3-0083",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "ICS, IoT, and embedded systems",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "Investigators find that an attacker changed the logic on the device that directly opens and closes valves in a treatment plant. Which ICS component was modified?",
+    "options": {
+      "A": "Programmable logic controller (PLC)",
+      "B": "Historian database that stores process measurements for later analysis",
+      "C": "Human-machine interface (HMI) that operators use to view the process",
+      "D": "Engineering workstation's office productivity software"
+    },
+    "answer": "A",
+    "explanation": "PLCs run the control logic that directly drives physical equipment such as valves and pumps.",
+    "distractor_rationales": {
+      "B": "A historian records data; it does not drive equipment.",
+      "C": "An HMI displays status and sends operator commands, but the PLC executes the logic.",
+      "D": "Office software does not control physical equipment."
+    },
+    "references_topic": "Programmable logic controllers",
+    "version": "0.4"
+  },
+  {
+    "id": "D3-0084",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Database and web architecture vulnerabilities",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "A web application connects to its database with the database administrator account. What is the BEST architectural change?",
+    "options": {
+      "A": "Change the administrator password every month and keep using the same account",
+      "B": "Use a dedicated application account limited to the tables and actions it needs",
+      "C": "Move the database onto the same server as the web application to simplify its access",
+      "D": "Let each web user connect to the database directly with their own credentials"
+    },
+    "answer": "B",
+    "explanation": "If the application is compromised, an attacker gains whatever rights its database account has. A least-privilege application account limits that damage.",
+    "distractor_rationales": {
+      "A": "Rotation does not reduce the account's excessive rights.",
+      "C": "Co-locating the database removes a layer of separation.",
+      "D": "Direct user connections expose the database and complicate control."
+    },
+    "references_topic": "Least-privilege database accounts",
+    "version": "0.4"
+  },
+  {
+    "id": "D3-0085",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Symmetric and asymmetric cryptography",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "Developers need a block cipher mode that provides both confidentiality and integrity for stored records. Which mode fits BEST?",
+    "options": {
+      "A": "Electronic Codebook (ECB)",
+      "B": "Cipher Block Chaining (CBC) without any separate message authentication",
+      "C": "Galois/Counter Mode (GCM)",
+      "D": "Counter mode (CTR) without any separate message authentication"
+    },
+    "answer": "C",
+    "explanation": "GCM is an authenticated encryption mode: it encrypts data and produces an authentication tag that detects any modification.",
+    "distractor_rationales": {
+      "A": "ECB leaks patterns and provides no integrity.",
+      "B": "CBC alone provides confidentiality but not integrity.",
+      "D": "CTR alone provides confidentiality but not integrity."
+    },
+    "references_topic": "Authenticated encryption",
+    "version": "0.4"
+  },
+  {
+    "id": "D3-0086",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Symmetric and asymmetric cryptography",
+    "difficulty": "medium",
+    "type": "knowledge",
+    "stem": "Why do many systems prefer elliptic curve cryptography over RSA for new deployments?",
+    "options": {
+      "A": "Elliptic curve algorithms are symmetric, so they need no public keys at all",
+      "B": "Elliptic curve keys never need to be rotated or revoked once they are issued",
+      "C": "RSA cannot be used for digital signatures, while elliptic curves can",
+      "D": "Elliptic curves give comparable security with much smaller keys"
+    },
+    "answer": "D",
+    "explanation": "A 256-bit elliptic curve key offers security roughly comparable to a 3072-bit RSA key, which means smaller certificates and faster operations, useful for mobile and IoT devices.",
+    "distractor_rationales": {
+      "A": "Elliptic curve cryptography is asymmetric.",
+      "B": "All keys need lifecycle management.",
+      "C": "RSA is widely used for digital signatures."
+    },
+    "references_topic": "Elliptic curve key sizes",
+    "version": "0.4"
+  },
+  {
+    "id": "D3-0087",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "PKI and key management",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "The same encryption key has protected every backup for eight years. What is the BEST improvement?",
+    "options": {
+      "A": "Define a cryptoperiod and rotate keys through a key management system",
+      "B": "Write the key on paper and store it in the office safe as a second copy",
+      "C": "Keep the key but switch to a stronger algorithm while using the same value",
+      "D": "Share the key with the backup vendor so they can help protect it"
+    },
+    "answer": "A",
+    "explanation": "Limiting a key's lifetime reduces how much data a single compromised key exposes. A key management system automates rotation and keeps older keys available for restores.",
+    "distractor_rationales": {
+      "B": "A paper copy does not reduce the key's exposure.",
+      "C": "Keys are tied to algorithms, and the same old key still has the same exposure.",
+      "D": "Sharing the key widens exposure."
+    },
+    "references_topic": "Cryptoperiods and key rotation",
+    "version": "0.4"
+  },
+  {
+    "id": "D3-0088",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Cryptanalytic attacks",
+    "difficulty": "medium",
+    "type": "knowledge",
+    "stem": "An attacker can submit ciphertexts of their choice to a system and observe the resulting decryptions or error messages. What type of attack is this?",
+    "options": {
+      "A": "Known-plaintext attack",
+      "B": "Chosen-ciphertext attack",
+      "C": "Ciphertext-only attack",
+      "D": "Brute-force attack"
+    },
+    "answer": "B",
+    "explanation": "In a chosen-ciphertext attack, the attacker gets the system to decrypt ciphertexts they choose. Padding oracle attacks are a well-known example.",
+    "distractor_rationales": {
+      "A": "In a known-plaintext attack the attacker has matching plaintext and ciphertext pairs but cannot request decryptions.",
+      "C": "A ciphertext-only attacker has only ciphertext to work with.",
+      "D": "Brute force tries every possible key."
+    },
+    "references_topic": "Chosen-ciphertext attack",
+    "version": "0.4"
+  },
+  {
+    "id": "D3-0089",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Site and facility design",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "In a multi-tenant office building, the company's wiring closets are unlocked and shared with building maintenance. What is the BEST improvement?",
+    "options": {
+      "A": "Paint the closet doors the same color as the walls so they are less noticeable",
+      "B": "Post a sign on each closet door that says \"authorized personnel only\"",
+      "C": "Lock the closets with access control and logging, and include them in inspections",
+      "D": "Move all network equipment into the office kitchen where staff can see it"
+    },
+    "answer": "C",
+    "explanation": "Wiring closets hold network equipment that attackers can tap or tamper with. Controlled, logged access and regular inspection protect them.",
+    "distractor_rationales": {
+      "A": "Camouflage is not access control.",
+      "B": "A sign does not prevent entry.",
+      "D": "A kitchen is an unsuitable, uncontrolled location."
+    },
+    "references_topic": "Securing wiring closets",
+    "version": "0.4"
+  },
+  {
+    "id": "D3-0090",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Environmental and physical controls",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "A data center has air conditioning units and chilled water pipes near equipment on a raised floor. What is the BEST control to add?",
+    "options": {
+      "A": "A sign reminding maintenance staff to check for leaks each month",
+      "B": "Moving all equipment racks to the highest point in the room",
+      "C": "Replacing the raised floor with carpet to absorb any water that leaks",
+      "D": "Water sensors under the raised floor that alert operations staff"
+    },
+    "answer": "D",
+    "explanation": "Leaks under a raised floor can go unseen until they damage equipment. Sensors give immediate warning so staff can act early.",
+    "distractor_rationales": {
+      "A": "Monthly checks can miss leaks for weeks.",
+      "B": "Rack placement does not detect leaks.",
+      "C": "Carpet increases static and does not detect water."
+    },
+    "references_topic": "Water leak detection",
+    "version": "0.4"
+  },
+  {
+    "id": "D3-0091",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Zero trust and secure access architecture",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "During a zero trust rollout, a critical legacy application supports only basic username and password logins and cannot be changed. What is the BEST approach?",
+    "options": {
+      "A": "Put an identity-aware proxy in front of it that enforces modern authentication",
+      "B": "Exclude the application from zero trust and leave it on the flat internal network",
+      "C": "Rewrite the application from scratch before the zero trust project can continue",
+      "D": "Allow access only from the office network, since users there are trusted"
+    },
+    "answer": "A",
+    "explanation": "An identity-aware proxy can enforce strong authentication and policy checks before any traffic reaches the legacy application, bringing it under zero trust without code changes.",
+    "distractor_rationales": {
+      "B": "Excluding it leaves a weak point that attackers will target.",
+      "C": "Rewriting may be impractical and delays the whole program.",
+      "D": "Trusting network location is exactly what zero trust rejects."
+    },
+    "references_topic": "Protecting legacy apps in zero trust",
+    "version": "0.4"
+  },
+  {
+    "id": "D3-0092",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Security models",
+    "difficulty": "hard",
+    "type": "application",
+    "stem": "A Trojan horse running in a process cleared for Secret tries to copy Secret data into a file labeled Unclassified. Which Bell-LaPadula rule blocks this?",
+    "options": {
+      "A": "The simple security property, no read up",
+      "B": "The star (*) property, no write down",
+      "C": "The simple integrity property, no read down",
+      "D": "The strong tranquility property, labels never change"
+    },
+    "answer": "B",
+    "explanation": "The star property prevents a subject from writing to an object at a lower classification, which stops leaks of high data into low objects, even by malicious code.",
+    "distractor_rationales": {
+      "A": "No read up stops reading higher data; here the process is writing lower.",
+      "C": "Simple integrity is a Biba rule about integrity, not confidentiality.",
+      "D": "Tranquility concerns label changes, not writing down."
+    },
+    "references_topic": "Bell-LaPadula star property",
+    "version": "0.4"
+  },
+  {
+    "id": "D3-0093",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Evaluation and certification",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "A firewall product holds a Common Criteria certification, but the company deploys it with features enabled that were outside the evaluated configuration. What is the BEST view of the certification?",
+    "options": {
+      "A": "It still fully applies, since certification covers the product whatever its settings are",
+      "B": "It is void, so the company must stop using the product immediately and replace it",
+      "C": "It covers only the evaluated setup, so the added features' risk must be assessed",
+      "D": "It transfers responsibility for any breach from the company to the product vendor"
+    },
+    "answer": "C",
+    "explanation": "Evaluation assurance applies to the configuration that was evaluated. Features outside it have no such assurance, so the organization must assess and accept or reduce that risk.",
+    "distractor_rationales": {
+      "A": "Certification does not extend to unevaluated settings.",
+      "B": "The product is still usable; the gap is a risk to assess, not an automatic ban.",
+      "D": "Certification does not transfer liability."
+    },
+    "references_topic": "Evaluated configuration limits",
+    "version": "0.4"
+  },
+  {
+    "id": "D3-0094",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Virtualization, containers, and serverless",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "A serverless function that resizes uploaded images runs with a role granting full administrative rights over all storage in the account. What is the BEST fix?",
+    "options": {
+      "A": "Add logging to the function so that any misuse of its rights can be investigated",
+      "B": "Move the function into a container so that it has its own isolated environment",
+      "C": "Keep the role but restrict the function so it can run only once per minute",
+      "D": "Give the function its own role limited to the specific buckets and actions it uses"
+    },
+    "answer": "D",
+    "explanation": "If the function is compromised, its role determines the damage. A dedicated role scoped to its own buckets and actions limits the blast radius.",
+    "distractor_rationales": {
+      "A": "Logging detects misuse but does not reduce excessive rights.",
+      "B": "Containerizing does not change the permissions it holds.",
+      "C": "Rate limits do not reduce what a single call can do."
+    },
+    "references_topic": "Least privilege for serverless functions",
+    "version": "0.4"
+  },
+  {
+    "id": "D3-0095",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Database and web architecture vulnerabilities",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "A thick client application validates discount limits and user permissions on the user's computer before sending requests to the server, which trusts them. What is the BEST architectural fix?",
+    "options": {
+      "A": "Enforce validation and authorization on the server for every request",
+      "B": "Obfuscate the client code so that users cannot find the validation logic",
+      "C": "Add more validation checks to the client so that tampering becomes harder",
+      "D": "Require users to sign an agreement promising not to modify the client"
+    },
+    "answer": "A",
+    "explanation": "Anything on the client can be modified or bypassed. The server must validate input and enforce authorization itself.",
+    "distractor_rationales": {
+      "B": "Obfuscation slows analysis but does not stop tampering.",
+      "C": "More client checks can still be bypassed.",
+      "D": "An agreement does not stop attackers."
+    },
+    "references_topic": "Server-side enforcement",
+    "version": "0.4"
+  },
+  {
+    "id": "D3-0096",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "PKI and key management",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "A mobile banking app pins the server's exact leaf certificate. The certificate must be renewed next month. What is the BEST approach?",
+    "options": {
+      "A": "Keep the pin and renew the certificate as usual, since pins never affect renewals",
+      "B": "Pin to the public key or issuing CA, include a backup pin, and update the app first",
+      "C": "Remove TLS from the app so that certificate renewals can never cause any outages",
+      "D": "Tell customers to reinstall the app after the renewal if it stops working for them"
+    },
+    "answer": "B",
+    "explanation": "Pinning a leaf certificate breaks the app when the certificate changes. Pinning to a stable key or CA with backup pins, shipped before the change, keeps protection without outages.",
+    "distractor_rationales": {
+      "A": "A renewed leaf certificate will not match the pin, so the app will fail.",
+      "C": "Removing TLS destroys confidentiality and integrity.",
+      "D": "Reinstalling will not help if the new app still has the old pin."
+    },
+    "references_topic": "Certificate pinning trade-offs",
+    "version": "0.4"
+  },
+  {
+    "id": "D3-0097",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Cryptanalytic attacks",
+    "difficulty": "hard",
+    "type": "application",
+    "stem": "An attacker briefly drops the supply voltage to a smart card at the exact moment it checks a PIN, causing the card to skip the check. What type of attack is this?",
+    "options": {
+      "A": "Birthday attack against the card's hashing algorithm",
+      "B": "Chosen-plaintext attack against the card's encryption keys",
+      "C": "Fault injection attack",
+      "D": "Dictionary attack against the user's PIN"
+    },
+    "answer": "C",
+    "explanation": "Fault injection deliberately disturbs hardware, for example with voltage or clock glitches, so it makes errors such as skipping a security check. Tamper detection and redundant checks are countermeasures.",
+    "distractor_rationales": {
+      "A": "Birthday attacks look for hash collisions.",
+      "B": "Chosen-plaintext attacks analyze encryptions of chosen inputs.",
+      "D": "A dictionary attack guesses PINs rather than disturbing hardware."
+    },
+    "references_topic": "Fault injection attacks",
+    "version": "0.4"
+  },
+  {
+    "id": "D3-0098",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Hashing, signatures, and integrity",
+    "difficulty": "hard",
+    "type": "application",
+    "stem": "A software download page lists a SHA-256 hash next to the installer so users can verify it. Why does this give limited protection if the website itself is compromised?",
+    "options": {
+      "A": "SHA-256 is too weak to detect changes in large files such as installers",
+      "B": "Users cannot compute SHA-256 hashes without special hardware",
+      "C": "The hash reveals the installer's contents to anyone who reads it",
+      "D": "An attacker who swaps the installer can also swap the hash"
+    },
+    "answer": "D",
+    "explanation": "A hash from the same source as the file protects only against accidental corruption. Code signing, or a hash from a separate trusted channel, protects against a malicious swap.",
+    "distractor_rationales": {
+      "A": "SHA-256 reliably detects changes of any size.",
+      "B": "Standard tools compute SHA-256 easily.",
+      "C": "Hashes are one-way and do not reveal content."
+    },
+    "references_topic": "Integrity of published hashes",
+    "version": "0.4"
+  }
+]

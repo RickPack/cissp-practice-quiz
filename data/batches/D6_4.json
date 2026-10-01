@@ -1,0 +1,722 @@
+[
+  {
+    "id": "D6-0061",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Assessment strategy",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "Which activity formally compares an organization's controls against a defined standard and results in an independent opinion?",
+    "options": {
+      "A": "A vulnerability scan of internet-facing servers",
+      "B": "A tabletop exercise for the incident response team",
+      "C": "An audit",
+      "D": "A penetration test of a single web application"
+    },
+    "answer": "C",
+    "explanation": "An audit measures controls against defined criteria, such as a standard or regulation, and produces a formal opinion based on evidence.",
+    "distractor_rationales": {
+      "A": "A vulnerability scan identifies weaknesses but does not assess controls against a standard.",
+      "B": "A tabletop exercise tests plans and people through discussion.",
+      "D": "A penetration test shows whether weaknesses can be exploited."
+    },
+    "references_topic": "Audits versus other assessments",
+    "version": "0.4"
+  },
+  {
+    "id": "D6-0062",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Vulnerability assessment",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "A vulnerability scanner reports a server as clean, but the server actually has a known exploitable flaw. What is this called?",
+    "options": {
+      "A": "A true positive",
+      "B": "A false positive alert",
+      "C": "A true negative",
+      "D": "A false negative"
+    },
+    "answer": "D",
+    "explanation": "A false negative is a missed finding: the vulnerability exists, but the tool did not report it. False negatives are dangerous because they create false confidence.",
+    "distractor_rationales": {
+      "A": "A true positive is a correctly reported real vulnerability.",
+      "B": "A false positive reports a vulnerability that does not exist.",
+      "C": "A true negative correctly reports that no vulnerability exists."
+    },
+    "references_topic": "False negatives in scanning",
+    "version": "0.4"
+  },
+  {
+    "id": "D6-0063",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Penetration testing",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "Which phase of a penetration test usually comes first?",
+    "options": {
+      "A": "Reconnaissance",
+      "B": "Exploitation of the vulnerabilities that the testers discovered",
+      "C": "Privilege escalation on systems that were already compromised",
+      "D": "Writing the final report and briefing the client's leadership team"
+    },
+    "answer": "A",
+    "explanation": "After authorization and planning, testers start by gathering information about the target, which guides every later phase.",
+    "distractor_rationales": {
+      "B": "Exploitation depends on first finding targets and weaknesses.",
+      "C": "Escalation requires an initial foothold.",
+      "D": "Reporting comes at the end."
+    },
+    "references_topic": "Reconnaissance phase",
+    "version": "0.4"
+  },
+  {
+    "id": "D6-0064",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Code review and testing",
+    "difficulty": "easy",
+    "type": "application",
+    "stem": "Automated tools found no issues, but customers discovered they could apply the same discount code twice at checkout. Which technique is MOST likely to catch this kind of flaw before release?",
+    "options": {
+      "A": "Running the automated scanners again with their default settings",
+      "B": "Manual code review and testing of the business logic",
+      "C": "A vulnerability scan of the web server's operating system",
+      "D": "A load test that sends thousands of checkout requests at once"
+    },
+    "answer": "B",
+    "explanation": "Business logic flaws depend on understanding what the application should do. Human reviewers and testers who know the rules can spot them; generic automated tools rarely can.",
+    "distractor_rationales": {
+      "A": "Rerunning the same tools will not find logic they cannot understand.",
+      "C": "OS scanning does not examine application rules.",
+      "D": "Load testing measures performance, not logic."
+    },
+    "references_topic": "Manual review for business logic",
+    "version": "0.4"
+  },
+  {
+    "id": "D6-0065",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Misuse cases and coverage analysis",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "What is negative testing?",
+    "options": {
+      "A": "Testing that the application performs well under normal user load",
+      "B": "Testing performed by people who dislike the application's design",
+      "C": "Testing that the system handles invalid or unexpected input correctly",
+      "D": "Testing that is run only after a release has already failed in production"
+    },
+    "answer": "C",
+    "explanation": "Negative testing supplies bad, unexpected, or malicious input to confirm that the system rejects it safely rather than failing or behaving insecurely.",
+    "distractor_rationales": {
+      "A": "Normal load testing confirms expected behavior, not handling of bad input.",
+      "B": "The term does not refer to the testers' opinions.",
+      "D": "Negative testing should happen before release."
+    },
+    "references_topic": "Negative testing",
+    "version": "0.4"
+  },
+  {
+    "id": "D6-0066",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Interface testing",
+    "difficulty": "easy",
+    "type": "application",
+    "stem": "While testing a mobile app's API, a tester sees that the profile endpoint returns every user field, including the password hash, and the app simply hides the fields it does not need. What is the finding?",
+    "options": {
+      "A": "A performance issue, since large responses load slowly on mobile devices",
+      "B": "A cosmetic issue, since the app does not display the extra fields to users",
+      "C": "A licensing issue, since the extra fields use more of the API quota",
+      "D": "Excessive data exposure that the server should filter"
+    },
+    "answer": "D",
+    "explanation": "The API sends sensitive data that anyone intercepting or calling it directly can read. The server should return only the fields the client needs.",
+    "distractor_rationales": {
+      "A": "Performance may suffer, but the key issue is data exposure.",
+      "B": "Hiding fields in the app does not protect data in the response.",
+      "C": "Quota use is not the security concern."
+    },
+    "references_topic": "Excessive data exposure in APIs",
+    "version": "0.4"
+  },
+  {
+    "id": "D6-0067",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Security process data and metrics",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "What does the metric mean time to detect (MTTD) measure?",
+    "options": {
+      "A": "The average time between an incident starting and the organization noticing it",
+      "B": "The average time to fix a vulnerability after the vendor has released a patch for it",
+      "C": "The average time for a help desk ticket to receive its first response",
+      "D": "The average time a backup takes to complete each night"
+    },
+    "answer": "A",
+    "explanation": "MTTD measures how long attackers operate before being detected. Shorter MTTD limits the damage they can do.",
+    "distractor_rationales": {
+      "B": "Time to fix vulnerabilities is mean time to remediate.",
+      "C": "Ticket response time is a service metric.",
+      "D": "Backup duration is an operational metric."
+    },
+    "references_topic": "Mean time to detect",
+    "version": "0.4"
+  },
+  {
+    "id": "D6-0068",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Backup and recovery verification",
+    "difficulty": "easy",
+    "type": "managerial_best_first_most",
+    "stem": "How often should an organization test restoring its critical backups?",
+    "options": {
+      "A": "Only once, when the backup system is first installed",
+      "B": "On a regular schedule and after major system changes",
+      "C": "Only after a real disaster has already occurred",
+      "D": "Whenever the backup vendor releases a new product version"
+    },
+    "answer": "B",
+    "explanation": "Systems and data change over time, so restores must be tested regularly and after significant changes to confirm backups still work.",
+    "distractor_rationales": {
+      "A": "A single test does not prove later backups work.",
+      "C": "Finding out during a disaster is too late.",
+      "D": "Vendor release cycles are not tied to the organization's recovery needs."
+    },
+    "references_topic": "Regular restore testing",
+    "version": "0.4"
+  },
+  {
+    "id": "D6-0069",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Reporting and remediation",
+    "difficulty": "easy",
+    "type": "managerial_best_first_most",
+    "stem": "What should the executive summary of a security assessment report focus on?",
+    "options": {
+      "A": "Raw scanner output for every host that was tested",
+      "B": "The exact exploit code the testers used on each finding",
+      "C": "Overall risk, key findings, and business impact in plain language",
+      "D": "A list of every tool and version the testers ran"
+    },
+    "answer": "C",
+    "explanation": "Executives need to understand the overall risk and what decisions or resources are required, without technical detail.",
+    "distractor_rationales": {
+      "A": "Raw output belongs in appendices for technical staff.",
+      "B": "Exploit code is technical detail and sensitive.",
+      "D": "Tool lists are methodology detail, not executive content."
+    },
+    "references_topic": "Executive summaries",
+    "version": "0.4"
+  },
+  {
+    "id": "D6-0070",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Assessment strategy",
+    "difficulty": "medium",
+    "type": "knowledge",
+    "stem": "Which factor should MOST determine how often a system is assessed?",
+    "options": {
+      "A": "The alphabetical order of the systems in the asset inventory",
+      "B": "How long it has been since the system's software vendor was last audited by a third party",
+      "C": "The number of users who complain about the system's performance",
+      "D": "The system's risk, based on data sensitivity, exposure, and criticality"
+    },
+    "answer": "D",
+    "explanation": "Assessment effort should follow risk. Internet-facing systems holding sensitive data deserve more frequent assessment than low-risk internal tools.",
+    "distractor_rationales": {
+      "A": "Alphabetical order ignores risk.",
+      "B": "Vendor audit timing is only one input, not the main driver.",
+      "C": "Performance complaints do not measure security risk."
+    },
+    "references_topic": "Risk-based assessment frequency",
+    "version": "0.4"
+  },
+  {
+    "id": "D6-0071",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Vulnerability assessment",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "Many laptops belong to remote staff who rarely connect to the corporate network, so network scans miss them. Which approach BEST keeps them assessed?",
+    "options": {
+      "A": "Agent-based scanning that reports results from wherever the laptop is",
+      "B": "Scanning the office network more often during business hours",
+      "C": "Asking remote staff to bring their laptops into the office once a year",
+      "D": "Excluding remote laptops from vulnerability reporting"
+    },
+    "answer": "A",
+    "explanation": "An agent on each device checks it locally and reports results over the internet, so devices are assessed whether or not they are on the corporate network.",
+    "distractor_rationales": {
+      "B": "More frequent office scans still miss laptops that are not there.",
+      "C": "Annual visits leave long gaps.",
+      "D": "Excluding them hides risk."
+    },
+    "references_topic": "Agent-based scanning",
+    "version": "0.4"
+  },
+  {
+    "id": "D6-0072",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Penetration testing",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "A penetration test will include phishing and phone pretexting against employees. HR is worried. What is the BEST way to proceed?",
+    "options": {
+      "A": "Keep the social engineering tests secret from HR so that the results are realistic",
+      "B": "Document the scope in writing with HR and legal approval and plan how employee data is handled",
+      "C": "Drop social engineering from the test entirely because it involves people rather than systems",
+      "D": "Name and discipline every employee who falls for a test message after the test ends"
+    },
+    "answer": "B",
+    "explanation": "Social engineering tests affect people. Written scope approved by HR and legal, and clear handling of results, protect employees and the organization while keeping the test meaningful.",
+    "distractor_rationales": {
+      "A": "Hiding the test from HR risks legal and employee relations problems.",
+      "C": "Social engineering is a real attack path worth testing.",
+      "D": "Punishing individuals undermines trust and reporting."
+    },
+    "references_topic": "Scoping social engineering tests",
+    "version": "0.4"
+  },
+  {
+    "id": "D6-0073",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Log review",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "The log volume from a critical database server dropped to zero overnight, although the server is still running. What should the analyst do?",
+    "options": {
+      "A": "Ignore it, since fewer logs means fewer alerts to investigate",
+      "B": "Wait a week to see if the logs start flowing again on their own",
+      "C": "Investigate it, since logging may have failed or been disabled by an attacker",
+      "D": "Delete the server from the SIEM so that it stops affecting the dashboards"
+    },
+    "answer": "C",
+    "explanation": "A silent log source is itself a warning. It may be a configuration fault or an attacker turning off logging to hide activity.",
+    "distractor_rationales": {
+      "A": "Missing logs create blind spots.",
+      "B": "Waiting leaves the gap open.",
+      "D": "Removing the source hides the problem."
+    },
+    "references_topic": "Missing log sources",
+    "version": "0.4"
+  },
+  {
+    "id": "D6-0074",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Synthetic transactions and RUM",
+    "difficulty": "medium",
+    "type": "knowledge",
+    "stem": "What is a limitation of real user monitoring?",
+    "options": {
+      "A": "It cannot measure the performance of pages that users actually load",
+      "B": "It requires testers to write scripts for every possible user journey",
+      "C": "It only works for applications that are hosted on-premises",
+      "D": "It sees only paths users take and gives no data when traffic is low"
+    },
+    "answer": "D",
+    "explanation": "RUM depends on real traffic. Rarely used features and quiet periods produce little or no data, which is why synthetic monitoring is used alongside it.",
+    "distractor_rationales": {
+      "A": "Measuring real page loads is what RUM does well.",
+      "B": "Scripting journeys is a feature of synthetic monitoring.",
+      "C": "RUM works for any web application."
+    },
+    "references_topic": "Limits of real user monitoring",
+    "version": "0.4"
+  },
+  {
+    "id": "D6-0075",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Code review and testing",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "A team is changing the authentication module of a customer-facing application. Beyond the usual automated scans, what review is BEST?",
+    "options": {
+      "A": "A manual review by a security-trained reviewer before merging",
+      "B": "No extra review, since the automated scans already cover authentication",
+      "C": "A review by the developer who wrote the change, after it is released",
+      "D": "A review of the module's documentation only, since the code is standard"
+    },
+    "answer": "A",
+    "explanation": "Security-critical code deserves human review by someone who understands authentication pitfalls, in addition to automated tools, before it ships.",
+    "distractor_rationales": {
+      "B": "Automated tools miss many design and logic issues.",
+      "C": "Self-review after release is too late and not independent.",
+      "D": "Documentation review does not check the code."
+    },
+    "references_topic": "Review for security-critical code",
+    "version": "0.4"
+  },
+  {
+    "id": "D6-0076",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Misuse cases and coverage analysis",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "After a release, the team discovers that several security requirements were never tested. What practice BEST prevents this?",
+    "options": {
+      "A": "Asking testers to remember the security requirements during each sprint",
+      "B": "Mapping each security requirement to test cases in a traceability matrix",
+      "C": "Removing security requirements that are difficult to test from the backlog",
+      "D": "Adding more automated tests of the application's normal functionality"
+    },
+    "answer": "B",
+    "explanation": "A traceability matrix links every requirement to the tests that verify it, so untested requirements are visible before release.",
+    "distractor_rationales": {
+      "A": "Memory is unreliable.",
+      "C": "Dropping requirements hides risk.",
+      "D": "More functional tests do not ensure security requirements are covered."
+    },
+    "references_topic": "Traceability of security requirements",
+    "version": "0.4"
+  },
+  {
+    "id": "D6-0077",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Interface testing",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "An application lets users upload profile pictures. Which test is MOST important for this interface?",
+    "options": {
+      "A": "Checking that the upload button uses the company's brand color",
+      "B": "Measuring how long a typical photo takes to upload over Wi-Fi",
+      "C": "Uploading scripts and oversized files to confirm they are rejected",
+      "D": "Confirming that the uploaded pictures appear correctly in the user's profile"
+    },
+    "answer": "C",
+    "explanation": "Upload features are common attack paths. Testing that the server rejects dangerous file types and sizes, and stores files safely, checks the key security controls.",
+    "distractor_rationales": {
+      "A": "Visual design is not a security test.",
+      "B": "Upload speed is a performance concern.",
+      "D": "Normal display confirms function, not security."
+    },
+    "references_topic": "Testing file upload interfaces",
+    "version": "0.4"
+  },
+  {
+    "id": "D6-0078",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Breach and attack simulation",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "Breach and attack simulation shows that the endpoint agent detected every simulated technique, yet the SOC received no alerts. What should be fixed?",
+    "options": {
+      "A": "Nothing, since the endpoint agent detected every technique successfully",
+      "B": "The endpoint agent, since its detections must have been false positives",
+      "C": "The simulation tool, since it should have raised alerts on its own console",
+      "D": "The path from agent to SIEM and SOC so detections become alerts"
+    },
+    "answer": "D",
+    "explanation": "A detection that never reaches analysts is not useful. The simulation exposed a broken integration or rule between the agent and the SOC, which must be repaired.",
+    "distractor_rationales": {
+      "A": "Detection without an alert leads to no response.",
+      "B": "The detections were real; the problem is downstream.",
+      "C": "The simulation's own console is not how the SOC works."
+    },
+    "references_topic": "Validating the detection chain",
+    "version": "0.4"
+  },
+  {
+    "id": "D6-0079",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Security process data and metrics",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "How should a CISO BEST present security metrics to executives?",
+    "options": {
+      "A": "Show trends against agreed targets, and explain what they mean for risk",
+      "B": "Show a single month's raw numbers with no comparison or context",
+      "C": "Show as many metrics as possible so that nothing is left out",
+      "D": "Show only the metrics that are improving, to keep the executives' confidence high"
+    },
+    "answer": "A",
+    "explanation": "Executives need direction and meaning: trends against targets, tied to risk, support decisions.",
+    "distractor_rationales": {
+      "B": "Numbers without context do not show whether things are getting better or worse.",
+      "C": "Too many metrics bury the important ones.",
+      "D": "Hiding bad news prevents informed decisions."
+    },
+    "references_topic": "Presenting metrics to executives",
+    "version": "0.4"
+  },
+  {
+    "id": "D6-0080",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Backup and recovery verification",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "A restore test of a critical system succeeded, but took three days against an RTO of eight hours. What should happen next?",
+    "options": {
+      "A": "Record the test as a pass, since the data was fully restored",
+      "B": "Report the gap to the system owner and change the recovery strategy to meet the RTO",
+      "C": "Raise the RTO to three days so that it matches the test result",
+      "D": "Stop testing this system, since the result will not change"
+    },
+    "answer": "B",
+    "explanation": "A restore that misses the RTO is a failed test. The owner must know, and the recovery approach must change to meet the business requirement, or the business must formally accept a different target.",
+    "distractor_rationales": {
+      "A": "Meeting the data requirement but missing the time requirement is still a failure.",
+      "C": "Changing the target to match the result ignores the business need.",
+      "D": "Stopping tests hides the problem."
+    },
+    "references_topic": "Reporting RTO gaps from restore tests",
+    "version": "0.4"
+  },
+  {
+    "id": "D6-0081",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Reporting and remediation",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "Several findings from last year's penetration test appear again in this year's report. What process gap does this MOST likely show?",
+    "options": {
+      "A": "The testers were not experienced enough to find new issues",
+      "B": "The report format was too long for owners to read",
+      "C": "Findings were not tracked to closure and retested",
+      "D": "The scope of this year's test was too broad"
+    },
+    "answer": "C",
+    "explanation": "Recurring findings usually mean remediation was never assigned, completed, or verified. Tracking each finding with an owner and a retest closes the loop.",
+    "distractor_rationales": {
+      "A": "Repeat findings reflect remediation, not tester skill.",
+      "B": "Report length is not the core gap.",
+      "D": "A broad scope does not explain repeat findings."
+    },
+    "references_topic": "Tracking findings to verified closure",
+    "version": "0.4"
+  },
+  {
+    "id": "D6-0082",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Audits and SOC reports",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "A new cloud vendor can provide only a SOC 2 Type I report because it has operated for less than a year. What is the BEST approach?",
+    "options": {
+      "A": "Treat the Type I report as proof that the controls operated effectively all year",
+      "B": "Reject the vendor outright, because only Type II reports are acceptable",
+      "C": "Ignore the report and rely on the vendor's marketing material instead",
+      "D": "Accept it as evidence of design only, and require a Type II report next year"
+    },
+    "answer": "D",
+    "explanation": "A Type I report covers control design at a point in time. It is useful for a new vendor, but operating effectiveness must be confirmed later with a Type II report and, meanwhile, other assurance.",
+    "distractor_rationales": {
+      "A": "Type I does not test operation over time.",
+      "B": "Rejecting the vendor may be unnecessary if other assurance is obtained.",
+      "C": "Marketing material is not assurance."
+    },
+    "references_topic": "Using a SOC 2 Type I report",
+    "version": "0.4"
+  },
+  {
+    "id": "D6-0083",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Assessment strategy",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "A regulator is satisfied with an annual audit, but the board wants assurance that key controls are working throughout the year. What is the BEST approach?",
+    "options": {
+      "A": "Automated continuous control monitoring with regular reporting",
+      "B": "Doubling the scope of the annual audit so it covers more controls",
+      "C": "Asking control owners to certify each year that their controls worked",
+      "D": "Hiring a second audit firm to repeat the same annual audit"
+    },
+    "answer": "A",
+    "explanation": "Continuous monitoring tests key controls automatically and frequently, showing failures when they happen rather than once a year.",
+    "distractor_rationales": {
+      "B": "A larger annual audit is still a point-in-time snapshot.",
+      "C": "Self-certification is weak and still annual.",
+      "D": "A second annual audit does not add continuous assurance."
+    },
+    "references_topic": "Continuous control monitoring",
+    "version": "0.4"
+  },
+  {
+    "id": "D6-0084",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Penetration testing",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "On day two of a ten-day penetration test, testers gain domain administrator rights through a flaw that any attacker could exploit. What should they do?",
+    "options": {
+      "A": "Keep the finding for the final report so that the test timeline is not disturbed",
+      "B": "Notify the client contact promptly, per the rules of engagement, then continue",
+      "C": "Stop the test, since there is nothing left to test once domain admin is reached",
+      "D": "Fix the flaw themselves so that the client is protected right away"
+    },
+    "answer": "B",
+    "explanation": "Rules of engagement usually require prompt notice of critical findings so the client can act. Testing can then continue toward the agreed objectives.",
+    "distractor_rationales": {
+      "A": "Waiting eight days leaves a critical exposure open.",
+      "C": "Other objectives and attack paths may still need testing.",
+      "D": "Testers should not change production systems outside their authority."
+    },
+    "references_topic": "Reporting critical findings during a test",
+    "version": "0.4"
+  },
+  {
+    "id": "D6-0085",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Log review",
+    "difficulty": "hard",
+    "type": "knowledge",
+    "stem": "A breach is discovered 90 days after it began, but the organization keeps logs for only seven days. What should MOST determine the log retention period going forward?",
+    "options": {
+      "A": "The storage capacity of the log server that the team bought last year",
+      "B": "The preference of whichever analyst manages the SIEM",
+      "C": "Legal requirements and how long investigations need to look back",
+      "D": "The number of alerts the SOC can handle each day"
+    },
+    "answer": "C",
+    "explanation": "Retention should cover legal and regulatory requirements and realistic investigation needs, which often span months because intrusions go undetected for long periods.",
+    "distractor_rationales": {
+      "A": "Storage should be sized to requirements, not the other way around.",
+      "B": "Personal preference is not a basis for retention.",
+      "D": "Alert volume is unrelated to how long logs must be kept."
+    },
+    "references_topic": "Setting log retention",
+    "version": "0.4"
+  },
+  {
+    "id": "D6-0086",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Synthetic transactions and RUM",
+    "difficulty": "hard",
+    "type": "application",
+    "stem": "A synthetic monitor logs in to the production application every five minutes using a real employee's account with MFA turned off. What is the BEST fix?",
+    "options": {
+      "A": "Keep the account, but change its password every month",
+      "B": "Stop monitoring the login flow and test only public pages",
+      "C": "Turn MFA on and have the employee approve each prompt",
+      "D": "Use a dedicated test account with minimal rights and vaulted credentials"
+    },
+    "answer": "D",
+    "explanation": "Monitoring needs its own non-human account, restricted to what the test needs and with its secrets protected. Borrowing a real user's account with MFA disabled creates an easy target.",
+    "distractor_rationales": {
+      "A": "Password changes do not fix the misuse of a real account without MFA.",
+      "B": "The login flow is often the most important thing to monitor.",
+      "C": "Prompting a person every five minutes is unworkable."
+    },
+    "references_topic": "Accounts for synthetic monitoring",
+    "version": "0.4"
+  },
+  {
+    "id": "D6-0087",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Breach and attack simulation",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "The security team wants to run breach and attack simulation in production. Operations worries about outages. What is the BEST way to proceed?",
+    "options": {
+      "A": "Use safe, non-destructive techniques, agree the scope, and coordinate with the SOC",
+      "B": "Run the most destructive techniques first to find the worst gaps quickly",
+      "C": "Run it without telling the SOC so that detections are realistic",
+      "D": "Run it only in the test environment, since production is too risky"
+    },
+    "answer": "A",
+    "explanation": "Most simulation tools offer benign versions of attack techniques. Agreed scope, safe payloads, and coordination with operations and the SOC keep the test realistic without harming production.",
+    "distractor_rationales": {
+      "B": "Destructive techniques risk outages.",
+      "C": "Uncoordinated tests can trigger costly incident responses.",
+      "D": "Test environments often differ from production controls."
+    },
+    "references_topic": "Running simulations safely in production",
+    "version": "0.4"
+  },
+  {
+    "id": "D6-0088",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Security process data and metrics",
+    "difficulty": "hard",
+    "type": "application",
+    "stem": "The EDR console reports 99% of endpoints protected. An audit finds that 20% of the company's endpoints never appear in the console at all. What is the flaw in the metric?",
+    "options": {
+      "A": "The metric should be reported monthly instead of weekly",
+      "B": "Its denominator counts only enrolled endpoints, not every endpoint in the inventory",
+      "C": "The console rounds percentages up to the nearest whole number",
+      "D": "The metric includes servers as well as laptops"
+    },
+    "answer": "B",
+    "explanation": "Coverage must be measured against the full asset inventory. A tool can report only on devices it knows about, so its own numbers overstate coverage.",
+    "distractor_rationales": {
+      "A": "Frequency does not fix the wrong denominator.",
+      "C": "Rounding is trivial compared with missing 20% of devices.",
+      "D": "Including servers is appropriate for coverage."
+    },
+    "references_topic": "Choosing the right denominator",
+    "version": "0.4"
+  },
+  {
+    "id": "D6-0089",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Reporting and remediation",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "A penetration test report includes step-by-step exploitation details for unpatched critical systems. How should it be distributed?",
+    "options": {
+      "A": "Posted on the company intranet so that everyone can learn from it",
+      "B": "Emailed unencrypted to all IT staff and every business unit head",
+      "C": "Shared on a need-to-know basis, encrypted, with an executive summary for others",
+      "D": "Given to vendors so that they can fix their own products"
+    },
+    "answer": "C",
+    "explanation": "Detailed reports are a roadmap for attackers until issues are fixed. Limiting and encrypting distribution, while giving others a sanitized summary, balances awareness with protection.",
+    "distractor_rationales": {
+      "A": "Broad posting exposes the roadmap widely.",
+      "B": "Unencrypted mass distribution is easily leaked.",
+      "D": "Vendors should get only the details relevant to their products, through proper channels."
+    },
+    "references_topic": "Protecting assessment reports",
+    "version": "0.4"
+  },
+  {
+    "id": "D6-0090",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Audits and SOC reports",
+    "difficulty": "hard",
+    "type": "application",
+    "stem": "A critical vendor's SOC 2 Type II report includes exceptions in change management testing. What is the BEST response?",
+    "options": {
+      "A": "Ignore the exceptions, since the vendor still received a report",
+      "B": "Terminate the contract immediately, since any exception at all is unacceptable",
+      "C": "Ask the vendor's auditors to remove the exceptions from the report",
+      "D": "Assess their impact on your use, and ask the vendor for remediation plans"
+    },
+    "answer": "D",
+    "explanation": "Exceptions must be evaluated in context. If they affect controls the company relies on, it should follow up with the vendor and consider compensating controls on its side.",
+    "distractor_rationales": {
+      "A": "Exceptions can indicate real risk.",
+      "B": "Automatic termination is disproportionate without assessment.",
+      "C": "Customers cannot and should not ask auditors to alter findings."
+    },
+    "references_topic": "Evaluating SOC report exceptions",
+    "version": "0.4"
+  }
+]

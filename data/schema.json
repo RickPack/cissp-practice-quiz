@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rickpack.github.io/cissp-practice-quiz/data/schema.json",
+  "title": "CISSP practice question batch",
+  "description": "A batch file is a JSON array of original practice questions.",
+  "type": "array",
+  "minItems": 1,
+  "maxItems": 50,
+  "items": { "$ref": "#/$defs/question" },
+  "$defs": {
+    "letter": { "type": "string", "enum": ["A", "B", "C", "D"] },
+    "text": { "type": "string", "minLength": 1, "pattern": "\\S" },
+    "question": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id", "domain", "domain_name", "subtopic", "difficulty", "type", "stem",
+        "options", "answer", "explanation", "distractor_rationales",
+        "references_topic", "version"
+      ],
+      "properties": {
+        "id": { "type": "string", "pattern": "^D[1-8]-[0-9]{4}$" },
+        "domain": { "type": "integer", "minimum": 1, "maximum": 8 },
+        "domain_name": {
+          "type": "string",
+          "enum": [
+            "Security and Risk Management",
+            "Asset Security",
+            "Security Architecture and Engineering",
+            "Communication and Network Security",
+            "Identity and Access Management",
+            "Security Assessment and Testing",
+            "Security Operations",
+            "Software Development Security"
+          ]
+        },
+        "subtopic": { "$ref": "#/$defs/text" },
+        "difficulty": { "type": "string", "enum": ["easy", "medium", "hard"] },
+        "type": { "type": "string", "enum": ["knowledge", "application", "managerial_best_first_most"] },
+        "stem": { "type": "string", "minLength": 20 },
+        "options": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["A", "B", "C", "D"],
+          "properties": {
+            "A": { "$ref": "#/$defs/text" },
+            "B": { "$ref": "#/$defs/text" },
+            "C": { "$ref": "#/$defs/text" },
+            "D": { "$ref": "#/$defs/text" }
+          }
+        },
+        "answer": { "$ref": "#/$defs/letter" },
+        "explanation": { "type": "string", "minLength": 20 },
+        "distractor_rationales": {
+          "type": "object",
+          "propertyNames": { "$ref": "#/$defs/letter" },
+          "additionalProperties": { "$ref": "#/$defs/text" },
+          "minProperties": 3,
+          "maxProperties": 3
+        },
+        "references_topic": { "$ref": "#/$defs/text" },
+        "version": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+$" }
+      }
+    }
+  }
+}

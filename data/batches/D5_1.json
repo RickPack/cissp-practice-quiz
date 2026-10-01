@@ -1,0 +1,242 @@
+[
+  {
+    "id": "D5-0001",
+    "domain": 5,
+    "domain_name": "Identity and Access Management",
+    "subtopic": "Multi-factor and passwordless authentication",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "Which combination represents true multi-factor authentication?",
+    "options": {
+      "A": "A password and a one-time code from a hardware token",
+      "B": "A password plus answers to two personal security questions",
+      "C": "A fingerprint scan and a palm-vein scan",
+      "D": "A PIN and a memorized passphrase"
+    },
+    "answer": "A",
+    "explanation": "Multi-factor authentication requires factors from different categories. A password (something you know) plus a hardware token code (something you have) qualifies.",
+    "distractor_rationales": {
+      "B": "A password and security answers are both knowledge factors.",
+      "C": "Both scans are biometric (something you are), so this is a single category.",
+      "D": "A PIN and a passphrase are both knowledge factors."
+    },
+    "references_topic": "Authentication factor categories",
+    "version": "0.1"
+  },
+  {
+    "id": "D5-0002",
+    "domain": 5,
+    "domain_name": "Identity and Access Management",
+    "subtopic": "Authorization models",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "In which access control model does the owner of a resource decide who may access it, typically through access control lists?",
+    "options": {
+      "A": "Mandatory access control (MAC)",
+      "B": "Discretionary access control (DAC)",
+      "C": "Rule-based access control",
+      "D": "Attribute-based access control (ABAC)"
+    },
+    "answer": "B",
+    "explanation": "In discretionary access control, resource owners grant or revoke access at their own discretion, usually through access control lists.",
+    "distractor_rationales": {
+      "A": "MAC is enforced by the system using labels and clearances. Users cannot change it.",
+      "C": "Rule-based access control applies global rules, such as firewall rules, to all subjects regardless of ownership.",
+      "D": "ABAC evaluates policies over attributes of the subject, object, action, and environment rather than owner choice."
+    },
+    "references_topic": "Discretionary access control",
+    "version": "0.1"
+  },
+  {
+    "id": "D5-0003",
+    "domain": 5,
+    "domain_name": "Identity and Access Management",
+    "subtopic": "Identification and authentication",
+    "difficulty": "easy",
+    "type": "application",
+    "stem": "A user types a username into a login page and then enters a password. Which step does entering the username represent?",
+    "options": {
+      "A": "Authentication",
+      "B": "Authorization",
+      "C": "Identification",
+      "D": "Accounting"
+    },
+    "answer": "C",
+    "explanation": "Identification is the act of claiming an identity, such as entering a username. Authentication then proves that claim, for example with a password.",
+    "distractor_rationales": {
+      "A": "Authentication verifies the claimed identity with a credential. That is the password step.",
+      "B": "Authorization decides what the user may do after authentication.",
+      "D": "Accounting records the user's actions to support accountability."
+    },
+    "references_topic": "Identification versus authentication",
+    "version": "0.1"
+  },
+  {
+    "id": "D5-0004",
+    "domain": 5,
+    "domain_name": "Identity and Access Management",
+    "subtopic": "Provisioning lifecycle",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "An internal audit finds that employees who transfer between departments keep their old access rights, accumulating permissions over time. What should the IAM manager implement FIRST to address the root cause?",
+    "options": {
+      "A": "Quarterly password changes for all transferred employees",
+      "B": "A data loss prevention tool to monitor transferred employees",
+      "C": "Annual security awareness training on acceptable use",
+      "D": "A transfer process that revokes old role access upon moving"
+    },
+    "answer": "D",
+    "explanation": "Privilege creep comes from a gap in the identity lifecycle. Building transfers (movers) into provisioning so that previous role entitlements are removed when new ones are granted fixes the root cause. Access reviews then catch anything left over.",
+    "distractor_rationales": {
+      "A": "Password changes do not affect entitlements.",
+      "B": "DLP monitors data movement but leaves the excessive access in place.",
+      "C": "Training does not change how access is provisioned or removed."
+    },
+    "references_topic": "Preventing privilege creep for movers",
+    "version": "0.1"
+  },
+  {
+    "id": "D5-0005",
+    "domain": 5,
+    "domain_name": "Identity and Access Management",
+    "subtopic": "Federation and SSO",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "A university lets students sign in to a third-party learning platform with their university credentials. After authenticating a student, the university's identity provider sends a signed XML assertion to the platform. Which standard is being used?",
+    "options": {
+      "A": "SAML 2.0",
+      "B": "OAuth 2.0",
+      "C": "Kerberos",
+      "D": "RADIUS"
+    },
+    "answer": "A",
+    "explanation": "SAML 2.0 exchanges signed, XML-based assertions between an identity provider and a service provider to enable web single sign-on.",
+    "distractor_rationales": {
+      "B": "OAuth 2.0 delegates authorization with access tokens. It does not define XML authentication assertions (OpenID Connect adds authentication with JSON tokens).",
+      "C": "Kerberos uses tickets inside a realm and is not designed for browser-based federation between organizations.",
+      "D": "RADIUS provides AAA for network access, not web federation."
+    },
+    "references_topic": "SAML web single sign-on",
+    "version": "0.1"
+  },
+  {
+    "id": "D5-0006",
+    "domain": 5,
+    "domain_name": "Identity and Access Management",
+    "subtopic": "Authentication protocols",
+    "difficulty": "medium",
+    "type": "knowledge",
+    "stem": "In Kerberos, what does a client present to a service to prove it has been authenticated by the key distribution center, without sending its password over the network?",
+    "options": {
+      "A": "Its password hash",
+      "B": "A service ticket issued by the ticket-granting service",
+      "C": "A SAML assertion signed by the organization's identity provider",
+      "D": "A RADIUS Access-Accept message"
+    },
+    "answer": "B",
+    "explanation": "After obtaining a ticket-granting ticket, the client asks the ticket-granting service for a service ticket and presents it, together with an authenticator, to the target service.",
+    "distractor_rationales": {
+      "A": "Kerberos never sends the password or its hash to the service. The password only derives a key locally.",
+      "C": "SAML assertions belong to a different federation standard.",
+      "D": "Access-Accept is a message from a RADIUS server to a network access server."
+    },
+    "references_topic": "Kerberos ticket flow",
+    "version": "0.1"
+  },
+  {
+    "id": "D5-0007",
+    "domain": 5,
+    "domain_name": "Identity and Access Management",
+    "subtopic": "Privileged and service accounts",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "A company discovers that a service account used by a scheduled integration job has domain administrator rights and a password unchanged for six years. The job only needs to read one database. What is the BEST remediation?",
+    "options": {
+      "A": "Disable the account immediately, even though the integration job will fail",
+      "B": "Leave the rights unchanged but enable detailed logging of its activity",
+      "C": "Scope it to read-only on that database, and vault and rotate its secret",
+      "D": "Convert the account into an interactive user account assigned to one administrator"
+    },
+    "answer": "C",
+    "explanation": "Apply least privilege by limiting the account to read access on the one database, and manage its credential in a privileged access vault with automatic rotation (or use a managed identity). The job keeps working and the excess risk is removed.",
+    "distractor_rationales": {
+      "A": "Disabling the account breaks a business process when removing the excess rights would achieve the security goal without an outage.",
+      "B": "Logging helps detect misuse but leaves the excessive rights in place.",
+      "D": "Letting a person use a service account interactively destroys accountability, and the account would still be over-privileged."
+    },
+    "references_topic": "Least privilege for service accounts",
+    "version": "0.1"
+  },
+  {
+    "id": "D5-0008",
+    "domain": 5,
+    "domain_name": "Identity and Access Management",
+    "subtopic": "Just-in-time access",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "Cloud administrators at a SaaS company hold standing global administrator rights, although most need elevated access only a few hours per month. Which approach BEST reduces risk while preserving their ability to do their jobs?",
+    "options": {
+      "A": "Require administrators to sign an acceptable use agreement each quarter",
+      "B": "Remove all administrator rights and route every change through the CISO",
+      "C": "Keep standing rights but require every administrator to use a long, complex password",
+      "D": "Implement just-in-time elevation with approval, time limits, and session logging"
+    },
+    "answer": "D",
+    "explanation": "Just-in-time access removes standing privilege. Elevation is granted on request, approved, limited in time, and logged, which shrinks the window in which a compromised administrator account can do damage.",
+    "distractor_rationales": {
+      "A": "Signing a policy acknowledgment does not reduce exposure from standing privilege.",
+      "B": "Routing every change through one executive creates a bottleneck, removes needed capability, and does not scale.",
+      "C": "Strong passwords do not address the exposure of always-on privilege to phishing or token theft."
+    },
+    "references_topic": "Just-in-time privileged access",
+    "version": "0.1"
+  },
+  {
+    "id": "D5-0009",
+    "domain": 5,
+    "domain_name": "Identity and Access Management",
+    "subtopic": "Session management",
+    "difficulty": "hard",
+    "type": "application",
+    "stem": "Penetration testers find that a web application's session identifier stays the same before and after a user logs in. An attacker who plants a known session ID in a victim's browser can use it after the victim authenticates. Which fix BEST addresses this vulnerability?",
+    "options": {
+      "A": "Issue a new session identifier upon successful authentication",
+      "B": "Increase the session identifier length to 256 bits",
+      "C": "Set a 30-minute absolute session timeout",
+      "D": "Encrypt the session identifier with AES before it is sent to the browser"
+    },
+    "answer": "A",
+    "explanation": "This is session fixation. Regenerating the session identifier at login (and at any privilege change) makes the attacker's pre-planted identifier worthless.",
+    "distractor_rationales": {
+      "B": "Longer identifiers resist guessing, but here the attacker already knows the identifier.",
+      "C": "A timeout limits how long a session lasts but does not stop the attacker from using the fixed session during that time.",
+      "D": "An encrypted token is still the same reusable value, so the attacker can replay it just the same."
+    },
+    "references_topic": "Session fixation prevention",
+    "version": "0.1"
+  },
+  {
+    "id": "D5-0010",
+    "domain": 5,
+    "domain_name": "Identity and Access Management",
+    "subtopic": "Access reviews",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "During a quarterly access review, managers approve nearly 100% of their staff's entitlements within minutes, and auditors question whether the reviews are meaningful. What is the BEST way to improve the effectiveness of the review process?",
+    "options": {
+      "A": "Increase review frequency from quarterly to weekly",
+      "B": "Give reviewers risk-ranked, plain-language entitlement data",
+      "C": "Move all review responsibility from managers to the IT help desk",
+      "D": "Stop the reviews, because managers already know what their staff need"
+    },
+    "answer": "B",
+    "explanation": "Rubber-stamping happens when reviewers cannot understand entitlements or see which ones matter. Plain-language descriptions, risk ranking that highlights privileged access and separation-of-duties conflicts, and tracking of revocation outcomes make reviews meaningful.",
+    "distractor_rationales": {
+      "A": "More frequent reviews would deepen reviewer fatigue and make rubber-stamping worse.",
+      "C": "The help desk lacks the business knowledge to judge what each person needs. Managers and data owners should attest.",
+      "D": "Dropping the reviews removes a key detective control that many frameworks require."
+    },
+    "references_topic": "Effective user access reviews",
+    "version": "0.1"
+  }
+]

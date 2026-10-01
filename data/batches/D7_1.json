@@ -1,0 +1,242 @@
+[
+  {
+    "id": "D7-0001",
+    "domain": 7,
+    "domain_name": "Security Operations",
+    "subtopic": "DR plan testing",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "Which disaster recovery test activates the alternate site and processes real transactions there while the primary site continues normal operations?",
+    "options": {
+      "A": "Parallel test",
+      "B": "Full-interruption test",
+      "C": "Tabletop exercise",
+      "D": "Checklist review"
+    },
+    "answer": "A",
+    "explanation": "A parallel test brings the recovery site online and runs processing there alongside the primary site, without disrupting production.",
+    "distractor_rationales": {
+      "B": "A full-interruption test actually shuts down the primary site and moves operations to the alternate site.",
+      "C": "A tabletop exercise is a facilitated discussion of a scenario. No systems are activated.",
+      "D": "A checklist review distributes the plan for people to review. Nothing is activated."
+    },
+    "references_topic": "Disaster recovery test types",
+    "version": "0.1"
+  },
+  {
+    "id": "D7-0002",
+    "domain": 7,
+    "domain_name": "Security Operations",
+    "subtopic": "Investigations and evidence",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "What is the primary purpose of maintaining a chain of custody for digital evidence?",
+    "options": {
+      "A": "To speed up the forensic analysis process",
+      "B": "To document every handler and transfer, preserving admissibility",
+      "C": "To encrypt the evidence so it cannot be read by unauthorized parties",
+      "D": "To ensure that only law enforcement can view the evidence"
+    },
+    "answer": "B",
+    "explanation": "Chain of custody records who possessed the evidence, when, and what was done with it. That record demonstrates the evidence was not altered and supports its admissibility.",
+    "distractor_rationales": {
+      "A": "Chain of custody adds process steps. It does not speed up analysis.",
+      "C": "Evidence may be encrypted, but encryption is not the purpose of chain of custody.",
+      "D": "Internal investigators, counsel, and courts may also handle evidence."
+    },
+    "references_topic": "Chain of custody",
+    "version": "0.1"
+  },
+  {
+    "id": "D7-0003",
+    "domain": 7,
+    "domain_name": "Security Operations",
+    "subtopic": "Backup and recovery strategies",
+    "difficulty": "easy",
+    "type": "application",
+    "stem": "A company takes a full backup every Sunday and a differential backup every other night. The server fails on Thursday morning. Which backups are needed to restore it to the most recent state?",
+    "options": {
+      "A": "Sunday's full backup and every differential from Monday through Wednesday",
+      "B": "Only Wednesday night's differential backup",
+      "C": "Sunday's full backup and Wednesday night's differential backup",
+      "D": "Every backup taken since the previous month's full backup"
+    },
+    "answer": "C",
+    "explanation": "A differential contains every change since the last full backup, so only the full backup and the most recent differential are needed.",
+    "distractor_rationales": {
+      "A": "Restoring every backup in sequence is how incremental backups work, not differentials.",
+      "B": "A differential on its own lacks the full backup it builds on.",
+      "D": "Backups from before Sunday's full backup are not needed."
+    },
+    "references_topic": "Full and differential backup restoration",
+    "version": "0.1"
+  },
+  {
+    "id": "D7-0004",
+    "domain": 7,
+    "domain_name": "Security Operations",
+    "subtopic": "Incident management",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "A SOC confirms that ransomware is actively encrypting file shares on several servers. What should the incident response team do FIRST?",
+    "options": {
+      "A": "Begin restoring all of the encrypted files from last night's backup set",
+      "B": "Contact the attackers to negotiate the ransom amount",
+      "C": "Wipe and rebuild all affected servers immediately",
+      "D": "Isolate the affected systems from the network to contain the spread"
+    },
+    "answer": "D",
+    "explanation": "Containment comes first. Isolating infected systems stops further encryption and spread and preserves evidence. Eradication and recovery follow.",
+    "distractor_rationales": {
+      "A": "Restoring before containment risks having the restored data encrypted again.",
+      "B": "Whether to engage with attackers is a later business and legal decision, not the first step.",
+      "C": "Wiping servers destroys evidence and belongs after containment and scoping."
+    },
+    "references_topic": "Incident containment priorities",
+    "version": "0.1"
+  },
+  {
+    "id": "D7-0005",
+    "domain": 7,
+    "domain_name": "Security Operations",
+    "subtopic": "Logging and monitoring",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "A company's server clocks drift by several minutes, and analysts struggle to reconstruct the order of events across systems during investigations. Which control BEST resolves this?",
+    "options": {
+      "A": "Synchronizing all systems to authoritative time sources using NTP",
+      "B": "Increasing log retention from 90 days to one year",
+      "C": "Forwarding every log to a central SIEM without changing anything else",
+      "D": "Enabling verbose debug logging on every server"
+    },
+    "answer": "A",
+    "explanation": "Reliable correlation requires consistent timestamps, which come from synchronizing every system to an authoritative time source with NTP.",
+    "distractor_rationales": {
+      "B": "Keeping logs longer does not fix inconsistent timestamps.",
+      "C": "Centralizing logs does not correct skewed event times recorded by the source systems.",
+      "D": "More verbose logs add noise but leave the clocks just as wrong."
+    },
+    "references_topic": "Time synchronization for log correlation",
+    "version": "0.1"
+  },
+  {
+    "id": "D7-0006",
+    "domain": 7,
+    "domain_name": "Security Operations",
+    "subtopic": "Detective and preventive controls",
+    "difficulty": "medium",
+    "type": "knowledge",
+    "stem": "Which statement BEST describes the difference between an intrusion detection system (IDS) and an intrusion prevention system (IPS)?",
+    "options": {
+      "A": "An IDS uses signatures, while an IPS uses only anomaly detection",
+      "B": "An IPS sits inline and can block; an IDS monitors and alerts",
+      "C": "An IDS encrypts traffic, while an IPS decrypts it for inspection",
+      "D": "An IPS protects hosts only, while an IDS protects networks only"
+    },
+    "answer": "B",
+    "explanation": "An IPS is placed inline in the traffic path and can drop or block malicious traffic. An IDS typically watches a copy of the traffic and raises alerts.",
+    "distractor_rationales": {
+      "A": "Both IDS and IPS products can use signature-based and anomaly-based detection.",
+      "C": "Encryption is not the purpose of either system.",
+      "D": "Both come in host-based and network-based forms."
+    },
+    "references_topic": "IDS versus IPS",
+    "version": "0.1"
+  },
+  {
+    "id": "D7-0007",
+    "domain": 7,
+    "domain_name": "Security Operations",
+    "subtopic": "Change management",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "A senior engineer applies an unapproved firewall rule change on a Friday night to fix an urgent outage, and the change works. On Monday, what should the change manager do?",
+    "options": {
+      "A": "Reverse the change, since all unapproved changes must be undone",
+      "B": "Take no action, because the outage was resolved successfully",
+      "C": "Log it as an emergency change and review it retroactively",
+      "D": "Revoke the engineer's administrative access permanently"
+    },
+    "answer": "C",
+    "explanation": "Emergency change procedures allow urgent fixes to restore service, but the change must then be documented, reviewed, and approved after the fact to confirm it did not introduce new risk.",
+    "distractor_rationales": {
+      "A": "Reversing a working fix could bring the outage back. The review should decide whether the change stays.",
+      "B": "Skipping review leaves an undocumented change and configuration drift.",
+      "D": "Permanent revocation is punitive and disproportionate. The issue is process, not malice."
+    },
+    "references_topic": "Emergency change process",
+    "version": "0.1"
+  },
+  {
+    "id": "D7-0008",
+    "domain": 7,
+    "domain_name": "Security Operations",
+    "subtopic": "Disaster recovery",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "An order system has a recovery time objective (RTO) of 4 hours and a recovery point objective (RPO) of 15 minutes. The current DR solution restores nightly tape backups to a cold site. What is the BEST recommendation?",
+    "options": {
+      "A": "Keep the current solution, since tape backups are reliable and inexpensive",
+      "B": "Move to a cold site closer to headquarters to reduce travel time",
+      "C": "Increase tape backup frequency to twice daily at the existing cold site",
+      "D": "Replicate data near-continuously to a warm or hot recovery site"
+    },
+    "answer": "D",
+    "explanation": "Nightly tapes can lose up to 24 hours of data, which fails the 15-minute RPO. A cold site takes days to stand up, which fails the 4-hour RTO. Near-continuous replication to a warm or hot site meets both objectives.",
+    "distractor_rationales": {
+      "A": "The current solution misses both the RTO and the RPO.",
+      "B": "A closer cold site still has to be equipped and configured, and the RPO problem remains.",
+      "C": "Twelve hours of potential data loss still far exceeds a 15-minute RPO, and the cold site still misses the RTO."
+    },
+    "references_topic": "Matching recovery sites to RTO and RPO",
+    "version": "0.1"
+  },
+  {
+    "id": "D7-0009",
+    "domain": 7,
+    "domain_name": "Security Operations",
+    "subtopic": "Digital forensics",
+    "difficulty": "hard",
+    "type": "application",
+    "stem": "Responders arrive at a running server suspected of hosting in-memory malware that leaves no files on disk. To preserve the MOST valuable evidence, what should they do first?",
+    "options": {
+      "A": "Capture a memory image using a trusted tool before powering down",
+      "B": "Pull the power cord to preserve the disk in its current state",
+      "C": "Run a full antivirus scan on the server to identify the malware",
+      "D": "Create a forensic image of the hard drive, then reboot to collect logs"
+    },
+    "answer": "A",
+    "explanation": "Evidence should be collected in order of volatility, most volatile first. Fileless malware exists only in memory, so a memory image must be captured before anything else.",
+    "distractor_rationales": {
+      "B": "Cutting power destroys the contents of memory, which is exactly where this malware lives.",
+      "C": "A scan changes system state, may miss fileless malware, and is not forensically sound.",
+      "D": "A disk image will not contain fileless malware, and rebooting wipes memory."
+    },
+    "references_topic": "Order of volatility",
+    "version": "0.1"
+  },
+  {
+    "id": "D7-0010",
+    "domain": 7,
+    "domain_name": "Security Operations",
+    "subtopic": "Personnel safety",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "An executive will travel to a country where border officials are known to inspect and copy the contents of electronic devices. The executive needs email and a few documents during the trip. What is the BEST approach?",
+    "options": {
+      "A": "Bring the usual laptop with full-disk encryption and refuse to disclose the key if asked",
+      "B": "Issue a clean loaner device with minimal data that accesses corporate resources remotely",
+      "C": "Ship the usual laptop to the hotel ahead of time via international courier",
+      "D": "Store all needed documents on an unencrypted USB drive carried separately"
+    },
+    "answer": "B",
+    "explanation": "A clean loaner device carries little data that can be inspected or copied, and corporate resources are reached through a secure remote connection with MFA. After the trip the device is wiped or examined before reuse.",
+    "distractor_rationales": {
+      "A": "Refusing to disclose keys can lead to detention, device seizure, or legal penalties, which puts the traveler at risk. Encryption laws also vary by country.",
+      "C": "Couriered devices can still be inspected by customs and are outside the organization's control in transit.",
+      "D": "An unencrypted USB drive is trivially copied and easily lost."
+    },
+    "references_topic": "Travel security and device inspection",
+    "version": "0.1"
+  }
+]

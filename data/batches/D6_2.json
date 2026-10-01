@@ -1,0 +1,482 @@
+[
+  {
+    "id": "D6-0011",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Misuse cases and coverage analysis",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "What is a misuse case in security testing?",
+    "options": {
+      "A": "A user story describing a normal business function",
+      "B": "A scenario describing how an attacker could abuse the system, used to derive security tests",
+      "C": "A list of known defects awaiting a fix",
+      "D": "A plan for measuring performance under load"
+    },
+    "answer": "B",
+    "explanation": "A misuse (abuse) case is the inverse of a use case. It describes hostile actions, often derived from the threat model, and drives negative tests of what the system must not allow.",
+    "distractor_rationales": {
+      "A": "A normal business function is described by a use case.",
+      "C": "A defect list is part of bug tracking.",
+      "D": "Performance testing measures behavior under load."
+    },
+    "references_topic": "Misuse and abuse cases",
+    "version": "0.2"
+  },
+  {
+    "id": "D6-0012",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Interface testing",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "Which activity is the BEST example of interface testing?",
+    "options": {
+      "A": "Reviewing the physical locks on the data center doors",
+      "B": "Measuring server CPU usage during peak load periods",
+      "C": "Sending malformed inputs to an API to check validation",
+      "D": "Reading through the source code of the login function"
+    },
+    "answer": "C",
+    "explanation": "Interface testing exercises the points where users or components interact, such as APIs and user interfaces, checking input validation, error handling, and authentication.",
+    "distractor_rationales": {
+      "A": "Checking door locks is a physical security review.",
+      "B": "Measuring CPU usage is performance testing.",
+      "D": "Reading source code is code review."
+    },
+    "references_topic": "Interface testing",
+    "version": "0.2"
+  },
+  {
+    "id": "D6-0013",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Breach and attack simulation",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "What does a breach and attack simulation (BAS) platform primarily do?",
+    "options": {
+      "A": "Replace the security operations center's analysts",
+      "B": "Scan hosts for missing patches and nothing else",
+      "C": "Train employees by sending simulated phishing emails",
+      "D": "Run automated, safe attack techniques to test controls"
+    },
+    "answer": "D",
+    "explanation": "BAS platforms continuously run safe simulations of real attacker techniques and report whether controls detected or blocked each one.",
+    "distractor_rationales": {
+      "A": "BAS helps analysts validate controls. It does not replace them.",
+      "B": "Patch scanning is vulnerability assessment, a narrower activity.",
+      "C": "Phishing simulation is an awareness activity, not the core of BAS."
+    },
+    "references_topic": "Breach and attack simulation",
+    "version": "0.2"
+  },
+  {
+    "id": "D6-0014",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Penetration testing",
+    "difficulty": "easy",
+    "type": "application",
+    "stem": "A company gives testers full network diagrams, source code, and credentials so they can test as thoroughly as possible in a short window. What type of test is this?",
+    "options": {
+      "A": "White-box (full knowledge) test",
+      "B": "Black-box (zero-knowledge) test",
+      "C": "Blind test",
+      "D": "Double-blind test"
+    },
+    "answer": "A",
+    "explanation": "In a white-box test, testers receive full knowledge of the environment, which allows thorough coverage in limited time.",
+    "distractor_rationales": {
+      "B": "A black-box tester starts with no inside knowledge.",
+      "C": "In a blind test, testers get only limited information, while defenders know the test is happening.",
+      "D": "In a double-blind test, testers have little information and the defenders are not told about the test."
+    },
+    "references_topic": "White-box testing",
+    "version": "0.2"
+  },
+  {
+    "id": "D6-0015",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Vulnerability assessment",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "What is the main advantage of a credentialed vulnerability scan over an uncredentialed one?",
+    "options": {
+      "A": "It always finishes faster and uses less network bandwidth",
+      "B": "It sees installed software and patch levels from inside the host",
+      "C": "It does not require approval from the system owner",
+      "D": "It shows exactly what an unauthenticated outside attacker sees"
+    },
+    "answer": "B",
+    "explanation": "A credentialed scan logs in to enumerate installed packages, patch levels, and configuration settings, which gives more accurate results with fewer false positives and negatives.",
+    "distractor_rationales": {
+      "A": "Credentialed scans are often slower because they examine more.",
+      "C": "Every scan requires authorization from the system owner.",
+      "D": "The unauthenticated attacker's view is what an uncredentialed scan shows."
+    },
+    "references_topic": "Credentialed scanning",
+    "version": "0.2"
+  },
+  {
+    "id": "D6-0016",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Audits and SOC reports",
+    "difficulty": "easy",
+    "type": "application",
+    "stem": "A customer asks a SaaS vendor for evidence that its security controls operated effectively over the past year. Which report should the vendor provide?",
+    "options": {
+      "A": "SOC 1 Type I",
+      "B": "SOC 2 Type I",
+      "C": "SOC 2 Type II",
+      "D": "SOC 3"
+    },
+    "answer": "C",
+    "explanation": "A SOC 2 report addresses security-related Trust Services Criteria, and Type II tests whether controls operated effectively over a period, typically 6 to 12 months.",
+    "distractor_rationales": {
+      "A": "SOC 1 covers controls relevant to financial reporting, and Type I covers design at a single point in time.",
+      "B": "Type I evaluates control design at a point in time, not operation over a period.",
+      "D": "SOC 3 is a general-use summary without detailed test results."
+    },
+    "references_topic": "SOC 2 Type II",
+    "version": "0.2"
+  },
+  {
+    "id": "D6-0017",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Misuse cases and coverage analysis",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "A development team's test suite covers every functional requirement, yet penetration testers keep finding authorization bypasses. What should the test lead add FIRST?",
+    "options": {
+      "A": "More functional test cases for every existing requirement",
+      "B": "Load testing of the busiest application endpoints",
+      "C": "A second penetration testing firm for another opinion",
+      "D": "Misuse cases from the threat model as negative tests"
+    },
+    "answer": "D",
+    "explanation": "Functional tests confirm that intended behavior works. Misuse cases test what must not happen, such as one user reaching another user's data, which is where authorization bypasses hide.",
+    "distractor_rationales": {
+      "A": "More functional tests still check only intended behavior.",
+      "B": "Load testing measures performance, not authorization.",
+      "C": "Another firm would find the same issues late instead of preventing them."
+    },
+    "references_topic": "Misuse cases for negative testing",
+    "version": "0.2"
+  },
+  {
+    "id": "D6-0018",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Misuse cases and coverage analysis",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "A team reports 95% code coverage from its unit tests and concludes the application is secure. What is the BEST response?",
+    "options": {
+      "A": "Coverage shows code ran, not that security was tested",
+      "B": "At 95% coverage, the application is almost certainly secure",
+      "C": "Coverage must reach 100% before the product can be released",
+      "D": "Code coverage matters only for measuring performance"
+    },
+    "answer": "A",
+    "explanation": "Coverage measures which code executed during tests, not whether the tests checked security properties. Tests can run code without asserting anything about authorization, input handling, or other security behavior.",
+    "distractor_rationales": {
+      "B": "High coverage says nothing about whether security flaws were tested for.",
+      "C": "Even 100% coverage would not prove the absence of vulnerabilities.",
+      "D": "Coverage is a testing thoroughness measure, not a performance metric."
+    },
+    "references_topic": "Limits of code coverage",
+    "version": "0.2"
+  },
+  {
+    "id": "D6-0019",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Breach and attack simulation",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "A company runs one penetration test per year, but its environment changes weekly. Leadership wants ongoing assurance that detection controls still work. What is the BEST addition?",
+    "options": {
+      "A": "A second annual penetration test from another firm",
+      "B": "Breach and attack simulation running continuously",
+      "C": "More rules on the perimeter firewall",
+      "D": "An annual review of security policies"
+    },
+    "answer": "B",
+    "explanation": "Continuous breach and attack simulation checks, between penetration tests, that detection and prevention controls still catch known techniques as the environment changes.",
+    "distractor_rationales": {
+      "A": "Two tests a year still leave long gaps in a weekly-changing environment.",
+      "C": "Firewall rules do not verify that detection controls work.",
+      "D": "Policy reviews do not test controls."
+    },
+    "references_topic": "Continuous control validation",
+    "version": "0.2"
+  },
+  {
+    "id": "D6-0020",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Interface testing",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "During testing, submitting an unexpected character in a web form returns a full stack trace that reveals the database type and internal file paths. What is the BEST fix?",
+    "options": {
+      "A": "Disable the web form until a redesign is complete",
+      "B": "Increase application logging for the form",
+      "C": "Show users a generic error and log details on the server",
+      "D": "Block that character with client-side JavaScript validation"
+    },
+    "answer": "C",
+    "explanation": "Detailed errors leak information attackers can use. Users should see a generic message while details go to server-side logs, and the input handling should be fixed as well.",
+    "distractor_rationales": {
+      "A": "Disabling the form is an overreaction that breaks functionality.",
+      "B": "More logging does not stop the information leak to users.",
+      "D": "Client-side checks are easily bypassed, and other inputs could still trigger the leak."
+    },
+    "references_topic": "Secure error handling",
+    "version": "0.2"
+  },
+  {
+    "id": "D6-0021",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Log review",
+    "difficulty": "medium",
+    "type": "knowledge",
+    "stem": "With limited analyst time, which log source should generally be reviewed MOST closely?",
+    "options": {
+      "A": "Print server job logs",
+      "B": "Workstation screensaver activation logs",
+      "C": "Web proxy cache hit statistics",
+      "D": "Privileged activity and authentication logs on critical systems"
+    },
+    "answer": "D",
+    "explanation": "Review effort should follow risk. Authentication and privileged activity on critical systems is where attackers operate and where misuse causes the most harm.",
+    "distractor_rationales": {
+      "A": "Print logs are rarely security-critical.",
+      "B": "Screensaver events carry little security value.",
+      "C": "Cache statistics describe performance, not security events."
+    },
+    "references_topic": "Prioritizing log review",
+    "version": "0.2"
+  },
+  {
+    "id": "D6-0022",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Vulnerability assessment",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "A scan finds 2,000 vulnerabilities, and the team can fix only 100 this month. Which approach BEST prioritizes remediation?",
+    "options": {
+      "A": "Rank by exploitation, severity, exposure, and asset value",
+      "B": "Fix the oldest findings first",
+      "C": "Fix whichever findings are the quickest and easiest to patch first",
+      "D": "Fix findings in alphabetical order by host name"
+    },
+    "answer": "A",
+    "explanation": "Risk-based prioritization considers known exploitation in the wild, severity, exposure such as internet-facing systems, and the criticality of the asset.",
+    "distractor_rationales": {
+      "B": "Age alone does not reflect risk.",
+      "C": "Easy fixes may be low risk while critical exposures remain open.",
+      "D": "Alphabetical order is arbitrary."
+    },
+    "references_topic": "Risk-based vulnerability prioritization",
+    "version": "0.2"
+  },
+  {
+    "id": "D6-0023",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Code review and testing",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "A team wants a testing approach that instruments the running application during automated functional tests and pinpoints the exact vulnerable line of code with few false positives. Which approach is this?",
+    "options": {
+      "A": "SAST",
+      "B": "IAST",
+      "C": "Fuzzing",
+      "D": "Manual code review"
+    },
+    "answer": "B",
+    "explanation": "Interactive application security testing places an agent inside the running application. It watches real data flows during tests and ties each finding to a code location.",
+    "distractor_rationales": {
+      "A": "SAST analyzes code without runtime context, which tends to produce more false positives.",
+      "C": "Fuzzing finds crashes and anomalies but does not map them to specific code lines.",
+      "D": "Manual review is slow and does not instrument the running application."
+    },
+    "references_topic": "Interactive application security testing",
+    "version": "0.2"
+  },
+  {
+    "id": "D6-0024",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Security process data and metrics",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "The CISO wants an indicator that warns the board when the risk of a successful phishing compromise is increasing. Which metric is the BEST key risk indicator?",
+    "options": {
+      "A": "Number of security awareness posters displayed across all office locations",
+      "B": "Budget spent on security awareness training",
+      "C": "Trend in the share of users entering credentials in simulations",
+      "D": "Total number of emails the company receives each month"
+    },
+    "answer": "C",
+    "explanation": "A key risk indicator signals rising exposure. A growing share of users who enter credentials in phishing simulations directly indicates increasing compromise risk.",
+    "distractor_rationales": {
+      "A": "Poster counts measure activity, not risk.",
+      "B": "Spending is an input, not an indicator of exposure.",
+      "D": "Email volume does not measure susceptibility."
+    },
+    "references_topic": "Key risk indicators",
+    "version": "0.2"
+  },
+  {
+    "id": "D6-0025",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Assessment strategy",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "A company needs assurance that its security program complies with an external standard, in a form that customers and regulators will accept. Which assessment is MOST appropriate?",
+    "options": {
+      "A": "A self-assessment completed by the security team",
+      "B": "An informal review by a peer company",
+      "C": "A vulnerability scan of external systems",
+      "D": "An independent third-party audit"
+    },
+    "answer": "D",
+    "explanation": "External stakeholders rely on independent, qualified auditors assessing against the standard. Independence is what gives the result credibility.",
+    "distractor_rationales": {
+      "A": "A self-assessment lacks independence.",
+      "B": "An informal peer review is not a recognized assurance mechanism.",
+      "C": "A scan tests technical exposure, not compliance with a standard."
+    },
+    "references_topic": "Third-party audits",
+    "version": "0.2"
+  },
+  {
+    "id": "D6-0026",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Penetration testing",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "During an authorized test, a tester discovers credentials that would allow access to a partner company's systems, which are outside the agreed scope. What should the tester do?",
+    "options": {
+      "A": "Stop and report it to the client without using them",
+      "B": "Use the credentials briefly to show the partner's true exposure",
+      "C": "Ignore the credentials, since the partner is out of scope",
+      "D": "Post the credentials publicly to prove the issue is real"
+    },
+    "answer": "A",
+    "explanation": "Anything outside scope is unauthorized. The tester should stop, document the finding, and notify the client contact promptly as the rules of engagement require, without using the credentials.",
+    "distractor_rationales": {
+      "B": "Using the credentials would be unauthorized access and possibly illegal.",
+      "C": "Ignoring the finding leaves a serious risk unreported.",
+      "D": "Public disclosure is harmful and unethical."
+    },
+    "references_topic": "Scope limits in penetration testing",
+    "version": "0.2"
+  },
+  {
+    "id": "D6-0027",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Log review",
+    "difficulty": "hard",
+    "type": "application",
+    "stem": "After a breach, investigators find the attacker deleted the local logs on compromised servers to hide the activity. Which control would BEST have preserved the evidence?",
+    "options": {
+      "A": "Keeping local logs on each server for a much longer retention period",
+      "B": "Forwarding logs in real time to a separate protected store",
+      "C": "Rotating local log files more frequently",
+      "D": "Encrypting the log files stored on each server"
+    },
+    "answer": "B",
+    "explanation": "Logs sent in real time to a separate, access-restricted or write-once store are out of reach of an attacker who controls the source server.",
+    "distractor_rationales": {
+      "A": "Longer local retention does not help if the attacker deletes the files.",
+      "C": "More frequent rotation removes old logs faster.",
+      "D": "Encryption protects confidentiality but does not stop deletion."
+    },
+    "references_topic": "Protecting log integrity",
+    "version": "0.2"
+  },
+  {
+    "id": "D6-0028",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Audits and SOC reports",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "A company relies on a SaaS provider's SOC 2 Type II report, which lists complementary user entity controls (CUECs), such as reviewing user access in the application quarterly. What does this mean for the company?",
+    "options": {
+      "A": "The provider performs these controls on the company's behalf",
+      "B": "The listed controls are optional recommendations",
+      "C": "The company must operate those controls itself",
+      "D": "The report is invalid and should be rejected"
+    },
+    "answer": "C",
+    "explanation": "CUECs are controls the provider's control design assumes the customer will perform. If the company does not operate them, the provider's control objectives may not be met for that company.",
+    "distractor_rationales": {
+      "A": "CUECs are the customer's responsibility, not the provider's.",
+      "B": "The provider's controls depend on them, so they are not optional.",
+      "D": "Listing CUECs is normal and does not invalidate the report."
+    },
+    "references_topic": "Complementary user entity controls",
+    "version": "0.2"
+  },
+  {
+    "id": "D6-0029",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Reporting and remediation",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "A security tester employed by a bank discovers a serious vulnerability in a widely used commercial product during internal testing. What is the MOST appropriate course of action?",
+    "options": {
+      "A": "Publish full exploit details online immediately to warn other users",
+      "B": "Sell the vulnerability details to a broker",
+      "C": "Ignore it, since the product belongs to the vendor",
+      "D": "Report it privately to the vendor under coordinated disclosure"
+    },
+    "answer": "D",
+    "explanation": "Coordinated disclosure gives the vendor time to fix the flaw before details become public, protecting all users. The tester should follow the bank's policy and apply internal mitigations in the meantime.",
+    "distractor_rationales": {
+      "A": "Immediate public release arms attackers before a fix exists.",
+      "B": "Selling the vulnerability is unethical and may be illegal.",
+      "C": "Ignoring it leaves the bank and other users exposed."
+    },
+    "references_topic": "Coordinated vulnerability disclosure",
+    "version": "0.2"
+  },
+  {
+    "id": "D6-0030",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Backup and recovery verification",
+    "difficulty": "hard",
+    "type": "application",
+    "stem": "An order database has a recovery point objective (RPO) of 24 hours, and backups are scheduled nightly. A restore test shows the latest usable backup is three days old because the last two nightly jobs silently wrote empty files. What is the MOST important conclusion?",
+    "options": {
+      "A": "The RPO is not being met; validate and alert on backups",
+      "B": "The RPO is met, because backups are scheduled every night",
+      "C": "The RPO should be relaxed to three days to match reality",
+      "D": "The restore test was unnecessary, since jobs were scheduled"
+    },
+    "answer": "A",
+    "explanation": "The actual recovery point is three days, which violates the 24-hour RPO. Backups need integrity validation and alerting on failures so problems are caught immediately.",
+    "distractor_rationales": {
+      "B": "A schedule is not a successful backup. The usable data is three days old.",
+      "C": "The RPO comes from business requirements and should not be changed to hide a failure.",
+      "D": "The test is what revealed the gap."
+    },
+    "references_topic": "Verifying backups against the RPO",
+    "version": "0.2"
+  }
+]

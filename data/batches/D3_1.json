@@ -1,0 +1,242 @@
+[
+  {
+    "id": "D3-0001",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Security models",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "Which security model is primarily concerned with confidentiality and enforces the rules \"no read up\" and \"no write down\"?",
+    "options": {
+      "A": "Bell-LaPadula",
+      "B": "Biba",
+      "C": "Clark-Wilson",
+      "D": "Brewer-Nash"
+    },
+    "answer": "A",
+    "explanation": "Bell-LaPadula is a confidentiality model. Its simple security property (no read up) and star property (no write down) keep information from flowing to lower classification levels.",
+    "distractor_rationales": {
+      "B": "Biba is an integrity model whose rules are the reverse: no read down and no write up.",
+      "C": "Clark-Wilson protects integrity through well-formed transactions and separation of duties, using subject-program-object access triples.",
+      "D": "Brewer-Nash (the Chinese Wall model) prevents conflicts of interest by restricting access based on what a subject has already accessed."
+    },
+    "references_topic": "Bell-LaPadula confidentiality model",
+    "version": "0.1"
+  },
+  {
+    "id": "D3-0002",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Symmetric and asymmetric cryptography",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "A team must encrypt large volumes of backup data quickly. Which type of algorithm is BEST suited to the bulk encryption itself?",
+    "options": {
+      "A": "An asymmetric algorithm such as RSA",
+      "B": "A symmetric block cipher such as AES",
+      "C": "A hashing algorithm such as SHA-256",
+      "D": "A key-agreement protocol such as Diffie-Hellman"
+    },
+    "answer": "B",
+    "explanation": "Symmetric ciphers are far faster than asymmetric algorithms and are the standard choice for bulk data. Asymmetric cryptography is typically used to exchange or protect the symmetric key.",
+    "distractor_rationales": {
+      "A": "RSA is slow and limited in how much data it can encrypt directly. It is used for key transport and signatures.",
+      "C": "Hashing is one-way and cannot be decrypted. It supports integrity, not confidentiality.",
+      "D": "Diffie-Hellman establishes a shared secret but does not encrypt data itself."
+    },
+    "references_topic": "Symmetric bulk encryption",
+    "version": "0.1"
+  },
+  {
+    "id": "D3-0003",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Secure design principles",
+    "difficulty": "easy",
+    "type": "application",
+    "stem": "When a badge reader at a data center loses its connection to the access control server, the door stays locked and denies entry to everyone except staff with a mechanical override key held by security. Which design principle does this behavior illustrate?",
+    "options": {
+      "A": "Fail open",
+      "B": "Defense in depth",
+      "C": "Fail secure",
+      "D": "Separation of duties"
+    },
+    "answer": "C",
+    "explanation": "A fail-secure (fail-closed) design defaults to a secure state when a component fails, denying access rather than granting it.",
+    "distractor_rationales": {
+      "A": "Fail open would unlock the door on failure, favoring availability over security.",
+      "B": "Defense in depth layers multiple controls. It does not describe how a single control behaves when it fails.",
+      "D": "Separation of duties divides critical tasks among people. It is unrelated to failure behavior."
+    },
+    "references_topic": "Fail-secure design",
+    "version": "0.1"
+  },
+  {
+    "id": "D3-0004",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Zero trust and secure access architecture",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "A company with a flat internal network suffers a breach in which an attacker moves from a compromised laptop to the finance database. The board asks for an architectural change that reduces implicit trust inside the network. What should the security architect recommend as the BEST approach?",
+    "options": {
+      "A": "Adding a second perimeter firewall from a different vendor",
+      "B": "Requiring all employees to change their passwords quarterly",
+      "C": "Deploying antivirus to every server in the data center",
+      "D": "Adopting zero trust with identity-aware, per-request access"
+    },
+    "answer": "D",
+    "explanation": "Zero trust removes trust based on network location. Every request is authenticated and authorized using identity, device posture, and context, and micro-segmentation limits lateral movement between systems.",
+    "distractor_rationales": {
+      "A": "A second perimeter firewall strengthens the edge but leaves the interior flat and implicitly trusted.",
+      "B": "Periodic password changes do not limit lateral movement, and current guidance discourages arbitrary forced changes.",
+      "C": "Antivirus is an endpoint control. It does not change how trust is granted inside the network."
+    },
+    "references_topic": "Zero trust architecture",
+    "version": "0.1"
+  },
+  {
+    "id": "D3-0005",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Hashing, signatures, and integrity",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "Bob receives a digitally signed contract from Alice and wants to verify both its origin and its integrity. Which description matches what Bob's software does?",
+    "options": {
+      "A": "Computes a hash of the contract and verifies it against the signature using Alice's public key",
+      "B": "Decrypts the contract with Bob's private key and compares it with Alice's certificate",
+      "C": "Computes a hash of the contract and verifies it against the signature using Alice's private key",
+      "D": "Verifies the signature using Bob's public key, then checks the certificate's expiration date"
+    },
+    "answer": "A",
+    "explanation": "Alice signs a hash of the contract with her private key, and anyone can verify it with her public key. Bob hashes the contract he received and checks it against the signature using Alice's public key. A match shows the contract is unaltered and came from the holder of Alice's private key, assuming a trusted certificate binds that key to Alice.",
+    "distractor_rationales": {
+      "B": "Signature verification does not use Bob's private key. Decrypting with Bob's key relates to confidentiality, not signatures.",
+      "C": "Bob does not have Alice's private key. If he did, the signature would prove nothing about Alice.",
+      "D": "Bob's own keys play no part in verifying Alice's signature."
+    },
+    "references_topic": "Digital signature verification",
+    "version": "0.1"
+  },
+  {
+    "id": "D3-0006",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Cryptanalytic attacks",
+    "difficulty": "medium",
+    "type": "knowledge",
+    "stem": "An attacker measures how long a smart card takes to perform cryptographic operations on many different inputs and uses the variations to infer bits of the private key. What type of attack is this?",
+    "options": {
+      "A": "Brute-force attack",
+      "B": "Timing side-channel attack",
+      "C": "Birthday attack",
+      "D": "Adaptive chosen-ciphertext attack"
+    },
+    "answer": "B",
+    "explanation": "Side-channel attacks exploit physical characteristics of an implementation, such as timing, power draw, or electromagnetic emissions, rather than a mathematical weakness. Timing differences here leak key-dependent information.",
+    "distractor_rationales": {
+      "A": "A brute-force attack tries every possible key. It does not rely on measuring execution time.",
+      "C": "A birthday attack looks for hash collisions using probability. It does not extract keys from hardware behavior.",
+      "D": "Chosen-ciphertext attacks analyze the decryption of attacker-chosen ciphertexts, not physical measurements of the device."
+    },
+    "references_topic": "Timing side-channel attacks",
+    "version": "0.1"
+  },
+  {
+    "id": "D3-0007",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Virtualization, containers, and serverless",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "A security review of a container platform finds that several production containers run as root and mount the host's container runtime socket. What is the PRIMARY risk of this configuration?",
+    "options": {
+      "A": "Containers will consume excessive memory and cause denial of service",
+      "B": "Container images will be larger and slower to deploy",
+      "C": "A compromised container could take over the host and its neighbors",
+      "D": "Logs from the containers will not be forwarded to the SIEM"
+    },
+    "answer": "C",
+    "explanation": "Access to the runtime socket lets a container control the runtime itself, for example by launching privileged containers that mount the host file system. Running as root makes an escape even more damaging. Together they break the isolation between container and host.",
+    "distractor_rationales": {
+      "A": "Memory exhaustion is governed by resource limits, not by socket mounts.",
+      "B": "Image size is unaffected by mounting a socket at runtime.",
+      "D": "Log forwarding is unrelated to these settings."
+    },
+    "references_topic": "Container isolation risks",
+    "version": "0.1"
+  },
+  {
+    "id": "D3-0008",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "PKI and key management",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "An e-commerce company learns that the private key for its public web server certificate was included in a code repository that was briefly public. There is no evidence yet of misuse. What should the security team do FIRST?",
+    "options": {
+      "A": "Monitor web traffic for 30 days to confirm whether the key was misused",
+      "B": "Remove the key from the repository history and continue using the certificate",
+      "C": "Notify all customers that their payment data may have been compromised",
+      "D": "Revoke the certificate and replace it with one using a newly generated key pair"
+    },
+    "answer": "D",
+    "explanation": "Once a private key is exposed, treat it as compromised. Revoking the certificate (published through CRL and OCSP) and issuing a new certificate with a new key pair prevents attackers from impersonating the site. Cleaning the repository and investigating come next.",
+    "distractor_rationales": {
+      "A": "Waiting leaves a window for impersonation. Lack of evidence of misuse is not evidence that no misuse occurred.",
+      "B": "Purging the history does not undo the exposure. Copies of the key may already exist elsewhere.",
+      "C": "There is no evidence that payment data was compromised. Notification decisions follow the investigation and legal requirements."
+    },
+    "references_topic": "Certificate revocation after key compromise",
+    "version": "0.1"
+  },
+  {
+    "id": "D3-0009",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "ICS, IoT, and embedded systems",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "A water utility's programmable logic controllers (PLCs) control chemical dosing. The vendor has released a patch for a remotely exploitable vulnerability in them. What is the BEST course of action?",
+    "options": {
+      "A": "Test the patch in a lab first, then deploy in a planned maintenance window",
+      "B": "Apply the patch to every PLC immediately, since the vulnerability can be exploited remotely",
+      "C": "Defer patching indefinitely, because PLCs should never be modified once commissioned",
+      "D": "Replace all PLCs with newer models that do not require patching"
+    },
+    "answer": "A",
+    "explanation": "In operational technology, safety and availability come first, and an untested patch can disrupt a physical process. Test the patch in a representative environment with vendor guidance, apply compensating controls such as segmentation and restricted remote access in the meantime, then deploy in a planned window with rollback ready.",
+    "distractor_rationales": {
+      "B": "Patching safety-critical controllers without testing risks disrupting chemical dosing, which is a safety hazard.",
+      "C": "Deferring forever leaves a known remote vulnerability in place. PLCs can be updated under proper change control.",
+      "D": "Newer devices also need patches, and wholesale replacement is costly and slow."
+    },
+    "references_topic": "Patching operational technology safely",
+    "version": "0.1"
+  },
+  {
+    "id": "D3-0010",
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "subtopic": "Environmental and physical controls",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "A company is designing fire suppression for a new data center that will be staffed around the clock. Which option BEST balances equipment protection and personnel safety?",
+    "options": {
+      "A": "A carbon dioxide total-flooding system throughout the server rooms",
+      "B": "A pre-action sprinkler system paired with early-warning smoke detection",
+      "C": "A wet-pipe sprinkler system with heads positioned directly above every rack",
+      "D": "Handheld extinguishers only, so that no water system is installed"
+    },
+    "answer": "B",
+    "explanation": "A pre-action system needs a detection event before its pipes fill with water, and heads must also activate before water flows. That sharply reduces accidental discharge while still providing reliable suppression that is safe for occupants. Early-warning detection lets staff respond before the system discharges.",
+    "distractor_rationales": {
+      "A": "Carbon dioxide flooding displaces oxygen and is lethal in occupied spaces.",
+      "C": "Wet-pipe systems are always charged with water, so a leak or accidental activation can damage equipment.",
+      "D": "Relying only on handheld extinguishers leaves the room unprotected when no one is present and does not meet typical fire codes on its own."
+    },
+    "references_topic": "Data center fire suppression selection",
+    "version": "0.1"
+  }
+]

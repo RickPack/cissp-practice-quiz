@@ -1,0 +1,794 @@
+[
+  {
+    "id": "D4-0066",
+    "domain": 4,
+    "domain_name": "Communication and Network Security",
+    "subtopic": "OSI and TCP/IP models",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "At which OSI layer does a traditional network switch forward frames using MAC addresses?",
+    "options": {
+      "A": "Layer 7, application",
+      "B": "Layer 3, network",
+      "C": "Layer 1, physical",
+      "D": "Layer 2, data link"
+    },
+    "answer": "D",
+    "explanation": "A traditional switch learns MAC addresses and forwards frames at the data link layer. Layer 3 switches add routing, but basic switching is a layer 2 function.",
+    "distractor_rationales": {
+      "A": "The application layer serves user applications; it does not forward frames.",
+      "B": "The network layer routes packets using IP addresses.",
+      "C": "The physical layer carries raw bits, like a hub."
+    },
+    "references_topic": "Switches at the data link layer",
+    "version": "0.4"
+  },
+  {
+    "id": "D4-0067",
+    "domain": 4,
+    "domain_name": "Communication and Network Security",
+    "subtopic": "IP networking and addressing",
+    "difficulty": "easy",
+    "type": "application",
+    "stem": "A workstation reports the IPv4 address 169.254.23.7 and cannot reach any network resources. What does this MOST likely mean?",
+    "options": {
+      "A": "DHCP failed, so it assigned itself a link-local address",
+      "B": "It has been assigned a public address by the internet service provider",
+      "C": "It is using a private address from the 172.16.0.0/12 range",
+      "D": "It is connected to an IPv6-only network"
+    },
+    "answer": "A",
+    "explanation": "Addresses in 169.254.0.0/16 are self-assigned link-local addresses that hosts use when DHCP does not respond.",
+    "distractor_rationales": {
+      "B": "169.254.0.0/16 is not routable public space.",
+      "C": "169.254 is not part of the 172.16.0.0/12 private range.",
+      "D": "The address shown is IPv4."
+    },
+    "references_topic": "Link-local addresses",
+    "version": "0.4"
+  },
+  {
+    "id": "D4-0068",
+    "domain": 4,
+    "domain_name": "Communication and Network Security",
+    "subtopic": "Secure protocols",
+    "difficulty": "easy",
+    "type": "managerial_best_first_most",
+    "stem": "What is the BEST way to protect email in transit between the company's mail servers and its partners' mail servers?",
+    "options": {
+      "A": "Ask employees to add the word \"confidential\" to the subject line of sensitive email",
+      "B": "Require TLS for server-to-server delivery, with policies such as MTA-STS",
+      "C": "Send all email through a web proxy that caches messages for faster delivery",
+      "D": "Move email delivery to plain SMTP on a nonstandard port to hide the traffic"
+    },
+    "answer": "B",
+    "explanation": "Enforcing TLS between mail servers encrypts messages in transit, and policies such as MTA-STS stop attackers from forcing a downgrade to cleartext.",
+    "distractor_rationales": {
+      "A": "A subject line label does not encrypt anything.",
+      "C": "Web proxies do not handle server-to-server mail and caching adds exposure.",
+      "D": "A nonstandard port is obscurity; plain SMTP is still cleartext."
+    },
+    "references_topic": "TLS for email transport",
+    "version": "0.4"
+  },
+  {
+    "id": "D4-0069",
+    "domain": 4,
+    "domain_name": "Communication and Network Security",
+    "subtopic": "Network segmentation",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "What does a VLAN primarily provide?",
+    "options": {
+      "A": "Encryption of all traffic that passes between two switches",
+      "B": "Authentication of every user before they can access the network",
+      "C": "Logical separation of broadcast domains on shared switches",
+      "D": "Faster internet speeds for devices in the same department"
+    },
+    "answer": "C",
+    "explanation": "VLANs split one physical switch infrastructure into separate logical layer 2 networks. Traffic between them must pass through a router or firewall, where policy can be applied.",
+    "distractor_rationales": {
+      "A": "VLANs do not encrypt traffic.",
+      "B": "User authentication is handled by 802.1X and identity systems.",
+      "D": "VLANs do not increase internet bandwidth."
+    },
+    "references_topic": "Purpose of VLANs",
+    "version": "0.4"
+  },
+  {
+    "id": "D4-0070",
+    "domain": 4,
+    "domain_name": "Communication and Network Security",
+    "subtopic": "Wireless networks",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "What is the term for an attacker gaining unauthorized access to contacts, messages, or files on a device over Bluetooth?",
+    "options": {
+      "A": "Bluejacking",
+      "B": "War driving",
+      "C": "Radio jamming",
+      "D": "Bluesnarfing"
+    },
+    "answer": "D",
+    "explanation": "Bluesnarfing is data theft over a Bluetooth connection, typically exploiting weak pairing or vulnerable devices.",
+    "distractor_rationales": {
+      "A": "Bluejacking sends unsolicited messages but does not steal data.",
+      "B": "War driving searches for Wi-Fi networks while moving around.",
+      "C": "Jamming disrupts radio signals rather than stealing data."
+    },
+    "references_topic": "Bluesnarfing",
+    "version": "0.4"
+  },
+  {
+    "id": "D4-0071",
+    "domain": 4,
+    "domain_name": "Communication and Network Security",
+    "subtopic": "Network devices and NAC",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "What capability distinguishes a next-generation firewall from a traditional stateful firewall?",
+    "options": {
+      "A": "Identifying and controlling applications regardless of the port they use",
+      "B": "Filtering traffic by source and destination IP address",
+      "C": "Tracking the state of TCP connections",
+      "D": "Blocking traffic by destination port number and protocol type such as TCP or UDP"
+    },
+    "answer": "A",
+    "explanation": "Next-generation firewalls add application awareness, user identity, and often intrusion prevention, so they can control applications even on nonstandard ports.",
+    "distractor_rationales": {
+      "B": "Address filtering is basic packet filtering.",
+      "C": "Connection tracking is what stateful firewalls already do.",
+      "D": "Port blocking is a basic firewall function."
+    },
+    "references_topic": "Next-generation firewalls",
+    "version": "0.4"
+  },
+  {
+    "id": "D4-0072",
+    "domain": 4,
+    "domain_name": "Communication and Network Security",
+    "subtopic": "Network devices and NAC",
+    "difficulty": "easy",
+    "type": "managerial_best_first_most",
+    "stem": "What should the final rule in a firewall rule base BEST be?",
+    "options": {
+      "A": "Allow all traffic, so that nothing needed by the business is blocked",
+      "B": "Deny all traffic not explicitly allowed by earlier rules",
+      "C": "Allow all traffic from internal addresses to any destination",
+      "D": "Log all traffic without allowing or blocking any of it"
+    },
+    "answer": "B",
+    "explanation": "A default deny at the end means only traffic that a rule explicitly permits gets through.",
+    "distractor_rationales": {
+      "A": "A final allow-all makes the other rules pointless.",
+      "C": "Allowing all internal traffic outbound invites exfiltration and malware callbacks.",
+      "D": "A rule must make a decision; logging alone does not enforce policy."
+    },
+    "references_topic": "Implicit deny",
+    "version": "0.4"
+  },
+  {
+    "id": "D4-0073",
+    "domain": 4,
+    "domain_name": "Communication and Network Security",
+    "subtopic": "Transmission media",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "Why must network cable run through air-handling spaces above a drop ceiling be plenum-rated?",
+    "options": {
+      "A": "It carries data faster than standard cable over long distances",
+      "B": "It is shielded to prevent all electromagnetic eavesdropping",
+      "C": "It gives off less smoke and toxic fumes if it burns",
+      "D": "It cannot be tapped without cutting through the jacket"
+    },
+    "answer": "C",
+    "explanation": "Air-handling spaces spread smoke through a building. Plenum-rated cable uses jacket materials that produce less smoke and fewer toxic fumes in a fire.",
+    "distractor_rationales": {
+      "A": "Plenum rating concerns fire behavior, not speed.",
+      "B": "Plenum rating is not about shielding.",
+      "D": "Plenum cable can be tapped like any other copper cable."
+    },
+    "references_topic": "Plenum-rated cable",
+    "version": "0.4"
+  },
+  {
+    "id": "D4-0074",
+    "domain": 4,
+    "domain_name": "Communication and Network Security",
+    "subtopic": "Voice, video, and collaboration",
+    "difficulty": "easy",
+    "type": "application",
+    "stem": "An employee receives a phone call from someone claiming to be from IT support who asks for the employee's password to \"fix a mailbox problem.\" What type of attack is this?",
+    "options": {
+      "A": "Smishing",
+      "B": "Whaling",
+      "C": "Pharming",
+      "D": "Vishing"
+    },
+    "answer": "D",
+    "explanation": "Vishing is voice phishing: using phone calls to trick people into revealing credentials or other sensitive information.",
+    "distractor_rationales": {
+      "A": "Smishing uses text messages.",
+      "B": "Whaling targets senior executives, usually by email.",
+      "C": "Pharming redirects users to fake websites, often through DNS manipulation."
+    },
+    "references_topic": "Vishing",
+    "version": "0.4"
+  },
+  {
+    "id": "D4-0075",
+    "domain": 4,
+    "domain_name": "Communication and Network Security",
+    "subtopic": "Network attacks",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "What is the term for an attack in which the attacker secretly intercepts and possibly alters traffic between two parties who believe they are talking directly?",
+    "options": {
+      "A": "On-path (man-in-the-middle) attack",
+      "B": "Denial-of-service attack",
+      "C": "Brute-force attack",
+      "D": "Replay attack against a stored password file"
+    },
+    "answer": "A",
+    "explanation": "In an on-path attack, the attacker sits between the two parties, relaying and possibly changing messages without their knowledge.",
+    "distractor_rationales": {
+      "B": "Denial of service disrupts availability.",
+      "C": "Brute force guesses passwords or keys.",
+      "D": "Replay resends captured messages; it does not describe sitting between two parties."
+    },
+    "references_topic": "On-path attacks",
+    "version": "0.4"
+  },
+  {
+    "id": "D4-0076",
+    "domain": 4,
+    "domain_name": "Communication and Network Security",
+    "subtopic": "OSI and TCP/IP models",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "An attacker predicts TCP sequence numbers to inject packets into an established session between two hosts. At which OSI layer does this attack operate?",
+    "options": {
+      "A": "Network layer",
+      "B": "Transport layer",
+      "C": "Data link layer",
+      "D": "Presentation layer"
+    },
+    "answer": "B",
+    "explanation": "TCP sequence numbers are part of the transport layer protocol, so manipulating them to hijack a session is a transport layer attack.",
+    "distractor_rationales": {
+      "A": "The network layer handles IP addressing, not TCP sequencing.",
+      "C": "The data link layer handles frames and MAC addresses.",
+      "D": "The presentation layer handles formatting and encryption of data."
+    },
+    "references_topic": "TCP session hijacking",
+    "version": "0.4"
+  },
+  {
+    "id": "D4-0077",
+    "domain": 4,
+    "domain_name": "Communication and Network Security",
+    "subtopic": "OSI and TCP/IP models",
+    "difficulty": "medium",
+    "type": "knowledge",
+    "stem": "As data moves down the stack for transmission, which sequence of protocol data units is correct?",
+    "options": {
+      "A": "Frame, packet, segment, bits",
+      "B": "Packet, segment, frame, then bits",
+      "C": "Segment, packet, frame, bits",
+      "D": "Bits, frame, packet, segment"
+    },
+    "answer": "C",
+    "explanation": "The transport layer creates segments, the network layer wraps them into packets, the data link layer wraps packets into frames, and the physical layer sends bits.",
+    "distractor_rationales": {
+      "A": "This order is reversed at the top.",
+      "B": "Segments are created before packets.",
+      "D": "This is the order when receiving data, moving up the stack."
+    },
+    "references_topic": "Encapsulation and PDUs",
+    "version": "0.4"
+  },
+  {
+    "id": "D4-0078",
+    "domain": 4,
+    "domain_name": "Communication and Network Security",
+    "subtopic": "IP networking and addressing",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "A team argues that NAT on the internet router makes a separate firewall unnecessary. What is the BEST response?",
+    "options": {
+      "A": "Agree, since NAT hides internal addresses and therefore blocks all attacks",
+      "B": "Agree, since NAT encrypts traffic that crosses the internet router",
+      "C": "Disagree, since NAT only works with IPv6 and the company uses IPv4",
+      "D": "Disagree, since NAT translates addresses but does not enforce security policy"
+    },
+    "answer": "D",
+    "explanation": "NAT was designed to conserve addresses. It offers some incidental hiding but no filtering policy, inspection, or logging, so a firewall is still needed.",
+    "distractor_rationales": {
+      "A": "NAT does not block outbound-initiated attacks, malware callbacks, or exposed port forwards.",
+      "B": "NAT does not encrypt traffic.",
+      "C": "NAT is most common with IPv4."
+    },
+    "references_topic": "NAT is not a firewall",
+    "version": "0.4"
+  },
+  {
+    "id": "D4-0079",
+    "domain": 4,
+    "domain_name": "Communication and Network Security",
+    "subtopic": "Secure protocols",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "Some browsers began sending DNS queries over HTTPS directly to public resolvers, bypassing the company's DNS filtering and logging. What is the BEST response?",
+    "options": {
+      "A": "Point managed browsers at the company's resolver and block unapproved DoH endpoints",
+      "B": "Block all HTTPS traffic from employee workstations to the internet",
+      "C": "Accept the change, since encrypted DNS is always more secure for every company's users",
+      "D": "Switch the company's own DNS servers to use plain UDP on a different port"
+    },
+    "answer": "A",
+    "explanation": "Encrypted DNS is valuable, but it should go to the company's own resolver, where filtering and logging still apply. Managed settings and blocking unapproved DoH endpoints achieve this.",
+    "distractor_rationales": {
+      "B": "Blocking all HTTPS would stop normal business.",
+      "C": "Bypassing enterprise DNS removes security visibility and controls.",
+      "D": "Changing ports does not bring the browsers back to the company resolver."
+    },
+    "references_topic": "DNS over HTTPS and enterprise filtering",
+    "version": "0.4"
+  },
+  {
+    "id": "D4-0080",
+    "domain": 4,
+    "domain_name": "Communication and Network Security",
+    "subtopic": "Converged and multilayer protocols",
+    "difficulty": "medium",
+    "type": "knowledge",
+    "stem": "Which WAN technology forwards traffic using short labels instead of full IP lookups and is commonly used by carriers to keep customer traffic separate?",
+    "options": {
+      "A": "Network Address Translation (NAT) overload",
+      "B": "Multiprotocol Label Switching (MPLS)",
+      "C": "Spanning Tree Protocol",
+      "D": "Dynamic Host Configuration Protocol"
+    },
+    "answer": "B",
+    "explanation": "MPLS forwards packets by label, and carriers use it to build separate virtual networks for customers. It separates traffic but does not encrypt it.",
+    "distractor_rationales": {
+      "A": "NAT translates addresses.",
+      "C": "Spanning Tree prevents layer 2 loops.",
+      "D": "DHCP assigns addresses to hosts."
+    },
+    "references_topic": "MPLS",
+    "version": "0.4"
+  },
+  {
+    "id": "D4-0081",
+    "domain": 4,
+    "domain_name": "Communication and Network Security",
+    "subtopic": "Network segmentation",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "A retailer's card processing systems share a flat network with every other system, so assessors treat the whole network as in scope for PCI DSS. What BEST reduces the scope?",
+    "options": {
+      "A": "Encrypting every laptop in the company with full-disk encryption",
+      "B": "Adding antivirus to every server on the flat network",
+      "C": "Isolating the cardholder data environment with segmentation and strict filtering",
+      "D": "Moving the card processing systems to a different building on the same network"
+    },
+    "answer": "C",
+    "explanation": "Proper segmentation separates systems that handle card data from everything else, so only the isolated environment and its connected systems remain in scope.",
+    "distractor_rationales": {
+      "A": "Disk encryption does not isolate network traffic.",
+      "B": "Antivirus does not separate systems from each other.",
+      "D": "Physical location does not matter if the network is still flat."
+    },
+    "references_topic": "Segmentation to reduce compliance scope",
+    "version": "0.4"
+  },
+  {
+    "id": "D4-0082",
+    "domain": 4,
+    "domain_name": "Communication and Network Security",
+    "subtopic": "Wireless networks",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "Visitors need internet access in the company's lobby and meeting rooms. What is the BEST design?",
+    "options": {
+      "A": "Give visitors the corporate Wi-Fi passphrase and change it every quarter",
+      "B": "Let visitors plug into any free wall jack in the meeting rooms",
+      "C": "Share an employee's laptop hotspot with visitors when they need to get online",
+      "D": "A separate guest SSID on an isolated network with internet-only access"
+    },
+    "answer": "D",
+    "explanation": "A separate guest network with client isolation and no route to internal systems gives visitors internet access without exposing corporate resources.",
+    "distractor_rationales": {
+      "A": "Sharing the corporate passphrase puts visitors on the internal network.",
+      "B": "Wall jacks may connect to internal networks.",
+      "C": "Sharing an employee's hotspot links visitors to a corporate device."
+    },
+    "references_topic": "Guest wireless isolation",
+    "version": "0.4"
+  },
+  {
+    "id": "D4-0083",
+    "domain": 4,
+    "domain_name": "Communication and Network Security",
+    "subtopic": "Cellular and satellite",
+    "difficulty": "medium",
+    "type": "knowledge",
+    "stem": "What does network slicing in 5G provide?",
+    "options": {
+      "A": "Isolated logical networks with their own traits on shared infrastructure",
+      "B": "End-to-end encryption of every call and text message exchanged between subscribers",
+      "C": "A way for phones to fall back to 3G when 5G coverage is weak",
+      "D": "Protection against SIM swapping by binding numbers to devices"
+    },
+    "answer": "A",
+    "explanation": "Slicing creates isolated logical networks, each tuned for a use such as low latency or massive IoT, over the same physical infrastructure. Isolation between slices is a security requirement.",
+    "distractor_rationales": {
+      "B": "Slicing does not provide end-to-end encryption between users.",
+      "C": "Fallback to older networks is a separate function.",
+      "D": "SIM swapping is a carrier process issue, not addressed by slicing."
+    },
+    "references_topic": "5G network slicing",
+    "version": "0.4"
+  },
+  {
+    "id": "D4-0084",
+    "domain": 4,
+    "domain_name": "Communication and Network Security",
+    "subtopic": "SDN, SD-WAN, and virtual networks",
+    "difficulty": "medium",
+    "type": "knowledge",
+    "stem": "Which security feature do SD-WAN solutions typically provide for branch traffic that crosses the internet?",
+    "options": {
+      "A": "Physical fiber links that are dedicated to each branch office",
+      "B": "Encrypted overlay tunnels managed by central policy",
+      "C": "Elimination of the need for any firewalls at branches",
+      "D": "Automatic removal of all malware from branch devices"
+    },
+    "answer": "B",
+    "explanation": "SD-WAN builds encrypted tunnels, usually IPsec, over any transport and applies routing and security policy centrally.",
+    "distractor_rationales": {
+      "A": "SD-WAN typically uses existing internet links rather than dedicated fiber.",
+      "C": "Branches still need firewalling, often integrated into the SD-WAN device or a cloud service.",
+      "D": "SD-WAN does not remove malware from endpoints."
+    },
+    "references_topic": "SD-WAN security features",
+    "version": "0.4"
+  },
+  {
+    "id": "D4-0085",
+    "domain": 4,
+    "domain_name": "Communication and Network Security",
+    "subtopic": "Network devices and NAC",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "A vendor troubleshooting an application asks for an \"any-to-any\" firewall rule so they can work without interruption. What is the BEST response?",
+    "options": {
+      "A": "Add the rule, since the vendor is the expert on the application",
+      "B": "Refuse all vendor access until the application is working again",
+      "C": "Allow only the specific sources, destinations, and ports needed, with an expiry date",
+      "D": "Add the rule as requested and plan to remove it at the next annual firewall rule review"
+    },
+    "answer": "C",
+    "explanation": "Least privilege applies to firewall rules. A narrow rule with an expiry supports the vendor's work without opening the network.",
+    "distractor_rationales": {
+      "A": "An any-to-any rule removes all protection.",
+      "B": "Blocking access prevents a legitimate fix.",
+      "D": "A year-long temporary rule is effectively permanent."
+    },
+    "references_topic": "Narrow, time-limited firewall rules",
+    "version": "0.4"
+  },
+  {
+    "id": "D4-0086",
+    "domain": 4,
+    "domain_name": "Communication and Network Security",
+    "subtopic": "Transmission media",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "An assessor plugs a laptop into a wall jack in the public lobby and gets an address on the corporate network. What is the BEST fix?",
+    "options": {
+      "A": "Place a plant in front of the wall jack so that visitors do not notice it",
+      "B": "Put tape over the jack with a label that reads \"out of order\"",
+      "C": "Replace the lobby cable with fiber so that laptops cannot connect to it",
+      "D": "Disable unused switch ports and require 802.1X on any active public jack"
+    },
+    "answer": "D",
+    "explanation": "Unused jacks should be disconnected or disabled at the switch, and any jack that must stay active in a public area should require port authentication.",
+    "distractor_rationales": {
+      "A": "Hiding the jack does not disable it.",
+      "B": "Tape can be removed in seconds.",
+      "C": "Fiber changes the medium but does not control who connects."
+    },
+    "references_topic": "Disabling unused network jacks",
+    "version": "0.4"
+  },
+  {
+    "id": "D4-0087",
+    "domain": 4,
+    "domain_name": "Communication and Network Security",
+    "subtopic": "Remote access and VPN",
+    "difficulty": "medium",
+    "type": "knowledge",
+    "stem": "Which type of VPN can often be used through a web browser without installing a full client?",
+    "options": {
+      "A": "TLS (SSL) VPN",
+      "B": "IPsec VPN in tunnel mode",
+      "C": "Point-to-Point Tunneling Protocol",
+      "D": "Layer 2 Tunneling Protocol with IPsec"
+    },
+    "answer": "A",
+    "explanation": "TLS VPNs run over HTTPS and can offer clientless, browser-based access to web applications, which is convenient for users on unmanaged devices.",
+    "distractor_rationales": {
+      "B": "IPsec VPNs typically need a client or gateway configuration.",
+      "C": "PPTP needs a client and is insecure.",
+      "D": "L2TP/IPsec needs a client configuration."
+    },
+    "references_topic": "TLS VPNs",
+    "version": "0.4"
+  },
+  {
+    "id": "D4-0088",
+    "domain": 4,
+    "domain_name": "Communication and Network Security",
+    "subtopic": "Voice, video, and collaboration",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "The company's phone bill shows thousands of dollars of international calls made overnight through its PBX. What should the company do?",
+    "options": {
+      "A": "Pay the bill and change nothing, since toll fraud happens to every company",
+      "B": "Restrict international dialing, reset voicemail PINs, and alert on unusual calls",
+      "C": "Disconnect the PBX permanently and require staff to use personal phones",
+      "D": "Ask the phone carrier to lower its international calling rates"
+    },
+    "answer": "B",
+    "explanation": "Toll fraud often abuses weak voicemail PINs or open dialing permissions. Restricting destinations, strengthening PINs, and monitoring call patterns stop and detect it.",
+    "distractor_rationales": {
+      "A": "Doing nothing invites repeated fraud.",
+      "C": "Removing the phone system is disproportionate.",
+      "D": "Lower rates reduce cost but do not stop the fraud."
+    },
+    "references_topic": "Toll fraud",
+    "version": "0.4"
+  },
+  {
+    "id": "D4-0089",
+    "domain": 4,
+    "domain_name": "Communication and Network Security",
+    "subtopic": "Network attacks",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "Several workstations suddenly receive a default gateway that points to an unknown laptop. Which switch feature BEST prevents this?",
+    "options": {
+      "A": "Spanning Tree Protocol loop guard enabled on all of the uplinks",
+      "B": "Port mirroring to the intrusion detection system",
+      "C": "DHCP snooping that trusts only authorized DHCP server ports",
+      "D": "Link aggregation between the access switches"
+    },
+    "answer": "C",
+    "explanation": "A rogue DHCP server can hand out a malicious gateway to intercept traffic. DHCP snooping allows DHCP offers only from trusted ports.",
+    "distractor_rationales": {
+      "A": "Loop guard prevents layer 2 loops.",
+      "B": "Mirroring copies traffic for analysis but does not block rogue offers.",
+      "D": "Link aggregation increases bandwidth and resilience."
+    },
+    "references_topic": "Rogue DHCP servers",
+    "version": "0.4"
+  },
+  {
+    "id": "D4-0090",
+    "domain": 4,
+    "domain_name": "Communication and Network Security",
+    "subtopic": "CDN and edge networks",
+    "difficulty": "medium",
+    "type": "knowledge",
+    "stem": "Many CDNs advertise the same IP address from data centers around the world. How does this help against DDoS attacks?",
+    "options": {
+      "A": "It encrypts the attack traffic so that it cannot harm the origin server",
+      "B": "It blocks every request that comes from outside the website's home country",
+      "C": "It hides the website's domain name from attackers' DNS lookups",
+      "D": "It spreads attack traffic across many edge locations"
+    },
+    "answer": "D",
+    "explanation": "With anycast, traffic goes to the nearest location announcing the address, so a large attack is divided across many sites instead of hitting one.",
+    "distractor_rationales": {
+      "A": "Anycast routes traffic; it does not encrypt it.",
+      "B": "Anycast does not filter by country.",
+      "C": "The domain still resolves normally."
+    },
+    "references_topic": "Anycast routing at the edge",
+    "version": "0.4"
+  },
+  {
+    "id": "D4-0091",
+    "domain": 4,
+    "domain_name": "Communication and Network Security",
+    "subtopic": "Secure protocols",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "The company plans to disable TLS 1.0 and 1.1 on its web servers, but a few partner systems support only TLS 1.0. What is the BEST approach?",
+    "options": {
+      "A": "Disable old versions broadly and give partners a limited, isolated exception with a deadline",
+      "B": "Keep TLS 1.0 enabled on every server indefinitely so that no partner connection breaks",
+      "C": "Disable TLS entirely for partners and exchange files with them by plain FTP",
+      "D": "Disable the old versions without notice and let partners discover the change"
+    },
+    "answer": "A",
+    "explanation": "Retiring weak protocols protects everyone, while a narrow, time-limited exception with isolation manages the business need and pushes partners to upgrade.",
+    "distractor_rationales": {
+      "B": "Leaving old versions everywhere exposes all users.",
+      "C": "Plain FTP removes encryption entirely.",
+      "D": "Unannounced changes disrupt partners and damage trust."
+    },
+    "references_topic": "Retiring old TLS versions",
+    "version": "0.4"
+  },
+  {
+    "id": "D4-0092",
+    "domain": 4,
+    "domain_name": "Communication and Network Security",
+    "subtopic": "Converged and multilayer protocols",
+    "difficulty": "hard",
+    "type": "application",
+    "stem": "IP phones and PCs share wall ports, with phones placed on a voice VLAN. A tester unplugs a phone, connects a laptop, and reaches the voice VLAN. What BEST prevents this?",
+    "options": {
+      "A": "Hide the voice VLAN number from the switch configuration documentation",
+      "B": "Authenticate devices with 802.1X or MAC authentication before assigning the voice VLAN",
+      "C": "Move all phones to the data VLAN so there is only one VLAN on each port",
+      "D": "Replace the IP phones with analog phones connected to a separate PBX"
+    },
+    "answer": "B",
+    "explanation": "Assigning the voice VLAN only after the device authenticates as a phone keeps laptops from joining it. MAC authentication alone is weaker, so certificates on phones are better where supported.",
+    "distractor_rationales": {
+      "A": "The VLAN ID is easily discovered, for example from phone traffic.",
+      "C": "Merging voice and data removes separation.",
+      "D": "Replacing phones is disproportionate when port authentication solves the problem."
+    },
+    "references_topic": "Securing voice VLAN access",
+    "version": "0.4"
+  },
+  {
+    "id": "D4-0093",
+    "domain": 4,
+    "domain_name": "Communication and Network Security",
+    "subtopic": "Network segmentation",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "Domain administrators use the same workstation for email, web browsing, and managing domain controllers. What is the BEST improvement?",
+    "options": {
+      "A": "Install a second antivirus product on each administrator's workstation",
+      "B": "Block all web browsing for the entire company to reduce exposure",
+      "C": "Give admins dedicated hardened workstations in an admin zone with no email or browsing",
+      "D": "Require administrators to clear their browser history daily"
+    },
+    "answer": "C",
+    "explanation": "Email and browsing are common infection paths. Dedicated privileged access workstations in a separate management zone keep admin credentials away from those risks.",
+    "distractor_rationales": {
+      "A": "A second antivirus product does little against targeted phishing.",
+      "B": "A company-wide browsing ban is disproportionate.",
+      "D": "Clearing browser history does not stop malware from stealing credentials."
+    },
+    "references_topic": "Privileged access workstations",
+    "version": "0.4"
+  },
+  {
+    "id": "D4-0094",
+    "domain": 4,
+    "domain_name": "Communication and Network Security",
+    "subtopic": "Cellular and satellite",
+    "difficulty": "hard",
+    "type": "application",
+    "stem": "A utility is deploying 5,000 smart meters that connect over a cellular carrier network. The meters should reach only the utility's head-end servers. Which design BEST achieves this?",
+    "options": {
+      "A": "Give each meter a public IP address and a firewall rule on the head-end",
+      "B": "Use SMS messages for all meter communications to avoid the internet",
+      "C": "Use the carrier's default consumer APN and rely on meter passwords",
+      "D": "Use a private APN with no internet breakout and a VPN to the utility"
+    },
+    "answer": "D",
+    "explanation": "A private APN keeps meter traffic off the public internet and routes it only to the utility, where a VPN and filtering further restrict it.",
+    "distractor_rationales": {
+      "A": "Public addresses expose every meter to internet scanning.",
+      "B": "SMS is limited, unauthenticated by default, and hard to secure.",
+      "C": "A consumer APN gives internet access and exposure."
+    },
+    "references_topic": "Private APNs for IoT",
+    "version": "0.4"
+  },
+  {
+    "id": "D4-0095",
+    "domain": 4,
+    "domain_name": "Communication and Network Security",
+    "subtopic": "SDN, SD-WAN, and virtual networks",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "Network engineers push configuration changes to the SDN controller directly from their laptops using personal API tokens. What is the BEST improvement?",
+    "options": {
+      "A": "Route changes through a reviewed pipeline that alone holds scoped controller credentials",
+      "B": "Ask engineers to email a description of each change to the network manager afterward for records",
+      "C": "Give every engineer a shared administrator token so that changes are consistent",
+      "D": "Allow changes only on weekends when there is less traffic on the network"
+    },
+    "answer": "A",
+    "explanation": "A pipeline with review, testing, and tightly scoped credentials makes every change approved, recorded, and repeatable, and removes powerful tokens from laptops.",
+    "distractor_rationales": {
+      "B": "After-the-fact emails do not prevent bad changes.",
+      "C": "A shared token destroys accountability.",
+      "D": "Timing does not add review or control."
+    },
+    "references_topic": "Controlling network-as-code changes",
+    "version": "0.4"
+  },
+  {
+    "id": "D4-0096",
+    "domain": 4,
+    "domain_name": "Communication and Network Security",
+    "subtopic": "Remote access and VPN",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "Contractors need access to one internal web application, but the current VPN gives them access to the whole internal network. What is the BEST solution?",
+    "options": {
+      "A": "Give contractors the same full VPN but ask them to use only the one application",
+      "B": "Use zero trust network access that publishes only that application to them",
+      "C": "Move the application to the public internet with no authentication",
+      "D": "Create a shared VPN account for all contractors to simplify management"
+    },
+    "answer": "B",
+    "explanation": "Zero trust network access grants per-application access after verifying identity and context, so contractors never land on the internal network.",
+    "distractor_rationales": {
+      "A": "Relying on contractors to limit themselves is not a control.",
+      "C": "Public exposure without authentication is dangerous.",
+      "D": "Shared accounts destroy accountability."
+    },
+    "references_topic": "Zero trust network access",
+    "version": "0.4"
+  },
+  {
+    "id": "D4-0097",
+    "domain": 4,
+    "domain_name": "Communication and Network Security",
+    "subtopic": "Network attacks",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "An organization learns that another network briefly announced its IP prefixes, drawing its traffic away. What is the BEST long-term control?",
+    "options": {
+      "A": "Change the organization's public IP addresses whenever this happens",
+      "B": "Encrypt all of the organization's DNS records with DNSSEC",
+      "C": "Publish route origin authorizations with RPKI and ask providers to validate them",
+      "D": "Block the other network's IP addresses at the organization's firewall"
+    },
+    "answer": "C",
+    "explanation": "RPKI lets the organization cryptographically state which networks may originate its prefixes. Providers that validate routes can reject hijacked announcements.",
+    "distractor_rationales": {
+      "A": "Changing addresses is costly and does not stop future hijacks.",
+      "B": "DNSSEC protects DNS answers, not routing announcements.",
+      "D": "A local firewall cannot stop other networks from routing traffic elsewhere."
+    },
+    "references_topic": "BGP hijacking and RPKI",
+    "version": "0.4"
+  },
+  {
+    "id": "D4-0098",
+    "domain": 4,
+    "domain_name": "Communication and Network Security",
+    "subtopic": "CDN and edge networks",
+    "difficulty": "hard",
+    "type": "application",
+    "stem": "A marketing subdomain still has a DNS CNAME pointing to a CDN resource that was deleted months ago. What risk does this create, and what is the fix?",
+    "options": {
+      "A": "Slower page loads for users; increase the time-to-live on the DNS record",
+      "B": "Certificate expiry warnings; renew the TLS certificate for the subdomain",
+      "C": "Higher CDN costs; ask the provider to discount the deleted resource",
+      "D": "Subdomain takeover by an attacker who claims the resource; remove dangling records"
+    },
+    "answer": "D",
+    "explanation": "If an attacker can create a resource with the same name at the provider, the subdomain will serve their content. Removing DNS records when resources are deleted closes the gap.",
+    "distractor_rationales": {
+      "A": "The main risk is takeover, not performance.",
+      "B": "A certificate does not address the dangling record.",
+      "C": "Cost is not the issue; the orphaned name is."
+    },
+    "references_topic": "Dangling DNS and subdomain takeover",
+    "version": "0.4"
+  }
+]

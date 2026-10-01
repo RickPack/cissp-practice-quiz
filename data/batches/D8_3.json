@@ -1,0 +1,602 @@
+[
+  {
+    "id": "D8-0026",
+    "domain": 8,
+    "domain_name": "Software Development Security",
+    "subtopic": "SDLC integration",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "In which SDLC phase should security requirements FIRST be defined?",
+    "options": {
+      "A": "Testing, once the application is feature complete and ready for review",
+      "B": "Deployment, when the operations team configures the production servers",
+      "C": "Maintenance, after the first round of user feedback has been collected",
+      "D": "Requirements gathering, alongside the functional requirements"
+    },
+    "answer": "D",
+    "explanation": "Security requirements belong with functional requirements from the start, so design, coding, and testing can all build toward them.",
+    "distractor_rationales": {
+      "A": "Defining requirements at testing time means rework and missed controls.",
+      "B": "Deployment is too late to shape the design.",
+      "C": "Maintenance is far too late; flaws are already built in."
+    },
+    "references_topic": "Security requirements in early phases",
+    "version": "0.3"
+  },
+  {
+    "id": "D8-0027",
+    "domain": 8,
+    "domain_name": "Software Development Security",
+    "subtopic": "Development methodologies",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "Which development methodology completes each phase fully before the next phase begins?",
+    "options": {
+      "A": "Waterfall",
+      "B": "Agile with two-week sprints and a continuously reprioritized backlog",
+      "C": "Spiral, which repeats planning, risk analysis, and building in cycles",
+      "D": "DevOps with continuous integration and frequent automated deployments"
+    },
+    "answer": "A",
+    "explanation": "Waterfall is sequential: requirements, design, implementation, testing, and deployment each finish before the next starts.",
+    "distractor_rationales": {
+      "B": "Agile works in short iterations that overlap these activities.",
+      "C": "Spiral repeats phases in risk-driven loops.",
+      "D": "DevOps delivers continuously rather than in sequential phases."
+    },
+    "references_topic": "Waterfall model",
+    "version": "0.3"
+  },
+  {
+    "id": "D8-0028",
+    "domain": 8,
+    "domain_name": "Software Development Security",
+    "subtopic": "Software maturity models",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "Which software security maturity model is built from observing the practices that real organizations actually perform?",
+    "options": {
+      "A": "The Capability Maturity Model Integration for general process improvement",
+      "B": "BSIMM",
+      "C": "The OWASP Top 10 list of common web application risks",
+      "D": "The Common Criteria framework for evaluating security products"
+    },
+    "answer": "B",
+    "explanation": "BSIMM is descriptive: it reports what many organizations actually do, so a company can compare itself with peers. SAMM, by contrast, is prescriptive.",
+    "distractor_rationales": {
+      "A": "CMMI is a general process maturity model, not built from software security observations.",
+      "C": "The OWASP Top 10 is an awareness list of risks, not a maturity model.",
+      "D": "Common Criteria evaluates products, not an organization's practices."
+    },
+    "references_topic": "BSIMM as a descriptive model",
+    "version": "0.3"
+  },
+  {
+    "id": "D8-0029",
+    "domain": 8,
+    "domain_name": "Software Development Security",
+    "subtopic": "Development ecosystem security",
+    "difficulty": "easy",
+    "type": "managerial_best_first_most",
+    "stem": "What is the BEST control to stop unreviewed code from being merged into the main branch?",
+    "options": {
+      "A": "Ask developers to announce their merges in the team chat channel each day",
+      "B": "Run a weekly report of all commits made to the main branch for managers",
+      "C": "Branch protection that requires an approved review before merging",
+      "D": "Give only senior developers access to the repository's issue tracker"
+    },
+    "answer": "C",
+    "explanation": "Branch protection enforces the rule in the platform itself: nothing merges to main without an approved review and passing checks.",
+    "distractor_rationales": {
+      "A": "Announcements are informal and easily skipped.",
+      "B": "A weekly report detects problems after the code is merged.",
+      "D": "Issue tracker access does not control merges."
+    },
+    "references_topic": "Branch protection",
+    "version": "0.3"
+  },
+  {
+    "id": "D8-0030",
+    "domain": 8,
+    "domain_name": "Software Development Security",
+    "subtopic": "Secure coding practices",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "What should a web application show users when an unexpected error occurs?",
+    "options": {
+      "A": "The full stack trace so that users can include it in their support tickets",
+      "B": "The database query that failed, so users can see exactly what went wrong",
+      "C": "The server's file path and software versions to help with troubleshooting",
+      "D": "A generic message, with details logged on the server"
+    },
+    "answer": "D",
+    "explanation": "Detailed errors reveal internals that help attackers. A generic message keeps users informed, while server-side logs keep the detail for developers.",
+    "distractor_rationales": {
+      "A": "Stack traces expose code structure and libraries.",
+      "B": "Showing queries can reveal schema and aid injection.",
+      "C": "Paths and versions help attackers target known flaws."
+    },
+    "references_topic": "Secure error messages",
+    "version": "0.3"
+  },
+  {
+    "id": "D8-0031",
+    "domain": 8,
+    "domain_name": "Software Development Security",
+    "subtopic": "Secure coding practices",
+    "difficulty": "easy",
+    "type": "application",
+    "stem": "A code review finds a production database password written directly in a source file. What is the BEST fix?",
+    "options": {
+      "A": "Load it from a secrets manager at runtime and rotate the exposed password",
+      "B": "Move the password to a comment in the same file so it is not executed as code",
+      "C": "Encode the password in Base64 so that it is not readable at a glance in the file",
+      "D": "Rename the variable that holds the password to something less obvious to readers"
+    },
+    "answer": "A",
+    "explanation": "Secrets belong in a secrets manager, not in code. Because the password was in source control, it must also be rotated.",
+    "distractor_rationales": {
+      "B": "A comment is still in the file and in version history.",
+      "C": "Base64 is trivially reversible.",
+      "D": "Renaming the variable does not hide the value."
+    },
+    "references_topic": "Removing hard-coded credentials",
+    "version": "0.3"
+  },
+  {
+    "id": "D8-0032",
+    "domain": 8,
+    "domain_name": "Software Development Security",
+    "subtopic": "API security",
+    "difficulty": "easy",
+    "type": "managerial_best_first_most",
+    "stem": "A public login API receives millions of password guesses per day from automated tools. What is the BEST control?",
+    "options": {
+      "A": "Return more detailed error messages so that real users can fix their typos faster",
+      "B": "Rate limiting per account and per client",
+      "C": "Move the login API to a different URL path and tell only real customers about it",
+      "D": "Increase the server capacity so the API can respond faster under heavy load"
+    },
+    "answer": "B",
+    "explanation": "Rate limiting slows automated guessing to the point where it is ineffective, while legitimate users are unaffected.",
+    "distractor_rationales": {
+      "A": "Detailed errors help attackers learn which accounts exist.",
+      "C": "A new path is obscurity and will be rediscovered.",
+      "D": "More capacity lets attackers guess even faster."
+    },
+    "references_topic": "API rate limiting",
+    "version": "0.3"
+  },
+  {
+    "id": "D8-0033",
+    "domain": 8,
+    "domain_name": "Software Development Security",
+    "subtopic": "Change and release management",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "Which practice ensures that the code deployed to production is exactly the code that was tested?",
+    "options": {
+      "A": "Rebuilding the application from source separately in each environment before deploying it",
+      "B": "Letting developers copy updated files directly to the production servers when needed",
+      "C": "Promoting the same signed build artifact through each environment",
+      "D": "Asking testers to email a summary of their results to the operations team"
+    },
+    "answer": "C",
+    "explanation": "Building once and promoting the same signed artifact from test to production means the tested bits are the deployed bits.",
+    "distractor_rationales": {
+      "A": "Separate rebuilds can differ due to changed dependencies or settings.",
+      "B": "Direct copies bypass testing and change control.",
+      "D": "A summary email does not link results to what is deployed."
+    },
+    "references_topic": "Promoting the same build artifact",
+    "version": "0.3"
+  },
+  {
+    "id": "D8-0034",
+    "domain": 8,
+    "domain_name": "Software Development Security",
+    "subtopic": "Development methodologies",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "A team has moved from six-month projects to two-week sprints, but the security team still does one review at the end of each release. What change BEST fits security into the new process?",
+    "options": {
+      "A": "Keep the single end-of-release review and simply make the review team larger",
+      "B": "Stop security reviews entirely, since agile teams deliver too quickly for them",
+      "C": "Hold a two-day security review at the end of every sprint that blocks all merges",
+      "D": "Add security stories to the backlog and security criteria to the definition of done"
+    },
+    "answer": "D",
+    "explanation": "Making security part of the backlog and the definition of done builds it into every sprint, rather than treating it as a late gate.",
+    "distractor_rationales": {
+      "A": "A larger team still reviews too late.",
+      "B": "Dropping reviews leaves security unaddressed.",
+      "C": "Long blocking reviews each sprint slow delivery and encourage workarounds."
+    },
+    "references_topic": "Security in agile sprints",
+    "version": "0.3"
+  },
+  {
+    "id": "D8-0035",
+    "domain": 8,
+    "domain_name": "Software Development Security",
+    "subtopic": "SDLC integration",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "An internal application is being retired. Which security activity is MOST important in the disposal phase?",
+    "options": {
+      "A": "Archive or destroy its data per retention rules and revoke its credentials and integrations",
+      "B": "Leave the servers running in case users need to look something up later on",
+      "C": "Delete the application's source code repository first to save on hosting costs",
+      "D": "Send a company-wide email announcing the date that the application is going away"
+    },
+    "answer": "A",
+    "explanation": "Retirement must handle the data according to retention rules and remove the accounts, keys, and connections the application used, so nothing is left behind for attackers.",
+    "distractor_rationales": {
+      "B": "Forgotten running servers become unpatched targets.",
+      "C": "Deleting source code is not the priority and may be needed for records.",
+      "D": "An announcement is helpful but does not address security."
+    },
+    "references_topic": "Secure disposal phase",
+    "version": "0.3"
+  },
+  {
+    "id": "D8-0036",
+    "domain": 8,
+    "domain_name": "Software Development Security",
+    "subtopic": "Software maturity models",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "A SAMM assessment scores an organization low across nearly every practice. What is the BEST way to proceed?",
+    "options": {
+      "A": "Aim for the highest maturity level in every practice within the next year",
+      "B": "Set targets for a few high-priority practices and improve step by step",
+      "C": "Discard the results, since low scores show that the model does not fit the company",
+      "D": "Wait until the budget allows the company to improve every practice at once"
+    },
+    "answer": "B",
+    "explanation": "Maturity models are meant for incremental progress. Choosing a few high-impact practices and raising them step by step delivers results and builds momentum.",
+    "distractor_rationales": {
+      "A": "Trying to max out every practice at once is unrealistic.",
+      "C": "Low scores are the reason to use the model, not to reject it.",
+      "D": "Waiting for a perfect budget delays all improvement."
+    },
+    "references_topic": "Incremental maturity improvement",
+    "version": "0.3"
+  },
+  {
+    "id": "D8-0037",
+    "domain": 8,
+    "domain_name": "Software Development Security",
+    "subtopic": "Development ecosystem security",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "Developers keep committing API keys to repositories by accident. Which control BEST prevents new occurrences?",
+    "options": {
+      "A": "A quarterly reminder email that tells developers not to commit any secrets",
+      "B": "A monthly manual review of every repository by the security team",
+      "C": "Pre-commit secret scanning plus server-side push protection",
+      "D": "Making every repository private so that the keys are not publicly visible"
+    },
+    "answer": "C",
+    "explanation": "Scanning at commit time and blocking pushes that contain secrets stops them before they enter history, which is far cheaper than cleaning up later.",
+    "distractor_rationales": {
+      "A": "Reminders do not prevent mistakes.",
+      "B": "Monthly manual review finds secrets long after they are exposed.",
+      "D": "Private repositories still expose keys to everyone with access and to anyone who breaches them."
+    },
+    "references_topic": "Preventing secrets in commits",
+    "version": "0.3"
+  },
+  {
+    "id": "D8-0038",
+    "domain": 8,
+    "domain_name": "Software Development Security",
+    "subtopic": "CI/CD and pipeline security",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "A public project's CI pipeline runs automatically on pull requests from forks, and those jobs can read the deployment secrets. What is the BEST fix?",
+    "options": {
+      "A": "Ask contributors to promise in writing that they will not print the secrets in logs",
+      "B": "Rotate the deployment secrets once a month so that any leaked copies expire",
+      "C": "Move the deployment secrets into a file stored in the same repository instead",
+      "D": "Withhold secrets from untrusted fork builds and require approval to run them"
+    },
+    "answer": "D",
+    "explanation": "Code from a fork is untrusted. It should run without secrets, and privileged workflows should run only after a maintainer approves.",
+    "distractor_rationales": {
+      "A": "A promise does not stop malicious code in the pull request.",
+      "B": "Monthly rotation still leaves secrets exposed to anyone who submits a pull request.",
+      "C": "Secrets in the repository are worse."
+    },
+    "references_topic": "Untrusted pull request workflows",
+    "version": "0.3"
+  },
+  {
+    "id": "D8-0039",
+    "domain": 8,
+    "domain_name": "Software Development Security",
+    "subtopic": "Application security testing",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "Software composition analysis flags a critical vulnerability in a library, but the vulnerable function is never called by the application. How should the team handle the finding?",
+    "options": {
+      "A": "Lower its priority based on reachability and schedule the upgrade",
+      "B": "Close it permanently, since the vulnerable function is not used by the application today",
+      "C": "Stop all releases immediately until the library has been removed from every application",
+      "D": "Ignore all future SCA results, since findings like this one are clearly unreliable"
+    },
+    "answer": "A",
+    "explanation": "Reachability and exploitability should shape priority. The finding is real, so the upgrade should still be scheduled, but it need not block urgent work.",
+    "distractor_rationales": {
+      "B": "The code could start calling the function later, so the finding should not be closed permanently.",
+      "C": "Halting all releases is disproportionate for an unreachable flaw.",
+      "D": "One lower-priority finding does not make the tool unreliable."
+    },
+    "references_topic": "Reachability in SCA triage",
+    "version": "0.3"
+  },
+  {
+    "id": "D8-0040",
+    "domain": 8,
+    "domain_name": "Software Development Security",
+    "subtopic": "Software composition and supply chain",
+    "difficulty": "medium",
+    "type": "knowledge",
+    "stem": "An attacker publishes a public package with the same name as a company's internal package, but a higher version number, and the build system downloads it. What is this attack called?",
+    "options": {
+      "A": "Typosquatting on a misspelled package name",
+      "B": "Dependency confusion",
+      "C": "A buffer overflow in the package manager's parser",
+      "D": "Cross-site request forgery against the repository site"
+    },
+    "answer": "B",
+    "explanation": "Dependency confusion exploits build tools that prefer the highest version across public and private registries. Pinning, scoped names, and private registry precedence prevent it.",
+    "distractor_rationales": {
+      "A": "Typosquatting relies on misspelled names, not identical ones.",
+      "C": "No memory corruption is involved.",
+      "D": "CSRF targets web sessions, not build dependency resolution."
+    },
+    "references_topic": "Dependency confusion",
+    "version": "0.3"
+  },
+  {
+    "id": "D8-0041",
+    "domain": 8,
+    "domain_name": "Software Development Security",
+    "subtopic": "Acquired software security",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "A company depends on a critical application from a small vendor that may not stay in business. Which contract provision BEST protects the company?",
+    "options": {
+      "A": "A clause requiring the vendor to send a monthly newsletter about product updates",
+      "B": "A discount on license fees if the vendor misses its product roadmap deadlines",
+      "C": "A source code escrow agreement with defined release conditions",
+      "D": "A promise from the vendor's CEO that the company is financially stable"
+    },
+    "answer": "C",
+    "explanation": "Escrow places the source code with a neutral third party, to be released to the customer if the vendor fails, so the software can still be maintained.",
+    "distractor_rationales": {
+      "A": "A newsletter provides no continuity.",
+      "B": "A discount does not help if the vendor disappears.",
+      "D": "A verbal assurance is not enforceable protection."
+    },
+    "references_topic": "Source code escrow",
+    "version": "0.3"
+  },
+  {
+    "id": "D8-0042",
+    "domain": 8,
+    "domain_name": "Software Development Security",
+    "subtopic": "Source code weaknesses",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "A download endpoint takes a filename parameter. A tester requests \"../../etc/passwd\" and receives the system password file. What is the BEST root-cause fix?",
+    "options": {
+      "A": "Block requests that contain the word \"passwd\" at the web application firewall",
+      "B": "Run the web server under an account with a longer and more complex password",
+      "C": "Rename the system password file to something that attackers will not guess",
+      "D": "Map requests to allow-listed file IDs, or canonicalize paths and check the base directory"
+    },
+    "answer": "D",
+    "explanation": "Path traversal happens when user input builds file paths. Using indirect IDs, or resolving the path and confirming it stays inside the allowed directory, removes the flaw.",
+    "distractor_rationales": {
+      "A": "Blocking one keyword is easily bypassed and does not fix the code.",
+      "B": "Account passwords do not affect path handling.",
+      "C": "Renaming system files breaks the system and leaves other files exposed."
+    },
+    "references_topic": "Path traversal",
+    "version": "0.3"
+  },
+  {
+    "id": "D8-0043",
+    "domain": 8,
+    "domain_name": "Software Development Security",
+    "subtopic": "API security",
+    "difficulty": "medium",
+    "type": "knowledge",
+    "stem": "An ordinary user discovers that calling the API endpoint /admin/deleteUser directly succeeds, even though the admin menu is hidden in the app. What weakness is this?",
+    "options": {
+      "A": "Broken function-level authorization",
+      "B": "Insecure transport caused by a missing TLS configuration on the API gateway",
+      "C": "A denial-of-service weakness from missing rate limits on the endpoint",
+      "D": "Improper output encoding that allows scripts to run in the user's browser"
+    },
+    "answer": "A",
+    "explanation": "The server does not check whether the caller's role permits the administrative function. Hiding the menu in the client is not access control.",
+    "distractor_rationales": {
+      "B": "The issue is authorization, not encryption in transit.",
+      "C": "Rate limits do not decide who may call a function.",
+      "D": "Output encoding addresses XSS, not authorization."
+    },
+    "references_topic": "Broken function-level authorization",
+    "version": "0.3"
+  },
+  {
+    "id": "D8-0044",
+    "domain": 8,
+    "domain_name": "Software Development Security",
+    "subtopic": "Change and release management",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "What is the BEST way to reduce the risk of a major release to a large customer-facing application?",
+    "options": {
+      "A": "Release to every user at once late on a Friday so traffic is low over the weekend",
+      "B": "A staged rollout to a small share of users, with monitoring and a tested rollback",
+      "C": "Skip testing for this release, since the previous release went smoothly",
+      "D": "Let each developer deploy their own changes whenever they finish them"
+    },
+    "answer": "B",
+    "explanation": "A staged (canary) rollout exposes a small group first, so problems are caught early and rolled back before they reach everyone.",
+    "distractor_rationales": {
+      "A": "A full Friday release maximizes impact and reduces staff to respond.",
+      "C": "Past success does not validate new code.",
+      "D": "Uncoordinated deployments bypass release control."
+    },
+    "references_topic": "Canary releases",
+    "version": "0.3"
+  },
+  {
+    "id": "D8-0045",
+    "domain": 8,
+    "domain_name": "Software Development Security",
+    "subtopic": "CI/CD and pipeline security",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "The private key used to sign the company's software releases is stored as a file on the build server, readable by every pipeline job. What is the BEST improvement?",
+    "options": {
+      "A": "Encrypt the key file with a password stored in a text file next to it on the server",
+      "B": "Copy the key to each developer's laptop so that signing does not depend on one server",
+      "C": "Move signing to an HSM or managed signing service, allowed only for release jobs",
+      "D": "Change the name of the key file each month so that attackers cannot find it easily"
+    },
+    "answer": "C",
+    "explanation": "If an attacker can use the signing key, they can sign malware as the company. A hardware-backed signing service limited to approved release jobs protects the key and logs every use.",
+    "distractor_rationales": {
+      "A": "A password stored next to the file protects nothing.",
+      "B": "Spreading the key to laptops multiplies exposure.",
+      "D": "Renaming the file is obscurity."
+    },
+    "references_topic": "Protecting code-signing keys",
+    "version": "0.3"
+  },
+  {
+    "id": "D8-0046",
+    "domain": 8,
+    "domain_name": "Software Development Security",
+    "subtopic": "Software composition and supply chain",
+    "difficulty": "hard",
+    "type": "application",
+    "stem": "A critical flaw is announced in a widely used logging library. Leadership asks which of the company's 300 applications are affected. What makes this question fastest to answer?",
+    "options": {
+      "A": "Emailing every development team and waiting for them to reply with their answers",
+      "B": "Scanning the internet for public reports that mention the company's products",
+      "C": "Waiting for each vendor to publish its own advisory before starting any analysis",
+      "D": "Querying current SBOMs for the affected component and version"
+    },
+    "answer": "D",
+    "explanation": "SBOMs list every component and version in each application, so a query identifies exposure in minutes rather than days.",
+    "distractor_rationales": {
+      "A": "Manual surveys are slow and incomplete.",
+      "B": "Public reports will not list internal applications.",
+      "C": "Waiting for vendors delays response for in-house software."
+    },
+    "references_topic": "Using SBOMs during a disclosure",
+    "version": "0.3"
+  },
+  {
+    "id": "D8-0047",
+    "domain": 8,
+    "domain_name": "Software Development Security",
+    "subtopic": "Source code weaknesses",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "A profile update API accepts a JSON body and binds all fields to the user object. A tester adds \"role\": \"admin\" to the request and gains administrator rights. What is the BEST root-cause fix?",
+    "options": {
+      "A": "Bind only an allow-list of editable fields on the server",
+      "B": "Hide the role field in the web form so that users do not see it on the page",
+      "C": "Log every profile update so that role changes can be reviewed later on",
+      "D": "Add a CAPTCHA to the profile page to stop automated tools from sending requests"
+    },
+    "answer": "A",
+    "explanation": "Mass assignment occurs when the server binds whatever fields the client sends. Explicitly allowing only editable fields prevents privilege fields from being set by users.",
+    "distractor_rationales": {
+      "B": "Hiding a field in the client does not stop crafted requests.",
+      "C": "Logging detects the abuse but does not prevent it.",
+      "D": "A CAPTCHA does not stop a manual attacker from adding a field."
+    },
+    "references_topic": "Mass assignment",
+    "version": "0.3"
+  },
+  {
+    "id": "D8-0048",
+    "domain": 8,
+    "domain_name": "Software Development Security",
+    "subtopic": "Acquired software security",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "A SaaS vendor will not allow customers to run penetration tests against its platform. The service will hold sensitive customer data. What is the BEST approach?",
+    "options": {
+      "A": "Test the platform anyway without informing the vendor, since the data is sensitive",
+      "B": "Rely on independent attestations and contract terms for security and breach notice",
+      "C": "Accept the service without any assurance, because SaaS providers handle security",
+      "D": "Reject all SaaS vendors that decline customer penetration tests, however critical"
+    },
+    "answer": "B",
+    "explanation": "When direct testing is not allowed, the customer can rely on independent reports such as SOC 2 Type II and recent third-party test summaries, and back them with contractual security requirements and notification deadlines.",
+    "distractor_rationales": {
+      "A": "Testing without permission may be illegal and breach the contract.",
+      "C": "Shared responsibility still requires the customer to seek assurance.",
+      "D": "A blanket rejection ignores other sound ways to get assurance."
+    },
+    "references_topic": "Assurance without testing rights",
+    "version": "0.3"
+  },
+  {
+    "id": "D8-0049",
+    "domain": 8,
+    "domain_name": "Software Development Security",
+    "subtopic": "Application security testing",
+    "difficulty": "hard",
+    "type": "application",
+    "stem": "A DAST scan in the pipeline reports no findings, but a review shows it only ever reached the login page. What is the BEST correction?",
+    "options": {
+      "A": "Run the same scan more often so that it has more chances to find issues",
+      "B": "Replace DAST with a manual review of the login page's HTML source",
+      "C": "Configure authenticated scanning with a test account and session handling",
+      "D": "Accept the results, since no findings means the application is secure"
+    },
+    "answer": "C",
+    "explanation": "A scanner that cannot log in tests almost nothing. Giving it a dedicated test account and handling sessions lets it crawl and test the authenticated application.",
+    "distractor_rationales": {
+      "A": "Repeating an unauthenticated scan still reaches only the login page.",
+      "B": "Reviewing one page's source does not test the application.",
+      "D": "Zero findings reflects the missing coverage, not security."
+    },
+    "references_topic": "Authenticated DAST",
+    "version": "0.3"
+  },
+  {
+    "id": "D8-0050",
+    "domain": 8,
+    "domain_name": "Software Development Security",
+    "subtopic": "Secure coding practices",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "A developer wrote a custom encryption algorithm for customer data because standard libraries \"seemed too complex.\" What should the security team require?",
+    "options": {
+      "A": "Keep the custom algorithm but keep its design secret so attackers cannot study it",
+      "B": "Have the same developer write a second algorithm to encrypt the output again",
+      "C": "Keep the custom algorithm, but increase its key size to 512 bits for extra strength",
+      "D": "Replace it with a vetted library using a standard algorithm such as AES-GCM"
+    },
+    "answer": "D",
+    "explanation": "Custom cryptography almost always has flaws that experts would find. Well-reviewed libraries implementing standard algorithms are far safer.",
+    "distractor_rationales": {
+      "A": "Secrecy of design is not security; strong algorithms are public.",
+      "B": "Stacking two homemade algorithms does not make either one sound.",
+      "C": "Key size cannot fix a flawed algorithm."
+    },
+    "references_topic": "Using vetted cryptographic libraries",
+    "version": "0.3"
+  }
+]

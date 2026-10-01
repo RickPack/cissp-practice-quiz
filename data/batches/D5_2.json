@@ -1,0 +1,530 @@
+[
+  {
+    "id": "D5-0011",
+    "domain": 5,
+    "domain_name": "Identity and Access Management",
+    "subtopic": "Physical and logical access control",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "Which of the following is a logical access control?",
+    "options": {
+      "A": "A locked server room door",
+      "B": "A security guard at the lobby desk",
+      "C": "A turnstile at the building entrance",
+      "D": "A file system permission on a shared folder"
+    },
+    "answer": "D",
+    "explanation": "Logical (technical) access controls restrict access through software and systems, for example permissions, access control lists, and authentication.",
+    "distractor_rationales": {
+      "A": "A locked door is a physical control.",
+      "B": "A guard is a physical (and administrative) control.",
+      "C": "A turnstile is a physical control."
+    },
+    "references_topic": "Logical access controls",
+    "version": "0.2"
+  },
+  {
+    "id": "D5-0012",
+    "domain": 5,
+    "domain_name": "Identity and Access Management",
+    "subtopic": "Identification and authentication",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "In biometric systems, what is the crossover error rate (CER)?",
+    "options": {
+      "A": "The point where the false acceptance and false rejection rates are equal",
+      "B": "The rate at which impostors are wrongly accepted",
+      "C": "The rate at which legitimate users are wrongly rejected",
+      "D": "The time needed to enroll a new user"
+    },
+    "answer": "A",
+    "explanation": "The CER (also called the equal error rate) is where the false acceptance and false rejection curves meet. A lower CER indicates a more accurate system.",
+    "distractor_rationales": {
+      "B": "That is the false acceptance rate (a Type II error).",
+      "C": "That is the false rejection rate (a Type I error).",
+      "D": "Enrollment time is a usability measure, not an error rate."
+    },
+    "references_topic": "Crossover error rate",
+    "version": "0.2"
+  },
+  {
+    "id": "D5-0013",
+    "domain": 5,
+    "domain_name": "Identity and Access Management",
+    "subtopic": "Identity proofing and registration",
+    "difficulty": "easy",
+    "type": "application",
+    "stem": "Before issuing a new employee's first credentials, HR verifies a government-issued photo ID in person and matches it to the hiring record. What is this process called?",
+    "options": {
+      "A": "Authorization",
+      "B": "Identity proofing",
+      "C": "Federation",
+      "D": "Accounting"
+    },
+    "answer": "B",
+    "explanation": "Identity proofing verifies that a person is who they claim to be before an identity is registered and credentials are issued.",
+    "distractor_rationales": {
+      "A": "Authorization decides what an authenticated identity may do.",
+      "C": "Federation links identities across organizations or systems.",
+      "D": "Accounting records user activity."
+    },
+    "references_topic": "Identity proofing",
+    "version": "0.2"
+  },
+  {
+    "id": "D5-0014",
+    "domain": 5,
+    "domain_name": "Identity and Access Management",
+    "subtopic": "Authorization models",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "In role-based access control (RBAC), how are permissions typically granted?",
+    "options": {
+      "A": "Directly to each individual user by the resource owner",
+      "B": "According to security labels and user clearances",
+      "C": "To job-function roles, which users are then assigned",
+      "D": "According to the time of day of each request"
+    },
+    "answer": "C",
+    "explanation": "In RBAC, permissions attach to roles that reflect job functions, and users receive permissions by being assigned to roles.",
+    "distractor_rationales": {
+      "A": "Owner-granted, per-user permissions describe discretionary access control.",
+      "B": "Labels and clearances describe mandatory access control.",
+      "D": "Time-of-day conditions are rules or attributes, not the basis of RBAC."
+    },
+    "references_topic": "Role-based access control",
+    "version": "0.2"
+  },
+  {
+    "id": "D5-0015",
+    "domain": 5,
+    "domain_name": "Identity and Access Management",
+    "subtopic": "Authentication protocols",
+    "difficulty": "easy",
+    "type": "application",
+    "stem": "A network team wants an AAA protocol for administering routers and switches that encrypts the entire payload and handles authentication, authorization, and accounting separately. Which protocol fits?",
+    "options": {
+      "A": "RADIUS",
+      "B": "LDAP",
+      "C": "Kerberos",
+      "D": "TACACS+"
+    },
+    "answer": "D",
+    "explanation": "TACACS+ runs over TCP, encrypts the entire packet body, and separates the AAA functions, which allows per-command authorization for device administration.",
+    "distractor_rationales": {
+      "A": "RADIUS encrypts only the password and combines authentication and authorization.",
+      "B": "LDAP is a directory access protocol, not an AAA protocol for device administration.",
+      "C": "Kerberos provides ticket-based authentication but not per-command device authorization."
+    },
+    "references_topic": "TACACS+ versus RADIUS",
+    "version": "0.2"
+  },
+  {
+    "id": "D5-0016",
+    "domain": 5,
+    "domain_name": "Identity and Access Management",
+    "subtopic": "Federation and SSO",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "In OpenID Connect, which token tells the client application who the user is and how they authenticated?",
+    "options": {
+      "A": "The ID token",
+      "B": "The refresh token",
+      "C": "The access token",
+      "D": "The authorization code"
+    },
+    "answer": "A",
+    "explanation": "The ID token is a signed token (a JWT) containing claims about the authenticated user and the authentication event.",
+    "distractor_rationales": {
+      "B": "A refresh token is used to obtain new tokens.",
+      "C": "An access token authorizes API calls. It is meant for the resource server, not for identifying the user to the client.",
+      "D": "The authorization code is exchanged for tokens and carries no identity claims itself."
+    },
+    "references_topic": "OpenID Connect ID token",
+    "version": "0.2"
+  },
+  {
+    "id": "D5-0017",
+    "domain": 5,
+    "domain_name": "Identity and Access Management",
+    "subtopic": "Session management",
+    "difficulty": "easy",
+    "type": "application",
+    "stem": "A hospital's shared clinical workstations stay logged in after staff walk away. Which control MOST directly addresses this?",
+    "options": {
+      "A": "Require longer and more complex passwords for all clinical staff",
+      "B": "Idle timeout with fast re-authentication, such as a badge tap",
+      "C": "Annual security awareness training for clinicians",
+      "D": "Disable screen savers on the workstations"
+    },
+    "answer": "B",
+    "explanation": "An inactivity lock closes unattended sessions, and fast re-authentication such as a proximity badge keeps clinical workflow efficient.",
+    "distractor_rationales": {
+      "A": "Password strength does not close an open session.",
+      "C": "Training helps, but it does not reliably close sessions.",
+      "D": "Disabling screen savers makes the problem worse."
+    },
+    "references_topic": "Idle session timeouts",
+    "version": "0.2"
+  },
+  {
+    "id": "D5-0018",
+    "domain": 5,
+    "domain_name": "Identity and Access Management",
+    "subtopic": "Access policy enforcement",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "A database administrator can read every record in an HR database containing salaries, although the job requires only performance tuning and backups. Which principle is violated, and what should be done?",
+    "options": {
+      "A": "Separation of duties; hire a second administrator to share the work",
+      "B": "Job rotation; rotate administrators every quarter",
+      "C": "Need to know; remove data access but keep admin functions",
+      "D": "Defense in depth; add a firewall in front of the database"
+    },
+    "answer": "C",
+    "explanation": "Need to know limits access to the information required for a person's duties. Administrators can manage the database without reading its contents, for example through data masking, encryption with keys they do not hold, or separate administrative roles.",
+    "distractor_rationales": {
+      "A": "Adding a second administrator does not limit what either one can read.",
+      "B": "Rotation does not remove unnecessary access to data.",
+      "D": "A firewall controls network access, not what an authorized administrator can read."
+    },
+    "references_topic": "Need to know",
+    "version": "0.2"
+  },
+  {
+    "id": "D5-0019",
+    "domain": 5,
+    "domain_name": "Identity and Access Management",
+    "subtopic": "Identity proofing and registration",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "Attackers repeatedly call a help desk pretending to be executives and get passwords reset. Which control BEST fixes this?",
+    "options": {
+      "A": "Require callers to provide their employee ID number and job title",
+      "B": "Let only senior help desk staff perform password resets",
+      "C": "Send the new password to the account's email address",
+      "D": "Verify identity out of band, such as a registered device"
+    },
+    "answer": "D",
+    "explanation": "Employee IDs and titles are easy to discover. Verifying the caller through something registered to them, such as a push prompt to an enrolled device or a manager callback to a known number, resists social engineering.",
+    "distractor_rationales": {
+      "A": "Employee ID numbers and job titles are often easy to find.",
+      "B": "Seniority does not verify who is calling.",
+      "C": "If the account is compromised, the attacker may control the email inbox, and the caller still has not been verified."
+    },
+    "references_topic": "Secure credential reset",
+    "version": "0.2"
+  },
+  {
+    "id": "D5-0020",
+    "domain": 5,
+    "domain_name": "Identity and Access Management",
+    "subtopic": "Authorization models",
+    "difficulty": "medium",
+    "type": "knowledge",
+    "stem": "A policy states: \"Nurses may view records of patients on their assigned ward, only during their shift, and only from hospital-managed devices.\" Which access control model BEST implements this?",
+    "options": {
+      "A": "Attribute-based access control (ABAC)",
+      "B": "Discretionary access control",
+      "C": "Mandatory access control",
+      "D": "Role-based access control with a single nurse role"
+    },
+    "answer": "A",
+    "explanation": "ABAC evaluates attributes of the subject (role, ward assignment), the resource (patient's ward), and the environment (time, device) against a policy.",
+    "distractor_rationales": {
+      "B": "DAC relies on resource owners' discretion and cannot express these conditions.",
+      "C": "MAC uses labels and clearances, not contextual conditions such as shift and device.",
+      "D": "A single role cannot express ward, time, and device conditions."
+    },
+    "references_topic": "Attribute-based access control",
+    "version": "0.2"
+  },
+  {
+    "id": "D5-0021",
+    "domain": 5,
+    "domain_name": "Identity and Access Management",
+    "subtopic": "Physical and logical access control",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "An organization finds that terminated employees' building badges stay active for days after their network accounts are disabled. What is the BEST fix?",
+    "options": {
+      "A": "Collect badges at exit interviews and rely on that alone",
+      "B": "Tie badge deprovisioning to the same identity lifecycle",
+      "C": "Change the door keypad codes every month",
+      "D": "Station additional guards at every entrance"
+    },
+    "answer": "B",
+    "explanation": "When a single identity lifecycle, driven by HR events, deprovisions physical and logical access together, badges stop working at the same moment accounts are disabled.",
+    "distractor_rationales": {
+      "A": "Exit interviews miss unreturned badges, lost badges, and remote departures.",
+      "C": "Changing keypad codes does not disable badges.",
+      "D": "Guards cannot recognize every terminated employee."
+    },
+    "references_topic": "Converged physical and logical deprovisioning",
+    "version": "0.2"
+  },
+  {
+    "id": "D5-0022",
+    "domain": 5,
+    "domain_name": "Identity and Access Management",
+    "subtopic": "Multi-factor and passwordless authentication",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "A phishing campaign steals passwords and one-time codes in real time through a proxy site. The company wants MFA that resists this attack. Which option is BEST?",
+    "options": {
+      "A": "SMS one-time codes",
+      "B": "Authenticator app push without number matching",
+      "C": "FIDO2 security keys or passkeys",
+      "D": "Personal security questions"
+    },
+    "answer": "C",
+    "explanation": "FIDO2 (WebAuthn) binds each authentication to the legitimate site's origin, so a proxy site cannot relay the response.",
+    "distractor_rationales": {
+      "A": "SMS codes can be typed into the proxy site and relayed.",
+      "B": "Push approvals can be relayed, and users can be pestered into approving.",
+      "D": "Security questions are a knowledge factor that can be phished like a password."
+    },
+    "references_topic": "Phishing-resistant MFA",
+    "version": "0.2"
+  },
+  {
+    "id": "D5-0023",
+    "domain": 5,
+    "domain_name": "Identity and Access Management",
+    "subtopic": "Federation and SSO",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "A company uses a single external identity provider for SSO to 60 SaaS applications. What is the MOST significant risk the security manager should plan for?",
+    "options": {
+      "A": "Users will have too few passwords to remember",
+      "B": "SaaS vendors will stop retaining their access logs",
+      "C": "Federation removes the need for multi-factor authentication",
+      "D": "An IdP compromise or outage affects all 60 applications"
+    },
+    "answer": "D",
+    "explanation": "Federation concentrates risk in the identity provider. Plan for strong MFA and hardening of IdP administration, monitoring, resilience, and emergency access procedures.",
+    "distractor_rationales": {
+      "A": "Fewer passwords is a benefit, not a risk.",
+      "B": "Federation has no effect on vendors' log retention.",
+      "C": "Federation does not remove the need for MFA. MFA at the IdP becomes even more important."
+    },
+    "references_topic": "Identity provider concentration risk",
+    "version": "0.2"
+  },
+  {
+    "id": "D5-0024",
+    "domain": 5,
+    "domain_name": "Identity and Access Management",
+    "subtopic": "Authentication protocols",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "Users in a Kerberos realm suddenly cannot authenticate, and the logs show \"clock skew too great.\" What is the MOST likely cause?",
+    "options": {
+      "A": "Client clocks drift beyond the KDC's tolerance",
+      "B": "The KDC's principal database has become corrupted",
+      "C": "The users' passwords have all expired",
+      "D": "High network latency between clients and the KDC"
+    },
+    "answer": "A",
+    "explanation": "Kerberos authenticators carry timestamps to prevent replay. If a client's clock differs from the KDC's by more than the allowed tolerance, often five minutes, authentication fails. The fix is time synchronization.",
+    "distractor_rationales": {
+      "B": "Database corruption produces different errors.",
+      "C": "Expired passwords produce password-expiry errors.",
+      "D": "Latency adds seconds at most and does not cause clock skew errors."
+    },
+    "references_topic": "Kerberos time synchronization",
+    "version": "0.2"
+  },
+  {
+    "id": "D5-0025",
+    "domain": 5,
+    "domain_name": "Identity and Access Management",
+    "subtopic": "Provisioning lifecycle",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "A growing company provisions accounts manually from emailed requests, which causes delays and orphaned accounts. What should the IAM manager implement FIRST?",
+    "options": {
+      "A": "Quarterly access reviews as the only control",
+      "B": "Automated provisioning driven by the HR system of record",
+      "C": "Shared team accounts to reduce the number of requests",
+      "D": "Passwords that never expire for new hires"
+    },
+    "answer": "B",
+    "explanation": "Using the HR system as the authoritative source to trigger joiner, mover, and leaver events removes delays and prevents orphaned accounts at the source.",
+    "distractor_rationales": {
+      "A": "Reviews find problems after the fact. They do not fix the broken process.",
+      "C": "Shared accounts destroy accountability.",
+      "D": "Non-expiring passwords weaken security and do nothing for provisioning."
+    },
+    "references_topic": "Automated provisioning",
+    "version": "0.2"
+  },
+  {
+    "id": "D5-0026",
+    "domain": 5,
+    "domain_name": "Identity and Access Management",
+    "subtopic": "Federation and SSO",
+    "difficulty": "medium",
+    "type": "knowledge",
+    "stem": "A mobile app uses OAuth 2.0 to call an API on the user's behalf. Which flow is recommended for this kind of public client?",
+    "options": {
+      "A": "Resource owner password credentials grant",
+      "B": "Implicit grant",
+      "C": "Authorization code grant with PKCE",
+      "D": "Client credentials grant"
+    },
+    "answer": "C",
+    "explanation": "Public clients cannot keep secrets. The authorization code flow with PKCE ensures an intercepted authorization code cannot be exchanged by anyone but the app that started the flow.",
+    "distractor_rationales": {
+      "A": "The password grant makes the app collect the user's password and is deprecated.",
+      "B": "The implicit grant exposes tokens in the redirect and is deprecated.",
+      "D": "The client credentials grant is for machine-to-machine access with no user involved."
+    },
+    "references_topic": "OAuth authorization code with PKCE",
+    "version": "0.2"
+  },
+  {
+    "id": "D5-0027",
+    "domain": 5,
+    "domain_name": "Identity and Access Management",
+    "subtopic": "Privileged and service accounts",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "A company requires MFA through its identity provider for all administrative access. What should it also maintain in case the identity provider is unavailable during an emergency?",
+    "options": {
+      "A": "Nothing; administrators should wait until the IdP recovers",
+      "B": "A shared administrator password emailed to every admin in advance",
+      "C": "A plan to disable MFA for everyone during outages",
+      "D": "Sealed, monitored break-glass accounts for emergencies"
+    },
+    "answer": "D",
+    "explanation": "A few emergency (break-glass) accounts with strong credentials stored under dual control, whose use triggers alerts and review, keep critical systems manageable during an IdP outage.",
+    "distractor_rationales": {
+      "A": "Waiting could prolong a serious outage or incident.",
+      "B": "A shared, emailed password is insecure and unaccountable.",
+      "C": "Disabling MFA broadly weakens protection exactly when risk is high."
+    },
+    "references_topic": "Break-glass accounts",
+    "version": "0.2"
+  },
+  {
+    "id": "D5-0028",
+    "domain": 5,
+    "domain_name": "Identity and Access Management",
+    "subtopic": "Access policy enforcement",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "An ERP audit shows 30 users who can both create vendors and approve payments to those vendors. What is the BEST long-term remediation?",
+    "options": {
+      "A": "Redesign roles to separate duties and block conflicts at provisioning",
+      "B": "Rely on finance to manually review a small sample of payments once a year",
+      "C": "Remove payment approval rights from all users",
+      "D": "Log every vendor creation for later review"
+    },
+    "answer": "A",
+    "explanation": "Redesign roles so that no one holds both conflicting duties, and add a preventive check that blocks conflicting assignments during provisioning. Any unavoidable exceptions get compensating detective controls.",
+    "distractor_rationales": {
+      "B": "An annual sample review is a weak detective control that leaves the conflict in place.",
+      "C": "Removing approval rights from everyone stops the business from paying vendors.",
+      "D": "Logging alone detects misuse after it happens and does not remove the conflict."
+    },
+    "references_topic": "Separation of duties enforcement",
+    "version": "0.2"
+  },
+  {
+    "id": "D5-0029",
+    "domain": 5,
+    "domain_name": "Identity and Access Management",
+    "subtopic": "Authentication protocols",
+    "difficulty": "hard",
+    "type": "application",
+    "stem": "Incident responders find that attackers extracted the hash of the Kerberos ticket-granting account (krbtgt) and are forging tickets. Which remediation step is REQUIRED to invalidate the forged tickets?",
+    "options": {
+      "A": "Reset every user's password once across the entire domain",
+      "B": "Reset the krbtgt password twice, with replication between",
+      "C": "Reboot all domain controllers",
+      "D": "Disable Kerberos and fall back to NTLM"
+    },
+    "answer": "B",
+    "explanation": "Forged \"golden\" tickets are signed with the krbtgt key, and the domain accepts both the current and the previous key. Resetting the krbtgt password twice, allowing replication in between, invalidates both, alongside evicting the attacker.",
+    "distractor_rationales": {
+      "A": "User passwords have no effect on tickets signed with the krbtgt key.",
+      "C": "Rebooting does not change any keys.",
+      "D": "NTLM is weaker, and switching to it is not a remediation."
+    },
+    "references_topic": "Golden ticket remediation",
+    "version": "0.2"
+  },
+  {
+    "id": "D5-0030",
+    "domain": 5,
+    "domain_name": "Identity and Access Management",
+    "subtopic": "Authorization models",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "A user signs in from their usual city and, 20 minutes later, from another continent. Which response BEST reflects risk-based access control?",
+    "options": {
+      "A": "Allow both sessions, because the password entered was correct",
+      "B": "Permanently lock the account",
+      "C": "Require step-up authentication and limit sensitive actions",
+      "D": "Notify the user by postal mail"
+    },
+    "answer": "C",
+    "explanation": "\"Impossible travel\" is a risk signal. An adaptive response demands stronger authentication and restricts sensitive actions until the user is verified, and it alerts the security team.",
+    "distractor_rationales": {
+      "A": "A correct password is exactly what an attacker with stolen credentials would have.",
+      "B": "A permanent lock is an overreaction that harms availability. The signal might come from a VPN.",
+      "D": "Postal mail is far too slow to matter."
+    },
+    "references_topic": "Risk-based authentication",
+    "version": "0.2"
+  },
+  {
+    "id": "D5-0031",
+    "domain": 5,
+    "domain_name": "Identity and Access Management",
+    "subtopic": "Identity proofing and registration",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "A bank will issue credentials that let customers move large sums remotely. What level of identity proofing is MOST appropriate at enrollment?",
+    "options": {
+      "A": "A self-asserted name and email address",
+      "B": "Knowledge-based questions generated from public credit bureau records",
+      "C": "An email verification link",
+      "D": "Verified strong evidence, in person or via supervised remote"
+    },
+    "answer": "D",
+    "explanation": "High-risk transactions call for high-assurance proofing: strong identity evidence that is validated and compared with the person, in person or through a supervised remote process.",
+    "distractor_rationales": {
+      "A": "Self-asserted information is not verified at all.",
+      "B": "Answers to knowledge-based questions are often discoverable or exposed in breaches.",
+      "C": "An email link proves only control of an inbox."
+    },
+    "references_topic": "Identity assurance levels",
+    "version": "0.2"
+  },
+  {
+    "id": "D5-0032",
+    "domain": 5,
+    "domain_name": "Identity and Access Management",
+    "subtopic": "Federation and SSO",
+    "difficulty": "hard",
+    "type": "application",
+    "stem": "A penetration tester captures a valid SAML assertion issued for one service provider and uses it to log in to a different service provider that trusts the same identity provider. Which control failed?",
+    "options": {
+      "A": "The second SP did not check the audience restriction",
+      "B": "The IdP allowed users to have weak passwords",
+      "C": "The assertion was not encrypted in transit between the systems",
+      "D": "The user had not enrolled in MFA"
+    },
+    "answer": "A",
+    "explanation": "Service providers must validate each assertion's audience (and recipient, signature, validity window, and one-time use). The audience restriction binds the assertion to the service provider it was issued for.",
+    "distractor_rationales": {
+      "B": "Password strength has nothing to do with reusing an issued assertion.",
+      "C": "Encryption protects confidentiality. A service provider that accepts another SP's assertion is still vulnerable.",
+      "D": "MFA happens at the identity provider and does not stop assertion reuse."
+    },
+    "references_topic": "SAML audience restriction",
+    "version": "0.2"
+  }
+]

@@ -1,0 +1,722 @@
+[
+  {
+    "id": "D6-0031",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Assessment strategy",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "Which type of assessment gives outside stakeholders, such as customers and regulators, the MOST independent assurance?",
+    "options": {
+      "A": "An assessment by an independent external firm",
+      "B": "A self-assessment completed by the system owners themselves",
+      "C": "A review performed by the team that built and runs the system",
+      "D": "An internal checklist completed by the IT department each quarter"
+    },
+    "answer": "A",
+    "explanation": "A qualified external firm has no stake in the outcome and follows professional standards, so its opinion carries the most weight with outside parties.",
+    "distractor_rationales": {
+      "B": "System owners assessing themselves have a clear conflict of interest.",
+      "C": "The team that built the system cannot objectively evaluate its own work.",
+      "D": "An internal checklist is useful for readiness but lacks independence."
+    },
+    "references_topic": "Third-party assessments",
+    "version": "0.3"
+  },
+  {
+    "id": "D6-0032",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Vulnerability assessment",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "What does a CVSS base score measure?",
+    "options": {
+      "A": "The dollar value of the asset that has the vulnerability",
+      "B": "The intrinsic severity of a vulnerability, independent of any one environment",
+      "C": "How many systems in the organization currently have the vulnerability installed",
+      "D": "Whether a patch for the vulnerability has been deployed across the enterprise"
+    },
+    "answer": "B",
+    "explanation": "The base score rates characteristics of the vulnerability itself, such as attack vector and impact. Environmental context must be added to prioritize it for a specific organization.",
+    "distractor_rationales": {
+      "A": "Asset value is business context, not part of the base score.",
+      "C": "The count of affected systems comes from scan results, not CVSS.",
+      "D": "Patch status is tracked in vulnerability management tooling, not in the score."
+    },
+    "references_topic": "CVSS base score",
+    "version": "0.3"
+  },
+  {
+    "id": "D6-0033",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Penetration testing",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "In which type of penetration test do testers start with no knowledge of the target's internal architecture, source code, or credentials?",
+    "options": {
+      "A": "White-box testing",
+      "B": "Gray-box testing",
+      "C": "Black-box testing",
+      "D": "Crystal-box testing"
+    },
+    "answer": "C",
+    "explanation": "Black-box testers begin with no inside knowledge, like an outside attacker. This is realistic but can spend much of the time on discovery.",
+    "distractor_rationales": {
+      "A": "White-box testers receive full details such as architecture and source code.",
+      "B": "Gray-box testers receive partial information, such as user credentials.",
+      "D": "Crystal-box is another name for white-box testing."
+    },
+    "references_topic": "Black-box testing",
+    "version": "0.3"
+  },
+  {
+    "id": "D6-0034",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Log review",
+    "difficulty": "easy",
+    "type": "application",
+    "stem": "Authentication logs show 4,000 failed logins against a single account from one IP address within ten minutes. Which attack pattern does this MOST likely show?",
+    "options": {
+      "A": "Password spraying across many different user accounts",
+      "B": "A denial-of-service attack against the web server's bandwidth",
+      "C": "A user who forgot their password and kept guessing at it",
+      "D": "A brute-force attack against one account"
+    },
+    "answer": "D",
+    "explanation": "Thousands of rapid attempts against one account from one source is a classic brute-force pattern.",
+    "distractor_rationales": {
+      "A": "Password spraying tries a few passwords across many accounts to avoid lockouts.",
+      "B": "A bandwidth attack would not target one account's authentication.",
+      "C": "A person cannot make 4,000 attempts in ten minutes by hand."
+    },
+    "references_topic": "Brute-force pattern in logs",
+    "version": "0.3"
+  },
+  {
+    "id": "D6-0035",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Synthetic transactions and RUM",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "Which monitoring approach captures performance and errors from the actual sessions of people using a website?",
+    "options": {
+      "A": "Real user monitoring",
+      "B": "Synthetic transaction monitoring from scripted test agents",
+      "C": "Static application security testing of the source code",
+      "D": "Vulnerability scanning of the hosting servers"
+    },
+    "answer": "A",
+    "explanation": "Real user monitoring collects data from real sessions, showing what users actually experience.",
+    "distractor_rationales": {
+      "B": "Synthetic monitoring uses scripted transactions rather than real users.",
+      "C": "Static testing analyzes code, not live sessions.",
+      "D": "Vulnerability scanning looks for weaknesses, not user experience."
+    },
+    "references_topic": "Real user monitoring",
+    "version": "0.3"
+  },
+  {
+    "id": "D6-0036",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Code review and testing",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "Which testing technique analyzes source code for security flaws without running the application?",
+    "options": {
+      "A": "Dynamic application security testing against a staging site",
+      "B": "Static application security testing",
+      "C": "Fuzz testing with malformed inputs sent to a running service",
+      "D": "Real user monitoring on the production site"
+    },
+    "answer": "B",
+    "explanation": "Static testing examines source code, bytecode, or binaries at rest, so it can run early in development before the application is deployed.",
+    "distractor_rationales": {
+      "A": "Dynamic testing requires a running application.",
+      "C": "Fuzzing sends inputs to running software.",
+      "D": "Real user monitoring observes live usage, not code."
+    },
+    "references_topic": "Static application security testing",
+    "version": "0.3"
+  },
+  {
+    "id": "D6-0037",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Backup and recovery verification",
+    "difficulty": "easy",
+    "type": "managerial_best_first_most",
+    "stem": "Which provides the MOST reliable evidence that backups can meet a critical system's recovery time objective?",
+    "options": {
+      "A": "Backup software reporting that every scheduled job finished with a success status",
+      "B": "A vendor statement describing how fast its storage platform can restore data",
+      "C": "A timed full restore of the system in a test environment",
+      "D": "The backup administrator's estimate based on the size of the data"
+    },
+    "answer": "C",
+    "explanation": "Only an actual restore, timed from start to a working system, shows whether recovery fits within the RTO.",
+    "distractor_rationales": {
+      "A": "A successful job status does not prove that data can be restored or how long it takes.",
+      "B": "Vendor figures are generic and do not reflect this environment.",
+      "D": "An estimate is not evidence."
+    },
+    "references_topic": "Verifying RTO with timed restores",
+    "version": "0.3"
+  },
+  {
+    "id": "D6-0038",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Audits and SOC reports",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "Which SOC report is intended for general public distribution, for example on a provider's website?",
+    "options": {
+      "A": "SOC 1 Type II covering controls over financial reporting",
+      "B": "SOC 2 Type II restricted to customers under a nondisclosure agreement",
+      "C": "SOC 1 Type I covering the design of controls at one point in time",
+      "D": "SOC 3"
+    },
+    "answer": "D",
+    "explanation": "A SOC 3 report is a general-use summary of the trust services criteria without the detailed test results, so it can be shared publicly.",
+    "distractor_rationales": {
+      "A": "SOC 1 reports are restricted to customers and their financial auditors.",
+      "B": "SOC 2 reports contain detailed testing and are restricted in distribution.",
+      "C": "SOC 1 reports, of either type, are restricted."
+    },
+    "references_topic": "SOC 3 reports",
+    "version": "0.3"
+  },
+  {
+    "id": "D6-0039",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Reporting and remediation",
+    "difficulty": "easy",
+    "type": "managerial_best_first_most",
+    "stem": "A penetration test report will go to business system owners who are not technical. What is the BEST way to write each finding?",
+    "options": {
+      "A": "State the business impact, the affected asset, and a clear fix with an owner and a due date",
+      "B": "Include the full raw tool output so owners can see exactly what the testers observed",
+      "C": "List only the CVSS score so that owners can sort the findings on their own",
+      "D": "Use the tester's technical shorthand to keep the report as short as possible"
+    },
+    "answer": "A",
+    "explanation": "Owners act on findings they understand. Business impact, the specific asset, and a concrete fix with accountability turn a finding into a remediation task.",
+    "distractor_rationales": {
+      "B": "Raw tool output is hard for non-technical readers to interpret.",
+      "C": "A score alone does not explain the impact or the fix.",
+      "D": "Technical shorthand makes the report unusable for its audience."
+    },
+    "references_topic": "Writing actionable findings",
+    "version": "0.3"
+  },
+  {
+    "id": "D6-0040",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Vulnerability assessment",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "A scanner flags a Linux web server as vulnerable because of its web server version string. The distribution vendor states that the fix was backported into the installed package without changing the version. What should the analyst do?",
+    "options": {
+      "A": "Upgrade to the newest upstream release immediately, even though it is unsupported by the vendor",
+      "B": "Validate the finding against the vendor's advisory and mark it a false positive if the fix is present",
+      "C": "Disable the scanner check permanently for all servers in the organization",
+      "D": "Report the finding to leadership as a critical risk that must be fixed now"
+    },
+    "answer": "B",
+    "explanation": "Version-based checks often misfire when vendors backport fixes. Confirming the installed package against the vendor advisory separates real exposure from false positives.",
+    "distractor_rationales": {
+      "A": "Moving to an unsupported build adds risk and may not be needed.",
+      "C": "Disabling the check everywhere hides real findings on other systems.",
+      "D": "Escalating an unvalidated finding wastes attention and erodes trust in reports."
+    },
+    "references_topic": "Validating scanner findings",
+    "version": "0.3"
+  },
+  {
+    "id": "D6-0041",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Penetration testing",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "During an authorized penetration test, testers find web shells and staging files that they did not create, suggesting a real attacker is already present. What should they do FIRST?",
+    "options": {
+      "A": "Continue testing so the final report shows how far a real attacker could go",
+      "B": "Remove the web shells and staging files themselves to protect the client quickly",
+      "C": "Stop the affected work and notify the client's designated contact right away",
+      "D": "Note the evidence in an appendix of the final report due in two weeks"
+    },
+    "answer": "C",
+    "explanation": "Evidence of a live compromise changes the situation from a test to an incident. The rules of engagement should require immediate notification so the client can start incident response.",
+    "distractor_rationales": {
+      "A": "Continuing could interfere with evidence and delays the client's response.",
+      "B": "Removing artifacts destroys evidence and exceeds the testers' authority.",
+      "D": "Waiting two weeks gives the real attacker more time."
+    },
+    "references_topic": "Discovering a real compromise during testing",
+    "version": "0.3"
+  },
+  {
+    "id": "D6-0042",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Log review",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "A user's account signs in from Chicago and, twenty minutes later, from Singapore. Neither sign-in used a known VPN. What does this MOST likely indicate?",
+    "options": {
+      "A": "A clock synchronization issue between the organization's authentication servers",
+      "B": "A roaming mobile device that switched between two different cellular carriers",
+      "C": "Normal behavior for employees who travel frequently for customer meetings",
+      "D": "Probable credential compromise that should be investigated"
+    },
+    "answer": "D",
+    "explanation": "No one can travel that distance in twenty minutes. Without a VPN or proxy to explain it, the pattern points to someone else using the credentials.",
+    "distractor_rationales": {
+      "A": "A clock issue does not produce sign-ins from two distant locations.",
+      "B": "Changing carriers does not move a device across continents.",
+      "C": "Even frequent travelers cannot cross the Pacific in twenty minutes."
+    },
+    "references_topic": "Impossible travel",
+    "version": "0.3"
+  },
+  {
+    "id": "D6-0043",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Synthetic transactions and RUM",
+    "difficulty": "medium",
+    "type": "knowledge",
+    "stem": "What is the main advantage of synthetic transaction monitoring over real user monitoring?",
+    "options": {
+      "A": "It can detect failures before real users hit them",
+      "B": "It records the exact experience of every real customer session on every device",
+      "C": "It replaces the need for any security testing of the application",
+      "D": "It measures how satisfied customers are with the site's design"
+    },
+    "answer": "A",
+    "explanation": "Scripted transactions run on a schedule, even when traffic is low, so broken logins or checkouts can be caught before customers are affected.",
+    "distractor_rationales": {
+      "B": "Recording real sessions is what real user monitoring does.",
+      "C": "Synthetic monitoring checks availability and function, not security.",
+      "D": "Satisfaction with design is measured through surveys and user research."
+    },
+    "references_topic": "Proactive detection with synthetic monitoring",
+    "version": "0.3"
+  },
+  {
+    "id": "D6-0044",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Interface testing",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "A team wants to find out how its public API handles unexpected, malformed, and oversized inputs before attackers try them. Which technique fits BEST?",
+    "options": {
+      "A": "Reviewing the API's marketing documentation for accuracy",
+      "B": "Fuzz testing the API endpoints",
+      "C": "Synthetic monitoring of the API's normal login transaction every five minutes",
+      "D": "Checking the API server's TLS certificate expiration date"
+    },
+    "answer": "B",
+    "explanation": "Fuzzing sends large volumes of malformed and unexpected inputs to an interface to expose crashes, error leaks, and input-handling flaws.",
+    "distractor_rationales": {
+      "A": "Marketing documentation says nothing about input handling.",
+      "C": "Synthetic monitoring exercises normal paths, not malformed input.",
+      "D": "Certificate expiry is an operational check, not input testing."
+    },
+    "references_topic": "API fuzzing",
+    "version": "0.3"
+  },
+  {
+    "id": "D6-0045",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Misuse cases and coverage analysis",
+    "difficulty": "medium",
+    "type": "knowledge",
+    "stem": "Which coverage measure shows whether both the true and the false outcome of every decision in the code were exercised by tests?",
+    "options": {
+      "A": "Statement coverage",
+      "B": "Function coverage",
+      "C": "Branch coverage",
+      "D": "Requirements traceability coverage"
+    },
+    "answer": "C",
+    "explanation": "Branch (decision) coverage checks that each decision has been evaluated both ways. Statement coverage can reach 100% while an entire false path is never tested.",
+    "distractor_rationales": {
+      "A": "Statement coverage counts lines executed and can miss untested branches.",
+      "B": "Function coverage only shows which functions were called.",
+      "D": "Requirements traceability maps tests to requirements, not to code decisions."
+    },
+    "references_topic": "Branch coverage",
+    "version": "0.3"
+  },
+  {
+    "id": "D6-0046",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Interface testing",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "Testers examining a company's IoT product found an exposed debug header on the circuit board that gives a root shell. What is the BEST remediation?",
+    "options": {
+      "A": "Add a warning label telling customers not to open the device casing",
+      "B": "Change the root password on the debug shell to a stronger value",
+      "C": "Document the header in the product manual for support technicians",
+      "D": "Disable or lock the debug interface in production firmware"
+    },
+    "answer": "D",
+    "explanation": "Debug interfaces such as UART or JTAG are needed during development but should be disabled or authenticated in production so physical access does not give full control.",
+    "distractor_rationales": {
+      "A": "A label does not stop an attacker who opens the device.",
+      "B": "A shared password on every unit is likely to be discovered and reused.",
+      "C": "Documenting the header publicizes the weakness."
+    },
+    "references_topic": "Physical debug interfaces",
+    "version": "0.3"
+  },
+  {
+    "id": "D6-0047",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Breach and attack simulation",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "A security leader wants the offensive testers and the detection engineers to work side by side, adjusting detections as each technique is tried. Which exercise BEST fits?",
+    "options": {
+      "A": "A purple team exercise",
+      "B": "A black-box penetration test by an outside firm with no notice to the defenders",
+      "C": "A red team engagement where the defenders are not told about the exercise",
+      "D": "An annual compliance audit of the SOC's documented procedures"
+    },
+    "answer": "A",
+    "explanation": "Purple teaming combines attack and defense in real time, so each technique immediately feeds detection tuning.",
+    "distractor_rationales": {
+      "B": "A no-notice black-box test does not involve the defenders.",
+      "C": "A covert red team tests defenders but does not collaborate with them during the exercise.",
+      "D": "A compliance audit reviews documents rather than testing detections."
+    },
+    "references_topic": "Purple team exercises",
+    "version": "0.3"
+  },
+  {
+    "id": "D6-0048",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Security process data and metrics",
+    "difficulty": "medium",
+    "type": "knowledge",
+    "stem": "Which metric measures activity rather than risk reduction?",
+    "options": {
+      "A": "Share of critical internet-facing vulnerabilities fixed within the agreed deadline",
+      "B": "Number of awareness emails sent this quarter",
+      "C": "Phishing simulation click rate trend across the last four quarters",
+      "D": "Median time to contain confirmed incidents compared with the prior year"
+    },
+    "answer": "B",
+    "explanation": "Counting emails sent shows effort, not whether behavior or exposure changed. The other metrics track outcomes tied to risk.",
+    "distractor_rationales": {
+      "A": "Remediation within deadline for exposed critical findings tracks reduced exposure.",
+      "C": "Click-rate trends measure behavior change.",
+      "D": "Time to contain measures how well incidents are limited."
+    },
+    "references_topic": "Vanity metrics",
+    "version": "0.3"
+  },
+  {
+    "id": "D6-0049",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Backup and recovery verification",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "A test restore completes successfully, but several restored files turn out to have been encrypted by ransomware before the backup ran. What should be added to backup verification?",
+    "options": {
+      "A": "Faster backup hardware so that jobs complete in less time each night",
+      "B": "A second copy of the same backup job written to the same storage array",
+      "C": "Integrity checks and malware scans on restored data, plus several restore points",
+      "D": "A longer interval between backups so there are fewer copies to manage"
+    },
+    "answer": "C",
+    "explanation": "A restore can succeed technically while returning bad data. Checking integrity, scanning restored content, and keeping multiple restore points make it possible to find and recover a clean version.",
+    "distractor_rationales": {
+      "A": "Speed does not detect corrupted or encrypted content.",
+      "B": "A second copy of the same data copies the same problem.",
+      "D": "Longer intervals increase potential data loss."
+    },
+    "references_topic": "Integrity checks on restored data",
+    "version": "0.3"
+  },
+  {
+    "id": "D6-0050",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Reporting and remediation",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "A system owner disputes a penetration test finding rated high, arguing the server is internal only. What is the BEST way to resolve this?",
+    "options": {
+      "A": "Drop the finding from the report to keep the relationship with the owner positive",
+      "B": "Keep the high rating without discussion because the testers are the subject experts",
+      "C": "Escalate straight to the board so that the directors can make the final decision",
+      "D": "Re-rate it with the agreed method and asset context, and record the risk owner's decision"
+    },
+    "answer": "D",
+    "explanation": "A consistent rating method that includes context such as exposure settles disputes on evidence, and documenting the risk owner's decision creates accountability.",
+    "distractor_rationales": {
+      "A": "Dropping findings to avoid conflict hides risk.",
+      "B": "Refusing to consider context can overstate risk and damage trust.",
+      "C": "The board is the wrong level for a single finding's rating."
+    },
+    "references_topic": "Resolving disputed findings",
+    "version": "0.3"
+  },
+  {
+    "id": "D6-0051",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Audits and SOC reports",
+    "difficulty": "medium",
+    "type": "knowledge",
+    "stem": "A cloud provider's SOC 2 report uses the carve-out method for the data center company it relies on. What does this mean for customers?",
+    "options": {
+      "A": "The data center's controls are excluded, so customers need separate assurance about them",
+      "B": "The auditor fully tested the data center company's controls as part of this report",
+      "C": "The data center company is not involved in delivering the provider's service at all",
+      "D": "The report has been issued as a SOC 3 so that it can be shared with the public"
+    },
+    "answer": "A",
+    "explanation": "Under the carve-out method, the subservice organization's controls are outside the report's scope. Customers must obtain assurance about them another way, such as the subservice organization's own report.",
+    "distractor_rationales": {
+      "B": "Testing the subservice organization's controls describes the inclusive method.",
+      "C": "The data center is still part of service delivery; it is just excluded from scope.",
+      "D": "The carve-out method is unrelated to the report type."
+    },
+    "references_topic": "Carve-out method",
+    "version": "0.3"
+  },
+  {
+    "id": "D6-0052",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Audits and SOC reports",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "A vendor's most recent SOC 2 Type II report covers a period that ended seven months ago. What should the customer request to cover the gap?",
+    "options": {
+      "A": "A new SOC 1 Type I report prepared quickly by the vendor's own internal audit team",
+      "B": "A bridge letter from the vendor covering the period since the report ended",
+      "C": "A copy of the vendor's information security policy",
+      "D": "Nothing further, because SOC reports remain valid for three years"
+    },
+    "answer": "B",
+    "explanation": "A bridge (gap) letter is the vendor's statement that no material changes to controls have occurred since the report period. It covers the time until the next report.",
+    "distractor_rationales": {
+      "A": "A SOC 1 addresses financial reporting controls, and an internal report lacks independence.",
+      "C": "A policy shows intent, not operating effectiveness.",
+      "D": "SOC reports cover a specific period and age quickly."
+    },
+    "references_topic": "Bridge letters",
+    "version": "0.3"
+  },
+  {
+    "id": "D6-0053",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Assessment strategy",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "What is the BEST reason to run an internal self-assessment before an external audit?",
+    "options": {
+      "A": "To replace the external audit if the self-assessment result is favorable",
+      "B": "To give the external auditors a conclusion they are required to accept",
+      "C": "To find and fix gaps before the independent evidence is collected",
+      "D": "To reduce the number of controls that are in the scope of the audit"
+    },
+    "answer": "C",
+    "explanation": "A readiness self-assessment surfaces control gaps early, when fixing them is cheaper and before they appear as audit findings.",
+    "distractor_rationales": {
+      "A": "A self-assessment cannot substitute for independent assurance.",
+      "B": "External auditors form their own opinion independently.",
+      "D": "Scope is set by the audit objective, not by a self-assessment."
+    },
+    "references_topic": "Readiness self-assessment",
+    "version": "0.3"
+  },
+  {
+    "id": "D6-0054",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Misuse cases and coverage analysis",
+    "difficulty": "hard",
+    "type": "application",
+    "stem": "A threat model notes that a shopper could tamper with the price field in the checkout request. Which test case BEST reflects this threat?",
+    "options": {
+      "A": "Confirm that the checkout page loads within two seconds on a typical mobile network",
+      "B": "Confirm that a shopper can add ten different items to the cart and pay for all of them",
+      "C": "Confirm that prices on the product page match the prices listed in the catalog",
+      "D": "Submit a checkout request with an altered price and expect the server to reject it"
+    },
+    "answer": "D",
+    "explanation": "A misuse case turns the threat into a test: the tester acts as the attacker and the expected result is that the server rejects or recalculates the tampered price.",
+    "distractor_rationales": {
+      "A": "Page load time is a performance test.",
+      "B": "Adding items tests normal functionality, not abuse.",
+      "C": "Display accuracy does not test server-side validation of submitted prices."
+    },
+    "references_topic": "Abuse cases from threat models",
+    "version": "0.3"
+  },
+  {
+    "id": "D6-0055",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Vulnerability assessment",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "The asset inventory lists 1,200 servers, but the monthly vulnerability scan reports results for only 800. What should the team do FIRST?",
+    "options": {
+      "A": "Reconcile the scan scope against the inventory",
+      "B": "Report the 800 scanned servers as the organization's entire risk picture to leadership",
+      "C": "Increase the scanner's aggressiveness settings for the 800 servers it already reaches",
+      "D": "Wait for next month's scan to see if the gap closes on its own without intervention"
+    },
+    "answer": "A",
+    "explanation": "A third of the environment is unassessed. Reconciling scope finds unreachable networks, credential failures, or missing ranges so every server is covered.",
+    "distractor_rationales": {
+      "B": "Reporting partial coverage as complete misleads leadership.",
+      "C": "More aggressive scanning of covered servers does nothing for unscanned ones.",
+      "D": "Waiting leaves 400 servers unassessed."
+    },
+    "references_topic": "Scan coverage against inventory",
+    "version": "0.3"
+  },
+  {
+    "id": "D6-0056",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Penetration testing",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "A company wants to penetration test its application, which runs on a cloud provider's infrastructure. Before testing begins, what is MOST important?",
+    "options": {
+      "A": "Ask the testers to keep their traffic volume low so the cloud provider does not notice",
+      "B": "Confirm the provider's testing policy and obtain written authorization for the in-scope assets",
+      "C": "Tell the cloud provider's support team by phone on the morning the test starts",
+      "D": "Have the testers sign a nondisclosure agreement and then start immediately"
+    },
+    "answer": "B",
+    "explanation": "Testing without authorization can be illegal and may violate the provider's terms. The company must own or be authorized for every target and follow the provider's rules for what may be tested.",
+    "distractor_rationales": {
+      "A": "Trying to avoid notice does not make unauthorized testing legitimate.",
+      "C": "An informal phone call is not written authorization and may not meet the provider's policy.",
+      "D": "A nondisclosure agreement does not grant permission to test."
+    },
+    "references_topic": "Authorization for testing hosted systems",
+    "version": "0.3"
+  },
+  {
+    "id": "D6-0057",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Log review",
+    "difficulty": "hard",
+    "type": "application",
+    "stem": "A domain controller's security log shows an event that the audit log was cleared at 2:13 a.m. by an administrator account. No maintenance was scheduled. What should the analyst do?",
+    "options": {
+      "A": "Ignore it, since administrators are allowed to clear logs whenever they need to",
+      "B": "Wait for the next weekly log review to see whether the event happens a second time",
+      "C": "Treat it as a possible indicator of compromise and investigate using centralized log copies",
+      "D": "Delete the event from the SIEM so it does not create a false alarm on the dashboard"
+    },
+    "answer": "C",
+    "explanation": "Clearing logs is a common way for attackers to cover their tracks. Copies already forwarded to a central system let the analyst reconstruct what happened before the log was cleared.",
+    "distractor_rationales": {
+      "A": "Being allowed to clear logs does not mean an unscheduled clear at 2 a.m. is benign.",
+      "B": "Waiting gives a possible attacker more time.",
+      "D": "Deleting the event destroys evidence."
+    },
+    "references_topic": "Cleared security logs",
+    "version": "0.3"
+  },
+  {
+    "id": "D6-0058",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Security process data and metrics",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "Mean time to remediate vulnerabilities improved sharply after teams began closing tickets as \"risk accepted.\" What is the BEST response?",
+    "options": {
+      "A": "Celebrate the improvement and set an even tighter remediation target next year",
+      "B": "Stop tracking mean time to remediate because teams can manipulate the measure",
+      "C": "Require that every accepted risk be approved by the CEO regardless of its severity",
+      "D": "Track remediations and exceptions separately and audit the closure reasons"
+    },
+    "answer": "D",
+    "explanation": "The metric improved without risk going down. Reporting fixes and accepted risks separately, and sampling closure reasons, restores the metric's meaning.",
+    "distractor_rationales": {
+      "A": "Celebrating rewards the behavior that distorts the metric.",
+      "B": "Dropping the metric loses useful information instead of fixing it.",
+      "C": "CEO approval for every exception is impractical and not risk-based."
+    },
+    "references_topic": "Metric gaming",
+    "version": "0.3"
+  },
+  {
+    "id": "D6-0059",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Code review and testing",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "A new SAST tool produced 4,000 findings on its first run, and developers have started ignoring its results. What is the BEST way to restore its value?",
+    "options": {
+      "A": "Tune rules, baseline existing findings, and gate builds on new high-confidence issues",
+      "B": "Require developers to fix all 4,000 findings before any further release is allowed",
+      "C": "Turn off the SAST tool and depend on the annual penetration test instead",
+      "D": "Email the full list of findings to each developer every week until the count drops"
+    },
+    "answer": "A",
+    "explanation": "Tuning removes noise, a baseline separates legacy debt from new work, and gating only on new high-confidence issues keeps developers engaged while the backlog is worked down by risk.",
+    "distractor_rationales": {
+      "B": "Blocking all releases on 4,000 findings is unrealistic and invites workarounds.",
+      "C": "Dropping SAST loses early detection.",
+      "D": "Repeated bulk emails increase alert fatigue."
+    },
+    "references_topic": "Managing SAST noise",
+    "version": "0.3"
+  },
+  {
+    "id": "D6-0060",
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "subtopic": "Breach and attack simulation",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "The board asks whether a determined adversary could reach payment data. The company already runs automated breach and attack simulation every day. What is the BEST next step?",
+    "options": {
+      "A": "Increase the frequency of breach and attack simulation from daily to hourly",
+      "B": "Commission an objective-based red team exercise targeting the payment data",
+      "C": "Run a credentialed vulnerability scan of the payment environment",
+      "D": "Survey employees about how they would report suspicious activity"
+    },
+    "answer": "B",
+    "explanation": "Automated simulation checks known techniques against specific controls. A red team emulates a creative, goal-driven adversary and answers whether the objective can be reached.",
+    "distractor_rationales": {
+      "A": "Running the same automated checks more often does not test adversary creativity.",
+      "C": "A vulnerability scan lists weaknesses but does not show whether an attacker could chain them.",
+      "D": "A survey measures awareness, not whether payment data can be reached."
+    },
+    "references_topic": "Red team versus automated simulation",
+    "version": "0.3"
+  }
+]

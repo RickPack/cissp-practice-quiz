@@ -1,0 +1,242 @@
+[
+  {
+    "id": "D4-0001",
+    "domain": 4,
+    "domain_name": "Communication and Network Security",
+    "subtopic": "OSI and TCP/IP models",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "At which layer of the OSI model do routers primarily make forwarding decisions based on logical addresses?",
+    "options": {
+      "A": "Data link (Layer 2)",
+      "B": "Transport (Layer 4)",
+      "C": "Network (Layer 3)",
+      "D": "Session (Layer 5)"
+    },
+    "answer": "C",
+    "explanation": "Routers forward packets based on logical (IP) addresses, which is Layer 3 of the OSI model.",
+    "distractor_rationales": {
+      "A": "Layer 2 switches forward frames using MAC addresses, not logical addresses.",
+      "B": "Layer 4 handles end-to-end delivery using ports. It does not make routing decisions.",
+      "D": "Layer 5 manages sessions and dialog control between applications."
+    },
+    "references_topic": "OSI network layer",
+    "version": "0.1"
+  },
+  {
+    "id": "D4-0002",
+    "domain": 4,
+    "domain_name": "Communication and Network Security",
+    "subtopic": "Secure protocols",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "An administrator needs to replace Telnet for remote command-line management of network devices. Which protocol is the MOST appropriate secure replacement?",
+    "options": {
+      "A": "FTP",
+      "B": "SNMPv1",
+      "C": "HTTP",
+      "D": "SSH"
+    },
+    "answer": "D",
+    "explanation": "SSH provides encrypted and authenticated remote shell access, replacing cleartext Telnet.",
+    "distractor_rationales": {
+      "A": "FTP is a cleartext file transfer protocol, not a remote shell.",
+      "B": "SNMPv1 is a monitoring protocol that sends community strings in cleartext.",
+      "C": "HTTP is a cleartext web protocol and is not designed for command-line device management."
+    },
+    "references_topic": "Secure remote administration protocols",
+    "version": "0.1"
+  },
+  {
+    "id": "D4-0003",
+    "domain": 4,
+    "domain_name": "Communication and Network Security",
+    "subtopic": "Wireless networks",
+    "difficulty": "easy",
+    "type": "application",
+    "stem": "A small office is configuring a new wireless network. Which of these security options provides the strongest protection?",
+    "options": {
+      "A": "WPA3-Personal using SAE",
+      "B": "WEP with a 128-bit key",
+      "C": "WPA2 with TKIP",
+      "D": "An open network with MAC address filtering"
+    },
+    "answer": "A",
+    "explanation": "WPA3-Personal uses Simultaneous Authentication of Equals (SAE), which resists offline dictionary attacks and provides forward secrecy.",
+    "distractor_rationales": {
+      "B": "WEP is fundamentally broken because of how it uses RC4 and its initialization vectors, regardless of key length.",
+      "C": "TKIP is deprecated and has known weaknesses. WPA2 with AES would be stronger, but WPA3 is better still.",
+      "D": "An open network does not encrypt traffic, and MAC filtering is easily bypassed by spoofing an allowed address."
+    },
+    "references_topic": "Wi-Fi security protocols",
+    "version": "0.1"
+  },
+  {
+    "id": "D4-0004",
+    "domain": 4,
+    "domain_name": "Communication and Network Security",
+    "subtopic": "Network segmentation",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "A hospital's medical imaging devices run outdated operating systems that cannot be patched, and they currently share a network with staff workstations. What should the network security team do FIRST to reduce risk?",
+    "options": {
+      "A": "Replace every imaging device with a current model within 30 days",
+      "B": "Move the devices to an isolated segment with tight traffic rules",
+      "C": "Install endpoint antivirus software on each imaging device",
+      "D": "Disable network access for the imaging devices permanently"
+    },
+    "answer": "B",
+    "explanation": "Segmentation isolates the unpatchable devices and allows only the flows they need, such as traffic to the image archive. It limits exposure and lateral movement, and it can be done quickly without disrupting patient care.",
+    "distractor_rationales": {
+      "A": "Replacing every device is expensive and may be impossible within 30 days. It is not a realistic first step.",
+      "C": "Installing software on regulated medical devices can void vendor certification, and many devices do not support it.",
+      "D": "Permanent disconnection breaks clinical workflows and harms availability and patient safety."
+    },
+    "references_topic": "Segmenting unpatchable devices",
+    "version": "0.1"
+  },
+  {
+    "id": "D4-0005",
+    "domain": 4,
+    "domain_name": "Communication and Network Security",
+    "subtopic": "IP networking and addressing",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "A network engineer assigns the subnet 10.20.30.0/26 to a lab. How many usable host addresses does this subnet provide?",
+    "options": {
+      "A": "64",
+      "B": "30",
+      "C": "62",
+      "D": "126"
+    },
+    "answer": "C",
+    "explanation": "A /26 prefix leaves 6 host bits, giving 2^6 = 64 addresses. Subtracting the network and broadcast addresses leaves 62 usable hosts.",
+    "distractor_rationales": {
+      "A": "64 counts the network and broadcast addresses, which cannot be assigned to hosts.",
+      "B": "30 is the number of usable hosts in a /27.",
+      "D": "126 is the number of usable hosts in a /25."
+    },
+    "references_topic": "Subnetting and usable hosts",
+    "version": "0.1"
+  },
+  {
+    "id": "D4-0006",
+    "domain": 4,
+    "domain_name": "Communication and Network Security",
+    "subtopic": "Converged and multilayer protocols",
+    "difficulty": "medium",
+    "type": "knowledge",
+    "stem": "Which protocol carries SCSI storage commands over a standard TCP/IP network, allowing block-level storage access without a dedicated Fibre Channel fabric?",
+    "options": {
+      "A": "FCoE",
+      "B": "NFS",
+      "C": "MPLS",
+      "D": "iSCSI"
+    },
+    "answer": "D",
+    "explanation": "iSCSI encapsulates SCSI commands in TCP/IP, providing block-level storage access over ordinary routed IP networks.",
+    "distractor_rationales": {
+      "A": "FCoE carries Fibre Channel frames directly over Ethernet at Layer 2. It is not routed over IP and needs lossless Ethernet.",
+      "B": "NFS provides file-level access, not block-level storage.",
+      "C": "MPLS is a label-switching transport technique, not a storage protocol."
+    },
+    "references_topic": "iSCSI block storage over IP",
+    "version": "0.1"
+  },
+  {
+    "id": "D4-0007",
+    "domain": 4,
+    "domain_name": "Communication and Network Security",
+    "subtopic": "Remote access and VPN",
+    "difficulty": "medium",
+    "type": "managerial_best_first_most",
+    "stem": "A company's remote workers use a full-tunnel VPN, and the VPN concentrator is saturated by video-conferencing traffic to a sanctioned SaaS provider. Management wants to relieve the load without weakening protection of internal resources. Which approach is BEST?",
+    "options": {
+      "A": "Split-tunnel only the sanctioned SaaS traffic; tunnel everything else",
+      "B": "Disable the VPN and publish internal applications directly to the internet",
+      "C": "Let each user decide which traffic to route through the tunnel from their client",
+      "D": "Switch the VPN to a weaker cipher suite to reduce concentrator processing load"
+    },
+    "answer": "A",
+    "explanation": "Selective split tunneling for one trusted, high-bandwidth SaaS destination removes that traffic from the concentrator while internal resources remain reachable only through the tunnel. It can be paired with endpoint and cloud security controls.",
+    "distractor_rationales": {
+      "B": "Publishing internal applications directly to the internet greatly expands the attack surface.",
+      "C": "User-controlled routing is inconsistent and cannot be enforced or audited.",
+      "D": "A weaker cipher lowers protection for all tunneled traffic, which is exactly what management wants to avoid."
+    },
+    "references_topic": "Split tunneling trade-offs",
+    "version": "0.1"
+  },
+  {
+    "id": "D4-0008",
+    "domain": 4,
+    "domain_name": "Communication and Network Security",
+    "subtopic": "Network attacks",
+    "difficulty": "hard",
+    "type": "application",
+    "stem": "A SOC analyst sees that many hosts' ARP caches map the default gateway's IP address to the MAC address of an unknown workstation on the same VLAN. Which attack is MOST likely occurring, and which control would BEST prevent it?",
+    "options": {
+      "A": "DNS cache poisoning; prevent it with DNSSEC validation",
+      "B": "ARP spoofing; prevent it with dynamic ARP inspection on the switches",
+      "C": "MAC flooding; prevent it with 802.1Q VLAN trunk tagging on uplinks",
+      "D": "Smurf attack; prevent it by disabling IP directed broadcasts on routers"
+    },
+    "answer": "B",
+    "explanation": "Mapping the gateway's IP address to an attacker's MAC address is ARP spoofing (ARP poisoning), which enables man-in-the-middle interception. Dynamic ARP inspection validates ARP packets against trusted DHCP snooping bindings and drops forged replies.",
+    "distractor_rationales": {
+      "A": "DNS cache poisoning corrupts name resolution. It does not change ARP caches.",
+      "C": "MAC flooding overflows a switch's address table so it floods frames. Trunk tagging is not a defense against it; port security is.",
+      "D": "A Smurf attack is an ICMP amplification denial of service. It does not alter ARP mappings."
+    },
+    "references_topic": "ARP spoofing and dynamic ARP inspection",
+    "version": "0.1"
+  },
+  {
+    "id": "D4-0009",
+    "domain": 4,
+    "domain_name": "Communication and Network Security",
+    "subtopic": "SDN, SD-WAN, and virtual networks",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "An organization is migrating to a software-defined network in which a centralized controller programs all switches. During design review, which risk should the security architect treat as the HIGHEST priority?",
+    "options": {
+      "A": "Increased cabling complexity in the data center",
+      "B": "Reduced visibility, because traffic in an SDN cannot be monitored at all",
+      "C": "Compromise of the central controller and its management interfaces",
+      "D": "Slower convergence compared with traditional routing protocols"
+    },
+    "answer": "C",
+    "explanation": "The controller is a centralized control plane, so compromising it gives an attacker network-wide control. Hardening it, authenticating its northbound and southbound interfaces, restricting administrative access, and building redundancy are top priorities.",
+    "distractor_rationales": {
+      "A": "Cabling complexity is not a leading security risk, and SDN often reduces it.",
+      "B": "SDN traffic can be monitored, and centralized control often improves visibility.",
+      "D": "Convergence speed is a performance concern rather than the highest security priority, and SDN often converges quickly."
+    },
+    "references_topic": "SDN controller protection",
+    "version": "0.1"
+  },
+  {
+    "id": "D4-0010",
+    "domain": 4,
+    "domain_name": "Communication and Network Security",
+    "subtopic": "Voice, video, and collaboration",
+    "difficulty": "hard",
+    "type": "managerial_best_first_most",
+    "stem": "A law firm is adopting a cloud video conferencing service for confidential client meetings. Which control would BEST reduce the risk of unauthorized parties joining meetings?",
+    "options": {
+      "A": "Publishing meeting links only in calendar invitations",
+      "B": "Requiring every participant to join using a wired rather than wireless connection",
+      "C": "Enabling end-to-end encryption for every meeting",
+      "D": "Requiring authenticated attendees and a host-controlled waiting room"
+    },
+    "answer": "D",
+    "explanation": "Unauthorized joining is an access control problem. Requiring attendees to authenticate and having the host admit each one from a waiting room directly controls who gets in.",
+    "distractor_rationales": {
+      "A": "Invitations are easily forwarded, and a link alone does not authenticate anyone.",
+      "B": "The type of network connection has no bearing on who is allowed to join.",
+      "C": "End-to-end encryption protects content in transit and from the provider, but anyone admitted to the meeting can still see and hear everything."
+    },
+    "references_topic": "Conferencing access control",
+    "version": "0.1"
+  }
+]
