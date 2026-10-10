@@ -801,3 +801,23 @@ test('a session that never reported its end is reset so the next listen can star
   assert.equal(h.recs.length, 2);
   assert.equal(h.startedWhileSpeaking.every((x) => x === false), true);
 });
+
+test('hands-free resumes after the tab was hidden: reads the question again, then listens', () => {
+  const h = harness();
+  h.voice.enable();
+  h.voice.setHandsFree(true);
+  h.settle();
+  h.voice.interrupt(); // tab hidden
+  assert.equal(h.recs[0].aborted, true);
+  assert.equal(h.voice.resume(), true); // tab visible again
+  h.settle();
+  assert.equal(h.recs.length, 2);
+  assert.equal(h.voice.handsFree, true);
+});
+
+test('resume does nothing when hands-free is off', () => {
+  const h = harness();
+  h.voice.enable();
+  assert.equal(h.voice.resume(), false);
+  assert.equal(h.recs.length, 0);
+});

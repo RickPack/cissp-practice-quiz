@@ -605,7 +605,10 @@ function setupVoice() {
   const stopMic = () => voice.interrupt();
   window.addEventListener('pagehide', stopMic);
   window.addEventListener('beforeunload', stopMic);
-  document.addEventListener('visibilitychange', () => { if (document.hidden) stopMic(); });
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) stopMic();
+    else if (!coldStart && !$('quiz').hidden && !$('confirm-dialog').open) voice.resume();
+  });
   $('voice-controls').hidden = false;
   voice.restore(loadPrefs());
   prefsReady = true;
