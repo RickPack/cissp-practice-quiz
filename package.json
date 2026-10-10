@@ -1,6 +1,6 @@
 {
   "name": "cissp-practice-quiz",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "private": true,
   "description": "Unofficial CISSP practice exam with a per-domain diagnostic report.",
   "type": "module",
