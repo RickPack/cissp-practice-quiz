@@ -19,6 +19,7 @@ Results are for study planning only. They do not predict your result on the real
 - **Read aloud** (optional): Read aloud / Pause / Stop buttons, an auto-read toggle (off by default), and `R` to start or stop. See below.
 - **Voice answers** (optional, off by default): speak A–D, confirm by voice, and use voice commands. See below.
 - **Spaced review deck**: questions you miss come back after 1, 3, 7, and 14 days until you get them right. See below.
+- **Commute mode** (separate study mode): eyes-free questions read aloud, answered by voice, with the verdict and explanation read straight back. Never scored. See below.
 
 ### Read aloud
 
@@ -49,6 +50,21 @@ Questions you miss come back on a schedule until you get them right.
 - **The deck repeats what the answer key says.** The independent answer-key audit (below) has not been run yet, so a wrong key would be drilled as if it were right.
 - **Changing the intervals:** edit `INTERVALS` in `lib/review-deck.js` (days for box 1, 2, 3, ...). Add or remove entries to change the number of boxes; cards in a box past the end of a shorter list are treated as being in the last box. Update the expected list in `tests/review-deck.test.mjs`.
 
+### Commute mode
+
+Eyes-free study on questions you got wrong. Open it from the start screen with **Open commute mode**. The button appears only when the browser can speak (speech synthesis); voice recognition is optional.
+
+- **A separate study mode, not a practice exam.** Here feedback is the point: after each question you hear whether you were right, the correct answer, and the explanation. It never runs inside a scored session. It does not read or change your practice session or report, and it leaves out the questions of an unfinished session so it cannot reveal their answers. The normal quiz still shows no feedback unless you opt in.
+- **Queue (up to 20 per run):** review cards due today first, then questions you missed in your last submitted report and the newest cards in your review deck, then random questions to fill the run.
+- **The loop:** it reads the question number, stem, and options, then listens once for A, B, C, or D. If nothing is heard for about 8 seconds, the question counts as skipped. Then it reads the verdict ("Correct." / "Not correct." / "Skipped."), "The correct answer is C.", and the explanation, and moves to the next question. The mic never listens while the question or the answer is being read.
+- **Voice commands:** `repeat`, `next` or `skip` (both reveal the answer and move on), and `stop` (ends the run). Quiz-only commands such as `flag` and `submit` are not used here. If it still has not understood after 2 retries, it skips rather than asking you to tap.
+- **Shared voice settings:** it uses the same privacy notice and **Enable voice answers** button as the quiz, and your **Read back and confirm my answer** and **Let me say yes or no while it is still speaking** choices. Commute mode always runs hands-free; it does not change the quiz's hands-free setting. The mic indicator and screen-reader live region are the same as in the quiz.
+- **Buttons:** A–D (tap an answer), Repeat, Skip / Next question, and Stop.
+- **Without voice recognition** (or with voice off) it still plays: question, a pause of about 8 seconds, then the answer, and on to the next. Tap an answer or press Skip to go faster.
+- **Review deck:** a correct answer moves a due card up a box; a miss sends a card back to box 1, or adds the question if it is not in the deck yet; a skip changes nothing. The run ends with a short summary of counts only (correct, missed, skipped, and deck changes).
+- **Locked screen:** browsers stop the mic and speech when the screen locks or the tab is hidden, so commute mode pauses then and reads the current question again when you come back. Keep the screen on (most phones have a setting for this) and the tab in front. This is a browser limit, not something this site can work around.
+- **iPhone:** the first start needs a tap; if the browser then refuses to restart the mic on its own, the page says "This browser needs a tap to start the microphone" and waits for you to press **Talk**. Hands-free commute mode on iPhone has not been tested by the author.
+
 ### Voice answers
 
 Optional and off by default. Uses the browser's built-in speech recognition (`SpeechRecognition` / `webkitSpeechRecognition`). No dependencies, backend, or API keys. If the browser has no speech recognition, the voice controls are hidden and typing and tapping work as before.
@@ -75,7 +91,8 @@ Browser support (as of v0.3; engines change, so check your own browser):
 |---|---|---|
 | Chrome / Edge (desktop and Android) | Yes | Speech goes to the vendor's cloud service. Sessions end on their own, so hands-free reopens the mic. |
 | Safari (macOS, iOS) | Partly | Starting the mic needs a tap or key press. If hands-free cannot restart it, the page asks you to press Talk. |
-| Firefox | No | No `SpeechRecognition`; the controls are hidden. |
+| Firefox | No | No `SpeechRecognition`; the controls are hidden. Commute mode still plays without voice answers. |
+| iPhone Safari | Untested by the author | Commute mode and hands-free have not been tried on an iPhone. Expect the first start to need a tap. |
 
 Other quirks handled: a listen timeout, the `no-speech` error (counts as a miss), permission denial, a missing microphone, and network errors (each turns voice off with a plain message).
 
@@ -122,7 +139,7 @@ python -m pip install -r validation/requirements.txt
 python validation/validate.py                       # bank validator; writes validation/report.md
 ```
 
-Unit tests cover the voice parser (letters, homophones, aliases, filler, ambiguity), the confirmation state machine, the no-correctness-leak rule, and the controller against mocked `SpeechRecognition` and `speechSynthesis` (the mic never opens while speech plays; the mic stops on navigate, submit, and unload). The review deck tests use an injectable clock and storage and cover the box schedule, day boundaries, daylight-saving dates, a clock moving backwards, corrupt and hostile stored data, and review-session building. They also cover sampling proportions and graceful degradation, answer remapping after shuffling, the 20-answer gate, scoring, and the Wilson interval math. They run against synthetic banks of 80, 250, and 1,000 questions, plus a 1,000-session simulation that checks per-domain draw proportions stay within ±3 points of the targets.
+Unit tests cover the voice parser (letters, homophones, aliases, filler, ambiguity), the confirmation state machine, the no-correctness-leak rule, and the controller against mocked `SpeechRecognition` and `speechSynthesis` (the mic never opens while speech plays; the mic stops on navigate, submit, and unload). The commute-mode tests drive the loop with mocked `SpeechRecognition`, `speechSynthesis`, timers, and clock: answer, verdict, next question, the 8-second skip, repeat/next/skip/stop, play-only mode without recognition, pausing on a hidden tab, and review-deck updates. The review deck tests use an injectable clock and storage and cover the box schedule, day boundaries, daylight-saving dates, a clock moving backwards, corrupt and hostile stored data, and review-session building. They also cover sampling proportions and graceful degradation, answer remapping after shuffling, the 20-answer gate, scoring, and the Wilson interval math. They run against synthetic banks of 80, 250, and 1,000 questions, plus a 1,000-session simulation that checks per-domain draw proportions stay within ±3 points of the targets.
 
 ## Question bank
 
@@ -172,6 +189,7 @@ lib/voice-parse.js               spoken-answer parser and alias tables (no DOM)
 lib/voice-flow.js                confirmation state machine and message table (no DOM)
 lib/voice.js                     voice controller (SpeechRecognition injectable)
 lib/review-deck.js               spaced review deck: schedule, storage, review sessions (no DOM)
+lib/commute.js                   commute-mode loop, built on the voice controller (no DOM)
 sw.js                            offline cache
 data/                            question bank (CC BY 4.0)
 validation/                      validate.py, audit.py, Colab notebook, report.md, flags.csv
