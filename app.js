@@ -482,6 +482,7 @@ function persistPrefs() {
     voiceEnabled: voice ? voice.enabled : false,
     handsFree: voice ? voice.handsFree : false,
     confirm: voice ? voice.confirmAnswers : true,
+    bargeIn: voice ? voice.bargeIn : false,
     autoRead: autoReadOn,
   });
 }
@@ -500,6 +501,8 @@ function renderVoice(v) {
   hf.checked = v.handsFree;
   hf.disabled = !v.canSpeak;
   $('voice-confirm').checked = v.confirmAnswers;
+  $('voice-barge').checked = v.bargeIn;
+  $('voice-barge').disabled = !v.canSpeak;
   $('voice-heard').textContent = v.heard ? `Heard: \u201c${v.heard}\u201d${v.parsed ? ` \u2192 ${v.parsed}` : ''}` : v.parsed || '';
   $('voice-message').textContent = v.message;
   if (prefsReady) persistPrefs();
@@ -532,6 +535,7 @@ function setupVoice() {
     if (!voice.setHandsFree(e.target.checked)) e.target.checked = false;
   });
   $('voice-confirm').addEventListener('change', (e) => voice.setConfirm(e.target.checked));
+  $('voice-barge').addEventListener('change', (e) => voice.setBargeIn(e.target.checked));
   const stopMic = () => voice.interrupt();
   window.addEventListener('pagehide', stopMic);
   window.addEventListener('beforeunload', stopMic);

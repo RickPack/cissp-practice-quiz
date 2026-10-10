@@ -94,7 +94,7 @@ function harness({ withSpeech = true, Recognition: Override } = {}) {
       speech.play([{ text: 'Question 1.', pause: 0 }, { text: 'Option A. First thing.', pause: 0 }, { text: 'Option B. Second thing.', pause: 0 }]);
     },
     record(letter) { calls.recorded.push(letter); },
-    next() { calls.next++; return nextResult; },
+    next() { calls.next++; if (nextResult && speech) speech.stop(); return nextResult; }, // goTo stops speech
     previous() { calls.previous++; return false; },
     toggleFlag() { calls.flag++; flagged = !flagged; return flagged; },
     submit() { calls.submit++; return submitResult; },
@@ -616,4 +616,81 @@ test('an unexpected recognition error is shown, not swallowed', () => {
   h.voice.pushToTalk();
   h.recs[0].fail('service-unavailable');
   assert.match(h.voice.view.message, /service-unavailable/);
+});
+
+// ---------- Barge-in on the confirmation prompt (opt-in) ----------
+
+test('barge-in is off by default: the mic stays closed while the confirmation prompt plays', () => {
+  const h = harness();
+  h.voice.enable();
+  h.voice.pushToTalk();
+  h.recs[0].hear([['bee', 0.9]]);
+  assert.equal(h.recs.length, 1);
+  assert.equal(h.spokenTexts().at(-1), MESSAGES.confirm('B'));
+});
+
+test('barge-in: saying yes during the prompt stops it, saves, and moves on', () => {
+  const h = harness();
+  h.voice.enable();
+  h.voice.setBargeIn(true);
+  h.voice.setHandsFree(true);
+  h.settle();
+  h.recs[0].hear([['bee', 0.9]]);
+  assert.equal(h.spokenTexts().at(-1), 'You said B. Yes or no?', 'short prompt, no confirm-word echo');
+  assert.equal(h.recs.length, 2, 'mic opened during the prompt');
+  assert.ok(h.synth.current, 'prompt is still being spoken');
+  assert.equal(h.startedWhileSpeaking.at(-1), true);
+  h.recs[1].hear([['yes', 0.9]]);
+  assert.deepEqual(h.calls.recorded, ['B']);
+  assert.equal(h.calls.next, 1, 'moved on without waiting for the prompt to end');
+  assert.equal(h.synth.current, null, 'prompt was cut off');
+});
+
+test('barge-in: saying no during the prompt stops it and asks again', () => {
+  const h = harness();
+  h.voice.enable();
+  h.voice.setBargeIn(true);
+  h.voice.pushToTalk();
+  h.recs[0].hear([['see', 0.9]]);
+  h.recs[1].hear([['no', 0.9]]);
+  assert.deepEqual(h.calls.recorded, []);
+  assert.equal(h.spokenTexts().at(-1), MESSAGES.which);
+});
+
+test('barge-in: noise that is not yes/no/letter while the prompt plays is ignored and listening continues', () => {
+  const h = harness();
+  h.voice.enable();
+  h.voice.setBargeIn(true);
+  h.voice.pushToTalk();
+  h.recs[0].hear([['bee', 0.9]]);
+  const spoken = h.spokenTexts().length;
+  h.recs[1].hear([['you said bee yes or no', 0.9]]); // the prompt heard through the speakers
+  assert.equal(h.spokenTexts().length, spoken, 'no "didn\'t catch that"');
+  assert.equal(h.recs.length, 3, 'keeps listening');
+  assert.deepEqual(h.calls.recorded, []);
+});
+
+test('barge-in never opens the mic while the question itself is read', () => {
+  const h = harness();
+  h.voice.enable();
+  h.voice.setBargeIn(true);
+  h.voice.setHandsFree(true);
+  assert.equal(h.recs.length, 0);
+  h.synth.finish();
+  assert.equal(h.recs.length, 0);
+  h.settle();
+  assert.equal(h.recs.length, 1);
+  assert.deepEqual(h.startedWhileSpeaking, [false]);
+});
+
+test('barge-in: interrupt closes the open session', () => {
+  const h = harness();
+  h.voice.enable();
+  h.voice.setBargeIn(true);
+  h.voice.pushToTalk();
+  h.recs[0].hear([['bee', 0.9]]);
+  h.voice.interrupt();
+  assert.equal(h.recs[1].aborted, true);
+  h.settle();
+  assert.equal(h.recs.length, 2);
 });
