@@ -524,3 +524,26 @@ test('confirm off in hands-free: records, then listens again once speech is idle
   assert.equal(h.recs.length, 2);
   assert.ok(h.startedWhileSpeaking.every((x) => x === false));
 });
+
+test('silence after a saved answer ends quietly, with no "didn\'t catch that"', () => {
+  for (const confirm of [false, true]) {
+    const h = harness();
+    h.voice.enable();
+    h.voice.setConfirm(confirm);
+    h.voice.setHandsFree(true);
+    h.settle();
+    h.recs[0].hear([['answer dee', 0.9]]);
+    if (confirm) {
+      h.settle();
+      h.recs.at(-1).hear([['yes', 0.9]]);
+    }
+    h.settle();
+    const follow = h.recs.at(-1);
+    const spoken = h.spokenTexts().length;
+    assert.deepEqual(h.calls.recorded, ['D']);
+    follow.fail('no-speech');
+    assert.equal(h.spokenTexts().length, spoken, `confirm=${confirm}: nothing spoken`);
+    h.settle();
+    assert.equal(h.recs.at(-1), follow, 'and no further listening');
+  }
+});
