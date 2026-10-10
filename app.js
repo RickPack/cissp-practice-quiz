@@ -1,11 +1,15 @@
 import * as core from './lib/core.js';
 import { renderBarChart } from './lib/charts.js';
 import { createSpeech, isSupported as speechSupported, RATE_MIN, RATE_MAX } from './lib/speech.js';
-import { questionChunks, explanationChunks, feedbackChunks } from './lib/speech-text.js';
-import { createVoice, isSupported as voiceSupported } from './lib/voice.js';
+import { questionChunks, explanationChunks, feedbackChunks, skippedChunks, lineChunks } from './lib/speech-text.js';
+import { createVoice, isSupported as voiceSupported, recognitionCtor } from './lib/voice.js';
 import { loadPrefs, savePrefs } from './lib/voice-prefs.js';
 import { resumeIndex } from './lib/resume.js';
-import { localDate, loadDeck, saveDeck, clearDeck, dueIds, applySession, createReviewSession } from './lib/review-deck.js';
+import {
+  localDate, loadDeck, saveDeck, clearDeck, dueIds, applySession, createReviewSession,
+  recordResult, tallyChange, emptySummary, commuteQueue,
+} from './lib/review-deck.js';
+import { createCommute } from './lib/commute.js';
 
 const STORE_KEY = 'cissp-diagnostic:session';
 const $ = (id) => document.getElementById(id);
@@ -78,8 +82,10 @@ function statusBadge(status) {
 
 function show(id) {
   voice?.interrupt();
+  commute?.leave();
   speech?.stop();
-  for (const sec of ['start', 'quiz', 'report']) $(sec).hidden = sec !== id;
+  for (const sec of ['start', 'quiz', 'report', 'commute']) $(sec).hidden = sec !== id;
+  placeVoiceControls(id === 'commute');
   $('loading').hidden = true;
   window.scrollTo(0, 0);
 }
@@ -580,7 +586,14 @@ function renderSpeechControls() {
 
 function setupSpeech() {
   if (!speechSupported()) return;
-  speech = createSpeech({ synth: window.speechSynthesis, onChange: (st) => { renderSpeechControls(); voice?.onSpeechState(st); } });
+  speech = createSpeech({
+    synth: window.speechSynthesis,
+    onChange: (st) => {
+      renderSpeechControls();
+      if (commuteActive()) commute.onSpeechState(st);
+      else voice?.onSpeechState(st);
+    },
+  });
   speech.init();
   const rate = $('speech-rate');
   const vol = $('speech-volume');
@@ -617,12 +630,14 @@ let prefsReady = false;
 
 const MIC_LABELS = { idle: 'Mic idle', listening: 'Listening', processing: 'Processing' };
 
+// Commute mode shares these choices, except hands-free: commute always runs hands-free, so it keeps the quiz's saved choice.
 function persistPrefs() {
+  const v = activeVoice();
   savePrefs({
-    voiceEnabled: voice ? voice.enabled : false,
-    handsFree: voice ? voice.handsFree : false,
-    confirm: voice ? voice.confirmAnswers : true,
-    bargeIn: voice ? voice.bargeIn : false,
+    voiceEnabled: v ? v.enabled : false,
+    handsFree: v && v !== voice ? loadPrefs().handsFree : v ? v.handsFree : false,
+    confirm: v ? v.confirmAnswers : true,
+    bargeIn: v ? v.bargeIn : false,
     autoRead: autoReadOn,
     feedback: feedbackOn,
   });
@@ -653,7 +668,7 @@ function setupVoice() {
   if (!voiceSupported()) return;
   voice = createVoice({
     speech,
-    onChange: renderVoice,
+    onChange: (v) => { if (!commuteActive()) renderVoice(v); },
     actions: {
       readQuestion,
       record: selectByLetter,
@@ -669,14 +684,15 @@ function setupVoice() {
       },
     },
   });
-  $('voice-enable').addEventListener('click', () => voice.enable());
-  $('voice-disable').addEventListener('click', () => voice.disable());
-  $('voice-talk').addEventListener('click', () => voice.pushToTalk());
+  // The same controls (and the same privacy notice and Enable click) serve commute mode, so they act on whichever controller is on screen.
+  $('voice-enable').addEventListener('click', () => { activeVoice().enable(); voiceToggled(); });
+  $('voice-disable').addEventListener('click', () => { activeVoice().disable(); voiceToggled(); });
+  $('voice-talk').addEventListener('click', () => activeVoice().pushToTalk());
   $('voice-handsfree').addEventListener('change', (e) => {
     if (!voice.setHandsFree(e.target.checked)) e.target.checked = false;
   });
-  $('voice-confirm').addEventListener('change', (e) => voice.setConfirm(e.target.checked));
-  $('voice-barge').addEventListener('change', (e) => voice.setBargeIn(e.target.checked));
+  $('voice-confirm').addEventListener('change', (e) => activeVoice().setConfirm(e.target.checked));
+  $('voice-barge').addEventListener('change', (e) => activeVoice().setBargeIn(e.target.checked));
   const stopMic = () => voice.interrupt();
   window.addEventListener('pagehide', stopMic);
   window.addEventListener('beforeunload', stopMic);
@@ -986,6 +1002,178 @@ function retakeFocused() {
   startSession({ length: Math.max(core.MIN_SESSION, state.session.items.length), mode: 'focus', focusDomains: weak });
 }
 
+// ---------- Commute mode ----------
+
+// A separate study mode where feedback is the point. It never runs inside a quiz session: it does not read or write
+// the session's answers, and it writes nothing to the report. Its results only update the review deck.
+let commute = null;
+let voiceAnchor = null;
+const run = { ids: [], perms: [], tally: null, deckSummary: null, counts: null };
+
+const commuteActive = () => !!commute && !$('commute').hidden;
+const activeVoice = () => (commuteActive() ? commute.voice : voice);
+const voiceToggled = () => { if (commuteActive()) commute.voiceChanged(); };
+
+// The voice block (privacy notice, Enable button, mic indicator, live region) moves into commute mode and back.
+function placeVoiceControls(inCommute) {
+  const box = $('voice-controls');
+  const slot = $('commute-voice-slot');
+  if (!commute || !voice || !voiceAnchor) return;
+  const there = box.parentElement === slot;
+  if (inCommute && !there) {
+    slot.append(box);
+    $('voice-handsfree').closest('label').hidden = true;
+    commute.voice.restore({ ...loadPrefs(), handsFree: false });
+    renderVoice(commute.voice.view);
+  } else if (!inCommute && there) {
+    voiceAnchor.before(box);
+    $('voice-handsfree').closest('label').hidden = false;
+    voice.restore(loadPrefs());
+    renderVoice(voice.view);
+  }
+}
+
+function commuteView(i) {
+  const q = state.lookup.get(run.ids[i]);
+  return { q, view: core.viewQuestion(q, run.perms[i]) };
+}
+
+function commuteQuestion(i) {
+  const { q, view } = commuteView(i);
+  return questionChunks({ number: i + 1, stem: q.stem, options: view.options });
+}
+
+function renderCommuteQuestion(i) {
+  const { q, view } = commuteView(i);
+  $('commute-index').textContent = String(i + 1);
+  $('commute-total').textContent = String(run.ids.length);
+  $('commute-live').textContent = `Question ${i + 1} of ${run.ids.length}`;
+  richText($('commute-stem'), q.stem);
+  $('commute-options').replaceChildren(
+    ...view.options.map((o) => el('li', {}, el('strong', { text: `${o.letter}. ` }), richText(el('span'), o.text))),
+  );
+  $('commute-feedback').hidden = true;
+  $('commute-feedback').replaceChildren();
+}
+
+// Records the result, updates the review deck, shows it, and returns the speech that reveals it.
+function commuteResult(i, letter) {
+  const { q, view } = commuteView(i);
+  const correctText = view.options.find((o) => o.letter === view.correct).text;
+  let outcome = 'skipped';
+  if (letter) outcome = core.originalLetterFor(run.perms[i], letter) === q.answer ? 'correct' : 'missed';
+  run.tally[outcome] += 1;
+  if (outcome !== 'skipped') {
+    const deck = currentDeck();
+    tallyChange(run.deckSummary, recordResult(deck, q.id, outcome, today()));
+    saveDeck(deck, browserStorage());
+  }
+  const verdict = { correct: 'Correct', missed: 'Not correct', skipped: 'Skipped' }[outcome];
+  const answerLine = el('p', {}, el('strong', { text: `Correct answer: ${view.correct}. ` }), richText(el('span'), correctText));
+  const box = $('commute-feedback');
+  box.className = `feedback ${outcome === 'correct' ? 'feedback-ok' : 'feedback-miss'}`;
+  box.replaceChildren(
+    el('p', { class: 'feedback-verdict', text: letter ? `${verdict} (you said ${letter})` : verdict }),
+    answerLine,
+    el('p', { text: q.explanation }),
+  );
+  box.hidden = false;
+  return letter
+    ? feedbackChunks({ isCorrect: outcome === 'correct', correct: view.correct, explanation: q.explanation })
+    : skippedChunks({ correct: view.correct, explanation: q.explanation });
+}
+
+function finishCommute({ stopped }) {
+  const t = run.tally;
+  const d = run.deckSummary;
+  const counts = `${t.correct} correct, ${t.missed} missed, ${t.skipped} skipped.`;
+  $('commute-run').hidden = true;
+  $('commute-summary').hidden = false;
+  $('commute-summary-title').textContent = stopped ? 'Commute mode stopped' : 'Commute mode finished';
+  $('commute-summary-text').textContent = counts;
+  $('commute-summary-deck').textContent = `Review deck: ${d.added} added, ${d.up} moved up, ${d.graduated} graduated${d.reset ? `, ${d.reset} back to box 1` : ''}.`;
+  $('commute-live').textContent = `${stopped ? 'Stopped' : 'Finished'}. ${counts}`;
+  return lineChunks(`Commute mode ${stopped ? 'stopped' : 'finished'}. ${counts}`);
+}
+
+function renderCommuteState({ phase }) {
+  const asking = phase === 'question';
+  for (const b of $('commute-letters').querySelectorAll('button')) b.disabled = !asking;
+  $('commute-repeat').disabled = !asking;
+  $('commute-next').textContent = phase === 'reveal' ? 'Next question' : 'Skip';
+}
+
+// Due cards, then recent misses from the last submitted report, then random. An unfinished quiz session's
+// questions are left out, so commute mode never reveals answers to a session still in progress.
+function planCommute() {
+  const last = restore(storage.load());
+  const open = last && !last.submittedAt ? last : null;
+  const recentMissed = last && last.submittedAt
+    ? last.items.filter((it) => last.responses[it.id] && last.responses[it.id] !== state.lookup.get(it.id).answer).map((it) => it.id)
+    : [];
+  const { ids, counts } = commuteQueue({
+    deck: currentDeck(),
+    today: today(),
+    recentMissed,
+    bankIds: state.bank.map((q) => q.id),
+    rng: Math.random,
+    exclude: new Set(open ? open.items.map((it) => it.id) : []),
+  });
+  run.ids = ids;
+  run.perms = ids.map(() => core.makePermutation(Math.random));
+  run.counts = counts;
+  $('commute-plan').textContent =
+    `${ids.length} questions: ${counts.due} due for review, ${counts.recent} missed recently, ${counts.random} at random.`;
+}
+
+function openCommute() {
+  show('commute');
+  planCommute();
+  $('commute-intro').hidden = false;
+  $('commute-run').hidden = true;
+  $('commute-summary').hidden = true;
+  $('commute-no-voice').hidden = !!commute.voice;
+  $('commute-title').focus();
+}
+
+function startCommute() {
+  if (!run.ids.length) planCommute();
+  run.tally = { correct: 0, missed: 0, skipped: 0 };
+  run.deckSummary = emptySummary();
+  $('commute-intro').hidden = true;
+  $('commute-summary').hidden = true;
+  $('commute-run').hidden = false;
+  commute.start(run.ids.length);
+}
+
+function setupCommute() {
+  if (!speech) return; // commute mode needs speech output; recognition is optional
+  voiceAnchor = $('voice-controls').nextElementSibling;
+  commute = createCommute({
+    speech,
+    Recognition: voiceSupported() ? recognitionCtor() : null,
+    app: { question: commuteQuestion, result: commuteResult, show: renderCommuteQuestion, finish: finishCommute },
+    onChange: renderCommuteState,
+    onVoiceChange: (v) => { if (commuteActive()) renderVoice(v); },
+  });
+  $('commute-card').hidden = false;
+  $('commute-open').addEventListener('click', openCommute);
+  $('commute-start').addEventListener('click', startCommute);
+  $('commute-again').addEventListener('click', () => { planCommute(); startCommute(); });
+  for (const id of ['commute-back', 'commute-done']) $(id).addEventListener('click', setupStart);
+  $('commute-repeat').addEventListener('click', () => commute.repeat());
+  $('commute-next').addEventListener('click', () => commute.next());
+  $('commute-stop').addEventListener('click', () => commute.stop());
+  for (const b of $('commute-letters').querySelectorAll('button')) b.addEventListener('click', () => commute.answer(b.dataset.letter));
+  // Locked screen or hidden tab: stop the mic and speech, then pick up again when visible.
+  document.addEventListener('visibilitychange', () => {
+    if (!commuteActive()) return;
+    if (document.hidden) commute.pause();
+    else commute.resume();
+  });
+  window.addEventListener('pagehide', () => commute.pause());
+}
+
 // ---------- Wiring ----------
 
 function wire() {
@@ -993,6 +1181,7 @@ function wire() {
   restoreAutoRead();
   restoreFeedback();
   setupVoice();
+  setupCommute();
   const warm = () => {
     if (!coldStart) return;
     coldStart = false;

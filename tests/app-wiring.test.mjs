@@ -25,3 +25,20 @@ test('review sessions are built without the sampler and scored with the usual sc
   assert.match(block, /createReviewSession\(/);
   assert.ok(!/sampleQuestions|createSession\(/.test(block));
 });
+
+test('the app\'s commute code never touches the quiz session or the report', () => {
+  const start = app.indexOf('// ---------- Commute mode ----------');
+  const end = app.indexOf('// ---------- Wiring ----------');
+  assert.ok(start > 0 && end > start, 'commute section found');
+  const block = app.slice(start, end);
+  assert.ok(!/storage\.(save|clear)|state\.session|state\.report|scoreSession|showReport|startSession|finish\(\)/.test(block));
+});
+
+test('commute mode is reached only from the start screen and only with speech output', () => {
+  assert.match(app, /function setupCommute\(\) \{\s*if \(!speech\) return;/);
+  const html = readFileSync(new URL('../index.html', import.meta.url), 'utf8');
+  const startScreen = html.slice(html.indexOf('<section id="start"'), html.indexOf('<section id="quiz"'));
+  assert.match(startScreen, /id="commute-open"/);
+  const quiz = html.slice(html.indexOf('<section id="quiz"'), html.indexOf('<section id="report"'));
+  assert.ok(!/commute/.test(quiz), 'no commute entry inside the quiz');
+});

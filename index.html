@@ -59,6 +59,14 @@
         </div>
       </div>
 
+      <div id="commute-card" class="card" hidden>
+        <h2>Commute mode</h2>
+        <p class="hint">Eyes-free study. Questions are read aloud, you answer by voice, and you hear straight away whether you were right, with the explanation. A separate study mode: it is never scored and never touches your practice exam.</p>
+        <div class="actions">
+          <button type="button" class="btn" id="commute-open">Open commute mode</button>
+        </div>
+      </div>
+
       <form id="start-form" class="card" novalidate>
         <h2>New session</h2>
         <p class="hint">Questions are drawn at random in proportion to the exam's domain weights and a 30/45/25 easy/medium/hard mix. You can submit once you have answered at least 20.</p>
@@ -251,6 +259,61 @@
         <button type="button" class="btn" id="new-btn">New session</button>
       </div>
       <p class="hint" id="retake-help"></p>
+    </section>
+
+    <!-- Commute mode: a separate study mode with immediate feedback. Never part of a scored session. -->
+    <section id="commute" hidden aria-labelledby="commute-title">
+      <h1 id="commute-title" tabindex="-1">Commute mode</h1>
+      <div class="notice">
+        <p><strong>Study mode with answers, not a practice exam.</strong> You hear whether each answer is right, the correct answer, and the explanation. Nothing here is scored or saved to your practice session or report. Your answers only update your review deck.</p>
+      </div>
+
+      <div id="commute-intro" class="card">
+        <p id="commute-plan"></p>
+        <ul class="plain-list hint">
+          <li>Each question and its options are read aloud. Then say A, B, C, or D. Say <strong>repeat</strong>, <strong>skip</strong> (or <strong>next</strong>), or <strong>stop</strong> at any time it is listening.</li>
+          <li>If you say nothing for about 8 seconds, the question is skipped and the answer is read.</li>
+          <li>Keep the screen on and this tab in front: it pauses when the screen locks or you switch apps, and starts the question again when you come back.</li>
+        </ul>
+        <p class="hint" id="commute-no-voice" hidden>Voice answers are not available in this browser. Commute mode still reads each question, pauses about 8 seconds, then reads the answer. Tap an answer or press Skip to go faster.</p>
+        <div class="actions">
+          <button type="button" class="btn btn-primary" id="commute-start">Start</button>
+          <button type="button" class="btn" id="commute-back">Back</button>
+        </div>
+      </div>
+
+      <div id="commute-run" hidden>
+        <p class="q-count">Question <span id="commute-index">1</span> of <span id="commute-total">1</span></p>
+        <article class="card question-card">
+          <p class="stem" id="commute-stem"></p>
+          <ul class="review-options" id="commute-options"></ul>
+          <div id="commute-letters" class="commute-letters" role="group" aria-label="Answer">
+            <button type="button" class="btn" data-letter="A">A</button>
+            <button type="button" class="btn" data-letter="B">B</button>
+            <button type="button" class="btn" data-letter="C">C</button>
+            <button type="button" class="btn" data-letter="D">D</button>
+          </div>
+          <div id="commute-feedback" class="feedback" hidden></div>
+        </article>
+        <div class="quiz-nav">
+          <button type="button" class="btn" id="commute-repeat">Repeat</button>
+          <button type="button" class="btn" id="commute-next">Skip</button>
+          <button type="button" class="btn" id="commute-stop">Stop</button>
+        </div>
+      </div>
+
+      <div id="commute-voice-slot"></div>
+
+      <div id="commute-summary" class="card" hidden>
+        <h2 id="commute-summary-title">Commute mode finished</h2>
+        <p id="commute-summary-text"></p>
+        <p class="hint" id="commute-summary-deck"></p>
+        <div class="actions">
+          <button type="button" class="btn btn-primary" id="commute-again">Run again</button>
+          <button type="button" class="btn" id="commute-done">Back to start</button>
+        </div>
+      </div>
+      <p class="sr-only" id="commute-live" aria-live="polite"></p>
     </section>
 
     <dialog id="confirm-dialog" aria-labelledby="confirm-title" aria-describedby="confirm-text">
