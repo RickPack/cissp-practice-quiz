@@ -132,3 +132,11 @@ test('no-correctness-leak: every effect text comes from MESSAGES', () => {
     }
   }
 });
+
+test('confirm off: a heard letter is recorded at once with nothing spoken', () => {
+  const r = step(initialFlow(), { type: 'letter', letter: 'C' }, { confirm: false });
+  assert.deepEqual(records(r.effects), ['C']);
+  assert.deepEqual(says(r.effects), []);
+  assert.deepEqual(r.effects.at(-1), { do: 'listen', when: 'handsfree' });
+  assert.deepEqual(r.flow, initialFlow());
+});

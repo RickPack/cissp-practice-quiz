@@ -475,6 +475,7 @@ function renderVoice(v) {
   const hf = $('voice-handsfree');
   hf.checked = v.handsFree;
   hf.disabled = !v.canSpeak;
+  $('voice-confirm').checked = v.confirmAnswers;
   $('voice-heard').textContent = v.heard ? `Heard: \u201c${v.heard}\u201d${v.parsed ? ` \u2192 ${v.parsed}` : ''}` : v.parsed || '';
   $('voice-message').textContent = v.message;
 }
@@ -505,6 +506,7 @@ function setupVoice() {
   $('voice-handsfree').addEventListener('change', (e) => {
     if (!voice.setHandsFree(e.target.checked)) e.target.checked = false;
   });
+  $('voice-confirm').addEventListener('change', (e) => voice.setConfirm(e.target.checked));
   const stopMic = () => voice.interrupt();
   window.addEventListener('pagehide', stopMic);
   window.addEventListener('beforeunload', stopMic);

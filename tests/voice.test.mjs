@@ -499,3 +499,28 @@ test('a duplicate end event from the browser does not process the result twice',
   assert.deepEqual(h.calls.recorded, []);
   assert.equal(h.recs.length, 2);
 });
+
+test('confirm off: the letter is recorded immediately and nothing is read back', () => {
+  const h = harness();
+  h.voice.enable();
+  h.voice.setConfirm(false);
+  h.voice.pushToTalk();
+  h.recs[0].hear([['bee', 0.9]]);
+  assert.deepEqual(h.calls.recorded, ['B']);
+  assert.equal(h.spokenTexts().length, 0);
+  h.settle();
+  assert.equal(h.recs.length, 1, 'push-to-talk stops after recording');
+});
+
+test('confirm off in hands-free: records, then listens again once speech is idle', () => {
+  const h = harness();
+  h.voice.enable();
+  h.voice.setConfirm(false);
+  h.voice.setHandsFree(true);
+  h.settle();
+  h.recs[0].hear([['dee', 0.9]]);
+  assert.deepEqual(h.calls.recorded, ['D']);
+  h.timers.run();
+  assert.equal(h.recs.length, 2);
+  assert.ok(h.startedWhileSpeaking.every((x) => x === false));
+});
