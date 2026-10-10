@@ -12,10 +12,22 @@ Results are for study planning only. They do not predict your result on the real
 
 - **Session length** from 20 to min(100, bank size), drawn by a stratified random sample that follows the 2024 domain weights and a 30/45/25 easy/medium/hard mix. If a domain or difficulty runs short, the sampler takes what exists and redistributes the rest.
 - **Option order is shuffled** per question, and sessions are reproducible with an optional seed.
-- **One question at a time**, with previous/next, flag for review, a progress bar, keyboard shortcuts (`1`–`4` or `A`–`D`, arrow keys, `F`), and no feedback until the end.
+- **One question at a time**, with previous/next, flag for review, a progress bar, keyboard shortcuts (`1`–`4` or `A`–`D`, arrow keys, `F`, `R`), and no feedback until the end.
 - **Submit and Finish** unlocks after 20 answers. Unanswered questions are excluded from scoring and listed separately.
 - **Progress is saved** in your browser (localStorage), so a refresh does not lose your place. Nothing is sent anywhere; there is no backend.
 - **Works offline** after the first visit.
+- **Read aloud** (optional): Read aloud / Pause / Stop buttons, an auto-read toggle (off by default), and `R` to start or stop. See below.
+
+### Read aloud
+
+Uses the browser's built-in speech synthesis. No network calls, keys, or dependencies; if the browser has no speech support, the controls are hidden.
+
+- Speaks the question number, the stem, then "Option A", its text, "Option B", and so on, in the order shown on screen. It never speaks whether an answer is correct during the quiz.
+- Voice (English, local voices first), speed (0.75x to 1.75x), and volume are saved in your browser. Auto-read is never saved and starts off, because browsers often block speech that does not begin with a click or key press.
+- Speech stops when you change question, submit, leave the screen, or close the page.
+- In the report's question review, each question has a **Read explanation** button. Explanations are spoken only there, after submission.
+- Browser notes: voice lists load asynchronously, so the picker can fill in a moment after the page loads. Chrome cuts off long utterances, so text is spoken in sentence-sized chunks. Voices, and whether some are online-only, depend on the browser and operating system.
+- Pronunciations: `lib/pronunciations.js` holds `[written, spoken]` pairs applied only to the spoken text. To add one, append a pair such as `['EDR', 'E D R']`; matching is case-sensitive and whole-word, and longer phrases go before shorter words they contain. Add a test case in `tests/speech.test.mjs` if the entry is unusual.
 
 ### The diagnostic report
 
@@ -91,6 +103,9 @@ The same audit runs locally with `ANTHROPIC_API_KEY` set in your environment: `p
 index.html, app.js, styles.css   the site
 lib/core.js                      sampling, remapping, scoring, statistics (shared with tests)
 lib/charts.js                    inline SVG charts
+lib/speech-text.js               spoken-text builder and chunking (no DOM)
+lib/pronunciations.js            acronym pronunciation map
+lib/speech.js                    read-aloud controller (speechSynthesis injectable)
 sw.js                            offline cache
 data/                            question bank (CC BY 4.0)
 validation/                      validate.py, audit.py, Colab notebook, report.md, flags.csv
