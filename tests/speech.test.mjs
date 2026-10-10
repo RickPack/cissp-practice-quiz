@@ -277,9 +277,15 @@ test('voiceschanged populates voices that load late', () => {
   assert.ok(changes >= 1);
 });
 
-test('feedbackChunks: short verdict, names the correct letter only when missed', () => {
-  assert.deepEqual(feedbackChunks({ isCorrect: true, correct: 'B' }).map((c) => c.text), ['Correct.']);
-  assert.deepEqual(feedbackChunks({ isCorrect: false, correct: 'C' }).map((c) => c.text), ['Not correct. The correct answer is C.']);
+test('feedbackChunks: verdict then the correct letter', () => {
+  assert.deepEqual(feedbackChunks({ isCorrect: true, correct: 'B' }).map((c) => c.text), ['Correct.', 'The correct answer is B.']);
+  assert.deepEqual(feedbackChunks({ isCorrect: false, correct: 'C' }).map((c) => c.text), ['Not correct.', 'The correct answer is C.']);
+});
+
+test('feedbackChunks: reads the explanation after the answer, with pronunciations applied', () => {
+  const texts = feedbackChunks({ isCorrect: false, correct: 'A', explanation: 'The SIEM team reviews alerts.' }).map((c) => c.text);
+  assert.deepEqual(texts.slice(0, 2), ['Not correct.', 'The correct answer is A.']);
+  assert.ok(texts.join(' ').includes('reviews alerts'));
 });
 
 test('questionChunks never carries feedback wording', () => {

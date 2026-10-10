@@ -32,7 +32,7 @@ Uses the browser's built-in speech synthesis. No network calls, keys, or depende
 
 ### Immediate feedback (optional)
 
-Off by default, so the practice stays blind and results appear only in the report. Tick **Show feedback after each answer** and each answered question shows Correct or Not correct, the correct answer, the explanation, and why your choice was wrong. With auto-read or hands-free on, a short verdict is also spoken ("Correct." or "Not correct. The correct answer is C."), and hands-free waits for it to finish before moving on. Changing an answer is still allowed and updates the feedback; scoring uses your final answer. The choice is remembered across reloads and does not change scoring or the report.
+Off by default, so the practice stays blind and results appear only in the report. Tick **Show feedback after each answer** and each answered question shows Correct or Not correct, the correct answer, the explanation, and why your choice was wrong. With auto-read or hands-free on, it is also read aloud: the verdict, "The correct answer is C.", then the explanation. Hands-free waits for it to finish before moving on; press Stop or Next to cut it short. Changing an answer is still allowed and updates the feedback; scoring uses your final answer. The choice is remembered across reloads and does not change scoring or the report.
 
 ### Voice answers
 

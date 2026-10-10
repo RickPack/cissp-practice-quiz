@@ -48,7 +48,7 @@ function makeResult(alts, isFinal) {
   return { results: [res] };
 }
 
-function harness({ withSpeech = true, Recognition: Override } = {}) {
+function harness({ withSpeech = true, Recognition: Override, notify = true } = {}) {
   const synth = mockSynth();
   const timers = manualTimers();
   const recs = [];
@@ -56,7 +56,7 @@ function harness({ withSpeech = true, Recognition: Override } = {}) {
   const views = [];
   let voice;
   const speech = withSpeech
-    ? createSpeech({ synth, Utterance: MockUtterance, storage: memoryStorage(), timers: instantTimers, onChange: (s) => voice.onSpeechState(s) })
+    ? createSpeech({ synth, Utterance: MockUtterance, storage: memoryStorage(), timers: instantTimers, onChange: (s) => { if (notify) voice.onSpeechState(s); } })
     : null;
 
   class MockRecognition {
@@ -756,4 +756,48 @@ test('answeredByHand does nothing unless hands-free is on', () => {
   h.voice.enable();
   assert.equal(h.voice.answeredByHand(null), false);
   assert.equal(h.calls.next, 0);
+});
+
+// ---------- Safety nets for lost browser events ----------
+
+test('a lost "speech ended" event is recovered by the poll, so the mic still starts', () => {
+  const h = harness({ notify: false }); // the controller is never told when speech changes state
+  h.voice.enable();
+  h.voice.setHandsFree(true);
+  h.finishSpeech(); // speech is idle again, but nobody was told
+  assert.equal(h.recs.length, 0);
+  h.timers.run(1000); // the poll notices
+  h.timers.run(); // settle gap
+  assert.equal(h.recs.length, 1);
+  assert.deepEqual(h.startedWhileSpeaking, [false]);
+});
+
+test('a flush that finds speech playing again says what it is waiting for', () => {
+  const h = harness();
+  h.voice.enable();
+  h.voice.setHandsFree(true);
+  h.finishSpeech(); // idle: settle gap queued
+  h.speech.play([{ text: 'More speech.', pause: 0 }]); // speech restarts inside the gap
+  h.timers.run();
+  assert.match(h.voice.view.message, /Waiting for the speech to finish/);
+  assert.equal(h.recs.length, 0);
+});
+
+test('a session that never reported its end is reset so the next listen can start', () => {
+  const h = harness();
+  h.voice.enable();
+  h.voice.setHandsFree(true);
+  h.settle();
+  const stuck = h.recs[0]; // opened, then the browser never sends another event
+  const realNow = Date.now;
+  try {
+    Date.now = () => realNow() + 60000;
+    h.voice.beginQuestion(); // next question: read it, then listen
+    h.settle();
+  } finally {
+    Date.now = realNow;
+  }
+  assert.equal(stuck.aborted, true);
+  assert.equal(h.recs.length, 2);
+  assert.equal(h.startedWhileSpeaking.every((x) => x === false), true);
 });

@@ -372,7 +372,7 @@ function recordAnswer(displayLetter, { speak = true, byVoice = false } = {}) {
     return null;
   }
   const view = core.viewQuestion(q, it.perm);
-  const fb = { chunks: feedbackChunks({ isCorrect: s.responses[it.id] === q.answer, correct: view.correct }) };
+  const fb = { chunks: feedbackChunks({ isCorrect: s.responses[it.id] === q.answer, correct: view.correct, explanation: q.explanation }) };
   if (speak && speech && (autoReadOn || voice?.handsFree) && !handsFreeHand) speech.play(fb.chunks);
   if (handsFreeHand) voice.answeredByHand(fb.chunks);
   return fb;
@@ -438,7 +438,7 @@ function onKey(e) {
   if ($('quiz').hidden || $('confirm-dialog').open) return;
   if (e.altKey || e.ctrlKey || e.metaKey) return;
   const t = e.target;
-  if (t instanceof HTMLElement && (t.tagName === 'SELECT' || t.tagName === 'TEXTAREA' || (t.tagName === 'INPUT' && t.type !== 'radio'))) return;
+  if (t instanceof HTMLElement && (t.tagName === 'SELECT' || t.tagName === 'TEXTAREA' || (t.tagName === 'INPUT' && !['radio', 'checkbox'].includes(t.type)))) return;
   const key = e.key.length === 1 ? e.key.toLowerCase() : e.key;
   const idx = ['1', '2', '3', '4'].indexOf(key) >= 0 ? ['1', '2', '3', '4'].indexOf(key) : ['a', 'b', 'c', 'd'].indexOf(key);
   const inOptions = $('options').contains(document.activeElement);
