@@ -147,3 +147,33 @@ test('alias tables cover every letter and have no word in two places', () => {
     }
   }
 });
+
+test('"as in" spelling: the first letter of the clarifying word counts', () => {
+  assert.equal(letterOf('Answer B as in boy'), 'B');
+  assert.equal(letterOf('d as in dog'), 'D');
+  assert.equal(letterOf('C for Charlie'), 'C');
+  assert.equal(letterOf('answer a like apple'), 'A');
+  assert.equal(letterOf('bee as in the boy'), 'B');
+});
+
+test('"as in": the word rescues a letter that was mis-heard', () => {
+  assert.equal(letterOf('the as in dog'), 'D');
+  assert.equal(letterOf('answer as in charlie'), 'C');
+});
+
+test('"as in": a clashing letter and word is ambiguous, not guessed', () => {
+  assert.equal(parseSingle('b as in dog').status, 'ambiguous');
+});
+
+test('"as in" with a word starting outside A-D keeps the spoken letter', () => {
+  assert.equal(letterOf('b as in xylophone'), 'B');
+  assert.equal(parseSingle('as in xylophone').status, 'none');
+});
+
+test('"as in" works through interpret', () => {
+  assert.deepEqual(interpret(['Answer B as in boy']), { type: 'letter', letter: 'B', heard: 'Answer B as in boy' });
+});
+
+test('"for" after a context word is still a number, not a spelling', () => {
+  assert.equal(letterOf('option for'), 'D');
+});

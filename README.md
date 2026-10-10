@@ -52,7 +52,7 @@ Optional and off by default. Uses the browser's built-in speech recognition (`Sp
 - **No feedback during the quiz (by default):** the voice flow never says or shows whether an answer is correct. Feedback appears only in the report, unless you turn on **Show feedback after each answer** (see below). Even then, the voice code is never given answer data: the app hands it a prepared line to play.
 - **The mic stops** immediately when you change question, submit, hide the tab, or leave the page.
 - **Status:** a visible indicator shows idle, listening, or processing, and a screen-reader live region announces changes. Screen-reader users may prefer push-to-talk, since hands-free reading and a screen reader can speak over each other.
-- **Accepted answers:** letters (and mis-hearings such as "bee", "dee", "see", "sea"), "alpha / bravo / charlie / delta", "option 1" to "option 4", "first" to "fourth", "number two", and so on. Filler such as "um", "I think", and "my answer is" is ignored. The best match across the interim and alternative transcripts wins. Two different letters in one phrase ("B or C") count as unclear.
+- **Accepted answers:** letters (and mis-hearings such as "bee", "dee", "see", "sea"), "alpha / bravo / charlie / delta", "option 1" to "option 4", "first" to "fourth", "number two", and so on. "B as in boy" and "D for dog" also work: the letter and the first letter of the word must agree, or if the letter was mis-heard the word's first letter (A to D) is used. Filler such as "um", "I think", and "my answer is" is ignored. The best match across the interim and alternative transcripts wins. Two different letters in one phrase ("B or C") count as unclear.
 
 Browser support (as of v0.3; engines change, so check your own browser):
 
@@ -69,6 +69,7 @@ Other quirks handled: a listen timeout, the `no-speech` error (counts as a miss)
 - A new word for a letter: add it to `LETTER_ALIASES` (for example `B: [..., 'bea']`).
 - A number word: `NUMBER_ALIASES` (counted alone or after "option", "number", and similar words in `CONTEXT_WORDS`).
 - A sound-alike that is too risky alone (such as "for"): `CONTEXT_ONLY_ALIASES`.
+- A lead-in like "as in" or "for" before a clarifying word: `SPELLING_LEAD_INS`.
 - Spoken padding to ignore: `FILLER_PHRASES` and `FILLER_WORDS`.
 - A command phrase: `COMMANDS`. Yes and no words: `CONFIRM_YES`, `CONFIRM_NO`.
 
