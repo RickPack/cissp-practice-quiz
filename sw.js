@@ -1,6 +1,6 @@
 // Network-first cache so the site works offline after the first visit
 // and still picks up new bank versions as soon as it is back online.
-const CACHE = 'cissp-diagnostic-v6';
+const CACHE = 'cissp-diagnostic-v7';
 const SHELL = [
   './',
   'index.html',
@@ -17,6 +17,7 @@ const SHELL = [
   'lib/voice-prefs.js',
   'lib/resume.js',
   'lib/review-deck.js',
+  'lib/commute.js',
   'data/manifest.json',
   'data/taxonomy.json',
 ];
