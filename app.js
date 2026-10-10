@@ -1,5 +1,7 @@
 import * as core from './lib/core.js';
 import { renderBarChart } from './lib/charts.js';
+import { createSpeech, isSupported as speechSupported, RATE_MIN, RATE_MAX } from './lib/speech.js';
+import { questionChunks, explanationChunks } from './lib/speech-text.js';
 
 const STORE_KEY = 'cissp-diagnostic:session';
 const $ = (id) => document.getElementById(id);
@@ -71,6 +73,7 @@ function statusBadge(status) {
 }
 
 function show(id) {
+  speech?.stop();
   for (const sec of ['start', 'quiz', 'report']) $(sec).hidden = sec !== id;
   $('loading').hidden = true;
   window.scrollTo(0, 0);
@@ -189,6 +192,7 @@ function currentQuestion() {
 function showQuiz() {
   show('quiz');
   renderQuestion();
+  autoRead();
 }
 
 function renderQuestion({ focusOptions = false } = {}) {
@@ -302,9 +306,11 @@ function selectByKey(index) {
 function goTo(i, opts) {
   const s = state.session;
   if (i < 0 || i >= s.items.length) return;
+  speech?.stop();
   s.current = i;
   storage.save(s);
   renderQuestion(opts);
+  autoRead();
 }
 
 function toggleFlag() {
@@ -329,6 +335,7 @@ function trySubmit() {
 }
 
 function finish() {
+  speech?.stop();
   const s = state.session;
   s.submittedAt = new Date().toISOString();
   storage.save(s);
@@ -355,7 +362,85 @@ function onKey(e) {
   } else if (key === 'f') {
     e.preventDefault();
     toggleFlag();
+  } else if (key === 'r' && speech) {
+    e.preventDefault();
+    if (speech.state === 'idle') readQuestion();
+    else speech.stop();
   }
+}
+
+// ---------- Read aloud ----------
+
+// Quiz speech is built from the stem and the shown options only. Answers and explanations never reach it.
+let speech = null;
+let autoReadOn = false;
+
+function readQuestion() {
+  const { it, q } = currentQuestion();
+  const view = core.viewQuestion(q, it.perm);
+  speech.play(questionChunks({ number: state.session.current + 1, stem: q.stem, options: view.options }));
+}
+
+function autoRead() {
+  if (speech && autoReadOn) readQuestion();
+}
+
+function renderSpeechControls() {
+  if (!speech) return;
+  const st = speech.state;
+  const play = $('speech-play');
+  play.textContent = st === 'playing' ? 'Pause' : st === 'paused' ? 'Resume' : 'Read aloud';
+  play.setAttribute('aria-label', st === 'playing' ? 'Pause reading' : st === 'paused' ? 'Resume reading' : 'Read question aloud');
+  $('speech-stop').disabled = st === 'idle';
+  if (st === 'idle') document.querySelectorAll('.read-expl[aria-pressed="true"]').forEach((b) => b.setAttribute('aria-pressed', 'false'));
+  const sel = $('speech-voice');
+  const chosen = speech.voice;
+  if (sel.options.length !== speech.voices.length || sel.dataset.voice !== (chosen?.voiceURI || '')) {
+    sel.replaceChildren(...speech.voices.map((v) => el('option', { value: v.voiceURI, text: `${v.name} (${v.lang})${v.localService ? '' : ' - online'}` })));
+    if (chosen) sel.value = chosen.voiceURI;
+    sel.dataset.voice = chosen?.voiceURI || '';
+  }
+  sel.disabled = !speech.voices.length;
+}
+
+function setupSpeech() {
+  if (!speechSupported()) return;
+  speech = createSpeech({ synth: window.speechSynthesis, onChange: renderSpeechControls });
+  speech.init();
+  const rate = $('speech-rate');
+  const vol = $('speech-volume');
+  rate.min = String(RATE_MIN);
+  rate.max = String(RATE_MAX);
+  rate.value = String(speech.settings.rate);
+  vol.value = String(speech.settings.volume);
+  const outputs = () => {
+    $('speech-rate-out').textContent = `${Number(rate.value).toFixed(2)}x`;
+    $('speech-volume-out').textContent = `${Math.round(Number(vol.value) * 100)}%`;
+  };
+  outputs();
+  rate.addEventListener('input', () => { speech.set('rate', rate.value); outputs(); });
+  vol.addEventListener('input', () => { speech.set('volume', vol.value); outputs(); });
+  $('speech-voice').addEventListener('change', (e) => speech.set('voiceURI', e.target.value));
+  $('speech-auto').addEventListener('change', (e) => { autoReadOn = e.target.checked; });
+  $('speech-play').addEventListener('click', () => {
+    if (speech.state === 'playing') speech.pause();
+    else if (speech.state === 'paused') speech.resume();
+    else readQuestion();
+  });
+  $('speech-stop').addEventListener('click', () => speech.stop());
+  window.addEventListener('pagehide', () => speech.stop());
+  window.addEventListener('beforeunload', () => speech.stop());
+  $('speech-controls').hidden = false;
+  renderSpeechControls();
+}
+
+function readExplanation(q, view, button) {
+  const wasReading = button.getAttribute('aria-pressed') === 'true';
+  speech.stop();
+  document.querySelectorAll('.read-expl[aria-pressed="true"]').forEach((b) => b.setAttribute('aria-pressed', 'false'));
+  if (wasReading) return;
+  button.setAttribute('aria-pressed', 'true');
+  speech.play(explanationChunks({ correct: view.correct, explanation: q.explanation }));
 }
 
 // ---------- Report ----------
@@ -567,6 +652,16 @@ function reviewItem(row, number) {
     options,
     el('p', { text: `Your answer: ${chosen || 'none'}. Correct answer: ${view.correct}.` }),
     el('p', { class: 'review-expl' }, el('strong', { text: `Why ${view.correct} is correct: ` }), q.explanation),
+    speech
+      ? el('button', {
+          type: 'button',
+          class: 'btn read-expl',
+          'aria-pressed': 'false',
+          'aria-label': `Read explanation for question ${number} aloud`,
+          text: 'Read explanation',
+          onclick: (e) => readExplanation(q, view, e.currentTarget),
+        })
+      : null,
     el('p', { class: 'hint', text: `Concept: ${q.references_topic} · ${q.id}` }),
   );
 }
@@ -591,6 +686,7 @@ function retakeFocused() {
 // ---------- Wiring ----------
 
 function wire() {
+  setupSpeech();
   const range = $('length-range');
   const num = $('length-number');
   range.addEventListener('input', () => { num.value = range.value; });

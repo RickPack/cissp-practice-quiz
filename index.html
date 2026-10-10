@@ -90,13 +90,32 @@
         </fieldset>
       </article>
 
+      <div class="speech-controls" id="speech-controls" role="group" aria-label="Read aloud" hidden>
+        <div class="speech-row">
+          <button type="button" class="btn" id="speech-play" aria-keyshortcuts="R" aria-label="Read question aloud">Read aloud</button>
+          <button type="button" class="btn" id="speech-stop" aria-label="Stop reading" disabled>Stop</button>
+          <label class="speech-auto"><input type="checkbox" id="speech-auto"> Read each question automatically</label>
+        </div>
+        <details class="speech-settings">
+          <summary>Voice settings</summary>
+          <div class="speech-fields">
+            <label for="speech-voice">Voice</label>
+            <select id="speech-voice"></select>
+            <label for="speech-rate">Speed <output id="speech-rate-out" for="speech-rate"></output></label>
+            <input type="range" id="speech-rate" min="0.75" max="1.75" step="0.05">
+            <label for="speech-volume">Volume <output id="speech-volume-out" for="speech-volume"></output></label>
+            <input type="range" id="speech-volume" min="0" max="1" step="0.05">
+          </div>
+        </details>
+      </div>
+
       <div class="quiz-nav">
         <button type="button" class="btn" id="prev-btn" aria-keyshortcuts="ArrowLeft">&larr; Previous</button>
         <button type="button" class="btn" id="flag-btn" aria-pressed="false" aria-keyshortcuts="F">Flag for review</button>
         <button type="button" class="btn" id="next-btn" aria-keyshortcuts="ArrowRight">Next &rarr;</button>
       </div>
 
-      <p class="hint kbd-hint">Keyboard: <kbd>1</kbd>–<kbd>4</kbd> or <kbd>A</kbd>–<kbd>D</kbd> to answer, <kbd>&larr;</kbd> <kbd>&rarr;</kbd> to move, <kbd>F</kbd> to flag.</p>
+      <p class="hint kbd-hint">Keyboard: <kbd>1</kbd>–<kbd>4</kbd> or <kbd>A</kbd>–<kbd>D</kbd> to answer, <kbd>&larr;</kbd> <kbd>&rarr;</kbd> to move, <kbd>F</kbd> to flag, <kbd>R</kbd> to read aloud or stop.</p>
 
       <details class="navigator-wrap">
         <summary>Jump to a question</summary>

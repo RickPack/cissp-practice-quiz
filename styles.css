@@ -343,3 +343,20 @@ dialog h2 { margin-top: 0; }
   .viz .bar-muted { fill: GrayText; }
   .viz .whisker, .viz .target { stroke: CanvasText; }
 }
+
+/* Read aloud */
+.speech-controls { margin-top: 1rem; }
+.speech-controls[hidden] { display: none; }
+.speech-row { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.speech-auto { display: inline-flex; align-items: center; gap: 6px; font-size: .9rem; }
+.speech-settings { margin-top: .5rem; }
+.speech-fields { display: grid; grid-template-columns: max-content 1fr; gap: 8px 12px; align-items: center; margin-top: .5rem; max-width: 32rem; }
+.speech-fields label { font-size: .875rem; font-weight: 600; }
+.speech-fields select { min-width: 0; max-width: 100%; }
+.read-expl { margin-top: .5rem; }
+@media (max-width: 480px) {
+  .speech-fields { grid-template-columns: 1fr; }
+}
+@media print {
+  .speech-controls, .read-expl { display: none !important; }
+}
