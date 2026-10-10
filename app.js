@@ -293,7 +293,7 @@ function renderFeedback() {
   const answerLine = el('p', {}, el('strong', { text: `Correct answer: ${view.correct}. ` }));
   answerLine.append(richText(el('span'), correctText));
   box.className = `feedback ${ok ? 'feedback-ok' : 'feedback-miss'}`;
-  box.replaceChildren(
+  box.replaceChildren(...[
     el('p', { class: 'feedback-verdict' }, el('span', { class: 'status-icon', 'aria-hidden': 'true', text: ok ? '\u2713 ' : '\u2717 ' }), ok ? 'Correct' : 'Not correct'),
     ok ? null : answerLine,
     el('p', {}, el('strong', { text: `Why ${view.correct} is correct: ` }), q.explanation),
@@ -308,7 +308,7 @@ function renderFeedback() {
           onclick: (e) => readExplanation(q, view, e.currentTarget),
         })
       : null,
-  );
+  ].filter(Boolean));
   box.hidden = false;
 }
 
@@ -751,12 +751,12 @@ function renderGuidance() {
       .sort((a, b) => a[1].pct - b[1].pct)
       .slice(0, 3)
       .map(([d]) => domainLabel(d));
-    box.replaceChildren(
+    box.replaceChildren(...[
       el('p', { text: 'No domain is a clear weakness in this session.' }),
       adequate.length
         ? el('p', { text: `Lowest-scoring domains with too little evidence to call: ${adequate.join('; ')}. A longer session narrows their intervals.` })
         : null,
-    );
+    ].filter(Boolean));
     return;
   }
   box.replaceChildren(
