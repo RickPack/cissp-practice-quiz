@@ -3,6 +3,8 @@ import { renderBarChart } from './lib/charts.js';
 import { createSpeech, isSupported as speechSupported, RATE_MIN, RATE_MAX } from './lib/speech.js';
 import { questionChunks, explanationChunks } from './lib/speech-text.js';
 import { createVoice, isSupported as voiceSupported } from './lib/voice.js';
+import { loadPrefs, savePrefs } from './lib/voice-prefs.js';
+import { resumeIndex } from './lib/resume.js';
 
 const STORE_KEY = 'cissp-diagnostic:session';
 const $ = (id) => document.getElementById(id);
@@ -130,6 +132,14 @@ function restore(saved) {
     current: Math.min(Math.max(0, saved.current | 0), items.length - 1),
     dropped: saved.items.length - items.length,
   };
+}
+
+// An unfinished session, positioned on the first open question at or after where it was left.
+function restoreOpen() {
+  const saved = restore(storage.load());
+  if (!saved || saved.submittedAt) return null;
+  saved.current = resumeIndex(saved);
+  return saved;
 }
 
 // ---------- Start screen ----------
@@ -401,7 +411,11 @@ function readQuestion() {
   speech.play(questionChunks({ number: state.session.current + 1, stem: q.stem, options: view.options }));
 }
 
+// After a reload, browsers block speech and mic starts until the first tap or key press.
+let coldStart = true;
+
 function autoRead() {
+  if (coldStart) return;
   if (voice?.handsFree) voice.beginQuestion();
   else if (speech && autoReadOn) readQuestion();
 }
@@ -442,7 +456,7 @@ function setupSpeech() {
   rate.addEventListener('input', () => { speech.set('rate', rate.value); outputs(); });
   vol.addEventListener('input', () => { speech.set('volume', vol.value); outputs(); });
   $('speech-voice').addEventListener('change', (e) => speech.set('voiceURI', e.target.value));
-  $('speech-auto').addEventListener('change', (e) => { autoReadOn = e.target.checked; });
+  $('speech-auto').addEventListener('change', (e) => { autoReadOn = e.target.checked; persistPrefs(); });
   $('speech-play').addEventListener('click', () => {
     if (speech.state === 'playing') speech.pause();
     else if (speech.state === 'paused') speech.resume();
@@ -459,8 +473,18 @@ function setupSpeech() {
 
 // Voice is opt-in. It sees only the actions below: it never receives answer keys, and nothing it says or shows reveals whether an answer is right.
 let voice = null;
+let prefsReady = false;
 
 const MIC_LABELS = { idle: 'Mic idle', listening: 'Listening', processing: 'Processing' };
+
+function persistPrefs() {
+  savePrefs({
+    voiceEnabled: voice ? voice.enabled : false,
+    handsFree: voice ? voice.handsFree : false,
+    confirm: voice ? voice.confirmAnswers : true,
+    autoRead: autoReadOn,
+  });
+}
 
 function renderVoice(v) {
   $('voice-intro').hidden = v.enabled;
@@ -478,6 +502,7 @@ function renderVoice(v) {
   $('voice-confirm').checked = v.confirmAnswers;
   $('voice-heard').textContent = v.heard ? `Heard: \u201c${v.heard}\u201d${v.parsed ? ` \u2192 ${v.parsed}` : ''}` : v.parsed || '';
   $('voice-message').textContent = v.message;
+  if (prefsReady) persistPrefs();
 }
 
 function setupVoice() {
@@ -512,7 +537,15 @@ function setupVoice() {
   window.addEventListener('beforeunload', stopMic);
   document.addEventListener('visibilitychange', () => { if (document.hidden) stopMic(); });
   $('voice-controls').hidden = false;
+  voice.restore(loadPrefs());
+  prefsReady = true;
   renderVoice(voice.view);
+}
+
+function restoreAutoRead() {
+  if (!speech) return;
+  autoReadOn = loadPrefs().autoRead;
+  $('speech-auto').checked = autoReadOn;
 }
 
 function readExplanation(q, view, button) {
@@ -768,7 +801,15 @@ function retakeFocused() {
 
 function wire() {
   setupSpeech();
+  restoreAutoRead();
   setupVoice();
+  const warm = () => {
+    if (!coldStart) return;
+    coldStart = false;
+    if (!$('quiz').hidden && (voice?.handsFree || autoReadOn)) autoRead();
+  };
+  document.addEventListener('pointerdown', warm, { capture: true, once: true });
+  document.addEventListener('keydown', warm, { capture: true, once: true });
   const range = $('length-range');
   const num = $('length-number');
   range.addEventListener('input', () => { num.value = range.value; });
@@ -778,7 +819,7 @@ function wire() {
     startSession({ length: clampLength(num.value), seed: $('seed-input').value.trim() });
   });
   $('resume-btn').addEventListener('click', () => {
-    state.session = restore(storage.load());
+    state.session = restoreOpen();
     if (state.session) showQuiz();
   });
   $('discard-btn').addEventListener('click', () => { storage.clear(); setupStart(); });
@@ -814,8 +855,8 @@ async function main() {
     box.textContent = `The question bank could not be loaded (${err.message}). If you opened index.html directly from disk, serve the folder over HTTP instead, for example: python -m http.server`;
     return;
   }
-  const saved = restore(storage.load());
-  if (saved && !saved.submittedAt) {
+  const saved = restoreOpen();
+  if (saved) {
     state.session = saved;
     showQuiz();
   } else {

@@ -14,7 +14,7 @@ Results are for study planning only. They do not predict your result on the real
 - **Option order is shuffled** per question, and sessions are reproducible with an optional seed.
 - **One question at a time**, with previous/next, flag for review, a progress bar, keyboard shortcuts (`1`–`4` or `A`–`D`, arrow keys, `F`, `R`, `V`), and no feedback until the end.
 - **Submit and Finish** unlocks after 20 answers. Unanswered questions are excluded from scoring and listed separately.
-- **Progress is saved** in your browser (localStorage), so a refresh does not lose your place. Nothing is sent to this site; there is no backend. (The optional voice feature has its own privacy note below.)
+- **Progress is saved** in your browser (localStorage), so a refresh does not lose your place or your answers. A resumed session opens on the question you were on if it is unanswered, otherwise on the next unanswered one (wrapping to the first unanswered one). Nothing is sent to this site; there is no backend. (The optional voice feature has its own privacy note below.)
 - **Works offline** after the first visit.
 - **Read aloud** (optional): Read aloud / Pause / Stop buttons, an auto-read toggle (off by default), and `R` to start or stop. See below.
 - **Voice answers** (optional, off by default): speak A–D, confirm by voice, and use voice commands. See below.
@@ -24,7 +24,7 @@ Results are for study planning only. They do not predict your result on the real
 Uses the browser's built-in speech synthesis. No network calls, keys, or dependencies; if the browser has no speech support, the controls are hidden.
 
 - Speaks the question number, the stem, then "Option A", its text, "Option B", and so on, in the order shown on screen. It never speaks whether an answer is correct during the quiz.
-- Voice (English, local voices first), speed (0.75x to 1.75x), and volume are saved in your browser. Auto-read is never saved and starts off, because browsers often block speech that does not begin with a click or key press.
+- Voice (English, local voices first), speed (0.75x to 1.75x), and volume are saved in your browser. Your on/off choices are remembered across reloads (auto-read, and for voice: enabled, hands-free, and read-back confirmation); only those booleans are stored, never audio or text. Browsers block speech and the microphone until you tap or press a key, so after a reload nothing is spoken or listened to until your first tap or key press, and the page says so.
 - Speech stops when you change question, submit, leave the screen, or close the page.
 - In the report's question review, each question has a **Read explanation** button. Explanations are spoken only there, after submission.
 - Browser notes: voice lists load asynchronously, so the picker can fill in a moment after the page loads. Chrome cuts off long utterances, so text is spoken in sentence-sized chunks. Voices, and whether some are online-only, depend on the browser and operating system.
@@ -34,7 +34,7 @@ Uses the browser's built-in speech synthesis. No network calls, keys, or depende
 
 Optional and off by default. Uses the browser's built-in speech recognition (`SpeechRecognition` / `webkitSpeechRecognition`). No dependencies, backend, or API keys. If the browser has no speech recognition, the voice controls are hidden and typing and tapping work as before.
 
-**Privacy.** In some browsers (Chrome and other Chromium browsers, and Safari), the audio is sent to the browser vendor's cloud service for transcription. This site cannot control that, and nothing is sent to this site. Voice stays off until you click **Enable voice answers**, which sits next to this notice. The browser then asks for microphone permission when you first speak. If you refuse, the page says so and carries on with tapping and typing.
+**Privacy.** In some browsers (Chrome and other Chromium browsers, and Safari), the audio is sent to the browser vendor's cloud service for transcription. This site cannot control that, and nothing is sent to this site. Voice is off on your first visit and stays off until you click **Enable voice answers**, which sits next to this notice. After that the choice is remembered; **Turn voice off** forgets it. The browser then asks for microphone permission when you first speak. If you refuse, the page says so and carries on with tapping and typing.
 
 - **Push-to-talk:** press the **Talk** button or `V`, then say a letter. Speech is not captured until you do.
 - **Hands-free** (toggle, needs read-aloud support): reads the question and options aloud, then listens once for an answer. The mic never opens while speech is playing or paused. It opens a quarter second after the last utterance ends.
