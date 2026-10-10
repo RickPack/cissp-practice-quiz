@@ -547,3 +547,13 @@ test('silence after a saved answer ends quietly, with no "didn\'t catch that"', 
     assert.equal(h.recs.at(-1), follow, 'and no further listening');
   }
 });
+
+test('a saved answer is shown on screen', () => {
+  const h = harness();
+  h.voice.enable();
+  h.voice.setConfirm(false);
+  h.voice.pushToTalk();
+  h.recs[0].hear([['answer', 0.9]], { interim: [['answer dee', 0.5]] });
+  assert.deepEqual(h.calls.recorded, ['D']);
+  assert.equal(h.voice.view.message, 'Answer D saved.');
+});
