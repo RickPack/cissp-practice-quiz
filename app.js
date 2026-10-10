@@ -5,11 +5,12 @@ import { questionChunks, explanationChunks, feedbackChunks } from './lib/speech-
 import { createVoice, isSupported as voiceSupported } from './lib/voice.js';
 import { loadPrefs, savePrefs } from './lib/voice-prefs.js';
 import { resumeIndex } from './lib/resume.js';
+import { localDate, loadDeck, saveDeck, clearDeck, dueIds, applySession, createReviewSession } from './lib/review-deck.js';
 
 const STORE_KEY = 'cissp-diagnostic:session';
 const $ = (id) => document.getElementById(id);
 
-const state = { bank: [], lookup: new Map(), taxonomy: null, bankVersion: '?', session: null, report: null };
+const state = { bank: [], lookup: new Map(), taxonomy: null, bankVersion: '?', session: null, report: null, deckSummary: null };
 
 const storage = {
   load() {
@@ -172,7 +173,81 @@ function setupStart() {
   if (saved && saved.submittedAt) {
     $('last-report-text').textContent = `Submitted ${new Date(saved.submittedAt).toLocaleString()}, ${core.answeredCount(saved)} of ${saved.items.length} answered.`;
   }
+  renderDeckCard();
   show('start');
+}
+
+// ---------- Review deck ----------
+
+// The deck lives in this browser only: question IDs, a box number, and dates.
+function browserStorage() {
+  try {
+    return window.localStorage;
+  } catch {
+    return null; // blocked: loadDeck and saveDeck catch the failure and fall back
+  }
+}
+
+const today = () => localDate(new Date());
+const currentDeck = () => loadDeck(browserStorage(), state.lookup, today());
+const displayDate = (ymd) => new Date(Number(ymd.slice(0, 4)), Number(ymd.slice(5, 7)) - 1, Number(ymd.slice(8, 10))).toLocaleDateString();
+
+function renderDeckCard() {
+  const deck = currentDeck();
+  const cards = Object.values(deck);
+  const due = dueIds(deck, today()).length;
+  $('deck-card').hidden = !cards.length;
+  if (!cards.length) return;
+  $('deck-due').hidden = !due;
+  $('deck-due').textContent = `${due} due today`;
+  $('review-btn').hidden = !due;
+  const next = cards.map((c) => c.due).filter((d) => d > today()).sort()[0];
+  $('deck-text').textContent =
+    `${cards.length} question${cards.length === 1 ? '' : 's'} in your review deck.` +
+    (!due && next ? ` The next one is due ${displayDate(next)}.` : '');
+}
+
+function startReview() {
+  const deck = currentDeck();
+  if (!dueIds(deck, today()).length) return;
+  state.session = createReviewSession(deck, today(), {
+    cap: core.maxSessionLength(state.bank.length),
+    seed: core.newSeedString(),
+    bankVersion: state.bankVersion,
+  });
+  storage.save(state.session);
+  showQuiz();
+}
+
+// Called once, when a session is submitted.
+function updateDeck(report) {
+  const deck = currentDeck();
+  const results = [...report.rows, ...report.unanswered].map((row) => ({
+    id: row.q.id,
+    answered: !!row.response,
+    correct: row.correct,
+    flagged: row.flagged,
+  }));
+  const summary = applySession(deck, results, today());
+  summary.saved = saveDeck(deck, browserStorage());
+  return summary;
+}
+
+function renderDeckLine() {
+  const box = $('deck-line');
+  const d = state.deckSummary;
+  box.hidden = !d;
+  if (!d) return;
+  box.textContent =
+    `Review deck: ${d.added} new card${d.added === 1 ? '' : 's'} added, ${d.up} moved up, ${d.graduated} graduated` +
+    (d.reset ? `, ${d.reset} back to box 1.` : '.') +
+    (d.saved ? '' : ' This browser could not save the deck.');
+}
+
+function confirmClearDeck() {
+  const n = Object.keys(currentDeck()).length;
+  $('clear-deck-text').textContent = `This removes all ${n} question${n === 1 ? '' : 's'} and their review dates from this browser. It cannot be undone.`;
+  $('clear-deck-dialog').showModal();
 }
 
 function clampLength(v) {
@@ -431,7 +506,7 @@ function finish() {
   const s = state.session;
   s.submittedAt = new Date().toISOString();
   storage.save(s);
-  showReport(s);
+  showReport(s, { updateDeck: true });
 }
 
 function onKey(e) {
@@ -632,9 +707,11 @@ function readExplanation(q, view, button) {
 
 // ---------- Report ----------
 
-function showReport(session) {
+// updateDeck is true only straight after submitting, so reopening a report never changes the deck twice.
+function showReport(session, { updateDeck: submitted = false } = {}) {
   state.session = session;
   state.report = core.scoreSession(session, state.lookup, state.taxonomy);
+  state.deckSummary = submitted ? updateDeck(state.report) : null;
   renderReport();
   show('report');
   $('report-title').focus();
@@ -656,8 +733,10 @@ function renderReport() {
     `seed ${s.seed}`,
     s.submittedAt ? `submitted ${new Date(s.submittedAt).toLocaleString()}` : null,
     s.mode === 'focus' ? `focused on ${s.focusDomains.map((d) => `D${d}`).join(', ')}` : null,
+    s.mode === 'review' ? 'review of due questions only' : null,
   ];
   $('report-meta').textContent = meta.filter(Boolean).join(' · ');
+  renderDeckLine();
 
   $('score-tiles').replaceChildren(
     tile('Raw score', fmtPct(r.overall.pct), `${r.overall.correct} of ${r.overall.n} correct`),
@@ -903,7 +982,8 @@ function exportJSON() {
 function retakeFocused() {
   const weak = state.report.weakDomains;
   if (!weak.length) return;
-  startSession({ length: state.session.items.length, mode: 'focus', focusDomains: weak });
+  // A review session can be shorter than the minimum, so the retake never drops below it.
+  startSession({ length: Math.max(core.MIN_SESSION, state.session.items.length), mode: 'focus', focusDomains: weak });
 }
 
 // ---------- Wiring ----------
@@ -936,6 +1016,14 @@ function wire() {
   $('view-last-btn').addEventListener('click', () => {
     const saved = restore(storage.load());
     if (saved) showReport(saved);
+  });
+  $('review-btn').addEventListener('click', startReview);
+  $('clear-deck-btn').addEventListener('click', confirmClearDeck);
+  $('clear-deck-cancel').addEventListener('click', () => $('clear-deck-dialog').close());
+  $('clear-deck-ok').addEventListener('click', () => {
+    $('clear-deck-dialog').close();
+    clearDeck(browserStorage());
+    renderDeckCard();
   });
 
   $('prev-btn').addEventListener('click', () => goTo(state.session.current - 1));
