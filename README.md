@@ -18,6 +18,7 @@ Results are for study planning only. They do not predict your result on the real
 - **Works offline** after the first visit.
 - **Read aloud** (optional): Read aloud / Pause / Stop buttons, an auto-read toggle (off by default), and `R` to start or stop. See below.
 - **Voice answers** (optional, off by default): speak A–D, confirm by voice, and use voice commands. See below.
+- **Spaced review deck**: questions you miss come back after 1, 3, 7, and 14 days until you get them right. See below.
 
 ### Read aloud
 
@@ -33,6 +34,20 @@ Uses the browser's built-in speech synthesis. No network calls, keys, or depende
 ### Immediate feedback (optional)
 
 Off by default, so the practice stays blind and results appear only in the report. Tick **Show feedback after each answer** and each answered question shows Correct or Not correct, the correct answer, the explanation, and why your choice was wrong. With auto-read or hands-free on, it is also read aloud: the verdict, "The correct answer is C.", then the explanation. Hands-free waits for it to finish before moving on; press Stop or Next to cut it short. Changing an answer is still allowed and updates the feedback; scoring uses your final answer. The choice is remembered across reloads and does not change scoring or the report.
+
+### Spaced review deck
+
+Questions you miss come back on a schedule until you get them right.
+
+- **What goes in:** when you submit a session, every question you answered wrongly, and every flagged question you left unanswered, is added to the deck. A question already in the deck that you miss again goes back to box 1.
+- **The schedule** (Leitner boxes): a new card waits 1 day. Each correct answer on a due card moves it to the next box: 3 days, then 7, then 14. A correct answer in the last box graduates the card and removes it. A miss at any point sends it back to box 1 (1 day). Answering a card correctly before it is due changes nothing, so it cannot skip a step.
+- **Reviewing:** the start screen shows "N due today" and a **Review due questions** button. It starts a normal session built only from due questions (up to 100, most overdue first), with the usual one-question-at-a-time screen, no feedback until the end, and the usual report. Submitting it updates the deck.
+- **Report line:** right after you submit, the report says how many new cards were added, how many moved up, how many graduated, and how many went back to box 1. Reopening an old report does not update the deck again.
+- **Clear review deck** on the start screen removes every card after a confirmation.
+- **Dates:** due dates are local calendar dates (YYYY-MM-DD), so a card becomes due at midnight where you are, and daylight-saving changes do not move it. If the device clock moves backwards, dates in the future are pulled back so cards are not stranded.
+- **Privacy:** the deck is stored only in this browser (localStorage key `cissp-diagnostic:review`): question IDs, a box number, and dates. No question text, answers, or scores. Nothing is sent anywhere. Corrupt or unexpected stored data is ignored, and questions no longer in the bank are dropped.
+- **The deck repeats what the answer key says.** The independent answer-key audit (below) has not been run yet, so a wrong key would be drilled as if it were right.
+- **Changing the intervals:** edit `INTERVALS` in `lib/review-deck.js` (days for box 1, 2, 3, ...). Add or remove entries to change the number of boxes; cards in a box past the end of a shorter list are treated as being in the last box. Update the expected list in `tests/review-deck.test.mjs`.
 
 ### Voice answers
 
@@ -107,7 +122,7 @@ python -m pip install -r validation/requirements.txt
 python validation/validate.py                       # bank validator; writes validation/report.md
 ```
 
-Unit tests cover the voice parser (letters, homophones, aliases, filler, ambiguity), the confirmation state machine, the no-correctness-leak rule, and the controller against mocked `SpeechRecognition` and `speechSynthesis` (the mic never opens while speech plays; the mic stops on navigate, submit, and unload). They also cover sampling proportions and graceful degradation, answer remapping after shuffling, the 20-answer gate, scoring, and the Wilson interval math. They run against synthetic banks of 80, 250, and 1,000 questions, plus a 1,000-session simulation that checks per-domain draw proportions stay within ±3 points of the targets.
+Unit tests cover the voice parser (letters, homophones, aliases, filler, ambiguity), the confirmation state machine, the no-correctness-leak rule, and the controller against mocked `SpeechRecognition` and `speechSynthesis` (the mic never opens while speech plays; the mic stops on navigate, submit, and unload). The review deck tests use an injectable clock and storage and cover the box schedule, day boundaries, daylight-saving dates, a clock moving backwards, corrupt and hostile stored data, and review-session building. They also cover sampling proportions and graceful degradation, answer remapping after shuffling, the 20-answer gate, scoring, and the Wilson interval math. They run against synthetic banks of 80, 250, and 1,000 questions, plus a 1,000-session simulation that checks per-domain draw proportions stay within ±3 points of the targets.
 
 ## Question bank
 
@@ -156,6 +171,7 @@ lib/speech.js                    read-aloud controller (speechSynthesis injectab
 lib/voice-parse.js               spoken-answer parser and alias tables (no DOM)
 lib/voice-flow.js                confirmation state machine and message table (no DOM)
 lib/voice.js                     voice controller (SpeechRecognition injectable)
+lib/review-deck.js               spaced review deck: schedule, storage, review sessions (no DOM)
 sw.js                            offline cache
 data/                            question bank (CC BY 4.0)
 validation/                      validate.py, audit.py, Colab notebook, report.md, flags.csv
