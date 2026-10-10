@@ -109,13 +109,31 @@
         </details>
       </div>
 
+      <div class="voice-controls" id="voice-controls" role="group" aria-label="Voice answers" hidden>
+        <div id="voice-intro">
+          <p class="hint"><strong>Voice answers (optional).</strong> Speak your answer instead of tapping it. In some browsers, such as Chrome, your speech is sent to the browser vendor's cloud service for transcription, and this site cannot control that. Nothing is sent to this site, and voice stays off unless you enable it.</p>
+          <button type="button" class="btn" id="voice-enable">Enable voice answers</button>
+        </div>
+        <div id="voice-active" hidden>
+          <div class="voice-row">
+            <button type="button" class="btn btn-primary" id="voice-talk" aria-keyshortcuts="V" aria-pressed="false">Talk</button>
+            <span class="voice-indicator" id="voice-indicator" data-state="idle"><span class="voice-dot" aria-hidden="true"></span><span id="voice-state-text">Mic idle</span></span>
+            <label class="speech-auto"><input type="checkbox" id="voice-handsfree"> Hands-free</label>
+            <button type="button" class="btn btn-quiet" id="voice-disable">Turn voice off</button>
+          </div>
+          <p class="hint" id="voice-heard"></p>
+        </div>
+        <p class="hint" id="voice-message"></p>
+        <p class="sr-only" id="voice-live" role="status" aria-live="polite"></p>
+      </div>
+
       <div class="quiz-nav">
         <button type="button" class="btn" id="prev-btn" aria-keyshortcuts="ArrowLeft">&larr; Previous</button>
         <button type="button" class="btn" id="flag-btn" aria-pressed="false" aria-keyshortcuts="F">Flag for review</button>
         <button type="button" class="btn" id="next-btn" aria-keyshortcuts="ArrowRight">Next &rarr;</button>
       </div>
 
-      <p class="hint kbd-hint">Keyboard: <kbd>1</kbd>–<kbd>4</kbd> or <kbd>A</kbd>–<kbd>D</kbd> to answer, <kbd>&larr;</kbd> <kbd>&rarr;</kbd> to move, <kbd>F</kbd> to flag, <kbd>R</kbd> to read aloud or stop.</p>
+      <p class="hint kbd-hint">Keyboard: <kbd>1</kbd>–<kbd>4</kbd> or <kbd>A</kbd>–<kbd>D</kbd> to answer, <kbd>&larr;</kbd> <kbd>&rarr;</kbd> to move, <kbd>F</kbd> to flag, <kbd>R</kbd> to read aloud or stop<span id="voice-key-hint" hidden>, <kbd>V</kbd> to talk</span>.</p>
 
       <details class="navigator-wrap">
         <summary>Jump to a question</summary>

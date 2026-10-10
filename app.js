@@ -2,6 +2,7 @@ import * as core from './lib/core.js';
 import { renderBarChart } from './lib/charts.js';
 import { createSpeech, isSupported as speechSupported, RATE_MIN, RATE_MAX } from './lib/speech.js';
 import { questionChunks, explanationChunks } from './lib/speech-text.js';
+import { createVoice, isSupported as voiceSupported } from './lib/voice.js';
 
 const STORE_KEY = 'cissp-diagnostic:session';
 const $ = (id) => document.getElementById(id);
@@ -73,6 +74,7 @@ function statusBadge(status) {
 }
 
 function show(id) {
+  voice?.interrupt();
   speech?.stop();
   for (const sec of ['start', 'quiz', 'report']) $(sec).hidden = sec !== id;
   $('loading').hidden = true;
@@ -259,6 +261,11 @@ function renderNavigator() {
   );
 }
 
+function submitTip(s) {
+  const threshold = core.submitThreshold(s);
+  return `Answer at least ${threshold} questions to submit (${threshold - core.answeredCount(s)} more to go).`;
+}
+
 function updateStatus() {
   const s = state.session;
   const answered = core.answeredCount(s);
@@ -281,7 +288,7 @@ function updateStatus() {
       ? `${left} unanswered question${left === 1 ? '' : 's'} will be excluded from scoring.`
       : 'All questions answered.';
   } else {
-    const tip = `Answer at least ${threshold} questions to submit (${threshold - answered} more to go).`;
+    const tip = submitTip(s);
     wrap.dataset.tip = tip;
     $('submit-help').textContent = tip;
   }
@@ -296,6 +303,10 @@ function recordAnswer(displayLetter) {
   updateStatus();
 }
 
+function selectByLetter(letter) {
+  selectByKey(core.LETTERS.indexOf(letter));
+}
+
 function selectByKey(index) {
   const input = $('options').querySelectorAll('input[type="radio"]')[index];
   if (!input) return;
@@ -305,12 +316,14 @@ function selectByKey(index) {
 
 function goTo(i, opts) {
   const s = state.session;
-  if (i < 0 || i >= s.items.length) return;
+  if (i < 0 || i >= s.items.length) return false;
+  voice?.interrupt();
   speech?.stop();
   s.current = i;
   storage.save(s);
   renderQuestion(opts);
   autoRead();
+  return true;
 }
 
 function toggleFlag() {
@@ -322,19 +335,23 @@ function toggleFlag() {
   renderQuestion();
 }
 
+// Returns 'blocked' (under the answer gate), 'confirm' (dialog opened), or 'submitted'. Voice uses the same path as a tap.
 function trySubmit() {
+  voice?.interrupt();
   const s = state.session;
-  if (!core.canSubmit(s)) return;
+  if (!core.canSubmit(s)) return 'blocked';
   const left = s.items.length - core.answeredCount(s);
   if (left > 0) {
     $('confirm-text').textContent = `You have ${left} unanswered question${left === 1 ? '' : 's'}. ${left === 1 ? 'It' : 'They'} will be excluded from scoring and listed separately in the report.`;
     $('confirm-dialog').showModal();
-    return;
+    return 'confirm';
   }
   finish();
+  return 'submitted';
 }
 
 function finish() {
+  voice?.interrupt();
   speech?.stop();
   const s = state.session;
   s.submittedAt = new Date().toISOString();
@@ -366,6 +383,9 @@ function onKey(e) {
     e.preventDefault();
     if (speech.state === 'idle') readQuestion();
     else speech.stop();
+  } else if (key === 'v' && voice?.enabled) {
+    e.preventDefault();
+    if (!e.repeat) voice.pushToTalk();
   }
 }
 
@@ -382,7 +402,8 @@ function readQuestion() {
 }
 
 function autoRead() {
-  if (speech && autoReadOn) readQuestion();
+  if (voice?.handsFree) voice.beginQuestion();
+  else if (speech && autoReadOn) readQuestion();
 }
 
 function renderSpeechControls() {
@@ -405,7 +426,7 @@ function renderSpeechControls() {
 
 function setupSpeech() {
   if (!speechSupported()) return;
-  speech = createSpeech({ synth: window.speechSynthesis, onChange: renderSpeechControls });
+  speech = createSpeech({ synth: window.speechSynthesis, onChange: (st) => { renderSpeechControls(); voice?.onSpeechState(st); } });
   speech.init();
   const rate = $('speech-rate');
   const vol = $('speech-volume');
@@ -432,6 +453,64 @@ function setupSpeech() {
   window.addEventListener('beforeunload', () => speech.stop());
   $('speech-controls').hidden = false;
   renderSpeechControls();
+}
+
+// ---------- Voice answers ----------
+
+// Voice is opt-in. It sees only the actions below: it never receives answer keys, and nothing it says or shows reveals whether an answer is right.
+let voice = null;
+
+const MIC_LABELS = { idle: 'Mic idle', listening: 'Listening', processing: 'Processing' };
+
+function renderVoice(v) {
+  $('voice-intro').hidden = v.enabled;
+  $('voice-active').hidden = !v.enabled;
+  $('voice-key-hint').hidden = !v.enabled;
+  $('voice-indicator').dataset.state = v.mic;
+  $('voice-state-text').textContent = MIC_LABELS[v.mic];
+  $('voice-live').textContent = v.enabled ? `Microphone ${v.mic}` : '';
+  const talk = $('voice-talk');
+  talk.textContent = v.mic === 'idle' ? 'Talk' : 'Stop listening';
+  talk.setAttribute('aria-pressed', String(v.mic !== 'idle'));
+  const hf = $('voice-handsfree');
+  hf.checked = v.handsFree;
+  hf.disabled = !v.canSpeak;
+  $('voice-heard').textContent = v.heard ? `Heard: \u201c${v.heard}\u201d${v.parsed ? ` \u2192 ${v.parsed}` : ''}` : v.parsed || '';
+  $('voice-message').textContent = v.message;
+}
+
+function setupVoice() {
+  if (!voiceSupported()) return;
+  voice = createVoice({
+    speech,
+    onChange: renderVoice,
+    actions: {
+      readQuestion,
+      record: selectByLetter,
+      next: () => goTo(state.session.current + 1),
+      previous: () => goTo(state.session.current - 1),
+      toggleFlag: () => {
+        toggleFlag();
+        return !!state.session.flagged[currentQuestion().it.id];
+      },
+      submit: () => {
+        const status = trySubmit();
+        return status === 'blocked' ? { status, message: submitTip(state.session) } : { status };
+      },
+    },
+  });
+  $('voice-enable').addEventListener('click', () => voice.enable());
+  $('voice-disable').addEventListener('click', () => voice.disable());
+  $('voice-talk').addEventListener('click', () => voice.pushToTalk());
+  $('voice-handsfree').addEventListener('change', (e) => {
+    if (!voice.setHandsFree(e.target.checked)) e.target.checked = false;
+  });
+  const stopMic = () => voice.interrupt();
+  window.addEventListener('pagehide', stopMic);
+  window.addEventListener('beforeunload', stopMic);
+  document.addEventListener('visibilitychange', () => { if (document.hidden) stopMic(); });
+  $('voice-controls').hidden = false;
+  renderVoice(voice.view);
 }
 
 function readExplanation(q, view, button) {
@@ -687,6 +766,7 @@ function retakeFocused() {
 
 function wire() {
   setupSpeech();
+  setupVoice();
   const range = $('length-range');
   const num = $('length-number');
   range.addEventListener('input', () => { num.value = range.value; });

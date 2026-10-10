@@ -474,3 +474,28 @@ test('no-correctness-leak: voice modules take no scoring or answer-key input', (
     assert.ok(!/\.answer\b|explanation|rationale|isCorrect|\bcorrectLetter\b/i.test(src), `${file} must not touch answer data`);
   }
 });
+
+test('no-correctness-leak: the app wiring hands voice no answer data', () => {
+  const app = readFileSync(new URL('../app.js', import.meta.url), 'utf8');
+  const block = app.slice(app.indexOf('function setupVoice'), app.indexOf('function readExplanation'));
+  assert.ok(block.length > 100, 'setupVoice block found');
+  assert.ok(!/\.answer|explanation|rationale|scoreSession|view\.correct|q\./.test(block), 'voice wiring must not read answers or questions');
+});
+
+test('voice answers go through the same recordAnswer path as taps', () => {
+  const app = readFileSync(new URL('../app.js', import.meta.url), 'utf8');
+  assert.match(app, /record: selectByLetter/);
+  assert.match(app, /function selectByKey\(index\)[\s\S]*?recordAnswer\(input\.value\)/);
+});
+
+test('a duplicate end event from the browser does not process the result twice', () => {
+  const h = harness();
+  h.voice.enable();
+  h.voice.pushToTalk();
+  const rec = h.recs[0];
+  rec.hear([['bee', 0.9]]);
+  h.settle();
+  rec.onend?.(); // stray second end event for the first session
+  assert.deepEqual(h.calls.recorded, []);
+  assert.equal(h.recs.length, 2);
+});

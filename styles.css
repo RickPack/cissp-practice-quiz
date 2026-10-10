@@ -357,6 +357,18 @@ dialog h2 { margin-top: 0; }
 @media (max-width: 480px) {
   .speech-fields { grid-template-columns: 1fr; }
 }
+/* Voice answers */
+.voice-controls { margin-top: 1rem; }
+.voice-controls[hidden], #voice-intro[hidden], #voice-active[hidden] { display: none; }
+.voice-row { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.voice-indicator { display: inline-flex; align-items: center; gap: 6px; font-size: .9rem; font-weight: 600; min-width: 8rem; }
+.voice-dot { width: 12px; height: 12px; border-radius: 50%; border: 2px solid var(--text-2); background: transparent; box-sizing: border-box; }
+.voice-indicator[data-state="listening"] .voice-dot { background: var(--critical); border-color: var(--critical); }
+.voice-indicator[data-state="processing"] .voice-dot { background: var(--accent); border-color: var(--accent); border-radius: 3px; }
+@media (prefers-reduced-motion: no-preference) {
+  .voice-indicator[data-state="listening"] .voice-dot { animation: voice-pulse 1.2s ease-in-out infinite; }
+}
+@keyframes voice-pulse { 50% { opacity: .35; } }
 @media print {
-  .speech-controls, .read-expl { display: none !important; }
+  .speech-controls, .voice-controls, .read-expl { display: none !important; }
 }
