@@ -48,7 +48,7 @@ function makeResult(alts, isFinal) {
   return { results: [res] };
 }
 
-function harness({ withSpeech = true, Recognition: Override, notify = true } = {}) {
+function harness({ withSpeech = true, Recognition: Override, notify = true, options = {}, stopHook } = {}) {
   const synth = mockSynth();
   const timers = manualTimers();
   const recs = [];
@@ -101,7 +101,8 @@ function harness({ withSpeech = true, Recognition: Override, notify = true } = {
     submit() { calls.submit++; return submitResult; },
   };
 
-  voice = createVoice({ Recognition: Override === undefined ? MockRecognition : Override, speech, actions, timers, onChange: (v) => views.push(v) });
+  if (stopHook) actions.stop = stopHook;
+  voice = createVoice({ Recognition: Override === undefined ? MockRecognition : Override, speech, actions, timers, onChange: (v) => views.push(v), ...options });
   const finishSpeech = () => { while (synth.current) synth.finish(); };
   return {
     voice, speech, synth, timers, recs, calls, views, startedWhileSpeaking, finishSpeech,
@@ -820,4 +821,51 @@ test('resume does nothing when hands-free is off', () => {
   h.voice.enable();
   assert.equal(h.voice.resume(), false);
   assert.equal(h.recs.length, 0);
+});
+
+// ---------- Commute-mode options (off by default) ----------
+
+test('defaults are unchanged: quiz voice honours every command and silence uses the normal miss flow', () => {
+  const h = harness();
+  h.voice.enable();
+  h.voice.pushToTalk();
+  h.recs[0].hear([['flag', 0.9]]);
+  assert.equal(h.calls.flag, 1);
+  h.voice.pushToTalk();
+  h.recs[1].fail('no-speech');
+  assert.equal(h.spokenTexts().at(-1), MESSAGES.noCatch);
+  assert.equal(h.calls.next, 0, 'silence never skips in the quiz');
+});
+
+test('allowedCommands: a command outside the list counts as not understood', () => {
+  const h = harness({ options: { allowedCommands: ['repeat', 'next', 'skip', 'stop'] } });
+  h.voice.enable();
+  h.voice.pushToTalk();
+  h.recs[0].hear([['flag', 0.9]]);
+  assert.equal(h.calls.flag, 0);
+  assert.equal(h.spokenTexts().at(-1), MESSAGES.noCatch);
+  h.settle();
+  h.recs[1].hear([['skip', 0.9]]);
+  assert.equal(h.calls.next, 1);
+});
+
+test('actions.stop, when given, is called after the stop command closes the mic', () => {
+  let stopped = 0;
+  const h = harness({ stopHook: () => { stopped++; } });
+  h.voice.enable();
+  h.voice.pushToTalk();
+  h.recs[0].hear([['stop', 0.9]]);
+  assert.equal(stopped, 1);
+  assert.equal(h.voice.mic, 'idle');
+});
+
+test('autoSkipMs: silence for the whole window runs the skip command', () => {
+  let t = 0;
+  const h = harness({ options: { autoSkipMs: 8000, now: () => t } });
+  h.voice.enable();
+  h.voice.pushToTalk();
+  t = 8000;
+  h.recs[0].fail('no-speech');
+  assert.equal(h.calls.next, 1);
+  assert.ok(!h.spokenTexts().includes(MESSAGES.noCatch));
 });
