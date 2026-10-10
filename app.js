@@ -726,6 +726,23 @@ function renderReport() {
     }),
   );
 
+  renderBarChart(
+    $('type-chart'),
+    core.QUESTION_TYPES.map((k) => {
+      const x = r.byType[k];
+      const label = TYPE_LABELS[k];
+      return {
+        label,
+        value: x.n ? x.pct : null,
+        ci: x.n ? x.ci : null,
+        muted: false,
+        valueText: x.n ? `${fmtPct(x.pct)} (n=${x.n})` : 'not answered',
+        description: x.n ? `${label}: ${fmtPct(x.pct)} correct, 95% interval ${fmtCI(x.ci)}, ${x.n} answered` : `${label}: none answered`,
+      };
+    }),
+  );
+  renderTypeHint(r);
+
   renderGuidance();
   renderUnanswered();
 
@@ -740,6 +757,25 @@ function renderReport() {
   $('retake-help').textContent = weak.length
     ? `The retake draws about 60% of its questions from ${weak.map((d) => `D${d}`).join(', ')}.`
     : 'No domain is classified as a Weakness, so a focused retake is not available. Start a new session instead.';
+}
+
+const TYPE_LABELS = {
+  knowledge: 'Knowledge (recall)',
+  application: 'Application (scenario)',
+  managerial_best_first_most: 'Managerial (best / first / most)',
+};
+
+// Only speaks up when there is enough data and a clear gap. Otherwise it says nothing.
+function renderTypeHint(r) {
+  const box = $('type-hint');
+  const gap = core.managerialGap(r.byType);
+  if (!gap || !gap.behind) {
+    box.hidden = true;
+    box.textContent = '';
+    return;
+  }
+  box.textContent = `Managerial questions: ${fmtPct(gap.managerial)} correct, against ${fmtPct(gap.technical)} on the technical ones. On "best", "first" and "most" questions, think like a manager: protect the business and its people, follow the process, and pick the answer that fits the risk and the role before the one that is most technical.`;
+  box.hidden = false;
 }
 
 function renderGuidance() {

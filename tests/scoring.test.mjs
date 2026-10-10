@@ -2,7 +2,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import {
   wilson, classify, canSubmit, answeredCount, submitThreshold, createSession, scoreSession,
-  exportResults, emphasisRuns, LETTERS,
+  exportResults, emphasisRuns, managerialGap, QUESTION_TYPES, LETTERS,
 } from '../lib/core.js';
 import { taxonomy, makeBank } from './fixtures.mjs';
 
@@ -111,4 +111,72 @@ test('emphasis markers become strong runs without HTML', () => {
     { text: 'NOT', strong: true },
     { text: ' a <b>control</b>?', strong: false },
   ]);
+});
+
+// ---------- question-type breakdown ----------
+
+function typedSession(typeOf, correctOf) {
+  const bank = makeBank(200, { tweak: (q) => ({ ...q, type: typeOf(q) }) });
+  const qs = bank.slice(0, 18);
+  const session = {
+    items: qs.map((q) => ({ id: q.id, perm: LETTERS.slice() })),
+    responses: {},
+    flagged: {},
+    seed: 'x', bankVersion: 't', mode: 'standard', focusDomains: [],
+  };
+  const wrong = (q) => LETTERS.find((L) => L !== q.answer);
+  qs.forEach((q, i) => { session.responses[q.id] = correctOf(q, i) ? q.answer : wrong(q); });
+  const lookup = new Map(bank.map((q) => [q.id, q]));
+  return { session, report: scoreSession(session, lookup, taxonomy) };
+}
+
+test('byType tallies each question type and leaves the other scores alone', () => {
+  const types = QUESTION_TYPES;
+  const { report, session } = typedSession((q) => types[Number(q.id.slice(-4)) % 3], (q, i) => i % 2 === 0);
+  assert.deepEqual(Object.keys(report.byType), QUESTION_TYPES);
+  const total = Object.values(report.byType).reduce((s, x) => s + x.n, 0);
+  assert.equal(total, report.answered);
+  const correct = Object.values(report.byType).reduce((s, x) => s + x.correct, 0);
+  assert.equal(correct, report.overall.correct);
+  const out = exportResults(session, report);
+  assert.deepEqual(Object.keys(out.by_type), QUESTION_TYPES);
+  assert.ok(out.items.every((i) => QUESTION_TYPES.includes(i.type)));
+});
+
+test('managerialGap flags a clear managerial shortfall', () => {
+  // managerial questions all wrong, technical ones all right
+  const { report } = typedSession(
+    (q) => (Number(q.id.slice(-4)) % 2 ? 'managerial_best_first_most' : 'knowledge'),
+    (q) => q.type !== 'managerial_best_first_most',
+  );
+  const gap = managerialGap(report.byType);
+  assert.equal(gap.behind, true);
+  close(gap.managerial, 0);
+  close(gap.technical, 1);
+});
+
+test('managerialGap stays quiet when scores are level, data is thin, or managerial is ahead', () => {
+  const level = typedSession(
+    (q) => (Number(q.id.slice(-4)) % 2 ? 'managerial_best_first_most' : 'application'),
+    () => true,
+  );
+  assert.equal(managerialGap(level.report.byType).behind, false);
+
+  const ahead = typedSession(
+    (q) => (Number(q.id.slice(-4)) % 2 ? 'managerial_best_first_most' : 'knowledge'),
+    (q) => q.type === 'managerial_best_first_most',
+  );
+  assert.equal(managerialGap(ahead.report.byType).behind, false);
+
+  const noneManagerial = typedSession(() => 'knowledge', () => true);
+  assert.equal(managerialGap(noneManagerial.report.byType), null);
+
+  assert.equal(
+    managerialGap({
+      knowledge: { n: 10, correct: 10, pct: 1 },
+      application: { n: 0, correct: 0, pct: null },
+      managerial_best_first_most: { n: 3, correct: 0, pct: 0 },
+    }),
+    null,
+  );
 });

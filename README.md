@@ -84,7 +84,8 @@ Each word may map to one letter only. Add a test case in `tests/voice-parse.test
   - **Weakness**: the whole interval is below 70%.
   - **Adequate**: the interval crosses 70%.
   - **Insufficient data**: fewer than 4 questions answered in the domain. Never labeled a strength or weakness.
-- Charts of percent correct by domain (with interval whiskers and the target line) and by difficulty.
+- Charts of percent correct by domain (with interval whiskers and the target line), by difficulty, and by question type (knowledge, application, managerial best/first/most).
+- A "think like a manager" note that appears only when you have at least 4 managerial and 4 technical answers and your managerial score trails the technical score by 15 points or more. It never appears otherwise.
 - Study guidance for each Weakness domain: missed subtopics, concrete focus areas, and concepts to review.
 - A review of missed and flagged questions, filterable by domain and difficulty, showing your answer, the correct answer, the explanation, and why each distractor is wrong.
 - JSON export, a print-friendly layout, and a "Retake focusing on weak domains" option that draws about 60% of the next session from Weakness domains.

@@ -357,6 +357,10 @@ dialog h2 { margin-top: 0; }
 @media (max-width: 480px) {
   .speech-fields { grid-template-columns: 1fr; }
 }
+/* Question-type hint in the report */
+.type-hint { margin: .5rem 0 1rem; padding: .75rem 1rem; border: 1px solid var(--border); border-left: 4px solid var(--critical); border-radius: var(--radius); background: var(--surface-2); }
+.type-hint[hidden] { display: none; }
+
 /* Immediate feedback (opt-in) */
 .feedback-toggle { margin: .5rem 0; }
 .feedback-toggle .hint { margin: .25rem 0 0; }
