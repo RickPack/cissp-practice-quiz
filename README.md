@@ -12,11 +12,12 @@ Results are for study planning only. They do not predict your result on the real
 
 - **Session length** from 20 to min(100, bank size), drawn by a stratified random sample that follows the 2024 domain weights and a 30/45/25 easy/medium/hard mix. If a domain or difficulty runs short, the sampler takes what exists and redistributes the rest.
 - **Option order is shuffled** per question, and sessions are reproducible with an optional seed.
-- **One question at a time**, with previous/next, flag for review, a progress bar, keyboard shortcuts (`1`–`4` or `A`–`D`, arrow keys, `F`, `R`), and no feedback until the end.
+- **One question at a time**, with previous/next, flag for review, a progress bar, keyboard shortcuts (`1`–`4` or `A`–`D`, arrow keys, `F`, `R`, `V`), and no feedback until the end.
 - **Submit and Finish** unlocks after 20 answers. Unanswered questions are excluded from scoring and listed separately.
-- **Progress is saved** in your browser (localStorage), so a refresh does not lose your place. Nothing is sent anywhere; there is no backend.
+- **Progress is saved** in your browser (localStorage), so a refresh does not lose your place. Nothing is sent to this site; there is no backend. (The optional voice feature has its own privacy note below.)
 - **Works offline** after the first visit.
 - **Read aloud** (optional): Read aloud / Pause / Stop buttons, an auto-read toggle (off by default), and `R` to start or stop. See below.
+- **Voice answers** (optional, off by default): speak A–D, confirm by voice, and use voice commands. See below.
 
 ### Read aloud
 
@@ -28,6 +29,42 @@ Uses the browser's built-in speech synthesis. No network calls, keys, or depende
 - In the report's question review, each question has a **Read explanation** button. Explanations are spoken only there, after submission.
 - Browser notes: voice lists load asynchronously, so the picker can fill in a moment after the page loads. Chrome cuts off long utterances, so text is spoken in sentence-sized chunks. Voices, and whether some are online-only, depend on the browser and operating system.
 - Pronunciations: `lib/pronunciations.js` holds `[written, spoken]` pairs applied only to the spoken text. To add one, append a pair such as `['EDR', 'E D R']`; matching is case-sensitive and whole-word, and longer phrases go before shorter words they contain. Add a test case in `tests/speech.test.mjs` if the entry is unusual.
+
+### Voice answers
+
+Optional and off by default. Uses the browser's built-in speech recognition (`SpeechRecognition` / `webkitSpeechRecognition`). No dependencies, backend, or API keys. If the browser has no speech recognition, the voice controls are hidden and typing and tapping work as before.
+
+**Privacy.** In some browsers (Chrome and other Chromium browsers, and Safari), the audio is sent to the browser vendor's cloud service for transcription. This site cannot control that, and nothing is sent to this site. Voice stays off until you click **Enable voice answers**, which sits next to this notice. The browser then asks for microphone permission when you first speak. If you refuse, the page says so and carries on with tapping and typing.
+
+- **Push-to-talk:** press the **Talk** button or `V`, then say a letter. Speech is not captured until you do.
+- **Hands-free** (toggle, needs read-aloud support): reads the question and options aloud, then listens once for an answer. The mic never opens while speech is playing or paused. It opens a quarter second after the last utterance ends.
+- **Confirmation:** a heard letter is read back ("You said B. Say yes to confirm, or say a different letter."). Say yes, confirm, or correct to save it; no or change to start over; a different letter to replace it; skip to move on. The heard text and parsed letter are also shown on screen. An answer is recorded only after confirmation, through the same code path as a tap.
+- **Not understood:** the app says "I didn't catch that" and listens again, up to 2 retries, then asks you to tap.
+- **Commands:** `next`, `previous`, `repeat`, `flag`, `skip` (moves on, leaving the question as it is), `stop listening` (turns the mic and hands-free off), and `submit`. Submit goes through the same 20-answer gate and the same confirmation dialog as the Submit button; the dialog is always answered on screen.
+- **No feedback during the quiz:** the voice flow never says or shows whether an answer is correct. Feedback appears only in the report.
+- **The mic stops** immediately when you change question, submit, hide the tab, or leave the page.
+- **Status:** a visible indicator shows idle, listening, or processing, and a screen-reader live region announces changes. Screen-reader users may prefer push-to-talk, since hands-free reading and a screen reader can speak over each other.
+- **Accepted answers:** letters (and mis-hearings such as "bee", "dee", "see", "sea"), "alpha / bravo / charlie / delta", "option 1" to "option 4", "first" to "fourth", "number two", and so on. Filler such as "um", "I think", and "my answer is" is ignored. The best match across the interim and alternative transcripts wins. Two different letters in one phrase ("B or C") count as unclear.
+
+Browser support (as of v0.3; engines change, so check your own browser):
+
+| Browser | Voice answers | Notes |
+|---|---|---|
+| Chrome / Edge (desktop and Android) | Yes | Speech goes to the vendor's cloud service. Sessions end on their own, so hands-free reopens the mic. |
+| Safari (macOS, iOS) | Partly | Starting the mic needs a tap or key press. If hands-free cannot restart it, the page asks you to press Talk. |
+| Firefox | No | No `SpeechRecognition`; the controls are hidden. |
+
+Other quirks handled: a listen timeout, the `no-speech` error (counts as a miss), permission denial, a missing microphone, and network errors (each turns voice off with a plain message).
+
+**How to extend the alias list.** All spoken forms live in `lib/voice-parse.js`:
+
+- A new word for a letter: add it to `LETTER_ALIASES` (for example `B: [..., 'bea']`).
+- A number word: `NUMBER_ALIASES` (counted alone or after "option", "number", and similar words in `CONTEXT_WORDS`).
+- A sound-alike that is too risky alone (such as "for"): `CONTEXT_ONLY_ALIASES`.
+- Spoken padding to ignore: `FILLER_PHRASES` and `FILLER_WORDS`.
+- A command phrase: `COMMANDS`. Yes and no words: `CONFIRM_YES`, `CONFIRM_NO`.
+
+Each word may map to one letter only. Add a test case in `tests/voice-parse.test.mjs`; the alias-table test fails if a word is listed under two letters. Everything the app says in the voice flow is in `MESSAGES` in `lib/voice-flow.js`, and a test checks that none of it mentions correctness.
 
 ### The diagnostic report
 
@@ -60,7 +97,7 @@ python -m pip install -r validation/requirements.txt
 python validation/validate.py                       # bank validator; writes validation/report.md
 ```
 
-Unit tests cover sampling proportions and graceful degradation, answer remapping after shuffling, the 20-answer gate, scoring, and the Wilson interval math. They run against synthetic banks of 80, 250, and 1,000 questions, plus a 1,000-session simulation that checks per-domain draw proportions stay within ±3 points of the targets.
+Unit tests cover the voice parser (letters, homophones, aliases, filler, ambiguity), the confirmation state machine, the no-correctness-leak rule, and the controller against mocked `SpeechRecognition` and `speechSynthesis` (the mic never opens while speech plays; the mic stops on navigate, submit, and unload). They also cover sampling proportions and graceful degradation, answer remapping after shuffling, the 20-answer gate, scoring, and the Wilson interval math. They run against synthetic banks of 80, 250, and 1,000 questions, plus a 1,000-session simulation that checks per-domain draw proportions stay within ±3 points of the targets.
 
 ## Question bank
 
@@ -106,6 +143,9 @@ lib/charts.js                    inline SVG charts
 lib/speech-text.js               spoken-text builder and chunking (no DOM)
 lib/pronunciations.js            acronym pronunciation map
 lib/speech.js                    read-aloud controller (speechSynthesis injectable)
+lib/voice-parse.js               spoken-answer parser and alias tables (no DOM)
+lib/voice-flow.js                confirmation state machine and message table (no DOM)
+lib/voice.js                     voice controller (SpeechRecognition injectable)
 sw.js                            offline cache
 data/                            question bank (CC BY 4.0)
 validation/                      validate.py, audit.py, Colab notebook, report.md, flags.csv
