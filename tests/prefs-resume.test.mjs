@@ -12,11 +12,12 @@ test('defaults: voice off, confirm on', () => {
   assert.deepEqual(loadPrefs(store()), DEFAULT_PREFS);
   assert.equal(DEFAULT_PREFS.voiceEnabled, false);
   assert.equal(DEFAULT_PREFS.bargeIn, false);
+  assert.equal(DEFAULT_PREFS.feedback, false);
 });
 
 test('prefs round-trip, including unticked boxes', () => {
   const s = store();
-  const prefs = { voiceEnabled: true, handsFree: true, confirm: false, autoRead: true, bargeIn: true };
+  const prefs = { voiceEnabled: true, handsFree: true, confirm: false, autoRead: true, bargeIn: true, feedback: true };
   savePrefs(prefs, s);
   assert.deepEqual(loadPrefs(s), prefs);
 });

@@ -81,6 +81,11 @@
         <div class="progress-fill" id="progress-fill"></div>
       </div>
 
+      <div class="feedback-toggle">
+        <label><input type="checkbox" id="feedback-toggle"> Show feedback after each answer</label>
+        <p class="hint">Off by default. When off, results appear only in the report.</p>
+      </div>
+
       <p class="sr-only" id="q-live" aria-live="polite"></p>
       <article class="card question-card" aria-labelledby="q-heading">
         <p class="flag-badge" id="flag-badge" hidden>Flagged for review</p>
@@ -88,6 +93,7 @@
         <fieldset class="options" id="options">
           <legend class="sr-only">Answer choices</legend>
         </fieldset>
+        <div id="feedback" class="feedback" role="status" aria-live="polite" hidden></div>
       </article>
 
       <div class="speech-controls" id="speech-controls" role="group" aria-label="Read aloud" hidden>

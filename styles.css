@@ -357,6 +357,17 @@ dialog h2 { margin-top: 0; }
 @media (max-width: 480px) {
   .speech-fields { grid-template-columns: 1fr; }
 }
+/* Immediate feedback (opt-in) */
+.feedback-toggle { margin: .5rem 0; }
+.feedback-toggle .hint { margin: .25rem 0 0; }
+.feedback { margin-top: 1rem; padding: .75rem 1rem; border: 1px solid var(--border); border-left-width: 4px; border-radius: var(--radius); background: var(--surface-2); }
+.feedback[hidden] { display: none; }
+.feedback-ok { border-left-color: var(--good); }
+.feedback-miss { border-left-color: var(--critical); }
+.feedback-verdict { margin: 0 0 .5rem; font-weight: 700; }
+.feedback p { margin: .4rem 0; }
+@media print { .feedback, .feedback-toggle { display: none !important; } }
+
 /* Voice answers */
 .voice-controls { margin-top: 1rem; }
 .voice-controls[hidden], #voice-intro[hidden], #voice-active[hidden] { display: none; }

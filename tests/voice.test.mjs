@@ -87,13 +87,14 @@ function harness({ withSpeech = true, Recognition: Override } = {}) {
   const calls = { recorded: [], next: 0, previous: 0, flag: 0, submit: 0, read: 0 };
   let flagged = false;
   let nextResult = true;
+  let recordReturn;
   let submitResult = { status: 'blocked', message: 'Answer at least 20 questions to submit (3 more to go).' };
   const actions = {
     readQuestion() {
       calls.read++;
       speech.play([{ text: 'Question 1.', pause: 0 }, { text: 'Option A. First thing.', pause: 0 }, { text: 'Option B. Second thing.', pause: 0 }]);
     },
-    record(letter) { calls.recorded.push(letter); },
+    record(letter) { calls.recorded.push(letter); return recordReturn; },
     next() { calls.next++; if (nextResult && speech) speech.stop(); return nextResult; }, // goTo stops speech
     previous() { calls.previous++; return false; },
     toggleFlag() { calls.flag++; flagged = !flagged; return flagged; },
@@ -106,6 +107,7 @@ function harness({ withSpeech = true, Recognition: Override } = {}) {
     voice, speech, synth, timers, recs, calls, views, startedWhileSpeaking, finishSpeech,
     setSubmit(r) { submitResult = r; },
     setNext(v) { nextResult = v; },
+    setRecordReturn(v) { recordReturn = v; },
     spokenTexts: () => synth.spoken.map((u) => u.text),
     // Let the last utterance end and the settle gap pass, as in real time.
     settle() { finishSpeech(); timers.run(); },
@@ -487,7 +489,7 @@ test('no-correctness-leak: the app wiring hands voice no answer data', () => {
 test('voice answers go through the same recordAnswer path as taps', () => {
   const app = readFileSync(new URL('../app.js', import.meta.url), 'utf8');
   assert.match(app, /record: selectByLetter/);
-  assert.match(app, /function selectByKey\(index\)[\s\S]*?recordAnswer\(input\.value\)/);
+  assert.match(app, /function selectByKey\(index, opts\)[\s\S]*?recordAnswer\(input\.value, opts\)/);
 });
 
 test('a duplicate end event from the browser does not process the result twice', () => {
@@ -693,4 +695,65 @@ test('barge-in: interrupt closes the open session', () => {
   assert.equal(h.recs[1].aborted, true);
   h.settle();
   assert.equal(h.recs.length, 2);
+});
+
+// ---------- Speech supplied by the app after a saved answer (immediate feedback) ----------
+
+test('hands-free: speech supplied for a saved answer is played, with the mic closed, before moving on', () => {
+  const h = harness();
+  h.setRecordReturn({ chunks: [{ text: 'Supplied line.', pause: 0 }] });
+  h.voice.enable();
+  h.voice.setConfirm(false);
+  h.voice.setHandsFree(true);
+  h.settle();
+  h.recs[0].hear([['bee', 0.9]]);
+  assert.deepEqual(h.calls.recorded, ['B']);
+  assert.equal(h.spokenTexts().at(-1), 'Supplied line.');
+  assert.equal(h.calls.next, 0, 'waits for the speech to finish');
+  h.timers.run();
+  assert.equal(h.calls.next, 0, 'still speaking');
+  h.synth.finish();
+  h.timers.run();
+  assert.equal(h.calls.next, 1);
+  assert.equal(h.recs.length, 1, 'mic never opened while it spoke');
+});
+
+test('push-to-talk: supplied speech replaces the "saved" line and nothing else is spoken', () => {
+  const h = harness();
+  h.setRecordReturn({ chunks: [{ text: 'Supplied line.', pause: 0 }] });
+  h.voice.enable();
+  h.voice.pushToTalk();
+  h.recs[0].hear([['bee', 0.9]]);
+  h.settle();
+  h.recs[1].hear([['yes', 0.9]]);
+  assert.equal(h.spokenTexts().at(-1), 'Supplied line.');
+  assert.ok(!h.spokenTexts().some((t) => t.startsWith('Saved')));
+});
+
+test('without supplied speech nothing changes', () => {
+  const h = harness();
+  h.voice.enable();
+  h.voice.setConfirm(false);
+  h.voice.setHandsFree(true);
+  h.settle();
+  h.recs[0].hear([['bee', 0.9]]);
+  assert.equal(h.calls.next, 1);
+});
+
+test('hands-free carries on after an answer entered by keyboard or tap', () => {
+  const h = harness();
+  h.voice.enable();
+  h.voice.setHandsFree(true);
+  h.settle();
+  h.recs[0].onstart(); // mic open, waiting for a spoken answer
+  assert.equal(h.voice.answeredByHand(null), true);
+  assert.equal(h.recs[0].aborted, true, 'the open mic is closed');
+  assert.equal(h.calls.next, 1, 'moves to the next question, which reads and listens again');
+});
+
+test('answeredByHand does nothing unless hands-free is on', () => {
+  const h = harness();
+  h.voice.enable();
+  assert.equal(h.voice.answeredByHand(null), false);
+  assert.equal(h.calls.next, 0);
 });

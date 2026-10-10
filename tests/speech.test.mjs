@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { applyPronunciations, chunkText, plainText, questionChunks, explanationChunks, MAX_CHUNK } from '../lib/speech-text.js';
+import { applyPronunciations, chunkText, plainText, questionChunks, explanationChunks, feedbackChunks, MAX_CHUNK } from '../lib/speech-text.js';
 import { PRONUNCIATIONS } from '../lib/pronunciations.js';
 import { createSpeech, englishVoices, SETTINGS_KEY } from '../lib/speech.js';
 import { viewQuestion } from '../lib/core.js';
@@ -275,4 +275,41 @@ test('voiceschanged populates voices that load late', () => {
   synth.listeners.voiceschanged();
   assert.equal(sp.voices.length, 1);
   assert.ok(changes >= 1);
+});
+
+test('feedbackChunks: short verdict, names the correct letter only when missed', () => {
+  assert.deepEqual(feedbackChunks({ isCorrect: true, correct: 'B' }).map((c) => c.text), ['Correct.']);
+  assert.deepEqual(feedbackChunks({ isCorrect: false, correct: 'C' }).map((c) => c.text), ['Not correct. The correct answer is C.']);
+});
+
+test('questionChunks never carries feedback wording', () => {
+  const text = questionChunks(sampleView).map((c) => c.text).join(' ');
+  assert.ok(!/correct/i.test(text));
+});
+
+test('watchdog: an utterance whose end event never fires is finished once the engine is idle', () => {
+  const synth = mockSynth();
+  synth.speaking = false;
+  synth.pending = false;
+  const queued = [];
+  const timers = { setTimeout: (fn) => { queued.push(fn); return queued.length; }, clearTimeout() {} };
+  const states = [];
+  const s = createSpeech({ synth, Utterance: MockUtterance, storage: memoryStorage(), timers, onChange: (st) => states.push(st) });
+  s.play([{ text: 'One.', pause: 0 }]);
+  assert.equal(s.state, 'playing');
+  queued.shift()(); // watchdog fires while the engine reports idle and `end` never came
+  assert.equal(s.state, 'idle');
+});
+
+test('watchdog: leaves a genuinely speaking engine alone', () => {
+  const synth = mockSynth();
+  synth.speaking = true;
+  synth.pending = false;
+  const queued = [];
+  const timers = { setTimeout: (fn) => { queued.push(fn); return queued.length; }, clearTimeout() {} };
+  const s = createSpeech({ synth, Utterance: MockUtterance, storage: memoryStorage(), timers });
+  s.play([{ text: 'One.', pause: 0 }]);
+  queued.shift()();
+  assert.equal(s.state, 'playing');
+  assert.equal(queued.length, 1, 're-armed for the next check');
 });

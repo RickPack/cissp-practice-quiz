@@ -1,7 +1,7 @@
 import * as core from './lib/core.js';
 import { renderBarChart } from './lib/charts.js';
 import { createSpeech, isSupported as speechSupported, RATE_MIN, RATE_MAX } from './lib/speech.js';
-import { questionChunks, explanationChunks } from './lib/speech-text.js';
+import { questionChunks, explanationChunks, feedbackChunks } from './lib/speech-text.js';
 import { createVoice, isSupported as voiceSupported } from './lib/voice.js';
 import { loadPrefs, savePrefs } from './lib/voice-prefs.js';
 import { resumeIndex } from './lib/resume.js';
@@ -244,6 +244,7 @@ function renderQuestion({ focusOptions = false } = {}) {
 
   renderNavigator();
   updateStatus();
+  renderFeedback();
   if (focusOptions) (fieldset.querySelector('input:checked') || fieldset.querySelector('input'))?.focus();
 }
 
@@ -269,6 +270,56 @@ function renderNavigator() {
       );
     }),
   );
+}
+
+// ---------- Immediate feedback (opt-in) ----------
+
+// Off by default. The voice controller never sees any of this: it only plays the speech recordAnswer returns.
+let feedbackOn = false;
+
+function renderFeedback() {
+  const box = $('feedback');
+  const { it, q } = currentQuestion();
+  const response = state.session.responses[it.id];
+  if (!feedbackOn || !response) {
+    box.hidden = true;
+    box.replaceChildren();
+    return;
+  }
+  const view = core.viewQuestion(q, it.perm);
+  const chosen = core.displayLetterFor(it.perm, response);
+  const ok = response === q.answer;
+  const correctText = view.options.find((o) => o.letter === view.correct).text;
+  const answerLine = el('p', {}, el('strong', { text: `Correct answer: ${view.correct}. ` }));
+  answerLine.append(richText(el('span'), correctText));
+  box.className = `feedback ${ok ? 'feedback-ok' : 'feedback-miss'}`;
+  box.replaceChildren(
+    el('p', { class: 'feedback-verdict' }, el('span', { class: 'status-icon', 'aria-hidden': 'true', text: ok ? '\u2713 ' : '\u2717 ' }), ok ? 'Correct' : 'Not correct'),
+    ok ? null : answerLine,
+    el('p', {}, el('strong', { text: `Why ${view.correct} is correct: ` }), q.explanation),
+    ok ? null : el('p', { class: 'why', text: `Why ${chosen} is not: ${view.rationales[chosen]}` }),
+    speech
+      ? el('button', {
+          type: 'button',
+          class: 'btn read-expl',
+          'aria-pressed': 'false',
+          'aria-label': 'Read explanation aloud',
+          text: 'Read explanation',
+          onclick: (e) => readExplanation(q, view, e.currentTarget),
+        })
+      : null,
+  );
+  box.hidden = false;
+}
+
+function restoreFeedback() {
+  feedbackOn = loadPrefs().feedback;
+  $('feedback-toggle').checked = feedbackOn;
+  $('feedback-toggle').addEventListener('change', (e) => {
+    feedbackOn = e.target.checked;
+    persistPrefs();
+    if (!$('quiz').hidden) renderFeedback();
+  });
 }
 
 function submitTip(s) {
@@ -304,24 +355,38 @@ function updateStatus() {
   }
 }
 
-function recordAnswer(displayLetter) {
+// Returns { chunks } with the spoken verdict when immediate feedback is on, otherwise null.
+// speak: false leaves playing it to the caller (voice plays it before moving on).
+function recordAnswer(displayLetter, { speak = true, byVoice = false } = {}) {
   const s = state.session;
-  const { it } = currentQuestion();
+  const { it, q } = currentQuestion();
   s.responses[it.id] = core.originalLetterFor(it.perm, displayLetter);
   storage.save(s);
   renderNavigator();
   updateStatus();
+  renderFeedback();
+  // Hands-free carries on after a tapped or typed answer just as after a spoken one.
+  const handsFreeHand = !byVoice && !!voice?.handsFree;
+  if (!feedbackOn) {
+    if (handsFreeHand) voice.answeredByHand(null);
+    return null;
+  }
+  const view = core.viewQuestion(q, it.perm);
+  const fb = { chunks: feedbackChunks({ isCorrect: s.responses[it.id] === q.answer, correct: view.correct }) };
+  if (speak && speech && (autoReadOn || voice?.handsFree) && !handsFreeHand) speech.play(fb.chunks);
+  if (handsFreeHand) voice.answeredByHand(fb.chunks);
+  return fb;
 }
 
 function selectByLetter(letter) {
-  selectByKey(core.LETTERS.indexOf(letter));
+  return selectByKey(core.LETTERS.indexOf(letter), { speak: false, byVoice: true });
 }
 
-function selectByKey(index) {
+function selectByKey(index, opts) {
   const input = $('options').querySelectorAll('input[type="radio"]')[index];
-  if (!input) return;
+  if (!input) return null;
   input.checked = true;
-  recordAnswer(input.value);
+  return recordAnswer(input.value, opts);
 }
 
 function goTo(i, opts) {
@@ -484,6 +549,7 @@ function persistPrefs() {
     confirm: voice ? voice.confirmAnswers : true,
     bargeIn: voice ? voice.bargeIn : false,
     autoRead: autoReadOn,
+    feedback: feedbackOn,
   });
 }
 
@@ -806,6 +872,7 @@ function retakeFocused() {
 function wire() {
   setupSpeech();
   restoreAutoRead();
+  restoreFeedback();
   setupVoice();
   const warm = () => {
     if (!coldStart) return;
