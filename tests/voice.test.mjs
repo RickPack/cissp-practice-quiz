@@ -86,6 +86,7 @@ function harness({ withSpeech = true, Recognition: Override } = {}) {
 
   const calls = { recorded: [], next: 0, previous: 0, flag: 0, submit: 0, read: 0 };
   let flagged = false;
+  let nextResult = true;
   let submitResult = { status: 'blocked', message: 'Answer at least 20 questions to submit (3 more to go).' };
   const actions = {
     readQuestion() {
@@ -93,7 +94,7 @@ function harness({ withSpeech = true, Recognition: Override } = {}) {
       speech.play([{ text: 'Question 1.', pause: 0 }, { text: 'Option A. First thing.', pause: 0 }, { text: 'Option B. Second thing.', pause: 0 }]);
     },
     record(letter) { calls.recorded.push(letter); },
-    next() { calls.next++; return true; },
+    next() { calls.next++; return nextResult; },
     previous() { calls.previous++; return false; },
     toggleFlag() { calls.flag++; flagged = !flagged; return flagged; },
     submit() { calls.submit++; return submitResult; },
@@ -104,6 +105,7 @@ function harness({ withSpeech = true, Recognition: Override } = {}) {
   return {
     voice, speech, synth, timers, recs, calls, views, startedWhileSpeaking, finishSpeech,
     setSubmit(r) { submitResult = r; },
+    setNext(v) { nextResult = v; },
     spokenTexts: () => synth.spoken.map((u) => u.text),
     // Let the last utterance end and the settle gap pass, as in real time.
     settle() { finishSpeech(); timers.run(); },
@@ -512,7 +514,7 @@ test('confirm off: the letter is recorded immediately and nothing is read back',
   assert.equal(h.recs.length, 1, 'push-to-talk stops after recording');
 });
 
-test('confirm off in hands-free: records, then listens again once speech is idle', () => {
+test('confirm off in hands-free: records and advances', () => {
   const h = harness();
   h.voice.enable();
   h.voice.setConfirm(false);
@@ -520,14 +522,15 @@ test('confirm off in hands-free: records, then listens again once speech is idle
   h.settle();
   h.recs[0].hear([['dee', 0.9]]);
   assert.deepEqual(h.calls.recorded, ['D']);
+  assert.equal(h.calls.next, 1, 'moves on to the next question');
   h.timers.run();
-  assert.equal(h.recs.length, 2);
-  assert.ok(h.startedWhileSpeaking.every((x) => x === false));
+  assert.equal(h.recs.length, 1, 'the app starts the next question; the mic waits for its reading');
 });
 
-test('silence after a saved answer ends quietly, with no "didn\'t catch that"', () => {
+test('silence after a saved answer on the last question ends quietly, with no "didn\'t catch that"', () => {
   for (const confirm of [false, true]) {
     const h = harness();
+    h.setNext(false); // last question: nowhere to advance, so it listens for a command
     h.voice.enable();
     h.voice.setConfirm(confirm);
     h.voice.setHandsFree(true);
@@ -556,4 +559,61 @@ test('a saved answer is shown on screen', () => {
   h.recs[0].hear([['answer', 0.9]], { interim: [['answer dee', 0.5]] });
   assert.deepEqual(h.calls.recorded, ['D']);
   assert.equal(h.voice.view.message, 'Answer D saved.');
+});
+
+test('hands-free: tapping Next while the follow-up listen is open reads the next question, then listens', () => {
+  const h = harness();
+  h.setNext(false); // last question, so a follow-up listen is open
+  h.voice.enable();
+  h.voice.setConfirm(false);
+  h.voice.setHandsFree(true);
+  h.settle();
+  h.recs[0].hear([['answer dee', 0.9]]);
+  h.settle();
+  const follow = h.recs.at(-1);
+  follow.onstart();
+  // What goTo does in the app: interrupt, stop speech, then begin the new question.
+  h.voice.interrupt();
+  h.speech.stop();
+  h.voice.beginQuestion();
+  assert.equal(follow.aborted, true);
+  const before = h.recs.length;
+  h.settle();
+  assert.equal(h.recs.length, before + 1, 'a new listen opens after the question is read');
+  assert.ok(h.startedWhileSpeaking.every((x) => x === false));
+});
+
+test('hands-free: a saved answer advances to the next question, with or without the read-back', () => {
+  for (const confirm of [false, true]) {
+    const h = harness();
+    h.voice.enable();
+    h.voice.setConfirm(confirm);
+    h.voice.setHandsFree(true);
+    h.settle();
+    h.recs[0].hear([['bee', 0.9]]);
+    if (confirm) {
+      assert.equal(h.calls.next, 0, 'not before confirming');
+      h.settle();
+      h.recs.at(-1).hear([['yes', 0.9]]);
+    }
+    assert.deepEqual(h.calls.recorded, ['B']);
+    assert.equal(h.calls.next, 1);
+  }
+});
+
+test('push-to-talk does not advance by itself', () => {
+  const h = harness();
+  h.voice.enable();
+  h.voice.setConfirm(false);
+  h.voice.pushToTalk();
+  h.recs[0].hear([['bee', 0.9]]);
+  assert.equal(h.calls.next, 0);
+});
+
+test('an unexpected recognition error is shown, not swallowed', () => {
+  const h = harness();
+  h.voice.enable();
+  h.voice.pushToTalk();
+  h.recs[0].fail('service-unavailable');
+  assert.match(h.voice.view.message, /service-unavailable/);
 });
