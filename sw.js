@@ -14,6 +14,8 @@ const SHELL = [
   'lib/voice.js',
   'lib/voice-parse.js',
   'lib/voice-flow.js',
+  'lib/voice-prefs.js',
+  'lib/resume.js',
   'data/manifest.json',
   'data/taxonomy.json',
 ];
