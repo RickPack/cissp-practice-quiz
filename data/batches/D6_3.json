@@ -81,7 +81,7 @@
     "stem": "Authentication logs show 4,000 failed logins against a single account from one IP address within ten minutes. Which attack pattern does this MOST likely show?",
     "options": {
       "A": "Password spraying across many different user accounts",
-      "B": "A denial-of-service attack against the web server's bandwidth",
+      "B": "Credential stuffing with passwords leaked from other sites",
       "C": "A user who forgot their password and kept guessing at it",
       "D": "A brute-force attack against one account"
     },
@@ -89,7 +89,7 @@
     "explanation": "Thousands of rapid attempts against one account from one source is a classic brute-force pattern.",
     "distractor_rationales": {
       "A": "Password spraying tries a few passwords across many accounts to avoid lockouts.",
-      "B": "A bandwidth attack would not target one account's authentication.",
+      "B": "Credential stuffing usually tries leaked pairs across many accounts. Thousands of tries on one account is brute force.",
       "C": "A person cannot make 4,000 attempts in ten minutes by hand."
     },
     "references_topic": "Brute-force pattern in logs",
@@ -200,7 +200,7 @@
     "type": "managerial_best_first_most",
     "stem": "A penetration test report will go to business system owners who are not technical. What is the BEST way to write each finding?",
     "options": {
-      "A": "State the business impact, the affected asset, and a clear fix with an owner and a due date",
+      "A": "Business impact, affected asset, and a clear fix with an owner and due date",
       "B": "Include the full raw tool output so owners can see exactly what the testers observed",
       "C": "List only the CVSS score so that owners can sort the findings on their own",
       "D": "Use the tester's technical shorthand to keep the report as short as possible"
@@ -225,7 +225,7 @@
     "stem": "A scanner flags a Linux web server as vulnerable because of its web server version string. The distribution vendor states that the fix was backported into the installed package without changing the version. What should the analyst do?",
     "options": {
       "A": "Upgrade to the newest upstream release immediately, even though it is unsupported by the vendor",
-      "B": "Validate the finding against the vendor's advisory and mark it a false positive if the fix is present",
+      "B": "Check the vendor's advisory and mark it a false positive if the fix is present",
       "C": "Disable the scanner check permanently for all servers in the organization",
       "D": "Report the finding to leadership as a critical risk that must be fixed now"
     },
@@ -298,15 +298,15 @@
     "options": {
       "A": "It can detect failures before real users hit them",
       "B": "It records the exact experience of every real customer session on every device",
-      "C": "It replaces the need for any security testing of the application",
-      "D": "It measures how satisfied customers are with the site's design"
+      "C": "It costs less because it needs no test accounts at all",
+      "D": "It captures errors from every browser type that customers use"
     },
     "answer": "A",
     "explanation": "Scripted transactions run on a schedule, even when traffic is low, so broken logins or checkouts can be caught before customers are affected.",
     "distractor_rationales": {
       "B": "Recording real sessions is what real user monitoring does.",
-      "C": "Synthetic monitoring checks availability and function, not security.",
-      "D": "Satisfaction with design is measured through surveys and user research."
+      "C": "Synthetic monitoring needs test accounts and scripts. Its advantage is catching failures early.",
+      "D": "Capturing real browsers is what real user monitoring does."
     },
     "references_topic": "Proactive detection with synthetic monitoring",
     "version": "0.3"
@@ -320,17 +320,17 @@
     "type": "application",
     "stem": "A team wants to find out how its public API handles unexpected, malformed, and oversized inputs before attackers try them. Which technique fits BEST?",
     "options": {
-      "A": "Reviewing the API's marketing documentation for accuracy",
+      "A": "Static analysis of the API's source code for flaws",
       "B": "Fuzz testing the API endpoints",
       "C": "Synthetic monitoring of the API's normal login transaction every five minutes",
-      "D": "Checking the API server's TLS certificate expiration date"
+      "D": "A credentialed vulnerability scan of the API servers"
     },
     "answer": "B",
     "explanation": "Fuzzing sends large volumes of malformed and unexpected inputs to an interface to expose crashes, error leaks, and input-handling flaws.",
     "distractor_rationales": {
-      "A": "Marketing documentation says nothing about input handling.",
+      "A": "Static analysis reads code but does not show how the running API handles malformed input.",
       "C": "Synthetic monitoring exercises normal paths, not malformed input.",
-      "D": "Certificate expiry is an operational check, not input testing."
+      "D": "A scan finds known flaws in the servers, not how the API handles unexpected input."
     },
     "references_topic": "API fuzzing",
     "version": "0.3"
@@ -368,17 +368,17 @@
     "type": "application",
     "stem": "Testers examining a company's IoT product found an exposed debug header on the circuit board that gives a root shell. What is the BEST remediation?",
     "options": {
-      "A": "Add a warning label telling customers not to open the device casing",
+      "A": "Cover the debug header with epoxy during manufacturing",
       "B": "Change the root password on the debug shell to a stronger value",
-      "C": "Document the header in the product manual for support technicians",
+      "C": "Restrict the debug shell to a non-root user account",
       "D": "Disable or lock the debug interface in production firmware"
     },
     "answer": "D",
     "explanation": "Debug interfaces such as UART or JTAG are needed during development but should be disabled or authenticated in production so physical access does not give full control.",
     "distractor_rationales": {
-      "A": "A label does not stop an attacker who opens the device.",
+      "A": "Epoxy can be removed. The interface itself must be disabled in production firmware.",
       "B": "A shared password on every unit is likely to be discovered and reused.",
-      "C": "Documenting the header publicizes the weakness."
+      "C": "A non-root shell still gives an attacker a foothold to escalate from."
     },
     "references_topic": "Physical debug interfaces",
     "version": "0.3"
@@ -440,17 +440,17 @@
     "type": "application",
     "stem": "A test restore completes successfully, but several restored files turn out to have been encrypted by ransomware before the backup ran. What should be added to backup verification?",
     "options": {
-      "A": "Faster backup hardware so that jobs complete in less time each night",
-      "B": "A second copy of the same backup job written to the same storage array",
-      "C": "Integrity checks and malware scans on restored data, plus several restore points",
-      "D": "A longer interval between backups so there are fewer copies to manage"
+      "A": "Restoring to a different server to confirm portability",
+      "B": "Keeping an extra copy of each backup in the cloud",
+      "C": "Integrity and malware checks on restored data, plus several restore points",
+      "D": "Comparing each backup's file sizes with the previous night's backups"
     },
     "answer": "C",
     "explanation": "A restore can succeed technically while returning bad data. Checking integrity, scanning restored content, and keeping multiple restore points make it possible to find and recover a clean version.",
     "distractor_rationales": {
-      "A": "Speed does not detect corrupted or encrypted content.",
-      "B": "A second copy of the same data copies the same problem.",
-      "D": "Longer intervals increase potential data loss."
+      "A": "Portability matters, but the restored files are still encrypted. Content checks are needed.",
+      "B": "Another copy of encrypted files is still encrypted.",
+      "D": "Size changes can hint at a problem, but they do not verify content or give clean restore points."
     },
     "references_topic": "Integrity checks on restored data",
     "version": "0.3"
@@ -464,17 +464,17 @@
     "type": "managerial_best_first_most",
     "stem": "A system owner disputes a penetration test finding rated high, arguing the server is internal only. What is the BEST way to resolve this?",
     "options": {
-      "A": "Drop the finding from the report to keep the relationship with the owner positive",
+      "A": "Lower the rating to medium as a compromise with the owner",
       "B": "Keep the high rating without discussion because the testers are the subject experts",
-      "C": "Escalate straight to the board so that the directors can make the final decision",
-      "D": "Re-rate it with the agreed method and asset context, and record the risk owner's decision"
+      "C": "Ask the testers to retest the server from the internet",
+      "D": "Re-rate it using the agreed method and context, and record the owner's decision"
     },
     "answer": "D",
     "explanation": "A consistent rating method that includes context such as exposure settles disputes on evidence, and documenting the risk owner's decision creates accountability.",
     "distractor_rationales": {
-      "A": "Dropping findings to avoid conflict hides risk.",
+      "A": "Negotiating a rating without the agreed method undermines the process.",
       "B": "Refusing to consider context can overstate risk and damage trust.",
-      "C": "The board is the wrong level for a single finding's rating."
+      "C": "An internet retest checks one assumption, but internal attackers matter too. Re-rate with the method and context."
     },
     "references_topic": "Resolving disputed findings",
     "version": "0.3"
@@ -491,14 +491,14 @@
       "A": "The data center's controls are excluded, so customers need separate assurance about them",
       "B": "The auditor fully tested the data center company's controls as part of this report",
       "C": "The data center company is not involved in delivering the provider's service at all",
-      "D": "The report has been issued as a SOC 3 so that it can be shared with the public"
+      "D": "The customer must audit the provider's own controls directly"
     },
     "answer": "A",
     "explanation": "Under the carve-out method, the subservice organization's controls are outside the report's scope. Customers must obtain assurance about them another way, such as the subservice organization's own report.",
     "distractor_rationales": {
       "B": "Testing the subservice organization's controls describes the inclusive method.",
       "C": "The data center is still part of service delivery; it is just excluded from scope.",
-      "D": "The carve-out method is unrelated to the report type."
+      "D": "The provider's own controls are in the report. Only the carved-out data center needs separate assurance."
     },
     "references_topic": "Carve-out method",
     "version": "0.3"
@@ -514,15 +514,15 @@
     "options": {
       "A": "A new SOC 1 Type I report prepared quickly by the vendor's own internal audit team",
       "B": "A bridge letter from the vendor covering the period since the report ended",
-      "C": "A copy of the vendor's information security policy",
-      "D": "Nothing further, because SOC reports remain valid for three years"
+      "C": "The vendor's SOC 3 report for the same period",
+      "D": "A completed security questionnaire from the vendor"
     },
     "answer": "B",
     "explanation": "A bridge (gap) letter is the vendor's statement that no material changes to controls have occurred since the report period. It covers the time until the next report.",
     "distractor_rationales": {
       "A": "A SOC 1 addresses financial reporting controls, and an internal report lacks independence.",
-      "C": "A policy shows intent, not operating effectiveness.",
-      "D": "SOC reports cover a specific period and age quickly."
+      "C": "A SOC 3 covers the same period, so it does not fill the gap.",
+      "D": "A questionnaire is self-reported and does not speak to the months since the report ended."
     },
     "references_topic": "Bridge letters",
     "version": "0.3"
@@ -585,16 +585,16 @@
     "stem": "The asset inventory lists 1,200 servers, but the monthly vulnerability scan reports results for only 800. What should the team do FIRST?",
     "options": {
       "A": "Reconcile the scan scope against the inventory",
-      "B": "Report the 800 scanned servers as the organization's entire risk picture to leadership",
-      "C": "Increase the scanner's aggressiveness settings for the 800 servers it already reaches",
-      "D": "Wait for next month's scan to see if the gap closes on its own without intervention"
+      "B": "Scan the 400 missing servers manually this week",
+      "C": "Buy additional scanner licenses for more servers",
+      "D": "Remove the 400 unscanned servers from the inventory"
     },
     "answer": "A",
     "explanation": "A third of the environment is unassessed. Reconciling scope finds unreachable networks, credential failures, or missing ranges so every server is covered.",
     "distractor_rationales": {
-      "B": "Reporting partial coverage as complete misleads leadership.",
-      "C": "More aggressive scanning of covered servers does nothing for unscanned ones.",
-      "D": "Waiting leaves 400 servers unassessed."
+      "B": "A one-off scan does not find why they were missed, so the gap returns.",
+      "C": "Licenses may not be the cause. Reconcile first to find out why servers are missing.",
+      "D": "Deleting records hides the gap without knowing whether the servers exist."
     },
     "references_topic": "Scan coverage against inventory",
     "version": "0.3"
@@ -609,7 +609,7 @@
     "stem": "A company wants to penetration test its application, which runs on a cloud provider's infrastructure. Before testing begins, what is MOST important?",
     "options": {
       "A": "Ask the testers to keep their traffic volume low so the cloud provider does not notice",
-      "B": "Confirm the provider's testing policy and obtain written authorization for the in-scope assets",
+      "B": "Confirm the provider's testing policy and get written authorization for the scope",
       "C": "Tell the cloud provider's support team by phone on the morning the test starts",
       "D": "Have the testers sign a nondisclosure agreement and then start immediately"
     },
@@ -632,17 +632,17 @@
     "type": "application",
     "stem": "A domain controller's security log shows an event that the audit log was cleared at 2:13 a.m. by an administrator account. No maintenance was scheduled. What should the analyst do?",
     "options": {
-      "A": "Ignore it, since administrators are allowed to clear logs whenever they need to",
-      "B": "Wait for the next weekly log review to see whether the event happens a second time",
-      "C": "Treat it as a possible indicator of compromise and investigate using centralized log copies",
-      "D": "Delete the event from the SIEM so it does not create a false alarm on the dashboard"
+      "A": "Ask the administrator by email why the log was cleared",
+      "B": "Restore the cleared log from backup and close the alert",
+      "C": "Treat it as a possible compromise and investigate with the central log copies",
+      "D": "Disable the administrator account and close the alert"
     },
     "answer": "C",
     "explanation": "Clearing logs is a common way for attackers to cover their tracks. Copies already forwarded to a central system let the analyst reconstruct what happened before the log was cleared.",
     "distractor_rationales": {
-      "A": "Being allowed to clear logs does not mean an unscheduled clear at 2 a.m. is benign.",
-      "B": "Waiting gives a possible attacker more time.",
-      "D": "Deleting the event destroys evidence."
+      "A": "If the account is compromised, asking tips off the attacker. Investigate with the central copies first.",
+      "B": "Restoring the log is useful, but closing the alert drops a likely sign of compromise.",
+      "D": "Disabling the account may be part of containment, but the event needs investigation, not closure."
     },
     "references_topic": "Cleared security logs",
     "version": "0.3"
@@ -707,14 +707,14 @@
       "A": "Increase the frequency of breach and attack simulation from daily to hourly",
       "B": "Commission an objective-based red team exercise targeting the payment data",
       "C": "Run a credentialed vulnerability scan of the payment environment",
-      "D": "Survey employees about how they would report suspicious activity"
+      "D": "Commission a compliance audit of the payment environment"
     },
     "answer": "B",
     "explanation": "Automated simulation checks known techniques against specific controls. A red team emulates a creative, goal-driven adversary and answers whether the objective can be reached.",
     "distractor_rationales": {
       "A": "Running the same automated checks more often does not test adversary creativity.",
       "C": "A vulnerability scan lists weaknesses but does not show whether an attacker could chain them.",
-      "D": "A survey measures awareness, not whether payment data can be reached."
+      "D": "A compliance audit checks controls against a standard, not whether a determined adversary could reach the data."
     },
     "references_topic": "Red team versus automated simulation",
     "version": "0.3"

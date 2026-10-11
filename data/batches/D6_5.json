@@ -57,16 +57,16 @@
     "stem": "What is a clipping level in log review?",
     "options": {
       "A": "The maximum size a log file may reach before it is automatically deleted",
-      "B": "The encryption strength required for stored log files",
+      "B": "The minimum severity at which logs are sent to the SIEM",
       "C": "A threshold of normal activity below which events are not flagged",
-      "D": "The number of analysts assigned to review each log source"
+      "D": "The storage size at which old logs move to the archive"
     },
     "answer": "C",
     "explanation": "Clipping levels set a baseline, such as three failed logins, so routine errors are ignored and only activity above the threshold is flagged for review.",
     "distractor_rationales": {
       "A": "File size limits are a storage setting.",
-      "B": "Encryption strength is unrelated.",
-      "D": "Staffing is not a clipping level."
+      "B": "Forwarding thresholds filter what is collected. A clipping level sets a baseline of normal activity below which events are not flagged.",
+      "D": "Archive triggers are about storage, not about deciding which activity to flag."
     },
     "references_topic": "Clipping levels",
     "version": "1.0"
@@ -81,16 +81,16 @@
     "stem": "Which monitoring approach can test an application's key user journeys before it has any real users?",
     "options": {
       "A": "Real user monitoring of live customer sessions",
-      "B": "Surveys of customers after they use the new application",
-      "C": "Reviewing the application's support tickets from last month",
+      "B": "Load testing the new application in a staging environment",
+      "C": "Real user monitoring during a closed beta program",
       "D": "Synthetic transaction monitoring"
     },
     "answer": "D",
     "explanation": "Synthetic monitoring runs scripted journeys whenever scheduled, so it works before launch and during quiet periods when there is no real traffic.",
     "distractor_rationales": {
       "A": "Real user monitoring needs real users.",
-      "B": "Surveys require users who have used the application.",
-      "C": "A new application has no past tickets."
+      "B": "Load testing measures capacity, not whether key journeys work as a user would run them.",
+      "C": "Real user monitoring needs real users, which a new application does not have yet."
     },
     "references_topic": "Monitoring before launch",
     "version": "1.0"
@@ -105,16 +105,16 @@
     "stem": "A tester calls an internal API endpoint without any token and receives a full list of customer records. What is the finding?",
     "options": {
       "A": "Missing authentication on the API endpoint",
-      "B": "A slow response time from the API server",
-      "C": "An outdated TLS certificate on the API gateway",
-      "D": "Too much logging on the API server"
+      "B": "Missing rate limiting on the customer API endpoint",
+      "C": "Verbose error messages from the API gateway",
+      "D": "Overly permissive CORS settings on the API"
     },
     "answer": "A",
     "explanation": "The endpoint returns sensitive data to anyone who asks, so it lacks authentication. Every API endpoint handling data must verify the caller.",
     "distractor_rationales": {
-      "B": "Response time is a performance issue.",
-      "C": "Certificate age is unrelated to missing authentication.",
-      "D": "Logging volume is not the problem."
+      "B": "Rate limiting matters, but the core problem is that no token was needed at all.",
+      "C": "Nothing in the scenario involves errors. Records were returned without authentication.",
+      "D": "CORS governs browsers. A direct call with no token returning data is missing authentication."
     },
     "references_topic": "Missing API authentication",
     "version": "1.0"
@@ -177,7 +177,7 @@
     "stem": "Which assessment finding should generally be fixed FIRST?",
     "options": {
       "A": "A low-severity issue on an internal test server",
-      "B": "A cosmetic error message on the public website",
+      "B": "A high-severity flaw on an isolated lab system",
       "C": "A medium-severity issue in a system scheduled for retirement next week",
       "D": "A critical, easily exploited flaw on an internet-facing system"
     },
@@ -185,7 +185,7 @@
     "explanation": "Severity, exploitability, and exposure together determine priority. A critical, exploitable, internet-facing flaw carries the most immediate risk.",
     "distractor_rationales": {
       "A": "Low severity on a test system is lower risk.",
-      "B": "A cosmetic issue is not a security priority.",
+      "B": "High severity on an isolated lab system carries less risk than a critical, easily exploited flaw facing the internet.",
       "C": "A soon-retired system with a medium issue is less urgent."
     },
     "references_topic": "Prioritizing findings",
@@ -226,15 +226,15 @@
     "options": {
       "A": "Include every system anyone mentions, even if the deadline slips by several months",
       "B": "Agree scope with stakeholders based on the assessment's objectives and risk",
-      "C": "Let the assessors choose whichever systems are easiest to test",
-      "D": "Assess only the systems that passed their last assessment"
+      "C": "Let the assessors pick the systems they know best",
+      "D": "Assess every system briefly instead of key ones in depth"
     },
     "answer": "B",
     "explanation": "Scope should follow the assessment's purpose and the highest risks, and be agreed in writing so the work is focused and achievable.",
     "distractor_rationales": {
       "A": "Unlimited scope leads to shallow or late results.",
-      "C": "Ease of testing does not reflect risk.",
-      "D": "Previously passing systems are not necessarily the highest risk."
+      "C": "Familiarity does not match the assessment's objectives or risk.",
+      "D": "Shallow coverage of everything can miss what matters most. Scope should follow objectives and risk."
     },
     "references_topic": "Scoping assessments",
     "version": "1.0"
@@ -296,17 +296,17 @@
     "type": "application",
     "stem": "Logs show a VPN sign-in to an employee's account from a country they have never visited, followed within minutes by downloads of thousands of files. What should the analyst do?",
     "options": {
-      "A": "Escalate it as a possible account compromise and begin incident response",
-      "B": "Close it, since the employee has a valid VPN account",
-      "C": "Wait a week to see whether the downloads happen again",
-      "D": "Delete the logs to save storage space on the SIEM"
+      "A": "Escalate it as a possible compromise and begin incident response",
+      "B": "Email the employee to ask whether they were traveling",
+      "C": "Block the source country at the VPN and close the alert",
+      "D": "Reset the employee's password and then close the alert as handled"
     },
     "answer": "A",
     "explanation": "An unusual location combined with bulk data access is a strong sign of compromise and possible exfiltration, which calls for immediate escalation.",
     "distractor_rationales": {
-      "B": "A valid account can be used by an attacker.",
-      "C": "Waiting allows more data to leave.",
-      "D": "Deleting logs destroys evidence."
+      "B": "Waiting for a reply lets the download continue, and the attacker may be reading the mailbox.",
+      "C": "Blocking the country may help, but closing the alert skips investigating what was taken.",
+      "D": "A reset is part of containment, but closing the alert ignores the data already downloaded."
     },
     "references_topic": "Correlating suspicious events",
     "version": "1.0"
@@ -323,14 +323,14 @@
       "A": "Check the home page more frequently, such as every thirty seconds",
       "B": "Script critical journeys such as login, cart, and checkout end to end",
       "C": "Replace synthetic monitoring with a weekly manual test of the whole site",
-      "D": "Monitor only the web server's CPU usage instead"
+      "D": "Add server-side error alerts for the checkout service only"
     },
     "answer": "B",
     "explanation": "Synthetic tests should follow the journeys that matter to the business. A home page check cannot detect a broken checkout.",
     "distractor_rationales": {
       "A": "More frequent home page checks still miss checkout.",
       "C": "Weekly manual tests are too slow.",
-      "D": "CPU usage does not show functional failures."
+      "D": "Error alerts help, but silent failures, such as a broken button, produce no errors. End-to-end scripts catch them."
     },
     "references_topic": "Scripting critical journeys",
     "version": "1.0"
@@ -394,15 +394,15 @@
     "options": {
       "A": "Submit valid and invalid usernames and expect identical responses and timing",
       "B": "Submit a valid username and confirm the reset email arrives quickly",
-      "C": "Confirm that the reset page uses the company's brand colors",
-      "D": "Measure how many resets the page can process per second"
+      "C": "Submit a valid username and confirm the reset link expires",
+      "D": "Confirm the reset page locks after five attempts from one IP"
     },
     "answer": "A",
     "explanation": "The abuse case is information disclosure through different responses. The test checks that valid and invalid usernames produce the same message and timing.",
     "distractor_rationales": {
       "B": "Normal function testing does not test the abuse.",
-      "C": "Branding is unrelated.",
-      "D": "Throughput is a performance measure."
+      "C": "Link expiry is a different control. The abuse case is telling valid usernames from invalid ones.",
+      "D": "Lockout slows guessing but does not test whether responses reveal valid usernames."
     },
     "references_topic": "Username enumeration abuse case",
     "version": "1.0"
@@ -416,17 +416,17 @@
     "type": "application",
     "stem": "An API's design says it limits each client to 100 requests per minute. How should testers verify this control?",
     "options": {
-      "A": "Read the design document again to confirm the stated limit",
+      "A": "Review the rate-limit setting in the API gateway configuration",
       "B": "Send requests above the limit and confirm they are rejected",
-      "C": "Ask the developers whether they implemented the limit",
-      "D": "Check that the API's documentation page loads correctly in a browser"
+      "C": "Check the API logs for clients that exceed the limit",
+      "D": "Run a vulnerability scan against the API endpoint"
     },
     "answer": "B",
     "explanation": "Controls should be tested by exercising them. Exceeding the limit and observing rejections proves it is enforced.",
     "distractor_rationales": {
-      "A": "Documents describe intent, not behavior.",
-      "C": "Developer statements are not evidence.",
-      "D": "Documentation pages do not show enforcement."
+      "A": "A configuration review shows intent, not that the limit actually works.",
+      "C": "Logs show past behavior, not whether excess requests are rejected.",
+      "D": "Vulnerability scans do not test whether a rate limit is enforced."
     },
     "references_topic": "Testing API rate limits",
     "version": "1.0"
@@ -440,17 +440,17 @@
     "type": "managerial_best_first_most",
     "stem": "Breach and attack simulation results are mapped to the MITRE ATT&CK framework. What is the BEST use of this mapping?",
     "options": {
-      "A": "Proving to auditors that the organization is fully compliant with every regulation",
-      "B": "Ranking employees by how many of the simulated attacks they personally noticed",
-      "C": "Showing detection and prevention coverage by technique to prioritize gaps",
-      "D": "Replacing the need for any vulnerability management program"
+      "A": "Reporting a single overall security score to the board",
+      "B": "Choosing which attack tools the red team should buy next",
+      "C": "Showing coverage by technique so that gaps can be prioritized",
+      "D": "Replacing threat intelligence with the simulation results"
     },
     "answer": "C",
     "explanation": "ATT&CK mapping shows which attacker techniques are blocked, detected, or missed, so teams can focus on the gaps most relevant to their threats.",
     "distractor_rationales": {
-      "A": "ATT&CK coverage is not regulatory compliance.",
-      "B": "It measures controls, not individual employees.",
-      "D": "Simulation complements vulnerability management; it does not replace it."
+      "A": "A single score hides which techniques are uncovered, which is the mapping's real value.",
+      "B": "The mapping measures defensive coverage, not offensive tool choices.",
+      "D": "Threat intelligence says which techniques matter. Simulation shows coverage. They work together."
     },
     "references_topic": "Mapping results to ATT&CK",
     "version": "1.0"
@@ -488,17 +488,17 @@
     "type": "application",
     "stem": "Mean time to remediate critical vulnerabilities has risen from 10 to 45 days over two quarters. What should the security team do?",
     "options": {
-      "A": "Investigate where the delay occurs, such as change windows or ownership",
-      "B": "Remove critical vulnerabilities from the metric so the number looks better",
-      "C": "Report the metric less often so the trend is less visible",
-      "D": "Increase the time target to 60 days so the metric is met again"
+      "A": "Find where the delay occurs, such as change windows or ownership",
+      "B": "Hire more patching staff before finding the cause of the delay",
+      "C": "Report the metric only for internet-facing systems",
+      "D": "Raise the target to 60 days to match current capacity"
     },
     "answer": "A",
     "explanation": "A rising trend is a signal to find the root cause, such as unclear ownership, change freezes, or testing delays, and fix it.",
     "distractor_rationales": {
-      "B": "Excluding criticals hides the most important risk.",
-      "C": "Reporting less often hides the problem.",
-      "D": "Moving the target does not reduce risk."
+      "B": "Staffing may help, but without finding where the delay is, it may be wasted.",
+      "C": "Narrowing the metric hides the problem rather than fixing it.",
+      "D": "Moving the target accepts a fourfold slowdown without understanding it."
     },
     "references_topic": "Investigating remediation bottlenecks",
     "version": "1.0"
@@ -514,15 +514,15 @@
     "options": {
       "A": "Close it immediately, since the owner is accountable for the system and its fixes",
       "B": "Verify the fix with a retest or evidence that the issue is resolved",
-      "C": "Wait until the next annual penetration test to decide",
-      "D": "Lower the finding's severity so closure is less important"
+      "C": "Close it once the owner signs a written statement",
+      "D": "Close it and add it to the next annual test's scope"
     },
     "answer": "B",
     "explanation": "Findings should be closed only when the fix is verified, for example by a targeted retest, so the risk is actually gone.",
     "distractor_rationales": {
       "A": "Unverified closure may leave the risk in place.",
-      "C": "Waiting a year delays confirmation of a critical fix.",
-      "D": "Changing severity misrepresents the risk."
+      "C": "A statement is not verification. A retest or evidence shows the issue is resolved.",
+      "D": "Closing now means a critical issue may stay open for up to a year unverified."
     },
     "references_topic": "Verifying remediation before closure",
     "version": "1.0"
@@ -536,17 +536,17 @@
     "type": "knowledge",
     "stem": "In a SOC report, what does an unqualified opinion from the service auditor mean?",
     "options": {
-      "A": "The auditor was not qualified to perform the engagement",
+      "A": "The auditor's report lists no exceptions in testing at all",
       "B": "The auditor found so many exceptions that no opinion could be given",
-      "C": "The controls were fairly described and suitably designed, and, for Type II, operated effectively",
-      "D": "The report was issued without any testing of controls at all"
+      "C": "Controls were fairly described and well designed, and for Type II, effective",
+      "D": "The report covers only control design at a single point in time"
     },
     "answer": "C",
     "explanation": "An unqualified, or clean, opinion means the auditor found no material problems with the description, design, and, in a Type II, operating effectiveness.",
     "distractor_rationales": {
-      "A": "\"Unqualified\" refers to the opinion, not the auditor's credentials.",
+      "A": "An unqualified opinion can still include some testing exceptions that were not material.",
       "B": "Inability to form an opinion is a disclaimer.",
-      "D": "SOC reports involve evaluation and, for Type II, testing."
+      "D": "That describes a Type I report, not what an unqualified opinion means."
     },
     "references_topic": "Unqualified audit opinions",
     "version": "1.0"
@@ -560,17 +560,17 @@
     "type": "managerial_best_first_most",
     "stem": "An active vulnerability scan crashed several PLCs on a production line last year. The plant still needs to know its vulnerabilities. What is the BEST approach?",
     "options": {
-      "A": "Run the same active scans again but only on weekends",
-      "B": "Stop all vulnerability assessment of operational technology permanently",
-      "C": "Scan the PLCs with the most aggressive settings to finish quickly",
-      "D": "Use passive monitoring and asset data, with any active tests planned with operations"
+      "A": "Run the same active scans again, but only at weekends",
+      "B": "Rely on the PLC vendor's list of known vulnerabilities only",
+      "C": "Test a lab copy of each PLC and assume production matches",
+      "D": "Passive monitoring and asset data, with active tests planned with operations"
     },
     "answer": "D",
     "explanation": "Many OT devices cannot handle active scans. Passive discovery and vendor advisories, plus carefully coordinated low-impact tests, provide visibility without disruption.",
     "distractor_rationales": {
       "A": "Weekend scans can still crash devices.",
-      "B": "Stopping assessment leaves risk unknown.",
-      "C": "Aggressive scans make crashes more likely."
+      "B": "Vendor lists help, but without knowing what is actually deployed, the plant cannot tell which apply.",
+      "C": "Lab testing helps, but production configurations drift. Passive monitoring shows what is really there."
     },
     "references_topic": "Scanning fragile OT devices",
     "version": "1.0"
@@ -587,14 +587,14 @@
       "A": "Stop, avoid exploiting it, and report it to the client to raise with the vendor",
       "B": "Exploit it to prove the risk, since the client would certainly want to know the impact",
       "C": "Ignore it, since it is outside the agreed scope and not their concern",
-      "D": "Contact the vendor directly and publish the details if they do not respond"
+      "D": "Contact the SaaS vendor directly to report it themselves"
     },
     "answer": "A",
     "explanation": "Testers must stay within authorization. They should record the observation and inform the client, who can pursue it with the vendor under its own agreements.",
     "distractor_rationales": {
       "B": "Exploiting out-of-scope systems is unauthorized.",
       "C": "Ignoring it withholds useful information from the client.",
-      "D": "Contacting and publishing without the client's direction breaches the engagement."
+      "D": "The tester works for the client. The client should raise it with its vendor."
     },
     "references_topic": "Out-of-scope third-party findings",
     "version": "1.0"
@@ -608,7 +608,7 @@
     "type": "managerial_best_first_most",
     "stem": "A company collects 10 million log events per day, and two analysts are supposed to review them manually. What is the BEST approach?",
     "options": {
-      "A": "Hire enough analysts to read every event by hand each day",
+      "A": "Send all events to the analysts in daily summary emails",
       "B": "Automate correlation and alerting, and focus manual review on high-risk events",
       "C": "Stop collecting logs from all but the three most important systems",
       "D": "Review a random sample of 100 events each day and ignore the rest"
@@ -616,7 +616,7 @@
     "answer": "B",
     "explanation": "Automation handles volume, and people add value where judgment matters, such as high-risk alerts and privileged activity.",
     "distractor_rationales": {
-      "A": "Manual review of millions of events is impractical.",
+      "A": "Summaries of ten million events are still unreadable. Automation must pick out what matters.",
       "C": "Dropping sources creates blind spots.",
       "D": "Random sampling misses targeted attacks."
     },
@@ -657,16 +657,16 @@
     "stem": "Breach and attack simulation shows that 60% of tested techniques are prevented. The board asks the team to reach 100%. What is the BEST response?",
     "options": {
       "A": "Commit to 100% prevention within one quarter, whatever the cost",
-      "B": "Remove the failed techniques from future simulations",
-      "C": "Stop running simulations, since the results worry the board",
-      "D": "Prioritize gaps by relevance to real threats, combining prevention and detection"
+      "B": "Buy more prevention tools until the 100% target is reached",
+      "C": "Report the detection rate instead, since it looks higher",
+      "D": "Prioritize gaps by real-world threat relevance, using prevention and detection"
     },
     "answer": "D",
     "explanation": "Perfect prevention is unrealistic. Closing the gaps most relevant to likely attackers, and making sure other techniques are detected, gives the best risk reduction.",
     "distractor_rationales": {
       "A": "100% prevention is not achievable, and chasing it wastes resources.",
-      "B": "Hiding failures hides risk.",
-      "C": "Stopping simulation removes visibility."
+      "B": "100% prevention is unrealistic, and buying tools without prioritizing wastes money.",
+      "C": "Changing the metric to look better misleads the board."
     },
     "references_topic": "Prioritizing simulation gaps",
     "version": "1.0"
@@ -680,17 +680,17 @@
     "type": "application",
     "stem": "Restore tests show that databases restored from nightly backups are often corrupted, because snapshots are taken while transactions are in progress. What is the BEST fix?",
     "options": {
-      "A": "Use application-consistent backups that quiesce or use the database's backup tools",
-      "B": "Run the backup job twice each night and keep whichever copy looks better",
-      "C": "Compress the backup files so they take less time to write to storage",
-      "D": "Move the backup window to a different time zone's midnight"
+      "A": "Application-consistent backups that quiesce the database or use its tools",
+      "B": "Take the crash-consistent snapshots more often during the night",
+      "C": "Keep more generations of the nightly snapshots on hand",
+      "D": "Verify each snapshot's checksum after the backup completes"
     },
     "answer": "A",
     "explanation": "Databases need backups that capture a consistent state, either by pausing writes or by using the database's own backup mechanism.",
     "distractor_rationales": {
-      "B": "Two crash-consistent copies can both be corrupt.",
-      "C": "Compression does not fix consistency.",
-      "D": "Changing the time does not stop in-flight transactions."
+      "B": "More frequent crash-inconsistent snapshots are still inconsistent.",
+      "C": "More generations of inconsistent copies do not help.",
+      "D": "A checksum confirms the file copied correctly, not that the database inside is consistent."
     },
     "references_topic": "Application-consistent backups",
     "version": "1.0"

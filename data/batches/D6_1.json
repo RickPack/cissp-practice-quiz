@@ -8,17 +8,17 @@
     "type": "knowledge",
     "stem": "What is the primary difference between a vulnerability assessment and a penetration test?",
     "options": {
-      "A": "A vulnerability assessment is always performed by external parties",
-      "B": "A penetration test never requires management approval",
+      "A": "A vulnerability assessment needs no authorization from the owner",
+      "B": "A penetration test covers more systems than an assessment does",
       "C": "Only a penetration test actively exploits weaknesses",
-      "D": "A vulnerability assessment is conducted only after a breach"
+      "D": "A vulnerability assessment always includes social engineering"
     },
     "answer": "C",
     "explanation": "A vulnerability assessment identifies, quantifies, and prioritizes weaknesses, often with scanning tools. A penetration test goes further and attempts to exploit them to show their real-world impact.",
     "distractor_rationales": {
-      "A": "Either kind of assessment can be performed by internal or external teams.",
-      "B": "Penetration tests always require written authorization from management.",
-      "D": "Vulnerability assessments are routine and proactive, not only a post-breach activity."
+      "A": "Both need the system owner's authorization.",
+      "B": "Penetration tests usually go deeper on a narrower scope. The defining difference is exploitation.",
+      "D": "Social engineering may be in either, depending on scope. It does not define a vulnerability assessment."
     },
     "references_topic": "Vulnerability assessment versus penetration test",
     "version": "0.1"
@@ -82,15 +82,15 @@
     "options": {
       "A": "A list of all vulnerabilities found by previous scans",
       "B": "Signed authorization with agreed scope and rules of engagement",
-      "C": "A guarantee that the testers will find at least one critical issue",
-      "D": "Full administrator credentials for the testers on all systems"
+      "C": "Fresh backups of every production system that is in scope",
+      "D": "An agreed format and timeline for the final written report"
     },
     "answer": "B",
     "explanation": "Written authorization from someone with the authority to grant it, defining scope, timing, methods, and rules of engagement, is the legal and operational foundation of a test. Without it, testing may amount to unauthorized access.",
     "distractor_rationales": {
       "A": "Previous scan results are helpful context but are not a prerequisite.",
-      "C": "No ethical tester can guarantee findings.",
-      "D": "Whether credentials are provided depends on the type of test. They are not a universal prerequisite."
+      "C": "Backups are a sensible precaution, but testing without signed authorization and scope is unauthorized access.",
+      "D": "Reporting terms matter, but they come after the authorization that makes the test legal."
     },
     "references_topic": "Penetration test authorization and rules of engagement",
     "version": "0.1"
@@ -154,15 +154,15 @@
     "options": {
       "A": "Trend in time to remediate critical internet-facing vulnerabilities",
       "B": "Total number of vulnerability scans performed each month",
-      "C": "Number of security tools deployed across the environment",
-      "D": "Percentage of staff who attended the annual all-hands security briefing"
+      "C": "Number of vulnerabilities found in each month's scans",
+      "D": "Percentage of systems covered by the scanning tool"
     },
     "answer": "A",
     "explanation": "A trend in remediation time for the most exposed, most severe vulnerabilities is an outcome-based, risk-relevant indicator. It shows whether exposure is actually shrinking.",
     "distractor_rationales": {
       "B": "Scan counts measure activity, not whether risk is going down.",
-      "C": "A tool count is an inventory figure, not an outcome.",
-      "D": "Briefing attendance has nothing to do with vulnerability management results."
+      "C": "Raw counts rise and fall with scan scope. They do not show whether risk is going down.",
+      "D": "Coverage shows reach, a useful input, but not whether the exposure itself is shrinking."
     },
     "references_topic": "Outcome-based security metrics",
     "version": "0.1"
@@ -176,17 +176,17 @@
     "type": "managerial_best_first_most",
     "stem": "A penetration test reveals a critical vulnerability in a legacy billing system. The system owner says a fix will take four months because the vendor must rebuild a component. What should the security manager do NEXT?",
     "options": {
-      "A": "Close the finding, because the system owner has acknowledged it",
-      "B": "Record a time-bound exception with compensating controls and risk-owner sign-off",
-      "C": "Take the billing system offline until the vendor delivers the fix",
-      "D": "Escalate the finding directly to regulators to pressure the vendor into a faster fix"
+      "A": "Accept the risk on the owner's behalf and close the finding",
+      "B": "Record a time-bound exception with compensating controls and owner sign-off",
+      "C": "Isolate the system until the fix, without a documented exception",
+      "D": "Escalate the finding to regulators to pressure the vendor into a faster fix"
     },
     "answer": "B",
     "explanation": "When remediation cannot happen right away, formal exception handling documents the risk, applies compensating controls such as filtering rules, segmentation, or extra monitoring, sets an expiry date, and has the accountable risk owner accept the residual risk.",
     "distractor_rationales": {
-      "A": "Acknowledging a finding is not remediating it. Closing it hides an open critical risk.",
-      "C": "Taking the system offline may cause unacceptable business harm. That is a business decision based on risk analysis, not a default response.",
-      "D": "Regulators are not a remediation lever, and going to them directly bypasses internal governance."
+      "A": "The security manager is not the risk owner, and closing the finding hides an open risk.",
+      "C": "Isolation may be a good compensating control, but without a documented, time-bound exception nobody owns the decision.",
+      "D": "Retesting tracks the issue but does not reduce the risk or record who accepted it."
     },
     "references_topic": "Risk exceptions and compensating controls",
     "version": "0.1"
@@ -203,14 +203,14 @@
       "A": "Reviewing the backup software's job completion reports daily",
       "B": "Increasing the backup frequency from nightly to hourly",
       "C": "Performing periodic test restores and validating the restored data",
-      "D": "Encrypting all backup files with a strong key before they are sent offsite"
+      "D": "Keeping three generations of backups instead of one"
     },
     "answer": "C",
     "explanation": "A successful job only confirms that files were copied. Regular test restores followed by integrity and application-level validation are the only way to confirm backups are actually recoverable.",
     "distractor_rationales": {
       "A": "The job reports already showed success, so reviewing them more often would not reveal the inconsistency.",
       "B": "More frequent backups made the same way would be just as inconsistent.",
-      "D": "Encryption protects confidentiality. It does nothing for data consistency."
+      "D": "More generations of inconsistent copies are still unusable. Only a test restore reveals the problem."
     },
     "references_topic": "Test restores and backup validation",
     "version": "0.1"

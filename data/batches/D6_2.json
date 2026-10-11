@@ -9,16 +9,16 @@
     "stem": "What is a misuse case in security testing?",
     "options": {
       "A": "A user story describing a normal business function",
-      "B": "A scenario describing how an attacker could abuse the system, used to derive security tests",
-      "C": "A list of known defects awaiting a fix",
-      "D": "A plan for measuring performance under load"
+      "B": "An attacker's abuse scenario, used to derive security tests",
+      "C": "A test case confirming that a security requirement is met",
+      "D": "A regression test written after a bug has been fixed"
     },
     "answer": "B",
     "explanation": "A misuse (abuse) case is the inverse of a use case. It describes hostile actions, often derived from the threat model, and drives negative tests of what the system must not allow.",
     "distractor_rationales": {
       "A": "A normal business function is described by a use case.",
-      "C": "A defect list is part of bug tracking.",
-      "D": "Performance testing measures behavior under load."
+      "C": "That is a positive security test. A misuse case describes how an attacker would abuse the system.",
+      "D": "Regression tests guard against known bugs returning. Misuse cases come from attacker goals."
     },
     "references_topic": "Misuse and abuse cases",
     "version": "0.2"
@@ -32,16 +32,16 @@
     "type": "knowledge",
     "stem": "Which activity is the BEST example of interface testing?",
     "options": {
-      "A": "Reviewing the physical locks on the data center doors",
-      "B": "Measuring server CPU usage during peak load periods",
+      "A": "Running an automated scan of the web server's open ports",
+      "B": "Checking user acceptance against the business requirements",
       "C": "Sending malformed inputs to an API to check validation",
       "D": "Reading through the source code of the login function"
     },
     "answer": "C",
     "explanation": "Interface testing exercises the points where users or components interact, such as APIs and user interfaces, checking input validation, error handling, and authentication.",
     "distractor_rationales": {
-      "A": "Checking door locks is a physical security review.",
-      "B": "Measuring CPU usage is performance testing.",
+      "A": "Port scanning finds exposed services but does not test how an interface handles input.",
+      "B": "Acceptance testing checks business functions, not how interfaces handle malformed input.",
       "D": "Reading source code is code review."
     },
     "references_topic": "Interface testing",
@@ -56,16 +56,16 @@
     "type": "knowledge",
     "stem": "What does a breach and attack simulation (BAS) platform primarily do?",
     "options": {
-      "A": "Replace the security operations center's analysts",
-      "B": "Scan hosts for missing patches and nothing else",
+      "A": "Collect logs from all hosts into one central console",
+      "B": "Scan hosts and applications for missing patches",
       "C": "Train employees by sending simulated phishing emails",
       "D": "Run automated, safe attack techniques to test controls"
     },
     "answer": "D",
     "explanation": "BAS platforms continuously run safe simulations of real attacker techniques and report whether controls detected or blocked each one.",
     "distractor_rationales": {
-      "A": "BAS helps analysts validate controls. It does not replace them.",
-      "B": "Patch scanning is vulnerability assessment, a narrower activity.",
+      "A": "Central log collection is a SIEM's job. BAS runs attack techniques to see whether controls catch them.",
+      "B": "Patch scanning is vulnerability assessment. BAS tests whether controls detect and block attack behavior.",
       "C": "Phishing simulation is an awareness activity, not the core of BAS."
     },
     "references_topic": "Breach and attack simulation",
@@ -104,16 +104,16 @@
     "type": "knowledge",
     "stem": "What is the main advantage of a credentialed vulnerability scan over an uncredentialed one?",
     "options": {
-      "A": "It always finishes faster and uses less network bandwidth",
+      "A": "It can safely exploit the flaws it finds to prove them",
       "B": "It sees installed software and patch levels from inside the host",
-      "C": "It does not require approval from the system owner",
+      "C": "It needs no network access to the hosts it scans",
       "D": "It shows exactly what an unauthenticated outside attacker sees"
     },
     "answer": "B",
     "explanation": "A credentialed scan logs in to enumerate installed packages, patch levels, and configuration settings, which gives more accurate results with fewer false positives and negatives.",
     "distractor_rationales": {
-      "A": "Credentialed scans are often slower because they examine more.",
-      "C": "Every scan requires authorization from the system owner.",
+      "A": "Credentialed scanning reads configuration. It does not exploit anything.",
+      "C": "It still connects over the network. The difference is that it logs in to look inside.",
       "D": "The unauthenticated attacker's view is what an uncredentialed scan shows."
     },
     "references_topic": "Credentialed scanning",
@@ -177,16 +177,16 @@
     "stem": "A team reports 95% code coverage from its unit tests and concludes the application is secure. What is the BEST response?",
     "options": {
       "A": "Coverage shows code ran, not that security was tested",
-      "B": "At 95% coverage, the application is almost certainly secure",
-      "C": "Coverage must reach 100% before the product can be released",
-      "D": "Code coverage matters only for measuring performance"
+      "B": "Coverage above 90% means the security tests are complete",
+      "C": "Coverage should be raised to 100% to prove security",
+      "D": "Coverage replaces the need for a penetration test"
     },
     "answer": "A",
     "explanation": "Coverage measures which code executed during tests, not whether the tests checked security properties. Tests can run code without asserting anything about authorization, input handling, or other security behavior.",
     "distractor_rationales": {
-      "B": "High coverage says nothing about whether security flaws were tested for.",
-      "C": "Even 100% coverage would not prove the absence of vulnerabilities.",
-      "D": "Coverage is a testing thoroughness measure, not a performance metric."
+      "B": "Coverage counts executed lines, not whether attacks were tested.",
+      "C": "Even full coverage shows only that code ran, not that it resists abuse.",
+      "D": "High coverage says nothing about how the application behaves under attack."
     },
     "references_topic": "Limits of code coverage",
     "version": "0.2"
@@ -202,15 +202,15 @@
     "options": {
       "A": "A second annual penetration test from another firm",
       "B": "Breach and attack simulation running continuously",
-      "C": "More rules on the perimeter firewall",
-      "D": "An annual review of security policies"
+      "C": "Quarterly vulnerability scans of internet-facing hosts",
+      "D": "A tabletop exercise with the incident response team"
     },
     "answer": "B",
     "explanation": "Continuous breach and attack simulation checks, between penetration tests, that detection and prevention controls still catch known techniques as the environment changes.",
     "distractor_rationales": {
       "A": "Two tests a year still leave long gaps in a weekly-changing environment.",
-      "C": "Firewall rules do not verify that detection controls work.",
-      "D": "Policy reviews do not test controls."
+      "C": "Scans find vulnerabilities but do not test whether detection controls fire.",
+      "D": "A tabletop tests people and process, not whether the detection tools still work."
     },
     "references_topic": "Continuous control validation",
     "version": "0.2"
@@ -224,16 +224,16 @@
     "type": "application",
     "stem": "During testing, submitting an unexpected character in a web form returns a full stack trace that reveals the database type and internal file paths. What is the BEST fix?",
     "options": {
-      "A": "Disable the web form until a redesign is complete",
-      "B": "Increase application logging for the form",
+      "A": "Encrypt the database connection string in the configuration",
+      "B": "Add a WAF rule that blocks that particular character",
       "C": "Show users a generic error and log details on the server",
       "D": "Block that character with client-side JavaScript validation"
     },
     "answer": "C",
     "explanation": "Detailed errors leak information attackers can use. Users should see a generic message while details go to server-side logs, and the input handling should be fixed as well.",
     "distractor_rationales": {
-      "A": "Disabling the form is an overreaction that breaks functionality.",
-      "B": "More logging does not stop the information leak to users.",
+      "A": "Protecting the connection string is good practice but does not stop error pages leaking details.",
+      "B": "Blocking one character leaves other inputs able to trigger the same verbose errors.",
       "D": "Client-side checks are easily bypassed, and other inputs could still trigger the leak."
     },
     "references_topic": "Secure error handling",
@@ -248,17 +248,17 @@
     "type": "knowledge",
     "stem": "With limited analyst time, which log source should generally be reviewed MOST closely?",
     "options": {
-      "A": "Print server job logs",
-      "B": "Workstation screensaver activation logs",
-      "C": "Web proxy cache hit statistics",
-      "D": "Privileged activity and authentication logs on critical systems"
+      "A": "Firewall logs of blocked inbound internet traffic",
+      "B": "Antivirus signature update logs on every workstation",
+      "C": "Web proxy logs for all employee browsing",
+      "D": "Privileged and authentication logs on critical systems"
     },
     "answer": "D",
     "explanation": "Review effort should follow risk. Authentication and privileged activity on critical systems is where attackers operate and where misuse causes the most harm.",
     "distractor_rationales": {
-      "A": "Print logs are rarely security-critical.",
-      "B": "Screensaver events carry little security value.",
-      "C": "Cache statistics describe performance, not security events."
+      "A": "Blocked inbound traffic is high volume and mostly noise, since it was already stopped.",
+      "B": "Update logs show tool health, not attacker activity.",
+      "C": "Proxy logs are useful but huge. Privileged activity on critical systems carries the most risk per entry."
     },
     "references_topic": "Prioritizing log review",
     "version": "0.2"
@@ -273,16 +273,16 @@
     "stem": "A scan finds 2,000 vulnerabilities, and the team can fix only 100 this month. Which approach BEST prioritizes remediation?",
     "options": {
       "A": "Rank by exploitation, severity, exposure, and asset value",
-      "B": "Fix the oldest findings first",
+      "B": "Fix findings by CVSS base score alone, highest first",
       "C": "Fix whichever findings are the quickest and easiest to patch first",
-      "D": "Fix findings in alphabetical order by host name"
+      "D": "Fix every finding on the single most important server first"
     },
     "answer": "A",
     "explanation": "Risk-based prioritization considers known exploitation in the wild, severity, exposure such as internet-facing systems, and the criticality of the asset.",
     "distractor_rationales": {
-      "B": "Age alone does not reflect risk.",
+      "B": "Base score ignores whether a flaw is being exploited and how exposed the asset is.",
       "C": "Easy fixes may be low risk while critical exposures remain open.",
-      "D": "Alphabetical order is arbitrary."
+      "D": "Clearing one server's low-risk findings leaves critical exposures elsewhere."
     },
     "references_topic": "Risk-based vulnerability prioritization",
     "version": "0.2"
@@ -320,17 +320,17 @@
     "type": "managerial_best_first_most",
     "stem": "The CISO wants an indicator that warns the board when the risk of a successful phishing compromise is increasing. Which metric is the BEST key risk indicator?",
     "options": {
-      "A": "Number of security awareness posters displayed across all office locations",
-      "B": "Budget spent on security awareness training",
+      "A": "Percentage of staff who completed awareness training",
+      "B": "Number of phishing emails blocked by the email gateway",
       "C": "Trend in the share of users entering credentials in simulations",
-      "D": "Total number of emails the company receives each month"
+      "D": "Number of awareness campaigns run each quarter"
     },
     "answer": "C",
     "explanation": "A key risk indicator signals rising exposure. A growing share of users who enter credentials in phishing simulations directly indicates increasing compromise risk.",
     "distractor_rationales": {
-      "A": "Poster counts measure activity, not risk.",
-      "B": "Spending is an input, not an indicator of exposure.",
-      "D": "Email volume does not measure susceptibility."
+      "A": "Completion measures activity, not whether people still fall for phishing.",
+      "B": "Blocked volume reflects attacker activity and filter tuning, not user susceptibility.",
+      "D": "Campaign counts measure effort, not risk."
     },
     "references_topic": "Key risk indicators",
     "version": "0.2"
@@ -347,7 +347,7 @@
       "A": "A self-assessment completed by the security team",
       "B": "An informal review by a peer company",
       "C": "A vulnerability scan of external systems",
-      "D": "An independent third-party audit"
+      "D": "An independent third-party audit against the standard"
     },
     "answer": "D",
     "explanation": "External stakeholders rely on independent, qualified auditors assessing against the standard. Independence is what gives the result credibility.",
@@ -371,14 +371,14 @@
       "A": "Stop and report it to the client without using them",
       "B": "Use the credentials briefly to show the partner's true exposure",
       "C": "Ignore the credentials, since the partner is out of scope",
-      "D": "Post the credentials publicly to prove the issue is real"
+      "D": "Report the credentials directly to the partner company"
     },
     "answer": "A",
     "explanation": "Anything outside scope is unauthorized. The tester should stop, document the finding, and notify the client contact promptly as the rules of engagement require, without using the credentials.",
     "distractor_rationales": {
       "B": "Using the credentials would be unauthorized access and possibly illegal.",
       "C": "Ignoring the finding leaves a serious risk unreported.",
-      "D": "Public disclosure is harmful and unethical."
+      "D": "The tester's duty runs to the client. The client decides how to notify the partner."
     },
     "references_topic": "Scope limits in penetration testing",
     "version": "0.2"
@@ -394,15 +394,15 @@
     "options": {
       "A": "Keeping local logs on each server for a much longer retention period",
       "B": "Forwarding logs in real time to a separate protected store",
-      "C": "Rotating local log files more frequently",
-      "D": "Encrypting the log files stored on each server"
+      "C": "File integrity monitoring on the local log files",
+      "D": "Restricting log file permissions to administrators only"
     },
     "answer": "B",
     "explanation": "Logs sent in real time to a separate, access-restricted or write-once store are out of reach of an attacker who controls the source server.",
     "distractor_rationales": {
       "A": "Longer local retention does not help if the attacker deletes the files.",
-      "C": "More frequent rotation removes old logs faster.",
-      "D": "Encryption protects confidentiality but does not stop deletion."
+      "C": "Integrity monitoring can flag the deletion but does not keep a copy of the evidence.",
+      "D": "The attacker had administrative control, so local permissions do not protect the logs."
     },
     "references_topic": "Protecting log integrity",
     "version": "0.2"
@@ -419,14 +419,14 @@
       "A": "The provider performs these controls on the company's behalf",
       "B": "The listed controls are optional recommendations",
       "C": "The company must operate those controls itself",
-      "D": "The report is invalid and should be rejected"
+      "D": "The auditor tested these controls at the company"
     },
     "answer": "C",
     "explanation": "CUECs are controls the provider's control design assumes the customer will perform. If the company does not operate them, the provider's control objectives may not be met for that company.",
     "distractor_rationales": {
       "A": "CUECs are the customer's responsibility, not the provider's.",
       "B": "The provider's controls depend on them, so they are not optional.",
-      "D": "Listing CUECs is normal and does not invalidate the report."
+      "D": "The service auditor tests the provider. CUECs are controls the customer must run itself."
     },
     "references_topic": "Complementary user entity controls",
     "version": "0.2"
@@ -440,17 +440,17 @@
     "type": "managerial_best_first_most",
     "stem": "A security tester employed by a bank discovers a serious vulnerability in a widely used commercial product during internal testing. What is the MOST appropriate course of action?",
     "options": {
-      "A": "Publish full exploit details online immediately to warn other users",
-      "B": "Sell the vulnerability details to a broker",
-      "C": "Ignore it, since the product belongs to the vendor",
+      "A": "Publish an advisory without exploit details right away",
+      "B": "Report it only to the bank's own security team",
+      "C": "Share it with peer banks through an industry ISAC first",
       "D": "Report it privately to the vendor under coordinated disclosure"
     },
     "answer": "D",
     "explanation": "Coordinated disclosure gives the vendor time to fix the flaw before details become public, protecting all users. The tester should follow the bank's policy and apply internal mitigations in the meantime.",
     "distractor_rationales": {
-      "A": "Immediate public release arms attackers before a fix exists.",
-      "B": "Selling the vulnerability is unethical and may be illegal.",
-      "C": "Ignoring it leaves the bank and other users exposed."
+      "A": "Publishing before the vendor can fix it exposes every customer.",
+      "B": "The bank should protect itself, but the vendor must also be told so it can fix the product for everyone.",
+      "C": "Sharing with peers before the vendor knows spreads the flaw before a fix exists."
     },
     "references_topic": "Coordinated vulnerability disclosure",
     "version": "0.2"
@@ -467,14 +467,14 @@
       "A": "The RPO is not being met; validate and alert on backups",
       "B": "The RPO is met, because backups are scheduled every night",
       "C": "The RPO should be relaxed to three days to match reality",
-      "D": "The restore test was unnecessary, since jobs were scheduled"
+      "D": "The backup software is faulty and must be replaced"
     },
     "answer": "A",
     "explanation": "The actual recovery point is three days, which violates the 24-hour RPO. Backups need integrity validation and alerting on failures so problems are caught immediately.",
     "distractor_rationales": {
       "B": "A schedule is not a successful backup. The usable data is three days old.",
       "C": "The RPO comes from business requirements and should not be changed to hide a failure.",
-      "D": "The test is what revealed the gap."
+      "D": "The software may need fixing, but the key conclusion is that the RPO is not being met and backups need validation."
     },
     "references_topic": "Verifying backups against the RPO",
     "version": "0.2"

@@ -80,7 +80,7 @@
     "type": "application",
     "stem": "Automated tools found no issues, but customers discovered they could apply the same discount code twice at checkout. Which technique is MOST likely to catch this kind of flaw before release?",
     "options": {
-      "A": "Running the automated scanners again with their default settings",
+      "A": "Running a DAST scan with authenticated sessions enabled",
       "B": "Manual code review and testing of the business logic",
       "C": "A vulnerability scan of the web server's operating system",
       "D": "A load test that sends thousands of checkout requests at once"
@@ -88,7 +88,7 @@
     "answer": "B",
     "explanation": "Business logic flaws depend on understanding what the application should do. Human reviewers and testers who know the rules can spot them; generic automated tools rarely can.",
     "distractor_rationales": {
-      "A": "Rerunning the same tools will not find logic they cannot understand.",
+      "A": "Authenticated scanning reaches more pages, but scanners do not understand business rules such as one use per code.",
       "C": "OS scanning does not examine application rules.",
       "D": "Load testing measures performance, not logic."
     },
@@ -105,16 +105,16 @@
     "stem": "What is negative testing?",
     "options": {
       "A": "Testing that the application performs well under normal user load",
-      "B": "Testing performed by people who dislike the application's design",
+      "B": "Testing that features work as the requirements describe",
       "C": "Testing that the system handles invalid or unexpected input correctly",
-      "D": "Testing that is run only after a release has already failed in production"
+      "D": "Testing that removes features to see what breaks"
     },
     "answer": "C",
     "explanation": "Negative testing supplies bad, unexpected, or malicious input to confirm that the system rejects it safely rather than failing or behaving insecurely.",
     "distractor_rationales": {
       "A": "Normal load testing confirms expected behavior, not handling of bad input.",
-      "B": "The term does not refer to the testers' opinions.",
-      "D": "Negative testing should happen before release."
+      "B": "That is positive testing. Negative testing checks how the system handles invalid or unexpected input.",
+      "D": "Removing features is not a recognized test type. Negative testing feeds bad input."
     },
     "references_topic": "Negative testing",
     "version": "0.4"
@@ -128,17 +128,17 @@
     "type": "application",
     "stem": "While testing a mobile app's API, a tester sees that the profile endpoint returns every user field, including the password hash, and the app simply hides the fields it does not need. What is the finding?",
     "options": {
-      "A": "A performance issue, since large responses load slowly on mobile devices",
-      "B": "A cosmetic issue, since the app does not display the extra fields to users",
-      "C": "A licensing issue, since the extra fields use more of the API quota",
+      "A": "Broken authentication, since the endpoint needs no token",
+      "B": "Insecure transport, since the hash crosses the network",
+      "C": "A client-side bug that the app team should fix in the app",
       "D": "Excessive data exposure that the server should filter"
     },
     "answer": "D",
     "explanation": "The API sends sensitive data that anyone intercepting or calling it directly can read. The server should return only the fields the client needs.",
     "distractor_rationales": {
-      "A": "Performance may suffer, but the key issue is data exposure.",
-      "B": "Hiding fields in the app does not protect data in the response.",
-      "C": "Quota use is not the security concern."
+      "A": "Nothing says the endpoint is unauthenticated. The problem is that it returns too much data.",
+      "B": "Transport security is a separate question. The hash should never be returned at all.",
+      "C": "Hiding fields in the app does not protect them. The server must filter what it returns."
     },
     "references_topic": "Excessive data exposure in APIs",
     "version": "0.4"
@@ -176,17 +176,17 @@
     "type": "managerial_best_first_most",
     "stem": "How often should an organization test restoring its critical backups?",
     "options": {
-      "A": "Only once, when the backup system is first installed",
+      "A": "Once a year, at the same time as the DR plan review",
       "B": "On a regular schedule and after major system changes",
-      "C": "Only after a real disaster has already occurred",
-      "D": "Whenever the backup vendor releases a new product version"
+      "C": "Only when a backup job reports a failure",
+      "D": "After every software update to the backup tool"
     },
     "answer": "B",
     "explanation": "Systems and data change over time, so restores must be tested regularly and after significant changes to confirm backups still work.",
     "distractor_rationales": {
-      "A": "A single test does not prove later backups work.",
-      "C": "Finding out during a disaster is too late.",
-      "D": "Vendor release cycles are not tied to the organization's recovery needs."
+      "A": "Once a year leaves long gaps, and major changes between reviews go untested.",
+      "C": "Jobs can report success while producing unusable backups. Testing must be routine.",
+      "D": "Tool updates are one trigger, but testing must also run on a schedule and after system changes."
     },
     "references_topic": "Regular restore testing",
     "version": "0.4"
@@ -224,17 +224,17 @@
     "type": "knowledge",
     "stem": "Which factor should MOST determine how often a system is assessed?",
     "options": {
-      "A": "The alphabetical order of the systems in the asset inventory",
-      "B": "How long it has been since the system's software vendor was last audited by a third party",
-      "C": "The number of users who complain about the system's performance",
-      "D": "The system's risk, based on data sensitivity, exposure, and criticality"
+      "A": "The date the system was last assessed, oldest first",
+      "B": "The number of findings in the system's last assessment",
+      "C": "The size of the team that supports and maintains the system",
+      "D": "Its risk, based on data sensitivity, exposure, and criticality"
     },
     "answer": "D",
     "explanation": "Assessment effort should follow risk. Internet-facing systems holding sensitive data deserve more frequent assessment than low-risk internal tools.",
     "distractor_rationales": {
-      "A": "Alphabetical order ignores risk.",
-      "B": "Vendor audit timing is only one input, not the main driver.",
-      "C": "Performance complaints do not measure security risk."
+      "A": "Age alone ignores risk. A high-risk system may need assessing more often.",
+      "B": "Past findings are an input, but frequency should follow the system's overall risk.",
+      "C": "Team size has no bearing on how much risk the system carries."
     },
     "references_topic": "Risk-based assessment frequency",
     "version": "0.4"
@@ -250,15 +250,15 @@
     "options": {
       "A": "Agent-based scanning that reports results from wherever the laptop is",
       "B": "Scanning the office network more often during business hours",
-      "C": "Asking remote staff to bring their laptops into the office once a year",
-      "D": "Excluding remote laptops from vulnerability reporting"
+      "C": "Require remote laptops to connect to VPN for a weekly scan",
+      "D": "Scan remote laptops whenever they come in for repair"
     },
     "answer": "A",
     "explanation": "An agent on each device checks it locally and reports results over the internet, so devices are assessed whether or not they are on the corporate network.",
     "distractor_rationales": {
       "B": "More frequent office scans still miss laptops that are not there.",
-      "C": "Annual visits leave long gaps.",
-      "D": "Excluding them hides risk."
+      "C": "A weekly VPN requirement depends on users connecting and still misses laptops that stay offline.",
+      "D": "Repair visits are rare and random, leaving most laptops unassessed."
     },
     "references_topic": "Agent-based scanning",
     "version": "0.4"
@@ -272,17 +272,17 @@
     "type": "managerial_best_first_most",
     "stem": "A penetration test will include phishing and phone pretexting against employees. HR is worried. What is the BEST way to proceed?",
     "options": {
-      "A": "Keep the social engineering tests secret from HR so that the results are realistic",
-      "B": "Document the scope in writing with HR and legal approval and plan how employee data is handled",
+      "A": "Run the test first and brief HR on the results afterward",
+      "B": "Agree the scope in writing with HR and legal, including how employee data is handled",
       "C": "Drop social engineering from the test entirely because it involves people rather than systems",
-      "D": "Name and discipline every employee who falls for a test message after the test ends"
+      "D": "Limit the test to IT staff so that HR is not involved"
     },
     "answer": "B",
     "explanation": "Social engineering tests affect people. Written scope approved by HR and legal, and clear handling of results, protect employees and the organization while keeping the test meaningful.",
     "distractor_rationales": {
-      "A": "Hiding the test from HR risks legal and employee relations problems.",
+      "A": "Testing employees without HR and legal approval can breach policy and law.",
       "C": "Social engineering is a real attack path worth testing.",
-      "D": "Punishing individuals undermines trust and reporting."
+      "D": "Excluding most employees defeats the purpose of testing social engineering resistance."
     },
     "references_topic": "Scoping social engineering tests",
     "version": "0.4"
@@ -296,17 +296,17 @@
     "type": "application",
     "stem": "The log volume from a critical database server dropped to zero overnight, although the server is still running. What should the analyst do?",
     "options": {
-      "A": "Ignore it, since fewer logs means fewer alerts to investigate",
-      "B": "Wait a week to see if the logs start flowing again on their own",
-      "C": "Investigate it, since logging may have failed or been disabled by an attacker",
-      "D": "Delete the server from the SIEM so that it stops affecting the dashboards"
+      "A": "Restart the log forwarding agent and close the ticket",
+      "B": "Check the SIEM's license limits before anything else",
+      "C": "Investigate, since logging may have failed or been disabled by an attacker",
+      "D": "Raise the server's logging level to verbose and keep watching"
     },
     "answer": "C",
     "explanation": "A silent log source is itself a warning. It may be a configuration fault or an attacker turning off logging to hide activity.",
     "distractor_rationales": {
-      "A": "Missing logs create blind spots.",
-      "B": "Waiting leaves the gap open.",
-      "D": "Removing the source hides the problem."
+      "A": "Restarting may restore flow, but it skips finding out whether an attacker disabled logging.",
+      "B": "License limits are one possible cause, but a sudden stop on a critical server must be investigated as possible tampering.",
+      "D": "More verbosity does nothing if logging has been stopped."
     },
     "references_topic": "Missing log sources",
     "version": "0.4"
@@ -320,17 +320,17 @@
     "type": "knowledge",
     "stem": "What is a limitation of real user monitoring?",
     "options": {
-      "A": "It cannot measure the performance of pages that users actually load",
+      "A": "It adds heavy load to the servers being monitored",
       "B": "It requires testers to write scripts for every possible user journey",
-      "C": "It only works for applications that are hosted on-premises",
+      "C": "It cannot capture errors from mobile browsers",
       "D": "It sees only paths users take and gives no data when traffic is low"
     },
     "answer": "D",
     "explanation": "RUM depends on real traffic. Rarely used features and quiet periods produce little or no data, which is why synthetic monitoring is used alongside it.",
     "distractor_rationales": {
-      "A": "Measuring real page loads is what RUM does well.",
+      "A": "Real user monitoring adds little load. Its limit is that it only sees real traffic.",
       "B": "Scripting journeys is a feature of synthetic monitoring.",
-      "C": "RUM works for any web application."
+      "C": "It can capture mobile sessions. It cannot cover paths users never take."
     },
     "references_topic": "Limits of real user monitoring",
     "version": "0.4"
@@ -345,16 +345,16 @@
     "stem": "A team is changing the authentication module of a customer-facing application. Beyond the usual automated scans, what review is BEST?",
     "options": {
       "A": "A manual review by a security-trained reviewer before merging",
-      "B": "No extra review, since the automated scans already cover authentication",
-      "C": "A review by the developer who wrote the change, after it is released",
-      "D": "A review of the module's documentation only, since the code is standard"
+      "B": "An extra automated scan with a second scanning tool",
+      "C": "A peer review by any developer on the same team",
+      "D": "A review of the change's unit test results only"
     },
     "answer": "A",
     "explanation": "Security-critical code deserves human review by someone who understands authentication pitfalls, in addition to automated tools, before it ships.",
     "distractor_rationales": {
-      "B": "Automated tools miss many design and logic issues.",
-      "C": "Self-review after release is too late and not independent.",
-      "D": "Documentation review does not check the code."
+      "B": "Another scanner still misses design and logic flaws in authentication.",
+      "C": "A peer review helps, but authentication changes need a reviewer trained in security.",
+      "D": "Unit test results show the code ran as written, not that it is secure."
     },
     "references_topic": "Review for security-critical code",
     "version": "0.4"
@@ -368,16 +368,16 @@
     "type": "managerial_best_first_most",
     "stem": "After a release, the team discovers that several security requirements were never tested. What practice BEST prevents this?",
     "options": {
-      "A": "Asking testers to remember the security requirements during each sprint",
+      "A": "A security checklist that testers fill in every sprint",
       "B": "Mapping each security requirement to test cases in a traceability matrix",
-      "C": "Removing security requirements that are difficult to test from the backlog",
+      "C": "A penetration test of the application after each release",
       "D": "Adding more automated tests of the application's normal functionality"
     },
     "answer": "B",
     "explanation": "A traceability matrix links every requirement to the tests that verify it, so untested requirements are visible before release.",
     "distractor_rationales": {
-      "A": "Memory is unreliable.",
-      "C": "Dropping requirements hides risk.",
+      "A": "A checklist helps, but it does not link each requirement to the test that proves it.",
+      "C": "Penetration tests find flaws after release. A traceability matrix ensures every requirement is tested before.",
       "D": "More functional tests do not ensure security requirements are covered."
     },
     "references_topic": "Traceability of security requirements",
@@ -392,16 +392,16 @@
     "type": "application",
     "stem": "An application lets users upload profile pictures. Which test is MOST important for this interface?",
     "options": {
-      "A": "Checking that the upload button uses the company's brand color",
-      "B": "Measuring how long a typical photo takes to upload over Wi-Fi",
+      "A": "Checking that uploads are stored on an encrypted volume",
+      "B": "Confirming that large images are resized correctly for display",
       "C": "Uploading scripts and oversized files to confirm they are rejected",
       "D": "Confirming that the uploaded pictures appear correctly in the user's profile"
     },
     "answer": "C",
     "explanation": "Upload features are common attack paths. Testing that the server rejects dangerous file types and sizes, and stores files safely, checks the key security controls.",
     "distractor_rationales": {
-      "A": "Visual design is not a security test.",
-      "B": "Upload speed is a performance concern.",
+      "A": "Encryption at rest does not stop malicious uploads.",
+      "B": "Resizing is a functional check. The interface's main risk is malicious or oversized files.",
       "D": "Normal display confirms function, not security."
     },
     "references_topic": "Testing file upload interfaces",
@@ -465,7 +465,7 @@
     "stem": "A restore test of a critical system succeeded, but took three days against an RTO of eight hours. What should happen next?",
     "options": {
       "A": "Record the test as a pass, since the data was fully restored",
-      "B": "Report the gap to the system owner and change the recovery strategy to meet the RTO",
+      "B": "Report the gap to the owner and change the recovery strategy to meet the RTO",
       "C": "Raise the RTO to three days so that it matches the test result",
       "D": "Stop testing this system, since the result will not change"
     },
@@ -514,7 +514,7 @@
     "options": {
       "A": "Treat the Type I report as proof that the controls operated effectively all year",
       "B": "Reject the vendor outright, because only Type II reports are acceptable",
-      "C": "Ignore the report and rely on the vendor's marketing material instead",
+      "C": "Ask the vendor for a SOC 1 Type II report instead",
       "D": "Accept it as evidence of design only, and require a Type II report next year"
     },
     "answer": "D",
@@ -522,7 +522,7 @@
     "distractor_rationales": {
       "A": "Type I does not test operation over time.",
       "B": "Rejecting the vendor may be unnecessary if other assurance is obtained.",
-      "C": "Marketing material is not assurance."
+      "C": "SOC 1 covers controls over financial reporting, not security."
     },
     "references_topic": "Using a SOC 2 Type I report",
     "version": "0.4"
@@ -585,16 +585,16 @@
     "stem": "A breach is discovered 90 days after it began, but the organization keeps logs for only seven days. What should MOST determine the log retention period going forward?",
     "options": {
       "A": "The storage capacity of the log server that the team bought last year",
-      "B": "The preference of whichever analyst manages the SIEM",
+      "B": "The default retention setting in the SIEM product",
       "C": "Legal requirements and how long investigations need to look back",
-      "D": "The number of alerts the SOC can handle each day"
+      "D": "The retention period used by most peer companies"
     },
     "answer": "C",
     "explanation": "Retention should cover legal and regulatory requirements and realistic investigation needs, which often span months because intrusions go undetected for long periods.",
     "distractor_rationales": {
       "A": "Storage should be sized to requirements, not the other way around.",
-      "B": "Personal preference is not a basis for retention.",
-      "D": "Alert volume is unrelated to how long logs must be kept."
+      "B": "Defaults are arbitrary. Retention should follow legal needs and investigation look-back.",
+      "D": "Peers' choices may not fit this company's legal duties or threats."
     },
     "references_topic": "Setting log retention",
     "version": "0.4"
@@ -608,10 +608,10 @@
     "type": "application",
     "stem": "A synthetic monitor logs in to the production application every five minutes using a real employee's account with MFA turned off. What is the BEST fix?",
     "options": {
-      "A": "Keep the account, but change its password every month",
+      "A": "Keep the employee's account, but change its password every month",
       "B": "Stop monitoring the login flow and test only public pages",
       "C": "Turn MFA on and have the employee approve each prompt",
-      "D": "Use a dedicated test account with minimal rights and vaulted credentials"
+      "D": "A dedicated, minimally privileged test account with vaulted credentials"
     },
     "answer": "D",
     "explanation": "Monitoring needs its own non-human account, restricted to what the test needs and with its secrets protected. Borrowing a real user's account with MFA disabled creates an easy target.",
@@ -632,15 +632,15 @@
     "type": "managerial_best_first_most",
     "stem": "The security team wants to run breach and attack simulation in production. Operations worries about outages. What is the BEST way to proceed?",
     "options": {
-      "A": "Use safe, non-destructive techniques, agree the scope, and coordinate with the SOC",
-      "B": "Run the most destructive techniques first to find the worst gaps quickly",
+      "A": "Use safe, non-destructive techniques with agreed scope, coordinated with the SOC",
+      "B": "Run all techniques at full strength during a quiet weekend",
       "C": "Run it without telling the SOC so that detections are realistic",
       "D": "Run it only in the test environment, since production is too risky"
     },
     "answer": "A",
     "explanation": "Most simulation tools offer benign versions of attack techniques. Agreed scope, safe payloads, and coordination with operations and the SOC keep the test realistic without harming production.",
     "distractor_rationales": {
-      "B": "Destructive techniques risk outages.",
+      "B": "Full-strength techniques can still cause outages, and nobody may be watching at the weekend.",
       "C": "Uncoordinated tests can trigger costly incident responses.",
       "D": "Test environments often differ from production controls."
     },
@@ -656,17 +656,17 @@
     "type": "application",
     "stem": "The EDR console reports 99% of endpoints protected. An audit finds that 20% of the company's endpoints never appear in the console at all. What is the flaw in the metric?",
     "options": {
-      "A": "The metric should be reported monthly instead of weekly",
-      "B": "Its denominator counts only enrolled endpoints, not every endpoint in the inventory",
-      "C": "The console rounds percentages up to the nearest whole number",
-      "D": "The metric includes servers as well as laptops"
+      "A": "It counts laptops but leaves out servers and virtual machines",
+      "B": "It counts only enrolled endpoints, not every endpoint in the inventory",
+      "C": "It is calculated once a week instead of once every day",
+      "D": "It treats servers and laptops as equally important"
     },
     "answer": "B",
     "explanation": "Coverage must be measured against the full asset inventory. A tool can report only on devices it knows about, so its own numbers overstate coverage.",
     "distractor_rationales": {
-      "A": "Frequency does not fix the wrong denominator.",
-      "C": "Rounding is trivial compared with missing 20% of devices.",
-      "D": "Including servers is appropriate for coverage."
+      "A": "The audit finding is about endpoints missing from the console entirely, not a device type being excluded.",
+      "C": "Frequency is not the problem. The metric ignores endpoints that never enrolled.",
+      "D": "Weighting may matter, but the flaw is the denominator."
     },
     "references_topic": "Choosing the right denominator",
     "version": "0.4"
@@ -680,17 +680,17 @@
     "type": "managerial_best_first_most",
     "stem": "A penetration test report includes step-by-step exploitation details for unpatched critical systems. How should it be distributed?",
     "options": {
-      "A": "Posted on the company intranet so that everyone can learn from it",
-      "B": "Emailed unencrypted to all IT staff and every business unit head",
-      "C": "Shared on a need-to-know basis, encrypted, with an executive summary for others",
-      "D": "Given to vendors so that they can fix their own products"
+      "A": "Shared with all IT staff on an access-controlled site",
+      "B": "Emailed, encrypted, to every business unit head in the company",
+      "C": "Need-to-know sharing, encrypted, with an executive summary for others",
+      "D": "Given to the external auditors with every appendix"
     },
     "answer": "C",
     "explanation": "Detailed reports are a roadmap for attackers until issues are fixed. Limiting and encrypting distribution, while giving others a sanitized summary, balances awareness with protection.",
     "distractor_rationales": {
-      "A": "Broad posting exposes the roadmap widely.",
-      "B": "Unencrypted mass distribution is easily leaked.",
-      "D": "Vendors should get only the details relevant to their products, through proper channels."
+      "A": "Access control helps, but all IT staff is far wider than need to know for exploitation details.",
+      "B": "Encryption protects transit, but most unit heads need only the summary.",
+      "D": "Auditors need evidence of findings and fixes, not the full exploitation steps."
     },
     "references_topic": "Protecting assessment reports",
     "version": "0.4"
@@ -704,17 +704,17 @@
     "type": "application",
     "stem": "A critical vendor's SOC 2 Type II report includes exceptions in change management testing. What is the BEST response?",
     "options": {
-      "A": "Ignore the exceptions, since the vendor still received a report",
+      "A": "Accept the report, since exceptions are common in practice",
       "B": "Terminate the contract immediately, since any exception at all is unacceptable",
-      "C": "Ask the vendor's auditors to remove the exceptions from the report",
+      "C": "Ask the vendor to explain the exceptions in writing",
       "D": "Assess their impact on your use, and ask the vendor for remediation plans"
     },
     "answer": "D",
     "explanation": "Exceptions must be evaluated in context. If they affect controls the company relies on, it should follow up with the vendor and consider compensating controls on its side.",
     "distractor_rationales": {
-      "A": "Exceptions can indicate real risk.",
+      "A": "Exceptions in change management can affect your service. They need assessing, not dismissing.",
       "B": "Automatic termination is disproportionate without assessment.",
-      "C": "Customers cannot and should not ask auditors to alter findings."
+      "C": "An explanation helps, but you still need to judge the impact and see remediation plans."
     },
     "references_topic": "Evaluating SOC report exceptions",
     "version": "0.4"
