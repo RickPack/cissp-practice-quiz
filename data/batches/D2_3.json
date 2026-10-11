@@ -249,16 +249,16 @@
     "stem": "Employees routinely email Confidential spreadsheets to personal accounts so they can work from home. What is the BEST response?",
     "options": {
       "A": "Offer a secure remote option and enforce rules with DLP",
-      "B": "Ban remote work entirely for anyone who handles such data",
-      "C": "Send an annual reminder about the handling rules",
-      "D": "Allow it to continue, since the work gets done"
+      "B": "Block personal webmail domains at the corporate email gateway",
+      "C": "Require annual handling training with a signed acknowledgment",
+      "D": "Reclassify the spreadsheets as Restricted to signal their value"
     },
     "answer": "A",
     "explanation": "People route around controls when there is no approved way to do their jobs. Provide a secure, sanctioned remote work option and enforce handling rules with technical controls such as DLP.",
     "distractor_rationales": {
-      "B": "A blanket ban harms the business and invites workarounds.",
-      "C": "An annual reminder does not change behavior when no alternative exists.",
-      "D": "Letting it continue exposes Confidential data outside company control."
+      "B": "Blocking webmail closes one route but leaves staff with no approved way to work from home, so they find another workaround.",
+      "C": "Training restates the rule, but behavior will not change while the only practical way to work from home breaks it.",
+      "D": "A higher label does not change how people handle the files. They need a sanctioned alternative plus enforcement."
     },
     "references_topic": "Enabling secure handling",
     "version": "0.3"

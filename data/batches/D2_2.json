@@ -8,17 +8,17 @@
     "type": "knowledge",
     "stem": "Why is an accurate asset inventory considered a foundational security control?",
     "options": {
-      "A": "It removes the need for regular vulnerability scanning of every system",
-      "B": "It is needed only to support insurance claims",
+      "A": "It shows auditors which security controls are operating effectively",
+      "B": "It supports asset valuation for insurance and depreciation records",
       "C": "An organization cannot protect assets it does not know exist",
-      "D": "It replaces the need to classify data by sensitivity"
+      "D": "It sets the data classification level each system must carry"
     },
     "answer": "C",
     "explanation": "Assets that nobody knows about are not patched, monitored, backed up, or protected. The inventory underpins risk, vulnerability, and configuration management.",
     "distractor_rationales": {
-      "A": "Scanning is still required. The inventory tells you what to scan.",
-      "B": "Insurance support is a minor use of an inventory, not its main security value.",
-      "D": "Classification decides how much protection each asset needs. The inventory only records what exists."
+      "A": "An inventory records what exists. Whether controls work is tested by audits and control assessments.",
+      "B": "Valuation for insurance and accounting is a real use, but a financial one. The security value is knowing what must be protected.",
+      "D": "Classification is a separate decision about sensitivity, made by data owners. The inventory records the asset so it can be classified."
     },
     "references_topic": "Asset inventory as a foundational control",
     "version": "0.2"

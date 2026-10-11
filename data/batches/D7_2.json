@@ -320,17 +320,17 @@
     "type": "managerial_best_first_most",
     "stem": "A guard notices an unknown person following an employee through a badge-controlled door without badging in. What should the guard do FIRST?",
     "options": {
-      "A": "Call the police and report a trespasser immediately",
-      "B": "Do nothing, since the employee let the person in",
+      "A": "Report the incident to the security operations center for logging",
+      "B": "Review the door camera footage to confirm what happened",
       "C": "Stop the person politely and verify their authorization",
-      "D": "Disable the employee's badge until an investigation is done"
+      "D": "Notify the employee's manager about the tailgating violation"
     },
     "answer": "C",
     "explanation": "Tailgating must be challenged. The guard verifies who the person is and whether they are authorized, then badges, escorts, or removes them as policy requires.",
     "distractor_rationales": {
-      "A": "Involving the police is premature. The person may be an authorized visitor.",
-      "B": "An employee holding the door does not authorize anyone.",
-      "D": "Disabling the badge punishes before the facts are known and does not deal with the person inside."
+      "A": "Reporting is required, but it comes after the immediate risk, an unverified person inside, is dealt with.",
+      "B": "Footage helps the later investigation. Meanwhile the person is inside and unverified.",
+      "D": "Addressing the employee's behavior is a follow-up. First verify whether the person inside is authorized."
     },
     "references_topic": "Tailgating response",
     "version": "0.2"

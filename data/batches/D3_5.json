@@ -536,17 +536,17 @@
     "type": "managerial_best_first_most",
     "stem": "The company's payment site went offline because its TLS certificate expired without anyone noticing. What is the BEST long-term fix?",
     "options": {
-      "A": "Buy certificates with the longest validity period available on the market",
-      "B": "Ask the web team to put certificate renewal dates on their personal calendars",
+      "A": "Monitor the site with an external uptime check that pages on-call staff",
+      "B": "Assign a named certificate owner who renews it by hand each year",
       "C": "Keep a certificate inventory with automated renewal and expiry alerts",
-      "D": "Disable certificate validation in the browsers used by customers"
+      "D": "Pin the certificate in the payment app so clients reject substitutes"
     },
     "answer": "C",
-    "explanation": "A central inventory with automated renewal, such as ACME, and alerts well before expiry prevents surprise outages.",
+    "explanation": "A central inventory with automated renewal, such as ACME, and alerts well before expiry prevents surprise outages without depending on anyone remembering.",
     "distractor_rationales": {
-      "A": "Longer validity delays but does not prevent the problem.",
-      "B": "Personal calendars are unreliable and leave with people.",
-      "D": "Customers' browsers cannot be changed, and disabling validation is dangerous."
+      "A": "Uptime monitoring alerts only after customers are already affected. It does not stop the certificate from expiring.",
+      "B": "An owner adds accountability, but manual yearly renewal still depends on one person remembering, which is how this outage happened.",
+      "D": "Pinning defends against substituted certificates. It makes renewals harder, not more reliable."
     },
     "references_topic": "Automated certificate renewal",
     "version": "1.0"
@@ -656,17 +656,17 @@
     "type": "managerial_best_first_most",
     "stem": "Microservices share a message queue, and any service can publish any message type. An attacker who compromised a low-value service published fake payment approvals. What is the BEST fix?",
     "options": {
-      "A": "Move the message queue to a larger cluster so it can handle more traffic",
-      "B": "Encrypt the queue's storage disks at rest",
-      "C": "Make the queue's name harder to guess",
+      "A": "Segment the low-value service onto its own isolated network zone",
+      "B": "Require mutual TLS between every service and the message broker",
+      "C": "Validate the schema of every message before consumers process it",
       "D": "Authorize publishers per message type and verify message authenticity"
     },
     "answer": "D",
     "explanation": "Each service should be allowed to publish only the messages it owns, and consumers should verify authenticity, so one compromised service cannot impersonate others.",
     "distractor_rationales": {
-      "A": "Capacity does not control who can publish.",
-      "B": "Disk encryption does not stop authorized-looking fake messages.",
-      "C": "Obscurity does not provide authorization."
+      "A": "Segmentation limits what the service can reach, but it still needs the broker, where it can still publish any message type.",
+      "B": "Mutual TLS proves which service is connected, but without per-type authorization the compromised service can still publish payment approvals.",
+      "C": "The fake approvals were well formed. Schema validation checks a message's shape, not whether the sender may send it."
     },
     "references_topic": "Securing message queues",
     "version": "1.0"

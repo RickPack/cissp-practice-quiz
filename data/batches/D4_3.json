@@ -728,17 +728,17 @@
     "type": "managerial_best_first_most",
     "stem": "Legal needs outside counsel to work in the company's collaboration platform on a sensitive matter. What is the BEST approach?",
     "options": {
-      "A": "Create a shared internal account for the law firm's staff",
+      "A": "Issue the law firm's staff standard employee accounts through the joiner process",
       "B": "Grant named guest access to a dedicated workspace with an expiry date and owner reviews",
-      "C": "Allow outside counsel to join any channel they need by sending them a reusable invitation link",
-      "D": "Email files to outside counsel instead of using the platform"
+      "C": "Federate with the law firm's identity provider and add them to the legal channels",
+      "D": "Share the files through a secure transfer portal with expiring download links"
     },
     "answer": "B",
     "explanation": "Named guest identities provide accountability, a dedicated workspace limits what they can see, and expiry plus owner reviews make sure access ends when the matter does.",
     "distractor_rationales": {
-      "A": "Shared accounts destroy accountability and are hard to revoke cleanly.",
-      "C": "Open invitation links can be forwarded and grant broader access than needed.",
-      "D": "Email removes central access control and logging, and increases uncontrolled copies."
+      "A": "Employee accounts give outside staff an insider's directory presence and default access, outside the matter's lifecycle.",
+      "C": "Federation is a sound way to authenticate them, but adding them to existing legal channels exposes other matters. Access should cover this matter only.",
+      "D": "A transfer portal protects delivery but moves the work off the platform, losing shared editing, central logging, and owner review."
     },
     "references_topic": "External guest access in collaboration platforms",
     "version": "0.3"

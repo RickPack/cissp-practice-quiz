@@ -560,17 +560,17 @@
     "type": "application",
     "stem": "Auditors found that data center staff sometimes lend their badges to coworkers to enter the server cage. Which control BEST addresses this?",
     "options": {
-      "A": "Printing larger photos on the badges",
-      "B": "Posting a policy notice on the cage door",
-      "C": "Adding a PIN or biometric check at the cage reader",
-      "D": "Extending the badge expiration period to one full year"
+      "A": "Configuring anti-passback on the data center's outer doors",
+      "B": "Logging every cage entry and reviewing the log each week",
+      "C": "Adding a PIN or biometric check at the cage door reader",
+      "D": "Recertifying the cage access list every quarter"
     },
     "answer": "C",
     "explanation": "A badge alone is something you have and can be lent. Adding something you know or something you are ties entry to the badge holder.",
     "distractor_rationales": {
-      "A": "Photos help only when someone checks them.",
-      "B": "A notice does not enforce anything.",
-      "D": "Expiration dates are unrelated to lending badges."
+      "A": "Anti-passback stops one badge being used twice in a row at the perimeter. A lent badge used once at the cage still works.",
+      "B": "The log records the badge, not the person holding it, so lending stays invisible. It is also only detective.",
+      "D": "Recertification removes people who should not have access. The staff lending badges are authorized, so the problem remains."
     },
     "references_topic": "Multi-factor physical access",
     "version": "0.3"
