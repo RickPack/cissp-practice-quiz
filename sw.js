@@ -1,6 +1,6 @@
 // Network-first cache so the site works offline after the first visit
 // and still picks up new bank versions as soon as it is back online.
-const CACHE = 'cissp-diagnostic-v7';
+const CACHE = 'cissp-diagnostic-v8';
 const SHELL = [
   './',
   'index.html',
@@ -18,8 +18,12 @@ const SHELL = [
   'lib/resume.js',
   'lib/review-deck.js',
   'lib/commute.js',
+  'lib/tracks.js',
+  'lib/rich-text.js',
   'data/manifest.json',
   'data/taxonomy.json',
+  'data-python/manifest.json',
+  'data-python/taxonomy.json',
 ];
 
 self.addEventListener('install', (event) => {
@@ -27,11 +31,13 @@ self.addEventListener('install', (event) => {
     (async () => {
       const cache = await caches.open(CACHE);
       await cache.addAll(SHELL);
-      try {
-        const manifest = await (await fetch('data/manifest.json', { cache: 'no-cache' })).json();
-        await cache.addAll(manifest.batches.map((b) => `data/${b.file}`));
-      } catch {
-        // Batches are also cached on first use by the fetch handler.
+      for (const dir of ['data', 'data-python']) {
+        try {
+          const manifest = await (await fetch(`${dir}/manifest.json`, { cache: 'no-cache' })).json();
+          await cache.addAll(manifest.batches.map((b) => `${dir}/${b.file}`));
+        } catch {
+          // Batches are also cached on first use by the fetch handler.
+        }
       }
       await self.skipWaiting();
     })(),
