@@ -34,6 +34,26 @@ test('the app\'s commute code never touches the quiz session or the report', () 
   assert.ok(!/storage\.(save|clear)|state\.session|state\.report|scoreSession|showReport|startSession|finish\(\)/.test(block));
 });
 
+test('the track toggle is only on the start screen', () => {
+  const html = readFileSync(new URL('../index.html', import.meta.url), 'utf8');
+  const start = html.slice(html.indexOf('<section id="start"'), html.indexOf('<section id="quiz"'));
+  const rest = html.slice(html.indexOf('<section id="quiz"'));
+  assert.equal((start.match(/name="track"/g) || []).length, 2);
+  assert.ok(!/name="track"/.test(rest));
+});
+
+test('the CISSP wording the track chrome writes matches the original page text', () => {
+  const html = readFileSync(new URL('../index.html', import.meta.url), 'utf8');
+  const pick = (name) => app.match(new RegExp(`const ${name} = ["'](.+?)["'];`))[1];
+  assert.ok(html.includes(`>${pick('CISSP_SAMPLING')}<`), 'sampling hint');
+  assert.ok(html.includes(`>${pick('CISSP_TYPE_SUB')}<`), 'type chart caption');
+});
+
+test('code is shown as text, never as HTML', () => {
+  assert.ok(!/innerHTML|insertAdjacentHTML|outerHTML/.test(app));
+  assert.match(app, /\$\('code-text'\)\.textContent = q\.code/);
+});
+
 test('commute mode is reached only from the start screen and only with speech output', () => {
   assert.match(app, /function setupCommute\(\) \{\s*if \(!speech\) return;/);
   const html = readFileSync(new URL('../index.html', import.meta.url), 'utf8');

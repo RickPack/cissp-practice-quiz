@@ -388,6 +388,16 @@ dialog h2 { margin-top: 0; }
   .speech-controls, .voice-controls, .read-expl { display: none !important; }
 }
 
+/* Tracks and code (Python track) */
+.track-toggle { display: flex; flex-wrap: wrap; gap: 6px 18px; align-items: center; border: 1px solid var(--border); border-radius: var(--radius); padding: .5rem 1rem; margin: .75rem 0 1rem; }
+.track-toggle legend { font-weight: 600; padding: 0 .25rem; }
+.track-toggle label { display: inline-flex; align-items: center; gap: 6px; }
+.code-block { margin: .75rem 0 1rem; padding: .75rem 1rem; overflow-x: auto; white-space: pre; tab-size: 4; font-size: .9rem; line-height: 1.45; background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--radius); }
+.code-block:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+code { font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace; font-size: .92em; }
+:not(pre) > code { background: var(--surface-2); border: 1px solid var(--border); border-radius: 4px; padding: 0 .25em; }
+@media print { .code-block { white-space: pre-wrap; overflow: visible; } .track-toggle { display: none !important; } }
+
 /* Commute mode */
 .commute-letters { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 1rem; }
 .commute-letters .btn { font-size: 1.15rem; font-weight: 700; min-height: 3rem; }

@@ -1,7 +1,7 @@
 import * as core from './lib/core.js';
 import { renderBarChart } from './lib/charts.js';
 import { createSpeech, isSupported as speechSupported, RATE_MIN, RATE_MAX } from './lib/speech.js';
-import { questionChunks, explanationChunks, feedbackChunks, skippedChunks, lineChunks } from './lib/speech-text.js';
+import { questionChunks, codeQuestionChunks, explanationChunks, feedbackChunks, skippedChunks, lineChunks } from './lib/speech-text.js';
 import { createVoice, isSupported as voiceSupported, recognitionCtor } from './lib/voice.js';
 import { loadPrefs, savePrefs } from './lib/voice-prefs.js';
 import { resumeIndex } from './lib/resume.js';
@@ -10,16 +10,20 @@ import {
   recordResult, tallyChange, emptySummary, commuteQueue,
 } from './lib/review-deck.js';
 import { createCommute } from './lib/commute.js';
+import { TRACKS, loadTrack, saveTrack, sanitizeTrack, trackKeys, unitLabel } from './lib/tracks.js';
+import { inlineRuns } from './lib/rich-text.js';
 
-const STORE_KEY = 'cissp-diagnostic:session';
 const $ = (id) => document.getElementById(id);
 
-const state = { bank: [], lookup: new Map(), taxonomy: null, bankVersion: '?', session: null, report: null, deckSummary: null };
+const state = { track: 'cissp', bank: [], lookup: new Map(), taxonomy: null, bankVersion: '?', session: null, report: null, deckSummary: null };
 
+const track = () => TRACKS[state.track];
+
+// Each track saves its session under its own key; the CISSP key is unchanged from earlier versions.
 const storage = {
   load() {
     try {
-      const raw = localStorage.getItem(STORE_KEY);
+      const raw = localStorage.getItem(trackKeys(state.track).session);
       return raw ? JSON.parse(raw) : null;
     } catch {
       return null;
@@ -27,14 +31,14 @@ const storage = {
   },
   save(session) {
     try {
-      localStorage.setItem(STORE_KEY, JSON.stringify(session));
+      localStorage.setItem(trackKeys(state.track).session, JSON.stringify(session));
     } catch {
       // Storage unavailable (private mode, quota): the session continues in memory.
     }
   },
   clear() {
     try {
-      localStorage.removeItem(STORE_KEY);
+      localStorage.removeItem(trackKeys(state.track).session);
     } catch {
       // Nothing stored to clear.
     }
@@ -58,14 +62,22 @@ function el(tag, props = {}, ...children) {
 
 function richText(node, text) {
   node.replaceChildren(
-    ...core.emphasisRuns(text).map((r) => (r.strong ? el('strong', { text: r.text }) : document.createTextNode(r.text))),
+    ...inlineRuns(text, { code: track().inlineCode }).map((r) =>
+      r.code ? el('code', { text: r.text }) : r.strong ? el('strong', { text: r.text }) : document.createTextNode(r.text),
+    ),
   );
   return node;
 }
 
+// A question's code block, shown as plain text (textContent), never as HTML.
+function codeBlock(code, label) {
+  return el('pre', { class: 'code-block', tabindex: '0', 'aria-label': label }, el('code', { text: code }));
+}
+
 const fmtPct = (v) => (v == null ? '–' : `${Math.round(v * 100)}%`);
 const fmtCI = (ci) => (ci ? `${fmtPct(ci[0])}–${fmtPct(ci[1])}` : '–');
-const domainLabel = (d) => `D${d} ${state.taxonomy.domains[d].name}`;
+const domainLabel = (d) => unitLabel(state.track, d, state.taxonomy.domains[d].name);
+const unitShort = (d) => `${track().unitShort}${d}`;
 const capitalize = (s) => s.charAt(0).toUpperCase() + s.slice(1);
 
 const STATUS = {
@@ -108,8 +120,9 @@ function usable(q, taxonomy) {
 }
 
 async function loadBank() {
-  const [manifest, taxonomy] = await Promise.all([fetchJSON('data/manifest.json'), fetchJSON('data/taxonomy.json')]);
-  const batches = await Promise.all(manifest.batches.map((b) => fetchJSON(`data/${b.file}`)));
+  const dir = track().dataDir;
+  const [manifest, taxonomy] = await Promise.all([fetchJSON(`${dir}/manifest.json`), fetchJSON(`${dir}/taxonomy.json`)]);
+  const batches = await Promise.all(manifest.batches.map((b) => fetchJSON(`${dir}/${b.file}`)));
   const seen = new Set();
   const bank = [];
   for (const q of batches.flat()) {
@@ -149,9 +162,59 @@ function restoreOpen() {
   return saved;
 }
 
+// ---------- Tracks ----------
+
+const CISSP_SAMPLING = "Questions are drawn at random in proportion to the exam's domain weights and a 30/45/25 easy/medium/hard mix. You can submit once you have answered at least 20.";
+const PYTHON_SAMPLING = 'Questions are drawn at random, evenly across the six topics, with a 30/45/25 easy/medium/hard mix. You can submit once you have answered at least 20.';
+const CISSP_TYPE_SUB = 'Managerial questions ask for the best, first, or most appropriate action, not the most technical one. Bars show percent correct. Whiskers show the 95% interval.';
+const PYTHON_TYPE_SUB = 'Knowledge questions ask what the code does and why; application questions ask what a snippet prints. Bars show percent correct. Whiskers show the 95% interval.';
+
+// Text that differs between the CISSP and Python tracks. Everything else on the page is shared.
+function applyTrackChrome() {
+  const t = track();
+  const python = t.id === 'python';
+  const unit = t.unitName;
+  document.title = t.brand;
+  $('brand').textContent = t.brand;
+  $('start-title').textContent = t.title;
+  $('disclaimer').hidden = python;
+  $('python-intro').hidden = !python;
+  $('sampling-hint').textContent = python ? PYTHON_SAMPLING : CISSP_SAMPLING;
+  for (const input of document.querySelectorAll('input[name="track"]')) input.checked = input.value === t.id;
+  $('report-title').textContent = python ? 'Python practice report' : 'Diagnostic report';
+  $('report-notice').hidden = python;
+  $('report-python-notice').hidden = !python;
+  $('results-by-unit').textContent = `Results by ${unit}`;
+  $('domain-table-caption').textContent = `Results by ${unit}`;
+  $('unit-col').textContent = capitalize(unit);
+  $('domain-chart-title').textContent = `Percent correct by ${unit}`;
+  $('type-chart-sub').textContent = python ? PYTHON_TYPE_SUB : CISSP_TYPE_SUB;
+  $('filter-domain-label').textContent = capitalize(unit);
+  $('retake-btn').textContent = `Retake focusing on weak ${unit}s`;
+}
+
+// Track choice is only offered on the start screen, so no quiz, report, or commute run is ever open here.
+async function switchTrack(id) {
+  const next = sanitizeTrack(id);
+  if (next === state.track) return;
+  const prev = state.track;
+  $('track-error').hidden = true;
+  state.track = next;
+  try {
+    await loadBank();
+    saveTrack(next);
+  } catch (err) {
+    state.track = prev;
+    $('track-error').textContent = `The ${TRACKS[next].label} questions could not be loaded (${err.message}). Staying with ${TRACKS[prev].label}.`;
+    $('track-error').hidden = false;
+  }
+  setupStart();
+}
+
 // ---------- Start screen ----------
 
 function setupStart() {
+  applyTrackChrome();
   const max = core.maxSessionLength(state.bank.length);
   const range = $('length-range');
   const num = $('length-number');
@@ -195,7 +258,8 @@ function browserStorage() {
 }
 
 const today = () => localDate(new Date());
-const currentDeck = () => loadDeck(browserStorage(), state.lookup, today());
+const deckKey = () => trackKeys(state.track).review;
+const currentDeck = () => loadDeck(browserStorage(), state.lookup, today(), deckKey());
 const displayDate = (ymd) => new Date(Number(ymd.slice(0, 4)), Number(ymd.slice(5, 7)) - 1, Number(ymd.slice(8, 10))).toLocaleDateString();
 
 function renderDeckCard() {
@@ -235,7 +299,7 @@ function updateDeck(report) {
     flagged: row.flagged,
   }));
   const summary = applySession(deck, results, today());
-  summary.saved = saveDeck(deck, browserStorage());
+  summary.saved = saveDeck(deck, browserStorage(), deckKey());
   return summary;
 }
 
@@ -298,6 +362,8 @@ function renderQuestion({ focusOptions = false } = {}) {
   $('q-total').textContent = String(s.items.length);
   $('q-live').textContent = `Question ${s.current + 1} of ${s.items.length}`;
   richText($('stem'), q.stem);
+  $('code').hidden = !q.code;
+  $('code-text').textContent = q.code || '';
 
   const fieldset = $('options');
   fieldset.querySelectorAll('.option').forEach((n) => n.remove());
@@ -554,7 +620,9 @@ let autoReadOn = false;
 function readQuestion() {
   const { it, q } = currentQuestion();
   const view = core.viewQuestion(q, it.perm);
-  speech.play(questionChunks({ number: state.session.current + 1, stem: q.stem, options: view.options }));
+  const number = state.session.current + 1;
+  // Code read aloud is noise: for a question with code, read the stem and point to the screen.
+  speech.play(q.code ? codeQuestionChunks({ number, stem: q.stem }) : questionChunks({ number, stem: q.stem, options: view.options }));
 }
 
 // After a reload, browsers block speech and mic starts until the first tap or key press.
@@ -742,33 +810,35 @@ function renderReport() {
   const r = state.report;
   const tax = state.taxonomy;
   const target = Math.round(r.target * 100);
+  const unit = track().unitName;
 
   const meta = [
     `Bank v${s.bankVersion}`,
     `${r.answered} of ${r.total} answered`,
     `seed ${s.seed}`,
     s.submittedAt ? `submitted ${new Date(s.submittedAt).toLocaleString()}` : null,
-    s.mode === 'focus' ? `focused on ${s.focusDomains.map((d) => `D${d}`).join(', ')}` : null,
+    s.mode === 'focus' ? `focused on ${s.focusDomains.map(unitShort).join(', ')}` : null,
     s.mode === 'review' ? 'review of due questions only' : null,
   ];
   $('report-meta').textContent = meta.filter(Boolean).join(' · ');
   renderDeckLine();
 
-  $('score-tiles').replaceChildren(
+  // The exam-weight tile only makes sense for the CISSP track, whose domains carry exam weights.
+  $('score-tiles').replaceChildren(...[
     tile('Raw score', fmtPct(r.overall.pct), `${r.overall.correct} of ${r.overall.n} correct`),
     tile('Difficulty-weighted', fmtPct(r.overall.weightedPct), 'Easy 1, medium 1.5, hard 2 points'),
-    tile('Exam-weight adjusted', fmtPct(r.examWeighted), 'Each domain counted by its exam weight'),
+    track().examWeighted ? tile('Exam-weight adjusted', fmtPct(r.examWeighted), 'Each domain counted by its exam weight') : null,
     tile('Answered', `${r.answered}/${r.total}`, r.unanswered.length ? `${r.unanswered.length} unanswered, excluded` : 'None left unanswered'),
-  );
+  ].filter(Boolean));
 
   $('rule-text').replaceChildren(
-    el('p', {}, el('strong', { text: 'How domains are classified. ' }),
-      `Each domain gets a 95% interval: the range of true scores that fits your answers. The fewer questions you answered in a domain, the wider its interval. `),
+    el('p', {}, el('strong', { text: `How ${unit}s are classified. ` }),
+      `Each ${unit} gets a 95% interval: the range of true scores that fits your answers. The fewer questions you answered in a ${unit}, the wider its interval. `),
     el('ul', { class: 'plain-list' },
       el('li', {}, el('strong', { text: 'Strength: ' }), `the whole interval is at or above ${target}%.`),
       el('li', {}, el('strong', { text: 'Weakness: ' }), `the whole interval is below ${target}%.`),
       el('li', {}, el('strong', { text: 'Adequate: ' }), `the interval crosses ${target}%, so the data cannot yet say either way.`),
-      el('li', {}, el('strong', { text: 'Insufficient data: ' }), `fewer than ${r.minN} questions answered in the domain. It is never called a strength or a weakness.`),
+      el('li', {}, el('strong', { text: 'Insufficient data: ' }), `fewer than ${r.minN} questions answered in the ${unit}. It is never called a strength or a weakness.`),
     ),
     el('p', { text: `${target}% is a study target chosen for this tool, not an official passing mark.` }),
   );
@@ -823,9 +893,9 @@ function renderReport() {
 
   renderBarChart(
     $('type-chart'),
-    core.QUESTION_TYPES.map((k) => {
+    track().types.map((k) => {
       const x = r.byType[k];
-      const label = TYPE_LABELS[k];
+      const label = typeLabel(k);
       return {
         label,
         value: x.n ? x.pct : null,
@@ -836,13 +906,14 @@ function renderReport() {
       };
     }),
   );
-  renderTypeHint(r);
+  if (track().managerialHint) renderTypeHint(r);
+  else $('type-hint').hidden = true;
 
   renderGuidance();
   renderUnanswered();
 
   const domainFilter = $('filter-domain');
-  domainFilter.replaceChildren(el('option', { value: '', text: 'All domains' }), ...Object.keys(tax.domains).map((d) => el('option', { value: d, text: domainLabel(d) })));
+  domainFilter.replaceChildren(el('option', { value: '', text: `All ${unit}s` }), ...Object.keys(tax.domains).map((d) => el('option', { value: d, text: domainLabel(d) })));
   $('filter-kind').value = 'missed-flagged';
   $('filter-difficulty').value = '';
   renderReview();
@@ -850,8 +921,8 @@ function renderReport() {
   const weak = r.weakDomains;
   $('retake-btn').setAttribute('aria-disabled', String(!weak.length));
   $('retake-help').textContent = weak.length
-    ? `The retake draws about 60% of its questions from ${weak.map((d) => `D${d}`).join(', ')}.`
-    : 'No domain is classified as a Weakness, so a focused retake is not available. Start a new session instead.';
+    ? `The retake draws about 60% of its questions from ${weak.map(unitShort).join(', ')}.`
+    : `No ${unit} is classified as a Weakness, so a focused retake is not available. Start a new session instead.`;
 }
 
 const TYPE_LABELS = {
@@ -859,6 +930,8 @@ const TYPE_LABELS = {
   application: 'Application (scenario)',
   managerial_best_first_most: 'Managerial (best / first / most)',
 };
+const PYTHON_TYPE_LABELS = { knowledge: 'Knowledge (how and why)', application: 'Application (what it prints)' };
+const typeLabel = (k) => (state.track === 'python' ? PYTHON_TYPE_LABELS[k] : TYPE_LABELS[k]);
 
 // Only speaks up when there is enough data and a clear gap. Otherwise it says nothing.
 function renderTypeHint(r) {
@@ -883,9 +956,9 @@ function renderGuidance() {
       .slice(0, 3)
       .map(([d]) => domainLabel(d));
     box.replaceChildren(...[
-      el('p', { text: 'No domain is a clear weakness in this session.' }),
+      el('p', { text: `No ${track().unitName} is a clear weakness in this session.` }),
       adequate.length
-        ? el('p', { text: `Lowest-scoring domains with too little evidence to call: ${adequate.join('; ')}. A longer session narrows their intervals.` })
+        ? el('p', { text: `Lowest-scoring ${track().unitName}s with too little evidence to call: ${adequate.join('; ')}. A longer session narrows their intervals.` })
         : null,
     ].filter(Boolean));
     return;
@@ -911,7 +984,7 @@ function renderUnanswered() {
   const order = new Map(state.session.items.map((it, i) => [it.id, i + 1]));
   $('unanswered-list').replaceChildren(
     ...r.unanswered.map((row) =>
-      el('li', { text: `Question ${order.get(row.q.id)}: D${row.q.domain}, ${row.q.subtopic} (${row.q.difficulty})${row.flagged ? ', flagged' : ''}` }),
+      el('li', { text: `Question ${order.get(row.q.id)}: ${unitShort(row.q.domain)}, ${row.q.subtopic} (${row.q.difficulty})${row.flagged ? ', flagged' : ''}` }),
     ),
   );
 }
@@ -967,6 +1040,7 @@ function reviewItem(row, number) {
       el('span', { class: 'tag', text: capitalize(q.difficulty) }),
     ),
     stem,
+    q.code ? codeBlock(q.code, `Code for question ${number}`) : null,
     options,
     el('p', { text: `Your answer: ${chosen || 'none'}. Correct answer: ${view.correct}.` }),
     el('p', { class: 'review-expl' }, el('strong', { text: `Why ${view.correct} is correct: ` }), q.explanation),
@@ -985,10 +1059,10 @@ function reviewItem(row, number) {
 }
 
 function exportJSON() {
-  const data = core.exportResults(state.session, state.report, { exported_at: new Date().toISOString() });
+  const data = core.exportResults(state.session, state.report, { tool: track().exportTool, track: state.track, exported_at: new Date().toISOString() });
   const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
   const url = URL.createObjectURL(blob);
-  const a = el('a', { href: url, download: `cissp-diagnostic-${(state.session.submittedAt || '').slice(0, 10)}-${state.session.seed}.json` });
+  const a = el('a', { href: url, download: `${track().exportPrefix}-${(state.session.submittedAt || '').slice(0, 10)}-${state.session.seed}.json` });
   document.body.append(a);
   a.click();
   a.remove();
@@ -1066,7 +1140,7 @@ function commuteResult(i, letter) {
   if (outcome !== 'skipped') {
     const deck = currentDeck();
     tallyChange(run.deckSummary, recordResult(deck, q.id, outcome, today()));
-    saveDeck(deck, browserStorage());
+    saveDeck(deck, browserStorage(), deckKey());
   }
   const verdict = { correct: 'Correct', missed: 'Not correct', skipped: 'Skipped' }[outcome];
   const answerLine = el('p', {}, el('strong', { text: `Correct answer: ${view.correct}. ` }), richText(el('span'), correctText));
@@ -1115,15 +1189,17 @@ function planCommute() {
     deck: currentDeck(),
     today: today(),
     recentMissed,
-    bankIds: state.bank.map((q) => q.id),
+    bankIds: state.bank.filter((q) => !q.code).map((q) => q.id), // code cannot be read aloud
     rng: Math.random,
     exclude: new Set(open ? open.items.map((it) => it.id) : []),
   });
   run.ids = ids;
   run.perms = ids.map(() => core.makePermutation(Math.random));
   run.counts = counts;
-  $('commute-plan').textContent =
-    `${ids.length} questions: ${counts.due} due for review, ${counts.recent} missed recently, ${counts.random} at random.`;
+  $('commute-plan').textContent = ids.length
+    ? `${ids.length} questions: ${counts.due} due for review, ${counts.recent} missed recently, ${counts.random} at random.`
+    : 'No questions in this bank can be read aloud yet.';
+  $('commute-start').disabled = !ids.length;
 }
 
 function openCommute() {
@@ -1202,6 +1278,9 @@ function wire() {
     if (state.session) showQuiz();
   });
   $('discard-btn').addEventListener('click', () => { storage.clear(); setupStart(); });
+  for (const input of document.querySelectorAll('input[name="track"]')) {
+    input.addEventListener('change', () => { if (input.checked) switchTrack(input.value); });
+  }
   $('view-last-btn').addEventListener('click', () => {
     const saved = restore(storage.load());
     if (saved) showReport(saved);
@@ -1211,7 +1290,7 @@ function wire() {
   $('clear-deck-cancel').addEventListener('click', () => $('clear-deck-dialog').close());
   $('clear-deck-ok').addEventListener('click', () => {
     $('clear-deck-dialog').close();
-    clearDeck(browserStorage());
+    clearDeck(browserStorage(), deckKey());
     renderDeckCard();
   });
 
@@ -1233,8 +1312,15 @@ function wire() {
 
 async function main() {
   wire();
+  state.track = loadTrack();
   try {
-    await loadBank();
+    try {
+      await loadBank();
+    } catch (err) {
+      if (state.track === 'cissp') throw err;
+      state.track = 'cissp'; // the other bank failed to load: fall back to CISSP rather than show nothing
+      await loadBank();
+    }
   } catch (err) {
     $('loading').hidden = true;
     const box = $('load-error');
@@ -1242,6 +1328,7 @@ async function main() {
     box.textContent = `The question bank could not be loaded (${err.message}). If you opened index.html directly from disk, serve the folder over HTTP instead, for example: python -m http.server`;
     return;
   }
+  applyTrackChrome();
   const saved = restoreOpen();
   if (saved) {
     state.session = saved;

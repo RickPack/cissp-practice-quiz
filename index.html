@@ -15,7 +15,7 @@
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header">
     <div class="wrap">
-      <p class="brand">CISSP Practice Diagnostic</p>
+      <p class="brand" id="brand">CISSP Practice Diagnostic</p>
     </div>
   </header>
 
@@ -26,6 +26,15 @@
     <!-- Start screen -->
     <section id="start" hidden aria-labelledby="start-title">
       <h1 id="start-title">Practice exam and domain diagnostic</h1>
+      <fieldset class="track-toggle" id="track-toggle">
+        <legend>Question bank</legend>
+        <label><input type="radio" name="track" value="cissp" checked> CISSP</label>
+        <label><input type="radio" name="track" value="python"> Python (this site's own code)</label>
+      </fieldset>
+      <div id="track-error" class="notice notice-error" role="alert" hidden></div>
+      <div class="notice" id="python-intro" hidden>
+        <p><strong>Python practice from this site's own code.</strong> Every question is about the Python that checks this site's question bank: <a href="https://github.com/RickPack/cissp-practice-quiz/blob/main/validation/validate.py">validation/validate.py</a> and <a href="https://github.com/RickPack/cissp-practice-quiz/blob/main/validation/audit.py">validation/audit.py</a>. Every "what does this print?" answer was checked by running the code. The other questions have not yet had an independent review.</p>
+      </div>
       <div class="notice" id="disclaimer">
         <p><strong>Unofficial practice tool.</strong> Not affiliated with or endorsed by ISC2. CISSP is a registered mark of ISC2.
         Scores here are for study planning only and do not predict results on the real exam.</p>
@@ -69,7 +78,7 @@
 
       <form id="start-form" class="card" novalidate>
         <h2>New session</h2>
-        <p class="hint">Questions are drawn at random in proportion to the exam's domain weights and a 30/45/25 easy/medium/hard mix. You can submit once you have answered at least 20.</p>
+        <p class="hint" id="sampling-hint">Questions are drawn at random in proportion to the exam's domain weights and a 30/45/25 easy/medium/hard mix. You can submit once you have answered at least 20.</p>
         <div class="field">
           <label for="length-range">Number of questions</label>
           <div class="length-row">
@@ -109,6 +118,7 @@
       <article class="card question-card" aria-labelledby="q-heading">
         <p class="flag-badge" id="flag-badge" hidden>Flagged for review</p>
         <p class="stem" id="stem"></p>
+        <pre class="code-block" id="code" tabindex="0" aria-label="Code for this question" hidden><code id="code-text"></code></pre>
         <fieldset class="options" id="options">
           <legend class="sr-only">Answer choices</legend>
         </fieldset>
@@ -180,24 +190,25 @@
     <section id="report" hidden aria-labelledby="report-title">
       <h1 id="report-title" tabindex="-1">Diagnostic report</h1>
       <p class="hint" id="report-meta"></p>
-      <div class="notice"><p><strong>Unofficial practice tool.</strong> Not affiliated with or endorsed by ISC2. These results are for study planning only and do not predict exam results.</p></div>
+      <div class="notice" id="report-notice"><p><strong>Unofficial practice tool.</strong> Not affiliated with or endorsed by ISC2. These results are for study planning only and do not predict exam results.</p></div>
+      <div class="notice" id="report-python-notice" hidden><p><strong>Python practice.</strong> Questions about this site's own code. Results are for study planning only.</p></div>
 
       <div class="tiles" id="score-tiles"></div>
       <p id="deck-line" class="deck-line" role="status" hidden></p>
 
-      <h2>Results by domain</h2>
+      <h2 id="results-by-unit">Results by domain</h2>
       <div class="notice notice-plain" id="rule-text"></div>
       <div class="table-scroll">
         <table class="data-table" id="domain-table">
-          <caption class="sr-only">Results by domain</caption>
-          <thead><tr><th scope="col">Domain</th><th scope="col" class="num">Answered</th><th scope="col" class="num">Correct</th><th scope="col" class="num">95% interval</th><th scope="col" class="num">Weighted</th><th scope="col">Status</th></tr></thead>
+          <caption class="sr-only" id="domain-table-caption">Results by domain</caption>
+          <thead><tr><th scope="col" id="unit-col">Domain</th><th scope="col" class="num">Answered</th><th scope="col" class="num">Correct</th><th scope="col" class="num">95% interval</th><th scope="col" class="num">Weighted</th><th scope="col">Status</th></tr></thead>
           <tbody></tbody>
         </table>
       </div>
 
       <figure class="viz" id="domain-chart">
         <figcaption>
-          <span class="viz-title">Percent correct by domain</span>
+          <span class="viz-title" id="domain-chart-title">Percent correct by domain</span>
           <span class="viz-sub">Bars show percent correct. Whiskers show the 95% interval. The vertical line marks the 70% target.</span>
         </figcaption>
       </figure>
@@ -212,7 +223,7 @@
       <figure class="viz" id="type-chart">
         <figcaption>
           <span class="viz-title">Percent correct by question type</span>
-          <span class="viz-sub">Managerial questions ask for the best, first, or most appropriate action, not the most technical one. Bars show percent correct. Whiskers show the 95% interval.</span>
+          <span class="viz-sub" id="type-chart-sub">Managerial questions ask for the best, first, or most appropriate action, not the most technical one. Bars show percent correct. Whiskers show the 95% interval.</span>
         </figcaption>
       </figure>
       <p id="type-hint" class="type-hint" hidden></p>
@@ -237,7 +248,7 @@
             <option value="all">All questions</option>
           </select>
         </label>
-        <label>Domain
+        <label><span id="filter-domain-label">Domain</span>
           <select id="filter-domain"><option value="">All domains</option></select>
         </label>
         <label>Difficulty
