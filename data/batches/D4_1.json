@@ -59,14 +59,14 @@
       "A": "WPA3-Personal using SAE",
       "B": "WEP with a 128-bit key",
       "C": "WPA2 with TKIP",
-      "D": "An open network with MAC address filtering"
+      "D": "WPA2-Personal using AES and a long passphrase"
     },
     "answer": "A",
     "explanation": "WPA3-Personal uses Simultaneous Authentication of Equals (SAE), which resists offline dictionary attacks and provides forward secrecy.",
     "distractor_rationales": {
       "B": "WEP is fundamentally broken because of how it uses RC4 and its initialization vectors, regardless of key length.",
       "C": "TKIP is deprecated and has known weaknesses. WPA2 with AES would be stronger, but WPA3 is better still.",
-      "D": "An open network does not encrypt traffic, and MAC filtering is easily bypassed by spoofing an allowed address."
+      "D": "WPA2 with AES is solid, but WPA3's SAE also resists offline passphrase guessing and gives forward secrecy."
     },
     "references_topic": "Wi-Fi security protocols",
     "version": "0.1"
@@ -80,17 +80,17 @@
     "type": "managerial_best_first_most",
     "stem": "A hospital's medical imaging devices run outdated operating systems that cannot be patched, and they currently share a network with staff workstations. What should the network security team do FIRST to reduce risk?",
     "options": {
-      "A": "Replace every imaging device with a current model within 30 days",
+      "A": "Deploy a network IDS to watch the imaging devices' traffic",
       "B": "Move the devices to an isolated segment with tight traffic rules",
       "C": "Install endpoint antivirus software on each imaging device",
-      "D": "Disable network access for the imaging devices permanently"
+      "D": "Restrict which staff accounts can log in to the devices"
     },
     "answer": "B",
     "explanation": "Segmentation isolates the unpatchable devices and allows only the flows they need, such as traffic to the image archive. It limits exposure and lateral movement, and it can be done quickly without disrupting patient care.",
     "distractor_rationales": {
-      "A": "Replacing every device is expensive and may be impossible within 30 days. It is not a realistic first step.",
+      "A": "Monitoring detects attacks but leaves the devices reachable from every workstation.",
       "C": "Installing software on regulated medical devices can void vendor certification, and many devices do not support it.",
-      "D": "Permanent disconnection breaks clinical workflows and harms availability and patient safety."
+      "D": "Login restrictions do not stop network attacks against the unpatched operating systems."
     },
     "references_topic": "Segmenting unpatchable devices",
     "version": "0.1"
@@ -153,16 +153,16 @@
     "stem": "A company's remote workers use a full-tunnel VPN, and the VPN concentrator is saturated by video-conferencing traffic to a sanctioned SaaS provider. Management wants to relieve the load without weakening protection of internal resources. Which approach is BEST?",
     "options": {
       "A": "Split-tunnel only the sanctioned SaaS traffic; tunnel everything else",
-      "B": "Disable the VPN and publish internal applications directly to the internet",
-      "C": "Let each user decide which traffic to route through the tunnel from their client",
-      "D": "Switch the VPN to a weaker cipher suite to reduce concentrator processing load"
+      "B": "Upgrade the concentrator and keep full tunneling for all traffic",
+      "C": "Split-tunnel all internet traffic and tunnel only internal apps",
+      "D": "Block video calls on the VPN and ask users to call by phone"
     },
     "answer": "A",
     "explanation": "Selective split tunneling for one trusted, high-bandwidth SaaS destination removes that traffic from the concentrator while internal resources remain reachable only through the tunnel. It can be paired with endpoint and cloud security controls.",
     "distractor_rationales": {
-      "B": "Publishing internal applications directly to the internet greatly expands the attack surface.",
-      "C": "User-controlled routing is inconsistent and cannot be enforced or audited.",
-      "D": "A weaker cipher lowers protection for all tunneled traffic, which is exactly what management wants to avoid."
+      "B": "A bigger concentrator works but costs more and still hauls trusted SaaS traffic through it for no security gain.",
+      "C": "Splitting all internet traffic removes inspection of general browsing, weakening protection more than needed.",
+      "D": "Blocking video harms the business and works around the problem rather than solving it."
     },
     "references_topic": "Split tunneling trade-offs",
     "version": "0.1"
@@ -200,16 +200,16 @@
     "type": "managerial_best_first_most",
     "stem": "An organization is migrating to a software-defined network in which a centralized controller programs all switches. During design review, which risk should the security architect treat as the HIGHEST priority?",
     "options": {
-      "A": "Increased cabling complexity in the data center",
-      "B": "Reduced visibility, because traffic in an SDN cannot be monitored at all",
+      "A": "Misconfigured flow rules pushed to a single switch",
+      "B": "Loss of hardware vendor diversity across the switch fleet",
       "C": "Compromise of the central controller and its management interfaces",
       "D": "Slower convergence compared with traditional routing protocols"
     },
     "answer": "C",
     "explanation": "The controller is a centralized control plane, so compromising it gives an attacker network-wide control. Hardening it, authenticating its northbound and southbound interfaces, restricting administrative access, and building redundancy are top priorities.",
     "distractor_rationales": {
-      "A": "Cabling complexity is not a leading security risk, and SDN often reduces it.",
-      "B": "SDN traffic can be monitored, and centralized control often improves visibility.",
+      "A": "A bad rule on one switch is local. A compromised controller can reprogram the whole network.",
+      "B": "Vendor diversity is a minor concern next to the controller being a single point of control.",
       "D": "Convergence speed is a performance concern rather than the highest security priority, and SDN often converges quickly."
     },
     "references_topic": "SDN controller protection",
@@ -225,15 +225,15 @@
     "stem": "A law firm is adopting a cloud video conferencing service for confidential client meetings. Which control would BEST reduce the risk of unauthorized parties joining meetings?",
     "options": {
       "A": "Publishing meeting links only in calendar invitations",
-      "B": "Requiring every participant to join using a wired rather than wireless connection",
-      "C": "Enabling end-to-end encryption for every meeting",
-      "D": "Requiring authenticated attendees and a host-controlled waiting room"
+      "B": "Changing each recurring meeting's password every month",
+      "C": "Enabling end-to-end encryption for every client meeting",
+      "D": "Requiring signed-in attendees and a host-controlled waiting room"
     },
     "answer": "D",
     "explanation": "Unauthorized joining is an access control problem. Requiring attendees to authenticate and having the host admit each one from a waiting room directly controls who gets in.",
     "distractor_rationales": {
       "A": "Invitations are easily forwarded, and a link alone does not authenticate anyone.",
-      "B": "The type of network connection has no bearing on who is allowed to join.",
+      "B": "Rotating passwords helps a little, but links and passwords get forwarded. Authenticated attendees with host admission stop unknown joiners.",
       "C": "End-to-end encryption protects content in transit and from the provider, but anyone admitted to the meeting can still see and hear everything."
     },
     "references_topic": "Conferencing access control",

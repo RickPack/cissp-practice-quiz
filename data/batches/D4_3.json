@@ -33,16 +33,16 @@
     "stem": "Applications query a directory server over LDAP on port 389, and bind passwords cross the network in cleartext. Which replacement BEST protects these credentials?",
     "options": {
       "A": "LDAP over TLS (LDAPS) on port 636",
-      "B": "LDAP on port 389 with anonymous binds",
-      "C": "SNMPv2c with a new community string",
-      "D": "Telnet to the directory server console"
+      "B": "LDAP on port 389 with SASL DIGEST-MD5 binds",
+      "C": "LDAP on port 389 with an IP allowlist on the server",
+      "D": "LDAP with passwords hashed by the client before binding"
     },
     "answer": "A",
     "explanation": "LDAPS wraps LDAP in TLS, so bind credentials and query results are encrypted and the server is authenticated by its certificate.",
     "distractor_rationales": {
-      "B": "Anonymous binds remove authentication altogether and still send data in cleartext.",
-      "C": "SNMP is a management protocol, and version 2c also sends its community string in cleartext.",
-      "D": "Telnet is itself a cleartext protocol and does nothing for application queries."
+      "B": "DIGEST-MD5 is deprecated and weak. TLS protects the whole session properly.",
+      "C": "Allowlisting limits who can connect, but the passwords still cross the network in cleartext.",
+      "D": "A client-side hash becomes the password itself, so capturing it is just as useful to an attacker."
     },
     "references_topic": "LDAP over TLS",
     "version": "0.3"
@@ -80,17 +80,17 @@
     "type": "application",
     "stem": "A switch suddenly begins sending all traffic out of every port after an attacker floods it with thousands of frames from random source addresses. Which control BEST prevents this?",
     "options": {
-      "A": "Enabling DNSSEC validation on the resolvers",
-      "B": "Moving the switch to a separate subnet",
+      "A": "Dynamic ARP inspection on the access ports",
+      "B": "DHCP snooping on the access switches",
       "C": "Port security that limits MAC addresses per port",
-      "D": "Replacing the switch with a wireless access point"
+      "D": "Storm control that limits broadcast traffic per port"
     },
     "answer": "C",
     "explanation": "MAC flooding fills the switch's address table so it fails open and behaves like a hub. Port security caps the number of MAC addresses learned on each port and blocks the flood.",
     "distractor_rationales": {
-      "A": "DNSSEC protects DNS answers and has nothing to do with the switch's address table.",
-      "B": "Changing the subnet does not stop layer 2 frames from filling the address table.",
-      "D": "A wireless access point is a shared medium and would make eavesdropping easier."
+      "A": "DAI stops ARP spoofing, not a flood of random source MAC addresses.",
+      "B": "DHCP snooping protects address assignment, not the MAC table.",
+      "D": "Storm control limits broadcast floods. This attack overflows the MAC table with unicast source addresses."
     },
     "references_topic": "MAC flooding and port security",
     "version": "0.3"
@@ -104,17 +104,17 @@
     "type": "managerial_best_first_most",
     "stem": "Network cables between two secure floors run through a public stairwell. Which control BEST protects them from tapping?",
     "options": {
-      "A": "Labeling each cable with its destination room",
-      "B": "Switching the run to unshielded twisted pair",
-      "C": "Posting a no-entry sign in the stairwell",
+      "A": "Fiber-optic cable running openly along the stairwell wall",
+      "B": "A camera watching the stairwell around the clock",
+      "C": "Cable labels that do not reveal the destination rooms",
       "D": "Enclosing the run in locked, inspected conduit"
     },
     "answer": "D",
     "explanation": "Locked conduit that is inspected regularly acts as a protected distribution system. It makes physical access to the cable difficult and makes tampering visible.",
     "distractor_rationales": {
-      "A": "Labels help troubleshooting but tell an attacker exactly which cable to tap.",
-      "B": "Unshielded twisted pair is easier to tap and emits more than shielded or fiber cable.",
-      "C": "A sign deters no one who intends to tap the cable."
+      "A": "Fiber is harder to tap but can still be tapped where it is exposed in a public area.",
+      "B": "A camera records tampering but does not prevent it.",
+      "C": "Hiding destinations is obscurity. The cables remain physically exposed."
     },
     "references_topic": "Protecting the cabling plant",
     "version": "0.3"
@@ -224,17 +224,17 @@
     "type": "knowledge",
     "stem": "A website's CDN terminates TLS at its edge servers. Which statement is TRUE?",
     "options": {
-      "A": "The CDN provider can see decrypted traffic, so it must be trusted and bound by contract",
-      "B": "Traffic stays encrypted end to end between the browser and the origin, so the CDN never sees any content",
-      "C": "The CDN removes the need for a certificate on the website's domain",
-      "D": "TLS termination at the edge prevents all application-layer attacks"
+      "A": "The CDN sees decrypted traffic, so it must be trusted and bound by contract",
+      "B": "Traffic stays encrypted end to end, so the CDN never sees any content",
+      "C": "The CDN removes the need for TLS between itself and the origin",
+      "D": "Edge termination blocks all application-layer attacks"
     },
     "answer": "A",
     "explanation": "When the edge terminates TLS, it decrypts the traffic to cache and inspect it. The provider therefore has access to plaintext and belongs inside the trust boundary, with contractual and technical safeguards.",
     "distractor_rationales": {
       "B": "Termination means decryption at the edge, so the CDN does see content.",
-      "C": "The edge still presents a certificate for the domain, often one the CDN manages.",
-      "D": "Terminating TLS enables inspection but does not by itself block application attacks."
+      "C": "The CDN-to-origin leg still needs TLS, or traffic crosses the internet in cleartext.",
+      "D": "Terminating TLS does not filter attacks by itself. That needs a WAF or similar controls."
     },
     "references_topic": "TLS termination at the edge",
     "version": "0.3"
@@ -273,16 +273,16 @@
     "stem": "Attackers in a recent incident moved freely between virtual machines in the same data center VLAN after compromising one web server. Which control would BEST limit this east-west movement?",
     "options": {
       "A": "A larger perimeter firewall at the internet edge",
-      "B": "Additional antivirus signatures on the web servers",
+      "B": "Host intrusion detection agents on the web servers",
       "C": "Micro-segmentation with per-workload allow rules",
-      "D": "Moving the web servers to a new IP address range"
+      "D": "Stronger admin passwords on every virtual machine"
     },
     "answer": "C",
     "explanation": "Micro-segmentation enforces policy between individual workloads, even inside the same VLAN, so a compromised server can reach only the specific services it needs.",
     "distractor_rationales": {
       "A": "The perimeter firewall sees north-south traffic, not traffic between servers inside the data center.",
-      "B": "Antivirus may catch some malware but does not restrict network paths between servers.",
-      "D": "Readdressing does not add any enforcement between workloads."
+      "B": "Detection on hosts alerts on movement but does not stop it.",
+      "D": "Better passwords help, but the flat VLAN still lets an attacker reach every VM."
     },
     "references_topic": "Micro-segmentation",
     "version": "0.3"
@@ -320,17 +320,17 @@
     "type": "managerial_best_first_most",
     "stem": "A utility carries DNP3 traffic over IP between its control center and remote substations. Assessors found that any host on the network can send commands to substation devices. What should the utility do FIRST?",
     "options": {
-      "A": "Restrict DNP3 traffic to the authorized master station with an industrial firewall",
-      "B": "Replace every substation device with a new model in the next budget cycle",
-      "C": "Publish the DNP3 network map so field staff can spot suspicious devices",
-      "D": "Move the control center connection to the public internet for redundancy"
+      "A": "Allow DNP3 only from the authorized master station, via an industrial firewall",
+      "B": "Encrypt the DNP3 traffic with a VPN between every site and the center",
+      "C": "Deploy an IDS that alerts on unusual or unauthorized DNP3 commands",
+      "D": "Enable DNP3 Secure Authentication on newly installed devices only"
     },
     "answer": "A",
     "explanation": "DNP3 historically has no built-in authentication, so the quickest effective step is to allow commands only from the authorized master station through an industrial firewall that understands the protocol. DNP3 Secure Authentication can follow.",
     "distractor_rationales": {
-      "B": "Wholesale replacement is slow and leaves the exposure open in the meantime.",
-      "C": "Publishing the network map increases exposure and does not block unauthorized commands.",
-      "D": "Exposing control traffic to the internet greatly increases risk."
+      "B": "A VPN protects the link, but hosts inside the network can still send commands.",
+      "C": "An IDS detects bad commands after they are sent. The first step is to stop unauthorized hosts sending them.",
+      "D": "New devices only leaves every existing substation exposed."
     },
     "references_topic": "DNP3 security",
     "version": "0.3"
@@ -344,16 +344,16 @@
     "type": "managerial_best_first_most",
     "stem": "An employee plugged a consumer wireless router into an office wall jack to get better coverage. Which combination BEST detects and prevents this in the future?",
     "options": {
-      "A": "Hiding the corporate SSID and changing the corporate Wi-Fi passphrase on a monthly schedule",
+      "A": "Hiding the corporate SSID and rotating its passphrase monthly",
       "B": "Wireless intrusion detection plus 802.1X authentication on wired switch ports",
-      "C": "Reducing corporate access point transmit power",
+      "C": "Monthly walk-throughs to look for unknown wireless devices",
       "D": "Requiring employees to sign an acceptable use policy each year"
     },
     "answer": "B",
     "explanation": "A wireless intrusion detection system finds unauthorized access points on the air. 802.1X on wired ports stops an unknown device from getting network access when it is plugged in.",
     "distractor_rationales": {
-      "A": "Hiding the SSID and rotating the passphrase affect only the corporate network, not a rogue device.",
-      "C": "Lower transmit power could push more users toward the rogue device.",
+      "A": "A rogue router has its own SSID. Hiding or rotating the corporate one does not detect or block it.",
+      "C": "Walk-throughs find rogues weeks late. Continuous detection plus port authentication stops them.",
       "D": "Policy is useful but neither detects nor blocks a rogue access point."
     },
     "references_topic": "Rogue access point detection",
@@ -371,14 +371,14 @@
       "A": "Carrier aggregation",
       "B": "Network slicing",
       "C": "Subscription Concealed Identifier (SUCI)",
-      "D": "Automatic fallback to older Voice over LTE calling"
+      "D": "Enhanced Mobile Broadband (eMBB) service"
     },
     "answer": "C",
     "explanation": "5G encrypts the permanent subscriber identifier into a Subscription Concealed Identifier with the home network's public key, so a fake base station cannot simply request the identity in cleartext as it could with the IMSI in earlier generations.",
     "distractor_rationales": {
       "A": "Carrier aggregation combines frequency bands for throughput.",
       "B": "Network slicing creates logical networks with different service levels; it does not hide identities.",
-      "D": "Falling back to older voice technology can reduce security."
+      "D": "eMBB is a service category for higher data rates, not a privacy feature."
     },
     "references_topic": "5G subscriber concealment",
     "version": "0.3"
@@ -392,17 +392,17 @@
     "type": "application",
     "stem": "A remote mining site uses a satellite link for business traffic. Researchers have shown that unencrypted satellite downlinks can be captured with inexpensive receivers. Which control BEST addresses this risk?",
     "options": {
-      "A": "Increasing bandwidth on the satellite contract",
-      "B": "Moving the satellite dish to a fenced area",
-      "C": "Switching to a satellite provider with lower latency",
+      "A": "Using a provider that offers a dedicated transponder",
+      "B": "Directional antennas aimed tightly at the satellite",
+      "C": "Encrypting only the email traffic on the link",
       "D": "Encrypting all traffic over the link with a VPN"
     },
     "answer": "D",
     "explanation": "Satellite broadcasts cover wide areas, so anyone with a receiver in the footprint may capture them. Encrypting traffic end to end with a VPN keeps intercepted data unreadable.",
     "distractor_rationales": {
-      "A": "More bandwidth does not affect interception.",
-      "B": "Fencing the dish protects the equipment, not the radio signal.",
-      "C": "Lower latency improves performance but does not add confidentiality."
+      "A": "A dedicated transponder still broadcasts the downlink over a wide area in the clear.",
+      "B": "The downlink covers a large footprint, whatever the dish points at.",
+      "C": "Other traffic would still be exposed. All traffic should be encrypted."
     },
     "references_topic": "Satellite link interception",
     "version": "0.3"
@@ -419,14 +419,14 @@
       "A": "Give each tool its own credential scoped to the calls it needs, and log API use",
       "B": "Move the shared key out of source code into a protected configuration file on each tool's server",
       "C": "Rotate the shared key once a year during maintenance",
-      "D": "Allow API calls only during business hours"
+      "D": "Allow API calls only from inside the corporate VPN"
     },
     "answer": "A",
     "explanation": "The northbound API can reprogram the whole network. Unique, least-privilege credentials for each tool plus logging provide accountability and limit what any single compromised tool can do.",
     "distractor_rationales": {
       "B": "Storing the key in more places increases exposure.",
       "C": "Annual rotation still leaves a single, all-powerful shared secret.",
-      "D": "Time restrictions do not address shared credentials or excessive rights."
+      "D": "Network restriction helps, but every tool still shares one all-powerful key with no accountability."
     },
     "references_topic": "SDN northbound API security",
     "version": "0.3"
@@ -440,17 +440,17 @@
     "type": "knowledge",
     "stem": "Which statement about VXLAN overlays is TRUE?",
     "options": {
-      "A": "VXLAN encrypts all tenant traffic by default",
+      "A": "VXLAN encrypts tenant traffic with IPsec by default",
       "B": "VXLAN carries layer 2 frames inside UDP but provides no encryption on its own",
       "C": "VXLAN limits a data center to 4,094 isolated segments, the same ceiling as standard 802.1Q VLANs",
-      "D": "VXLAN replaces the need for any underlay IP network"
+      "D": "VXLAN can run only within a single physical switch"
     },
     "answer": "B",
     "explanation": "VXLAN encapsulates layer 2 frames in UDP packets with a 24-bit network identifier. It separates tenants logically but does not encrypt, so IPsec or MACsec is needed when confidentiality matters.",
     "distractor_rationales": {
-      "A": "VXLAN provides no encryption by itself.",
+      "A": "VXLAN has no built-in encryption. IPsec or MACsec must be added separately.",
       "C": "The 4,094 limit applies to 802.1Q VLANs; VXLAN's 24-bit identifier supports about 16 million segments.",
-      "D": "VXLAN runs over an underlay IP network."
+      "D": "VXLAN is designed to stretch layer 2 across a routed IP underlay, not to stay on one switch."
     },
     "references_topic": "VXLAN overlays",
     "version": "0.3"
@@ -465,16 +465,16 @@
     "stem": "A contractor's laptop fails the NAC posture check because its antivirus signatures are out of date. What is the BEST action for the NAC to take?",
     "options": {
       "A": "Admit the laptop to the production network and send an email to the contractor",
-      "B": "Permanently block the laptop's MAC address",
+      "B": "Block the laptop and tell the contractor to call IT",
       "C": "Place the laptop in a quarantine VLAN that can reach only remediation servers",
-      "D": "Disable posture checking for contractor devices"
+      "D": "Admit the laptop to a guest VLAN with internet access"
     },
     "answer": "C",
     "explanation": "A quarantine VLAN keeps the unhealthy device off production systems while giving it the access it needs to update. It is admitted once it passes the posture check.",
     "distractor_rationales": {
       "A": "Admitting a noncompliant device defeats the purpose of posture assessment.",
-      "B": "A permanent block is excessive for an easily fixed issue and invites workarounds.",
-      "D": "Exempting contractors removes protection where risk is often higher."
+      "B": "Blocking with no automatic remediation path wastes time and invites workarounds.",
+      "D": "Guest internet access does not get the laptop updated or keep it separate in a controlled way."
     },
     "references_topic": "NAC quarantine and remediation",
     "version": "0.3"
@@ -512,17 +512,17 @@
     "type": "managerial_best_first_most",
     "stem": "System administrators currently connect by VPN and then open direct sessions to any production server. What is the BEST way to tighten remote administrative access?",
     "options": {
-      "A": "Route administration through a hardened jump host with MFA and session recording",
-      "B": "Give each administrator a second VPN account for weekends",
-      "C": "Allow administrators to use personal devices for faster response",
-      "D": "Open the management ports on the servers directly to the internet"
+      "A": "Route admin access through a hardened jump host with MFA and recording",
+      "B": "Require MFA on the VPN and keep direct access to every server",
+      "C": "Limit administrator VPN logins to normal business hours only",
+      "D": "Enable detailed session logging on each production server"
     },
     "answer": "A",
     "explanation": "A jump host creates a single, hardened, monitored path for privileged access. Combined with MFA and session recording, it limits exposure and provides accountability.",
     "distractor_rationales": {
-      "B": "More accounts increase the attack surface without adding control.",
-      "C": "Unmanaged personal devices raise the risk of compromised administrator sessions.",
-      "D": "Exposing management ports publicly invites attacks."
+      "B": "MFA strengthens the VPN, but admins still reach any server directly with no control point or recording.",
+      "C": "Time limits do not narrow what admins can reach once connected.",
+      "D": "Logging on each server is scattered and does not funnel access through one controlled point."
     },
     "references_topic": "Jump hosts for administrative access",
     "version": "0.3"
@@ -538,15 +538,15 @@
     "options": {
       "A": "Enabling DHCP snooping and dynamic ARP inspection on every access switch",
       "B": "Setting trunk native VLANs to an unused ID and tagging it explicitly",
-      "C": "Increasing the MAC address table size on the switches",
-      "D": "Placing the attacker's port into the same VLAN as the servers"
+      "C": "Port security limiting MAC addresses on access ports",
+      "D": "Disabling all unused ports on the access switches"
     },
     "answer": "B",
     "explanation": "Double tagging works when the attacker's access VLAN matches the trunk's native VLAN. Using an unused native VLAN that is tagged explicitly, and disabling automatic trunk negotiation, closes the path.",
     "distractor_rationales": {
       "A": "DHCP snooping and ARP inspection stop rogue DHCP servers and ARP spoofing, not VLAN hopping.",
-      "C": "A larger table helps against MAC flooding, not double tagging.",
-      "D": "That would give the attacker direct access to the target VLAN."
+      "C": "Port security stops MAC flooding, not VLAN hopping by double tagging.",
+      "D": "Unused ports are a separate issue. The attacker is on an active port."
     },
     "references_topic": "VLAN hopping by double tagging",
     "version": "0.3"
@@ -584,10 +584,10 @@
     "type": "managerial_best_first_most",
     "stem": "After ransomware spread across a flat network, leadership approves a segmentation project. The network team wants to start writing firewall rules immediately. What should happen FIRST?",
     "options": {
-      "A": "Buy next-generation firewalls for every floor",
+      "A": "Buy next-generation firewalls for every floor of the building",
       "B": "Block all traffic between subnets starting tonight",
-      "C": "Assign new VLAN numbers to every department",
-      "D": "Map the required traffic flows between systems and group them into trust zones"
+      "C": "Assign new VLAN numbers to every department straight away",
+      "D": "Map required traffic flows and group systems into trust zones"
     },
     "answer": "D",
     "explanation": "Segmentation rules are only as good as the understanding behind them. Mapping which systems must talk to each other, and grouping them into zones by trust and function, prevents both outages and overly permissive rules.",
@@ -608,17 +608,17 @@
     "type": "application",
     "stem": "An organization believes it runs IPv4 only, and its IDS inspects only IPv4. A tester sends IPv6 router advertisements and redirects hosts' traffic through their laptop. Which response BEST addresses the exposure?",
     "options": {
-      "A": "Deploy RA Guard on switches and monitor IPv6 or disable it where unused",
-      "B": "Add more IPv4 signatures to the IDS",
-      "C": "Change the IPv4 default gateway on every host",
-      "D": "Block ICMPv4 echo requests at the perimeter firewall"
+      "A": "Deploy RA Guard, then monitor IPv6 or disable it where unused",
+      "B": "Add IPv6 signatures to the IDS and change nothing else",
+      "C": "Set static IPv4 default gateway entries on every single host",
+      "D": "Block all IPv6 traffic at the internet-facing firewall only"
     },
     "answer": "A",
     "explanation": "Modern operating systems enable IPv6 by default and accept router advertisements. RA Guard blocks rogue advertisements at the switch port, and IPv6 must either be monitored or disabled where it is not needed.",
     "distractor_rationales": {
-      "B": "IPv4 signatures do not see IPv6 traffic.",
-      "C": "Hosts are being redirected over IPv6, so the IPv4 gateway is irrelevant.",
-      "D": "Blocking IPv4 pings at the perimeter does not affect local IPv6 advertisements."
+      "B": "Detection helps, but switches still accept rogue router advertisements.",
+      "C": "The attack uses IPv6, so IPv4 settings do not stop it.",
+      "D": "The rogue advertisements come from inside the LAN, which an edge block does not cover."
     },
     "references_topic": "Rogue IPv6 router advertisements",
     "version": "0.3"
@@ -657,16 +657,16 @@
     "stem": "An organization's public NTP server is seen sending large responses to a victim it never contacted, as part of a DDoS attack. What should the organization do?",
     "options": {
       "A": "Increase the NTP server's bandwidth and processing capacity so it is not overwhelmed",
-      "B": "Block all inbound UDP traffic to every server",
+      "B": "Rate-limit NTP responses to any single address",
       "C": "Disable the monlist feature and restrict who can query the server",
-      "D": "Move the NTP server behind the load balancer"
+      "D": "Move the public NTP service to a nonstandard port"
     },
     "answer": "C",
     "explanation": "Attackers spoof the victim's address and send small queries that trigger large responses, such as monlist. Disabling the feature and restricting queries stops the server from being used as an amplifier.",
     "distractor_rationales": {
       "A": "More bandwidth makes the server a more effective amplifier.",
-      "B": "Blocking all UDP breaks legitimate services such as DNS and NTP clients.",
-      "D": "A load balancer does not change the amplifying responses."
+      "B": "Rate limiting helps, but monlist still lets small queries produce large responses.",
+      "D": "Attackers find NTP on any port. The amplification feature must be disabled."
     },
     "references_topic": "NTP reflection and amplification",
     "version": "0.3"
@@ -704,17 +704,17 @@
     "type": "managerial_best_first_most",
     "stem": "After a CDN goes live, users occasionally see another user's account page. What is the BEST fix?",
     "options": {
-      "A": "Mark authenticated responses as non-cacheable and include session context in cache keys",
+      "A": "Mark logged-in responses uncacheable and key caches by session",
       "B": "Shorten the CDN cache lifetime for all content to five minutes",
-      "C": "Turn off TLS between the CDN and the origin to speed up responses",
-      "D": "Ask users to clear their browser cache after logging in"
+      "C": "Turn off caching for the whole website at the CDN to be safe",
+      "D": "Add each user's IP address to the CDN cache key for every page"
     },
     "answer": "A",
     "explanation": "The CDN is caching personalized responses and serving them to others. Setting Cache-Control to private or no-store for authenticated pages, and making sure cache keys account for session, stops the leak.",
     "distractor_rationales": {
       "B": "Shorter cache lifetimes reduce but do not eliminate cross-user exposure.",
-      "C": "Removing origin TLS weakens security and does not affect caching behavior.",
-      "D": "The leak happens at the CDN, not in users' browsers."
+      "C": "Disabling all caching works but throws away the CDN's benefit. Only personal responses need excluding.",
+      "D": "Many users share IP addresses behind NAT, so pages would still leak."
     },
     "references_topic": "Caching of authenticated content",
     "version": "0.3"
@@ -753,16 +753,16 @@
     "stem": "A network IDS sits outside the load balancer that terminates TLS for a web application. The IDS missed a SQL injection attack against the application. What is the BEST correction?",
     "options": {
       "A": "Add more SQL injection signatures to the existing IDS",
-      "B": "Replace the TLS certificate with a longer key",
-      "C": "Inspect traffic after TLS termination, for example with a WAF at the load balancer",
-      "D": "Move the IDS to monitor the internet router's management interface"
+      "B": "Add a second IDS sensor in the same place beside the first one",
+      "C": "Inspect traffic after TLS is terminated, such as with a WAF there",
+      "D": "Give the IDS the server's private key so it can decrypt traffic"
     },
     "answer": "C",
     "explanation": "The IDS sees only encrypted traffic, so signatures cannot match. Inspection must happen where traffic is decrypted, such as a WAF at or behind the load balancer.",
     "distractor_rationales": {
       "A": "New signatures still cannot match encrypted payloads.",
-      "B": "A longer key does not make traffic visible to the IDS.",
-      "D": "The router's management interface does not carry application traffic."
+      "B": "A second sensor in the same place sees the same encrypted traffic.",
+      "D": "Passive decryption with the server key fails with forward-secret key exchange, which modern TLS uses."
     },
     "references_topic": "Inspection placement and TLS",
     "version": "0.3"

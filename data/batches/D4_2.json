@@ -34,15 +34,15 @@
     "options": {
       "A": "Inspect the full application payload of every packet for malware",
       "B": "Track connections and allow only return traffic for established sessions",
-      "C": "Encrypt traffic passing between two networks",
-      "D": "Assign IP addresses to hosts on each segment"
+      "C": "Block traffic based on source and destination port numbers",
+      "D": "Translate private internal addresses to a single public address"
     },
     "answer": "B",
     "explanation": "A stateful firewall keeps a state table of connections, so it can allow return traffic only when it belongs to a session that was legitimately established.",
     "distractor_rationales": {
       "A": "Full payload inspection is a feature of next-generation or application-layer firewalls, not the defining feature of stateful inspection.",
-      "C": "Encryption between networks is done by VPN gateways.",
-      "D": "Address assignment is done by DHCP."
+      "C": "Port-based filtering is what a simple packet filter already does.",
+      "D": "Address translation is NAT, not what makes a firewall stateful."
     },
     "references_topic": "Stateful inspection firewalls",
     "version": "0.2"
@@ -80,17 +80,17 @@
     "type": "application",
     "stem": "An online retailer expects huge traffic during a holiday sale and worries about volumetric DDoS attacks. Which service BEST absorbs attack traffic before it reaches the origin servers?",
     "options": {
-      "A": "A larger single web server",
-      "B": "An internal intrusion detection system",
-      "C": "A stronger database password",
+      "A": "Additional web servers behind a load balancer",
+      "B": "An on-premises intrusion prevention system",
+      "C": "Rate limiting on the origin web servers",
       "D": "A content delivery network with DDoS protection"
     },
     "answer": "D",
     "explanation": "A CDN spreads traffic across many edge locations with enormous combined capacity, caches content, and filters attack traffic before it reaches the origin.",
     "distractor_rationales": {
-      "A": "A single server, however large, cannot absorb a volumetric flood.",
-      "B": "An IDS can detect attacks but cannot absorb traffic volume.",
-      "C": "Database passwords do nothing against traffic floods."
+      "A": "More servers help normal load, but a volumetric attack saturates the network link before they are reached.",
+      "B": "An on-premises IPS sits behind the link that a volumetric attack floods.",
+      "C": "Origin rate limiting comes too late; the traffic has already filled the connection."
     },
     "references_topic": "CDN DDoS absorption",
     "version": "0.2"
@@ -153,16 +153,16 @@
     "stem": "A company wants each employee to authenticate to Wi-Fi with individual credentials rather than a shared password, so access can be revoked person by person. Which approach should it use?",
     "options": {
       "A": "WPA2-Personal with a long passphrase",
-      "B": "A hidden SSID",
+      "B": "WPA3-Personal with a unique passphrase per site",
       "C": "WPA3-Enterprise with 802.1X and a RADIUS server",
-      "D": "MAC address filtering"
+      "D": "A captive portal that asks for the employee's email"
     },
     "answer": "C",
     "explanation": "Enterprise mode uses 802.1X with EAP, so each user authenticates with their own credentials against a RADIUS server, and any one user's access can be revoked.",
     "distractor_rationales": {
       "A": "Personal mode uses a single shared passphrase for everyone.",
-      "B": "Hiding the SSID is not authentication, and hidden networks are still easy to discover.",
-      "D": "MAC filtering identifies devices, not people, and MAC addresses are easily spoofed."
+      "B": "A per-site passphrase is still shared by everyone there, so one person cannot be revoked alone.",
+      "D": "A captive portal identifies users weakly and does not encrypt each user's traffic with individual keys."
     },
     "references_topic": "802.1X enterprise Wi-Fi",
     "version": "0.2"
@@ -176,16 +176,16 @@
     "type": "managerial_best_first_most",
     "stem": "A company wants to keep laptops that lack current patches or endpoint protection off the internal network, while still letting them get fixed. What should it implement?",
     "options": {
-      "A": "A stronger perimeter firewall at the internet edge",
-      "B": "MAC address filtering on access switches",
+      "A": "A VPN client required for all on-site laptops",
+      "B": "802.1X authentication of users on all switch ports",
       "C": "Monthly vulnerability scans of all laptops",
       "D": "NAC with posture checks and a remediation VLAN"
     },
     "answer": "D",
     "explanation": "Network access control checks each device's posture at connection time, admits compliant devices, and places noncompliant ones on a remediation network where they can receive updates.",
     "distractor_rationales": {
-      "A": "A perimeter firewall does not evaluate internal endpoints as they connect.",
-      "B": "MAC filtering identifies a device but says nothing about its patch or protection status.",
+      "A": "A VPN encrypts traffic but does not check patch or protection status.",
+      "B": "802.1X proves who the user is, but without posture checks an unpatched laptop still gets on.",
       "C": "Scans find problems after devices are already connected. They do not gate admission."
     },
     "references_topic": "NAC posture assessment",
@@ -201,16 +201,16 @@
     "stem": "A factory runs Ethernet cables alongside heavy electric motors and sees frequent packet errors on those links. Which change BEST fixes the problem?",
     "options": {
       "A": "Replace the copper runs with fiber-optic cable",
-      "B": "Use longer unshielded twisted-pair runs",
-      "C": "Replace the switches with hubs",
-      "D": "Increase the switch port speed to 10 Gbps"
+      "B": "Shielded twisted-pair cable with grounded runs",
+      "C": "Rerouting the cables a few inches from the motors",
+      "D": "Enabling error correction on the switch ports"
     },
     "answer": "A",
     "explanation": "Motors generate electromagnetic interference that corrupts signals on copper. Fiber is immune to it (shielded cable is a partial alternative).",
     "distractor_rationales": {
-      "B": "Longer runs increase attenuation and exposure to interference.",
-      "C": "Hubs add collisions and remove switching benefits.",
-      "D": "Higher speeds are more sensitive to signal noise, not less."
+      "B": "Shielding reduces interference, but fiber is immune to it, which suits heavy motors best.",
+      "C": "A few inches does little against strong motor fields.",
+      "D": "Error handling hides symptoms; the interference keeps corrupting frames."
     },
     "references_topic": "EMI and media selection",
     "version": "0.2"
@@ -248,17 +248,17 @@
     "type": "managerial_best_first_most",
     "stem": "A company puts its web application behind a CDN that terminates TLS at the edge. Traffic from the CDN to the origin server currently travels over plain HTTP across the internet. What is the BEST improvement?",
     "options": {
-      "A": "Turn off TLS at the edge so traffic is handled consistently",
-      "B": "Remove the CDN and serve traffic directly from the origin",
+      "A": "Use TLS to the origin but accept traffic from anywhere",
+      "B": "Encrypt only the login pages between the CDN and origin",
       "C": "Use TLS to the origin and accept only CDN traffic there",
-      "D": "Increase the cache lifetime for all content"
+      "D": "Add stricter WAF rules at the CDN edge"
     },
     "answer": "C",
     "explanation": "Encrypting the CDN-to-origin leg protects data across the internet, and restricting the origin to CDN traffic (by allow-listing or authenticated requests) prevents attackers from bypassing the edge.",
     "distractor_rationales": {
-      "A": "Removing edge TLS exposes users' traffic, the opposite of the goal.",
-      "B": "Removing the CDN gives up its performance and DDoS benefits and still leaves the origin exposed.",
-      "D": "Cache lifetime does not affect how traffic to the origin is protected."
+      "A": "Encryption fixes the plaintext leg, but attackers can still reach the origin directly, bypassing the CDN.",
+      "B": "Every page can carry sensitive data. The whole CDN-to-origin path must be encrypted.",
+      "D": "WAF rules at the edge do nothing for plaintext traffic behind it."
     },
     "references_topic": "Securing CDN-to-origin connections",
     "version": "0.2"
@@ -299,14 +299,14 @@
       "A": "Web server in a DMZ, allowed only the database port inward",
       "B": "Place the web server directly on the internal network",
       "C": "Move the database into the DMZ alongside the web server",
-      "D": "Permit all traffic between the DMZ and the internal network for simplicity"
+      "D": "Web server in a DMZ with a VPN tunnel into the internal network"
     },
     "answer": "A",
     "explanation": "A screened subnet (DMZ) isolates the internet-facing server, and a strict rule allows only the specific database connection from it to the internal database.",
     "distractor_rationales": {
       "B": "An internet-facing server on the internal network gives an attacker direct internal access if it is compromised.",
       "C": "Putting the customer database in the DMZ exposes it to the internet-facing zone.",
-      "D": "Allowing all traffic defeats the purpose of the DMZ."
+      "D": "A tunnel gives the web server broad internal access, more than the single database port it needs."
     },
     "references_topic": "DMZ (screened subnet) design",
     "version": "0.2"
@@ -320,17 +320,17 @@
     "type": "managerial_best_first_most",
     "stem": "A company believes it runs only IPv4, but a scan shows many hosts with active IPv6 addresses and some IPv6 tunneling interfaces. What should the security team do FIRST?",
     "options": {
-      "A": "Ignore IPv6, since the company never deliberately deployed it",
+      "A": "Block all IPv6 traffic at the internet firewall",
       "B": "Assess IPv6 use and secure or disable it deliberately",
-      "C": "Renumber every host on the network with new IPv4 addresses",
-      "D": "Block all IPv4 traffic and move entirely to IPv6"
+      "C": "Add the IPv6 addresses to the IPAM system and move on",
+      "D": "Disable IPv6 on every host by policy right away"
     },
     "answer": "B",
     "explanation": "Unmanaged IPv6 and tunnels can bypass controls that only inspect IPv4. Find where it is used, then either apply equivalent filtering and monitoring or disable it where it is not needed.",
     "distractor_rationales": {
-      "A": "Unmanaged IPv6 is a blind spot that attackers can exploit.",
-      "C": "Renumbering IPv4 addresses does nothing about IPv6 exposure.",
-      "D": "Blocking IPv4 would break the network."
+      "A": "An edge block misses IPv6 inside the network and in tunnels that hide it in IPv4.",
+      "C": "Recording addresses does not decide whether IPv6 should run or secure it.",
+      "D": "Disabling it everywhere without assessment can break systems that rely on it."
     },
     "references_topic": "IPv6 security considerations",
     "version": "0.2"
@@ -418,15 +418,15 @@
     "options": {
       "A": "Delete every undocumented rule immediately to reduce the attack surface",
       "B": "Use hit counts and owners to clean up rules under change control",
-      "C": "Move the allow-any rule to the top so it is easier to monitor",
-      "D": "Replace the firewall with a newer next-generation model"
+      "C": "Disable the allow-any rule now, outside change control",
+      "D": "Export the rules for the auditors and document them later"
     },
     "answer": "B",
     "explanation": "Use evidence such as rule hit counts and traffic logs, confirm business owners, and then remove unused and overly permissive rules, including the allow-any rule, through change management so that legitimate traffic is not broken.",
     "distractor_rationales": {
       "A": "Deleting rules blindly can break business-critical traffic.",
-      "C": "Moving the allow-any rule to the top would permit everything.",
-      "D": "A new firewall would inherit the same poor rule set."
+      "C": "The allow-any rule may be carrying business traffic. Removing it without analysis and change control can cause outages.",
+      "D": "Documentation alone leaves the risky rules in place."
     },
     "references_topic": "Firewall rule base review",
     "version": "0.2"
@@ -464,16 +464,16 @@
     "type": "managerial_best_first_most",
     "stem": "At a conference, employees connect to an access point broadcasting the company's SSID, and their credentials are captured. The corporate Wi-Fi uses WPA2-Enterprise with PEAP. What is the BEST long-term fix?",
     "options": {
-      "A": "Rename the corporate SSID to something less obvious",
-      "B": "Hide the SSID so it is not broadcast to nearby devices",
+      "A": "Teach staff to check the network name before joining",
+      "B": "Require users to change passwords after each trip",
       "C": "Switch to WPA2-Personal with a strong shared passphrase",
       "D": "Enforce server certificate validation, ideally with EAP-TLS"
     },
     "answer": "D",
     "explanation": "The evil twin succeeds because clients do not validate the authentication server's certificate. Enforcing validation, or moving to certificate-based EAP-TLS with mutual authentication, stops clients from handing credentials to an impostor.",
     "distractor_rationales": {
-      "A": "An attacker can copy any SSID name.",
-      "B": "Clients still probe for hidden networks, and attackers can still impersonate them.",
+      "A": "An evil twin uses the same name, so checking the name does not help.",
+      "B": "New passwords help after the fact, but the next rogue access point captures those too.",
       "C": "A shared passphrase lets anyone who knows it impersonate the network, which is worse."
     },
     "references_topic": "Evil twin and EAP server validation",
@@ -490,15 +490,15 @@
     "options": {
       "A": "Use TLS with certificate validation end to end",
       "B": "Rely on the carrier's built-in 5G radio encryption",
-      "C": "Require sales staff to connect only through home Wi-Fi",
-      "D": "Disable cellular data on all company phones"
+      "C": "Use the carrier's private APN for all company phones",
+      "D": "Encrypt the CRM database at rest with customer keys"
     },
     "answer": "A",
     "explanation": "Carrier encryption protects only the radio link and ends inside the carrier network. End-to-end TLS with certificate validation protects the data all the way to the CRM.",
     "distractor_rationales": {
       "B": "Radio-link encryption does not protect data beyond the carrier's network.",
-      "C": "Home Wi-Fi is also untrusted and impractical for field staff.",
-      "D": "Disabling data stops the team from working."
+      "C": "A private APN depends on each carrier's network. TLS protects the data on any network.",
+      "D": "Encryption at rest does not protect data in transit."
     },
     "references_topic": "End-to-end encryption over mobile networks",
     "version": "0.2"
@@ -512,17 +512,17 @@
     "type": "application",
     "stem": "A retailer moves to SD-WAN, and branch stores now send internet-bound traffic directly out of each branch instead of backhauling it through headquarters. Which security change is MOST needed?",
     "options": {
-      "A": "Remove the branch firewalls, since HQ no longer sees traffic",
+      "A": "Send branch traffic logs to HQ for weekly review",
       "B": "Inspect branch internet traffic locally or in the cloud",
       "C": "Add more internet bandwidth at headquarters",
-      "D": "Disable encryption on links between branches"
+      "D": "Add a backup internet link at every branch store"
     },
     "answer": "B",
     "explanation": "Direct internet breakout bypasses the headquarters security stack. Equivalent inspection must happen at each branch or in a cloud security service.",
     "distractor_rationales": {
-      "A": "Removing branch firewalls leaves the new internet paths unprotected.",
+      "A": "Weekly log review is detective and late. Branch traffic needs inspection as it leaves.",
       "C": "Headquarters bandwidth no longer matters for this traffic.",
-      "D": "Encryption between sites is still needed."
+      "D": "A backup link improves availability, not inspection of traffic that now bypasses headquarters."
     },
     "references_topic": "SD-WAN direct internet access security",
     "version": "0.2"
@@ -537,16 +537,16 @@
     "stem": "A company's website sits behind a CDN with a web application firewall, but attackers are sending exploits directly to the origin server's public IP address, bypassing the WAF. What should the security team do FIRST?",
     "options": {
       "A": "Add more signatures to the CDN's WAF rules",
-      "B": "Change the website's domain name",
+      "B": "Move the origin to a new public IP and keep it secret",
       "C": "Allow origin traffic only from the CDN's address ranges",
-      "D": "Move the WAF so it sits behind the origin server"
+      "D": "Add host firewall rules that block known attacker IPs"
     },
     "answer": "C",
     "explanation": "Locking the origin down so it accepts traffic only from the CDN (and ideally rotating the exposed IP) forces every request through the WAF.",
     "distractor_rationales": {
       "A": "More WAF rules do not help when attackers bypass the WAF entirely.",
-      "B": "Attackers are targeting the IP address directly, so a new domain name changes nothing.",
-      "D": "A WAF placed behind the origin cannot inspect traffic before it reaches the application."
+      "B": "A new IP is found again quickly. Origin access must be restricted to the CDN.",
+      "D": "Blocklists chase attackers. Allowing only the CDN closes the bypass."
     },
     "references_topic": "Origin lockdown behind a CDN",
     "version": "0.2"

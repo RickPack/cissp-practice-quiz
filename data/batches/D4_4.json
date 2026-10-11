@@ -56,17 +56,17 @@
     "type": "managerial_best_first_most",
     "stem": "What is the BEST way to protect email in transit between the company's mail servers and its partners' mail servers?",
     "options": {
-      "A": "Ask employees to add the word \"confidential\" to the subject line of sensitive email",
+      "A": "Require S/MIME encryption for every message employees send",
       "B": "Require TLS for server-to-server delivery, with policies such as MTA-STS",
-      "C": "Send all email through a web proxy that caches messages for faster delivery",
-      "D": "Move email delivery to plain SMTP on a nonstandard port to hide the traffic"
+      "C": "Use opportunistic STARTTLS on the company's mail servers",
+      "D": "Publish SPF, DKIM, and DMARC records for the company's domain"
     },
     "answer": "B",
     "explanation": "Enforcing TLS between mail servers encrypts messages in transit, and policies such as MTA-STS stop attackers from forcing a downgrade to cleartext.",
     "distractor_rationales": {
-      "A": "A subject line label does not encrypt anything.",
-      "C": "Web proxies do not handle server-to-server mail and caching adds exposure.",
-      "D": "A nonstandard port is obscurity; plain SMTP is still cleartext."
+      "A": "S/MIME protects content end to end, but it needs certificates for every partner recipient and does not scale for all mail.",
+      "C": "Opportunistic TLS can be stripped by an attacker who forces a fallback to plaintext. Required TLS with MTA-STS prevents that.",
+      "D": "These records authenticate the sender's domain. They do not encrypt mail in transit."
     },
     "references_topic": "TLS for email transport",
     "version": "0.4"
@@ -83,14 +83,14 @@
       "A": "Encryption of all traffic that passes between two switches",
       "B": "Authentication of every user before they can access the network",
       "C": "Logical separation of broadcast domains on shared switches",
-      "D": "Faster internet speeds for devices in the same department"
+      "D": "Separate routing tables for each department's traffic"
     },
     "answer": "C",
     "explanation": "VLANs split one physical switch infrastructure into separate logical layer 2 networks. Traffic between them must pass through a router or firewall, where policy can be applied.",
     "distractor_rationales": {
       "A": "VLANs do not encrypt traffic.",
       "B": "User authentication is handled by 802.1X and identity systems.",
-      "D": "VLANs do not increase internet bandwidth."
+      "D": "Separate routing tables are VRFs, a layer 3 feature. VLANs separate broadcast domains at layer 2."
     },
     "references_topic": "Purpose of VLANs",
     "version": "0.4"
@@ -152,17 +152,17 @@
     "type": "managerial_best_first_most",
     "stem": "What should the final rule in a firewall rule base BEST be?",
     "options": {
-      "A": "Allow all traffic, so that nothing needed by the business is blocked",
+      "A": "Allow established and related return traffic only",
       "B": "Deny all traffic not explicitly allowed by earlier rules",
       "C": "Allow all traffic from internal addresses to any destination",
-      "D": "Log all traffic without allowing or blocking any of it"
+      "D": "Log and alert on all traffic, then allow it"
     },
     "answer": "B",
     "explanation": "A default deny at the end means only traffic that a rule explicitly permits gets through.",
     "distractor_rationales": {
-      "A": "A final allow-all makes the other rules pointless.",
+      "A": "Allowing return traffic is usually an early rule. The final rule should deny anything not already allowed.",
       "C": "Allowing all internal traffic outbound invites exfiltration and malware callbacks.",
-      "D": "A rule must make a decision; logging alone does not enforce policy."
+      "D": "Logging everything and then allowing it is a default-allow posture."
     },
     "references_topic": "Implicit deny",
     "version": "0.4"
@@ -298,7 +298,7 @@
     "options": {
       "A": "Agree, since NAT hides internal addresses and therefore blocks all attacks",
       "B": "Agree, since NAT encrypts traffic that crosses the internet router",
-      "C": "Disagree, since NAT only works with IPv6 and the company uses IPv4",
+      "C": "Agree, since NAT drops all unsolicited inbound traffic",
       "D": "Disagree, since NAT translates addresses but does not enforce security policy"
     },
     "answer": "D",
@@ -306,7 +306,7 @@
     "distractor_rationales": {
       "A": "NAT does not block outbound-initiated attacks, malware callbacks, or exposed port forwards.",
       "B": "NAT does not encrypt traffic.",
-      "C": "NAT is most common with IPv4."
+      "C": "NAT's inbound behavior is a side effect. It does not filter outbound traffic, inspect content, or enforce policy."
     },
     "references_topic": "NAT is not a firewall",
     "version": "0.4"
@@ -320,17 +320,17 @@
     "type": "application",
     "stem": "Some browsers began sending DNS queries over HTTPS directly to public resolvers, bypassing the company's DNS filtering and logging. What is the BEST response?",
     "options": {
-      "A": "Point managed browsers at the company's resolver and block unapproved DoH endpoints",
-      "B": "Block all HTTPS traffic from employee workstations to the internet",
-      "C": "Accept the change, since encrypted DNS is always more secure for every company's users",
-      "D": "Switch the company's own DNS servers to use plain UDP on a different port"
+      "A": "Point managed browsers at the company resolver; block unapproved DoH",
+      "B": "Block the public resolvers' IP addresses at the firewall",
+      "C": "Log DoH traffic volume at the web proxy for later investigation",
+      "D": "Train employees not to change the DNS settings in their browsers"
     },
     "answer": "A",
     "explanation": "Encrypted DNS is valuable, but it should go to the company's own resolver, where filtering and logging still apply. Managed settings and blocking unapproved DoH endpoints achieve this.",
     "distractor_rationales": {
-      "B": "Blocking all HTTPS would stop normal business.",
-      "C": "Bypassing enterprise DNS removes security visibility and controls.",
-      "D": "Changing ports does not bring the browsers back to the company resolver."
+      "B": "DoH endpoints change and share addresses with other services. Browser policy plus endpoint blocking is more reliable.",
+      "C": "Logging volume does not restore filtering or show which domains were looked up.",
+      "D": "Some browsers enable DoH by default, so training does not stop it. Managed policy does."
     },
     "references_topic": "DNS over HTTPS and enterprise filtering",
     "version": "0.4"
@@ -368,17 +368,17 @@
     "type": "application",
     "stem": "A retailer's card processing systems share a flat network with every other system, so assessors treat the whole network as in scope for PCI DSS. What BEST reduces the scope?",
     "options": {
-      "A": "Encrypting every laptop in the company with full-disk encryption",
-      "B": "Adding antivirus to every server on the flat network",
-      "C": "Isolating the cardholder data environment with segmentation and strict filtering",
-      "D": "Moving the card processing systems to a different building on the same network"
+      "A": "Encrypting card data at rest in the card processing database",
+      "B": "Putting the card systems on their own VLAN with no filtering",
+      "C": "Isolating the cardholder data environment with filtered segmentation",
+      "D": "Running quarterly vulnerability scans across the whole network"
     },
     "answer": "C",
     "explanation": "Proper segmentation separates systems that handle card data from everything else, so only the isolated environment and its connected systems remain in scope.",
     "distractor_rationales": {
-      "A": "Disk encryption does not isolate network traffic.",
-      "B": "Antivirus does not separate systems from each other.",
-      "D": "Physical location does not matter if the network is still flat."
+      "A": "Encryption at rest protects stored data but does not change which systems can reach the card environment.",
+      "B": "A VLAN without filtering still lets every system reach the card environment, so scope does not shrink.",
+      "D": "Scans find vulnerabilities but do not reduce which systems are in scope."
     },
     "references_topic": "Segmentation to reduce compliance scope",
     "version": "0.4"
@@ -393,16 +393,16 @@
     "stem": "Visitors need internet access in the company's lobby and meeting rooms. What is the BEST design?",
     "options": {
       "A": "Give visitors the corporate Wi-Fi passphrase and change it every quarter",
-      "B": "Let visitors plug into any free wall jack in the meeting rooms",
-      "C": "Share an employee's laptop hotspot with visitors when they need to get online",
+      "B": "A guest SSID on the corporate VLAN with a daily password",
+      "C": "A captive portal on the corporate Wi-Fi for visitors",
       "D": "A separate guest SSID on an isolated network with internet-only access"
     },
     "answer": "D",
     "explanation": "A separate guest network with client isolation and no route to internal systems gives visitors internet access without exposing corporate resources.",
     "distractor_rationales": {
       "A": "Sharing the corporate passphrase puts visitors on the internal network.",
-      "B": "Wall jacks may connect to internal networks.",
-      "C": "Sharing an employee's hotspot links visitors to a corporate device."
+      "B": "A guest SSID on the corporate VLAN still puts visitors on the internal network.",
+      "C": "A portal on the corporate network still gives visitors internal reach once they pass it."
     },
     "references_topic": "Guest wireless isolation",
     "version": "0.4"
@@ -418,15 +418,15 @@
     "options": {
       "A": "Isolated logical networks with their own traits on shared infrastructure",
       "B": "End-to-end encryption of every call and text message exchanged between subscribers",
-      "C": "A way for phones to fall back to 3G when 5G coverage is weak",
-      "D": "Protection against SIM swapping by binding numbers to devices"
+      "C": "Higher speeds by combining several frequency bands",
+      "D": "Encrypted subscriber identifiers sent over the air"
     },
     "answer": "A",
     "explanation": "Slicing creates isolated logical networks, each tuned for a use such as low latency or massive IoT, over the same physical infrastructure. Isolation between slices is a security requirement.",
     "distractor_rationales": {
       "B": "Slicing does not provide end-to-end encryption between users.",
-      "C": "Fallback to older networks is a separate function.",
-      "D": "SIM swapping is a carrier process issue, not addressed by slicing."
+      "C": "Combining bands is carrier aggregation, a capacity feature.",
+      "D": "Encrypted identifiers (SUCI) are a different 5G privacy feature, not slicing."
     },
     "references_topic": "5G network slicing",
     "version": "0.4"
@@ -440,17 +440,17 @@
     "type": "knowledge",
     "stem": "Which security feature do SD-WAN solutions typically provide for branch traffic that crosses the internet?",
     "options": {
-      "A": "Physical fiber links that are dedicated to each branch office",
+      "A": "Dedicated MPLS circuits leased for each branch office",
       "B": "Encrypted overlay tunnels managed by central policy",
-      "C": "Elimination of the need for any firewalls at branches",
-      "D": "Automatic removal of all malware from branch devices"
+      "C": "Automatic failover between two internet links",
+      "D": "Built-in endpoint protection for branch laptops"
     },
     "answer": "B",
     "explanation": "SD-WAN builds encrypted tunnels, usually IPsec, over any transport and applies routing and security policy centrally.",
     "distractor_rationales": {
-      "A": "SD-WAN typically uses existing internet links rather than dedicated fiber.",
-      "C": "Branches still need firewalling, often integrated into the SD-WAN device or a cloud service.",
-      "D": "SD-WAN does not remove malware from endpoints."
+      "A": "SD-WAN often replaces dedicated circuits with internet links. Its security comes from encrypted overlays.",
+      "C": "Link failover improves availability, but it is not the security feature asked about.",
+      "D": "SD-WAN works at the network level. It does not protect endpoints."
     },
     "references_topic": "SD-WAN security features",
     "version": "0.4"
@@ -488,17 +488,17 @@
     "type": "managerial_best_first_most",
     "stem": "An assessor plugs a laptop into a wall jack in the public lobby and gets an address on the corporate network. What is the BEST fix?",
     "options": {
-      "A": "Place a plant in front of the wall jack so that visitors do not notice it",
-      "B": "Put tape over the jack with a label that reads \"out of order\"",
-      "C": "Replace the lobby cable with fiber so that laptops cannot connect to it",
-      "D": "Disable unused switch ports and require 802.1X on any active public jack"
+      "A": "Enable port security that allows one MAC address per jack",
+      "B": "Add a camera that records anyone using the lobby wall jacks",
+      "C": "Put a lock on the network closet that serves the lobby jacks",
+      "D": "Disable unused switch ports and require 802.1X on public jacks"
     },
     "answer": "D",
     "explanation": "Unused jacks should be disconnected or disabled at the switch, and any jack that must stay active in a public area should require port authentication.",
     "distractor_rationales": {
-      "A": "Hiding the jack does not disable it.",
-      "B": "Tape can be removed in seconds.",
-      "C": "Fiber changes the medium but does not control who connects."
+      "A": "An attacker can unplug a device and copy its MAC address. Disabling unused ports and 802.1X authenticate what connects.",
+      "B": "A camera records a connection but does not prevent it.",
+      "C": "The jack itself is in the lobby. Locking the closet does not stop someone plugging in."
     },
     "references_topic": "Disabling unused network jacks",
     "version": "0.4"
@@ -536,17 +536,17 @@
     "type": "managerial_best_first_most",
     "stem": "The company's phone bill shows thousands of dollars of international calls made overnight through its PBX. What should the company do?",
     "options": {
-      "A": "Pay the bill and change nothing, since toll fraud happens to every company",
-      "B": "Restrict international dialing, reset voicemail PINs, and alert on unusual calls",
-      "C": "Disconnect the PBX permanently and require staff to use personal phones",
-      "D": "Ask the phone carrier to lower its international calling rates"
+      "A": "Change the PBX administrator password and keep the settings",
+      "B": "Limit international dialing, reset voicemail PINs, and alert on anomalies",
+      "C": "Block all outbound calls through the PBX outside business hours",
+      "D": "Dispute the charges with the carrier as fraudulent calls"
     },
     "answer": "B",
     "explanation": "Toll fraud often abuses weak voicemail PINs or open dialing permissions. Restricting destinations, strengthening PINs, and monitoring call patterns stop and detect it.",
     "distractor_rationales": {
-      "A": "Doing nothing invites repeated fraud.",
-      "C": "Removing the phone system is disproportionate.",
-      "D": "Lower rates reduce cost but do not stop the fraud."
+      "A": "Fraud often comes through weak voicemail PINs or open dialing rules, which a new admin password does not fix.",
+      "C": "An after-hours block reduces exposure but disrupts legitimate calls and leaves daytime fraud possible.",
+      "D": "Disputing the bill may recover money, but the PBX stays open to the next attack."
     },
     "references_topic": "Toll fraud",
     "version": "0.4"
@@ -561,16 +561,16 @@
     "stem": "Several workstations suddenly receive a default gateway that points to an unknown laptop. Which switch feature BEST prevents this?",
     "options": {
       "A": "Spanning Tree Protocol loop guard enabled on all of the uplinks",
-      "B": "Port mirroring to the intrusion detection system",
+      "B": "Dynamic ARP inspection on all access ports",
       "C": "DHCP snooping that trusts only authorized DHCP server ports",
-      "D": "Link aggregation between the access switches"
+      "D": "Port security limiting one MAC per access port"
     },
     "answer": "C",
     "explanation": "A rogue DHCP server can hand out a malicious gateway to intercept traffic. DHCP snooping allows DHCP offers only from trusted ports.",
     "distractor_rationales": {
       "A": "Loop guard prevents layer 2 loops.",
-      "B": "Mirroring copies traffic for analysis but does not block rogue offers.",
-      "D": "Link aggregation increases bandwidth and resilience."
+      "B": "DAI depends on DHCP snooping bindings. A rogue DHCP server is stopped by DHCP snooping itself.",
+      "D": "Limiting MACs does not stop a single laptop from answering DHCP requests."
     },
     "references_topic": "Rogue DHCP servers",
     "version": "0.4"
@@ -584,17 +584,17 @@
     "type": "knowledge",
     "stem": "Many CDNs advertise the same IP address from data centers around the world. How does this help against DDoS attacks?",
     "options": {
-      "A": "It encrypts the attack traffic so that it cannot harm the origin server",
-      "B": "It blocks every request that comes from outside the website's home country",
-      "C": "It hides the website's domain name from attackers' DNS lookups",
+      "A": "It caches every page so the origin never receives traffic",
+      "B": "It filters requests by country at the origin's firewall",
+      "C": "It hides the origin server's IP address from attackers",
       "D": "It spreads attack traffic across many edge locations"
     },
     "answer": "D",
     "explanation": "With anycast, traffic goes to the nearest location announcing the address, so a large attack is divided across many sites instead of hitting one.",
     "distractor_rationales": {
-      "A": "Anycast routes traffic; it does not encrypt it.",
-      "B": "Anycast does not filter by country.",
-      "C": "The domain still resolves normally."
+      "A": "Caching helps, but dynamic requests still reach the origin. Anycast's benefit is spreading the traffic.",
+      "B": "Geographic filtering is a separate control. Anycast shares the load across many edge sites.",
+      "C": "The CDN does hide the origin, but advertising one address worldwide helps by spreading the traffic."
     },
     "references_topic": "Anycast routing at the edge",
     "version": "0.4"
@@ -608,17 +608,17 @@
     "type": "managerial_best_first_most",
     "stem": "The company plans to disable TLS 1.0 and 1.1 on its web servers, but a few partner systems support only TLS 1.0. What is the BEST approach?",
     "options": {
-      "A": "Disable old versions broadly and give partners a limited, isolated exception with a deadline",
-      "B": "Keep TLS 1.0 enabled on every server indefinitely so that no partner connection breaks",
-      "C": "Disable TLS entirely for partners and exchange files with them by plain FTP",
-      "D": "Disable the old versions without notice and let partners discover the change"
+      "A": "Disable old versions, with an isolated partner exception and a deadline",
+      "B": "Keep TLS 1.0 on all servers until every partner upgrades",
+      "C": "Disable TLS 1.0 and 1.1 and block those partners until they upgrade",
+      "D": "Route partner traffic over a VPN and keep TLS 1.0 on all servers"
     },
     "answer": "A",
     "explanation": "Retiring weak protocols protects everyone, while a narrow, time-limited exception with isolation manages the business need and pushes partners to upgrade.",
     "distractor_rationales": {
-      "B": "Leaving old versions everywhere exposes all users.",
-      "C": "Plain FTP removes encryption entirely.",
-      "D": "Unannounced changes disrupt partners and damage trust."
+      "B": "Leaving weak TLS everywhere exposes all users for a handful of partners.",
+      "C": "Cutting partners off without a transition plan disrupts the business.",
+      "D": "A VPN protects partner traffic, but every server still offers TLS 1.0 to everyone else."
     },
     "references_topic": "Retiring old TLS versions",
     "version": "0.4"
@@ -632,17 +632,17 @@
     "type": "application",
     "stem": "IP phones and PCs share wall ports, with phones placed on a voice VLAN. A tester unplugs a phone, connects a laptop, and reaches the voice VLAN. What BEST prevents this?",
     "options": {
-      "A": "Hide the voice VLAN number from the switch configuration documentation",
-      "B": "Authenticate devices with 802.1X or MAC authentication before assigning the voice VLAN",
-      "C": "Move all phones to the data VLAN so there is only one VLAN on each port",
-      "D": "Replace the IP phones with analog phones connected to a separate PBX"
+      "A": "Use a separate voice VLAN for each floor of the building",
+      "B": "Authenticate devices with 802.1X or MAB before the voice VLAN",
+      "C": "Enable port security that locks each port to the phone's MAC",
+      "D": "Encrypt all voice traffic with SRTP on every one of the phones"
     },
     "answer": "B",
     "explanation": "Assigning the voice VLAN only after the device authenticates as a phone keeps laptops from joining it. MAC authentication alone is weaker, so certificates on phones are better where supported.",
     "distractor_rationales": {
-      "A": "The VLAN ID is easily discovered, for example from phone traffic.",
-      "C": "Merging voice and data removes separation.",
-      "D": "Replacing phones is disproportionate when port authentication solves the problem."
+      "A": "More VLANs do not stop a laptop on a phone's port from joining them.",
+      "C": "A laptop can copy the phone's MAC address. Authentication is needed.",
+      "D": "SRTP protects call contents but does not stop a laptop reaching the voice VLAN."
     },
     "references_topic": "Securing voice VLAN access",
     "version": "0.4"
@@ -656,17 +656,17 @@
     "type": "managerial_best_first_most",
     "stem": "Domain administrators use the same workstation for email, web browsing, and managing domain controllers. What is the BEST improvement?",
     "options": {
-      "A": "Install a second antivirus product on each administrator's workstation",
-      "B": "Block all web browsing for the entire company to reduce exposure",
-      "C": "Give admins dedicated hardened workstations in an admin zone with no email or browsing",
-      "D": "Require administrators to clear their browser history daily"
+      "A": "Run email and browsing in a sandbox on the same workstation",
+      "B": "Give admins separate admin accounts on the same workstation",
+      "C": "Give admins dedicated hardened workstations with no email or web browsing",
+      "D": "Require MFA every time an admin opens a management tool"
     },
     "answer": "C",
     "explanation": "Email and browsing are common infection paths. Dedicated privileged access workstations in a separate management zone keep admin credentials away from those risks.",
     "distractor_rationales": {
-      "A": "A second antivirus product does little against targeted phishing.",
-      "B": "A company-wide browsing ban is disproportionate.",
-      "D": "Clearing browser history does not stop malware from stealing credentials."
+      "A": "Sandboxing helps, but a compromise of the workstation can still reach the admin sessions.",
+      "B": "Separate accounts help, but malware on a shared workstation can capture the admin credentials.",
+      "D": "MFA protects the sign-in, but malware on the workstation can hijack sessions after it."
     },
     "references_topic": "Privileged access workstations",
     "version": "0.4"
@@ -681,16 +681,16 @@
     "stem": "A utility is deploying 5,000 smart meters that connect over a cellular carrier network. The meters should reach only the utility's head-end servers. Which design BEST achieves this?",
     "options": {
       "A": "Give each meter a public IP address and a firewall rule on the head-end",
-      "B": "Use SMS messages for all meter communications to avoid the internet",
-      "C": "Use the carrier's default consumer APN and rely on meter passwords",
+      "B": "Encrypt meter traffic with TLS over the carrier's public APN",
+      "C": "Use the consumer APN with a firewall allowlist at the head-end",
       "D": "Use a private APN with no internet breakout and a VPN to the utility"
     },
     "answer": "D",
     "explanation": "A private APN keeps meter traffic off the public internet and routes it only to the utility, where a VPN and filtering further restrict it.",
     "distractor_rationales": {
       "A": "Public addresses expose every meter to internet scanning.",
-      "B": "SMS is limited, unauthenticated by default, and hard to secure.",
-      "C": "A consumer APN gives internet access and exposure."
+      "B": "TLS protects the data, but the meters still sit on a network that reaches the internet.",
+      "C": "Meters on the consumer APN can still reach and be reached from the internet. The head-end rule protects only one side."
     },
     "references_topic": "Private APNs for IoT",
     "version": "0.4"
@@ -704,17 +704,17 @@
     "type": "managerial_best_first_most",
     "stem": "Network engineers push configuration changes to the SDN controller directly from their laptops using personal API tokens. What is the BEST improvement?",
     "options": {
-      "A": "Route changes through a reviewed pipeline that alone holds scoped controller credentials",
-      "B": "Ask engineers to email a description of each change to the network manager afterward for records",
-      "C": "Give every engineer a shared administrator token so that changes are consistent",
-      "D": "Allow changes only on weekends when there is less traffic on the network"
+      "A": "Push changes through a reviewed pipeline that alone holds scoped credentials",
+      "B": "Log every API call made with engineers' tokens for later review",
+      "C": "Require MFA before each engineer's personal API token can be used",
+      "D": "Restrict personal tokens to the engineers' office network"
     },
     "answer": "A",
     "explanation": "A pipeline with review, testing, and tightly scoped credentials makes every change approved, recorded, and repeatable, and removes powerful tokens from laptops.",
     "distractor_rationales": {
-      "B": "After-the-fact emails do not prevent bad changes.",
-      "C": "A shared token destroys accountability.",
-      "D": "Timing does not add review or control."
+      "B": "Logging records changes but does not review them before they reach the network.",
+      "C": "MFA protects the tokens, but changes still skip review and go straight from laptops.",
+      "D": "Network restriction narrows where tokens work, but unreviewed changes still go live."
     },
     "references_topic": "Controlling network-as-code changes",
     "version": "0.4"
@@ -730,15 +730,15 @@
     "options": {
       "A": "Give contractors the same full VPN but ask them to use only the one application",
       "B": "Use zero trust network access that publishes only that application to them",
-      "C": "Move the application to the public internet with no authentication",
-      "D": "Create a shared VPN account for all contractors to simplify management"
+      "C": "A VPN profile with a firewall rule for that one application",
+      "D": "A jump host that contractors reach over the full VPN"
     },
     "answer": "B",
     "explanation": "Zero trust network access grants per-application access after verifying identity and context, so contractors never land on the internal network.",
     "distractor_rationales": {
       "A": "Relying on contractors to limit themselves is not a control.",
-      "C": "Public exposure without authentication is dangerous.",
-      "D": "Shared accounts destroy accountability."
+      "C": "A filtered VPN is better, but it still grants network-level access without per-request identity and device checks.",
+      "D": "The full VPN still exposes the whole network on the way to the jump host."
     },
     "references_topic": "Zero trust network access",
     "version": "0.4"
@@ -752,17 +752,17 @@
     "type": "managerial_best_first_most",
     "stem": "An organization learns that another network briefly announced its IP prefixes, drawing its traffic away. What is the BEST long-term control?",
     "options": {
-      "A": "Change the organization's public IP addresses whenever this happens",
+      "A": "Announce more-specific prefixes each time a hijack happens",
       "B": "Encrypt all of the organization's DNS records with DNSSEC",
-      "C": "Publish route origin authorizations with RPKI and ask providers to validate them",
-      "D": "Block the other network's IP addresses at the organization's firewall"
+      "C": "Publish RPKI route origin authorizations and ask providers to validate",
+      "D": "Monitor BGP announcements and alert on any hijack of the prefixes"
     },
     "answer": "C",
     "explanation": "RPKI lets the organization cryptographically state which networks may originate its prefixes. Providers that validate routes can reject hijacked announcements.",
     "distractor_rationales": {
-      "A": "Changing addresses is costly and does not stop future hijacks.",
+      "A": "More-specific announcements can win traffic back during an incident, but they react after the fact.",
       "B": "DNSSEC protects DNS answers, not routing announcements.",
-      "D": "A local firewall cannot stop other networks from routing traffic elsewhere."
+      "D": "Monitoring detects hijacks, but RPKI lets other networks reject the false routes."
     },
     "references_topic": "BGP hijacking and RPKI",
     "version": "0.4"
@@ -776,17 +776,17 @@
     "type": "application",
     "stem": "A marketing subdomain still has a DNS CNAME pointing to a CDN resource that was deleted months ago. What risk does this create, and what is the fix?",
     "options": {
-      "A": "Slower page loads for users; increase the time-to-live on the DNS record",
-      "B": "Certificate expiry warnings; renew the TLS certificate for the subdomain",
-      "C": "Higher CDN costs; ask the provider to discount the deleted resource",
-      "D": "Subdomain takeover by an attacker who claims the resource; remove dangling records"
+      "A": "Cache poisoning of the subdomain; deploy DNSSEC on the zone",
+      "B": "Email spoofing from the subdomain; publish an SPF record for it",
+      "C": "Certificate misissuance; add a CAA record to the domain",
+      "D": "Subdomain takeover by whoever claims the resource; remove dangling records"
     },
     "answer": "D",
     "explanation": "If an attacker can create a resource with the same name at the provider, the subdomain will serve their content. Removing DNS records when resources are deleted closes the gap.",
     "distractor_rationales": {
-      "A": "The main risk is takeover, not performance.",
-      "B": "A certificate does not address the dangling record.",
-      "C": "Cost is not the issue; the orphaned name is."
+      "A": "The record is valid, so DNSSEC would sign it. The danger is that anyone can claim the deleted resource.",
+      "B": "Spoofing is a separate email risk. The dangling CNAME lets someone serve content on the subdomain.",
+      "C": "CAA limits which CAs may issue. It does not stop someone taking over the resource the CNAME points to."
     },
     "references_topic": "Dangling DNS and subdomain takeover",
     "version": "0.4"
