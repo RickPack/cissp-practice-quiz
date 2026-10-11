@@ -8,17 +8,17 @@
     "type": "knowledge",
     "stem": "What is the main benefit of a data classification program?",
     "options": {
-      "A": "It lets the organization stop using encryption for most of its data",
-      "B": "It removes the need to keep an inventory of data and systems",
-      "C": "It guarantees that no sensitive data will ever be disclosed",
-      "D": "It applies protection in proportion to the data's value and sensitivity"
+      "A": "It shows auditors which systems hold regulated data",
+      "B": "It sets the retention period for each type of record",
+      "C": "It identifies the owner accountable for each data set",
+      "D": "It scales protection to the data's value and sensitivity"
     },
     "answer": "D",
     "explanation": "Classification groups data by the harm its disclosure or alteration would cause, so stronger controls go where they matter and less-sensitive data is not over-protected.",
     "distractor_rationales": {
-      "A": "Classification decides where encryption is needed; it does not remove the need.",
-      "B": "Inventory is still required to know where classified data lives.",
-      "C": "No program can guarantee zero disclosure."
+      "A": "Showing regulated data helps audits, but the program's main benefit is proportionate protection.",
+      "B": "Retention periods come from the retention schedule and legal requirements, not from classification itself.",
+      "C": "Ownership is assigned through governance and the inventory. Classification decides how much protection the data needs."
     },
     "references_topic": "Purpose of classification",
     "version": "0.4"
@@ -33,16 +33,16 @@
     "stem": "Expense reports reveal that several teams pay for SaaS tools that IT has never reviewed. What should happen FIRST?",
     "options": {
       "A": "Add them to the inventory, assign owners, and assess their risk",
-      "B": "Cancel every one of the subscriptions immediately without discussion",
-      "C": "Ignore them, since SaaS providers are responsible for their own security",
-      "D": "Ask each team to stop filing expense reports for software purchases"
+      "B": "Block the unreviewed SaaS domains at the web proxy",
+      "C": "Require all software to be bought through IT from now on",
+      "D": "Run a CASB scan to see what data the tools hold"
     },
     "answer": "A",
     "explanation": "Unknown assets cannot be protected. Recording them, naming an owner, and assessing the risk brings them under governance before deciding what to keep.",
     "distractor_rationales": {
-      "B": "Cancelling without review may disrupt business and push usage further underground.",
-      "C": "The organization remains responsible for its data in SaaS tools.",
-      "D": "Hiding the purchases makes the problem worse."
+      "B": "Blocking without review may break business processes and drives use further underground.",
+      "C": "A purchasing rule helps in future, but the existing tools still need owners and risk assessment.",
+      "D": "Discovery helps, but the tools still need to be inventoried, owned, and assessed."
     },
     "references_topic": "Shadow IT discovery",
     "version": "0.4"
@@ -153,16 +153,16 @@
     "stem": "An unlabeled USB drive is found in a secure area that handles restricted data. How should it be handled?",
     "options": {
       "A": "Plug it into a workstation to find out who owns it",
-      "B": "Treat it as holding the highest classification until it is examined safely",
-      "C": "Throw it away, since unlabeled media is assumed to be empty",
-      "D": "Give it to the nearest employee to use as spare storage"
+      "B": "Treat it as the highest classification until examined safely",
+      "C": "Wipe it in a secure kiosk, then return it to the supply stock",
+      "D": "Hand it to the help desk so they can identify the owner"
     },
     "answer": "B",
     "explanation": "Unlabeled media in a sensitive area could contain restricted data or malware. It should be protected at the highest level present and examined in a controlled way.",
     "distractor_rationales": {
       "A": "Plugging in unknown media risks malware infection.",
-      "C": "Discarding it could expose restricted data and destroy evidence.",
-      "D": "Reusing it could spread data or malware."
+      "C": "Wiping destroys possible evidence and assumes it is harmless. It should be examined safely first.",
+      "D": "The help desk may plug it in to identify it, which is exactly the risk."
     },
     "references_topic": "Handling unlabeled media",
     "version": "0.4"
@@ -177,16 +177,16 @@
     "stem": "Product specifications were classified as confidential before launch. The product has now been announced, and the specifications are published on the company's website. What should happen to the classification?",
     "options": {
       "A": "Keep them confidential permanently, since they were confidential when they were created",
-      "B": "Raise them to restricted to protect them from competitors after launch",
+      "B": "Keep them confidential until the next annual review",
       "C": "Have the owner downgrade them, since disclosure would no longer cause harm",
-      "D": "Delete all internal copies, since the public web version is now the only one"
+      "D": "Mark them public without asking the data owner"
     },
     "answer": "C",
     "explanation": "Classification should reflect current sensitivity. Once information is public, the owner should declassify it so it is not over-protected at unnecessary cost.",
     "distractor_rationales": {
       "A": "Over-classifying public information wastes resources and hinders use.",
-      "B": "Raising the level makes no sense for published information.",
-      "D": "Internal copies may still be needed for business and records purposes."
+      "B": "The information is already public, so delaying only adds handling cost with no benefit.",
+      "D": "Downgrading is the owner's decision, even when the answer seems obvious."
     },
     "references_topic": "Reclassification over time",
     "version": "0.4"
@@ -202,7 +202,7 @@
     "options": {
       "A": "Ask every employee to update the spreadsheet whenever they receive new equipment",
       "B": "Rebuild the spreadsheet from scratch once a year during the external audit",
-      "C": "Limit the inventory to servers, since laptops and phones change too often to track",
+      "C": "Have IT scan the network monthly and update it by hand",
       "D": "Use automated discovery tools and reconcile their results with the inventory"
     },
     "answer": "D",
@@ -210,7 +210,7 @@
     "distractor_rationales": {
       "A": "Relying on individuals produces gaps.",
       "B": "An annual rebuild is out of date soon after it is finished.",
-      "C": "Leaving out endpoints leaves many assets unprotected."
+      "C": "Monthly manual updates still drift between scans. Automated discovery with reconciliation keeps it current."
     },
     "references_topic": "Automated asset discovery",
     "version": "0.4"
@@ -250,15 +250,15 @@
     "options": {
       "A": "Start training right away, since the company already holds all of the recordings",
       "B": "Review whether the new use is compatible with the original purpose and notices",
-      "C": "Delete all recordings to avoid any possible privacy problem in the future",
-      "D": "Let the AI vendor decide whether the recordings can be used for training"
+      "C": "Anonymize the recordings first, then start training the model",
+      "D": "Ask the AI vendor to sign a data processing agreement before training"
     },
     "answer": "B",
     "explanation": "Using data for a new purpose requires checking it against the purpose it was collected for and what customers were told. A privacy review decides whether new notice or consent is needed.",
     "distractor_rationales": {
       "A": "Holding data does not permit any use of it.",
-      "C": "Deleting the recordings may break legitimate quality and retention needs.",
-      "D": "The company, not its vendor, is accountable for how its data is used."
+      "C": "Voice is hard to anonymize, and the compatibility of the new purpose must be reviewed first.",
+      "D": "A processing agreement governs the vendor, but it does not settle whether the new purpose is allowed."
     },
     "references_topic": "Reusing data for new purposes",
     "version": "0.4"
@@ -272,17 +272,17 @@
     "type": "knowledge",
     "stem": "Why should an organization avoid keeping data longer than its retention requirements?",
     "options": {
-      "A": "Older data is automatically less accurate and must be deleted for that reason",
-      "B": "Storage vendors require customers to delete data after a fixed number of years",
+      "A": "Old data slows systems and raises storage costs",
+      "B": "Regulators fine any data held past its schedule",
       "C": "Excess data increases breach exposure and discovery costs",
-      "D": "Keeping data longer always violates the organization's backup policy"
+      "D": "Old data cannot be protected with current algorithms"
     },
     "answer": "C",
     "explanation": "Every record kept is something that could be breached or must be searched in litigation. Disposing of data when retention ends reduces both.",
     "distractor_rationales": {
-      "A": "Age alone does not make data inaccurate.",
-      "B": "Storage vendors do not dictate customers' retention.",
-      "D": "Backup policy is not the reason for retention limits."
+      "A": "Cost and performance matter, but the security concern is breach exposure and discovery burden.",
+      "B": "Over-retention can bring penalties in some regimes, but not automatic fines everywhere. The core risk is exposure.",
+      "D": "Old data can be re-encrypted. The problem is that every extra record is something to lose or produce."
     },
     "references_topic": "Benefits of limiting retention",
     "version": "0.4"
@@ -298,7 +298,7 @@
     "options": {
       "A": "Degaussing each disc with a high-strength degausser",
       "B": "Overwriting the discs with random data using a disc burner",
-      "C": "Deleting the files through the operating system's file manager",
+      "C": "Breaking each disc in half by hand",
       "D": "Shredding the discs in a shredder rated for optical media"
     },
     "answer": "D",
@@ -306,7 +306,7 @@
     "distractor_rationales": {
       "A": "Optical discs are not magnetic, so degaussing has no effect.",
       "B": "Read-only discs cannot be overwritten.",
-      "C": "Deleting files from read-only media is not possible and would not remove data anyway."
+      "C": "Pieces of a broken disc can still hold readable data. Optical media needs a rated shredder."
     },
     "references_topic": "Destroying optical media",
     "version": "0.4"
@@ -321,15 +321,15 @@
     "stem": "A database encrypts card numbers at rest, but the application server writes full card numbers into its debug logs. What is the BEST fix?",
     "options": {
       "A": "Mask or remove card numbers before they are written to logs",
-      "B": "Encrypt the database with a longer key so the logs are protected too",
-      "C": "Move the log files to a different folder on the same application server",
+      "B": "Encrypt the log files on the application server",
+      "C": "Restrict access to the log folder to administrators",
       "D": "Keep debug logging but delete the logs manually once a month"
     },
     "answer": "A",
     "explanation": "Protection must follow the data wherever it goes. Masking or removing sensitive values at the point of logging stops the exposure at its source.",
     "distractor_rationales": {
-      "B": "Database encryption has no effect on separate log files.",
-      "C": "Moving logs does not protect their contents.",
+      "B": "Encrypting logs reduces exposure but leaves card numbers stored where they should never be.",
+      "C": "Access limits reduce exposure, but the card numbers still sit in logs, widening the PCI scope.",
       "D": "Monthly deletion leaves the data exposed in the meantime."
     },
     "references_topic": "Sensitive data in logs",
@@ -368,17 +368,17 @@
     "type": "managerial_best_first_most",
     "stem": "An auditor asks why several controls in the company's adopted baseline were removed or changed, but no one remembers. What practice would have prevented this?",
     "options": {
-      "A": "Keeping the original baseline unchanged, so that no tailoring decisions are ever needed",
-      "B": "Asking the security team to explain each decision from memory during every audit",
-      "C": "Recording each scoping and tailoring decision with rationale and approval",
-      "D": "Allowing each system administrator to adjust the baseline without documentation"
+      "A": "Reviewing the whole baseline every year together with the auditors",
+      "B": "Using the baseline exactly as published, with no changes",
+      "C": "Recording each scoping and tailoring decision with its approval",
+      "D": "Keeping a change ticket for each individual system that deviates"
     },
     "answer": "C",
     "explanation": "Documented rationale and approval show that each change was deliberate and risk-based, and give auditors the evidence they need.",
     "distractor_rationales": {
-      "A": "Refusing to tailor ignores legitimate differences in environment and risk.",
-      "B": "Memory is unreliable and not auditable.",
-      "D": "Undocumented changes are exactly the problem."
+      "A": "Annual reviews do not recover the reasons for past decisions that were never written down.",
+      "B": "Most organizations must scope and tailor a baseline. The fix is documenting decisions, not avoiding them.",
+      "D": "Per-system tickets show deviations, but not the baseline-level rationale and approval auditors ask for."
     },
     "references_topic": "Documenting tailoring decisions",
     "version": "0.4"
@@ -416,16 +416,16 @@
     "type": "managerial_best_first_most",
     "stem": "Staff regularly email confidential documents to personal accounts so they can work from home. What is the BEST response?",
     "options": {
-      "A": "Provide approved secure remote access, and monitor or block personal forwarding",
-      "B": "Tell staff in a memo that working from home is no longer allowed for anyone at all",
-      "C": "Allow the practice, as long as staff delete the emails when they finish",
+      "A": "Provide approved secure remote access and block personal forwarding",
+      "B": "Block all personal email domains at the corporate mail gateway",
+      "C": "Require staff to delete the emails at home once they have finished",
       "D": "Ask staff to password-protect the documents before emailing them home"
     },
     "answer": "A",
     "explanation": "People use workarounds when they lack a safe way to work. Giving them an approved channel and controlling the unsafe one addresses both need and risk.",
     "distractor_rationales": {
-      "B": "Banning remote work is disproportionate and invites more workarounds.",
-      "C": "Personal accounts are outside company control, and deletion cannot be verified.",
+      "B": "Blocking alone leaves staff with no approved way to work remotely, so they find another route.",
+      "C": "Deleting later does not undo the exposure while the documents sit in personal accounts.",
       "D": "Document passwords are weak and still put data in personal accounts."
     },
     "references_topic": "Removing the need for unsafe workarounds",
@@ -440,17 +440,17 @@
     "type": "managerial_best_first_most",
     "stem": "Several critical systems reached end of support with no replacement budget, surprising leadership. What practice would BEST prevent this?",
     "options": {
-      "A": "Buy only products from vendors that promise never to end support",
+      "A": "Buy extended support for every system as it nears end of life",
       "B": "Track vendor end-of-life dates in the inventory and budget ahead",
-      "C": "Keep systems running until they fail, then replace them as needed",
-      "D": "Ask vendors to extend support for free each time a date approaches"
+      "C": "Replace every system on a fixed five-year cycle",
+      "D": "Review support status during each annual audit"
     },
     "answer": "B",
     "explanation": "Recording lifecycle dates in the inventory gives leadership time to plan and budget replacements before support ends.",
     "distractor_rationales": {
-      "A": "No vendor supports products forever.",
-      "C": "Running to failure leaves unsupported systems exposed.",
-      "D": "Free extensions are rarely available and cannot be relied upon."
+      "A": "Extended support is costly and temporary. The fix is seeing dates in advance and budgeting.",
+      "C": "A fixed cycle ignores actual vendor dates, which may come sooner or later.",
+      "D": "An annual audit may catch dates too late to budget. They belong in the inventory, tracked continuously."
     },
     "references_topic": "Planning for end of support",
     "version": "0.4"
@@ -488,17 +488,17 @@
     "type": "managerial_best_first_most",
     "stem": "A university research partner asks for a copy of the company's customer data set for a joint study. What is the BEST approach?",
     "options": {
-      "A": "Send the full data set by email, since the partner is a trusted academic institution",
-      "B": "Give the partner direct read access to the production customer database",
-      "C": "Decline, since customer data can never be shared with third parties under any terms",
-      "D": "Share a minimized, de-identified extract under an agreement covering use and deletion"
+      "A": "Send the full data set under an NDA signed with the university",
+      "B": "Give the partner read access to a full copy of the production data",
+      "C": "Share the full data set encrypted, sending the key by a separate channel",
+      "D": "Share a minimized, de-identified extract under a use and deletion agreement"
     },
     "answer": "D",
     "explanation": "Sharing should be limited to what the study needs, reduced in identifiability, and governed by an agreement on permitted use, protection, and destruction.",
     "distractor_rationales": {
-      "A": "Full data by email over-shares and uses an insecure channel.",
-      "B": "Production access exposes far more than the study needs.",
-      "C": "Sharing can be lawful and valuable with proper controls."
+      "A": "An NDA restricts disclosure, but it still hands over far more personal data than the study needs.",
+      "B": "A copy of production still contains all the identifiable customer data.",
+      "C": "Encryption protects transfer, but the partner still receives the full identifiable data set."
     },
     "references_topic": "Controlled data sharing with partners",
     "version": "0.4"
@@ -512,16 +512,16 @@
     "type": "application",
     "stem": "The retention schedule says customer records must be deleted after three years, but backup tapes are kept for ten years. What is the BEST fix?",
     "options": {
-      "A": "Align backup retention with the schedule, or document why longer retention is required",
-      "B": "Keep the ten-year tapes, since backups are exempt from all retention schedules",
-      "C": "Delete production records after three years and assume no one will restore old tapes",
+      "A": "Align backup retention with the schedule, or document why it is longer",
+      "B": "Keep the tapes, but encrypt them with a key held by the legal team",
+      "C": "Delete expired customer records from old tapes only when they are restored",
       "D": "Extend the retention schedule to ten years so that it matches the backup tapes"
     },
     "answer": "A",
     "explanation": "Data in backups is still data. Backup retention must follow the schedule, or any legitimate reason for a longer period must be documented and controlled.",
     "distractor_rationales": {
-      "B": "Backups are not exempt from retention requirements.",
-      "C": "Old tapes still hold the records and can be discovered or breached.",
+      "B": "Encryption protects the tapes, but keeping data for ten years still conflicts with the three-year schedule.",
+      "C": "Deleting at restore time is a recognized technique only when it is documented and approved. Undocumented, the conflict remains.",
       "D": "Extending retention for convenience increases exposure without a business reason."
     },
     "references_topic": "Backups and retention schedules",
@@ -536,17 +536,17 @@
     "type": "application",
     "stem": "Network DLP stopped detecting sensitive uploads after most web traffic moved to HTTPS. What is the BEST way to restore coverage?",
     "options": {
-      "A": "Block all HTTPS traffic so that uploads must fall back to unencrypted HTTP",
-      "B": "Add TLS inspection at the proxy with privacy exceptions, or deploy endpoint DLP",
-      "C": "Raise the DLP alert thresholds so fewer uploads trigger alerts",
-      "D": "Accept the gap, since encrypted traffic is secure by definition"
+      "A": "Block uploads to all unsanctioned cloud services at the firewall",
+      "B": "Add TLS inspection at the proxy, with privacy exceptions, or endpoint DLP",
+      "C": "Scan stored files on the file servers for sensitive data instead",
+      "D": "Add DNS filtering to block access to known file-sharing sites"
     },
     "answer": "B",
     "explanation": "DLP needs to see content. Inspecting TLS at a controlled point, with exceptions for sensitive categories such as banking and health, or inspecting on the endpoint before encryption, restores visibility.",
     "distractor_rationales": {
-      "A": "Blocking HTTPS would break the web and weaken security.",
-      "C": "Raising thresholds reduces detection further.",
-      "D": "Encryption protects the channel, not against an insider uploading data."
+      "A": "Blocking unsanctioned services helps, but sensitive uploads to sanctioned services still go uninspected.",
+      "C": "Scanning at rest finds stored files but does not see what leaves over encrypted channels.",
+      "D": "DNS filtering blocks some sites but does not inspect what is uploaded to allowed ones."
     },
     "references_topic": "DLP and encrypted traffic",
     "version": "0.4"
@@ -560,17 +560,17 @@
     "type": "application",
     "stem": "A retired application server was powered off and left in the rack. Months later, its DNS name, service accounts, and TLS certificate were all still active. What should the decommissioning process include?",
     "options": {
-      "A": "Powering off the server and adding a \"do not use\" sticker to the front panel",
-      "B": "Leaving everything in place in case the application needs to come back later",
-      "C": "Revoking its accounts and certificates, removing DNS and inventory entries, and sanitizing drives",
-      "D": "Deleting only the application files and leaving the operating system installed"
+      "A": "Powering off the server and removing it from monitoring",
+      "B": "Removing it from the asset inventory and from DNS records only",
+      "C": "Revoking its credentials, removing its records, and sanitizing its drives",
+      "D": "Wiping the drives and returning the hardware to the spares stock"
     },
     "answer": "C",
     "explanation": "Decommissioning must remove everything that could be reused by an attacker, including credentials, certificates, and name records, and must sanitize storage before disposal.",
     "distractor_rationales": {
-      "A": "A sticker does not remove credentials or data.",
-      "B": "Leftover accounts and certificates are attack paths.",
-      "D": "The remaining system still holds credentials and possibly data."
+      "A": "Powering off leaves the accounts, certificates, and DNS name live and usable.",
+      "B": "Records are only part of it. Accounts and certificates stay active, and the drives still hold data.",
+      "D": "Wiping handles the data, but accounts, certificates, and DNS entries stay active."
     },
     "references_topic": "Decommissioning checklist",
     "version": "0.4"

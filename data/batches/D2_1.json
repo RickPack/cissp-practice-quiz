@@ -128,16 +128,16 @@
     "type": "managerial_best_first_most",
     "stem": "A legal team instructs IT to preserve all email relating to a pending lawsuit. The organization's retention policy automatically deletes email after 90 days. What should the security manager do FIRST?",
     "options": {
-      "A": "Continue automated deletion, since the retention policy was approved by management",
-      "B": "Export all mailboxes to offline storage and delete the originals",
+      "A": "Back up all email now and keep the deletion policy running",
+      "B": "Tell all employees not to delete any email about the case",
       "C": "Ask the legal team to narrow the request before taking any action",
-      "D": "Suspend automated deletion for the relevant custodians and data under a legal hold"
+      "D": "Suspend automated deletion for the relevant data under a legal hold"
     },
     "answer": "D",
     "explanation": "A legal hold overrides normal retention. Relevant data must be preserved immediately to avoid spoliation, so automated deletion for the affected custodians and data must stop first. Scope can be refined with counsel afterward.",
     "distractor_rationales": {
-      "A": "Continuing deletion after notice of litigation can be treated as spoliation of evidence and lead to court sanctions.",
-      "B": "Exporting and deleting originals risks losing metadata and weakens chain of custody. It is also broader than necessary.",
+      "A": "A one-time backup misses email created later and leaves deletion running against the hold.",
+      "B": "A notice to staff does not stop the automated deletion, which is what will destroy the evidence.",
       "C": "Clarifying scope is reasonable, but preservation cannot wait. Data could be deleted while the request is being narrowed."
     },
     "references_topic": "Legal hold and spoliation",
@@ -200,17 +200,17 @@
     "type": "managerial_best_first_most",
     "stem": "A manufacturer relies on a plant-floor application that runs only on an operating system whose vendor support ended last year. Replacing the application will take 18 months. What is the BEST approach in the meantime?",
     "options": {
-      "A": "Keep the system unchanged, since it has been stable for several years",
+      "A": "Apply the vendor's last security patches and leave it on the network",
       "B": "Immediately upgrade the operating system, accepting the application may fail",
       "C": "Isolate it on a restricted network segment with added monitoring",
-      "D": "Purchase cyber insurance to transfer the risk of compromise"
+      "D": "Install endpoint antivirus and scan the system every day"
     },
     "answer": "C",
     "explanation": "When an end-of-support asset cannot be replaced yet, apply compensating controls such as network isolation, strict access, and monitoring (and extended support if available). Document the risk acceptance with a firm replacement date.",
     "distractor_rationales": {
-      "A": "Without patches the system's exposure grows over time. Stability is not the same as security.",
+      "A": "The last patches do not cover flaws found after support ended, and the system stays exposed on the network.",
       "B": "Breaking a critical production application creates an availability impact that outweighs the benefit.",
-      "D": "Insurance may soften the financial impact, but it does not reduce the likelihood of compromise. Transfer alone is not enough for an unsupported system on a production network."
+      "D": "Antivirus helps a little, but it does not reduce the exposure of an unpatched system the way isolation does."
     },
     "references_topic": "Compensating controls for unsupported systems",
     "version": "0.1"

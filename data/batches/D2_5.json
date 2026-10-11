@@ -32,17 +32,17 @@
     "type": "managerial_best_first_most",
     "stem": "What is the MOST important security reason to keep an inventory of installed software?",
     "options": {
-      "A": "To decide which applications should get new icons on the desktop",
+      "A": "To track license counts and renewal dates for budgeting",
       "B": "To know what must be patched and spot unauthorized software",
-      "C": "To calculate how much disk space each application uses",
-      "D": "To list every application in the annual report to shareholders"
+      "C": "To plan hardware upgrades from each application's needs",
+      "D": "To decide which applications need user training"
     },
     "answer": "B",
     "explanation": "A software inventory shows what is running, so the organization can patch it, remove unauthorized programs, and respond quickly to new vulnerabilities.",
     "distractor_rationales": {
-      "A": "Desktop icons are not a security concern.",
-      "C": "Disk usage is an operational detail.",
-      "D": "Shareholder reports do not list applications."
+      "A": "License tracking is a financial use. The security reason is knowing what to patch and what should not be there.",
+      "C": "Capacity planning is an operations use, not the security reason.",
+      "D": "Training needs are a separate question from patching and spotting unauthorized software."
     },
     "references_topic": "Software inventory",
     "version": "1.0"
@@ -80,17 +80,17 @@
     "type": "knowledge",
     "stem": "When should data be classified?",
     "options": {
-      "A": "Only after it has been shared with outside parties",
-      "B": "Only when it is about to be destroyed",
-      "C": "Only during the annual data review",
+      "A": "When it is first shared outside its team",
+      "B": "When it is moved to long-term archive",
+      "C": "During the annual data inventory review",
       "D": "When it is created or collected"
     },
     "answer": "D",
     "explanation": "Classifying data at creation means the right protections apply from the start, rather than after the data has already been handled without them.",
     "distractor_rationales": {
-      "A": "Sharing before classification risks mishandling.",
-      "B": "Classifying at destruction is far too late.",
-      "C": "Waiting for an annual review leaves data unprotected for months."
+      "A": "By then the data may already have been handled without the right protection.",
+      "B": "Archiving comes late in the lifecycle. Data needs a classification from the start.",
+      "C": "An annual review leaves data unclassified for months. It should be classified when created or collected."
     },
     "references_topic": "Classifying data at creation",
     "version": "1.0"
@@ -105,16 +105,16 @@
     "stem": "What does a records retention schedule define?",
     "options": {
       "A": "How long each type of record is kept and how it is disposed of",
-      "B": "Which employees may read each type of record",
+      "B": "Which employees and roles may read each type of record",
       "C": "Which encryption algorithm protects each type of record",
-      "D": "How quickly the network delivers records to users"
+      "D": "Where each type of record must be physically or digitally stored"
     },
     "answer": "A",
     "explanation": "A retention schedule lists record types with their required retention periods and disposal methods, based on legal, regulatory, and business needs.",
     "distractor_rationales": {
       "B": "Read access is governed by access control policy.",
       "C": "Encryption choices are set by standards.",
-      "D": "Network performance is unrelated."
+      "D": "Storage location may be set elsewhere. A retention schedule defines how long records are kept and how they are disposed of."
     },
     "references_topic": "Retention schedules",
     "version": "1.0"
@@ -128,17 +128,17 @@
     "type": "application",
     "stem": "An office has boxes of old paper files containing customer account details. What is the BEST way to dispose of them?",
     "options": {
-      "A": "Put them in the regular recycling bin behind the building",
+      "A": "Lock them in a bin until the next office move",
       "B": "Use cross-cut shredding or a secure shredding service",
-      "C": "Store them in the basement until someone decides what to do",
-      "D": "Tear each page in half before putting it in the trash"
+      "C": "Send them to a paper recycler that pulps the paper",
+      "D": "Strip-cut shred them with the office shredder"
     },
     "answer": "B",
     "explanation": "Cross-cut shredding, or a vetted service that provides locked bins and proof of destruction, makes paper records unreadable.",
     "distractor_rationales": {
-      "A": "Regular recycling can be searched by anyone.",
-      "C": "Storage indefinitely keeps data past retention.",
-      "D": "Torn pages can be reassembled."
+      "A": "Storing them delays disposal and leaves sensitive files sitting around.",
+      "C": "A general recycler offers no secure chain of custody before the paper is pulped.",
+      "D": "Strip-cut shreds can be reassembled. Cross-cut shredding or a secure service is the standard for customer data."
     },
     "references_topic": "Destroying paper records",
     "version": "1.0"
@@ -176,17 +176,17 @@
     "type": "application",
     "stem": "Confidential reports are often left sitting on a shared printer for anyone to pick up. Which control BEST fixes this?",
     "options": {
-      "A": "Move the printer closer to the executive offices",
-      "B": "Print confidential documents only in black and white",
-      "C": "Ask staff to walk faster to the printer",
+      "A": "Place the printer in a room locked to staff only",
+      "B": "Add a cover sheet to every confidential print job",
+      "C": "Put up a sign reminding staff to collect printouts promptly",
       "D": "Hold jobs until the user badges in at the printer"
     },
     "answer": "D",
     "explanation": "Secure print release keeps the job in a queue until the owner authenticates at the device, so documents are not left unattended.",
     "distractor_rationales": {
-      "A": "Location does not stop others from picking up printouts.",
-      "B": "Color has no security effect.",
-      "C": "Walking speed is not a control."
+      "A": "Any staff member in the room can still pick up the reports.",
+      "B": "A cover sheet hides the first page, but the report still sits unattended for anyone to take.",
+      "C": "Reminders help a little but do not stop printouts being left out."
     },
     "references_topic": "Secure print release",
     "version": "1.0"
@@ -202,15 +202,15 @@
     "options": {
       "A": "At the highest classification of any data it contains",
       "B": "At the lowest classification, since most of the data is public",
-      "C": "At the average classification of the data it contains",
-      "D": "As unclassified, since backups are not used day to day"
+      "C": "Each file at its own level, with the media unlabeled",
+      "D": "At Internal, with the restricted files encrypted separately"
     },
     "answer": "A",
     "explanation": "A container of mixed data must be protected at the level of its most sensitive contents, or the restricted data would be exposed.",
     "distractor_rationales": {
       "B": "The lowest level would underprotect the restricted data.",
-      "C": "Averaging does not protect the most sensitive items.",
-      "D": "Backups hold real data and must be protected accordingly."
+      "C": "Media holding restricted data must be labeled and protected for it. Unlabeled media will be mishandled.",
+      "D": "Encrypting some files helps, but the media still holds restricted data and must be handled at that level."
     },
     "references_topic": "Classifying backups",
     "version": "1.0"
@@ -226,14 +226,14 @@
     "options": {
       "A": "Allow the database custodian to approve any requests that seem reasonable",
       "B": "A documented delegate authorized to approve requests while the owner is away",
-      "C": "Grant all pending requests automatically after one week without any further review",
+      "C": "Escalate each request to the CISO for approval",
       "D": "Deny every request until the owner returns, regardless of business impact"
     },
     "answer": "B",
     "explanation": "Owners can delegate approval authority to a named deputy in advance, so decisions continue under the same accountability.",
     "distractor_rationales": {
       "A": "Custodians implement access but should not approve it.",
-      "C": "Automatic approval removes review.",
+      "C": "The CISO is not the data owner. A documented delegate of the owner should approve.",
       "D": "Blocking all access for a month harms the business unnecessarily."
     },
     "references_topic": "Delegating owner approvals",
@@ -248,17 +248,17 @@
     "type": "application",
     "stem": "A data warehouse copies customer data from 20 source systems, but no one knows which copies exist or where they flow. What is the BEST improvement?",
     "options": {
-      "A": "Delete the warehouse and ask analysts to query each source system directly",
-      "B": "Encrypt the warehouse and assume the copies elsewhere are handled correctly",
+      "A": "Restrict warehouse access to a small analytics team",
+      "B": "Encrypt the warehouse and every source system",
       "C": "Map data flows and lineage so each copy is known and governed",
-      "D": "Allow each analyst to keep private copies to reduce load on the warehouse"
+      "D": "Run DLP discovery across the warehouse each quarter"
     },
     "answer": "C",
     "explanation": "Lineage shows where data comes from and where it goes, so retention, access, and deletion can be applied to every copy.",
     "distractor_rationales": {
-      "A": "Removing the warehouse is disproportionate.",
-      "B": "Encryption does not tell you where copies are.",
-      "D": "Private copies make the problem worse."
+      "A": "Fewer users reduce exposure, but nobody still knows which copies exist or where data flows.",
+      "B": "Encryption protects storage but does not reveal or govern the copies and flows.",
+      "D": "Discovery finds sensitive data at rest but does not map how it moves between systems."
     },
     "references_topic": "Data lineage",
     "version": "1.0"
@@ -297,16 +297,16 @@
     "stem": "Company smartphones returned by departing staff will be reissued to new employees. How should they be sanitized?",
     "options": {
       "A": "A verified factory reset on an encrypted device, which destroys the key",
-      "B": "Delete the email app and the user's photos before handing the phone to the next user",
-      "C": "Remove the SIM card and leave the phone's storage unchanged",
-      "D": "Change the phone's lock screen PIN to a new value for the next user"
+      "B": "Remove the user's accounts and apps through the MDM console",
+      "C": "Overwrite the free storage space with a dedicated wiping app",
+      "D": "Re-enroll the phone in device management under the new user"
     },
     "answer": "A",
     "explanation": "Modern phones encrypt storage by default. A factory reset destroys the encryption key, which is a cryptographic erase, and verifying it confirms the data is gone.",
     "distractor_rationales": {
-      "B": "Deleting some apps and files leaves other data behind.",
-      "C": "The SIM holds little data; the phone's storage remains.",
-      "D": "A new PIN does not remove existing data."
+      "B": "Removing accounts and apps can leave data behind in storage.",
+      "C": "Wiping free space leaves the existing data in place.",
+      "D": "Re-enrollment changes management, not the previous user's data."
     },
     "references_topic": "Sanitizing mobile devices",
     "version": "1.0"
@@ -321,16 +321,16 @@
     "stem": "How does tokenization protect sensitive data such as card numbers?",
     "options": {
       "A": "It encrypts the data with a key that is shared by every system in the company",
-      "B": "It replaces the data with a surrogate value and keeps the mapping in a secure vault",
-      "C": "It compresses the data so it takes up less space in the database",
-      "D": "It deletes the data after each transaction is complete"
+      "B": "It swaps the data for a surrogate value, with the mapping kept in a vault",
+      "C": "It hashes the data so that the original value can never be recovered",
+      "D": "It masks all but the last four digits wherever the number is displayed"
     },
     "answer": "B",
     "explanation": "Tokenization swaps sensitive values for tokens that have no exploitable meaning. The real values live only in a tightly controlled vault.",
     "distractor_rationales": {
       "A": "Tokenization does not rely on a shared encryption key across systems.",
-      "C": "Compression is not a protection mechanism.",
-      "D": "Data is kept in the vault, not deleted."
+      "C": "Hashing is one-way. Tokenization keeps a secure mapping so authorized systems can retrieve the original.",
+      "D": "Masking hides digits on display. The full number is still stored behind it."
     },
     "references_topic": "Tokenization",
     "version": "1.0"
@@ -345,7 +345,7 @@
     "stem": "A company is applying its control baseline to a new SaaS platform. Many physical and infrastructure controls are operated by the provider. How should the company handle them?",
     "options": {
       "A": "Mark them as not applicable and remove them from the baseline for good",
-      "B": "Implement duplicate physical controls in the provider's data centers",
+      "B": "Audit the provider's data centers in person every year",
       "C": "Treat them as inherited from the provider, backed by provider assurance",
       "D": "Assume the provider handles every control, including user access settings"
     },
@@ -353,7 +353,7 @@
     "explanation": "Under shared responsibility, provider-operated controls can be inherited when supported by evidence such as audit reports. The customer still owns its share, such as user access and data settings.",
     "distractor_rationales": {
       "A": "The controls still apply; someone else operates them.",
-      "B": "Customers cannot build controls in the provider's facilities.",
+      "B": "Physical audits by each customer are usually impractical. Provider assurance reports support inherited controls.",
       "D": "Customer-side controls remain the customer's job."
     },
     "references_topic": "Inheriting controls from cloud providers",
@@ -370,7 +370,7 @@
     "options": {
       "A": "Block all cloud applications at the firewall until a review is complete",
       "B": "Send a survey asking employees to list the apps they use",
-      "C": "Wait for the next audit to identify the applications in use",
+      "C": "Ask each department head to list their team's apps",
       "D": "Analyze proxy and firewall logs with CASB discovery"
     },
     "answer": "D",
@@ -378,7 +378,7 @@
     "distractor_rationales": {
       "A": "Blocking everything disrupts business before the facts are known.",
       "B": "Surveys are incomplete and self-reported.",
-      "C": "Waiting delays action."
+      "C": "Managers rarely know every app their staff use. Log analysis shows actual usage."
     },
     "references_topic": "CASB discovery of shadow SaaS",
     "version": "1.0"
@@ -392,17 +392,17 @@
     "type": "managerial_best_first_most",
     "stem": "Staff need to send confidential contract drafts to an outside law firm. What is the BEST method?",
     "options": {
-      "A": "A secure file share or encrypted email with access limited to named recipients",
-      "B": "Plain email with the word \"confidential\" in the subject line",
-      "C": "A public file-sharing link that anyone with the URL can open",
-      "D": "A USB drive mailed in a regular envelope without tracking"
+      "A": "A secure share or encrypted email limited to named recipients",
+      "B": "Plain email marked confidential, over server-to-server TLS",
+      "C": "A file-sharing link that is set to expire after seven days",
+      "D": "A fax sent to the law firm's main office line for collection"
     },
     "answer": "A",
     "explanation": "Encryption and access limited to the intended recipients protect the drafts in transit and at the recipient, with an audit trail.",
     "distractor_rationales": {
-      "B": "A label does not protect the content.",
-      "C": "Public links can be forwarded or found.",
-      "D": "Untracked mail risks loss without any protection."
+      "B": "Opportunistic TLS between servers is not guaranteed end to end, and anyone the email reaches can read it.",
+      "C": "Anyone who obtains the link can open it before it expires. Access should be limited to named recipients.",
+      "D": "A fax to a shared line can be read by anyone nearby and leaves no access control."
     },
     "references_topic": "Sending confidential files externally",
     "version": "1.0"
@@ -418,15 +418,15 @@
     "options": {
       "A": "At the lowest level, which applies to most of the data processed",
       "B": "At the highest level of data it processes",
-      "C": "At a level chosen by each user when they log in",
-      "D": "At no particular level, since the data is mixed"
+      "C": "At the level of the data most users handle",
+      "D": "At each output's own level, as labeled by users"
     },
     "answer": "B",
     "explanation": "If a system cannot reliably separate levels, everything it handles must be treated at the highest level present, and all users need clearance for that level.",
     "distractor_rationales": {
       "A": "The lowest level would expose the sensitive data.",
-      "C": "User choice cannot override the data's sensitivity.",
-      "D": "Mixed data needs protection at the highest level present."
+      "C": "Protecting for the common case leaves the most sensitive data under-protected.",
+      "D": "If the system cannot separate levels, user labels on outputs cannot be trusted."
     },
     "references_topic": "System high operation",
     "version": "1.0"
@@ -440,17 +440,17 @@
     "type": "managerial_best_first_most",
     "stem": "Inventory scanning reveals that one department still runs a reporting tool whose vendor ended support two years ago. What should happen?",
     "options": {
-      "A": "Remove it immediately without telling the department",
-      "B": "Ignore it, since the tool has worked without problems so far",
+      "A": "Remove the tool and move the reports to a spreadsheet",
+      "B": "Keep it, since it is only used for internal reports",
       "C": "Assess the risk with the owner, add controls, and plan a migration",
-      "D": "Ask the department to stop reporting any problems with the tool"
+      "D": "Isolate the tool and accept the risk indefinitely"
     },
     "answer": "C",
     "explanation": "Unsupported software gets no fixes. The owner should understand the risk, apply compensating controls, and plan a supported replacement.",
     "distractor_rationales": {
-      "A": "Sudden removal may disrupt critical work.",
-      "B": "Past stability does not mean it is safe now.",
-      "D": "Suppressing reports hides risk."
+      "A": "Removing it without the owner can break reporting and creates untracked spreadsheets.",
+      "B": "Internal-only tools can still be a foothold for attackers. The risk needs assessing.",
+      "D": "Isolation may help in the meantime, but indefinite acceptance skips the migration plan."
     },
     "references_topic": "Discovering unsupported software",
     "version": "1.0"
@@ -465,16 +465,16 @@
     "stem": "Development teams create cloud resources through infrastructure as code, and many never appear in the CMDB. What is the BEST way to keep the inventory complete?",
     "options": {
       "A": "Ask developers to enter each resource into the CMDB by hand",
-      "B": "Ban infrastructure as code so that every resource is built manually",
-      "C": "Review the cloud bill at the end of each year to find unknown resources",
-      "D": "Feed the inventory from cloud APIs and require owner tags on every resource"
+      "B": "Scan the cloud network every week for unknown hosts and services",
+      "C": "Review the cloud bill every month to find unknown resources",
+      "D": "Feed the inventory from cloud APIs and require owner tags on resources"
     },
     "answer": "D",
     "explanation": "Pulling inventory directly from cloud APIs captures everything that exists, and enforced ownership tags make sure each resource has an accountable owner.",
     "distractor_rationales": {
       "A": "Manual entry falls behind quickly.",
-      "B": "Banning automation reduces consistency and speed.",
-      "C": "An annual bill review is far too slow."
+      "B": "Weekly scans lag behind automated changes and miss resources with no network presence, such as storage.",
+      "C": "Billing review is slow and indirect, and it does not record owners."
     },
     "references_topic": "Inventory for cloud resources",
     "version": "1.0"
@@ -488,17 +488,17 @@
     "type": "managerial_best_first_most",
     "stem": "Analysts regularly export customer data to spreadsheets on their laptops to build reports, creating copies no one tracks. What is the BEST long-term approach?",
     "options": {
-      "A": "Provide governed analytics tools and restrict exports, with DLP monitoring",
-      "B": "Ban analysts from using any data for reporting purposes at all",
-      "C": "Ask analysts to delete their spreadsheets at the end of each year",
-      "D": "Encrypt the customer database more strongly than it is today"
+      "A": "Provide governed analytics tools and restrict exports, with DLP",
+      "B": "Encrypt every analyst laptop with full-disk encryption right away",
+      "C": "Ask analysts to delete exported spreadsheets monthly",
+      "D": "Block USB storage and personal cloud uploads on analyst laptops"
     },
     "answer": "A",
     "explanation": "Giving analysts a governed way to work removes the need for uncontrolled copies, while restrictions and DLP catch the exceptions.",
     "distractor_rationales": {
-      "B": "Banning reporting stops needed business work.",
-      "C": "Yearly deletion leaves copies for months and relies on memory.",
-      "D": "Stronger database encryption does not affect exported copies."
+      "B": "Encryption protects lost laptops, but the untracked copies keep multiplying.",
+      "C": "Monthly deletion relies on memory and leaves copies scattered in between.",
+      "D": "Blocking some channels helps, but analysts still export to laptops. A governed tool removes the need."
     },
     "references_topic": "Controlling uncontrolled exports",
     "version": "1.0"
@@ -512,17 +512,17 @@
     "type": "managerial_best_first_most",
     "stem": "A failed disk from a database server holds sensitive data. The vendor requires the drive to be returned to replace it under warranty. What is the BEST approach?",
     "options": {
-      "A": "Return the drive as it is, since it no longer works",
+      "A": "Return it with a sealed chain-of-custody form",
       "B": "Use a keep-your-drive option, or destroy it and forgo the warranty",
       "C": "Delete the database files through the operating system before returning it",
-      "D": "Ask the courier to handle the drive carefully in transit"
+      "D": "Return it under the vendor's NDA covering returned media"
     },
     "answer": "B",
     "explanation": "A failed drive may still hold readable data. Keep-your-drive support contracts, or destroying the drive, keep sensitive data from leaving the company's control.",
     "distractor_rationales": {
-      "A": "Failed drives can often be read with specialized tools.",
+      "A": "Custody tracking shows who held the drive, but the sensitive data still leaves the company.",
       "C": "A failed drive may not accept commands, and deletion leaves data recoverable.",
-      "D": "Careful handling does not protect the data."
+      "D": "An NDA is a promise. The data still leaves the company's control."
     },
     "references_topic": "Returning failed drives under warranty",
     "version": "1.0"
@@ -539,14 +539,14 @@
       "A": "Full-disk encryption on the point-of-sale terminals",
       "B": "TLS between the store and the payment processor",
       "C": "Point-to-point encryption starting in the card reader",
-      "D": "Stronger passwords for all of the store managers' accounts"
+      "D": "Application allowlisting on the POS terminals"
     },
     "answer": "C",
     "explanation": "With point-to-point encryption, the card reader encrypts the data immediately, so the terminal's memory never holds readable card numbers.",
     "distractor_rationales": {
       "A": "Disk encryption does not protect data in memory.",
       "B": "TLS protects data in transit after it has already been in memory.",
-      "D": "Manager passwords do not stop memory scraping."
+      "D": "Allowlisting makes malware harder to run, but if it gets past, the card data is still exposed in memory. Encrypting in the reader removes it."
     },
     "references_topic": "Point-to-point encryption",
     "version": "1.0"
@@ -561,16 +561,16 @@
     "stem": "To save money, a project team proposes removing several high-baseline controls from a system that processes highly sensitive data, with no compensating controls. What should the security manager do?",
     "options": {
       "A": "Approve the change, since tailoring allows organizations to adjust baselines freely",
-      "B": "Approve it if the project's budget is below the original estimate",
-      "C": "Approve it and review the decision again after the next incident",
+      "B": "Approve it, since the controls can be restored later",
+      "C": "Approve half of the removals as a compromise",
       "D": "Reject it, since tailoring must reflect risk, not just cost"
     },
     "answer": "D",
     "explanation": "Tailoring adjusts controls to fit risk and environment. Removing protections from a high-impact system without compensating controls is not justified by cost alone.",
     "distractor_rationales": {
       "A": "Tailoring must be justified by risk, not done freely.",
-      "B": "Budget alone does not justify higher risk.",
-      "C": "Waiting for an incident is not risk management."
+      "B": "Restoring later does not protect highly sensitive data in the meantime.",
+      "C": "Splitting the difference is still a cost-driven decision with no risk basis."
     },
     "references_topic": "Tailoring must follow risk",
     "version": "1.0"
@@ -585,15 +585,15 @@
     "stem": "Archived records must be kept for 15 years, but they are stored in a format that only an end-of-life application can read. What is the BEST approach?",
     "options": {
       "A": "Migrate them to a supported format while preserving integrity and holds",
-      "B": "Keep the unsupported application running unpatched for the next 15 years",
-      "C": "Delete the records, since they can no longer be read easily",
+      "B": "Keep the old application running on an isolated virtual machine",
+      "C": "Export the records to spreadsheets the business can open",
       "D": "Print every record and store the paper copies in a warehouse"
     },
     "answer": "A",
     "explanation": "Retention means the data must stay usable. Migrating to a supported format, with integrity checks and existing legal holds intact, keeps records accessible without depending on unsupported software.",
     "distractor_rationales": {
-      "B": "Running unpatched software for years adds serious risk.",
-      "C": "Deleting records breaks retention obligations.",
+      "B": "Isolation helps, but an unsupported application for 15 years risks losing access entirely, and it still needs patching.",
+      "C": "Spreadsheets lose formatting and integrity evidence, and they may break legal hold requirements.",
       "D": "Printing large archives is costly and loses searchability."
     },
     "references_topic": "Keeping archived data readable",

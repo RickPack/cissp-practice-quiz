@@ -32,17 +32,17 @@
     "type": "knowledge",
     "stem": "What is the primary purpose of labeling media with its classification level?",
     "options": {
-      "A": "To track the media's purchase cost for accounting",
+      "A": "To show who owns the data stored on the media",
       "B": "To make the media easier to sanitize at disposal time",
-      "C": "To encrypt the stored data automatically",
+      "C": "To record the date the media must be destroyed",
       "D": "To tell handlers which protection requirements apply"
     },
     "answer": "D",
     "explanation": "A classification label tells everyone who handles the media which storage, transport, access, and destruction rules apply.",
     "distractor_rationales": {
-      "A": "Cost tracking is an accounting function, not the purpose of classification labels.",
+      "A": "Ownership may be recorded, but the label's main job is to tell handlers how to protect the media.",
       "B": "A label does not change how media is sanitized.",
-      "C": "Labels do not encrypt anything."
+      "C": "Disposal dates come from retention schedules. The classification label says how the media must be handled."
     },
     "references_topic": "Media labeling",
     "version": "0.2"
@@ -59,14 +59,14 @@
       "A": "Clear, such as overwriting with standard write commands",
       "B": "Destroy, by shredding or incinerating the drives",
       "C": "Purge, by degaussing each drive with an approved degausser",
-      "D": "No sanitization, since the drives stay in-house"
+      "D": "Encrypt the drives, then reuse them without wiping"
     },
     "answer": "A",
     "explanation": "Clearing protects against simple, non-invasive recovery and is appropriate when media stays under the organization's control at the same classification. Purging is for media leaving that control or holding more sensitive data, and destruction is for media that cannot otherwise be sanitized.",
     "distractor_rationales": {
       "B": "Destruction prevents the planned reuse and costs more than necessary.",
       "C": "Degaussing renders modern hard drives unusable, which defeats reuse, and exceeds what this situation requires.",
-      "D": "Leftover data could be exposed to internal users who have no need to know it."
+      "D": "Encrypting over old data does not remove it. Clearing is the expected step for reuse at the same level."
     },
     "references_topic": "Sanitization levels (clear, purge, destroy)",
     "version": "0.2"
@@ -107,14 +107,14 @@
       "A": "Delete every bucket that does not have an identified owner today",
       "B": "Move all bucket data into one shared archive account",
       "C": "Inventory the buckets and assign an owner to each",
-      "D": "Encrypt all buckets with a single shared key"
+      "D": "Turn on access logging for every bucket to see usage"
     },
     "answer": "C",
     "explanation": "Ownership establishes accountability. Discover what exists, identify its contents, and assign an accountable owner who can then decide classification, protection, and retention.",
     "distractor_rationales": {
       "A": "Deleting unowned buckets could destroy data the business depends on.",
       "B": "Consolidating unknown data concentrates risk and breaks applications that use the buckets.",
-      "D": "A single shared key concentrates risk and still leaves nobody accountable for the data."
+      "D": "Logging shows activity, but without an inventory and owners nobody can act on what it shows."
     },
     "references_topic": "Asset ownership in cloud environments",
     "version": "0.2"
@@ -129,16 +129,16 @@
     "stem": "An employee combines several reports, each classified Internal, into a single dataset that reveals the company's complete customer pricing strategy. How should the combined dataset be classified?",
     "options": {
       "A": "Internal, since every source report is classified as Internal",
-      "B": "Public, since the underlying data already exists",
-      "C": "At the lowest classification among its sources",
+      "B": "Restricted, since aggregated data is always the top level",
+      "C": "Unclassified until a data owner reviews the new dataset",
       "D": "By the impact of the combined data, possibly higher"
     },
     "answer": "D",
     "explanation": "Aggregation can create information more sensitive than any single part. The combined dataset should be classified by the impact its disclosure would cause, which here is likely higher than Internal.",
     "distractor_rationales": {
       "A": "Inheriting the source label ignores the aggregation effect.",
-      "B": "Existing somewhere internally does not make information public.",
-      "C": "Taking the lowest classification is backward. Combined data is at least as sensitive as its parts."
+      "B": "Aggregation can raise the level, but by the actual impact, not automatically to the top.",
+      "C": "Data cannot sit unclassified. It is classified by its impact now, and the owner confirms it."
     },
     "references_topic": "Aggregation and classification",
     "version": "0.2"
@@ -154,14 +154,14 @@
     "options": {
       "A": "Set retention periods by record type and dispose on schedule",
       "B": "Keep everything indefinitely, because cloud storage is inexpensive",
-      "C": "Delete all records older than one year",
+      "C": "Keep all records for seven years, matching the longest rule",
       "D": "Move old records to backup tapes and keep them there"
     },
     "answer": "A",
     "explanation": "Over-retention increases breach impact, legal discovery cost, and privacy exposure. A schedule based on legal and business need, followed by secure disposal, reduces risk and is defensible.",
     "distractor_rationales": {
       "B": "Storage cost is not the only cost. Every retained record adds breach and discovery exposure.",
-      "C": "Deleting after one year violates the seven-year requirement for financial records.",
+      "C": "Seven years applies to financial records only. Other record types should follow their own retention periods.",
       "D": "Records on tape are still retained and still discoverable."
     },
     "references_topic": "Retention schedules and defensible disposal",
@@ -176,17 +176,17 @@
     "type": "application",
     "stem": "Backup tapes containing Confidential data must be moved to an offsite storage facility. Which handling practice is MOST important?",
     "options": {
-      "A": "Label each tape with the names of the customers it contains",
+      "A": "Seal the tapes in tamper-evident bags for transport",
       "B": "Encrypt the tapes and use a bonded courier with tracked custody",
-      "C": "Send the tapes by ordinary postal mail so they attract less attention",
-      "D": "Let any available employee carry the tapes in a personal car"
+      "C": "Ship them by the fastest tracked overnight delivery service",
+      "D": "Have the backup administrator drive them to the facility"
     },
     "answer": "B",
     "explanation": "Encryption protects the data if a tape is lost or stolen, and a bonded courier with documented custody provides accountability at every hand-off.",
     "distractor_rationales": {
-      "A": "Labels that reveal contents increase risk. Tapes should carry an identifier and classification, not customer names.",
-      "C": "Ordinary mail provides no tracking or accountability.",
-      "D": "An untracked employee transport offers no accountability and higher loss risk."
+      "A": "Tamper-evident bags show interference but do not protect the data if a tape is lost or stolen.",
+      "C": "Speed and tracking do not protect unencrypted tapes if a package goes missing.",
+      "D": "A trusted employee gives custody, but unencrypted tapes are still exposed if lost on the way."
     },
     "references_topic": "Protecting media in transit",
     "version": "0.2"
@@ -224,7 +224,7 @@
     "type": "managerial_best_first_most",
     "stem": "A company deploys endpoint DLP and immediately blocks all transfers of files containing nine-digit numbers. Help desk tickets surge because legitimate work is blocked. What should the security team do FIRST?",
     "options": {
-      "A": "Disable the DLP deployment entirely until next year",
+      "A": "Raise the match threshold so files need ten numbers to block",
       "B": "Keep blocking and make every user request a separate exception",
       "C": "Expand the rule to block additional number patterns",
       "D": "Switch to monitor mode and tune the rules before blocking"
@@ -232,7 +232,7 @@
     "answer": "D",
     "explanation": "Effective DLP starts in monitor mode. The team tunes detections, for example with context and validation checks, to cut false positives, and only then enforces blocking.",
     "distractor_rationales": {
-      "A": "Disabling DLP removes the protection altogether.",
+      "A": "Changing thresholds blind, without monitoring, guesses at the fix and still blocks legitimate work.",
       "B": "Case-by-case exceptions overwhelm users and the help desk and encourage workarounds.",
       "C": "Broader patterns would create even more false positives."
     },
@@ -251,14 +251,14 @@
       "A": "Pseudonymize records and keep re-identification keys separate",
       "B": "Give analysts full patient records under a signed NDA",
       "C": "Encrypt the database at rest with strong keys",
-      "D": "Remove every column except the patients' admission and discharge dates"
+      "D": "Release aggregate statistics only, with no record-level data"
     },
     "answer": "A",
     "explanation": "Pseudonymization replaces direct identifiers with tokens while keeping records linkable for analysis. Re-identification keys are held separately under strict access control.",
     "distractor_rationales": {
       "B": "An NDA still exposes identities that the analysis does not need.",
       "C": "Encryption at rest does not stop authorized analysts from seeing identities.",
-      "D": "Stripping nearly every field destroys the data's research value."
+      "D": "Aggregates protect identities but lose much of the record-level analytical value the research needs."
     },
     "references_topic": "Pseudonymization",
     "version": "0.2"
@@ -274,14 +274,14 @@
     "options": {
       "A": "Remove the control from the baseline for all users company-wide",
       "B": "Document a compensating control that meets the intent",
-      "C": "Let the technicians skip the requirement without documentation",
+      "C": "Formally accept the risk for the technicians with no added control",
       "D": "Block remote access for the technicians until tokens are feasible"
     },
     "answer": "B",
     "explanation": "Tailoring allows a documented, approved compensating control that meets the original control's intent, such as another phishing-resistant authenticator, for the affected group only.",
     "distractor_rationales": {
       "A": "Removing the control for everyone weakens protection far beyond the affected group.",
-      "C": "An undocumented deviation is unmanaged risk.",
+      "C": "Acceptance without any compensating control leaves the intent of the requirement unmet.",
       "D": "Blocking access stops the technicians from working when a compensating control would suffice."
     },
     "references_topic": "Tailoring with compensating controls",
@@ -299,14 +299,14 @@
       "A": "Reformat all of the array's volumes before returning it",
       "B": "Return it as-is, since the lessor promises to wipe the drives",
       "C": "Purge the drives and get a certificate of sanitization",
-      "D": "Encrypt the remaining data on the array after decommissioning"
+      "D": "Overwrite each volume once with the array's own format tool"
     },
     "answer": "C",
     "explanation": "The media is leaving the organization's control, so it must be purged (for example by verified cryptographic erase) or the drives retained, with a documented certificate of sanitization.",
     "distractor_rationales": {
       "A": "Reformatting leaves the data recoverable.",
       "B": "A third party's promise does not transfer the organization's accountability, and it provides no verification.",
-      "D": "Encrypting leftover data after the fact does not remove what is already on the drives."
+      "D": "A format or single overwrite is a clear, not a purge. Regulated data leaving the company's control needs purge plus a certificate."
     },
     "references_topic": "Decommissioning leased storage",
     "version": "0.2"
@@ -321,16 +321,16 @@
     "stem": "An insurer's classification scheme has four levels. An auditor finds that 80% of documents are labeled Restricted, the highest level, and staff routinely bypass controls to share them. What is the MOST likely root cause, and the best fix?",
     "options": {
       "A": "Too few classification levels; add three more levels to the scheme",
-      "B": "Weak encryption; upgrade the algorithms used for Restricted data",
-      "C": "Poor passwords; enforce stronger password complexity",
+      "B": "Weak enforcement; add DLP blocking for Restricted documents",
+      "C": "Too many users; restrict Restricted access to managers only",
       "D": "Over-classification; train owners on criteria and fix defaults"
     },
     "answer": "D",
     "explanation": "When most documents are labeled at the highest level, controls become so burdensome that people route around them. Classify by impact, set sensible default labels, and review existing labels.",
     "distractor_rationales": {
       "A": "More levels add complexity without fixing the mislabeling.",
-      "B": "Encryption strength has nothing to do with why staff bypass controls.",
-      "C": "Password strength is unrelated to classification practices."
+      "B": "More blocking makes the bypassing worse. The cause is that most documents should not be Restricted at all.",
+      "C": "Narrowing access treats the symptom. The scheme is being misapplied, so owners need clear criteria."
     },
     "references_topic": "Over-classification",
     "version": "0.2"
