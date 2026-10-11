@@ -104,16 +104,16 @@
     "type": "application",
     "stem": "A company installs 200 smart building sensors. Scans show they all accept the manufacturer's default administrator password over Telnet. What should be done FIRST?",
     "options": {
-      "A": "Put a sticker on each sensor reminding staff not to tamper with it",
-      "B": "Wait for the manufacturer to publish a firmware update before acting",
+      "A": "Scan the sensors weekly and alert on any open Telnet port",
+      "B": "Block Telnet at the core firewall and leave the sensors as they are",
       "C": "Move the sensors to the guest Wi-Fi network so they are separate from users",
       "D": "Change the default credentials and disable Telnet on every sensor"
     },
     "answer": "D",
     "explanation": "Default credentials on an exposed management service are an easy way in. Changing them and disabling unneeded, insecure services closes the obvious path.",
     "distractor_rationales": {
-      "A": "A sticker does not change the device configuration.",
-      "B": "Waiting leaves an easily exploited weakness open.",
+      "A": "Scanning finds the problem again each week but leaves the default password and Telnet in place.",
+      "B": "A core firewall rule helps, but anyone on the same segment can still log in with the default password.",
       "C": "Guest Wi-Fi is not a secure segment and leaves the defaults in place."
     },
     "references_topic": "Hardening IoT devices",
@@ -128,17 +128,17 @@
     "type": "knowledge",
     "stem": "Why does TLS use asymmetric cryptography to establish a session and then symmetric encryption for the data?",
     "options": {
-      "A": "Asymmetric methods safely agree on a key, and symmetric ciphers encrypt bulk data quickly",
+      "A": "Asymmetric methods agree on a key safely; symmetric ciphers encrypt bulk data fast",
       "B": "Symmetric encryption cannot protect data that is sent across public networks",
       "C": "Asymmetric encryption is faster than symmetric encryption for large amounts of data",
-      "D": "Using both lets TLS avoid the need for any digital certificates at all"
+      "D": "Using both lets each side skip verifying the other's identity"
     },
     "answer": "A",
     "explanation": "Asymmetric cryptography solves key exchange and authentication, but it is slow. The agreed symmetric session key then encrypts the traffic efficiently.",
     "distractor_rationales": {
       "B": "Symmetric ciphers protect data on public networks well once the key is shared.",
       "C": "Asymmetric encryption is much slower than symmetric encryption.",
-      "D": "Certificates are still used to authenticate the server."
+      "D": "TLS still authenticates the server with certificates. The split is about agreeing on keys versus encrypting data efficiently."
     },
     "references_topic": "Hybrid cryptography",
     "version": "0.4"
@@ -203,7 +203,7 @@
       "A": "A sign reminding employees to challenge anyone they do not recognize",
       "B": "A camera that records the entrance for review the next day",
       "C": "A second badge reader placed further down the same hallway",
-      "D": "A mantrap that admits one person at a time"
+      "D": "A mantrap or turnstile that admits one person per badge"
     },
     "answer": "D",
     "explanation": "A mantrap, or access control vestibule, has two interlocked doors and admits one authenticated person at a time, which physically prevents tailgating.",
@@ -226,15 +226,15 @@
     "options": {
       "A": "Water conducts electricity and can shock the user",
       "B": "Water extinguishers are too small to put out any fire in a server room",
-      "C": "Water will cause the fire to spread quickly to the room's ceiling tiles",
-      "D": "Water can only be used on fires that involve flammable liquids"
+      "C": "Water will damage the servers more than the fire itself would",
+      "D": "Water extinguishers are rated only for Class B fires"
     },
     "answer": "A",
     "explanation": "Water on energized equipment risks electrocution. An extinguisher rated for electrical fires, such as CO2 or a clean agent, should be used if it is safe to do so.",
     "distractor_rationales": {
       "B": "Size is not the reason; the electrical hazard is.",
-      "C": "Water does not make an electrical fire spread to ceiling tiles.",
-      "D": "Water should never be used on flammable liquid fires either."
+      "C": "Equipment damage is a concern, but the immediate reason is safety: water conducts electricity.",
+      "D": "Water is for Class A ordinary combustibles. It is dangerous on energized electrical equipment."
     },
     "references_topic": "Extinguishers for electrical fires",
     "version": "0.4"
@@ -273,16 +273,16 @@
     "stem": "Under a zero trust design, a user with valid credentials and MFA signs in from a personal, unmanaged laptop. What is the BEST response?",
     "options": {
       "A": "Grant full access, since the user has passed multi-factor authentication",
-      "B": "Block the user permanently, since any unmanaged device is a sign of attack",
+      "B": "Require the user to call the help desk for one-time approval",
       "C": "Grant limited access, such as browser-only use, based on device posture",
-      "D": "Grant full access, but only if the user signs in during business hours"
+      "D": "Grant full access, but record the session in detail"
     },
     "answer": "C",
     "explanation": "Zero trust decisions combine identity with device and context signals. An unmanaged device can receive restricted access that limits data exposure instead of all or nothing.",
     "distractor_rationales": {
       "A": "Identity alone ignores device risk.",
-      "B": "Permanent blocking is excessive for a legitimate user.",
-      "D": "Time of day does not address device risk."
+      "B": "A manual approval does not assess the device's risk and does not scale.",
+      "D": "Recording detects misuse later but still gives an unmanaged device full access."
     },
     "references_topic": "Device posture in access decisions",
     "version": "0.4"
@@ -368,17 +368,17 @@
     "type": "managerial_best_first_most",
     "stem": "An audit finds hundreds of virtual machines that no one can identify an owner for, many unpatched. What is the BEST long-term control?",
     "options": {
-      "A": "Delete every virtual machine that is not patched by the end of the week",
-      "B": "Buy more hypervisor capacity so that the existing machines run faster",
-      "C": "Require an owner, purpose, and review date for every VM, with regular reviews",
-      "D": "Stop using virtualization and move all workloads to physical servers"
+      "A": "Patch every unowned VM centrally and leave all of them running",
+      "B": "Run a one-time cleanup that deletes every idle virtual machine",
+      "C": "Require an owner, purpose, and review date for every VM, then review",
+      "D": "Block network access for any VM that lacks an owner tag"
     },
     "answer": "C",
     "explanation": "VM sprawl comes from how easy it is to create machines. Lifecycle controls, including a named owner, a purpose, and expiry or review, keep the estate known and maintained.",
     "distractor_rationales": {
-      "A": "Mass deletion without checking could break business services.",
-      "B": "More capacity makes sprawl easier.",
-      "D": "Abandoning virtualization is disproportionate."
+      "A": "Patching helps today, but without owners nobody decides whether the VMs should exist, and the sprawl continues.",
+      "B": "A one-time cleanup does not stop new unowned VMs appearing.",
+      "D": "Blocking enforces tagging after the fact. Ownership and review need to be required when a VM is created."
     },
     "references_topic": "VM sprawl",
     "version": "0.4"
@@ -392,17 +392,17 @@
     "type": "managerial_best_first_most",
     "stem": "A law requires that certain citizen records stay within the country. The company is moving the records to a public cloud provider. What is the BEST approach?",
     "options": {
-      "A": "Trust that the provider will keep data in the country without any commitment",
+      "A": "Rely on the provider's statement that data stays in-country",
       "B": "Encrypt the records and then store them in whichever region is the cheapest",
-      "C": "Keep the records on-premises forever, since no cloud can ever meet this law",
+      "C": "Store the records in-country but replicate backups abroad",
       "D": "Use an in-country region and secure contract terms that keep the data there"
     },
     "answer": "D",
     "explanation": "Region selection keeps primary storage in the country, and contract terms cover backups, support access, and replication so the requirement is met end to end.",
     "distractor_rationales": {
-      "A": "Relying on assumptions does not meet a legal requirement.",
+      "A": "A statement without contract terms gives no enforceable commitment.",
       "B": "Encryption does not change where the data resides.",
-      "C": "Many providers offer in-country options that can meet residency requirements."
+      "C": "Backups abroad still move the records out of the country, breaking the law."
     },
     "references_topic": "Data residency in cloud",
     "version": "0.4"
@@ -419,14 +419,14 @@
       "A": "Programmable logic controller (PLC)",
       "B": "Historian database that stores process measurements for later analysis",
       "C": "Human-machine interface (HMI) that operators use to view the process",
-      "D": "Engineering workstation's office productivity software"
+      "D": "Network switch on the plant control network"
     },
     "answer": "A",
     "explanation": "PLCs run the control logic that directly drives physical equipment such as valves and pumps.",
     "distractor_rationales": {
       "B": "A historian records data; it does not drive equipment.",
       "C": "An HMI displays status and sends operator commands, but the PLC executes the logic.",
-      "D": "Office software does not control physical equipment."
+      "D": "A switch carries traffic. The logic that drives the valves runs on the PLC."
     },
     "references_topic": "Programmable logic controllers",
     "version": "0.4"
@@ -442,15 +442,15 @@
     "options": {
       "A": "Change the administrator password every month and keep using the same account",
       "B": "Use a dedicated application account limited to the tables and actions it needs",
-      "C": "Move the database onto the same server as the web application to simplify its access",
-      "D": "Let each web user connect to the database directly with their own credentials"
+      "C": "Keep the admin account but store its password in a secrets vault",
+      "D": "Restrict the admin account to logins from the web server's address"
     },
     "answer": "B",
     "explanation": "If the application is compromised, an attacker gains whatever rights its database account has. A least-privilege application account limits that damage.",
     "distractor_rationales": {
       "A": "Rotation does not reduce the account's excessive rights.",
-      "C": "Co-locating the database removes a layer of separation.",
-      "D": "Direct user connections expose the database and complicate control."
+      "C": "Vaulting protects the password, but the application still runs with full administrator rights.",
+      "D": "Restricting the source helps, but a compromise of the web application still gets full administrator rights."
     },
     "references_topic": "Least-privilege database accounts",
     "version": "0.4"
@@ -489,7 +489,7 @@
     "stem": "Why do many systems prefer elliptic curve cryptography over RSA for new deployments?",
     "options": {
       "A": "Elliptic curve algorithms are symmetric, so they need no public keys at all",
-      "B": "Elliptic curve keys never need to be rotated or revoked once they are issued",
+      "B": "Elliptic curve keys are immune to attacks by quantum computers",
       "C": "RSA cannot be used for digital signatures, while elliptic curves can",
       "D": "Elliptic curves give comparable security with much smaller keys"
     },
@@ -497,7 +497,7 @@
     "explanation": "A 256-bit elliptic curve key offers security roughly comparable to a 3072-bit RSA key, which means smaller certificates and faster operations, useful for mobile and IoT devices.",
     "distractor_rationales": {
       "A": "Elliptic curve cryptography is asymmetric.",
-      "B": "All keys need lifecycle management.",
+      "B": "Elliptic curve cryptography is also vulnerable to large quantum computers. Its advantage is smaller keys today.",
       "C": "RSA is widely used for digital signatures."
     },
     "references_topic": "Elliptic curve key sizes",
@@ -513,16 +513,16 @@
     "stem": "The same encryption key has protected every backup for eight years. What is the BEST improvement?",
     "options": {
       "A": "Define a cryptoperiod and rotate keys through a key management system",
-      "B": "Write the key on paper and store it in the office safe as a second copy",
+      "B": "Store the key in an HSM but keep using the same key",
       "C": "Keep the key but switch to a stronger algorithm while using the same value",
-      "D": "Share the key with the backup vendor so they can help protect it"
+      "D": "Wrap the existing key with a new master key each year"
     },
     "answer": "A",
     "explanation": "Limiting a key's lifetime reduces how much data a single compromised key exposes. A key management system automates rotation and keeps older keys available for restores.",
     "distractor_rationales": {
-      "B": "A paper copy does not reduce the key's exposure.",
+      "B": "An HSM protects the key, but eight years of data still depend on one key.",
       "C": "Keys are tied to algorithms, and the same old key still has the same exposure.",
-      "D": "Sharing the key widens exposure."
+      "D": "Wrapping protects the key in storage, but the same data key keeps encrypting everything."
     },
     "references_topic": "Cryptoperiods and key rotation",
     "version": "0.4"
@@ -560,17 +560,17 @@
     "type": "managerial_best_first_most",
     "stem": "In a multi-tenant office building, the company's wiring closets are unlocked and shared with building maintenance. What is the BEST improvement?",
     "options": {
-      "A": "Paint the closet doors the same color as the walls so they are less noticeable",
-      "B": "Post a sign on each closet door that says \"authorized personnel only\"",
-      "C": "Lock the closets with access control and logging, and include them in inspections",
-      "D": "Move all network equipment into the office kitchen where staff can see it"
+      "A": "Ask building maintenance staff to keep the closet doors closed",
+      "B": "Post a sign on each closet door saying authorized personnel only",
+      "C": "Lock the closets with logged access control and inspect them",
+      "D": "Install cameras that record everyone entering the closets"
     },
     "answer": "C",
     "explanation": "Wiring closets hold network equipment that attackers can tap or tamper with. Controlled, logged access and regular inspection protect them.",
     "distractor_rationales": {
-      "A": "Camouflage is not access control.",
-      "B": "A sign does not prevent entry.",
-      "D": "A kitchen is an unsuitable, uncontrolled location."
+      "A": "A request does not control who can open the closets.",
+      "B": "A sign does not stop anyone from walking in.",
+      "D": "Cameras record entry but do not prevent it, and the closets stay unlocked."
     },
     "references_topic": "Securing wiring closets",
     "version": "0.4"
@@ -584,17 +584,17 @@
     "type": "managerial_best_first_most",
     "stem": "A data center has air conditioning units and chilled water pipes near equipment on a raised floor. What is the BEST control to add?",
     "options": {
-      "A": "A sign reminding maintenance staff to check for leaks each month",
-      "B": "Moving all equipment racks to the highest point in the room",
-      "C": "Replacing the raised floor with carpet to absorb any water that leaks",
-      "D": "Water sensors under the raised floor that alert operations staff"
+      "A": "Monthly leak inspections under the floor by facilities staff",
+      "B": "Drip trays fitted under the air conditioning units only",
+      "C": "Moving the chilled water pipes to run above the racks",
+      "D": "Water sensors under the raised floor that alert operations"
     },
     "answer": "D",
     "explanation": "Leaks under a raised floor can go unseen until they damage equipment. Sensors give immediate warning so staff can act early.",
     "distractor_rationales": {
-      "A": "Monthly checks can miss leaks for weeks.",
-      "B": "Rack placement does not detect leaks.",
-      "C": "Carpet increases static and does not detect water."
+      "A": "Monthly checks can miss a leak for weeks. Sensors alert at once.",
+      "B": "Drip trays catch condensation from the units but not pipe leaks across the floor.",
+      "C": "Pipes above the racks would drip onto the equipment, making leaks worse."
     },
     "references_topic": "Water leak detection",
     "version": "0.4"
@@ -609,16 +609,16 @@
     "stem": "During a zero trust rollout, a critical legacy application supports only basic username and password logins and cannot be changed. What is the BEST approach?",
     "options": {
       "A": "Put an identity-aware proxy in front of it that enforces modern authentication",
-      "B": "Exclude the application from zero trust and leave it on the flat internal network",
+      "B": "Exclude it from zero trust, but require MFA on the VPN",
       "C": "Rewrite the application from scratch before the zero trust project can continue",
-      "D": "Allow access only from the office network, since users there are trusted"
+      "D": "Restrict it to managed devices on the office network"
     },
     "answer": "A",
     "explanation": "An identity-aware proxy can enforce strong authentication and policy checks before any traffic reaches the legacy application, bringing it under zero trust without code changes.",
     "distractor_rationales": {
-      "B": "Excluding it leaves a weak point that attackers will target.",
+      "B": "MFA at the VPN still trusts the network once inside, and the application itself remains weakly protected.",
       "C": "Rewriting may be impractical and delays the whole program.",
-      "D": "Trusting network location is exactly what zero trust rejects."
+      "D": "Relying on network location is the implicit trust that zero trust removes."
     },
     "references_topic": "Protecting legacy apps in zero trust",
     "version": "0.4"
@@ -659,14 +659,14 @@
       "A": "It still fully applies, since certification covers the product whatever its settings are",
       "B": "It is void, so the company must stop using the product immediately and replace it",
       "C": "It covers only the evaluated setup, so the added features' risk must be assessed",
-      "D": "It transfers responsibility for any breach from the company to the product vendor"
+      "D": "It requires a fresh evaluation before the product can be used"
     },
     "answer": "C",
     "explanation": "Evaluation assurance applies to the configuration that was evaluated. Features outside it have no such assurance, so the organization must assess and accept or reduce that risk.",
     "distractor_rationales": {
       "A": "Certification does not extend to unevaluated settings.",
       "B": "The product is still usable; the gap is a risk to assess, not an automatic ban.",
-      "D": "Certification does not transfer liability."
+      "D": "A new evaluation is not required to use it. The extra features fall outside the certification, so their risk must be assessed."
     },
     "references_topic": "Evaluated configuration limits",
     "version": "0.4"
@@ -681,16 +681,16 @@
     "stem": "A serverless function that resizes uploaded images runs with a role granting full administrative rights over all storage in the account. What is the BEST fix?",
     "options": {
       "A": "Add logging to the function so that any misuse of its rights can be investigated",
-      "B": "Move the function into a container so that it has its own isolated environment",
-      "C": "Keep the role but restrict the function so it can run only once per minute",
+      "B": "Rotate the function's role credentials automatically every day",
+      "C": "Require MFA and review for anyone who edits the function's code",
       "D": "Give the function its own role limited to the specific buckets and actions it uses"
     },
     "answer": "D",
     "explanation": "If the function is compromised, its role determines the damage. A dedicated role scoped to its own buckets and actions limits the blast radius.",
     "distractor_rationales": {
       "A": "Logging detects misuse but does not reduce excessive rights.",
-      "B": "Containerizing does not change the permissions it holds.",
-      "C": "Rate limits do not reduce what a single call can do."
+      "B": "Rotation limits stolen-credential lifetime, but the function still has far more rights than it needs.",
+      "C": "Protecting the code helps, but any flaw in the function still exposes all storage in the account."
     },
     "references_topic": "Least privilege for serverless functions",
     "version": "0.4"
@@ -707,14 +707,14 @@
       "A": "Enforce validation and authorization on the server for every request",
       "B": "Obfuscate the client code so that users cannot find the validation logic",
       "C": "Add more validation checks to the client so that tampering becomes harder",
-      "D": "Require users to sign an agreement promising not to modify the client"
+      "D": "Sign the client binary so tampered copies will not run"
     },
     "answer": "A",
     "explanation": "Anything on the client can be modified or bypassed. The server must validate input and enforce authorization itself.",
     "distractor_rationales": {
       "B": "Obfuscation slows analysis but does not stop tampering.",
       "C": "More client checks can still be bypassed.",
-      "D": "An agreement does not stop attackers."
+      "D": "Signing makes tampering harder, but attackers can still send crafted requests directly to a server that trusts them."
     },
     "references_topic": "Server-side enforcement",
     "version": "0.4"
@@ -728,17 +728,17 @@
     "type": "managerial_best_first_most",
     "stem": "A mobile banking app pins the server's exact leaf certificate. The certificate must be renewed next month. What is the BEST approach?",
     "options": {
-      "A": "Keep the pin and renew the certificate as usual, since pins never affect renewals",
-      "B": "Pin to the public key or issuing CA, include a backup pin, and update the app first",
-      "C": "Remove TLS from the app so that certificate renewals can never cause any outages",
-      "D": "Tell customers to reinstall the app after the renewal if it stops working for them"
+      "A": "Disable pinning for a week while the certificate is being renewed",
+      "B": "Pin the public key or issuing CA, add a backup pin, and update the app first",
+      "C": "Push the updated pin in an app release after the renewal is done",
+      "D": "Ask the CA to extend the current certificate by another full year"
     },
     "answer": "B",
     "explanation": "Pinning a leaf certificate breaks the app when the certificate changes. Pinning to a stable key or CA with backup pins, shipped before the change, keeps protection without outages.",
     "distractor_rationales": {
-      "A": "A renewed leaf certificate will not match the pin, so the app will fail.",
-      "C": "Removing TLS destroys confidentiality and integrity.",
-      "D": "Reinstalling will not help if the new app still has the old pin."
+      "A": "Disabling pinning also requires an app update and removes its protection, and old app versions still break.",
+      "C": "Updating after renewal leaves a window in which pinned apps fail. The update must ship first, with a backup pin.",
+      "D": "CAs do not extend issued certificates, and validity limits are fixed by industry rules."
     },
     "references_topic": "Certificate pinning trade-offs",
     "version": "0.4"
@@ -776,17 +776,17 @@
     "type": "application",
     "stem": "A software download page lists a SHA-256 hash next to the installer so users can verify it. Why does this give limited protection if the website itself is compromised?",
     "options": {
-      "A": "SHA-256 is too weak to detect changes in large files such as installers",
-      "B": "Users cannot compute SHA-256 hashes without special hardware",
-      "C": "The hash reveals the installer's contents to anyone who reads it",
+      "A": "SHA-256 collisions can be found for installers of any size",
+      "B": "Most users never compare the hash before installing",
+      "C": "The hash changes each time the file is downloaded",
       "D": "An attacker who swaps the installer can also swap the hash"
     },
     "answer": "D",
     "explanation": "A hash from the same source as the file protects only against accidental corruption. Code signing, or a hash from a separate trusted channel, protects against a malicious swap.",
     "distractor_rationales": {
-      "A": "SHA-256 reliably detects changes of any size.",
-      "B": "Standard tools compute SHA-256 easily.",
-      "C": "Hashes are one-way and do not reveal content."
+      "A": "No practical SHA-256 collisions are known. The weakness is that the hash comes from the same compromised site.",
+      "B": "That is true, but even users who check are fooled if the attacker changes the hash too.",
+      "C": "A file's hash is the same on every download. The problem is where the hash comes from."
     },
     "references_topic": "Integrity of published hashes",
     "version": "0.4"

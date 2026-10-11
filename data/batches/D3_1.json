@@ -81,16 +81,16 @@
     "stem": "A company with a flat internal network suffers a breach in which an attacker moves from a compromised laptop to the finance database. The board asks for an architectural change that reduces implicit trust inside the network. What should the security architect recommend as the BEST approach?",
     "options": {
       "A": "Adding a second perimeter firewall from a different vendor",
-      "B": "Requiring all employees to change their passwords quarterly",
-      "C": "Deploying antivirus to every server in the data center",
+      "B": "Segmenting finance systems behind an internal firewall",
+      "C": "Deploying EDR on every laptop and server in the company",
       "D": "Adopting zero trust with identity-aware, per-request access"
     },
     "answer": "D",
     "explanation": "Zero trust removes trust based on network location. Every request is authenticated and authorized using identity, device posture, and context, and micro-segmentation limits lateral movement between systems.",
     "distractor_rationales": {
       "A": "A second perimeter firewall strengthens the edge but leaves the interior flat and implicitly trusted.",
-      "B": "Periodic password changes do not limit lateral movement, and current guidance discourages arbitrary forced changes.",
-      "C": "Antivirus is an endpoint control. It does not change how trust is granted inside the network."
+      "B": "Segmentation helps, but it still trusts whatever sits inside each segment. Zero trust checks every request.",
+      "C": "EDR improves detection, but it does not remove the implicit trust that let the attacker move freely."
     },
     "references_topic": "Zero trust architecture",
     "version": "0.1"
@@ -153,16 +153,16 @@
     "stem": "A security review of a container platform finds that several production containers run as root and mount the host's container runtime socket. What is the PRIMARY risk of this configuration?",
     "options": {
       "A": "Containers will consume excessive memory and cause denial of service",
-      "B": "Container images will be larger and slower to deploy",
+      "B": "Container images may contain unpatched base layers",
       "C": "A compromised container could take over the host and its neighbors",
-      "D": "Logs from the containers will not be forwarded to the SIEM"
+      "D": "Network policies between containers will not apply"
     },
     "answer": "C",
     "explanation": "Access to the runtime socket lets a container control the runtime itself, for example by launching privileged containers that mount the host file system. Running as root makes an escape even more damaging. Together they break the isolation between container and host.",
     "distractor_rationales": {
       "A": "Memory exhaustion is governed by resource limits, not by socket mounts.",
-      "B": "Image size is unaffected by mounting a socket at runtime.",
-      "D": "Log forwarding is unrelated to these settings."
+      "B": "Outdated base layers are a real risk, but root plus the runtime socket gives a compromised container control of the host.",
+      "D": "Network policy gaps matter, but the main risk is a container taking over the host through the socket."
     },
     "references_topic": "Container isolation risks",
     "version": "0.1"
@@ -202,15 +202,15 @@
     "options": {
       "A": "Test the patch in a lab first, then deploy in a planned maintenance window",
       "B": "Apply the patch to every PLC immediately, since the vulnerability can be exploited remotely",
-      "C": "Defer patching indefinitely, because PLCs should never be modified once commissioned",
-      "D": "Replace all PLCs with newer models that do not require patching"
+      "C": "Block the vulnerable port at the plant firewall and defer patching",
+      "D": "Ask the vendor to patch the PLCs remotely tonight"
     },
     "answer": "A",
     "explanation": "In operational technology, safety and availability come first, and an untested patch can disrupt a physical process. Test the patch in a representative environment with vendor guidance, apply compensating controls such as segmentation and restricted remote access in the meantime, then deploy in a planned window with rollback ready.",
     "distractor_rationales": {
       "B": "Patching safety-critical controllers without testing risks disrupting chemical dosing, which is a safety hazard.",
-      "C": "Deferring forever leaves a known remote vulnerability in place. PLCs can be updated under proper change control.",
-      "D": "Newer devices also need patches, and wholesale replacement is costly and slow."
+      "C": "Blocking the port is a good interim step, but deferring the fix indefinitely leaves a known remote flaw in safety equipment.",
+      "D": "Untested remote patching of safety systems tonight risks disrupting chemical dosing."
     },
     "references_topic": "Patching operational technology safely",
     "version": "0.1"
@@ -227,14 +227,14 @@
       "A": "A carbon dioxide total-flooding system throughout the server rooms",
       "B": "A pre-action sprinkler system paired with early-warning smoke detection",
       "C": "A wet-pipe sprinkler system with heads positioned directly above every rack",
-      "D": "Handheld extinguishers only, so that no water system is installed"
+      "D": "A dry-pipe sprinkler system with standard smoke detectors"
     },
     "answer": "B",
     "explanation": "A pre-action system needs a detection event before its pipes fill with water, and heads must also activate before water flows. That sharply reduces accidental discharge while still providing reliable suppression that is safe for occupants. Early-warning detection lets staff respond before the system discharges.",
     "distractor_rationales": {
       "A": "Carbon dioxide flooding displaces oxygen and is lethal in occupied spaces.",
       "C": "Wet-pipe systems are always charged with water, so a leak or accidental activation can damage equipment.",
-      "D": "Relying only on handheld extinguishers leaves the room unprotected when no one is present and does not meet typical fire codes on its own."
+      "D": "Dry-pipe systems suit freezing spaces. Pre-action adds a second trigger that prevents accidental discharge, and early-warning detection finds fires sooner."
     },
     "references_topic": "Data center fire suppression selection",
     "version": "0.1"

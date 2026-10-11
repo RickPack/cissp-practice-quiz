@@ -33,16 +33,16 @@
     "stem": "Which statement BEST summarizes the core idea of zero trust?",
     "options": {
       "A": "Never trust by default; verify every access request explicitly",
-      "B": "Trust every device that is on the internal network",
-      "C": "Trust any user once they connect through the VPN",
-      "D": "Trust administrators without further checks"
+      "B": "Encrypt all traffic so the network location no longer matters",
+      "C": "Replace the VPN with a cloud-based secure web gateway",
+      "D": "Authenticate users strongly once, then trust the session"
     },
     "answer": "A",
     "explanation": "Zero trust removes implicit trust based on location or prior access. Every request is authenticated, authorized, and evaluated in context.",
     "distractor_rationales": {
-      "B": "Trusting the internal network is the perimeter model zero trust replaces.",
-      "C": "A VPN connection grants network access, not per-request trust.",
-      "D": "Administrators are high-value targets and need more verification, not less."
+      "B": "Encryption protects data in transit, but zero trust is about verifying each access request, not only encrypting it.",
+      "C": "Swapping one access tool for another does not change the trust model by itself.",
+      "D": "Strong authentication at login still trusts the whole session afterward. Zero trust verifies each request."
     },
     "references_topic": "Zero trust core principle",
     "version": "0.3"
@@ -80,17 +80,17 @@
     "type": "knowledge",
     "stem": "In the Common Criteria, what is a protection profile?",
     "options": {
-      "A": "A vendor's marketing summary of product features",
-      "B": "The evaluator's final report on a product",
-      "C": "An implementation-independent set of security requirements for a category of products",
-      "D": "A user's access profile in an evaluated system"
+      "A": "A vendor's document claiming what its own specific product does",
+      "B": "The evaluator's final technical report on a single product",
+      "C": "Implementation-independent security requirements for a product type",
+      "D": "The list of assurance levels that an evaluated product can reach"
     },
     "answer": "C",
     "explanation": "A protection profile states the security needs for a type of product, such as firewalls, independent of any vendor. A vendor's security target describes how a specific product meets them.",
     "distractor_rationales": {
-      "A": "Marketing material is not part of the evaluation framework.",
+      "A": "A vendor's claims for a specific product make up its security target, not a protection profile.",
       "B": "The evaluation report is a separate artifact.",
-      "D": "User access profiles are unrelated to Common Criteria."
+      "D": "Assurance levels are the EAL scale. A protection profile states requirements for a category of products."
     },
     "references_topic": "Common Criteria protection profiles",
     "version": "0.3"
@@ -128,17 +128,17 @@
     "type": "knowledge",
     "stem": "What distinguishes a Type 1 hypervisor from a Type 2 hypervisor?",
     "options": {
-      "A": "Type 1 runs directly on hardware; Type 2 runs on top of a host operating system",
-      "B": "Type 1 is designed only for desktop computers",
-      "C": "Type 2 cannot run any guest virtual machines",
-      "D": "Type 1 requires containers to operate"
+      "A": "Type 1 runs on the hardware itself; Type 2 runs on a host operating system",
+      "B": "Type 1 runs only in public clouds; Type 2 runs only on premises",
+      "C": "Type 1 hosts containers; Type 2 hosts complete virtual machines",
+      "D": "Type 1 is always open source; Type 2 is always commercial software"
     },
     "answer": "A",
     "explanation": "A Type 1 (bare-metal) hypervisor runs directly on the hardware, giving a smaller attack surface. A Type 2 (hosted) hypervisor runs as an application on a host operating system.",
     "distractor_rationales": {
-      "B": "Type 1 hypervisors are typical in data centers, not desktops.",
-      "C": "Type 2 hypervisors run guest VMs.",
-      "D": "Hypervisors do not require containers."
+      "B": "Both types run anywhere. The difference is whether a host operating system sits underneath.",
+      "C": "Both host full virtual machines. Containers are a different technology.",
+      "D": "Licensing has nothing to do with it. Examples of each type are open source and commercial."
     },
     "references_topic": "Type 1 and Type 2 hypervisors",
     "version": "0.3"
@@ -176,17 +176,17 @@
     "type": "knowledge",
     "stem": "When securing industrial control systems, which security objective usually takes priority?",
     "options": {
-      "A": "Confidentiality of process data",
-      "B": "Nonrepudiation of operator commands",
+      "A": "Confidentiality of process data and recipes",
+      "B": "Nonrepudiation of every operator command",
       "C": "Availability and safety of the physical process",
-      "D": "Anonymity of plant operators"
+      "D": "Integrity of the historian's archived data"
     },
     "answer": "C",
     "explanation": "In operational technology, an outage or unsafe state can injure people or damage equipment, so availability and safety normally come first.",
     "distractor_rationales": {
       "A": "Confidentiality matters, but it usually ranks below safety and availability in OT.",
       "B": "Nonrepudiation is useful but is not the primary objective.",
-      "D": "Operator anonymity is not a goal in industrial control systems."
+      "D": "Historian integrity matters, but in control systems the physical process must keep running safely first."
     },
     "references_topic": "OT security priorities",
     "version": "0.3"
@@ -272,17 +272,17 @@
     "type": "application",
     "stem": "An intermediate certificate authority that issues a company's internal certificates is found to be compromised. What must happen to the certificates it issued?",
     "options": {
-      "A": "Nothing, because the root CA itself was not compromised",
-      "B": "They should simply be renewed as each one expires",
+      "A": "Revoke only the certificates on internet-facing systems",
+      "B": "Monitor the issued certificates for misuse until they expire",
       "C": "Revoke the intermediate and reissue its certificates",
-      "D": "The root CA should be deleted from all systems"
+      "D": "Revoke and rebuild the root CA as well"
     },
     "answer": "C",
     "explanation": "A compromised intermediate can issue fraudulent certificates. Revoke it and every certificate it issued, and reissue them under a new intermediate. The root remains trusted if it was not compromised.",
     "distractor_rationales": {
-      "A": "The attacker can still misuse the intermediate even though the root is safe.",
-      "B": "Waiting for expiry leaves compromised trust in place for months or years.",
-      "D": "The root was not compromised, so there is no reason to delete it."
+      "A": "The attacker could misuse any certificate from the compromised intermediate, internal ones included.",
+      "B": "Monitoring leaves certificates the attacker may have forged in trusted use.",
+      "D": "The root was not compromised. Revoking the intermediate and reissuing is enough."
     },
     "references_topic": "Intermediate CA compromise",
     "version": "0.3"
@@ -296,7 +296,7 @@
     "type": "application",
     "stem": "An attacker captures a valid authentication message and resends it later to gain access. Which control BEST prevents this?",
     "options": {
-      "A": "Requiring longer passwords for all users",
+      "A": "Locking accounts after repeated failed logins",
       "B": "Encrypting the message with a stronger cipher",
       "C": "Hashing the message before it is sent",
       "D": "Nonces or timestamps that make each message single-use"
@@ -304,7 +304,7 @@
     "answer": "D",
     "explanation": "This is a replay attack. Including a nonce or timestamp, checked by the receiver, makes each message valid only once.",
     "distractor_rationales": {
-      "A": "Password length does not stop a captured message from being replayed.",
+      "A": "Lockout counts failures. A replayed message is a valid login, so lockout never triggers.",
       "B": "An encrypted message can be replayed just as it is.",
       "C": "A hashed message can also be replayed unchanged."
     },
@@ -368,17 +368,17 @@
     "type": "managerial_best_first_most",
     "stem": "A web application's login page says \"user not found\" or \"wrong password,\" depending on the error. Which change BEST applies secure design?",
     "options": {
-      "A": "Keep the messages, since they help legitimate users",
+      "A": "Keep the messages but log every failed login attempt",
       "B": "Add a CAPTCHA but keep the specific messages",
       "C": "Return one generic message for both failures",
-      "D": "Lock each account permanently after a single failure"
+      "D": "Lock each account for an hour after five failures"
     },
     "answer": "C",
     "explanation": "Distinct messages let attackers confirm which usernames exist. A single generic message reveals nothing about which part was wrong.",
     "distractor_rationales": {
-      "A": "The convenience comes at the cost of enabling username enumeration.",
+      "A": "Logging records attempts, but the messages still tell attackers which usernames exist.",
       "B": "A CAPTCHA slows automation, but the messages still leak valid usernames.",
-      "D": "Permanent lockout after one failure lets attackers lock out any user at will."
+      "D": "Lockout limits guessing, but the different messages still reveal valid usernames."
     },
     "references_topic": "Generic authentication errors",
     "version": "0.3"
@@ -392,17 +392,17 @@
     "type": "managerial_best_first_most",
     "stem": "An organization beginning a zero trust program has a limited budget. What should it do FIRST?",
     "options": {
-      "A": "Replace every firewall with a next-generation model",
-      "B": "Buy a larger VPN concentrator for all remote users",
-      "C": "Remove passwords from every system immediately",
+      "A": "Deploy MFA for every user and every application at once",
+      "B": "Buy a zero trust network access product for all staff",
+      "C": "Rewrite the security policy around zero trust principles",
       "D": "Identify its most critical assets and how they are accessed"
     },
     "answer": "D",
     "explanation": "Zero trust starts with the protect surface: the most critical data, applications, and services, and how they are accessed. That focuses limited resources where they matter most.",
     "distractor_rationales": {
-      "A": "New firewalls without a plan do not create zero trust.",
-      "B": "A bigger VPN extends perimeter trust, the opposite of zero trust.",
-      "C": "Ripping out passwords without a plan breaks access."
+      "A": "MFA is part of zero trust, but rolling it out everywhere before knowing what matters most spends the budget badly.",
+      "B": "Buying a product before identifying critical assets and access paths gets the order wrong.",
+      "C": "Policy matters, but the first practical step is knowing which assets to protect and how they are reached."
     },
     "references_topic": "Starting a zero trust program",
     "version": "0.3"
@@ -443,14 +443,14 @@
       "A": "Choose the least expensive firewall that meets performance needs",
       "B": "Choose products certified against that protection profile",
       "C": "Choose whichever product has the highest EAL, regardless of profile",
-      "D": "Rely on each vendor's own security claims"
+      "D": "Choose the product a peer agency already uses"
     },
     "answer": "B",
     "explanation": "Only products certified against the required protection profile meet the policy. The team should also confirm that the deployed configuration matches the evaluated configuration.",
     "distractor_rationales": {
       "A": "Price does not satisfy the evaluation requirement.",
       "C": "A high EAL against a different profile does not meet the specified requirements.",
-      "D": "Vendor claims are not independent evaluation."
+      "D": "A peer's choice may not meet the required protection profile."
     },
     "references_topic": "Procuring evaluated products",
     "version": "0.3"
@@ -488,17 +488,17 @@
     "type": "managerial_best_first_most",
     "stem": "A development team pulls container images from public registries straight into production. What is the BEST control?",
     "options": {
-      "A": "Always pull the latest tag so images stay current",
-      "B": "Run containers as root to avoid permission errors",
-      "C": "Turn off image pull logging to improve performance",
+      "A": "Pin each image to a specific version tag in the manifests",
+      "B": "Scan running containers for malware once a week",
+      "C": "Pull only official images that have many downloads",
       "D": "Allow only scanned, signed images from an approved registry"
     },
     "answer": "D",
     "explanation": "An approved internal registry holding vulnerability-scanned, signed images, plus admission control that rejects anything else, keeps untrusted or tampered images out of production.",
     "distractor_rationales": {
-      "A": "The latest tag is unpinned and may pull unexpected or malicious changes.",
-      "B": "Running as root increases the impact of a compromise.",
-      "C": "Disabling logging reduces visibility."
+      "A": "Pinning gives repeatable builds, but the pinned image may still be unscanned or tampered with.",
+      "B": "Weekly runtime scans find problems after deployment. Images should be checked before they run.",
+      "C": "Popularity is not verification. Images still need scanning and signatures from an approved registry."
     },
     "references_topic": "Trusted container images",
     "version": "0.3"
@@ -514,15 +514,15 @@
     "options": {
       "A": "Org-level guardrails blocking public access, plus monitoring",
       "B": "Manual reviews of every storage bucket's settings, performed once each month",
-      "C": "An annual training module for developers",
-      "D": "Deleting all buckets that developers have created"
+      "C": "A monthly report of public buckets sent to each team",
+      "D": "A developer checklist reviewed during code review"
     },
     "answer": "A",
     "explanation": "Preventive guardrails, such as organization-wide policies that block public access unless explicitly approved, stop the mistake from happening. Continuous posture monitoring catches anything that slips through.",
     "distractor_rationales": {
       "B": "Monthly manual checks leave long exposure windows and do not scale.",
-      "C": "Training helps but does not prevent mistakes.",
-      "D": "Deleting buckets destroys legitimate work."
+      "C": "A monthly report finds exposure weeks after it happens. Guardrails prevent it.",
+      "D": "Checklists depend on people remembering. Organization-level guardrails enforce the rule."
     },
     "references_topic": "Cloud guardrails and posture management",
     "version": "0.3"
@@ -536,17 +536,17 @@
     "type": "application",
     "stem": "A reporting tool must let analysts see customer names and order totals, but not the credit card numbers stored in the same table. Which database feature BEST supports this?",
     "options": {
-      "A": "A trigger that fires whenever a new row is inserted",
+      "A": "Encrypting the card column at rest with TDE",
       "B": "A view exposing only permitted columns",
-      "C": "An index on the credit card column",
-      "D": "A backup of the table"
+      "C": "Row-level security filtering rows by region",
+      "D": "Masking the card numbers in nightly backups"
     },
     "answer": "B",
     "explanation": "A view presents only the permitted columns. Analysts are granted access to the view, not the underlying table.",
     "distractor_rationales": {
-      "A": "Triggers run logic on data changes. They do not restrict what users can read.",
-      "C": "Indexes speed up queries and do not restrict access.",
-      "D": "A backup does not control read access."
+      "A": "Encryption at rest is transparent to queries, so analysts with table access still see the numbers.",
+      "C": "Row-level security limits which rows are seen, not which columns.",
+      "D": "Masking backups does nothing for the live reporting tool."
     },
     "references_topic": "Database views for column-level restriction",
     "version": "0.3"
@@ -560,10 +560,10 @@
     "type": "managerial_best_first_most",
     "stem": "A company wants recorded TLS traffic to stay confidential even if the server's private key is stolen years later. Which feature provides this?",
     "options": {
-      "A": "Longer RSA keys",
-      "B": "Certificate pinning",
+      "A": "Longer RSA keys for the server certificate",
+      "B": "Certificate pinning in the client applications",
       "C": "Perfect forward secrecy using ephemeral key exchange",
-      "D": "OCSP stapling"
+      "D": "OCSP stapling configured on the web server"
     },
     "answer": "C",
     "explanation": "With forward secrecy, each session key comes from an ephemeral key exchange and is discarded afterward. Stealing the server's long-term key later does not reveal past session keys.",
@@ -584,16 +584,16 @@
     "type": "managerial_best_first_most",
     "stem": "A company must be able to prove, ten years from now, that a signed contract existed in its current form on today's date, even after the signing certificate has expired. What should it add?",
     "options": {
-      "A": "An MD5 hash of the contract stored alongside it",
-      "B": "Encryption of the contract with a strong cipher",
+      "A": "A SHA-256 hash of the contract stored alongside it",
+      "B": "Re-signing the contract each year with a new certificate",
       "C": "Storage of the contract in a well-protected database",
       "D": "A trusted timestamp on the signature"
     },
     "answer": "D",
     "explanation": "A trusted timestamp from a timestamping authority proves that the signature, and therefore the document, existed at a specific time while the certificate was valid.",
     "distractor_rationales": {
-      "A": "MD5 is broken for collision resistance, and a hash alone does not prove when the document existed.",
-      "B": "Encryption protects confidentiality, not proof of time or integrity.",
+      "A": "A hash proves the contract has not changed, but not when it existed.",
+      "B": "Re-signing shows the contract existed at each re-signing, not on the original date, and it relies on an unbroken chain.",
       "C": "A database does not provide independent proof of time."
     },
     "references_topic": "Trusted timestamping",
@@ -610,15 +610,15 @@
     "options": {
       "A": "Replace its certificates using another trusted CA",
       "B": "Wait, since existing certificates will keep working",
-      "C": "Switch to self-signed certificates",
-      "D": "Disable HTTPS until the situation is resolved"
+      "C": "Pin its current certificates in the company's mobile apps",
+      "D": "Ask the CA to reissue the certificates under a new root"
     },
     "answer": "A",
     "explanation": "When browsers distrust a CA, its certificates stop working. The company should obtain and deploy replacement certificates from a trusted CA before the distrust date.",
     "distractor_rationales": {
       "B": "Existing certificates will fail once browsers stop trusting the CA.",
-      "C": "Self-signed certificates trigger warnings for every visitor.",
-      "D": "Disabling HTTPS exposes all traffic."
+      "C": "Pinning does not help browsers that will distrust the CA. The certificates must come from a trusted CA.",
+      "D": "Browsers are distrusting the CA itself, so a new root from the same CA is unlikely to be trusted."
     },
     "references_topic": "Responding to CA distrust",
     "version": "0.3"
@@ -632,17 +632,17 @@
     "type": "application",
     "stem": "An attacker in the middle of a connection manipulates the handshake so that the client and server agree on an old, weak protocol version. Which control BEST prevents this?",
     "options": {
-      "A": "Requiring longer passwords for every user",
+      "A": "Requiring client certificates for all connections",
       "B": "Disabling weak protocol versions and ciphers",
-      "C": "Serving the site over plain HTTP instead",
-      "D": "Renewing the server certificate more often"
+      "C": "Enabling HSTS so browsers always use HTTPS",
+      "D": "Using a longer RSA key for the server certificate"
     },
     "answer": "B",
     "explanation": "A downgrade attack only works if both sides still accept weak options. Disabling old protocol versions and cipher suites on both ends leaves nothing weak to negotiate.",
     "distractor_rationales": {
-      "A": "Passwords are unrelated to protocol negotiation.",
-      "C": "Plain HTTP removes protection entirely.",
-      "D": "Certificate renewal does not affect which protocol versions are accepted."
+      "A": "Client certificates authenticate the client but do not stop the handshake being pushed to a weak version.",
+      "C": "HSTS stops downgrade to plain HTTP, not to an older TLS version.",
+      "D": "A longer key does not help if an old protocol with weak ciphers is negotiated."
     },
     "references_topic": "Protocol downgrade attacks",
     "version": "0.3"
@@ -656,17 +656,17 @@
     "type": "managerial_best_first_most",
     "stem": "A manufacturer is connecting its plant control network to the corporate IT network so production data can feed business reports. Which architecture BEST limits risk?",
     "options": {
-      "A": "A flat network that joins IT and OT directly",
+      "A": "A firewall rule allowing reporting servers to query PLCs",
       "B": "Direct VPN access from corporate laptops to the PLCs",
       "C": "An industrial DMZ brokering data between IT and OT",
-      "D": "A wireless bridge between the two buildings"
+      "D": "A one-way data diode carrying traffic from IT into OT"
     },
     "answer": "C",
     "explanation": "An industrial DMZ between IT and OT hosts brokered services, such as data historians, so no direct traffic flows from IT to control systems and data can be passed on in controlled ways.",
     "distractor_rationales": {
-      "A": "A flat network lets IT threats reach control systems directly.",
+      "A": "Letting IT systems query PLCs directly opens the control network to IT-side compromise.",
       "B": "Direct access to PLCs from corporate laptops exposes safety-critical devices.",
-      "D": "A wireless bridge adds exposure without segmentation."
+      "D": "A diode in that direction lets IT send into OT, the opposite of what reporting needs and of what protects the plant."
     },
     "references_topic": "Industrial DMZ between IT and OT",
     "version": "0.3"
@@ -680,7 +680,7 @@
     "type": "application",
     "stem": "A data center experiences occasional brownouts and rare grid outages that last several hours. Which combination BEST protects availability?",
     "options": {
-      "A": "Surge protectors on each rack and nothing else",
+      "A": "Dual utility feeds from the same substation",
       "B": "A standby generator alone, which starts after the power fails",
       "C": "A battery UPS alone, sized for about 15 minutes",
       "D": "A UPS for short events, backed by a tested generator"
@@ -688,7 +688,7 @@
     "answer": "D",
     "explanation": "A UPS conditions power and bridges brownouts and the seconds a generator needs to start. The generator carries the load through long outages. Regular testing makes sure both work when needed.",
     "distractor_rationales": {
-      "A": "Surge protection does nothing during brownouts or outages.",
+      "A": "Two feeds from one substation fail together in a grid outage, and they do not smooth brownouts.",
       "B": "Without a UPS, equipment loses power before the generator starts.",
       "C": "A 15-minute UPS cannot ride through a multi-hour outage."
     },
@@ -705,16 +705,16 @@
     "stem": "A contractor stores data that must stay confidential for 25 years and transmits it using RSA key exchange. What is the BEST action regarding future quantum computing threats?",
     "options": {
       "A": "Inventory crypto use and plan a post-quantum migration",
-      "B": "Wait until large quantum computers actually exist",
+      "B": "Encrypt the data at rest with AES-256 and keep RSA exchange",
       "C": "Double the RSA key length and consider it solved",
-      "D": "Switch key exchange to Triple DES for more safety"
+      "D": "Switch key exchange to elliptic-curve Diffie-Hellman"
     },
     "answer": "A",
     "explanation": "Adversaries can record encrypted traffic now and decrypt it later (\"harvest now, decrypt later\"). Long-lived secrets justify inventorying cryptographic use now and planning migration to post-quantum algorithms, starting with the most sensitive data.",
     "distractor_rationales": {
-      "B": "Traffic captured today could be decrypted once quantum capability arrives.",
+      "B": "Symmetric encryption at rest is fine, but traffic recorded now can be decrypted later if RSA falls.",
       "C": "Larger RSA keys do not resist quantum attacks on RSA.",
-      "D": "Triple DES is a legacy symmetric cipher and cannot perform key exchange."
+      "D": "Elliptic-curve exchange is also vulnerable to large quantum computers. A post-quantum migration is needed."
     },
     "references_topic": "Post-quantum migration planning",
     "version": "0.3"
@@ -728,17 +728,17 @@
     "type": "application",
     "stem": "A company is choosing between two data center sites. Site 1 is cheaper but lies in a floodplain under an airport flight path. Site 2 costs more but has low natural hazard exposure and diverse utility feeds. Which factor MOST favors Site 2?",
     "options": {
-      "A": "Being farther from the airport's passenger terminal",
+      "A": "Site 2's newer building and modern cooling plant",
       "B": "Lower hazard exposure and redundant utility feeds",
-      "C": "The land at Site 2 being less expensive",
-      "D": "Being closer to downtown restaurants for staff"
+      "C": "Site 2's shorter commute for the operations staff",
+      "D": "Site 2's larger floor space for future growth"
     },
     "answer": "B",
     "explanation": "Site selection weighs exposure to natural and man-made hazards and the resilience of utilities. Site 2's low hazard exposure and diverse feeds directly support availability.",
     "distractor_rationales": {
-      "A": "The terminal's distance is not the concern. The flight path over Site 1 is.",
-      "C": "Site 2 is the more expensive option.",
-      "D": "Staff amenities are minor compared with hazard exposure."
+      "A": "The stem does not mention the building. The deciding facts are hazard exposure and redundant utilities.",
+      "C": "Commute time matters to staff, but it is not the availability factor that sets the sites apart.",
+      "D": "Growth room is not mentioned. Hazard exposure and utility diversity are what favor Site 2."
     },
     "references_topic": "Site selection hazards",
     "version": "0.3"
@@ -755,14 +755,14 @@
       "A": "A stronger firewall at the network perimeter",
       "B": "One shared API key that every service includes in calls",
       "C": "Mutual TLS with a distinct identity for every service",
-      "D": "Moving the services to unusual port numbers"
+      "D": "Network segmentation that groups related services"
     },
     "answer": "C",
     "explanation": "Mutual TLS with per-service identities, often managed by a service mesh, authenticates and encrypts every call, and authorization policies then decide which services may call which.",
     "distractor_rationales": {
       "A": "A perimeter firewall does nothing about calls between internal services.",
       "B": "A shared key means compromising any one service compromises them all.",
-      "D": "Obscure ports are not authentication."
+      "D": "Segmentation reduces reach, but services inside a segment still call each other with no authentication."
     },
     "references_topic": "Service-to-service authentication",
     "version": "0.3"

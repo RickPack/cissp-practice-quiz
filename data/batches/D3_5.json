@@ -56,17 +56,17 @@
     "type": "application",
     "stem": "A mobile banking app must protect its signing keys even if the phone's operating system is compromised. Which hardware capability BEST supports this?",
     "options": {
-      "A": "A larger battery that allows the phone to run longer between charges",
-      "B": "A faster processor that completes cryptographic operations more quickly",
+      "A": "Full-device encryption protected by a strong passcode",
+      "B": "A biometric sensor that unlocks the signing key for use",
       "C": "A trusted execution environment or secure enclave",
-      "D": "A higher-resolution screen for displaying transaction details"
+      "D": "Certificate pinning for the app's server connections"
     },
     "answer": "C",
     "explanation": "A trusted execution environment isolates code and keys from the main operating system, so malware in the OS cannot read them.",
     "distractor_rationales": {
-      "A": "Battery capacity has no security effect.",
-      "B": "Speed does not isolate keys.",
-      "D": "Screen resolution does not protect keys."
+      "A": "Device encryption protects data at rest, but a compromised OS sees everything once the phone is unlocked.",
+      "B": "Biometrics gate use of the key, but if the key lives in OS memory a compromised OS can still take it.",
+      "D": "Pinning protects the connection to the server, not the signing key on the device."
     },
     "references_topic": "Trusted execution environments",
     "version": "1.0"
@@ -105,16 +105,16 @@
     "stem": "What security risk does multi-tenancy introduce in public cloud services?",
     "options": {
       "A": "Data could leak between customers if isolation fails",
-      "B": "Customers can no longer encrypt their own data",
-      "C": "The provider must reveal every customer's identity publicly",
-      "D": "Cloud services become unavailable to more than one customer"
+      "B": "Customers cannot audit the provider's physical sites",
+      "C": "The provider can read every customer's data at will",
+      "D": "Customers must share one encryption key per region"
     },
     "answer": "A",
     "explanation": "Multiple customers share infrastructure, so the provider's isolation between tenants is critical. A flaw could expose one tenant's data to another.",
     "distractor_rationales": {
-      "B": "Customers can still encrypt their data.",
-      "C": "Providers do not publish customer identities.",
-      "D": "Sharing is how cloud serves many customers; it does not block them."
+      "B": "Limited audit rights are a cloud assurance issue, not the risk that comes from sharing infrastructure with other tenants.",
+      "C": "Provider insider access is a separate risk. Multi-tenancy's specific risk is leakage between customers.",
+      "D": "Customers are not required to share keys. The risk is a failure of isolation between tenants."
     },
     "references_topic": "Multi-tenancy risk",
     "version": "1.0"
@@ -128,10 +128,10 @@
     "type": "knowledge",
     "stem": "What does the Diffie-Hellman algorithm provide?",
     "options": {
-      "A": "A digital signature that proves who sent a message",
+      "A": "A digital signature that proves who sent a particular message",
       "B": "A way for two parties to agree on a shared secret over an insecure channel",
-      "C": "A hash value that detects changes to a file",
-      "D": "Bulk encryption of large files using a shared key"
+      "C": "A hash value that detects any change to a stored file",
+      "D": "Bulk encryption of large files using a key both sides already share"
     },
     "answer": "B",
     "explanation": "Diffie-Hellman lets two parties derive the same secret without sending it. On its own it does not authenticate either party, so it is combined with signatures or certificates.",
@@ -152,17 +152,17 @@
     "type": "application",
     "stem": "A review of a password database shows that users with the same password have identical stored hashes. What should be added?",
     "options": {
-      "A": "A shorter hash output so the database takes up less space",
+      "A": "Switch from SHA-1 to SHA-256 for the password hashes",
       "B": "The same fixed value appended to every password before hashing",
       "C": "A unique random salt for each password, with a slow hashing algorithm",
-      "D": "Encryption of the usernames column in the password database"
+      "D": "Encrypt the whole password table with AES-256 at rest"
     },
     "answer": "C",
     "explanation": "A unique salt makes identical passwords produce different hashes and defeats precomputed tables. A slow, adaptive algorithm also makes guessing expensive.",
     "distractor_rationales": {
-      "A": "Shorter hashes weaken security.",
+      "A": "A stronger unsalted hash still gives identical hashes for identical passwords and is fast to attack.",
       "B": "A fixed value applied to every password still gives identical hashes for identical passwords.",
-      "D": "Encrypting usernames does not change the password hashes."
+      "D": "Encryption at rest does not help once the table is read by the application or stolen with its key, and identical hashes remain."
     },
     "references_topic": "Salting password hashes",
     "version": "1.0"
@@ -177,16 +177,16 @@
     "stem": "Employees report feeling unsafe walking to a dark parking lot at night, and the cameras there cannot see anything after sunset. Which control BEST addresses both problems?",
     "options": {
       "A": "A sign stating that the parking lot is monitored at all times",
-      "B": "A policy that staff must leave before sunset",
-      "C": "Painting the parking lot lines a brighter color",
-      "D": "Adequate, continuous lighting across the lot"
+      "B": "Guard patrols of the lot once every hour after dark",
+      "C": "Infrared cameras that can see the lot in the dark",
+      "D": "Adequate, continuous lighting across the whole lot"
     },
     "answer": "D",
     "explanation": "Good lighting deters crime, helps people feel safe, and lets cameras and guards actually see what is happening.",
     "distractor_rationales": {
       "A": "A sign without effective monitoring is weak.",
-      "B": "Restricting work hours is impractical.",
-      "C": "Paint does not light the area."
+      "B": "Hourly patrols leave long gaps and do nothing for the cameras.",
+      "C": "Infrared fixes the cameras but leaves staff walking through a dark lot."
     },
     "references_topic": "Perimeter lighting",
     "version": "1.0"
@@ -224,17 +224,17 @@
     "type": "application",
     "stem": "A new network appliance ships with its web console, SSH, SNMP, and Telnet all enabled. Administrators need only SSH. What should be done?",
     "options": {
-      "A": "Leave all services running so future administrators have more options",
-      "B": "Disable the web console, SNMP, and Telnet, and restrict SSH to admin networks",
-      "C": "Change the default port numbers of all four services",
-      "D": "Enable a login banner on each of the four services"
+      "A": "Disable Telnet only, since the other services are encrypted",
+      "B": "Disable the web console, SNMP, and Telnet; limit SSH to admin networks",
+      "C": "Change the default port numbers of all four management services",
+      "D": "Put the appliance behind a firewall and leave all services on"
     },
     "answer": "B",
     "explanation": "Every unused service is an extra way in. Disabling what is not needed, and restricting what remains, reduces the attack surface.",
     "distractor_rationales": {
-      "A": "Unneeded services add risk without benefit.",
+      "A": "SNMP and the web console may be unencrypted or unneeded. Everything except SSH should be disabled.",
       "C": "Nonstandard ports are obscurity.",
-      "D": "Banners do not reduce exposure."
+      "D": "A firewall reduces exposure, but unneeded services still widen the attack surface."
     },
     "references_topic": "Attack surface reduction",
     "version": "1.0"
@@ -249,7 +249,7 @@
     "stem": "Which approach keeps application services invisible to unauthenticated users and opens network access only after identity and device checks succeed?",
     "options": {
       "A": "A flat network with a single strong perimeter firewall at the internet edge",
-      "B": "A demilitarized zone that exposes all public services to anyone on the internet",
+      "B": "A web application firewall in front of every service",
       "C": "A software-defined perimeter",
       "D": "A site-to-site VPN that connects every branch to the main office network"
     },
@@ -257,7 +257,7 @@
     "explanation": "A software-defined perimeter hides services behind a controller. Only authenticated, verified users and devices are allowed to connect, so attackers cannot even see the targets.",
     "distractor_rationales": {
       "A": "A flat network trusts everything inside the perimeter.",
-      "B": "A DMZ exposes services publicly.",
+      "B": "A WAF filters requests to services that are still visible to everyone.",
       "D": "Site-to-site VPNs connect networks, not individual verified sessions."
     },
     "references_topic": "Software-defined perimeter",
@@ -299,14 +299,14 @@
       "A": "Reassess its security and obtain a new authorization decision",
       "B": "Keep the existing authorization, since it has not yet expired",
       "C": "Ask the cloud provider to authorize the system on the company's behalf",
-      "D": "Remove the system from the inventory, since it is now in the cloud"
+      "D": "Update the documentation and keep the current authorization"
     },
     "answer": "A",
     "explanation": "Authorization is based on a specific design and risk picture. A major change invalidates those assumptions, so the system must be reassessed and reauthorized.",
     "distractor_rationales": {
       "B": "Authorization assumes the system is as it was assessed.",
       "C": "The provider cannot accept the company's risk.",
-      "D": "Cloud systems still belong in the inventory."
+      "D": "Updated documents are not a new risk decision. A major architecture change needs reassessment and a new authorization."
     },
     "references_topic": "Reauthorization after major change",
     "version": "1.0"
@@ -320,16 +320,16 @@
     "type": "application",
     "stem": "An attacker steals a laptop that was left in sleep mode, chills its memory, and recovers the disk encryption key. Which practice BEST reduces this risk?",
     "options": {
-      "A": "Use a longer screen saver password on the laptop",
-      "B": "Shut down or hibernate instead of sleeping, and require pre-boot authentication",
-      "C": "Store the laptop in a warmer room when it is not in use",
+      "A": "Use a longer screen saver password on the laptop when it sleeps",
+      "B": "Hibernate or shut down instead of sleeping, with pre-boot authentication",
+      "C": "Encrypt the swap file and page file as well as the disk",
       "D": "Replace full-disk encryption with file-level encryption for all documents"
     },
     "answer": "B",
     "explanation": "In sleep mode, keys stay in memory. Shutting down or hibernating clears them, and pre-boot authentication means the key is not loaded until the user unlocks the drive.",
     "distractor_rationales": {
       "A": "A screen saver password does not remove keys from memory.",
-      "C": "Room temperature is not a practical control.",
+      "C": "Swap encryption does not help when the key sits in RAM during sleep.",
       "D": "File-level encryption keys can also sit in memory."
     },
     "references_topic": "Cold boot attacks",
@@ -344,17 +344,17 @@
     "type": "application",
     "stem": "A container runs as root and mounts the host's root file system. What is the BEST fix?",
     "options": {
-      "A": "Give the container a longer and more descriptive name in the orchestrator",
-      "B": "Run the container on a larger host so it has more memory available",
+      "A": "Scan the container image for vulnerabilities before each deploy",
+      "B": "Mount the host root file system read-only for the container instead",
       "C": "Run as a non-root user, drop extra capabilities, and remove host mounts",
-      "D": "Restart the container every day so any attacker loses access"
+      "D": "Run the container on a dedicated host with no other workloads"
     },
     "answer": "C",
     "explanation": "Root inside a container plus access to the host file system makes escape and host takeover easy. Least privilege settings remove that path.",
     "distractor_rationales": {
-      "A": "The name has no effect on security.",
-      "B": "More memory does not reduce privilege.",
-      "D": "Restarting does not remove the underlying weakness."
+      "A": "Scanning finds known flaws in the image but leaves root and the host mount in place.",
+      "B": "Read-only access still exposes host secrets and configuration to a root container.",
+      "D": "A dedicated host limits neighbors, but a compromised container still owns that host."
     },
     "references_topic": "Hardening container runtime settings",
     "version": "1.0"
@@ -369,16 +369,16 @@
     "stem": "A company depends entirely on one SaaS provider for its core operations and has no plan if the provider fails or raises prices sharply. What is the BEST action?",
     "options": {
       "A": "Sign a longer contract so that the provider cannot walk away from the relationship",
-      "B": "Stop using cloud services and return to on-premises systems",
-      "C": "Rely on the provider's reputation, since large providers do not fail",
+      "B": "Buy insurance that covers losses from a provider outage",
+      "C": "Review the provider's SOC 2 report and financials every year",
       "D": "Build an exit plan with tested data export, portable formats, and exit terms"
     },
     "answer": "D",
     "explanation": "An exit strategy makes sure the company can move its data and operations if needed. Testing exports and securing contract terms for termination support makes the plan real.",
     "distractor_rationales": {
       "A": "A longer contract does not protect against failure.",
-      "B": "Abandoning cloud entirely is disproportionate.",
-      "C": "Any provider can fail or change terms."
+      "B": "Insurance pays some costs but does not keep the business running or provide a way out.",
+      "C": "Annual reviews may spot trouble but do not give the company a way to leave."
     },
     "references_topic": "Cloud exit strategy",
     "version": "1.0"
@@ -417,16 +417,16 @@
     "stem": "A web application stores the user's role in an unsigned cookie. A tester changes the value from \"user\" to \"admin\" and gains administrator access. What is the BEST fix?",
     "options": {
       "A": "Base64-encode the cookie value so the role is harder to read",
-      "B": "Keep authorization data on the server, or sign and verify any client-side state",
-      "C": "Rename the cookie so testers cannot find it easily",
-      "D": "Set the cookie to expire after five minutes"
+      "B": "Keep authorization on the server, or sign and verify client-side state",
+      "C": "Add a hidden form field that repeats the user's role on each request",
+      "D": "Mark the role cookie as HttpOnly and Secure so scripts cannot read it"
     },
     "answer": "B",
     "explanation": "Anything stored on the client can be changed. Authorization decisions must rely on server-side data, or on state that is cryptographically signed and checked.",
     "distractor_rationales": {
       "A": "Encoding is not protection.",
-      "C": "Renaming is obscurity.",
-      "D": "A short lifetime still allows tampering within that time."
+      "C": "A hidden field is still client-side data that the user can change.",
+      "D": "These flags stop scripts reading the cookie and keep it on HTTPS, but the user can still edit it."
     },
     "references_topic": "Client-side session state",
     "version": "1.0"
@@ -464,17 +464,17 @@
     "type": "application",
     "stem": "A code review finds that an application encrypts every message with AES-GCM using the same key and the same nonce. What is the impact?",
     "options": {
-      "A": "None, since AES-GCM is secure regardless of how nonces are chosen",
-      "B": "Messages will take longer to encrypt, but the security of the data is unaffected",
-      "C": "The ciphertext will be larger than usual, which wastes storage",
+      "A": "Only confidentiality is weakened; integrity checks still hold",
+      "B": "Only the first message is exposed; later ones stay safe",
+      "C": "Decryption fails for every message after the first one",
       "D": "It can expose plaintext relationships and let attackers forge messages"
     },
     "answer": "D",
     "explanation": "GCM requires a unique nonce for every message under a key. Reuse leaks information about the plaintexts and can reveal the authentication key, allowing forgeries.",
     "distractor_rationales": {
-      "A": "GCM's security depends on nonce uniqueness.",
-      "B": "Reuse is a security failure, not a performance issue.",
-      "C": "Ciphertext size is unaffected."
+      "A": "Nonce reuse in GCM also exposes the authentication key, so forgery becomes possible.",
+      "B": "Every pair of messages under the same nonce leaks information, not just the first.",
+      "C": "Decryption still works. That is why the flaw goes unnoticed while it leaks information."
     },
     "references_topic": "Nonce reuse in AES-GCM",
     "version": "1.0"
@@ -489,16 +489,16 @@
     "stem": "An internal certificate authority still signs certificates using SHA-1. What should the security team do?",
     "options": {
       "A": "Migrate to SHA-256 or stronger, since SHA-1 collisions are practical",
-      "B": "Keep SHA-1, since it is still approved for all digital signatures",
-      "C": "Switch to MD5, since it produces a shorter and faster hash",
-      "D": "Stop using certificates internally and rely on passwords for all authentication instead"
+      "B": "Keep SHA-1 for internal certificates, since they are not public",
+      "C": "Shorten certificate lifetimes to 90 days and keep SHA-1",
+      "D": "Add a second SHA-1 signature to each certificate"
     },
     "answer": "A",
     "explanation": "Practical SHA-1 collisions let attackers forge signed objects. Moving to SHA-256 or stronger restores signature integrity.",
     "distractor_rationales": {
-      "B": "SHA-1 is deprecated for signatures.",
-      "C": "MD5 is even weaker than SHA-1.",
-      "D": "Dropping certificates weakens authentication."
+      "B": "Collision attacks work just as well inside the network. Internal certificates still need a strong hash.",
+      "C": "Shorter lifetimes narrow the window but keep an algorithm with practical collisions.",
+      "D": "Two SHA-1 signatures share the same weakness."
     },
     "references_topic": "Retiring SHA-1",
     "version": "1.0"
@@ -512,17 +512,17 @@
     "type": "managerial_best_first_most",
     "stem": "A company uses one wildcard certificate for *.example.com on 60 servers, including low-security test hosts. What is the BEST improvement?",
     "options": {
-      "A": "Use the same wildcard certificate on even more servers to simplify management",
-      "B": "Limit wildcards and give sensitive services their own certificates and keys",
-      "C": "Publish the wildcard private key so every team can deploy it easily",
-      "D": "Extend the wildcard certificate's validity to ten years to avoid renewals"
+      "A": "Keep the wildcard certificate but rotate its key every 90 days",
+      "B": "Limit wildcards and give sensitive services their own certificates",
+      "C": "Store the wildcard key in a vault each team can pull from",
+      "D": "Monitor certificate transparency logs for misissued certificates"
     },
     "answer": "B",
     "explanation": "The same private key on 60 servers means a compromise of any one, including a weak test host, exposes every subdomain. Separate certificates limit the blast radius.",
     "distractor_rationales": {
-      "A": "Wider use increases exposure.",
-      "C": "Publishing a private key destroys its security.",
-      "D": "Long validity increases the window of misuse."
+      "A": "Rotation shortens exposure, but one compromised test host still exposes every service.",
+      "C": "A vault controls distribution but still puts the same key on low-security hosts.",
+      "D": "CT monitoring catches misissuance, not theft of the shared key from a weak host."
     },
     "references_topic": "Limiting wildcard certificates",
     "version": "1.0"
@@ -585,16 +585,16 @@
     "stem": "An architect proposes a large illuminated sign with the company's name and \"Data Center\" on its new facility. What should the security team recommend?",
     "options": {
       "A": "A low-profile building with no signage identifying its purpose",
-      "B": "A larger sign so emergency services can find the building",
-      "C": "A sign listing the security measures in place",
-      "D": "Moving the sign onto the roof so it is visible from much farther away"
+      "B": "A small sign with only the street number and company logo",
+      "C": "A sign that reads only \"Authorized personnel only\"",
+      "D": "A sign naming a fictitious tenant company"
     },
     "answer": "A",
     "explanation": "Advertising a data center invites targeting. Keeping sensitive facilities inconspicuous is a common physical security practice, with location shared through proper channels.",
     "distractor_rationales": {
-      "B": "Emergency services can be informed without public signs.",
-      "C": "Listing defenses helps attackers plan.",
-      "D": "More visibility increases targeting."
+      "B": "A logo still identifies the owner and draws attention to the site.",
+      "C": "That wording suggests something worth protecting is inside.",
+      "D": "A fake tenant name is deception. A plain building with no signage achieves the goal simply."
     },
     "references_topic": "Low-profile facilities",
     "version": "1.0"
@@ -610,15 +610,15 @@
     "options": {
       "A": "Allow the session to continue, since the user authenticated successfully at sign-in",
       "B": "Re-evaluate the session, requiring step-up authentication or ending it",
-      "C": "Block the user's account permanently without investigation",
-      "D": "Log the event for review at the end of the quarter"
+      "C": "Block the account and require a password reset through the help desk",
+      "D": "Log it and email the user an alert about the new location"
     },
     "answer": "B",
     "explanation": "Zero trust keeps verifying during a session. A sudden change in risk signals should trigger re-authentication or termination rather than relying on the initial login.",
     "distractor_rationales": {
       "A": "Trust from sign-in should not persist when risk changes.",
-      "C": "Permanent blocking without investigation is excessive.",
-      "D": "Quarterly review is far too slow."
+      "C": "Blocking without step-up checks disrupts the user and skips verifying what happened.",
+      "D": "An email alert leaves a possibly hijacked session running."
     },
     "references_topic": "Continuous verification",
     "version": "1.0"
@@ -681,16 +681,16 @@
     "stem": "Testers found that field devices accept any firmware image uploaded to them, with no verification. What is the BEST long-term fix?",
     "options": {
       "A": "Require digitally signed firmware and verify signatures before installing",
-      "B": "Hide the firmware upload page behind an unusual URL",
-      "C": "Allow firmware uploads only on weekdays",
-      "D": "Ask all technicians to promise in writing to use only official vendor firmware"
+      "B": "Restrict firmware uploads to the plant's maintenance network only",
+      "C": "Check each image's SHA-256 hash against the vendor website",
+      "D": "Require two technicians to approve each firmware upload in person"
     },
     "answer": "A",
     "explanation": "Signature verification means only firmware from the legitimate vendor can be installed, which stops malicious or tampered images.",
     "distractor_rationales": {
-      "B": "A hidden URL is obscurity.",
-      "C": "Timing restrictions do not stop malicious firmware.",
-      "D": "A promise does not stop attackers."
+      "B": "Network restriction narrows who can upload, but the devices still accept any image.",
+      "C": "A manual hash check depends on people. The devices themselves should refuse unsigned images.",
+      "D": "Two approvers reduce mistakes but still cannot tell a tampered image from a real one."
     },
     "references_topic": "Signed firmware updates",
     "version": "1.0"
@@ -705,16 +705,16 @@
     "stem": "A mobile app connects directly to the company's database over the internet, using database credentials embedded in the app. What is the BEST architectural change?",
     "options": {
       "A": "Obfuscate the app so the embedded credentials are harder to extract",
-      "B": "Put an API tier in front, with per-user authorization and no database credentials in the app",
+      "B": "Add an API tier with per-user authorization and no database credentials in the app",
       "C": "Change the database password every month and push an app update each time",
-      "D": "Restrict database access to users with the latest version of the app"
+      "D": "Require TLS for the app's direct connection to the database"
     },
     "answer": "B",
     "explanation": "Anything embedded in a distributed app can be extracted. An API layer authenticates each user and enforces authorization, while the database stays off the internet.",
     "distractor_rationales": {
       "A": "Obfuscation delays extraction but does not prevent it.",
       "C": "Rotating a shared embedded credential does not stop extraction.",
-      "D": "App version checks are easily bypassed."
+      "D": "TLS protects the connection, but the credentials are still in every copy of the app."
     },
     "references_topic": "Adding an API tier",
     "version": "1.0"
@@ -728,17 +728,17 @@
     "type": "knowledge",
     "stem": "Why does double DES provide little more security than single DES?",
     "options": {
-      "A": "Double DES uses a shorter key than single DES does",
+      "A": "Double DES uses a shorter effective key than single DES does",
       "B": "Double DES is vulnerable to birthday attacks on its output",
-      "C": "A meet-in-the-middle attack reduces its effective strength to about 57 bits",
-      "D": "Double DES cannot be implemented in hardware"
+      "C": "A meet-in-the-middle attack cuts its effective strength to about 57 bits",
+      "D": "Its two keys must be identical, so in practice only one key is used"
     },
     "answer": "C",
     "explanation": "By encrypting from one side and decrypting from the other and matching in the middle, an attacker needs roughly 2^57 operations, not 2^112, which is why Triple DES was used instead.",
     "distractor_rationales": {
       "A": "Double DES uses two keys, giving a longer key length on paper.",
       "B": "The weakness is meet-in-the-middle, not birthday collisions.",
-      "D": "Double DES can be implemented in hardware."
+      "D": "Double DES uses two independent keys. Its weakness is the meet-in-the-middle attack."
     },
     "references_topic": "Meet-in-the-middle attack",
     "version": "1.0"
@@ -754,7 +754,7 @@
     "options": {
       "A": "Heat detectors that activate when the temperature reaches a set point",
       "B": "Flame detectors that respond to infrared light from open flames",
-      "C": "Manual pull stations near each exit door",
+      "C": "Photoelectric smoke detectors on the ceiling",
       "D": "Aspirating smoke detection that samples air for tiny particles"
     },
     "answer": "D",
@@ -762,7 +762,7 @@
     "distractor_rationales": {
       "A": "Heat detectors respond late, after the fire has grown.",
       "B": "Flame detectors need visible flames.",
-      "C": "Pull stations depend on a person noticing the fire."
+      "C": "Ceiling detectors respond to visible smoke, later than aspirating systems that catch tiny particles."
     },
     "references_topic": "Very early smoke detection",
     "version": "1.0"

@@ -56,9 +56,9 @@
     "type": "knowledge",
     "stem": "In an Infrastructure as a Service (IaaS) model, which responsibility typically belongs to the customer rather than the provider?",
     "options": {
-      "A": "Physical security of the data center",
-      "B": "Maintenance of the hypervisor",
-      "C": "Replacement of failed storage hardware",
+      "A": "Physical security of the provider's data centers",
+      "B": "Maintenance of the hypervisor and host servers",
+      "C": "Replacement of failed storage and network hardware",
       "D": "Patching the guest operating systems and applications"
     },
     "answer": "D",
@@ -176,17 +176,17 @@
     "type": "managerial_best_first_most",
     "stem": "A company is moving a customer-facing application to a public cloud Platform as a Service (PaaS). Which action should the security architect take FIRST?",
     "options": {
-      "A": "Map the company's control requirements to the provider's shared responsibility matrix",
+      "A": "Map control requirements to the provider's shared responsibility matrix",
       "B": "Encrypt all application data with company-managed keys",
       "C": "Negotiate the right to perform physical audits of provider sites",
-      "D": "Deploy a host-based IDS on the provider's servers"
+      "D": "Run a penetration test against the provider's platform"
     },
     "answer": "A",
     "explanation": "The architect must first understand which controls the provider handles and which remain with the customer. The gaps then drive the security design.",
     "distractor_rationales": {
       "B": "Customer-managed encryption may be valuable, but deciding on it before knowing the responsibility split is premature.",
       "C": "Providers rarely allow customer physical audits. Customers rely on independent attestations instead.",
-      "D": "In PaaS, customers cannot install agents on provider-managed hosts."
+      "D": "Testing the provider's platform usually needs its permission and comes later. First establish who owns which controls."
     },
     "references_topic": "Shared responsibility mapping",
     "version": "0.2"
@@ -224,17 +224,17 @@
     "type": "managerial_best_first_most",
     "stem": "A government agency's new system has passed its technical security testing. Before it can go into production, what must happen?",
     "options": {
-      "A": "The vendor must publish a press release about it",
-      "B": "The system must first receive an EAL7 rating",
+      "A": "The vendor must sign a security warranty for the system",
+      "B": "The system must pass a second, independent penetration test",
       "C": "An authorizing official must accept the residual risk",
-      "D": "Every future user must complete security training first"
+      "D": "The system owner must approve the test results"
     },
     "answer": "C",
     "explanation": "Certification is the technical evaluation. Authorization (accreditation) is a management decision: a senior official accepts the residual risk and approves the system to operate.",
     "distractor_rationales": {
-      "A": "Publicity has nothing to do with authorization.",
-      "B": "EAL ratings apply to evaluated products, and EAL7 is rarely required or achieved.",
-      "D": "Training may be required, but it is not the gate that authorizes the system to operate."
+      "A": "A warranty is a contract term. Government authorization requires a risk decision by an authorizing official.",
+      "B": "More testing may help, but authorization still requires an official to accept the residual risk.",
+      "D": "The system owner supports the package, but formal acceptance of residual risk belongs to the authorizing official."
     },
     "references_topic": "Certification versus authorization",
     "version": "0.2"
@@ -249,16 +249,16 @@
     "stem": "Browsers connecting to a busy web server check certificate revocation, which adds latency and exposes users' browsing to the certificate authority. Which technique addresses both issues?",
     "options": {
       "A": "Downloading the full CRL on every connection",
-      "B": "Disabling revocation checks in the browser",
-      "C": "Using self-signed server certificates",
+      "B": "Caching CRL results in the browser for a week",
+      "C": "Querying OCSP directly from each browser",
       "D": "OCSP stapling"
     },
     "answer": "D",
     "explanation": "With OCSP stapling, the server periodically fetches a signed, time-stamped OCSP response and presents it during the TLS handshake. Clients no longer contact the CA, which reduces latency and protects privacy.",
     "distractor_rationales": {
       "A": "Full CRLs are large and would increase latency.",
-      "B": "Disabling revocation checks removes the protection entirely.",
-      "C": "Self-signed certificates break the chain of trust."
+      "B": "Week-long caching leaves revoked certificates trusted for days and still contacts the CA at first use.",
+      "C": "Direct OCSP queries are what cause the latency and expose browsing to the CA."
     },
     "references_topic": "OCSP stapling",
     "version": "0.2"
@@ -345,16 +345,16 @@
     "stem": "A vendor is preparing to ship a new network appliance. Which design choice BEST reflects the principle of secure defaults?",
     "options": {
       "A": "Enable every feature so customers can choose which ones to turn off",
-      "B": "Ship with a common default admin password documented in the manual",
-      "C": "Allow unauthenticated management from any network until configured",
+      "B": "Ship with a unique default password printed on the device label",
+      "C": "Enable remote management by default, over HTTPS only",
       "D": "Disable unneeded services and force a new admin password at setup"
     },
     "answer": "D",
     "explanation": "Secure by default means a minimal attack surface and strong settings out of the box: unnecessary services off and no shared default credentials.",
     "distractor_rationales": {
       "A": "Enabling everything maximizes the attack surface.",
-      "B": "Documented default passwords are among the most exploited weaknesses.",
-      "C": "Open, unauthenticated management invites takeover before the owner configures the device."
+      "B": "A unique label password is better than a shared one, but secure defaults still force a new password at setup.",
+      "C": "HTTPS protects the session, but exposing management before setup is not a secure default."
     },
     "references_topic": "Secure defaults",
     "version": "0.2"
@@ -369,16 +369,16 @@
     "stem": "A hospital deploys hundreds of networked infusion pumps whose firmware cannot be updated frequently. Which control provides the MOST risk reduction?",
     "options": {
       "A": "Isolate the pumps on a segment allowing only required flows",
-      "B": "Install antivirus software on each individual pump",
+      "B": "Require MFA for clinicians who program the pumps",
       "C": "Rotate the shared Wi-Fi password used by the pumps every month",
-      "D": "Turn off pump logging to conserve network bandwidth"
+      "D": "Monitor pump traffic with a medical-device IDS"
     },
     "answer": "A",
     "explanation": "Segmentation with allow-listed flows limits who can reach devices that cannot be patched quickly and prevents lateral movement. Monitoring the segment adds detection.",
     "distractor_rationales": {
-      "B": "Embedded pumps generally cannot run antivirus, and adding software may affect their certification.",
+      "B": "MFA protects the programming workflow, but not the pumps' unpatchable network exposure.",
       "C": "Rotating a password does not address firmware vulnerabilities.",
-      "D": "Disabling logging reduces visibility without reducing risk."
+      "D": "Monitoring detects attacks but does not reduce the pumps' exposure the way isolation does."
     },
     "references_topic": "Segmenting medical IoT devices",
     "version": "0.2"
@@ -417,16 +417,16 @@
     "stem": "A cloud provider announces a critical hypervisor vulnerability that could let a guest VM escape and access other tenants' VMs. You run sensitive workloads on shared hosts. What is the BEST immediate action?",
     "options": {
       "A": "Encrypt all data stored inside each of your virtual machines right away",
-      "B": "Increase the memory allocated to each virtual machine",
+      "B": "Move the workloads to another region of the same provider",
       "C": "Confirm the patch timeline; consider dedicated hosts meanwhile",
-      "D": "Disable snapshots for all of your virtual machines"
+      "D": "Increase monitoring of your VMs' outbound traffic"
     },
     "answer": "C",
     "explanation": "The customer cannot patch the provider's hypervisor. The practical step is to confirm the provider's remediation timeline and reduce exposure, for example by moving the most sensitive workloads to dedicated hosts until the fix is applied.",
     "distractor_rationales": {
       "A": "An escaped attacker may read memory where data is already decrypted, so encryption at rest does not stop this threat.",
-      "B": "Memory allocation has no bearing on the vulnerability.",
-      "D": "Snapshots are unrelated to VM escape."
+      "B": "Other regions run the same hypervisor, so moving does not avoid the flaw.",
+      "D": "Monitoring may catch the result of an escape, but it does not reduce the exposure on shared hosts."
     },
     "references_topic": "VM escape and tenant isolation",
     "version": "0.2"
@@ -490,14 +490,14 @@
     "options": {
       "A": "Build separate access logic into each of the hundreds of applications",
       "B": "Centralize decisions in a PDP, enforced by PEPs at each resource",
-      "C": "Trust any device that is connected to the corporate network",
+      "C": "Use a single sign-on portal that grants access at login",
       "D": "Require a VPN connection for all application access"
     },
     "answer": "B",
     "explanation": "A central policy decision point evaluates identity, device posture, and context for each request, and policy enforcement points in front of each resource apply the decision. This gives consistent, per-request control.",
     "distractor_rationales": {
       "A": "Separate logic in every application is inconsistent and hard to maintain.",
-      "C": "Trusting network location is exactly what zero trust rejects.",
+      "C": "SSO centralizes authentication once, at login. Zero trust evaluates each request consistently through a policy decision point.",
       "D": "A VPN grants broad network access. It does not make per-request, per-resource decisions."
     },
     "references_topic": "Zero trust policy decision and enforcement points",
@@ -512,17 +512,17 @@
     "type": "managerial_best_first_most",
     "stem": "A company encrypts employee laptops with full-disk encryption. An employee leaves unexpectedly, and the laptop holds critical project files. Which practice would MOST reliably have preserved access to the data?",
     "options": {
-      "A": "Asking employees to write their passwords on a card in their desk",
-      "B": "Using weaker encryption so the drive can be cracked if needed",
+      "A": "Requiring managers to know each team member's password",
+      "B": "Backing up each laptop nightly to the employee's own cloud account",
       "C": "Escrowing recovery keys centrally under dual control",
-      "D": "Exempting senior staff laptops from encryption"
+      "D": "Using the same encryption password on every laptop"
     },
     "answer": "C",
     "explanation": "Central recovery key escrow, protected by dual control or split knowledge, preserves business access to data without weakening the encryption.",
     "distractor_rationales": {
-      "A": "Written passwords are insecure and may be lost or discarded.",
-      "B": "Weak encryption undermines protection on every laptop.",
-      "D": "Exempting senior staff removes protection from some of the most sensitive devices."
+      "A": "Sharing passwords breaks accountability and violates policy, and managers leave too.",
+      "B": "Personal cloud accounts put company data outside company control and leave with the employee.",
+      "D": "A shared password defeats the point of encrypting each device."
     },
     "references_topic": "Key escrow and recovery",
     "version": "0.2"
