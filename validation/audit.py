@@ -8,6 +8,7 @@ human review.
 
 Used by validate_bank.ipynb in Colab. It can also run locally:
     ANTHROPIC_API_KEY=... python validation/audit.py --target data/batches/D1_2.json
+    ANTHROPIC_API_KEY=... python validation/audit.py --data-dir data-python   # the Python track
 Never commit an API key; in Colab the key comes from Colab Secrets.
 """
 from __future__ import annotations
@@ -59,9 +60,9 @@ FLAG_FIELDS = [
 ]
 
 
-def load_questions(root: Path, target: str = "all") -> list[dict]:
-    """target is 'all' (every manifest batch) or a path to one batch file."""
-    data = root / "data"
+def load_questions(root: Path, target: str = "all", data_dir: str = "data") -> list[dict]:
+    """target is 'all' (every manifest batch in data_dir) or a path to one batch file."""
+    data = root / data_dir
     if target == "all":
         manifest = json.loads((data / "manifest.json").read_text(encoding="utf-8"))
         files = [data / b["file"] for b in manifest["batches"]]
@@ -77,19 +78,34 @@ def load_questions(root: Path, target: str = "all") -> list[dict]:
     return questions
 
 
-def question_prompt(q: dict) -> str:
-    """Only the stem and options: the key, explanation, and rationales stay hidden."""
-    lines = [f"Domain: {q['domain_name']}", "", q["stem"], ""]
+def question_prompt(q: dict, unit: str = "Domain") -> str:
+    """Only the stem, any code, and the options: the key, explanation, and rationales stay hidden."""
+    lines = [f"{unit}: {q['domain_name']}", "", q["stem"], ""]
+    if q.get("code"):
+        lines += ["```python", q["code"], "```", ""]
     lines += [f"{L}. {q['options'][L]}" for L in LETTERS]
     return "\n".join(lines)
 
 
-def request_params(q: dict, model: str, effort: str) -> dict:
+def track_settings(root: Path, data_dir: str = "data") -> dict:
+    """System prompt, prompt label, and output files for a bank. The CISSP bank keeps the original names."""
+    taxonomy = json.loads((root / data_dir / "taxonomy.json").read_text(encoding="utf-8"))
+    track = taxonomy.get("track", {})
+    suffix = "" if data_dir == "data" else "-" + data_dir.removeprefix("data-")
+    return {
+        "system": track.get("audit_prompt", SYSTEM_PROMPT),
+        "unit": track.get("unit_name", "Domain"),
+        "flags": root / "validation" / f"flags{suffix}.csv",
+        "cache": root / "validation" / f".audit_cache{suffix}.json",
+    }
+
+
+def request_params(q: dict, model: str, effort: str, system: str = SYSTEM_PROMPT, unit: str = "Domain") -> dict:
     return {
         "model": model,
         "max_tokens": 16000,
-        "system": SYSTEM_PROMPT,
-        "messages": [{"role": "user", "content": question_prompt(q)}],
+        "system": system,
+        "messages": [{"role": "user", "content": question_prompt(q, unit)}],
         "output_config": {"effort": effort, "format": {"type": "json_schema", "schema": RESPONSE_SCHEMA}},
     }
 
@@ -106,15 +122,16 @@ def parse_message(message) -> dict:
     return out
 
 
-def audit_sync(client, questions: list[dict], model: str, effort: str, cache: Path | None = None, progress=print) -> dict:
+def audit_sync(client, questions: list[dict], model: str, effort: str, cache: Path | None = None, progress=print, settings: dict | None = None) -> dict:
     """One request per question. Results are cached so an interrupted run resumes."""
     import anthropic
 
+    extra = {"system": settings["system"], "unit": settings["unit"]} if settings else {}
     results = json.loads(cache.read_text(encoding="utf-8")) if cache and cache.exists() else {}
     todo = [q for q in questions if q["id"] not in results or "error" in results[q["id"]]]
     for i, q in enumerate(todo, 1):
         try:
-            results[q["id"]] = parse_message(client.messages.create(**request_params(q, model, effort)))
+            results[q["id"]] = parse_message(client.messages.create(**request_params(q, model, effort, **extra)))
         except anthropic.RateLimitError as exc:
             wait = int(exc.response.headers.get("retry-after", "30"))
             progress(f"rate limited; sleeping {wait}s")
@@ -131,14 +148,15 @@ def audit_sync(client, questions: list[dict], model: str, effort: str, cache: Pa
     return results
 
 
-def audit_batch(client, questions: list[dict], model: str, effort: str, poll_seconds: int = 60, progress=print) -> dict:
+def audit_batch(client, questions: list[dict], model: str, effort: str, poll_seconds: int = 60, progress=print, settings: dict | None = None) -> dict:
     """Message Batches API: half the cost, usually done within an hour."""
     from anthropic.types.message_create_params import MessageCreateParamsNonStreaming
     from anthropic.types.messages.batch_create_params import Request
 
+    extra = {"system": settings["system"], "unit": settings["unit"]} if settings else {}
     batch = client.messages.batches.create(
         requests=[
-            Request(custom_id=q["id"], params=MessageCreateParamsNonStreaming(**request_params(q, model, effort)))
+            Request(custom_id=q["id"], params=MessageCreateParamsNonStreaming(**request_params(q, model, effort, **extra)))
             for q in questions
         ]
     )
@@ -214,6 +232,7 @@ def write_flags(flags: list[dict], path: Path, audited_ids: set[str]) -> None:
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--target", default="all", help="'all' or a batch file path")
+    parser.add_argument("--data-dir", default="data", help="bank folder (default: data; the Python track is data-python)")
     parser.add_argument("--model", default=DEFAULT_MODEL)
     parser.add_argument("--effort", default="high", choices=["low", "medium", "high", "max"])
     parser.add_argument("--mode", default="sync", choices=["sync", "batch"])
@@ -227,15 +246,16 @@ def main(argv: list[str] | None = None) -> int:
         print("Set ANTHROPIC_API_KEY in the environment (never in a file in this repo).", file=sys.stderr)
         return 2
     client = anthropic.Anthropic()
-    questions = load_questions(ROOT, args.target)
+    settings = track_settings(ROOT, args.data_dir)
+    questions = load_questions(ROOT, args.target, args.data_dir)
     if args.limit:
         questions = questions[: args.limit]
     if args.mode == "batch":
-        results = audit_batch(client, questions, args.model, args.effort)
+        results = audit_batch(client, questions, args.model, args.effort, settings=settings)
     else:
-        results = audit_sync(client, questions, args.model, args.effort, cache=ROOT / "validation" / ".audit_cache.json")
+        results = audit_sync(client, questions, args.model, args.effort, cache=settings["cache"], settings=settings)
     flags = make_flags(questions, results, args.model, args.threshold)
-    write_flags(flags, ROOT / "validation" / "flags.csv", {q["id"] for q in questions})
+    write_flags(flags, settings["flags"], {q["id"] for q in questions})
     print(summarize(questions, results, flags))
     return 0
 
