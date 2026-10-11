@@ -129,16 +129,16 @@
     "stem": "Why should a change request include a backout plan?",
     "options": {
       "A": "To restore the previous working state if the change fails",
-      "B": "To identify who will be blamed if the change causes an outage",
+      "B": "To record who approved the change and when",
       "C": "To document the budget that was approved for the change",
-      "D": "To remove the need for any testing before the change is made"
+      "D": "To list the systems the change will affect"
     },
     "answer": "A",
     "explanation": "A backout plan describes how to reverse the change quickly and safely if it causes problems, limiting downtime.",
     "distractor_rationales": {
-      "B": "Change management is about controlling risk, not assigning blame.",
+      "B": "Approval records belong to the change ticket. The backout plan says how to undo a failed change.",
       "C": "Budget is not the purpose of a backout plan.",
-      "D": "Backout planning complements testing; it does not replace it."
+      "D": "Impact analysis lists affected systems. The backout plan restores the previous state."
     },
     "references_topic": "Backout plans",
     "version": "0.4"
@@ -176,17 +176,17 @@
     "type": "knowledge",
     "stem": "What is the main weakness of a reciprocal agreement, in which two companies agree to host each other's operations in a disaster?",
     "options": {
-      "A": "It is always more expensive than building a dedicated hot site",
-      "B": "It requires both companies to use identical accounting software",
+      "A": "Data cannot be encrypted while stored at a partner's site",
+      "B": "It needs a contract reviewed by both companies' legal teams",
       "C": "The host may lack capacity, and a regional disaster may hit both",
-      "D": "It is illegal in most countries to share facilities with another company"
+      "D": "It gives the partner access to the company's source code"
     },
     "answer": "C",
     "explanation": "Reciprocal agreements are cheap but hard to enforce. The partner may not have spare capacity when needed, and both sites may be affected by the same event.",
     "distractor_rationales": {
-      "A": "Reciprocal agreements are usually cheaper, not more expensive.",
-      "B": "Identical software is not the main issue.",
-      "D": "Such agreements are not generally illegal."
+      "A": "Data can be encrypted anywhere. The real weakness is capacity and shared regional risk.",
+      "B": "Legal review is normal for any agreement and is not the main weakness.",
+      "D": "Hosting operations does not require sharing source code."
     },
     "references_topic": "Reciprocal agreements",
     "version": "0.4"
@@ -200,17 +200,17 @@
     "type": "knowledge",
     "stem": "What advantage do security guards have over automated physical controls such as cameras and locks?",
     "options": {
-      "A": "They cost much less than automated controls over the long term",
-      "B": "They never make mistakes when checking identification",
-      "C": "They are unaffected by social engineering attempts",
+      "A": "They keep a continuous record of everyone who enters",
+      "B": "They are harder to bypass than electronic locks",
+      "C": "They deter intruders more than visible cameras do",
       "D": "They can use judgment to respond to unexpected situations"
     },
     "answer": "D",
     "explanation": "Guards can assess unusual situations, make decisions, and respond in ways fixed systems cannot. Their main drawbacks are cost and susceptibility to error or manipulation.",
     "distractor_rationales": {
-      "A": "Guards are usually more expensive over time.",
-      "B": "People make mistakes.",
-      "C": "Guards can be targeted by social engineering."
+      "A": "Continuous recording is a camera's strength. Guards bring judgment.",
+      "B": "Guards can be distracted or deceived. Their advantage is judgment, not being unbeatable.",
+      "C": "Deterrence comes from both. The distinctive advantage of guards is judgment in unexpected situations."
     },
     "references_topic": "Security guards",
     "version": "0.4"
@@ -225,16 +225,16 @@
     "stem": "During a building evacuation, what is a floor warden's MOST important duty?",
     "options": {
       "A": "Make sure everyone has left the area and report anyone unaccounted for",
-      "B": "Collect laptops and important documents from each desk on the floor",
-      "C": "Shut down the servers on the floor to protect the data on them",
-      "D": "Stay at their desk and answer phones until the alarm stops"
+      "B": "Lead people out by the nearest exit, then go back to check",
+      "C": "Call the fire department to confirm they are on the way",
+      "D": "Lock the floor's doors to secure the area as people leave"
     },
     "answer": "A",
     "explanation": "Floor wardens guide people out and confirm that the area is clear, so responders know if anyone is missing.",
     "distractor_rationales": {
-      "B": "Collecting equipment delays evacuation and risks lives.",
-      "C": "Shutting down servers is not a life safety duty.",
-      "D": "Staying behind puts the warden at risk."
+      "B": "Going back into the building puts the warden at risk. The sweep happens while leaving, then everyone is reported at assembly.",
+      "C": "Calling responders is someone else's role. The warden's job is accounting for people.",
+      "D": "Locking doors can trap people and hinder responders."
     },
     "references_topic": "Floor wardens",
     "version": "0.4"
@@ -248,17 +248,17 @@
     "type": "application",
     "stem": "A compromised production database server cannot be taken offline without stopping the business. How should the forensic team collect evidence?",
     "options": {
-      "A": "Power off the server anyway, since only a powered-off disk image is valid evidence",
-      "B": "Capture memory and volatile data live, then image it with minimal disruption, documenting each step",
-      "C": "Skip evidence collection until the next planned maintenance window next quarter",
-      "D": "Copy only the application's error log to a USB drive and restore the server"
+      "A": "Image the disk live, skipping memory to avoid disruption",
+      "B": "Collect volatile data live, then image the disk with minimal disruption",
+      "C": "Restore from backup first, then collect evidence later",
+      "D": "Copy the application logs only and leave the server running"
     },
     "answer": "B",
     "explanation": "Live acquisition collects volatile data and disk contents while the system runs. Careful documentation of each action preserves the evidence's credibility.",
     "distractor_rationales": {
-      "A": "Live acquisition is accepted when documented, and powering off loses volatile evidence.",
-      "C": "Waiting lets evidence disappear.",
-      "D": "One log file is far from sufficient."
+      "A": "Skipping memory loses volatile evidence such as running processes and connections.",
+      "C": "Restoring first overwrites evidence on the compromised server.",
+      "D": "Application logs alone miss memory, disk artifacts, and other evidence."
     },
     "references_topic": "Live acquisition of critical systems",
     "version": "0.4"
@@ -272,17 +272,17 @@
     "type": "knowledge",
     "stem": "Which set of details should a security log entry include at minimum to support investigations?",
     "options": {
-      "A": "Only the user's name and the name of the application",
-      "B": "The server's model number and total disk space",
+      "A": "The user, the time, and the name of the application",
+      "B": "The event ID and the severity assigned by the SIEM",
       "C": "Who acted, what they did, when, where from, and the outcome",
-      "D": "The user's job title and department"
+      "D": "The full contents of every record that was viewed"
     },
     "answer": "C",
     "explanation": "Useful log entries answer who, what, when, where, and whether it succeeded, so events can be correlated and attributed.",
     "distractor_rationales": {
-      "A": "A name and application say nothing about the action, time, or result.",
-      "B": "Hardware details do not describe an event.",
-      "D": "Job title and department are directory data, not event data."
+      "A": "Without the action, source, and outcome, investigators cannot reconstruct what happened.",
+      "B": "SIEM metadata is added later. The entry itself needs who, what, when, where, and outcome.",
+      "D": "Logging full contents creates privacy and storage problems without adding the key facts."
     },
     "references_topic": "Minimum contents of security logs",
     "version": "0.4"
@@ -321,16 +321,16 @@
     "stem": "File integrity monitoring alerts that a web server's configuration file changed. There is no matching change record. What should happen FIRST?",
     "options": {
       "A": "Compare it to the baseline and investigate who made the change and why",
-      "B": "Approve the change after the fact, since the server is still running",
+      "B": "Ask the web team whether anyone changed it, then close the alert",
       "C": "Restore the file immediately and close the alert without any further review",
-      "D": "Disable file integrity monitoring on the server to stop future alerts"
+      "D": "Raise the change with the CAB at its next meeting"
     },
     "answer": "A",
     "explanation": "An unexplained change could be an error or an attack. Comparing against the baseline and tracing the change determines whether to restore, investigate further, or record it properly.",
     "distractor_rationales": {
-      "B": "Retroactive approval without review ignores a possible attack.",
+      "B": "An informal answer is not an investigation, and the change may be malicious.",
       "C": "Restoring without review may destroy evidence and miss a wider compromise.",
-      "D": "Disabling monitoring removes visibility."
+      "D": "Waiting for the CAB leaves a possibly malicious change unexamined for days."
     },
     "references_topic": "Responding to unauthorized configuration changes",
     "version": "0.4"
@@ -368,17 +368,17 @@
     "type": "managerial_best_first_most",
     "stem": "A managed security provider takes up to six hours to escalate critical alerts, and the contract says nothing about timing. What is the BEST fix?",
     "options": {
-      "A": "Stop using the provider and build an in-house SOC within the next month",
+      "A": "Switch to a different provider with a better reputation",
       "B": "Ask the provider informally to try to escalate critical alerts faster",
       "C": "Add measured SLAs for escalation times, with reporting and remedies",
-      "D": "Accept the delay, since providers cannot be held to specific times"
+      "D": "Add an internal analyst to watch the provider's console"
     },
     "answer": "C",
     "explanation": "Service level agreements define measurable expectations, such as escalating critical alerts within minutes, with reporting and consequences if they are missed.",
     "distractor_rationales": {
-      "A": "Building a SOC in a month is unrealistic and may not be needed.",
+      "A": "A new provider without contractual SLAs may be just as slow.",
       "B": "Informal requests are not enforceable.",
-      "D": "Providers routinely commit to response times in contracts."
+      "D": "Watching their console duplicates the service without fixing the contract."
     },
     "references_topic": "Service level agreements with providers",
     "version": "0.4"
@@ -392,17 +392,17 @@
     "type": "knowledge",
     "stem": "Why does a media library keep a log of when backup tapes are checked out and returned?",
     "options": {
-      "A": "To calculate the storage cost of each tape for the finance team",
-      "B": "To make sure every tape is overwritten on the same day each month",
-      "C": "To remove the need for encrypting the data stored on the tapes",
+      "A": "To track how often each tape is reused before replacement",
+      "B": "To schedule the next rotation in the backup cycle",
+      "C": "To record the data classification of each tape",
       "D": "To maintain accountability for who has each tape at all times"
     },
     "answer": "D",
     "explanation": "A check-out log records who took each item and when, so missing media can be traced and custody is always known.",
     "distractor_rationales": {
-      "A": "Cost allocation is not the security purpose.",
-      "B": "Rotation schedules are separate from custody tracking.",
-      "C": "Logging does not replace encryption."
+      "A": "Reuse counts help media management, but the log's security purpose is knowing who holds each tape.",
+      "B": "Rotation schedules come from the backup plan, not from the custody log.",
+      "C": "Classification goes on labels and the inventory. The log tracks custody."
     },
     "references_topic": "Media check-out logs",
     "version": "0.4"
@@ -416,17 +416,17 @@
     "type": "application",
     "stem": "Staff regularly copy files to personal USB drives, and several drives have been lost. Which control BEST reduces this risk?",
     "options": {
-      "A": "Block unapproved USB storage and allow only encrypted company-issued drives",
-      "B": "Ask staff to label their personal USB drives with their names",
+      "A": "Block unapproved USB storage; allow only encrypted company drives",
+      "B": "Encrypt personal USB drives with BitLocker To Go before use",
       "C": "Require staff to report lost drives within one week",
-      "D": "Buy larger USB drives so that staff need fewer of them"
+      "D": "Remind staff of the USB policy in a quarterly all-staff email"
     },
     "answer": "A",
     "explanation": "Endpoint controls can block unknown storage devices while allowing managed, encrypted drives, so lost media does not expose data.",
     "distractor_rationales": {
-      "B": "Labels identify owners but do not protect data.",
+      "B": "Encrypting personal drives helps, but unapproved devices still carry company data outside control.",
       "C": "Reporting helps response but does not protect the data on lost drives.",
-      "D": "Larger drives hold more data to lose."
+      "D": "Reminders do not stop copying or losses."
     },
     "references_topic": "Controlling removable media",
     "version": "0.4"
@@ -467,14 +467,14 @@
       "A": "Installing patches on virtual machines instead of on physical servers",
       "B": "Scheduling patches to be installed automatically at a later date",
       "C": "Blocking exploit attempts with an IPS or WAF rule until a patch is applied",
-      "D": "Marking a vulnerability as fixed in the tracking system before actually patching it"
+      "D": "Applying a vendor's hotfix without rebooting the system"
     },
     "answer": "C",
     "explanation": "Virtual patching uses a network or application control to block known exploit patterns, which reduces risk while a real patch is tested or awaited.",
     "distractor_rationales": {
       "A": "Virtual patching is not about the type of machine.",
       "B": "Scheduling is not virtual patching.",
-      "D": "Closing a ticket early misrepresents the risk."
+      "D": "That is hot patching, which is a real patch. Virtual patching blocks exploits in front of an unpatched system."
     },
     "references_topic": "Virtual patching",
     "version": "0.4"
@@ -512,17 +512,17 @@
     "type": "application",
     "stem": "A team relies on virtual machine snapshots stored on the same storage array as the VMs as its only backups. What is the MAIN problem?",
     "options": {
-      "A": "Losing the array would destroy both the VMs and their snapshots",
-      "B": "Snapshots are always larger than the virtual machines themselves",
-      "C": "Snapshots cannot be taken while the virtual machines are running",
-      "D": "Snapshots violate every software license agreement"
+      "A": "Losing the array destroys both the VMs and their snapshots",
+      "B": "Snapshots slow down the virtual machines more and more over time",
+      "C": "Snapshots cannot restore a single deleted file",
+      "D": "Snapshots are not encrypted by the storage array"
     },
     "answer": "A",
     "explanation": "Snapshots on the same storage share its fate. A real backup strategy keeps separate copies on independent storage, including off-site.",
     "distractor_rationales": {
-      "B": "Snapshots are usually smaller, as they record changes.",
-      "C": "Snapshots are commonly taken while VMs run.",
-      "D": "Snapshots do not generally violate licenses."
+      "B": "Performance can suffer, but the main problem is that one array failure destroys everything.",
+      "C": "Snapshots can often restore individual files. The issue is where they are stored.",
+      "D": "Encryption is a separate question. Keeping backups on the same array removes their independence."
     },
     "references_topic": "Snapshots are not backups",
     "version": "0.4"
@@ -538,15 +538,15 @@
     "options": {
       "A": "Offer that administrator a large retention bonus",
       "B": "Document recovery runbooks and cross-train other staff",
-      "C": "Ask the administrator to avoid traveling at the same time as their manager",
-      "D": "Keep the administrator's personal phone number in the DR plan"
+      "C": "Give a second administrator the same access rights",
+      "D": "Ask the vendor to provide on-call recovery support"
     },
     "answer": "B",
     "explanation": "Documented procedures and trained backups remove a single point of failure in people, so recovery does not depend on one person's availability.",
     "distractor_rationales": {
       "A": "A bonus does not help if the person is unavailable during a disaster.",
-      "C": "Travel rules do not remove the dependency.",
-      "D": "Contact details do not help if the person cannot be reached."
+      "C": "Access without knowledge does not help. The procedures must be documented and others trained.",
+      "D": "Vendor support helps but may be slow, and it still leaves the company dependent on outsiders."
     },
     "references_topic": "Runbooks and cross-training",
     "version": "0.4"
@@ -584,17 +584,17 @@
     "type": "managerial_best_first_most",
     "stem": "The company wants to use email monitoring records as evidence in an employee misconduct case. Its policies never told employees that email could be monitored. What is the BEST long-term correction?",
     "options": {
-      "A": "Stop all monitoring permanently to avoid legal questions in the future",
-      "B": "Monitor secretly in the future so that employees cannot change their behavior",
-      "C": "Destroy the existing monitoring records so they cannot be challenged",
-      "D": "Publish a policy and login banner stating that systems may be monitored"
+      "A": "Ask employees to sign consent only when monitoring starts",
+      "B": "Get legal approval for each individual monitoring case in advance",
+      "C": "Limit monitoring to email headers instead of content",
+      "D": "Publish a policy and login banner saying systems may be monitored"
     },
     "answer": "D",
     "explanation": "Clear notice through policy and banners removes any reasonable expectation of privacy on company systems, which supports lawful monitoring and the use of its records.",
     "distractor_rationales": {
-      "A": "Stopping monitoring removes a useful control.",
-      "B": "Secret monitoring increases legal risk.",
-      "C": "Destroying records may be spoliation and does not fix the policy gap."
+      "A": "Consent at that moment is late and inconsistent. Notice should be standing, in policy and banners.",
+      "B": "Case approval helps, but employees still have no notice that monitoring may happen.",
+      "C": "Narrowing the scope does not fix the missing notice."
     },
     "references_topic": "Monitoring notice and expectation of privacy",
     "version": "0.4"
@@ -608,17 +608,17 @@
     "type": "managerial_best_first_most",
     "stem": "SIEM licensing costs are rising, and an engineer proposes dropping authentication logs because they are the largest source. What is the BEST response?",
     "options": {
-      "A": "Keep authentication logs and cut low-value sources such as verbose debug logs",
-      "B": "Drop authentication logs, since they rarely show anything useful",
-      "C": "Drop all logs except firewall logs to cut costs as far as possible",
-      "D": "Keep everything and ignore the cost, since security always justifies spending"
+      "A": "Keep authentication logs; cut low-value sources such as debug logs",
+      "B": "Sample authentication logs at 10% to cut the volume",
+      "C": "Keep authentication logs only for privileged users",
+      "D": "Move all logs to cheaper storage that cannot be searched at all"
     },
     "answer": "A",
     "explanation": "Authentication logs are among the most valuable for detecting account compromise. Cost should be reduced by filtering low-value data, not by removing key security sources.",
     "distractor_rationales": {
-      "B": "Authentication logs are central to detecting misuse.",
-      "C": "Firewall logs alone miss most account-based attacks.",
-      "D": "Cost must be managed; ignoring it is not sustainable."
+      "B": "Sampling throws away most evidence of credential attacks, which are often low and slow.",
+      "C": "Attackers often start with ordinary accounts. All authentication logs matter.",
+      "D": "Unsearchable logs cannot support detection or investigation."
     },
     "references_topic": "Prioritizing log sources under cost pressure",
     "version": "0.4"
@@ -632,17 +632,17 @@
     "type": "application",
     "stem": "After malware was removed from compromised servers, the attackers returned within days using valid administrator accounts. What was MOST likely missed during eradication?",
     "options": {
-      "A": "Reinstalling the antivirus software on each affected server",
-      "B": "Resetting compromised credentials and revoking attacker access tokens",
-      "C": "Updating the incident report with the date the malware was found",
-      "D": "Notifying the hardware vendor about the servers involved"
+      "A": "Rebuilding the servers from the most recent backup images",
+      "B": "Resetting compromised credentials and revoking access tokens",
+      "C": "Blocking the malware's command-and-control domains",
+      "D": "Patching the vulnerability the malware first used"
     },
     "answer": "B",
     "explanation": "Attackers often steal credentials. Eradication must include resetting passwords, keys, and tokens they may hold, or they can simply log back in.",
     "distractor_rationales": {
-      "A": "Antivirus does not remove stolen credentials.",
-      "C": "Documentation does not remove attacker access.",
-      "D": "The hardware vendor is not involved in credential theft."
+      "A": "Rebuilding does not help if the attackers still hold valid admin accounts.",
+      "C": "Blocking C2 stops the malware, but the attackers came back with credentials.",
+      "D": "Patching closes the first entry point, but stolen credentials give them another way in."
     },
     "references_topic": "Credential resets during eradication",
     "version": "0.4"
@@ -704,17 +704,17 @@
     "type": "managerial_best_first_most",
     "stem": "A DR simulation found outdated contact lists, a missing encryption key, and unclear roles. What should happen next?",
     "options": {
-      "A": "Update the plan, assign owners to each fix, and retest the affected areas",
-      "B": "File the results, since finding issues shows that the test worked well",
-      "C": "Cancel future tests until the whole plan can be rewritten from scratch",
-      "D": "Blame the team members whose sections of the plan were incorrect"
+      "A": "Update the plan, assign owners to each fix, and retest those areas",
+      "B": "File the results and retest the whole plan again next year",
+      "C": "Fix the contact lists now and leave the rest for later",
+      "D": "Ask each team to fix its own section without tracking"
     },
     "answer": "A",
     "explanation": "Tests are valuable only when their findings lead to changes. Tracked fixes with owners and a follow-up test confirm the plan now works.",
     "distractor_rationales": {
-      "B": "Filing results without action leaves the gaps in place.",
-      "C": "Stopping tests prevents improvement.",
-      "D": "Blame discourages honest reporting."
+      "B": "Waiting a year leaves known gaps that would hurt a real recovery.",
+      "C": "A missing encryption key and unclear roles could stop recovery. All findings need owners.",
+      "D": "Without owners and tracking, fixes slip."
     },
     "references_topic": "Acting on DR test results",
     "version": "0.4"
@@ -728,16 +728,16 @@
     "type": "application",
     "stem": "An audit finds that no one knows how many master keys to the data center exist or who holds them. What should the organization do?",
     "options": {
-      "A": "Label the master keys clearly so that they can be found more easily",
+      "A": "Collect every master key that can be found and lock them in a safe",
       "B": "Rekey the locks and issue new keys under a logged key control process",
-      "C": "Ask current staff whether they have any master keys and trust their answers",
+      "C": "Add cameras on the data center doors to record entries",
       "D": "Leave the locks as they are, since the badge readers are the main control"
     },
     "answer": "B",
     "explanation": "If key holders are unknown, the existing keys must be assumed compromised. Rekeying and tracking every new key restores control.",
     "distractor_rationales": {
-      "A": "Labels make lost keys more useful to finders.",
-      "C": "Self-reporting does not account for former staff or copies.",
+      "A": "Unknown copies would still exist. The locks must be rekeyed.",
+      "C": "Cameras record entries but leave unknown keys working.",
       "D": "Keyed locks can bypass badge readers, so they matter."
     },
     "references_topic": "Physical key control",
@@ -752,17 +752,17 @@
     "type": "managerial_best_first_most",
     "stem": "An employee reports that a former partner has threatened to come to the office and hurt them. What is the BEST response?",
     "options": {
-      "A": "Advise the employee to handle the matter privately outside of work",
-      "B": "Tell the employee to work from home indefinitely without further steps",
+      "A": "Advise the employee to seek a court order on their own",
+      "B": "Let the employee work from home and take no other step",
       "C": "Coordinate security, HR, and law enforcement on a protective plan",
-      "D": "Post the former partner's photo in the lobby without telling anyone why"
+      "D": "Brief lobby security with the person's photo, with no other plan"
     },
     "answer": "C",
     "explanation": "Credible threats call for a coordinated plan, such as alerting reception, controlling access, and involving law enforcement, to protect the employee and colleagues.",
     "distractor_rationales": {
-      "A": "The threat affects workplace safety, so the employer must act.",
-      "B": "Remote work may help but is not a full plan on its own.",
-      "D": "An unexplained posting is uncoordinated and may create other problems."
+      "A": "A court order may help, but the employer has its own duty to protect staff at work.",
+      "B": "Remote work may be part of a plan, but taking no other steps leaves gaps.",
+      "D": "Briefing security is one step, but it needs a coordinated plan with HR and law enforcement."
     },
     "references_topic": "Responding to workplace violence threats",
     "version": "0.4"

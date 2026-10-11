@@ -35,14 +35,14 @@
       "A": "To speed up the forensic analysis process",
       "B": "To document every handler and transfer, preserving admissibility",
       "C": "To encrypt the evidence so it cannot be read by unauthorized parties",
-      "D": "To ensure that only law enforcement can view the evidence"
+      "D": "To record which forensic tools were used on the evidence"
     },
     "answer": "B",
     "explanation": "Chain of custody records who possessed the evidence, when, and what was done with it. That record demonstrates the evidence was not altered and supports its admissibility.",
     "distractor_rationales": {
       "A": "Chain of custody adds process steps. It does not speed up analysis.",
       "C": "Evidence may be encrypted, but encryption is not the purpose of chain of custody.",
-      "D": "Internal investigators, counsel, and courts may also handle evidence."
+      "D": "Tool records support the analysis, but chain of custody documents who held the evidence and when."
     },
     "references_topic": "Chain of custody",
     "version": "0.1"
@@ -59,14 +59,14 @@
       "A": "Sunday's full backup and every differential from Monday through Wednesday",
       "B": "Only Wednesday night's differential backup",
       "C": "Sunday's full backup and Wednesday night's differential backup",
-      "D": "Every backup taken since the previous month's full backup"
+      "D": "Sunday's full backup plus only Monday's differential backup"
     },
     "answer": "C",
     "explanation": "A differential contains every change since the last full backup, so only the full backup and the most recent differential are needed.",
     "distractor_rationales": {
       "A": "Restoring every backup in sequence is how incremental backups work, not differentials.",
       "B": "A differential on its own lacks the full backup it builds on.",
-      "D": "Backups from before Sunday's full backup are not needed."
+      "D": "Each differential holds every change since Sunday, so the latest one, Wednesday's, is needed."
     },
     "references_topic": "Full and differential backup restoration",
     "version": "0.1"
@@ -81,7 +81,7 @@
     "stem": "A SOC confirms that ransomware is actively encrypting file shares on several servers. What should the incident response team do FIRST?",
     "options": {
       "A": "Begin restoring all of the encrypted files from last night's backup set",
-      "B": "Contact the attackers to negotiate the ransom amount",
+      "B": "Notify law enforcement before taking any other action",
       "C": "Wipe and rebuild all affected servers immediately",
       "D": "Isolate the affected systems from the network to contain the spread"
     },
@@ -89,7 +89,7 @@
     "explanation": "Containment comes first. Isolating infected systems stops further encryption and spread and preserves evidence. Eradication and recovery follow.",
     "distractor_rationales": {
       "A": "Restoring before containment risks having the restored data encrypted again.",
-      "B": "Whether to engage with attackers is a later business and legal decision, not the first step.",
+      "B": "Law enforcement may be informed later, but encryption is spreading now. Containment comes first.",
       "C": "Wiping servers destroys evidence and belongs after containment and scoping."
     },
     "references_topic": "Incident containment priorities",
@@ -107,14 +107,14 @@
       "A": "Synchronizing all systems to authoritative time sources using NTP",
       "B": "Increasing log retention from 90 days to one year",
       "C": "Forwarding every log to a central SIEM without changing anything else",
-      "D": "Enabling verbose debug logging on every server"
+      "D": "Recording each event's local time zone in the logs"
     },
     "answer": "A",
     "explanation": "Reliable correlation requires consistent timestamps, which come from synchronizing every system to an authoritative time source with NTP.",
     "distractor_rationales": {
       "B": "Keeping logs longer does not fix inconsistent timestamps.",
       "C": "Centralizing logs does not correct skewed event times recorded by the source systems.",
-      "D": "More verbose logs add noise but leave the clocks just as wrong."
+      "D": "Time zones help convert times, but clocks that are minutes apart still disagree. Synchronization fixes that."
     },
     "references_topic": "Time synchronization for log correlation",
     "version": "0.1"
@@ -130,15 +130,15 @@
     "options": {
       "A": "An IDS uses signatures, while an IPS uses only anomaly detection",
       "B": "An IPS sits inline and can block; an IDS monitors and alerts",
-      "C": "An IDS encrypts traffic, while an IPS decrypts it for inspection",
-      "D": "An IPS protects hosts only, while an IDS protects networks only"
+      "C": "An IDS is host-based, while an IPS is always network-based",
+      "D": "An IDS reviews logs afterward, while an IPS watches live traffic"
     },
     "answer": "B",
     "explanation": "An IPS is placed inline in the traffic path and can drop or block malicious traffic. An IDS typically watches a copy of the traffic and raises alerts.",
     "distractor_rationales": {
       "A": "Both IDS and IPS products can use signature-based and anomaly-based detection.",
-      "C": "Encryption is not the purpose of either system.",
-      "D": "Both come in host-based and network-based forms."
+      "C": "Both come in host and network forms. The difference is whether they sit inline and block.",
+      "D": "Both can watch live traffic. The IPS is inline and can block."
     },
     "references_topic": "IDS versus IPS",
     "version": "0.1"
@@ -155,14 +155,14 @@
       "A": "Reverse the change, since all unapproved changes must be undone",
       "B": "Take no action, because the outage was resolved successfully",
       "C": "Log it as an emergency change and review it retroactively",
-      "D": "Revoke the engineer's administrative access permanently"
+      "D": "Discipline the engineer under the change policy first"
     },
     "answer": "C",
     "explanation": "Emergency change procedures allow urgent fixes to restore service, but the change must then be documented, reviewed, and approved after the fact to confirm it did not introduce new risk.",
     "distractor_rationales": {
       "A": "Reversing a working fix could bring the outage back. The review should decide whether the change stays.",
       "B": "Skipping review leaves an undocumented change and configuration drift.",
-      "D": "Permanent revocation is punitive and disproportionate. The issue is process, not malice."
+      "D": "The emergency may justify the change. Record it and review it before deciding whether discipline applies."
     },
     "references_topic": "Emergency change process",
     "version": "0.1"
@@ -225,16 +225,16 @@
     "stem": "An executive will travel to a country where border officials are known to inspect and copy the contents of electronic devices. The executive needs email and a few documents during the trip. What is the BEST approach?",
     "options": {
       "A": "Bring the usual laptop with full-disk encryption and refuse to disclose the key if asked",
-      "B": "Issue a clean loaner device with minimal data that accesses corporate resources remotely",
-      "C": "Ship the usual laptop to the hotel ahead of time via international courier",
-      "D": "Store all needed documents on an unencrypted USB drive carried separately"
+      "B": "Issue a clean loaner device that reaches corporate data remotely",
+      "C": "Ship the usual laptop to the hotel ahead of time by international courier",
+      "D": "Carry the documents on an encrypted USB drive only"
     },
     "answer": "B",
     "explanation": "A clean loaner device carries little data that can be inspected or copied, and corporate resources are reached through a secure remote connection with MFA. After the trip the device is wiped or examined before reuse.",
     "distractor_rationales": {
       "A": "Refusing to disclose keys can lead to detention, device seizure, or legal penalties, which puts the traveler at risk. Encryption laws also vary by country.",
-      "C": "Couriered devices can still be inspected by customs and are outside the organization's control in transit.",
-      "D": "An unencrypted USB drive is trivially copied and easily lost."
+      "C": "Powering off helps encryption, but officials can still demand access to a device full of corporate data.",
+      "D": "An encrypted drive can still be inspected under compulsion, and it still carries the documents."
     },
     "references_topic": "Travel security and device inspection",
     "version": "0.1"

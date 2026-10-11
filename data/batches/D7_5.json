@@ -33,16 +33,16 @@
     "stem": "Where might a forensic examiner find fragments of old data at the end of a file's last disk cluster?",
     "options": {
       "A": "Slack space",
-      "B": "The system's swap file configuration settings",
-      "C": "The network interface card's firmware",
-      "D": "The computer's BIOS password store"
+      "B": "Unallocated clusters left after a quick format",
+      "C": "The page file used for virtual memory",
+      "D": "Alternate data streams attached to the file"
     },
     "answer": "A",
     "explanation": "When a file does not fill its last cluster, the leftover space, called slack space, can still hold data from earlier files.",
     "distractor_rationales": {
-      "B": "Swap configuration settings do not hold old file fragments.",
-      "C": "NIC firmware does not store file data.",
-      "D": "A BIOS password store holds only settings."
+      "B": "Unallocated space also holds old data, but not at the end of a file's own last cluster.",
+      "C": "The page file can hold memory fragments, not the tail end of a file's cluster.",
+      "D": "Alternate data streams are hidden parts of a file, not leftover space at its end."
     },
     "references_topic": "File slack space",
     "version": "1.0"
@@ -58,15 +58,15 @@
     "options": {
       "A": "The full contents of every packet, including any attachments and file transfers",
       "B": "Metadata about connections, such as addresses, ports, and volumes",
-      "C": "The passwords users type into websites",
-      "D": "The configuration of each network device"
+      "C": "The full URLs and headers of each web request",
+      "D": "The names of the users logged in to each host"
     },
     "answer": "B",
     "explanation": "Flow records summarize who talked to whom, when, on which ports, and how much data moved, without storing packet contents.",
     "distractor_rationales": {
       "A": "Full packet capture records contents; flow data does not.",
-      "C": "Flow data does not capture passwords.",
-      "D": "Device configuration is not part of flow data."
+      "C": "Flow data records connection metadata, not request contents.",
+      "D": "User identity is not part of flow records. They show addresses, ports, and volumes."
     },
     "references_topic": "Flow data",
     "version": "1.0"
@@ -104,17 +104,17 @@
     "type": "managerial_best_first_most",
     "stem": "Which protection is MOST important for backup tapes stored in an off-site vault?",
     "options": {
-      "A": "Labeling each tape with the names of the systems and files it holds",
-      "B": "Keeping the tapes in the same room as the primary servers",
-      "C": "Allowing any employee to borrow tapes without signing them out",
+      "A": "Rotating the tapes back on-site every week for checks",
+      "B": "Storing the tapes in a fireproof safe at the main office",
+      "C": "Shrink-wrapping each tape before it goes to the vault",
       "D": "Controlled access and suitable environmental conditions"
     },
     "answer": "D",
     "explanation": "Stored media needs restricted access and stable temperature and humidity so it is both secure and readable when needed.",
     "distractor_rationales": {
-      "A": "Detailed labels help attackers find valuable tapes.",
-      "B": "Storing tapes with the servers defeats off-site protection.",
-      "C": "Uncontrolled borrowing breaks custody."
+      "A": "Frequent trips add transport risk and defeat keeping a copy off-site.",
+      "B": "Keeping them at the main office defeats protection against site loss.",
+      "C": "Wrapping helps against dust but not against theft or poor storage conditions."
     },
     "references_topic": "Protecting stored backup media",
     "version": "1.0"
@@ -152,17 +152,17 @@
     "type": "application",
     "stem": "A critical patch was installed on a server last week, but the vulnerability scanner still reports the flaw. What is the MOST likely cause?",
     "options": {
-      "A": "The scanner has a bug and should be uninstalled",
+      "A": "The server's firewall is blocking the scanner",
       "B": "The server has not been rebooted to complete the patch",
-      "C": "The patch was too small to fix the problem",
-      "D": "The vulnerability has been renamed by the vendor since the patch was released"
+      "C": "The patch was installed on a different server",
+      "D": "The scan ran before the patch was installed"
     },
     "answer": "B",
     "explanation": "Many patches take effect only after a restart. Patch verification should confirm reboots and rescan to prove the fix is active.",
     "distractor_rationales": {
-      "A": "Removing the scanner hides the issue.",
-      "C": "Patch size is irrelevant.",
-      "D": "Renaming does not change scan results."
+      "A": "A blocked scanner usually reports nothing at all, not a specific unpatched flaw.",
+      "C": "Possible, but a pending reboot is the far more common cause.",
+      "D": "The stem says the patch was installed last week, before the scan."
     },
     "references_topic": "Verifying patch installation",
     "version": "1.0"
@@ -177,16 +177,16 @@
     "stem": "Who should approve a normal change to a production system?",
     "options": {
       "A": "The engineer who will implement the change",
-      "B": "Any user who will be affected by the change once it goes live",
+      "B": "The system owner alone, without wider review",
       "C": "The change advisory board or designated change authority",
-      "D": "The vendor that sold the system to the company"
+      "D": "The security team, for every production change"
     },
     "answer": "C",
     "explanation": "Approval by a change authority, independent of the implementer, makes sure risk, testing, and backout plans are reviewed before the change.",
     "distractor_rationales": {
       "A": "Self-approval removes independent review.",
-      "B": "Individual users lack authority and full context.",
-      "D": "Vendors do not govern the organization's changes."
+      "B": "Owners propose and support changes, but normal changes need review by the change authority.",
+      "D": "Security reviews some changes, but approval belongs to the change authority."
     },
     "references_topic": "Who approves normal changes",
     "version": "1.0"
@@ -273,16 +273,16 @@
     "stem": "Which capability detects threats by learning each user's normal behavior and flagging significant deviations?",
     "options": {
       "A": "Signature-based antivirus",
-      "B": "Network address translation",
+      "B": "Security orchestration, automation, and response (SOAR)",
       "C": "User and entity behavior analytics (UEBA)",
-      "D": "Static application security testing of source code"
+      "D": "Data loss prevention with content inspection"
     },
     "answer": "C",
     "explanation": "UEBA builds baselines for users and devices and highlights unusual activity, such as odd access times or large downloads, that rules may miss.",
     "distractor_rationales": {
       "A": "Signatures match known malware.",
-      "B": "NAT translates addresses.",
-      "D": "SAST analyzes source code."
+      "B": "SOAR automates response playbooks. It does not learn normal behavior.",
+      "D": "DLP inspects content leaving the organization, not behavior patterns."
     },
     "references_topic": "User and entity behavior analytics",
     "version": "1.0"
@@ -296,17 +296,17 @@
     "type": "managerial_best_first_most",
     "stem": "During an outage, an engineer changed a server's configuration directly to restore service. What should happen afterward?",
     "options": {
-      "A": "Nothing, since the outage has been resolved",
+      "A": "Close the incident ticket, since service is restored",
       "B": "Revert the change immediately, even if the outage returns",
-      "C": "Leave the change undocumented, since it was an emergency",
+      "C": "Email the team about the change and leave it in place",
       "D": "Record it and update the baseline or configuration code, or revert it"
     },
     "answer": "D",
     "explanation": "Emergency changes must still be recorded and reviewed. The baseline or infrastructure code should be updated or the change reversed, or drift will creep in.",
     "distractor_rationales": {
-      "A": "Undocumented changes cause drift and surprises.",
+      "A": "Closing without recording leaves an undocumented change that will cause drift or confusion.",
       "B": "Blind reversion could restart the outage.",
-      "C": "Emergencies do not remove the need for records."
+      "C": "An email is not a record. The change must be documented and either adopted into the baseline or reverted."
     },
     "references_topic": "Reconciling emergency configuration changes",
     "version": "1.0"
@@ -344,17 +344,17 @@
     "type": "managerial_best_first_most",
     "stem": "The security team promises customers that critical vulnerabilities will be patched within 7 days, but the internal IT operations team has no commitment to that timeline. What is the BEST fix?",
     "options": {
-      "A": "Ask customers to accept longer patch times",
-      "B": "Agree an operational level agreement with IT operations that supports the commitment",
-      "C": "Have the security team patch all servers itself without telling operations",
-      "D": "Remove the patching commitment from customer contracts"
+      "A": "Report missed deadlines to customers every quarter",
+      "B": "Agree an operational level agreement that supports the commitment",
+      "C": "Have the security team track every server's patch status each week",
+      "D": "Buy more patching tools for the operations team"
     },
     "answer": "B",
     "explanation": "External service commitments depend on internal teams. An operational level agreement defines what each internal team must deliver to meet them.",
     "distractor_rationales": {
-      "A": "Customers were promised a specific timeline.",
-      "C": "Bypassing operations creates change and stability risks.",
-      "D": "Dropping the commitment avoids the issue instead of solving it."
+      "A": "Reporting misses does not make the commitment achievable.",
+      "C": "Tracking shows the gap but does not commit operations to the timeline.",
+      "D": "Tools help, but without an agreed commitment there is no obligation to meet seven days."
     },
     "references_topic": "Operational level agreements",
     "version": "1.0"
@@ -368,17 +368,17 @@
     "type": "application",
     "stem": "A drive from a system processing Secret data is needed in an Unclassified lab. What is the correct handling?",
     "options": {
-      "A": "Reformat it quickly and use it in the lab",
-      "B": "Label it Unclassified and use it right away",
+      "A": "Overwrite it once with zeros, then reuse it in the lab",
+      "B": "Encrypt the drive and then move it into the lab",
       "C": "Only reuse it after an approved purge, or destroy it",
-      "D": "Use it as is, since the lab is inside the same building"
+      "D": "Reuse it after a supervisor signs off on the transfer"
     },
     "answer": "C",
     "explanation": "Moving media to a lower classification requires approved sanitization, and many policies simply require destruction. A quick format leaves data recoverable.",
     "distractor_rationales": {
-      "A": "Reformatting does not remove data.",
-      "B": "Relabeling does not change the contents.",
-      "D": "Location does not change classification."
+      "A": "A single overwrite is a clear, not the purge needed to move from Secret to Unclassified.",
+      "B": "Encryption does not remove the Secret data already on the drive.",
+      "D": "A signature does not remove classified data."
     },
     "references_topic": "Reusing media across classification levels",
     "version": "1.0"
@@ -417,16 +417,16 @@
     "stem": "A security team plants a fake administrator credential in a configuration file that no legitimate process uses. What is the purpose?",
     "options": {
       "A": "To trigger an alert if anyone tries to use it",
-      "B": "To give administrators a backup login if they forget their password",
-      "C": "To slow down legitimate users who read the file",
-      "D": "To store the real administrator password in a hidden place"
+      "B": "To test whether secret scanners find credentials in files",
+      "C": "To show auditors that an admin account is documented",
+      "D": "To lock out attackers who try to read the file"
     },
     "answer": "A",
     "explanation": "A honeytoken has no legitimate use, so any attempt to use it signals an intruder with high confidence.",
     "distractor_rationales": {
-      "B": "A fake credential is not a real backup login.",
-      "C": "It has no effect on legitimate users.",
-      "D": "It is a decoy, not the real password."
+      "B": "Scanner testing is a different purpose. This is a honeytoken meant to alert on use.",
+      "C": "A fake credential documents nothing. It exists to catch whoever uses it.",
+      "D": "A honeytoken does not block anything. It alerts when used."
     },
     "references_topic": "Honeytokens",
     "version": "1.0"
@@ -440,17 +440,17 @@
     "type": "managerial_best_first_most",
     "stem": "A post-implementation review found that a network change quietly removed a firewall rule that blocked access to a database. What should the organization change in its process?",
     "options": {
-      "A": "Stop doing post-implementation reviews, since they only ever find new problems",
-      "B": "Include security review in the CAB for changes that affect security controls",
-      "C": "Ban all network changes for the rest of the year",
-      "D": "Ask engineers to be more careful without changing any process"
+      "A": "Run post-implementation reviews only for failed changes",
+      "B": "Add security review at the CAB for changes to security controls",
+      "C": "Require two engineers to implement every network change",
+      "D": "Audit all firewall rules once a year instead of reviewing changes"
     },
     "answer": "B",
     "explanation": "Changes that touch security controls need security input before approval. Post-implementation reviews then confirm nothing was weakened.",
     "distractor_rationales": {
-      "A": "Reviews found the problem; they are valuable.",
-      "C": "A change ban is impractical.",
-      "D": "Relying on care without process change will repeat the mistake."
+      "A": "This change did not fail, yet it weakened security. Reviews must include security impact.",
+      "C": "Two engineers may both miss the security effect without a security review.",
+      "D": "An annual audit finds problems months later."
     },
     "references_topic": "Post-implementation reviews",
     "version": "1.0"
@@ -464,16 +464,16 @@
     "type": "application",
     "stem": "Backups were encrypted, but the only copy of the encryption key was on the backup server, which ransomware also encrypted. What should the design include?",
     "options": {
-      "A": "A shorter encryption key that is easier to remember",
-      "B": "Unencrypted backups, so no key is ever needed",
+      "A": "Store the key on a file server in the same domain",
+      "B": "Derive the key from the backup admin's password",
       "C": "Key escrow or storage separate from the backup system",
       "D": "A second copy of the key saved on the same backup server"
     },
     "answer": "C",
     "explanation": "Keys must survive the loss of the systems they protect. Storing them in a separate key management service or escrow keeps backups recoverable.",
     "distractor_rationales": {
-      "A": "Shorter keys weaken encryption.",
-      "B": "Unencrypted backups expose data.",
+      "A": "Ransomware spreading through the domain can encrypt that server too.",
+      "B": "A password-derived key is weak and depends on one person.",
       "D": "A copy on the same server is lost with it."
     },
     "references_topic": "Protecting backup encryption keys",
@@ -488,7 +488,7 @@
     "type": "managerial_best_first_most",
     "stem": "After a data center loss, teams begin restoring business applications first, but none work because authentication and DNS are still down. What should the DR plan have specified?",
     "options": {
-      "A": "Restoring applications in alphabetical order",
+      "A": "Restoring the systems with the most users first",
       "B": "Letting each team restore its systems whenever it is ready",
       "C": "Restoring the largest systems first, since they take longest",
       "D": "A recovery order based on dependencies, starting with core services"
@@ -496,7 +496,7 @@
     "answer": "D",
     "explanation": "Applications depend on core infrastructure such as identity, DNS, and networking. The plan should sequence recovery by dependency and business priority.",
     "distractor_rationales": {
-      "A": "Alphabetical order ignores dependencies.",
+      "A": "User count ignores dependencies. Core services such as authentication and DNS must come first.",
       "B": "Uncoordinated recovery wastes time.",
       "C": "Size does not determine dependency."
     },
@@ -512,17 +512,17 @@
     "type": "application",
     "stem": "A company wants to confirm that its emergency contact list is current and that people can be reached quickly. Which test fits BEST?",
     "options": {
-      "A": "A call tree or notification test that actually contacts everyone on the list",
+      "A": "A call tree test that actually contacts everyone on the list",
       "B": "A full-interruption test that shuts down the primary data center",
       "C": "A parallel test that processes live transactions at the recovery site alongside production",
-      "D": "A code review of the recovery scripts"
+      "D": "A tabletop exercise that walks through the plan"
     },
     "answer": "A",
     "explanation": "A notification test exercises the communication plan itself, revealing wrong numbers and slow responses without disrupting operations.",
     "distractor_rationales": {
       "B": "Full interruption is disruptive and not needed for this goal.",
       "C": "A parallel test focuses on system recovery.",
-      "D": "Code review does not test contact information."
+      "D": "A tabletop discusses the plan but does not check that people can be reached."
     },
     "references_topic": "Call tree tests",
     "version": "1.0"
@@ -560,17 +560,17 @@
     "type": "application",
     "stem": "An employee realizes on Monday that they lost their access badge on Friday but did not report it. What control would have reduced the exposure?",
     "options": {
-      "A": "A policy to replace badges once every five years",
-      "B": "Printing the company's address on each badge",
-      "C": "A requirement to report lost badges immediately, with prompt deactivation",
-      "D": "Allowing employees to share badges when one is lost"
+      "A": "Badges that expire automatically once every year",
+      "B": "A photo on each badge so that guards can check it",
+      "C": "Immediate reporting of lost badges, with prompt deactivation",
+      "D": "A weekly report of badge use for each employee"
     },
     "answer": "C",
     "explanation": "The faster a lost badge is reported and deactivated, the shorter the window for misuse. Clear reporting requirements and an easy process make this happen.",
     "distractor_rationales": {
-      "A": "Replacement schedules do not address lost badges.",
-      "B": "An address on the badge helps a finder misuse it.",
-      "D": "Sharing badges destroys accountability."
+      "A": "Yearly expiry does nothing for a badge lost on Friday.",
+      "B": "Photos help only where guards check them. Unattended readers still accept the badge.",
+      "D": "A weekly report finds misuse after the fact."
     },
     "references_topic": "Reporting lost badges",
     "version": "1.0"
@@ -608,17 +608,17 @@
     "type": "managerial_best_first_most",
     "stem": "An investigation needs logs held by a SaaS provider that the company cannot access directly, and the provider deletes them after 30 days. What should the company do FIRST?",
     "options": {
-      "A": "Send the provider a preservation request through counsel and follow the contract terms",
-      "B": "Wait until the investigation is complete before contacting the provider",
-      "C": "Ask a friend who works at the provider to copy the logs unofficially",
-      "D": "Assume the logs are unavailable and continue without them"
+      "A": "Send a preservation request through counsel, per the contract terms",
+      "B": "Ask the provider's support desk informally to keep the logs for now",
+      "C": "Collect the company's own endpoint logs and skip the provider",
+      "D": "Wait for a court subpoena before contacting the provider"
     },
     "answer": "A",
     "explanation": "Time-limited evidence must be preserved quickly. A formal preservation request, backed by the contract or legal process, keeps the logs available and admissible.",
     "distractor_rationales": {
-      "B": "Waiting may let the logs be deleted.",
-      "C": "Unofficial copies may be unlawful and inadmissible.",
-      "D": "Giving up loses potentially critical evidence."
+      "B": "An informal request may not be honored or documented. A formal preservation request through counsel is.",
+      "C": "Endpoint logs help, but they do not replace the provider's records.",
+      "D": "A subpoena takes time, and the logs may be deleted first. Preserve now."
     },
     "references_topic": "Preserving cloud evidence",
     "version": "1.0"
@@ -632,7 +632,7 @@
     "type": "application",
     "stem": "A review finds that cloud API audit logging is enabled in only two of the company's eight cloud regions, and an attacker created resources in an unmonitored region. What is the BEST fix?",
     "options": {
-      "A": "Stop using the unmonitored regions and do nothing else",
+      "A": "Turn on logging in the region the attacker used",
       "B": "Enable audit logging in all regions centrally and alert if it is disabled",
       "C": "Review the two monitored regions' logs more frequently",
       "D": "Ask engineers to report any cloud resources they create in other regions themselves"
@@ -640,7 +640,7 @@
     "answer": "B",
     "explanation": "Attackers use blind spots. Organization-wide logging that cannot be turned off locally, with alerts on changes, closes them.",
     "distractor_rationales": {
-      "A": "Unused regions can still be used by attackers unless restricted and monitored.",
+      "A": "That fixes one region and leaves five others blind.",
       "C": "More review of monitored regions does not cover the gap.",
       "D": "Attackers will not self-report."
     },
@@ -656,15 +656,15 @@
     "type": "managerial_best_first_most",
     "stem": "After a log source changed its format, several SIEM detections silently stopped working for months. What is the BEST prevention?",
     "options": {
-      "A": "Stop updating log sources so formats never change",
+      "A": "Alert whenever a log source's event volume drops sharply",
       "B": "Review each detection rule by hand once a year",
-      "C": "Treat detections as code and test them regularly with sample events",
+      "C": "Treat detections as code and test them with sample events",
       "D": "Add more detection rules so that missing ones matter less"
     },
     "answer": "C",
     "explanation": "Detections should be version-controlled and tested automatically against known-bad events, so a broken rule is noticed quickly.",
     "distractor_rationales": {
-      "A": "Freezing updates is impractical and insecure.",
+      "A": "Volume alerts catch some failures, but a format change can keep volume steady while parsing breaks.",
       "B": "Annual reviews let failures last for months.",
       "D": "More rules do not fix broken ones."
     },
@@ -680,17 +680,17 @@
     "type": "managerial_best_first_most",
     "stem": "Ransomware has encrypted key systems, and the attackers demand payment. Who should decide whether to pay, and on what basis?",
     "options": {
-      "A": "The security analyst who first detected the attack, based on how urgent it seems",
-      "B": "The IT help desk, based on how many users are calling in about the outage",
-      "C": "The attackers, based on how quickly the company responds to their demand",
-      "D": "Senior management with legal counsel, weighing law, sanctions, and recovery options"
+      "A": "The CISO alone, based on how quickly systems can be restored",
+      "B": "The cyber insurer, based on the cost of the ransom",
+      "C": "The incident response firm, based on its experience",
+      "D": "Senior management and counsel, weighing law, sanctions, and recovery"
     },
     "answer": "D",
     "explanation": "Paying ransom has legal, sanctions, ethical, and business implications. Senior leaders should decide with legal advice and a clear view of recovery alternatives.",
     "distractor_rationales": {
-      "A": "Analysts lack the authority.",
-      "B": "The help desk lacks authority and context.",
-      "C": "The decision belongs to the organization, not the attackers."
+      "A": "The CISO advises, but the decision carries legal and business weight for senior management.",
+      "B": "The insurer may have a say on coverage, but the decision belongs to the company's leadership.",
+      "C": "Advisers inform the decision. Leadership makes it with counsel."
     },
     "references_topic": "Ransom payment decisions",
     "version": "1.0"
@@ -728,16 +728,16 @@
     "type": "managerial_best_first_most",
     "stem": "During a DR test, the company failed over to its cloud recovery region and found it lacked the logging, WAF, and monitoring used in production. What is the BEST fix?",
     "options": {
-      "A": "Accept the gap, since the DR region is used only during disasters",
-      "B": "Build equivalent security controls into the DR environment and test them",
-      "C": "Disable security controls in production so that both environments match exactly",
-      "D": "Plan to add the controls during an actual disaster if needed"
+      "A": "Record the gap as an accepted risk for the DR region",
+      "B": "Build equivalent security controls into DR and test them",
+      "C": "Copy production logs to the DR region every week",
+      "D": "Plan to add the missing controls during an actual disaster if needed"
     },
     "answer": "B",
     "explanation": "Attackers often strike during disruption. The recovery environment must carry the same security controls, and DR tests should verify them.",
     "distractor_rationales": {
-      "A": "Disasters are exactly when protection matters.",
-      "C": "Weakening production is the wrong direction.",
+      "A": "The DR region runs production during a disaster, so it needs the same protection.",
+      "C": "Copying logs does not provide WAF protection or live monitoring in the DR region.",
       "D": "There is no time to build controls during a disaster."
     },
     "references_topic": "Security controls in the DR environment",
@@ -753,16 +753,16 @@
     "stem": "A DR test met every system's recovery time, but the business still could not operate because a SaaS provider it depends on was not included. What is the BEST improvement?",
     "options": {
       "A": "Declare the test a success, since every internal system met its target",
-      "B": "Remove the SaaS provider from the business process",
+      "B": "Keep a list of the SaaS provider's support contacts",
       "C": "Include critical third-party dependencies in DR planning and tests",
-      "D": "Ask the SaaS provider to take over the company's entire DR plan"
+      "D": "Rely on the SaaS provider's published uptime SLA"
     },
     "answer": "C",
     "explanation": "Recovery is measured by the business process, not individual systems. Tests should include critical providers, with contacts, failover options, and workarounds.",
     "distractor_rationales": {
       "A": "System targets met, but the business goal was not.",
-      "B": "Removing a critical provider may be impractical.",
-      "D": "The company remains accountable for its own recovery."
+      "B": "Contacts help, but the dependency still needs planning and testing.",
+      "D": "An SLA describes the provider's target, not how the company keeps operating without it."
     },
     "references_topic": "Including third parties in DR tests",
     "version": "1.0"
@@ -776,17 +776,17 @@
     "type": "managerial_best_first_most",
     "stem": "Technicians often work alone overnight at remote substations with poor phone coverage. What is the BEST safety control?",
     "options": {
-      "A": "Ask technicians to post their location on social media",
-      "B": "Assign technicians to work only during daylight hours in summer",
-      "C": "Tell technicians to handle emergencies by themselves",
-      "D": "Scheduled check-ins with escalation if missed, plus a duress or man-down alarm"
+      "A": "Give each technician a satellite phone to use in emergencies",
+      "B": "Send technicians a safety reminder before each shift",
+      "C": "Have technicians call in when they finish their work",
+      "D": "Timed check-ins with escalation if missed, plus a man-down alarm"
     },
     "answer": "D",
     "explanation": "Lone worker programs use regular check-ins, escalation when someone does not respond, and alarms that summon help automatically.",
     "distractor_rationales": {
-      "A": "Public posting exposes workers to additional risk.",
-      "B": "Restricting hours may be impossible for operational work.",
-      "C": "Leaving workers without support endangers them."
+      "A": "A phone helps only if the technician can use it. An incapacitated worker needs automatic escalation.",
+      "B": "Reminders do not get help to someone who is injured.",
+      "C": "A call at the end does not raise an alarm if something happens during the shift."
     },
     "references_topic": "Lone worker safety",
     "version": "1.0"

@@ -32,17 +32,17 @@
     "type": "knowledge",
     "stem": "What is the purpose of a write blocker when imaging a suspect's hard drive?",
     "options": {
-      "A": "To speed up the copy by compressing the data as it is read from the drive",
-      "B": "To encrypt the forensic image so that only the investigator can open it later",
-      "C": "To remove malware from the drive before the investigators analyze it",
-      "D": "To stop any writes to the source drive"
+      "A": "To verify the drive's hash before imaging starts",
+      "B": "To bypass the drive's password so it can be read",
+      "C": "To recover deleted files during the copy",
+      "D": "To stop any writes to the source drive while it is read"
     },
     "answer": "D",
     "explanation": "A write blocker allows reads but blocks writes, so the original evidence is not changed during acquisition and its integrity can be shown in court.",
     "distractor_rationales": {
-      "A": "Compression is not the purpose of a write blocker.",
-      "B": "Encryption of the image is a separate step.",
-      "C": "Removing malware would alter the evidence."
+      "A": "Hashing is a separate step that proves the image matches. The blocker prevents changes to the source.",
+      "B": "A write blocker does not defeat passwords or encryption.",
+      "C": "Recovery is done later on the image, not by the blocker."
     },
     "references_topic": "Write blockers",
     "version": "0.3"
@@ -57,16 +57,16 @@
     "stem": "What is the main purpose of monitoring egress traffic?",
     "options": {
       "A": "To spot data exfiltration and command-and-control traffic",
-      "B": "To measure how quickly customers can load the public website from other countries",
-      "C": "To confirm that inbound email is being delivered to the right mail servers",
-      "D": "To record which employees badge into the building each morning"
+      "B": "To block phishing emails before they reach users",
+      "C": "To measure bandwidth use for capacity planning",
+      "D": "To find vulnerable services exposed to the internet"
     },
     "answer": "A",
     "explanation": "Egress monitoring watches traffic leaving the network, where data theft and malware callbacks show up.",
     "distractor_rationales": {
-      "B": "Website performance is measured with monitoring tools, not egress security monitoring.",
-      "C": "Inbound email delivery is ingress traffic.",
-      "D": "Badge records are physical access logs."
+      "B": "Phishing filtering is inbound email security, not egress monitoring.",
+      "C": "Capacity planning is an operations use. Security monitors egress for exfiltration and C2.",
+      "D": "Exposed services are found by scanning inbound exposure, not by watching outbound traffic."
     },
     "references_topic": "Egress monitoring",
     "version": "0.3"
@@ -80,17 +80,17 @@
     "type": "knowledge",
     "stem": "Which is an example of an indicator of compromise?",
     "options": {
-      "A": "The organization's written incident response policy approved by leadership",
+      "A": "A failed login caused by a user's mistyped password",
       "B": "A known-malicious file hash found on a workstation",
-      "C": "The company's annual budget for its security operations center",
-      "D": "A vendor's marketing brochure describing a new firewall product"
+      "C": "A vulnerability scanner finding on an unpatched server",
+      "D": "A spike in inbound traffic to the public website"
     },
     "answer": "B",
     "explanation": "Indicators of compromise are artifacts, such as file hashes, IP addresses, or domains, that suggest a system has been breached.",
     "distractor_rationales": {
-      "A": "A policy is a governance document, not evidence of intrusion.",
-      "C": "A budget is financial planning information.",
-      "D": "Marketing material is not an artifact of an intrusion."
+      "A": "One failed login is a normal event, not evidence of compromise.",
+      "C": "A vulnerability shows exposure, not that an attacker has been there.",
+      "D": "A traffic spike may be benign. A known-malicious hash is direct evidence."
     },
     "references_topic": "Indicators of compromise",
     "version": "0.3"
@@ -105,16 +105,16 @@
     "stem": "What is the BEST way to make sure new servers start in a secure state?",
     "options": {
       "A": "Ask each administrator to harden servers using their own personal checklist",
-      "B": "Deploy servers with default settings and fix issues found in the annual audit",
+      "B": "Harden each server by hand from the standard checklist",
       "C": "Build every server from an approved, hardened baseline image",
-      "D": "Let application teams choose whatever operating system settings they prefer"
+      "D": "Scan new servers for vulnerabilities after they go live"
     },
     "answer": "C",
     "explanation": "Building from an approved baseline makes every new server consistent and secure from its first boot, and drift can then be measured against that baseline.",
     "distractor_rationales": {
       "A": "Personal checklists produce inconsistent results.",
-      "B": "Default settings are often insecure, and waiting for an audit leaves gaps for months.",
-      "D": "Uncontrolled choices lead to inconsistent and weak configurations."
+      "B": "Hand hardening varies by person and drifts. A hardened image starts every server the same way.",
+      "D": "Scanning after go-live finds problems once the server is already exposed."
     },
     "references_topic": "Hardened golden images",
     "version": "0.3"
@@ -154,15 +154,15 @@
     "options": {
       "A": "Sanitize them with an approved method",
       "B": "Delete the HR user profiles and empty the recycle bin on each laptop",
-      "C": "Rename the laptops so engineering staff recognize them as their own",
-      "D": "Reinstall the engineering applications on top of the existing data"
+      "C": "Reimage them with the engineering build, without wiping first",
+      "D": "Encrypt the drives with a new key for the engineering team"
     },
     "answer": "A",
     "explanation": "HR data is sensitive, so drives must be sanitized, for example by a verified purge or cryptographic erase, before reuse by people without a need to know.",
     "distractor_rationales": {
       "B": "Deleting profiles leaves recoverable data on the drive.",
-      "C": "Renaming devices does nothing to the data.",
-      "D": "Installing applications over existing data leaves it recoverable."
+      "C": "A new image may not overwrite every area of the drive, so HR data can remain.",
+      "D": "Encrypting over old data does not remove it."
     },
     "references_topic": "Sanitizing media before reuse",
     "version": "0.3"
@@ -200,17 +200,17 @@
     "type": "knowledge",
     "stem": "What is the main purpose of a honeypot?",
     "options": {
-      "A": "To block all inbound traffic from known malicious IP addresses at the perimeter",
-      "B": "To store backup copies of critical data in an isolated location",
+      "A": "To detect insiders by tracking all employee logins",
+      "B": "To slow attackers by limiting their connection speeds",
       "C": "To lure attackers so their activity can be observed",
-      "D": "To speed up web traffic by caching popular content near users"
+      "D": "To test the firewall rules with simulated attacks"
     },
     "answer": "C",
     "explanation": "A honeypot is a decoy with no legitimate use, so any interaction with it is suspicious and reveals attacker techniques.",
     "distractor_rationales": {
-      "A": "Blocking known bad IP addresses is a firewall or IPS function.",
-      "B": "Isolated backup storage is a recovery control.",
-      "D": "Caching content is the job of a CDN or proxy."
+      "A": "Login tracking is user monitoring. A honeypot is a decoy that attracts attackers.",
+      "B": "Slowing connections is a tarpit, a related but different technique.",
+      "D": "Firewall testing uses scanners or simulation tools, not decoys."
     },
     "references_topic": "Honeypots",
     "version": "0.3"
@@ -249,16 +249,16 @@
     "stem": "During an internal investigation, an analyst logs in to a suspect's personal cloud email with a password found on a sticky note and copies messages. What is the MAIN problem with this evidence?",
     "options": {
       "A": "It may be inadmissible because it was not obtained lawfully",
-      "B": "It is hearsay and therefore can never be used in any type of legal proceeding",
-      "C": "It lacks a hash value, which is the only requirement for admissibility in court",
-      "D": "It is too recent to be relevant to an investigation of events from last month"
+      "B": "It is hearsay, since emails are written outside of court",
+      "C": "It lacks a write blocker, which makes all of it unusable",
+      "D": "It must be reviewed first by the email provider"
     },
     "answer": "A",
     "explanation": "Evidence must be relevant, reliable, and legally obtained. Accessing a personal account without authorization may be illegal and can make the evidence unusable.",
     "distractor_rationales": {
-      "B": "Emails are not automatically excluded as hearsay, and hearsay has exceptions.",
-      "C": "Hashing supports integrity but is not the only requirement.",
-      "D": "Recency does not determine relevance."
+      "B": "Business emails can often be admitted. The bigger problem is the unlawful access.",
+      "C": "Handling matters, but the core problem is that the access itself was unauthorized.",
+      "D": "Provider review is not a requirement. The evidence was obtained unlawfully."
     },
     "references_topic": "Lawfully obtained evidence",
     "version": "0.3"
@@ -272,17 +272,17 @@
     "type": "managerial_best_first_most",
     "stem": "During a regional outage, employees receive contradictory updates from social media, managers, and a vendor. What should the disaster recovery plan have included to prevent this?",
     "options": {
-      "A": "A rule that employees may not use social media accounts during any business disruption",
-      "B": "A designated spokesperson and pre-approved communication templates and channels",
-      "C": "A list of every employee's home address stored inside the data center being recovered",
-      "D": "A requirement that all updates be reviewed first by the vendor's legal department"
+      "A": "A rule that only IT may post updates during an outage",
+      "B": "A designated spokesperson with pre-approved templates and channels",
+      "C": "A phone tree that each manager calls in turn",
+      "D": "An all-staff email list hosted in the data center that has failed"
     },
     "answer": "B",
     "explanation": "A communication plan names who speaks for the organization and which channels to use, so staff and stakeholders get one consistent source of truth.",
     "distractor_rationales": {
-      "A": "Banning social media does not provide accurate information.",
-      "C": "Contact data stored in the failed site is unavailable when needed.",
-      "D": "The vendor should not control the organization's communications."
+      "A": "IT is not the right voice for all communications, and the rule does not supply consistent messages.",
+      "C": "A phone tree spreads messages, but without one spokesperson and templates the messages still conflict.",
+      "D": "A list hosted in the failed data center may not work during the outage."
     },
     "references_topic": "DR communication plans",
     "version": "0.3"
@@ -345,15 +345,15 @@
     "stem": "What is the main role of a configuration management database (CMDB)?",
     "options": {
       "A": "To record configuration items and their relationships",
-      "B": "To store the organization's user passwords in encrypted form for recovery",
-      "C": "To hold backup copies of all production databases in a separate location",
+      "B": "To store the approved security baseline settings only",
+      "C": "To track software licenses and renewal dates",
       "D": "To collect and correlate security events from across the enterprise in real time"
     },
     "answer": "A",
     "explanation": "A CMDB tracks configuration items and how they depend on each other, so the impact of changes and incidents can be understood.",
     "distractor_rationales": {
-      "B": "Password storage belongs in a directory or vault.",
-      "C": "Backup copies are held by backup systems.",
+      "B": "Baselines may be referenced, but a CMDB records configuration items and how they relate.",
+      "C": "License tracking is software asset management, not the CMDB's main role.",
       "D": "Event correlation is a SIEM function."
     },
     "references_topic": "Configuration management database",
@@ -368,16 +368,16 @@
     "type": "managerial_best_first_most",
     "stem": "A payments clerk has not taken a day off in three years and insists on handling every reconciliation personally. Which control BEST addresses the fraud risk?",
     "options": {
-      "A": "Give the clerk a bonus to reward the dedication shown over the three years",
+      "A": "Review a sample of the clerk's reconciliations each month",
       "B": "Require mandatory vacation with another employee performing the duties",
-      "C": "Install a camera above the clerk's desk to record their work throughout the day",
+      "C": "Rotate the clerk's supervisor every six months",
       "D": "Ask the clerk to sign an annual statement that no fraud has occurred"
     },
     "answer": "B",
     "explanation": "Mandatory vacation forces someone else to perform the work, which often uncovers fraud that depends on the perpetrator's constant presence.",
     "distractor_rationales": {
-      "A": "A bonus rewards the pattern without testing it.",
-      "C": "A camera does not reveal manipulated records.",
+      "A": "Sampling may miss concealed fraud that only shows when someone else does the work.",
+      "C": "A new supervisor does not take over the duties, so concealment can continue.",
       "D": "A signed statement is easily false."
     },
     "references_topic": "Mandatory vacation",
@@ -392,17 +392,17 @@
     "type": "application",
     "stem": "An off-site vault holds hundreds of backup tapes that are past their retention period. What should the organization do?",
     "options": {
-      "A": "Keep them indefinitely in case the data is needed for some future purpose",
-      "B": "Reuse the tapes for new backups without wiping them first to save time",
-      "C": "Destroy them per the retention schedule and get a certificate of destruction",
-      "D": "Donate the tapes to a local school that needs spare storage media"
+      "A": "Keep them until the vault runs out of space",
+      "B": "Return them to the tape vendor for recycling exactly as they are",
+      "C": "Destroy them per the schedule and get a certificate of destruction",
+      "D": "Move them to the company's own office storeroom"
     },
     "answer": "C",
     "explanation": "Keeping data past retention adds legal and breach exposure. Documented destruction closes the lifecycle and proves the data is gone.",
     "distractor_rationales": {
-      "A": "Keeping data indefinitely increases discovery and breach risk.",
-      "B": "Reusing tapes without wiping leaves old data recoverable.",
-      "D": "Donating unsanitized media exposes the data."
+      "A": "Keeping data past retention adds legal exposure and cost.",
+      "B": "Returning unsanitized tapes hands the data to a third party.",
+      "D": "Moving them keeps data past retention and in a less secure place."
     },
     "references_topic": "Destroying media past retention",
     "version": "0.3"
@@ -416,17 +416,17 @@
     "type": "managerial_best_first_most",
     "stem": "Investigators confirm that customer personal data was taken in an incident. What should happen EARLY in the response to address reporting?",
     "options": {
-      "A": "Wait until the investigation is fully finished before deciding whether to tell anyone",
-      "B": "Post a detailed technical write-up on the company blog the same day it is confirmed",
-      "C": "Notify only the customers who complain about suspicious activity on their accounts",
+      "A": "Notify all customers right away, before counsel has reviewed",
+      "B": "Tell the cyber insurer and wait for its instructions",
+      "C": "Prepare a press release for the public relations team",
       "D": "Involve legal counsel to determine notification duties and deadlines"
     },
     "answer": "D",
     "explanation": "Breach laws and contracts often set short deadlines. Bringing in legal counsel early identifies who must be told, what, and by when.",
     "distractor_rationales": {
-      "A": "Waiting can cause the organization to miss legal deadlines.",
-      "B": "Premature public detail can harm the investigation and may be inaccurate.",
-      "C": "Notifying only complainants likely fails legal duties."
+      "A": "Notices must be accurate and meet legal requirements. Counsel helps get that right first.",
+      "B": "The insurer should be told, but notification duties are decided with counsel, not delegated.",
+      "C": "Public statements come after legal duties and facts are clear."
     },
     "references_topic": "Breach notification obligations",
     "version": "0.3"
@@ -440,17 +440,17 @@
     "type": "application",
     "stem": "An organization wants to catch previously unseen malware in email attachments that signature-based scanning misses. Which control fits BEST?",
     "options": {
-      "A": "Sandbox detonation of attachments",
-      "B": "A larger mail server so that attachments are processed more quickly",
-      "C": "Allowing only attachments smaller than one megabyte through the gateway",
-      "D": "A banner that warns users when a message comes from outside the organization"
+      "A": "Sandbox detonation of the attachments before delivery",
+      "B": "Reputation filtering of the sending domains",
+      "C": "Blocking all macros in Office attachments",
+      "D": "Hash matching against a threat intelligence feed"
     },
     "answer": "A",
     "explanation": "A sandbox opens attachments in an isolated environment and watches their behavior, catching new malware that has no known signature.",
     "distractor_rationales": {
-      "B": "Server capacity does not affect detection.",
-      "C": "Size limits block some files but do not detect malware.",
-      "D": "A warning banner raises awareness but does not detect malicious files."
+      "B": "Reputation filtering misses new or compromised senders.",
+      "C": "Blocking macros closes one route, but new malware arrives in many other file types.",
+      "D": "Hash matching only catches malware already known to the feed."
     },
     "references_topic": "Sandboxing attachments",
     "version": "0.3"
@@ -489,7 +489,7 @@
     "stem": "A firewall change was approved by the change advisory board, but the implementer also added several extra rules \"while they were in there.\" What is the BEST response?",
     "options": {
       "A": "Accept the extra rules because the change as a whole had already been approved",
-      "B": "Remove the implementer's access to all firewalls permanently without discussion",
+      "B": "Keep the extra rules but document them in a new ticket",
       "C": "Treat the extra rules as unauthorized changes and review or roll them back",
       "D": "Update the approved change record afterward so that it matches what was done"
     },
@@ -497,7 +497,7 @@
     "explanation": "Approval covers only what was reviewed. Anything beyond that scope is an unauthorized change that must be assessed and removed or approved properly.",
     "distractor_rationales": {
       "A": "Approval does not extend to unreviewed rules.",
-      "B": "A permanent removal without process is disproportionate.",
+      "B": "Documenting after the fact is not approval. The unapproved rules must be reviewed or removed.",
       "D": "Rewriting the record hides unauthorized work."
     },
     "references_topic": "Verifying change scope",
@@ -584,17 +584,17 @@
     "type": "managerial_best_first_most",
     "stem": "Staff at a warehouse loading dock often prop the door open for deliveries, and the area is unattended between trucks. Which control is BEST?",
     "options": {
-      "A": "Post a larger sign telling staff to keep the loading dock door closed at all times",
-      "B": "Remove the door lock so that deliveries can come and go without any interruption",
-      "C": "Add a door-prop alarm and require dock staff to receive and escort deliveries",
-      "D": "Move the security cameras to cover the front entrance instead of the dock"
+      "A": "Post a guard at the dock only during delivery hours",
+      "B": "Install a camera that records the loading dock door at all times",
+      "C": "Add a door-prop alarm and have staff receive and escort deliveries",
+      "D": "Fit a self-closing hinge to the loading dock door"
     },
     "answer": "C",
     "explanation": "A door-prop alarm alerts when the door is left open, and having staff receive deliveries ensures no one enters unescorted.",
     "distractor_rationales": {
-      "A": "A sign does not enforce anything.",
-      "B": "Removing the lock removes protection entirely.",
-      "D": "Moving cameras away reduces coverage of the weak point."
+      "A": "Staff prop the door between deliveries too, when no guard would be present.",
+      "B": "A camera records the propped door but does not alert anyone or change behavior.",
+      "D": "Staff prop the door open on purpose, so a closer is defeated."
     },
     "references_topic": "Securing loading docks",
     "version": "0.3"
@@ -609,15 +609,15 @@
     "stem": "A manager suspects an employee of fraud and wants to confront them this afternoon. What should the security team advise?",
     "options": {
       "A": "Confront the employee right away so they can explain before the story spreads",
-      "B": "Post a warning to all staff that fraud is being investigated in the department",
+      "B": "Monitor the employee's email covertly without legal advice",
       "C": "Disable the employee's access and escort them out immediately without explanation",
-      "D": "Quietly preserve evidence and bring in legal counsel and HR before anyone interviews the employee"
+      "D": "Preserve evidence quietly and involve counsel and HR before any interview"
     },
     "answer": "D",
     "explanation": "Confronting the suspect early can prompt destruction of evidence. Preserving evidence first and involving legal and HR keeps the investigation sound and fair.",
     "distractor_rationales": {
       "A": "Early confrontation tips off the suspect.",
-      "B": "A public warning alerts the suspect and damages reputations.",
+      "B": "Covert monitoring without legal advice can break law or policy and taint the evidence.",
       "C": "Abrupt action without evidence or HR input risks legal problems."
     },
     "references_topic": "Internal investigations and HR",
@@ -635,14 +635,14 @@
       "A": "Snapshot the disk and capture memory before termination",
       "B": "Terminate the instance at once to stop the attacker and then review billing logs",
       "C": "Reboot the instance to clear the attacker's processes before collecting anything",
-      "D": "Ask the cloud provider to send a physical copy of the hard drive to the team"
+      "D": "Detach the network interface, then terminate the instance"
     },
     "answer": "A",
     "explanation": "Terminating a cloud instance destroys its disk and memory. Snapshots and memory capture preserve evidence while it still exists.",
     "distractor_rationales": {
       "B": "Terminating first destroys the evidence.",
       "C": "Rebooting loses volatile memory.",
-      "D": "Providers do not ship physical drives from shared infrastructure."
+      "D": "Isolating is reasonable, but terminating destroys the memory and disk evidence."
     },
     "references_topic": "Cloud forensic acquisition",
     "version": "0.3"
@@ -657,7 +657,7 @@
     "stem": "The change advisory board is backlogged, partly because teams must submit routine monthly certificate renewals for full review. What is the BEST improvement?",
     "options": {
       "A": "Stop requiring change records for certificate renewals and let teams proceed freely",
-      "B": "Classify them as pre-approved standard changes that follow a documented, tested procedure",
+      "B": "Classify them as pre-approved standard changes with a tested procedure",
       "C": "Add more members to the CAB so it can review more changes in each meeting",
       "D": "Hold CAB meetings only once a quarter to reduce the administrative overhead"
     },
@@ -681,16 +681,16 @@
     "stem": "A critical patch is released for a plant's HMI operator workstations. The control system vendor has not certified it yet, and the plant runs continuously. What is the BEST approach?",
     "options": {
       "A": "Install the patch on all HMIs tonight, because critical patches can never wait",
-      "B": "Ignore the patch, since OT systems are isolated and never need patches",
-      "C": "Add compensating controls now and patch after vendor certification in a maintenance window",
-      "D": "Replace all the HMIs with standard office desktops that can be patched automatically"
+      "B": "Wait for vendor certification and change nothing until then",
+      "C": "Add compensating controls now; patch after vendor certification in a window",
+      "D": "Patch one HMI tonight as a test, then the rest next week"
     },
     "answer": "C",
     "explanation": "In OT, availability and safety come first. Uncertified patches can break control systems, so the risk is reduced with segmentation and monitoring until the patch is certified and can be applied in a planned window.",
     "distractor_rationales": {
       "A": "An uncertified patch can disrupt a continuously running process.",
-      "B": "OT systems are often reachable and do need patching.",
-      "D": "Office desktops are not suited to control system roles."
+      "B": "Waiting is right for the patch, but compensating controls should reduce exposure meanwhile.",
+      "D": "Even one uncertified patch risks the running process. Certification comes first."
     },
     "references_topic": "Patching operational technology",
     "version": "0.3"
@@ -704,17 +704,17 @@
     "type": "application",
     "stem": "Ransomware operators increasingly delete or encrypt backups before launching attacks. Which backup design BEST resists this?",
     "options": {
-      "A": "Keeping all backups on a file share mounted on every server for faster restores",
-      "B": "Running backups more often while keeping them on the same storage array",
-      "C": "Protecting the backup console with the same domain admin account used everywhere",
-      "D": "At least one immutable or offline copy managed with separate credentials"
+      "A": "Backups replicated to a second site in the same domain",
+      "B": "Daily backups to a NAS appliance with its snapshots enabled",
+      "C": "Encrypted backups stored on the primary file server",
+      "D": "An immutable or offline copy managed with separate credentials"
     },
     "answer": "D",
     "explanation": "An immutable or offline copy cannot be changed by an attacker who controls the production domain, especially if backup administration uses separate credentials.",
     "distractor_rationales": {
-      "A": "A share mounted on every server can be encrypted along with them.",
-      "B": "Backups on the same array fall with the primary data.",
-      "C": "Shared domain admin credentials let the attacker reach the backups."
+      "A": "Replicas under the same domain credentials can be deleted together.",
+      "B": "An attacker with admin rights can delete NAS snapshots.",
+      "C": "Encryption protects confidentiality, but attackers can still delete backups on a reachable server."
     },
     "references_topic": "Immutable and offline backups",
     "version": "0.3"
@@ -728,17 +728,17 @@
     "type": "managerial_best_first_most",
     "stem": "A newly written disaster recovery plan has never been exercised. The CIO proposes a full-interruption test next month to prove it works. What is the BEST advice?",
     "options": {
-      "A": "Start with a tabletop, then move to simulation and parallel tests as the plan matures",
+      "A": "Begin with a tabletop, then simulation and parallel tests as it matures",
       "B": "Proceed with the full-interruption test, since it gives the most realistic results",
-      "C": "Skip testing until an actual disaster occurs, to avoid unnecessary disruption",
-      "D": "Test only the backup software, since the rest of the plan is documentation"
+      "C": "Run a parallel test first, since it avoids disruption",
+      "D": "Have an external auditor review the plan instead"
     },
     "answer": "A",
     "explanation": "An untested plan likely has gaps. Low-risk tests find them first; a full interruption at this stage could cause the very outage the plan is meant to handle.",
     "distractor_rationales": {
       "B": "Full interruption on an untested plan risks a real outage.",
-      "C": "Waiting for a real disaster means discovering gaps when it is too late.",
-      "D": "The plan's people, processes, and communications also need testing."
+      "C": "A parallel test of an unexercised plan skips the walk-throughs that find basic gaps safely.",
+      "D": "A review checks the document, not whether people and systems can execute it."
     },
     "references_topic": "Choosing a first DR test",
     "version": "0.3"
@@ -752,17 +752,17 @@
     "type": "application",
     "stem": "Vault staff at a cash handling facility worry about being forced at gunpoint to open the vault. Which control BEST protects them while alerting responders?",
     "options": {
-      "A": "Require staff to refuse all demands, even when they are directly threatened",
+      "A": "A panic button mounted beside the vault door",
       "B": "A duress code that appears to open normally while silently raising an alarm",
       "C": "A policy that requires two supervisors to be present whenever the vault is opened",
-      "D": "Cameras that record the vault area for review on the next business day"
+      "D": "A time-delay lock that slows every opening by ten minutes"
     },
     "answer": "B",
     "explanation": "A duress code lets staff comply, protecting their lives, while silently summoning help.",
     "distractor_rationales": {
-      "A": "Refusing threatens staff safety, which comes first.",
+      "A": "A visible panic button can be seen and blocked by the attacker.",
       "C": "Two-person rules help against insiders but do not alert anyone during a robbery.",
-      "D": "Next-day review does not summon help during the event."
+      "D": "A time lock slows a robbery but does not silently alert responders."
     },
     "references_topic": "Duress codes",
     "version": "0.3"
@@ -778,7 +778,7 @@
     "options": {
       "A": "Change the lock on the side door and keep the rest of the process unchanged",
       "B": "Remind managers by email to collect badges on employees' final day at work",
-      "C": "Investigate the entry and link HR termination records directly to automatic badge deactivation",
+      "C": "Investigate the entry and tie HR terminations to automatic badge removal",
       "D": "Post a guard at the side door for the next month to watch who enters"
     },
     "answer": "C",
