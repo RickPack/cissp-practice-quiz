@@ -20,6 +20,7 @@ Results are for study planning only. They do not predict your result on the real
 - **Voice answers** (optional, off by default): speak A–D, confirm by voice, and use voice commands. See below.
 - **Spaced review deck**: questions you miss come back after 1, 3, 7, and 14 days until you get them right. See below.
 - **Commute mode** (separate study mode): eyes-free questions read aloud, answered by voice, with the verdict and explanation read straight back. Never scored. See below.
+- **Python track** (second question bank): 60 questions about this site's own Python code, chosen with a **CISSP | Python** switch on the start screen. See below.
 
 ### Read aloud
 
@@ -64,6 +65,20 @@ Eyes-free study on questions you got wrong. Open it from the start screen with *
 - **Review deck:** a correct answer moves a due card up a box; a miss sends a card back to box 1, or adds the question if it is not in the deck yet; a skip changes nothing. The run ends with a short summary of counts only (correct, missed, skipped, and deck changes).
 - **Locked screen:** browsers stop the mic and speech when the screen locks or the tab is hidden, so commute mode pauses then and reads the current question again when you come back. Keep the screen on (most phones have a setting for this) and the tab in front. This is a browser limit, not something this site can work around.
 - **iPhone:** the first start needs a tap; if the browser then refuses to restart the mic on its own, the page says "This browser needs a tap to start the microphone" and waits for you to press **Talk**. Hands-free commute mode on iPhone has not been tested by the author.
+
+### Python track
+
+A second question bank for learning Python from the code that runs this project. Choose **Python** in the **Question bank** switch at the top of the start screen; the choice is remembered in this browser.
+
+- **What it covers:** 60 original questions (v0.1), 10 in each of six topics: collections and dataclasses, regular expressions and formatting, files/JSON/errors, functions and the command line, the validator's algorithms (TF-IDF, cosine similarity, largest-remainder allocation), and calling an API safely. Every question is about [`validation/validate.py`](validation/validate.py) or [`validation/audit.py`](validation/audit.py), and names the function it comes from.
+- **Code in questions:** 37 questions show a short snippet in a code block and ask what it prints. Options and stems can contain `inline code`. Code is always shown as plain text, never as HTML.
+- **Answer keys that check themselves:** every "what does this print?" question is run by the validator (see below), and the build fails unless the code prints exactly the keyed option and no other option. The other 23 questions are reviewed by hand; they have not yet had the independent audit.
+- **Same app, separate data:** the sampler, scoring, report, review deck, read-aloud, voice answers, and commute mode all work as for CISSP. Sessions and the review deck are stored under their own keys (`cissp-diagnostic:python:session`, `cissp-diagnostic:python:review`), so switching tracks never touches the other track's progress. The CISSP keys are unchanged from earlier versions.
+- **Differences in the report:** results are grouped by topic (T1–T6) instead of domain, there is no exam-weight score and no "think like a manager" note, and question types are knowledge and application only.
+- **Read-aloud and commute mode:** code read aloud is noise, so a question with code is read as its stem plus "This question has code. Read the code and the options on screen, then answer." Commute mode uses only the questions without code.
+- **If the Python bank cannot load,** the page stays on (or falls back to) CISSP and says so.
+
+Files: `data-python/` has the same layout as `data/` (`schema.json`, `taxonomy.json`, `manifest.json`, `batches/P{n}_{k}.json`). Its schema adds two optional fields: `code` (the snippet) and `verify` (`"stdout"`: run it and compare). Its taxonomy has a `track` block with the ID prefix, labels, report path, and the audit prompt.
 
 ### Voice answers
 
@@ -137,9 +152,13 @@ python -m http.server 8000
 npm test                                            # JS unit tests (Node 20+, no dependencies)
 python -m pip install -r validation/requirements.txt
 python validation/validate.py                       # bank validator; writes validation/report.md
+python validation/validate.py --data-dir data-python   # Python track; writes validation/report-python.md
+python -m unittest discover -s validation -p "test_*.py"   # tests for the code checker
 ```
 
-Unit tests cover the voice parser (letters, homophones, aliases, filler, ambiguity), the confirmation state machine, the no-correctness-leak rule, and the controller against mocked `SpeechRecognition` and `speechSynthesis` (the mic never opens while speech plays; the mic stops on navigate, submit, and unload). The commute-mode tests drive the loop with mocked `SpeechRecognition`, `speechSynthesis`, timers, and clock: answer, verdict, next question, the 8-second skip, repeat/next/skip/stop, play-only mode without recognition, pausing on a hidden tab, and review-deck updates. The review deck tests use an injectable clock and storage and cover the box schedule, day boundaries, daylight-saving dates, a clock moving backwards, corrupt and hostile stored data, and review-session building. They also cover sampling proportions and graceful degradation, answer remapping after shuffling, the 20-answer gate, scoring, and the Wilson interval math. They run against synthetic banks of 80, 250, and 1,000 questions, plus a 1,000-session simulation that checks per-domain draw proportions stay within ±3 points of the targets.
+**How question code is checked** (`validation/snippets.py`): each snippet must parse, and a lint rejects imports outside a short standard-library allowlist (`collections`, `re`, `json`, `csv`, `io`, `pathlib`, `argparse`, `dataclasses`, `math`, and a few more) and names such as `open`, `eval`, `exec`, and file-writing `Path` methods. A "what does this print?" snippet then runs in a separate Python process with no site packages, an empty temporary working folder, a minimal environment, and a 5-second timeout, twice with different hash seeds so output that depends on set order is caught. It must exit cleanly and print one line equal to the keyed option. This is a lint plus isolation, not a sandbox: the snippets are written and reviewed in this repository, and the checker should never be pointed at code nobody has read. CI runs it on Python 3.12.
+
+Unit tests cover the voice parser (letters, homophones, aliases, filler, ambiguity), the confirmation state machine, the no-correctness-leak rule, and the controller against mocked `SpeechRecognition` and `speechSynthesis` (the mic never opens while speech plays; the mic stops on navigate, submit, and unload). The track tests check that the CISSP storage keys are unchanged, that each track's session and deck stay separate, that hostile stored values fall back to CISSP, inline-code parsing, and that the Python bank runs through the unchanged sampler and scorer. The commute-mode tests drive the loop with mocked `SpeechRecognition`, `speechSynthesis`, timers, and clock: answer, verdict, next question, the 8-second skip, repeat/next/skip/stop, play-only mode without recognition, pausing on a hidden tab, and review-deck updates. The review deck tests use an injectable clock and storage and cover the box schedule, day boundaries, daylight-saving dates, a clock moving backwards, corrupt and hostile stored data, and review-session building. They also cover sampling proportions and graceful degradation, answer remapping after shuffling, the 20-answer gate, scoring, and the Wilson interval math. They run against synthetic banks of 80, 250, and 1,000 questions, plus a 1,000-session simulation that checks per-domain draw proportions stay within ±3 points of the targets.
 
 ## Question bank
 
@@ -176,6 +195,8 @@ Each question has an `id` (for example `D3-0042`), `domain`, `domain_name`, `sub
 
 The same audit runs locally with `ANTHROPIC_API_KEY` set in your environment: `python validation/audit.py --target data/batches/D4_3.json` (install `validation/requirements-audit.txt` first).
 
+For the Python track, set `DATA_DIR = "data-python"` in the notebook (or pass `--data-dir data-python` to `audit.py`). The model then gets a Python reviewer's prompt and sees each question's code, still without the key or explanations, and flags go to `validation/flags-python.csv`.
+
 ## Repository layout
 
 ```
@@ -190,21 +211,24 @@ lib/voice-flow.js                confirmation state machine and message table (n
 lib/voice.js                     voice controller (SpeechRecognition injectable)
 lib/review-deck.js               spaced review deck: schedule, storage, review sessions (no DOM)
 lib/commute.js                   commute-mode loop, built on the voice controller (no DOM)
+lib/tracks.js                    CISSP and Python track settings and storage keys (no DOM)
+lib/rich-text.js                 **bold** and `code` runs for question text, without HTML (no DOM)
 sw.js                            offline cache
-data/                            question bank (CC BY 4.0)
-validation/                      validate.py, audit.py, Colab notebook, report.md, flags.csv
+data/                            CISSP question bank (CC BY 4.0)
+data-python/                     Python question bank about this repository's code (CC BY 4.0)
+validation/                      validate.py, snippets.py (code checker), audit.py, Colab notebook, reports, flags
 tests/                           Node unit tests
 .github/workflows/ci.yml         validate, test, and deploy to GitHub Pages from main
 ```
 
 ## Continuous integration
 
-Every push runs the bank validator and the unit tests. Pushes to `main` that pass both are deployed to GitHub Pages. Workflow actions are pinned to full commit SHAs, and Python dependencies are pinned to exact versions.
+Every push runs the code-checker tests, the bank validator on both banks, and the unit tests. Pushes to `main` that pass both are deployed to GitHub Pages. Workflow actions are pinned to full commit SHAs, and Python dependencies are pinned to exact versions.
 
 ## Licensing
 
 - **Code** (everything outside `data/`) is under the [MIT License](LICENSE).
-- **Question bank** (`data/`) is under [Creative Commons Attribution 4.0 International](data/LICENSE). You may share and adapt the questions, including commercially, if you give appropriate credit and indicate changes.
+- **Question banks** (`data/` and `data-python/`) are under [Creative Commons Attribution 4.0 International](data/LICENSE). You may share and adapt the questions, including commercially, if you give appropriate credit and indicate changes. Code excerpts quoted in the Python questions come from this repository's MIT-licensed files.
 
 The split keeps the code freely reusable while making sure anyone who reuses the questions credits their source.
 
