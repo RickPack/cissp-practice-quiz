@@ -80,7 +80,7 @@
     "type": "application",
     "stem": "An online retailer expects huge traffic during a holiday sale and worries about volumetric DDoS attacks. Which service BEST absorbs attack traffic before it reaches the origin servers?",
     "options": {
-      "A": "Additional web servers behind a load balancer",
+      "A": "Additional web servers placed behind a load balancer",
       "B": "An on-premises intrusion prevention system",
       "C": "Rate limiting on the origin web servers",
       "D": "A content delivery network with DDoS protection"
@@ -249,7 +249,7 @@
     "stem": "A company puts its web application behind a CDN that terminates TLS at the edge. Traffic from the CDN to the origin server currently travels over plain HTTP across the internet. What is the BEST improvement?",
     "options": {
       "A": "Use TLS to the origin but accept traffic from anywhere",
-      "B": "Encrypt only the login pages between the CDN and origin",
+      "B": "Encrypt only the login pages on the link between the CDN and origin",
       "C": "Use TLS to the origin and accept only CDN traffic there",
       "D": "Add stricter WAF rules at the CDN edge"
     },
@@ -322,7 +322,7 @@
     "options": {
       "A": "Block all IPv6 traffic at the internet firewall",
       "B": "Assess IPv6 use and secure or disable it deliberately",
-      "C": "Add the IPv6 addresses to the IPAM system and move on",
+      "C": "Add the IPv6 addresses to the IPAM system and then move on",
       "D": "Disable IPv6 on every host by policy right away"
     },
     "answer": "B",
@@ -537,7 +537,7 @@
     "stem": "A company's website sits behind a CDN with a web application firewall, but attackers are sending exploits directly to the origin server's public IP address, bypassing the WAF. What should the security team do FIRST?",
     "options": {
       "A": "Add more signatures to the CDN's WAF rules",
-      "B": "Move the origin to a new public IP and keep it secret",
+      "B": "Move the origin server to a new public IP and keep it secret",
       "C": "Allow origin traffic only from the CDN's address ranges",
       "D": "Add host firewall rules that block known attacker IPs"
     },

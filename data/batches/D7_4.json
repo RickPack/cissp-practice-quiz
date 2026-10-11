@@ -106,7 +106,7 @@
     "options": {
       "A": "Handle them in the order the reports arrived",
       "B": "Handle the one that is easier to fix first",
-      "C": "Handle the one reported by the most senior manager",
+      "C": "Handle the one reported by the most senior manager first",
       "D": "Handle the one with the greater impact and urgency"
     },
     "answer": "D",
@@ -130,7 +130,7 @@
     "options": {
       "A": "To restore the previous working state if the change fails",
       "B": "To record who approved the change and when",
-      "C": "To document the budget that was approved for the change",
+      "C": "To document the budget that was approved for making the change",
       "D": "To list the systems the change will affect"
     },
     "answer": "A",
@@ -490,7 +490,7 @@
     "options": {
       "A": "Ask developers to open change tickets after each deployment is finished",
       "B": "Hold a monthly meeting to discuss the changes that caused problems",
-      "C": "Remove all developers' access to every environment, including development",
+      "C": "Remove all developers' access to every environment, including their development ones",
       "D": "Require an approved change record before the pipeline deploys to production"
     },
     "answer": "D",
@@ -585,9 +585,9 @@
     "stem": "The company wants to use email monitoring records as evidence in an employee misconduct case. Its policies never told employees that email could be monitored. What is the BEST long-term correction?",
     "options": {
       "A": "Ask employees to sign consent only when monitoring starts",
-      "B": "Get legal approval for each individual monitoring case in advance",
+      "B": "Get legal approval in advance for each individual monitoring case",
       "C": "Limit monitoring to email headers instead of content",
-      "D": "Publish a policy and login banner saying systems may be monitored"
+      "D": "Publish a policy and login banner saying that systems may be monitored"
     },
     "answer": "D",
     "explanation": "Clear notice through policy and banners removes any reasonable expectation of privacy on company systems, which supports lawful monitoring and the use of its records.",
@@ -755,7 +755,7 @@
       "A": "Advise the employee to seek a court order on their own",
       "B": "Let the employee work from home and take no other step",
       "C": "Coordinate security, HR, and law enforcement on a protective plan",
-      "D": "Brief lobby security with the person's photo, with no other plan"
+      "D": "Brief lobby security with the person's photo, with no other plan in place"
     },
     "answer": "C",
     "explanation": "Credible threats call for a coordinated plan, such as alerting reception, controlling access, and involving law enforcement, to protect the employee and colleagues.",

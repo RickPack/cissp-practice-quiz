@@ -464,7 +464,7 @@
     "type": "application",
     "stem": "A BIA shows the claims processing function loses $50,000 per hour when it is down. A hot site costs far more than a warm site. How should the recovery strategy be chosen?",
     "options": {
-      "A": "Choose the hot site, since the hourly loss is so high",
+      "A": "Choose the hot site, since the hourly loss is so high for this function",
       "B": "Weigh each option's cost against the losses it avoids",
       "C": "Choose the warm site, since its cost is far lower",
       "D": "Choose whichever option the insurer will reimburse"
@@ -850,7 +850,7 @@
     "options": {
       "A": "Address the threats in the order they were identified",
       "B": "Rank by risk, fix the top ones, and record owner acceptance",
-      "C": "Delay the launch until every one of the 60 threats is fixed",
+      "C": "Delay the launch until every one of the 60 identified threats is fixed",
       "D": "Address the 15 threats that are the easiest to fix first"
     },
     "answer": "B",

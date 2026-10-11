@@ -80,7 +80,7 @@
     "type": "managerial_best_first_most",
     "stem": "An internal audit finds that employees who transfer between departments keep their old access rights, accumulating permissions over time. What should the IAM manager implement FIRST to address the root cause?",
     "options": {
-      "A": "Quarterly access reviews of transferred employees' rights",
+      "A": "Quarterly access reviews of all transferred employees' rights",
       "B": "Role templates applied to each employee's new department",
       "C": "Automated alerts when a user holds two departments' roles",
       "D": "A transfer process that revokes old role access upon moving"
@@ -177,7 +177,7 @@
     "stem": "Cloud administrators at a SaaS company hold standing global administrator rights, although most need elevated access only a few hours per month. Which approach BEST reduces risk while preserving their ability to do their jobs?",
     "options": {
       "A": "Require MFA for the standing global administrator accounts",
-      "B": "Split global admin into narrower standing administrator roles",
+      "B": "Split global admin into several narrower standing administrator roles",
       "C": "Review administrator role assignments every quarter",
       "D": "Just-in-time elevation with approval, time limits, and logging"
     },
@@ -226,7 +226,7 @@
     "options": {
       "A": "Require managers to attest in writing to each approval",
       "B": "Give reviewers risk-ranked, plain-language entitlement data",
-      "C": "Move the reviews to the IT team, who know the systems best",
+      "C": "Move the reviews to the IT team, since they know the systems best",
       "D": "Require a written reason for every approved entitlement"
     },
     "answer": "B",

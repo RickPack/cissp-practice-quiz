@@ -275,7 +275,7 @@
       "A": "A rule that only IT may post updates during an outage",
       "B": "A designated spokesperson with pre-approved templates and channels",
       "C": "A phone tree that each manager calls in turn",
-      "D": "An all-staff email list hosted in the data center that has failed"
+      "D": "An all-staff email list hosted in the same data center that has failed"
     },
     "answer": "B",
     "explanation": "A communication plan names who speaks for the organization and which channels to use, so staff and stakeholders get one consistent source of truth.",
@@ -320,7 +320,7 @@
     "type": "managerial_best_first_most",
     "stem": "A new threat intelligence feed floods the SIEM with alerts, and most turn out to be false positives. What is the BEST response?",
     "options": {
-      "A": "Unsubscribe from all threat intelligence feeds and rely on vendor signatures instead",
+      "A": "Unsubscribe from all threat intelligence feeds and rely on the vendor signatures instead",
       "B": "Hire more analysts so that every alert from the new feed can be investigated fully",
       "C": "Keep the feed but lower the severity of every alert it produces to informational",
       "D": "Assess the feed's relevance, accuracy, and timeliness, and drop low-quality indicators"
@@ -371,7 +371,7 @@
       "A": "Review a sample of the clerk's reconciliations each month",
       "B": "Require mandatory vacation with another employee performing the duties",
       "C": "Rotate the clerk's supervisor every six months",
-      "D": "Ask the clerk to sign an annual statement that no fraud has occurred"
+      "D": "Ask the clerk to sign an annual statement confirming that no fraud has occurred"
     },
     "answer": "B",
     "explanation": "Mandatory vacation forces someone else to perform the work, which often uncovers fraud that depends on the perpetrator's constant presence.",
@@ -393,7 +393,7 @@
     "stem": "An off-site vault holds hundreds of backup tapes that are past their retention period. What should the organization do?",
     "options": {
       "A": "Keep them until the vault runs out of space",
-      "B": "Return them to the tape vendor for recycling exactly as they are",
+      "B": "Return them to the tape vendor for recycling exactly as they are now",
       "C": "Destroy them per the schedule and get a certificate of destruction",
       "D": "Move them to the company's own office storeroom"
     },
@@ -585,7 +585,7 @@
     "stem": "Staff at a warehouse loading dock often prop the door open for deliveries, and the area is unattended between trucks. Which control is BEST?",
     "options": {
       "A": "Post a guard at the dock only during delivery hours",
-      "B": "Install a camera that records the loading dock door at all times",
+      "B": "Install a camera that records the loading dock door at all hours",
       "C": "Add a door-prop alarm and have staff receive and escort deliveries",
       "D": "Fit a self-closing hinge to the loading dock door"
     },

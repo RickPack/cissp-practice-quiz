@@ -176,7 +176,7 @@
     "type": "managerial_best_first_most",
     "stem": "How often should an organization test restoring its critical backups?",
     "options": {
-      "A": "Once a year, at the same time as the DR plan review",
+      "A": "Once a year, at the same time as the annual DR plan review",
       "B": "On a regular schedule and after major system changes",
       "C": "Only when a backup job reports a failure",
       "D": "After every software update to the backup tool"

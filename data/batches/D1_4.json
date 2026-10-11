@@ -633,7 +633,7 @@
     "stem": "The board has set a low appetite for regulatory risk. A project team proposes accepting a high compliance risk to meet a launch date. What should the security manager do?",
     "options": {
       "A": "Escalate the decision, since it exceeds the board's stated appetite",
-      "B": "Accept the risk on the team's behalf so the launch date can be met",
+      "B": "Accept the risk on the team's behalf so that the launch date can still be met",
       "C": "Approve the launch and schedule a compliance review for next year",
       "D": "Ask the team to add compensating controls and proceed"
     },
@@ -729,7 +729,7 @@
     "stem": "Management asks the security team to track employees' phone locations around the clock, including off duty. Local law allows it. What should the security professional do?",
     "options": {
       "A": "Advise limiting tracking to work needs, since legal is not the same as ethical",
-      "B": "Implement it as requested, since the law allows it and management has decided",
+      "B": "Implement it as requested, since the law allows it and management has already decided",
       "C": "Implement it, but publish the tracking in the employee handbook",
       "D": "Ask legal to confirm the law before implementing it"
     },
@@ -755,7 +755,7 @@
       "A": "Have both teams jointly fix the bucket and close the ticket",
       "B": "Have management define and document ownership, for example in a RACI chart",
       "C": "Turn on a cloud posture tool that flags public buckets",
-      "D": "Ask the security team to take over configuration of every cloud resource"
+      "D": "Ask the security team to take over the configuration of every cloud resource"
     },
     "answer": "B",
     "explanation": "The root cause is unclear accountability. Management should assign ownership explicitly so every resource has a responsible and accountable party.",

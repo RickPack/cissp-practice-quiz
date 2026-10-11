@@ -297,7 +297,7 @@
     "stem": "Building automation controllers that manage HVAC and lighting sit on the same flat network as employee laptops. What should be done FIRST?",
     "options": {
       "A": "Move them to a segment allowing only required management traffic",
-      "B": "Change all of the controllers' default passwords to strong ones",
+      "B": "Change all of the controllers' default passwords to long, strong ones",
       "C": "Install an IDS to watch all of the controllers' network traffic",
       "D": "Put the controllers on a separate SSID for wireless use"
     },
@@ -489,7 +489,7 @@
     "stem": "A company links two buildings across a public street with a point-to-point wireless bridge. What is the MOST important protection for this link?",
     "options": {
       "A": "Strong encryption and authentication on the bridge traffic",
-      "B": "Directional antennas aimed tightly between the buildings",
+      "B": "Directional antennas aimed tightly at each other between the buildings",
       "C": "Hiding the bridge's network name from broadcasts",
       "D": "A licensed frequency band reserved for the company"
     },

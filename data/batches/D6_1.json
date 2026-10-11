@@ -179,7 +179,7 @@
       "A": "Accept the risk on the owner's behalf and close the finding",
       "B": "Record a time-bound exception with compensating controls and owner sign-off",
       "C": "Isolate the system until the fix, without a documented exception",
-      "D": "Escalate the finding to regulators to pressure the vendor into a faster fix"
+      "D": "Escalate the finding to regulators to pressure the vendor into delivering a faster fix"
     },
     "answer": "B",
     "explanation": "When remediation cannot happen right away, formal exception handling documents the risk, applies compensating controls such as filtering rules, segmentation, or extra monitoring, sets an expiry date, and has the accountable risk owner accept the residual risk.",

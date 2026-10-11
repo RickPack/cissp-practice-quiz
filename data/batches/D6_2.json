@@ -10,7 +10,7 @@
     "options": {
       "A": "A user story describing a normal business function",
       "B": "An attacker's abuse scenario, used to derive security tests",
-      "C": "A test case confirming that a security requirement is met",
+      "C": "A test case confirming that a stated security requirement is met",
       "D": "A regression test written after a bug has been fixed"
     },
     "answer": "B",
@@ -56,7 +56,7 @@
     "type": "knowledge",
     "stem": "What does a breach and attack simulation (BAS) platform primarily do?",
     "options": {
-      "A": "Collect logs from all hosts into one central console",
+      "A": "Collect logs from all of the hosts into one central console",
       "B": "Scan hosts and applications for missing patches",
       "C": "Train employees by sending simulated phishing emails",
       "D": "Run automated, safe attack techniques to test controls"
@@ -107,7 +107,7 @@
       "A": "It can safely exploit the flaws it finds to prove them",
       "B": "It sees installed software and patch levels from inside the host",
       "C": "It needs no network access to the hosts it scans",
-      "D": "It shows exactly what an unauthenticated outside attacker sees"
+      "D": "It shows exactly what an unauthenticated outside attacker would see"
     },
     "answer": "B",
     "explanation": "A credentialed scan logs in to enumerate installed packages, patch levels, and configuration settings, which gives more accurate results with fewer false positives and negatives.",
@@ -249,7 +249,7 @@
     "stem": "With limited analyst time, which log source should generally be reviewed MOST closely?",
     "options": {
       "A": "Firewall logs of blocked inbound internet traffic",
-      "B": "Antivirus signature update logs on every workstation",
+      "B": "Antivirus signature update logs from every single workstation",
       "C": "Web proxy logs for all employee browsing",
       "D": "Privileged and authentication logs on critical systems"
     },

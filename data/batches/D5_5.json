@@ -82,7 +82,7 @@
     "options": {
       "A": "The user's password, which the IdP forwards to it",
       "B": "The user's IP address range on the corporate network",
-      "C": "A cookie the relying party set at the user's last visit",
+      "C": "A cookie the relying party set during the user's last visit to the site",
       "D": "The identity provider's signed assertions about the user"
     },
     "answer": "D",
@@ -368,7 +368,7 @@
     "type": "application",
     "stem": "A tester sends the API a JSON Web Token whose header says \"alg\": \"none\" and whose signature is empty. The API accepts it. What is the BEST fix?",
     "options": {
-      "A": "Shorten the token's lifetime so that forged tokens expire sooner",
+      "A": "Shorten the token's lifetime so that any forged tokens expire much sooner",
       "B": "Validate the token's expiry and issuer claims more strictly",
       "C": "Encrypt the token so that its header cannot be read",
       "D": "Require the expected signing algorithm and reject unsigned tokens"
@@ -464,7 +464,7 @@
     "type": "managerial_best_first_most",
     "stem": "Which approval workflow is BEST for granting access to a sensitive finance application?",
     "options": {
-      "A": "The requester's manager approves the request alone, by email",
+      "A": "The requester's manager approves the request alone, by a simple email",
       "B": "The IT security team approves every access request centrally",
       "C": "The data owner approves without the manager's input",
       "D": "The manager confirms need, and the data owner approves access"
@@ -656,7 +656,7 @@
     "type": "managerial_best_first_most",
     "stem": "A lender finds that some new accounts were opened with synthetic identities that combine real and fake details. What is the BEST improvement to onboarding?",
     "options": {
-      "A": "Check that each applicant's SSN passes number format validation",
+      "A": "Check that each applicant's SSN passes the standard number format validation",
       "B": "Verify each applicant's email and phone with one-time codes",
       "C": "Run a single credit bureau check on each new applicant",
       "D": "Combine document, liveness, and cross-source consistency checks"

@@ -251,7 +251,7 @@
       "A": "Pseudonymize records and keep re-identification keys separate",
       "B": "Give analysts full patient records under a signed NDA",
       "C": "Encrypt the database at rest with strong keys",
-      "D": "Release aggregate statistics only, with no record-level data"
+      "D": "Release aggregate statistics only, with no record-level patient data"
     },
     "answer": "A",
     "explanation": "Pseudonymization replaces direct identifiers with tokens while keeping records linkable for analysis. Re-identification keys are held separately under strict access control.",

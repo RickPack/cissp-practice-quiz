@@ -297,7 +297,7 @@
     "stem": "A public project's CI pipeline runs automatically on pull requests from forks, and those jobs can read the deployment secrets. What is the BEST fix?",
     "options": {
       "A": "Mask the secrets in CI logs so that they are never printed",
-      "B": "Rotate the deployment secrets once a month so that any leaked copies expire",
+      "B": "Rotate the deployment secrets once every month so that any leaked copies expire",
       "C": "Scan fork pull requests for malicious code before merging",
       "D": "Withhold secrets from untrusted fork builds and require approval to run them"
     },
@@ -440,7 +440,7 @@
     "type": "managerial_best_first_most",
     "stem": "What is the BEST way to reduce the risk of a major release to a large customer-facing application?",
     "options": {
-      "A": "Release to every user at once late on a Friday so traffic is low over the weekend",
+      "A": "Release to every user at once, late on a Friday, so that traffic is low over the weekend",
       "B": "A staged rollout to a small share of users, with monitoring and a tested rollback",
       "C": "Skip testing for this release, since the previous release went smoothly",
       "D": "Let each developer deploy their own changes whenever they finish them"
@@ -536,7 +536,7 @@
     "type": "managerial_best_first_most",
     "stem": "A SaaS vendor will not allow customers to run penetration tests against its platform. The service will hold sensitive customer data. What is the BEST approach?",
     "options": {
-      "A": "Test the platform anyway without informing the vendor, since the data is sensitive",
+      "A": "Test the platform anyway without informing the vendor, since the data involved is sensitive",
       "B": "Rely on independent attestations and contract terms for security and breach notice",
       "C": "Accept the service without any assurance, because SaaS providers handle security",
       "D": "Reject all SaaS vendors that decline customer penetration tests, however critical"
@@ -560,7 +560,7 @@
     "type": "application",
     "stem": "A DAST scan in the pipeline reports no findings, but a review shows it only ever reached the login page. What is the BEST correction?",
     "options": {
-      "A": "Run the same scan more often so that it has more chances to find issues",
+      "A": "Run the same scan more often so that it has many more chances to find issues",
       "B": "Add SAST to the pipeline instead of fixing the DAST setup",
       "C": "Configure authenticated scanning with a test account and session handling",
       "D": "Point the scanner at the API documentation page as well"

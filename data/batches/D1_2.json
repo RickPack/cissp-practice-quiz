@@ -632,7 +632,7 @@
     "type": "managerial_best_first_most",
     "stem": "A software company hires contractors from a staffing agency to work on a product that contains sensitive customer data. Which approach BEST manages the personnel risk?",
     "options": {
-      "A": "Rely on the agency's assurance that its contractors are trustworthy",
+      "A": "Rely on the staffing agency's assurance that its contractors are trustworthy",
       "B": "Require each contractor to sign the company's NDA on day one",
       "C": "Contract for equivalent screening, NDAs, and least-privilege access",
       "D": "Monitor contractor activity with enhanced logging"
@@ -683,7 +683,7 @@
       "A": "The fraud-detection service, with a net value of $45,000",
       "B": "Cyber insurance, with a net value of $40,000",
       "C": "Both together, with a net value of $55,000",
-      "D": "Cyber insurance, because it costs $25,000 less per year"
+      "D": "Cyber insurance, because it costs $25,000 less per year to buy"
     },
     "answer": "A",
     "explanation": "Service: ($120,000 - $30,000) - $45,000 = $45,000. Insurance: it cuts expected losses by $60,000 (50% of $120,000) for $20,000, a net of $40,000. The service alone delivers the most value.",

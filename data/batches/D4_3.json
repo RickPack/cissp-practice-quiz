@@ -584,7 +584,7 @@
     "type": "managerial_best_first_most",
     "stem": "After ransomware spread across a flat network, leadership approves a segmentation project. The network team wants to start writing firewall rules immediately. What should happen FIRST?",
     "options": {
-      "A": "Buy next-generation firewalls for every floor of the building",
+      "A": "Buy next-generation firewalls for every floor of the office building",
       "B": "Block all traffic between subnets starting tonight",
       "C": "Assign new VLAN numbers to every department straight away",
       "D": "Map required traffic flows and group systems into trust zones"
@@ -610,7 +610,7 @@
     "options": {
       "A": "Deploy RA Guard, then monitor IPv6 or disable it where unused",
       "B": "Add IPv6 signatures to the IDS and change nothing else",
-      "C": "Set static IPv4 default gateway entries on every single host",
+      "C": "Set static IPv4 default gateway entries on every single host in the office",
       "D": "Block all IPv6 traffic at the internet-facing firewall only"
     },
     "answer": "A",
@@ -705,7 +705,7 @@
     "stem": "After a CDN goes live, users occasionally see another user's account page. What is the BEST fix?",
     "options": {
       "A": "Mark logged-in responses uncacheable and key caches by session",
-      "B": "Shorten the CDN cache lifetime for all content to five minutes",
+      "B": "Shorten the CDN cache lifetime for all of the site's content to five minutes",
       "C": "Turn off caching for the whole website at the CDN to be safe",
       "D": "Add each user's IP address to the CDN cache key for every page"
     },
@@ -755,7 +755,7 @@
       "A": "Add more SQL injection signatures to the existing IDS",
       "B": "Add a second IDS sensor in the same place beside the first one",
       "C": "Inspect traffic after TLS is terminated, such as with a WAF there",
-      "D": "Give the IDS the server's private key so it can decrypt traffic"
+      "D": "Give the IDS the server's private key so that it can decrypt the traffic"
     },
     "answer": "C",
     "explanation": "The IDS sees only encrypted traffic, so signatures cannot match. Inspection must happen where traffic is decrypted, such as a WAF at or behind the load balancer.",

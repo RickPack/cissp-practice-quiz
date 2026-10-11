@@ -395,7 +395,7 @@
       "A": "A secure share or encrypted email limited to named recipients",
       "B": "Plain email marked confidential, over server-to-server TLS",
       "C": "A file-sharing link that is set to expire after seven days",
-      "D": "A fax sent to the law firm's main office line for collection"
+      "D": "A fax sent to the law firm's main office line for staff to collect"
     },
     "answer": "A",
     "explanation": "Encryption and access limited to the intended recipients protect the drafts in transit and at the recipient, with an audit trail.",
@@ -536,7 +536,7 @@
     "type": "application",
     "stem": "Memory-scraping malware on a retailer's point-of-sale terminals steals card numbers while they are being processed. Which control BEST protects card data at this point?",
     "options": {
-      "A": "Full-disk encryption on the point-of-sale terminals",
+      "A": "Full-disk encryption on all of the point-of-sale terminals",
       "B": "TLS between the store and the payment processor",
       "C": "Point-to-point encryption starting in the card reader",
       "D": "Application allowlisting on the POS terminals"

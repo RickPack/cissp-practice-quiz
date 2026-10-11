@@ -56,7 +56,7 @@
     "type": "knowledge",
     "stem": "What is the main purpose of cryptographically signing commits in a source code repository?",
     "options": {
-      "A": "To link each commit to the change ticket that approved it",
+      "A": "To link each commit to the specific change ticket that approved it",
       "B": "To make the commit history impossible to rewrite",
       "C": "To prove the code was reviewed before merging",
       "D": "To verify who authored each commit and that it is unaltered"
@@ -513,7 +513,7 @@
     "stem": "Developers can push container images directly to the production registry, bypassing the pipeline's tests and scans. What is the BEST control?",
     "options": {
       "A": "Ask developers to run the tests locally before pushing images",
-      "B": "Scan the production registry once a month for vulnerable images",
+      "B": "Scan the production registry once a month for any vulnerable images",
       "C": "Deploy only pipeline-signed images, enforced by admission control",
       "D": "Require two developers to approve each direct push"
     },

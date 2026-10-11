@@ -489,7 +489,7 @@
     "stem": "Mean time to remediate critical vulnerabilities has risen from 10 to 45 days over two quarters. What should the security team do?",
     "options": {
       "A": "Find where the delay occurs, such as change windows or ownership",
-      "B": "Hire more patching staff before finding the cause of the delay",
+      "B": "Hire more patching staff before finding out the cause of the delay",
       "C": "Report the metric only for internet-facing systems",
       "D": "Raise the target to 60 days to match current capacity"
     },

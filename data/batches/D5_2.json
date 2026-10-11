@@ -298,7 +298,7 @@
     "options": {
       "A": "Users may reuse their SSO password on other websites",
       "B": "Some SaaS vendors may not support SAML for every app",
-      "C": "SSO sessions may outlast each application's own timeout",
+      "C": "SSO sessions may outlast each individual application's own timeout",
       "D": "An IdP compromise or outage affects all 60 applications"
     },
     "answer": "D",
@@ -440,7 +440,7 @@
     "type": "application",
     "stem": "Incident responders find that attackers extracted the hash of the Kerberos ticket-granting account (krbtgt) and are forging tickets. Which remediation step is REQUIRED to invalidate the forged tickets?",
     "options": {
-      "A": "Reset every user's password once across the entire domain",
+      "A": "Reset every user's password once across the entire Active Directory domain",
       "B": "Reset the krbtgt password twice, with replication between",
       "C": "Reset the krbtgt password once and revoke admin rights",
       "D": "Rebuild the domain controllers from known-clean images"

@@ -106,7 +106,7 @@
     "options": {
       "A": "Phishing-resistant MFA and conditional access at the identity provider",
       "B": "Shorter SSO sessions with frequent re-entry of the password",
-      "C": "Separate passwords for each application in addition to the SSO login",
+      "C": "Separate passwords for each application in addition to the SSO login itself",
       "D": "Monitoring identity provider sign-ins for impossible travel only"
     },
     "answer": "A",
@@ -681,7 +681,7 @@
     "stem": "A former employee is rehired into a different department. The help desk reactivates their old account with all of its previous permissions. What should the process do instead?",
     "options": {
       "A": "Provision access based on the new role and remove the old entitlements",
-      "B": "Keep the old permissions, since the employee already had them approved",
+      "B": "Keep the old permissions, since the employee already had them approved before",
       "C": "Restore the old access and review it at the next quarterly cycle",
       "D": "Copy the access of a peer in the new department"
     },

@@ -130,7 +130,7 @@
     "options": {
       "A": "Back up all email now and keep the deletion policy running",
       "B": "Tell all employees not to delete any email about the case",
-      "C": "Ask the legal team to narrow the request before taking any action",
+      "C": "Ask the legal team to narrow the request before taking any other action",
       "D": "Suspend automated deletion for the relevant data under a legal hold"
     },
     "answer": "D",

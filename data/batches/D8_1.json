@@ -176,7 +176,7 @@
     "type": "managerial_best_first_most",
     "stem": "Attackers compromised a build server at a software vendor and inserted malicious code into signed releases distributed to customers. Which control would BEST have prevented the tampered builds from being released?",
     "options": {
-      "A": "Requiring developers to use complex passwords for the source repository",
+      "A": "Requiring developers to use complex passwords for the source code repository",
       "B": "Hardened build systems with independently verified, reproducible builds",
       "C": "Scanning the final release with antivirus before publishing it",
       "D": "Increasing the key length of the code-signing certificate"
@@ -225,7 +225,7 @@
     "stem": "A developer accidentally committed a cloud access key to a public code repository. The commit was removed 10 minutes later. What should the security team do FIRST?",
     "options": {
       "A": "Rewrite the repository history to purge the commit completely",
-      "B": "Search the internet to determine whether anyone copied the key",
+      "B": "Search the internet to determine whether anyone has copied the key",
       "C": "Train the developer on secure coding practices",
       "D": "Revoke and rotate the exposed key, then review its activity logs"
     },

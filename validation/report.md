@@ -48,19 +48,19 @@ Allowed range 20%-30% per letter (checked).
 
 ## Length bias
 
-Correct answer is the longest option (ties count) in 334/1000 questions (33%); warning above 35%, and below 15% once the bank has 200 questions.
+Correct answer is the longest option (ties count) in 259/1000 questions (26%); warning above 35%, and below 15% once the bank has 200 questions.
 Correct answer is the shortest option in 220/1000 (22%).
 
 | Domain | Longest | Shortest |
 |---|---|---|
-| D1 | 42/160 (26%) | 42/160 (26%) |
-| D2 | 29/100 (29%) | 23/100 (23%) |
-| D3 | 45/130 (35%) | 27/130 (21%) |
-| D4 | 52/130 (40%) | 26/130 (20%) |
-| D5 | 46/130 (35%) | 17/130 (13%) |
-| D6 | 39/120 (32%) | 35/120 (29%) |
-| D7 | 44/130 (34%) | 24/130 (18%) |
-| D8 | 37/100 (37%) | 26/100 (26%) |
+| D1 | 34/160 (21%) | 42/160 (26%) |
+| D2 | 25/100 (25%) | 23/100 (23%) |
+| D3 | 32/130 (25%) | 27/130 (21%) |
+| D4 | 41/130 (32%) | 26/130 (20%) |
+| D5 | 34/130 (26%) | 17/130 (13%) |
+| D6 | 32/120 (27%) | 35/120 (29%) |
+| D7 | 34/130 (26%) | 24/130 (18%) |
+| D8 | 27/100 (27%) | 26/100 (26%) |
 
 ## Most similar stems
 

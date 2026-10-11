@@ -33,7 +33,7 @@
     "stem": "Which statement BEST summarizes the core idea of zero trust?",
     "options": {
       "A": "Never trust by default; verify every access request explicitly",
-      "B": "Encrypt all traffic so the network location no longer matters",
+      "B": "Encrypt all traffic so that the network location no longer matters",
       "C": "Replace the VPN with a cloud-based secure web gateway",
       "D": "Authenticate users strongly once, then trust the session"
     },
@@ -488,7 +488,7 @@
     "type": "managerial_best_first_most",
     "stem": "A development team pulls container images from public registries straight into production. What is the BEST control?",
     "options": {
-      "A": "Pin each image to a specific version tag in the manifests",
+      "A": "Pin each image to a specific version tag in the deployment manifests",
       "B": "Scan running containers for malware once a week",
       "C": "Pull only official images that have many downloads",
       "D": "Allow only scanned, signed images from an approved registry"
@@ -730,7 +730,7 @@
     "options": {
       "A": "Site 2's newer building and modern cooling plant",
       "B": "Lower hazard exposure and redundant utility feeds",
-      "C": "Site 2's shorter commute for the operations staff",
+      "C": "Site 2's shorter daily commute for the operations staff",
       "D": "Site 2's larger floor space for future growth"
     },
     "answer": "B",

@@ -59,7 +59,7 @@
       "A": "Encrypts memory pages so that other processes cannot read them",
       "B": "Randomizes where code and data are loaded in memory to hinder exploits",
       "C": "Prevents code from running in memory regions marked as data only",
-      "D": "Stores encryption keys in a tamper-resistant chip on the motherboard"
+      "D": "Stores encryption keys in a tamper-resistant chip on the computer's motherboard"
     },
     "answer": "B",
     "explanation": "ASLR places the stack, heap, and libraries at unpredictable addresses, so exploits that rely on known memory locations fail.",
@@ -393,7 +393,7 @@
     "stem": "A law requires that certain citizen records stay within the country. The company is moving the records to a public cloud provider. What is the BEST approach?",
     "options": {
       "A": "Rely on the provider's statement that data stays in-country",
-      "B": "Encrypt the records and then store them in whichever region is the cheapest",
+      "B": "Encrypt the records and then store them in whichever cloud region is the cheapest",
       "C": "Store the records in-country but replicate backups abroad",
       "D": "Use an in-country region and secure contract terms that keep the data there"
     },
@@ -440,7 +440,7 @@
     "type": "managerial_best_first_most",
     "stem": "A web application connects to its database with the database administrator account. What is the BEST architectural change?",
     "options": {
-      "A": "Change the administrator password every month and keep using the same account",
+      "A": "Change the administrator password every month and keep using the same shared account",
       "B": "Use a dedicated application account limited to the tables and actions it needs",
       "C": "Keep the admin account but store its password in a secrets vault",
       "D": "Restrict the admin account to logins from the web server's address"
@@ -680,7 +680,7 @@
     "type": "managerial_best_first_most",
     "stem": "A serverless function that resizes uploaded images runs with a role granting full administrative rights over all storage in the account. What is the BEST fix?",
     "options": {
-      "A": "Add logging to the function so that any misuse of its rights can be investigated",
+      "A": "Add logging to the function so that any misuse of its rights can be investigated later",
       "B": "Rotate the function's role credentials automatically every day",
       "C": "Require MFA and review for anyone who edits the function's code",
       "D": "Give the function its own role limited to the specific buckets and actions it uses"
@@ -776,7 +776,7 @@
     "type": "application",
     "stem": "A software download page lists a SHA-256 hash next to the installer so users can verify it. Why does this give limited protection if the website itself is compromised?",
     "options": {
-      "A": "SHA-256 collisions can be found for installers of any size",
+      "A": "SHA-256 collisions can now be found for installers of any size",
       "B": "Most users never compare the hash before installing",
       "C": "The hash changes each time the file is downloaded",
       "D": "An attacker who swaps the installer can also swap the hash"

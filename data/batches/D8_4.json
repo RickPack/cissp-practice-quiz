@@ -490,7 +490,7 @@
     "options": {
       "A": "Allow only approved extensions on managed developer workstations",
       "B": "Scan developer laptops weekly for malicious extensions",
-      "C": "Ask developers to read extension reviews before installing them",
+      "C": "Ask developers to read the extension reviews carefully before installing them",
       "D": "Shorten token lifetimes on the source code platform"
     },
     "answer": "A",
@@ -560,7 +560,7 @@
     "type": "application",
     "stem": "A security researcher discloses that a commercial product the company uses contains a hidden, hard-coded administrator account. The vendor has not released a fix. What should the company do FIRST?",
     "options": {
-      "A": "Change the hard-coded account's password on each affected device",
+      "A": "Change the hard-coded account's password on each of the affected devices",
       "B": "Monitor the product's logs for logins by that account",
       "C": "Replace the product with a competitor's within a week",
       "D": "Restrict the product's management interfaces and press the vendor"

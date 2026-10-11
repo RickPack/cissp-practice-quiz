@@ -609,7 +609,7 @@
     "stem": "An investigation needs logs held by a SaaS provider that the company cannot access directly, and the provider deletes them after 30 days. What should the company do FIRST?",
     "options": {
       "A": "Send a preservation request through counsel, per the contract terms",
-      "B": "Ask the provider's support desk informally to keep the logs for now",
+      "B": "Ask the provider's support desk informally to keep the logs for the time being",
       "C": "Collect the company's own endpoint logs and skip the provider",
       "D": "Wait for a court subpoena before contacting the provider"
     },
@@ -659,7 +659,7 @@
       "A": "Alert whenever a log source's event volume drops sharply",
       "B": "Review each detection rule by hand once a year",
       "C": "Treat detections as code and test them with sample events",
-      "D": "Add more detection rules so that missing ones matter less"
+      "D": "Add more detection rules so that any missing ones matter much less"
     },
     "answer": "C",
     "explanation": "Detections should be version-controlled and tested automatically against known-bad events, so a broken rule is noticed quickly.",

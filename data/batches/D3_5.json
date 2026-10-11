@@ -105,7 +105,7 @@
     "stem": "What security risk does multi-tenancy introduce in public cloud services?",
     "options": {
       "A": "Data could leak between customers if isolation fails",
-      "B": "Customers cannot audit the provider's physical sites",
+      "B": "Customers cannot audit the provider's physical data center sites",
       "C": "The provider can read every customer's data at will",
       "D": "Customers must share one encryption key per region"
     },
@@ -419,7 +419,7 @@
       "A": "Base64-encode the cookie value so the role is harder to read",
       "B": "Keep authorization on the server, or sign and verify client-side state",
       "C": "Add a hidden form field that repeats the user's role on each request",
-      "D": "Mark the role cookie as HttpOnly and Secure so scripts cannot read it"
+      "D": "Mark the role cookie as HttpOnly and Secure so that scripts cannot read it"
     },
     "answer": "B",
     "explanation": "Anything stored on the client can be changed. Authorization decisions must rely on server-side data, or on state that is cryptographically signed and checked.",
@@ -515,7 +515,7 @@
       "A": "Keep the wildcard certificate but rotate its key every 90 days",
       "B": "Limit wildcards and give sensitive services their own certificates",
       "C": "Store the wildcard key in a vault each team can pull from",
-      "D": "Monitor certificate transparency logs for misissued certificates"
+      "D": "Monitor certificate transparency logs for any misissued certificates"
     },
     "answer": "B",
     "explanation": "The same private key on 60 servers means a compromise of any one, including a weak test host, exposes every subdomain. Separate certificates limit the blast radius.",

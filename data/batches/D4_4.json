@@ -490,7 +490,7 @@
     "options": {
       "A": "Enable port security that allows one MAC address per jack",
       "B": "Add a camera that records anyone using the lobby wall jacks",
-      "C": "Put a lock on the network closet that serves the lobby jacks",
+      "C": "Put a lock on the network closet that serves the lobby's wall jacks",
       "D": "Disable unused switch ports and require 802.1X on public jacks"
     },
     "answer": "D",

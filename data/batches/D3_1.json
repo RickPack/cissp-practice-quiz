@@ -80,7 +80,7 @@
     "type": "managerial_best_first_most",
     "stem": "A company with a flat internal network suffers a breach in which an attacker moves from a compromised laptop to the finance database. The board asks for an architectural change that reduces implicit trust inside the network. What should the security architect recommend as the BEST approach?",
     "options": {
-      "A": "Adding a second perimeter firewall from a different vendor",
+      "A": "Adding a second perimeter firewall from a different security vendor",
       "B": "Segmenting finance systems behind an internal firewall",
       "C": "Deploying EDR on every laptop and server in the company",
       "D": "Adopting zero trust with identity-aware, per-request access"
@@ -177,7 +177,7 @@
     "stem": "An e-commerce company learns that the private key for its public web server certificate was included in a code repository that was briefly public. There is no evidence yet of misuse. What should the security team do FIRST?",
     "options": {
       "A": "Monitor web traffic for 30 days to confirm whether the key was misused",
-      "B": "Remove the key from the repository history and continue using the certificate",
+      "B": "Remove the key from the repository history and continue using the same certificate",
       "C": "Notify all customers that their payment data may have been compromised",
       "D": "Revoke the certificate and replace it with one using a newly generated key pair"
     },

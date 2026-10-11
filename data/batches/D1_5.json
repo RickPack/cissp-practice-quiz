@@ -464,7 +464,7 @@
     "type": "managerial_best_first_most",
     "stem": "A regulator sends a formal inquiry asking for documents about a recent data breach. What should the company do FIRST?",
     "options": {
-      "A": "Answer immediately with whatever documents the security team can find",
+      "A": "Answer immediately with whatever documents the security team can find quickly",
       "B": "Involve counsel, preserve relevant records, and respond through counsel",
       "C": "Have the CISO call the regulator to explain informally",
       "D": "Wait until the internal investigation has finished, then reply"

@@ -440,7 +440,7 @@
     "type": "managerial_best_first_most",
     "stem": "After a quarterly access review, reviewers flagged 40 entitlements for removal. Three months later, 25 of them are still active. What should the organization do?",
     "options": {
-      "A": "Repeat the access review with a new group of reviewers next time",
+      "A": "Repeat the access review with a new group of reviewers next quarter instead",
       "B": "Track each removal as a ticket and verify it in the target system",
       "C": "Send reviewers a reminder about their pending removals",
       "D": "Report the 25 open items to the audit committee"
