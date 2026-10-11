@@ -153,7 +153,7 @@
     "stem": "A senior engineer applies an unapproved firewall rule change on a Friday night to fix an urgent outage, and the change works. On Monday, what should the change manager do?",
     "options": {
       "A": "Reverse the change, since all unapproved changes must be undone",
-      "B": "Take no action, because the outage was resolved successfully",
+      "B": "Reclassify it as a standard change, since it fixed the outage",
       "C": "Log it as an emergency change and review it retroactively",
       "D": "Discipline the engineer under the change policy first"
     },
@@ -161,7 +161,7 @@
     "explanation": "Emergency change procedures allow urgent fixes to restore service, but the change must then be documented, reviewed, and approved after the fact to confirm it did not introduce new risk.",
     "distractor_rationales": {
       "A": "Reversing a working fix could bring the outage back. The review should decide whether the change stays.",
-      "B": "Skipping review leaves an undocumented change and configuration drift.",
+      "B": "Success does not make an unapproved change standard. It must be logged as an emergency change and reviewed.",
       "D": "The emergency may justify the change. Record it and review it before deciding whether discipline applies."
     },
     "references_topic": "Emergency change process",

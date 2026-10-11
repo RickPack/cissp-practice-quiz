@@ -442,14 +442,14 @@
     "options": {
       "A": "Release to every user at once, late on a Friday, so that traffic is low over the weekend",
       "B": "A staged rollout to a small share of users, with monitoring and a tested rollback",
-      "C": "Skip testing for this release, since the previous release went smoothly",
+      "C": "Run the full regression suite twice, then release to everyone at once",
       "D": "Let each developer deploy their own changes whenever they finish them"
     },
     "answer": "B",
     "explanation": "A staged (canary) rollout exposes a small group first, so problems are caught early and rolled back before they reach everyone.",
     "distractor_rationales": {
       "A": "A full Friday release maximizes impact and reduces staff to respond.",
-      "C": "Past success does not validate new code.",
+      "C": "More testing helps, but a release to all users at once still exposes everyone if something slips through.",
       "D": "Uncoordinated deployments bypass release control."
     },
     "references_topic": "Canary releases",
