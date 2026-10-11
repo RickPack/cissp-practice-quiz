@@ -56,17 +56,17 @@
     "type": "managerial_best_first_most",
     "stem": "What is the BEST way to protect developers' accounts on the company's source code hosting platform?",
     "options": {
-      "A": "Let developers share one account per team to simplify permission management",
-      "B": "Use long passwords that developers never change, so they are not forgotten",
+      "A": "Require long passwords and SSH keys for every account",
+      "B": "Restrict platform access to the corporate network only",
       "C": "Require SSO with MFA for all accounts on the code platform",
-      "D": "Allow access only from developers' personal email addresses"
+      "D": "Review the platform's user accounts once every quarter"
     },
     "answer": "C",
     "explanation": "Source code platforms hold valuable intellectual property and can inject code into builds. SSO with MFA ties access to managed identities and blocks most credential attacks.",
     "distractor_rationales": {
-      "A": "Shared accounts destroy accountability.",
-      "B": "Unchanged passwords without MFA remain vulnerable to theft.",
-      "D": "Personal email accounts are outside company control."
+      "A": "Strong passwords and keys help, but without SSO and MFA there is no central control or second factor.",
+      "B": "Network restriction helps, but phished credentials still work from inside.",
+      "D": "Reviews find stale accounts but do not stop credential theft."
     },
     "references_topic": "Protecting source code platform accounts",
     "version": "0.4"
@@ -80,17 +80,17 @@
     "type": "knowledge",
     "stem": "Which check examines container images for vulnerable operating system packages and libraries before they are deployed?",
     "options": {
-      "A": "Real user monitoring of the running application in production",
-      "B": "A load test of the container orchestration cluster at peak traffic",
-      "C": "A manual review of the application's user interface design",
+      "A": "Static analysis of the application's source code",
+      "B": "Software composition analysis of the repository's manifests",
+      "C": "Runtime monitoring of containers once they are running",
       "D": "Container image scanning"
     },
     "answer": "D",
     "explanation": "Image scanners inspect the packages and libraries inside each image layer and compare them with vulnerability databases, so risky images can be blocked before deployment.",
     "distractor_rationales": {
-      "A": "Real user monitoring measures user experience in production.",
-      "B": "Load tests measure performance.",
-      "C": "UI design review does not inspect image contents."
+      "A": "SAST looks at custom code, not packages in the image.",
+      "B": "Manifest scanning sees declared libraries but misses operating system packages baked into the image.",
+      "C": "Runtime monitoring happens after deployment, too late for this check."
     },
     "references_topic": "Container image scanning",
     "version": "0.4"
@@ -106,15 +106,15 @@
     "options": {
       "A": "Typosquatting",
       "B": "Dependency confusion caused by a private and a public package with the same name",
-      "C": "SQL injection against the package registry's database",
-      "D": "Cross-site scripting in the package manager's website"
+      "C": "Starjacking using a faked popularity score",
+      "D": "Repojacking of an abandoned source repository"
     },
     "answer": "A",
     "explanation": "Typosquatting publishes malicious packages with names close to popular ones, relying on typing mistakes.",
     "distractor_rationales": {
       "B": "Dependency confusion uses the exact name of an internal package, not a misspelling.",
-      "C": "No database injection is involved.",
-      "D": "No browser script injection is involved."
+      "C": "Starjacking fakes popularity. This attack relies on a misspelled name.",
+      "D": "Repojacking takes over a renamed or abandoned repository, not a lookalike name."
     },
     "references_topic": "Typosquatting",
     "version": "0.4"
@@ -152,17 +152,17 @@
     "type": "application",
     "stem": "A partner integration sends its API key as a query string parameter in every request URL. What is the MAIN risk?",
     "options": {
-      "A": "The key makes each request noticeably slower to process",
-      "B": "The key is too short to be secure, whatever length it is",
+      "A": "The key is sent unencrypted even when TLS is used",
+      "B": "The key cannot be rotated without changing the API",
       "C": "The key can leak through logs, browser history, and proxies",
-      "D": "The key prevents the API from using TLS encryption for the request at all"
+      "D": "The key is exposed to cross-site scripting in the page"
     },
     "answer": "C",
     "explanation": "URLs are recorded in many places, such as server logs, proxies, and analytics. Sending credentials in headers, or using token-based authentication, keeps them out of those records.",
     "distractor_rationales": {
-      "A": "Performance is not the security concern.",
-      "B": "Length is not the issue; the placement is.",
-      "D": "URL parameters are still encrypted in transit by TLS, but they are logged at the endpoints."
+      "A": "TLS encrypts the query string in transit. The risk is where URLs get stored afterward.",
+      "B": "Rotation is possible either way. The risk is leakage through logs and history.",
+      "D": "This is server-to-server integration. The risk is URLs being recorded."
     },
     "references_topic": "API keys in URLs",
     "version": "0.4"
@@ -248,17 +248,17 @@
     "type": "knowledge",
     "stem": "What is build provenance?",
     "options": {
-      "A": "A list of the developers who were employed while the software was built",
-      "B": "The marketing history of a software product since its first release",
-      "C": "A verifiable record of how, where, and from what source an artifact was built",
-      "D": "A backup copy of the build server's operating system"
+      "A": "A record of who approved each release for production use",
+      "B": "The software bill of materials listing components",
+      "C": "A verifiable record of how, where, and from what an artifact was built",
+      "D": "A checksum published next to the download link for each release"
     },
     "answer": "C",
     "explanation": "Provenance records the source revision, build steps, and build environment for an artifact, and it can be signed so consumers can verify the artifact came from the expected pipeline.",
     "distractor_rationales": {
-      "A": "A staff list does not describe how an artifact was built.",
-      "B": "Marketing history is unrelated.",
-      "D": "A backup of the build server is not a record of a specific build."
+      "A": "Approval records show governance, not how the artifact was built.",
+      "B": "An SBOM lists what is inside, not how and where it was built.",
+      "D": "A checksum shows the file is intact, not where it came from."
     },
     "references_topic": "Build provenance",
     "version": "0.4"
@@ -296,17 +296,17 @@
     "type": "application",
     "stem": "A build automatically pulled a new minor version of a dependency that had been published by an attacker who took over the maintainer's account. Which practice BEST prevents this?",
     "options": {
-      "A": "Pin exact versions with a lockfile and hashes, and review updates before accepting them",
-      "B": "Always install the newest version of every dependency at each build",
-      "C": "Delete the dependency cache on the build server before every build",
-      "D": "Run the build only at night, when attackers are less active"
+      "A": "Pin exact versions with a lockfile and hashes; review each update",
+      "B": "Use semantic version ranges that allow minor updates",
+      "C": "Scan each new dependency version with SCA after the build completes",
+      "D": "Mirror the public registry through an internal proxy"
     },
     "answer": "A",
     "explanation": "Lockfiles with hashes make builds use exactly the reviewed versions. Updates then arrive through a deliberate, reviewed change rather than automatically.",
     "distractor_rationales": {
-      "B": "Always taking the newest version is how the malicious release got in.",
-      "C": "Clearing the cache forces fresh downloads, which can include malicious versions.",
-      "D": "Attackers are not limited by time of day."
+      "B": "Allowing minor updates is exactly how the malicious version got in.",
+      "C": "SCA flags known vulnerabilities. A freshly published malicious version may not be known yet.",
+      "D": "A mirror still passes new versions through unless pinning and review stop them."
     },
     "references_topic": "Pinning dependencies with lockfiles",
     "version": "0.4"
@@ -320,17 +320,17 @@
     "type": "managerial_best_first_most",
     "stem": "A company is negotiating a contract for commercial software that will process customer data. Which security term is MOST important to include?",
     "options": {
-      "A": "A promise that the software will never contain any vulnerabilities",
+      "A": "A service level guaranteeing 99.9% software uptime",
       "B": "Vulnerability notification and patch timelines based on severity",
-      "C": "A requirement that the vendor share its full source code publicly",
-      "D": "A discount if the vendor's stock price falls during the contract term"
+      "C": "A right to audit the vendor's offices once a year",
+      "D": "Indemnity covering losses from any software defect"
     },
     "answer": "B",
     "explanation": "No software is flawless. Commitments to notify the customer and patch within defined timelines give the customer a way to manage vulnerabilities as they appear.",
     "distractor_rationales": {
-      "A": "No vendor can guarantee zero vulnerabilities.",
-      "C": "Public source code is rarely realistic for commercial vendors.",
-      "D": "Stock price has nothing to do with security."
+      "A": "Uptime is about availability, not how security flaws are handled.",
+      "C": "Office audits do not set obligations for fixing vulnerabilities.",
+      "D": "Broad indemnity is rarely agreed and still does not ensure timely patches."
     },
     "references_topic": "Vulnerability terms in software contracts",
     "version": "0.4"
@@ -440,17 +440,17 @@
     "type": "application",
     "stem": "The test environment is refreshed every month with a full copy of production customer data, and many contractors can access it. What is the BEST fix?",
     "options": {
-      "A": "Stop refreshing the test environment so that its data gets gradually older",
-      "B": "Ask contractors to sign an agreement not to look at any customer records",
+      "A": "Encrypt the test database with a key held by the DBAs",
+      "B": "Remove contractor access to the test environment entirely",
       "C": "Mask or replace sensitive data before it is loaded into test",
-      "D": "Give the test environment the same number of users as production"
+      "D": "Refresh test data quarterly instead of monthly"
     },
     "answer": "C",
     "explanation": "Test environments usually have weaker controls and wider access. Masking or generating synthetic data keeps realistic test data without exposing real customers.",
     "distractor_rationales": {
-      "A": "Old data is still real customer data.",
-      "B": "An agreement does not prevent exposure.",
-      "D": "Matching user counts does nothing to protect the data."
+      "A": "Encryption at rest does not stop authorized test users seeing the real data.",
+      "B": "Removing contractors may block needed work, and staff still see real data. Masking fixes the cause.",
+      "D": "Less frequent refreshes still copy real customer data."
     },
     "references_topic": "Data in non-production environments",
     "version": "0.4"
@@ -466,7 +466,7 @@
     "options": {
       "A": "The central security team alone, since developers lack security skills",
       "B": "The operations team alone, since it runs the servers in production",
-      "C": "No one in particular, since automated tools handle security in DevOps",
+      "C": "The product manager, since they own the service's roadmap",
       "D": "The service team, with the security team providing guardrails and expertise"
     },
     "answer": "D",
@@ -474,7 +474,7 @@
     "distractor_rationales": {
       "A": "A central team alone becomes a bottleneck and lacks service context.",
       "B": "Operations alone lacks control over the code.",
-      "C": "Tools support security but do not own it."
+      "C": "Product managers set priorities, but the team that builds and runs the service owns its security."
     },
     "references_topic": "Security ownership in DevOps",
     "version": "0.4"
@@ -489,16 +489,16 @@
     "stem": "A malicious IDE extension installed by several developers stole their source code platform tokens. What is the BEST preventive control?",
     "options": {
       "A": "Allow only approved extensions on managed developer workstations",
-      "B": "Ban IDEs entirely and require developers to use plain text editors",
+      "B": "Scan developer laptops weekly for malicious extensions",
       "C": "Ask developers to read extension reviews before installing them",
-      "D": "Rotate all tokens once a year during the annual security review"
+      "D": "Shorten token lifetimes on the source code platform"
     },
     "answer": "A",
     "explanation": "Developer tools run with the developer's access. Managing workstations and allowing only vetted extensions reduces this supply chain risk.",
     "distractor_rationales": {
-      "B": "Banning IDEs is impractical and harms productivity.",
+      "B": "Weekly scans find malicious extensions after they have already stolen tokens.",
       "C": "Reviews can be faked and do not reveal hidden malware.",
-      "D": "Annual rotation leaves stolen tokens usable for months."
+      "D": "Shorter lifetimes limit stolen tokens, but malicious extensions can steal fresh ones."
     },
     "references_topic": "Controlling IDE extensions",
     "version": "0.4"
@@ -514,15 +514,15 @@
     "options": {
       "A": "Add a cleanup script at the end of each job and trust that it always completes",
       "B": "Use ephemeral, isolated runners that are created fresh for each job",
-      "C": "Limit the runner to jobs from projects whose names start with the same letter",
-      "D": "Increase the runner's disk size so that jobs do not overwrite each other"
+      "C": "Run a separate runner for each team on a shared host",
+      "D": "Encrypt secrets at rest on the runner's disk"
     },
     "answer": "B",
     "explanation": "Fresh, isolated runners start clean for each job and are destroyed afterward, so nothing from one job or project is left for another to read.",
     "distractor_rationales": {
       "A": "Cleanup scripts can fail or be skipped by a malicious job.",
-      "C": "Naming rules do not create isolation.",
-      "D": "Disk size does not prevent access to leftover data."
+      "C": "Persistent runners still leak between jobs in a team, and a shared host can leak between runners.",
+      "D": "Encryption at rest does not help when a job on the runner can read the decrypted secrets."
     },
     "references_topic": "Ephemeral build runners",
     "version": "0.4"
@@ -560,17 +560,17 @@
     "type": "application",
     "stem": "A security researcher discloses that a commercial product the company uses contains a hidden, hard-coded administrator account. The vendor has not released a fix. What should the company do FIRST?",
     "options": {
-      "A": "Wait quietly for the vendor's next scheduled release to fix the problem",
-      "B": "Publish the account's credentials so that other customers can protect themselves",
-      "C": "Stop using all of the vendor's products across the company immediately",
-      "D": "Restrict access to the product's management interfaces and press the vendor to fix it"
+      "A": "Change the hard-coded account's password on each affected device",
+      "B": "Monitor the product's logs for logins by that account",
+      "C": "Replace the product with a competitor's within a week",
+      "D": "Restrict the product's management interfaces and press the vendor"
     },
     "answer": "D",
     "explanation": "Until a fix exists, the company should reduce exposure, for example by blocking network access to management interfaces and monitoring for use of the account, while escalating with the vendor under the contract.",
     "distractor_rationales": {
-      "A": "Waiting leaves an easy backdoor open.",
-      "B": "Publishing credentials would expose everyone.",
-      "C": "Dropping every product at once is disproportionate before assessing impact."
+      "A": "Hard-coded credentials usually cannot be changed by customers.",
+      "B": "Monitoring detects use but leaves the backdoor reachable.",
+      "C": "A rushed replacement is disruptive. First restrict access to the management interfaces."
     },
     "references_topic": "Responding to vendor backdoors",
     "version": "0.4"
@@ -585,16 +585,16 @@
     "stem": "An application parses uploaded XML documents. A tester submits a document that defines an external entity pointing to a local file and receives that file's contents in the response. What is the BEST fix?",
     "options": {
       "A": "Disable external entity and DTD processing in the XML parser",
-      "B": "Increase the maximum allowed size of uploaded XML documents",
-      "C": "Convert all uploaded XML documents to uppercase before parsing them",
-      "D": "Store the uploaded XML files in a different folder on the same server"
+      "B": "Validate uploads against the expected XML schema",
+      "C": "Run the parser under a low-privilege service account",
+      "D": "Block uploads that contain the word ENTITY"
     },
     "answer": "A",
     "explanation": "XXE attacks abuse parser features that load external entities. Turning off DTD and external entity processing removes the attack.",
     "distractor_rationales": {
-      "B": "Size limits do not stop entity expansion.",
-      "C": "Changing case does not disable entities and may break parsing.",
-      "D": "Storage location does not affect how the parser behaves."
+      "B": "Entities may be processed before schema validation runs.",
+      "C": "Low privilege limits which files can be read but does not stop entity processing.",
+      "D": "Keyword blocking is easily bypassed. The parser itself must refuse external entities."
     },
     "references_topic": "XML external entities",
     "version": "0.4"

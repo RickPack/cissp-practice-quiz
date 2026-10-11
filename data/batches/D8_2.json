@@ -32,17 +32,17 @@
     "type": "knowledge",
     "stem": "Why should development, test, and production environments be kept separate?",
     "options": {
-      "A": "To keep untested changes and developer access from affecting production systems and data",
-      "B": "To reduce hardware and licensing costs",
-      "C": "To let developers work directly in production",
-      "D": "To remove the need for version control"
+      "A": "To keep untested changes and developer access away from production",
+      "B": "To let each environment use different software licenses",
+      "C": "To make performance testing results more accurate",
+      "D": "To allow developers to test with real customer data"
     },
     "answer": "A",
     "explanation": "Separation protects the integrity of production. Changes must pass through testing and change control, and developers do not need standing access to production data.",
     "distractor_rationales": {
-      "B": "Separate environments usually cost more, not less.",
-      "C": "Separation exists precisely to keep developers out of production.",
-      "D": "Version control is still required."
+      "B": "Licensing is not the reason. Separation protects production from untested changes.",
+      "C": "Accuracy of tests is a side benefit, not the main security reason.",
+      "D": "Separation is meant to keep real data out of development, not bring it in."
     },
     "references_topic": "Environment separation",
     "version": "0.2"
@@ -59,14 +59,14 @@
       "A": "Reject input containing known-bad characters such as quotes",
       "B": "Allow only input that matches exactly five digits",
       "C": "Validate the field only in the user's browser",
-      "D": "Accept any input and clean it up later"
+      "D": "Strip non-numeric characters, then accept what remains"
     },
     "answer": "B",
     "explanation": "Allow-list (positive) validation on the server accepts only input matching the expected format and rejects everything else.",
     "distractor_rationales": {
       "A": "Deny-lists miss alternate encodings and unanticipated characters.",
       "C": "Browser-side checks are easily bypassed.",
-      "D": "Deferring validation lets dangerous input into the system."
+      "D": "Cleaning input can turn bad input into something accepted. Exact allowlist validation rejects it."
     },
     "references_topic": "Allow-list input validation",
     "version": "0.2"
@@ -104,17 +104,17 @@
     "type": "managerial_best_first_most",
     "stem": "A company wants developers to fix code-level security flaws as early and cheaply as possible. Where should static analysis (SAST) run?",
     "options": {
-      "A": "Once before each annual major release",
-      "B": "Only against the production environment",
-      "C": "Only as part of the yearly penetration test",
-      "D": "Automatically on every pull request, with findings sent to the author"
+      "A": "Nightly on the main branch, with a weekly report",
+      "B": "Before each release, run by the security team",
+      "C": "Monthly across all repositories, triaged centrally",
+      "D": "On every pull request, with findings sent to the author"
     },
     "answer": "D",
     "explanation": "Running SAST on each pull request gives developers feedback while the code is fresh in their minds, when fixes are cheapest.",
     "distractor_rationales": {
-      "A": "Annual scanning finds flaws months after they were written.",
-      "B": "SAST analyzes source code, not a production environment.",
-      "C": "Penetration testing is a different, late-stage activity."
+      "A": "Nightly runs find flaws after code is merged, and weekly reports delay fixes.",
+      "B": "Release-time scans find issues late, when fixes are costliest.",
+      "C": "Monthly central triage separates findings from the developer who just wrote the code."
     },
     "references_topic": "SAST in the CI pipeline",
     "version": "0.2"
@@ -129,16 +129,16 @@
     "stem": "A comment feature displays user-submitted text on a page, and testers inject a script that runs in other users' browsers. What is the PRIMARY fix?",
     "options": {
       "A": "Encode user content for its output context when rendering",
-      "B": "Encrypt every stored comment in the database with AES",
-      "C": "Rate-limit how many comments each individual user may post per hour",
-      "D": "Serve the page over HTTPS"
+      "B": "Validate that comments contain no angle brackets",
+      "C": "Add a Content Security Policy and change nothing else",
+      "D": "Mark the session cookie HttpOnly so scripts cannot read it"
     },
     "answer": "A",
     "explanation": "This is stored cross-site scripting. Context-aware output encoding makes the browser treat user content as text rather than code. Sanitizing rich text and a content security policy add defense in depth.",
     "distractor_rationales": {
-      "B": "Encryption at rest does not change what is rendered to other users.",
-      "C": "Rate limiting reduces volume but does not stop a single malicious comment.",
-      "D": "HTTPS protects the connection, but the script is still delivered and executed."
+      "B": "Blocklists miss other encodings and contexts. Output encoding is the primary fix.",
+      "C": "CSP is valuable defense in depth, but the injection itself remains.",
+      "D": "HttpOnly protects one cookie, but injected scripts can still act as the user."
     },
     "references_topic": "Stored XSS prevention",
     "version": "0.2"
@@ -152,17 +152,17 @@
     "type": "managerial_best_first_most",
     "stem": "A release that passed testing causes errors in production, and the team spends six hours building a fix while users are affected. Which practice would MOST have reduced the downtime?",
     "options": {
-      "A": "Assigning more developers to write the fix",
+      "A": "Adding more automated tests before each release",
       "B": "A tested rollback plan for every release",
       "C": "Bundling changes into larger releases made less often",
-      "D": "Skipping code review to ship fixes faster"
+      "D": "Running a longer user acceptance testing phase"
     },
     "answer": "B",
     "explanation": "A tested rollback plan restores the previous working version quickly. The team can then build the fix without users waiting.",
     "distractor_rationales": {
-      "A": "More developers may not speed up a fix, and users stay affected in the meantime.",
+      "A": "More tests may catch more issues, but this release passed testing. A rollback plan limits downtime when something slips through.",
       "C": "Larger, rarer releases carry more risk per release.",
-      "D": "Skipping review increases the chance of further defects."
+      "D": "Longer UAT delays releases but still cannot catch everything. Rollback limits the impact."
     },
     "references_topic": "Release rollback planning",
     "version": "0.2"
@@ -176,17 +176,17 @@
     "type": "knowledge",
     "stem": "Which statement BEST describes DevSecOps?",
     "options": {
-      "A": "Security reviews happen only after development is finished",
-      "B": "The security team writes and owns all application code",
+      "A": "A dedicated security team reviews code before each release",
+      "B": "Developers run security scans when they have spare time",
       "C": "Security is automated in the pipeline and shared by all teams",
-      "D": "Operations staff handle all security after deployment"
+      "D": "Security tools are bought for the operations team to run"
     },
     "answer": "C",
     "explanation": "DevSecOps builds security practices such as automated testing, policy checks, and monitoring into the continuous delivery pipeline and makes security a shared responsibility of development, security, and operations.",
     "distractor_rationales": {
-      "A": "End-of-cycle reviews are the opposite of DevSecOps.",
-      "B": "Developers write the code. Security enables and guides them.",
-      "D": "Leaving security until after deployment misses the \"shift left\" principle."
+      "A": "A late review by a separate team is the opposite of shared, automated security.",
+      "B": "Ad hoc scanning is not automated or consistent.",
+      "D": "Handing tools to one team does not make security part of everyone's pipeline."
     },
     "references_topic": "DevSecOps",
     "version": "0.2"
@@ -225,16 +225,16 @@
     "stem": "A developer wants to add a new open-source package to a production application. What should the team do FIRST?",
     "options": {
       "A": "Vet its maintainers, vulnerabilities, license, and exact name",
-      "B": "Install the newest version directly from whichever mirror is fastest",
-      "C": "Copy the package's code into the repository without tracking it",
-      "D": "Choose the most downloaded package with a similar name"
+      "B": "Pin it to the newest version and add it to the build",
+      "C": "Run the package's own test suite to confirm it works",
+      "D": "Check that it has many downloads and recent commits"
     },
     "answer": "A",
     "explanation": "Vetting catches abandoned or vulnerable packages, license conflicts, and typosquatting impostors before they reach production. Pinning versions and recording the package in the SBOM follow.",
     "distractor_rationales": {
-      "B": "Unverified mirrors and unpinned versions invite tampered or breaking releases.",
-      "C": "Untracked copies cannot be scanned or updated.",
-      "D": "Popularity is not vetting, and typosquats imitate popular names."
+      "B": "Pinning helps reproducibility, but nobody has checked whether the package is trustworthy.",
+      "C": "Passing its own tests shows function, not security or provenance.",
+      "D": "Popularity helps, but it does not check vulnerabilities, license, or lookalike names."
     },
     "references_topic": "Vetting open-source dependencies",
     "version": "0.2"
@@ -248,16 +248,16 @@
     "type": "managerial_best_first_most",
     "stem": "A login API receives millions of requests using username and password pairs leaked from other companies' breaches. Which control BEST reduces successful account takeovers without blocking legitimate users?",
     "options": {
-      "A": "Return detailed errors saying whether the username or password was wrong",
+      "A": "Lock each account after three failed login attempts",
       "B": "Rate limiting and bot detection on login, plus MFA",
-      "C": "Disable the login API until the attack stops",
+      "C": "Block the source IP addresses of the attack",
       "D": "Increase the minimum password length for new accounts"
     },
     "answer": "B",
     "explanation": "Credential stuffing is countered by rate limiting and bot detection at the login endpoint, checks against known breached passwords, and MFA so that a correct password alone is not enough.",
     "distractor_rationales": {
-      "A": "Detailed errors help attackers confirm valid usernames.",
-      "C": "Disabling login locks out legitimate users.",
+      "A": "Lockouts let attackers lock out real users, and stuffing tries each account only once or twice.",
+      "C": "Credential stuffing comes from many addresses, so blocking chases them.",
       "D": "Reused passwords from other breaches stay valid regardless of new length rules."
     },
     "references_topic": "Credential stuffing defenses",
@@ -272,16 +272,16 @@
     "type": "managerial_best_first_most",
     "stem": "A business unit wants to adopt a SaaS tool that will process customer data, and the vendor offers only a marketing security whitepaper. What should the security manager require BEFORE approval?",
     "options": {
-      "A": "Nothing further, since SaaS vendors handle security themselves",
-      "B": "A full review of the vendor's application source code",
+      "A": "The vendor's ISO 27001 certificate on its own",
+      "B": "A signed security questionnaire from the vendor",
       "C": "Independent assurance, a requirements review, and contract terms",
       "D": "A penetration test of the vendor's production systems by the business unit"
     },
     "answer": "C",
     "explanation": "Due diligence for SaaS means independent assurance (for example a SOC 2 Type II report or equivalent certification), a review against the company's security requirements, and contract terms covering breach notification, data handling, and exit.",
     "distractor_rationales": {
-      "A": "The company remains accountable for customer data it places with a vendor.",
-      "B": "SaaS vendors rarely share source code, and it is not needed for this decision.",
+      "A": "A certificate helps, but its scope may not cover the tool, and contract terms are still needed.",
+      "B": "A questionnaire is self-reported. Independent assurance and contract terms are needed too.",
       "D": "Testing a vendor's production systems without permission is unauthorized."
     },
     "references_topic": "SaaS security due diligence",
@@ -321,16 +321,16 @@
     "stem": "A CI/CD pipeline stores long-lived cloud administrator keys as plaintext environment variables, and many contributors can edit the pipeline files. What is the BEST improvement?",
     "options": {
       "A": "Use short-lived, scoped credentials via workload identity",
-      "B": "Keep the same keys but rotate them once every year",
-      "C": "Base64-encode the keys so they are not stored in plaintext",
-      "D": "Move the keys into the repository README for visibility"
+      "B": "Move the keys into the CI system's encrypted secrets store",
+      "C": "Rotate the keys every 90 days and keep them as they are",
+      "D": "Restrict who can edit the pipeline files and keep the keys"
     },
     "answer": "A",
     "explanation": "Workload identity federation issues short-lived, narrowly scoped credentials to each pipeline run, so there are no long-lived secrets to steal. Restricting who can change pipeline definitions closes the other half of the risk.",
     "distractor_rationales": {
-      "B": "Annual rotation leaves a long exposure window for the same powerful keys.",
-      "C": "Base64 is an encoding, not encryption, and is trivially reversed.",
-      "D": "Putting keys in the README exposes them to anyone who can read the repository."
+      "B": "A secrets store hides the values, but long-lived admin keys remain usable by anyone who can change the pipeline.",
+      "C": "Rotation shortens exposure, but long-lived admin keys are still exposed between rotations.",
+      "D": "Fewer editors help, but long-lived admin keys remain a high-value target."
     },
     "references_topic": "Pipeline secrets and workload identity",
     "version": "0.2"
@@ -344,16 +344,16 @@
     "type": "application",
     "stem": "An application accepts serialized objects from clients and reconstructs them on the server. Testers achieve remote code execution by sending a crafted object. What is the BEST fix?",
     "options": {
-      "A": "Compress the serialized objects before sending them",
+      "A": "Run the deserialization in a lower-privileged process",
       "B": "Stop native deserialization of untrusted input; use validated JSON",
-      "C": "Give the server more memory to process the objects",
+      "C": "Scan incoming objects with a WAF signature rule",
       "D": "Encrypt the objects with a symmetric key that is embedded in the client application"
     },
     "answer": "B",
     "explanation": "Native deserialization of untrusted data can instantiate attacker-chosen objects. Use a data-only format such as JSON with schema validation, or at minimum strict type allow-lists and integrity checks.",
     "distractor_rationales": {
-      "A": "Compression does not change what the server reconstructs.",
-      "C": "Memory has nothing to do with this vulnerability.",
+      "A": "Lower privilege limits damage, but code execution still happens.",
+      "C": "Signatures miss new gadget chains. Native deserialization of untrusted data must stop.",
       "D": "A key embedded in the client can be extracted, so attackers can still craft encrypted objects."
     },
     "references_topic": "Insecure deserialization",

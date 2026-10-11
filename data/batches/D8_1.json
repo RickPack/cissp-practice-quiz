@@ -11,14 +11,14 @@
       "A": "Escaping single quote characters with a custom string function",
       "B": "Hiding database error messages from users",
       "C": "Using parameterized queries (prepared statements)",
-      "D": "Storing the database on a separate server"
+      "D": "Restricting the database account to read-only access"
     },
     "answer": "C",
     "explanation": "Parameterized queries keep code and data separate, so user input can never change the structure of the query.",
     "distractor_rationales": {
       "A": "Hand-written escaping is error-prone and can be bypassed through alternate encodings or numeric contexts.",
       "B": "Hiding errors slows an attacker's reconnaissance but does not prevent injection. Blind SQL injection still works.",
-      "D": "Where the database runs has no effect on how queries are built."
+      "D": "Least privilege limits damage, but injected queries can still read data. Parameterization stops the injection."
     },
     "references_topic": "SQL injection prevention",
     "version": "0.1"
@@ -58,15 +58,15 @@
     "options": {
       "A": "A software bill of materials (SBOM)",
       "B": "A data flow diagram of the application's components",
-      "C": "A service-level agreement",
-      "D": "A code-signing certificate"
+      "C": "A list of the application's API endpoints and schemas",
+      "D": "Results from the application's most recent DAST scan"
     },
     "answer": "A",
     "explanation": "An SBOM lists the components, versions, and dependencies in a piece of software, allowing fast impact analysis when a new vulnerability is published.",
     "distractor_rationales": {
       "B": "A data flow diagram shows how data moves, not which component versions are present.",
-      "C": "A service-level agreement defines service commitments, not software contents.",
-      "D": "Code signing proves who published the software and that it was not modified. It does not inventory what is inside."
+      "C": "An API inventory describes interfaces, not the components and versions inside.",
+      "D": "Scan results show past findings, not a current list of components to match against new advisories."
     },
     "references_topic": "Software bill of materials",
     "version": "0.1"
@@ -83,14 +83,14 @@
       "A": "Schedule the penetration test later so that more features can be tested at once",
       "B": "Shift security left with threat modeling and automated tests",
       "C": "Hire a second penetration testing firm to run tests in parallel",
-      "D": "Lower the severity ratings of findings so they do not block releases"
+      "D": "Add a second round of manual QA before the pen test"
     },
     "answer": "B",
     "explanation": "Defects are cheaper to fix the earlier they are found. Adding security requirements, design-time threat modeling, and automated testing in the pipeline catches most issues long before the final penetration test.",
     "distractor_rationales": {
       "A": "Testing even later increases rework cost and delay.",
       "C": "A second firm still tests at the end of the cycle, when fixes are most expensive.",
-      "D": "Downgrading ratings hides risk instead of reducing it."
+      "D": "More QA still finds security issues late. Threat modeling and automated tests catch them earlier."
     },
     "references_topic": "Shifting security left in the SDLC",
     "version": "0.1"
@@ -153,16 +153,16 @@
     "stem": "A company plans to buy a commercial off-the-shelf HR application that will store employee personal data. The vendor refuses to share source code. What is the BEST way to evaluate the software's security before purchase?",
     "options": {
       "A": "Request third-party test results and secure development attestations",
-      "B": "Decompile the application to review its code without the vendor's permission",
-      "C": "Rely on the vendor's marketing materials describing its security features",
-      "D": "Skip evaluation, because commercial software is tested by the vendor"
+      "B": "Run a vulnerability scan against the vendor's demo site",
+      "C": "Check the vendor's customer references and online reviews",
+      "D": "Request copies of the vendor's security policy documents"
     },
     "answer": "A",
     "explanation": "Without source access, rely on independent evidence: third-party penetration test or certification reports, secure development attestations, and an SBOM, backed by contract terms for vulnerability notification, patch timelines, and audit rights.",
     "distractor_rationales": {
-      "B": "Decompiling without permission is likely to breach the license and possibly the law.",
-      "C": "Marketing materials are not independent assurance.",
-      "D": "Vendor testing is unverified, and the buyer remains accountable for protecting the data."
+      "B": "Scanning a vendor's systems without permission is unauthorized, and a demo may not match the product.",
+      "C": "References speak to satisfaction, not to tested security.",
+      "D": "Policies show intent, not that the software was built and tested securely."
     },
     "references_topic": "Evaluating commercial software security",
     "version": "0.1"
@@ -202,15 +202,15 @@
     "options": {
       "A": "Switch to unsalted SHA-512 hashes",
       "B": "Encrypt the passwords with AES using a key stored in the application configuration",
-      "C": "Use a slow, salted password hashing function such as Argon2id or bcrypt",
-      "D": "Store passwords in plaintext in a separate, access-restricted database"
+      "C": "Use a slow, salted password hash such as Argon2id or bcrypt",
+      "D": "Add one global secret salt to every SHA-256 password hash"
     },
     "answer": "C",
     "explanation": "Adaptive, salted password hashing functions such as Argon2id, bcrypt, scrypt, or PBKDF2 make each guess expensive, and unique salts defeat precomputed tables.",
     "distractor_rationales": {
       "A": "SHA-512 is still a fast general-purpose hash, and without salt it remains vulnerable to precomputed tables.",
       "B": "Encryption is reversible, and a key stored in the application configuration is likely to be stolen along with the database.",
-      "D": "Plaintext storage would make any breach catastrophic."
+      "D": "A single salt still lets identical passwords match, and SHA-256 is too fast for passwords."
     },
     "references_topic": "Password storage with adaptive hashing",
     "version": "0.1"

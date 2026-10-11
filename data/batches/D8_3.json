@@ -80,17 +80,17 @@
     "type": "managerial_best_first_most",
     "stem": "What is the BEST control to stop unreviewed code from being merged into the main branch?",
     "options": {
-      "A": "Ask developers to announce their merges in the team chat channel each day",
-      "B": "Run a weekly report of all commits made to the main branch for managers",
+      "A": "Require developers to sign their commits with their GPG keys",
+      "B": "Run automated tests on every merge into the main branch",
       "C": "Branch protection that requires an approved review before merging",
-      "D": "Give only senior developers access to the repository's issue tracker"
+      "D": "Review the main branch's commit history every week"
     },
     "answer": "C",
     "explanation": "Branch protection enforces the rule in the platform itself: nothing merges to main without an approved review and passing checks.",
     "distractor_rationales": {
-      "A": "Announcements are informal and easily skipped.",
-      "B": "A weekly report detects problems after the code is merged.",
-      "D": "Issue tracker access does not control merges."
+      "A": "Signed commits prove who wrote the code, not that anyone reviewed it.",
+      "B": "Tests check behavior but do not replace a human review before merging.",
+      "D": "A weekly review finds unreviewed merges after they are already in."
     },
     "references_topic": "Branch protection",
     "version": "0.3"
@@ -129,16 +129,16 @@
     "stem": "A code review finds a production database password written directly in a source file. What is the BEST fix?",
     "options": {
       "A": "Load it from a secrets manager at runtime and rotate the exposed password",
-      "B": "Move the password to a comment in the same file so it is not executed as code",
-      "C": "Encode the password in Base64 so that it is not readable at a glance in the file",
-      "D": "Rename the variable that holds the password to something less obvious to readers"
+      "B": "Move the password to a config file kept in the same repository",
+      "C": "Restrict repository access to the database team only",
+      "D": "Remove it in a new commit and keep using the same password"
     },
     "answer": "A",
     "explanation": "Secrets belong in a secrets manager, not in code. Because the password was in source control, it must also be rotated.",
     "distractor_rationales": {
-      "B": "A comment is still in the file and in version history.",
-      "C": "Base64 is trivially reversible.",
-      "D": "Renaming the variable does not hide the value."
+      "B": "A config file in the repository is still committed source with the secret in it.",
+      "C": "Fewer readers help, but the password stays in code and history, and it is not rotated.",
+      "D": "The password remains in history and must be treated as exposed, so it needs rotating."
     },
     "references_topic": "Removing hard-coded credentials",
     "version": "0.3"
@@ -152,17 +152,17 @@
     "type": "managerial_best_first_most",
     "stem": "A public login API receives millions of password guesses per day from automated tools. What is the BEST control?",
     "options": {
-      "A": "Return more detailed error messages so that real users can fix their typos faster",
-      "B": "Rate limiting per account and per client",
-      "C": "Move the login API to a different URL path and tell only real customers about it",
-      "D": "Increase the server capacity so the API can respond faster under heavy load"
+      "A": "CAPTCHA on every login attempt for every user",
+      "B": "Rate limiting per account and per client, with alerts",
+      "C": "Lock each account permanently after five failed attempts",
+      "D": "Block the IP addresses that send the most guesses"
     },
     "answer": "B",
     "explanation": "Rate limiting slows automated guessing to the point where it is ineffective, while legitimate users are unaffected.",
     "distractor_rationales": {
-      "A": "Detailed errors help attackers learn which accounts exist.",
-      "C": "A new path is obscurity and will be rediscovered.",
-      "D": "More capacity lets attackers guess even faster."
+      "A": "CAPTCHA on every attempt burdens real users, and solving services can bypass it.",
+      "C": "Permanent lockouts let attackers lock out real customers.",
+      "D": "Automated tools rotate through many addresses."
     },
     "references_topic": "API rate limiting",
     "version": "0.3"
@@ -177,16 +177,16 @@
     "stem": "Which practice ensures that the code deployed to production is exactly the code that was tested?",
     "options": {
       "A": "Rebuilding the application from source separately in each environment before deploying it",
-      "B": "Letting developers copy updated files directly to the production servers when needed",
+      "B": "Tagging the release in version control before testing",
       "C": "Promoting the same signed build artifact through each environment",
-      "D": "Asking testers to email a summary of their results to the operations team"
+      "D": "Running the same tests again in production after deploying"
     },
     "answer": "C",
     "explanation": "Building once and promoting the same signed artifact from test to production means the tested bits are the deployed bits.",
     "distractor_rationales": {
       "A": "Separate rebuilds can differ due to changed dependencies or settings.",
-      "B": "Direct copies bypass testing and change control.",
-      "D": "A summary email does not link results to what is deployed."
+      "B": "A tag marks the source, but separate builds can still differ. One signed artifact guarantees identity.",
+      "D": "Retesting finds differences after deployment instead of preventing them."
     },
     "references_topic": "Promoting the same build artifact",
     "version": "0.3"
@@ -224,17 +224,17 @@
     "type": "managerial_best_first_most",
     "stem": "An internal application is being retired. Which security activity is MOST important in the disposal phase?",
     "options": {
-      "A": "Archive or destroy its data per retention rules and revoke its credentials and integrations",
-      "B": "Leave the servers running in case users need to look something up later on",
-      "C": "Delete the application's source code repository first to save on hosting costs",
-      "D": "Send a company-wide email announcing the date that the application is going away"
+      "A": "Dispose of its data per retention; revoke credentials and integrations",
+      "B": "Shut down the servers and keep their disks in long-term storage",
+      "C": "Delete the source code repository to prevent reuse",
+      "D": "Remove the application from the service catalog"
     },
     "answer": "A",
     "explanation": "Retirement must handle the data according to retention rules and remove the accounts, keys, and connections the application used, so nothing is left behind for attackers.",
     "distractor_rationales": {
-      "B": "Forgotten running servers become unpatched targets.",
-      "C": "Deleting source code is not the priority and may be needed for records.",
-      "D": "An announcement is helpful but does not address security."
+      "B": "Stored disks still hold data, and credentials and integrations stay active.",
+      "C": "Source code may need keeping. The key risks are data and live credentials.",
+      "D": "Removing it from the catalog leaves data and credentials in place."
     },
     "references_topic": "Secure disposal phase",
     "version": "0.3"
@@ -296,17 +296,17 @@
     "type": "managerial_best_first_most",
     "stem": "A public project's CI pipeline runs automatically on pull requests from forks, and those jobs can read the deployment secrets. What is the BEST fix?",
     "options": {
-      "A": "Ask contributors to promise in writing that they will not print the secrets in logs",
+      "A": "Mask the secrets in CI logs so that they are never printed",
       "B": "Rotate the deployment secrets once a month so that any leaked copies expire",
-      "C": "Move the deployment secrets into a file stored in the same repository instead",
+      "C": "Scan fork pull requests for malicious code before merging",
       "D": "Withhold secrets from untrusted fork builds and require approval to run them"
     },
     "answer": "D",
     "explanation": "Code from a fork is untrusted. It should run without secrets, and privileged workflows should run only after a maintainer approves.",
     "distractor_rationales": {
-      "A": "A promise does not stop malicious code in the pull request.",
+      "A": "Masking can be bypassed by encoding or exfiltrating secrets directly.",
       "B": "Monthly rotation still leaves secrets exposed to anyone who submits a pull request.",
-      "C": "Secrets in the repository are worse."
+      "C": "The job runs before any merge, so scanning at merge time is too late."
     },
     "references_topic": "Untrusted pull request workflows",
     "version": "0.3"
@@ -323,14 +323,14 @@
       "A": "Lower its priority based on reachability and schedule the upgrade",
       "B": "Close it permanently, since the vulnerable function is not used by the application today",
       "C": "Stop all releases immediately until the library has been removed from every application",
-      "D": "Ignore all future SCA results, since findings like this one are clearly unreliable"
+      "D": "Suppress the finding in the SCA tool with no review date"
     },
     "answer": "A",
     "explanation": "Reachability and exploitability should shape priority. The finding is real, so the upgrade should still be scheduled, but it need not block urgent work.",
     "distractor_rationales": {
       "B": "The code could start calling the function later, so the finding should not be closed permanently.",
       "C": "Halting all releases is disproportionate for an unreachable flaw.",
-      "D": "One lower-priority finding does not make the tool unreliable."
+      "D": "Reachability can change as code changes. The finding needs a lower priority and a scheduled upgrade, not silence."
     },
     "references_topic": "Reachability in SCA triage",
     "version": "0.3"
@@ -346,15 +346,15 @@
     "options": {
       "A": "Typosquatting on a misspelled package name",
       "B": "Dependency confusion",
-      "C": "A buffer overflow in the package manager's parser",
-      "D": "Cross-site request forgery against the repository site"
+      "C": "A signing failure in the internal package registry",
+      "D": "Repojacking of a renamed source code repository"
     },
     "answer": "B",
     "explanation": "Dependency confusion exploits build tools that prefer the highest version across public and private registries. Pinning, scoped names, and private registry precedence prevent it.",
     "distractor_rationales": {
       "A": "Typosquatting relies on misspelled names, not identical ones.",
-      "C": "No memory corruption is involved.",
-      "D": "CSRF targets web sessions, not build dependency resolution."
+      "C": "Nothing here involves signatures. The build pulled the public package because of its higher version.",
+      "D": "Repojacking takes over a renamed repository. This attack exploits package name resolution."
     },
     "references_topic": "Dependency confusion",
     "version": "0.3"
@@ -368,17 +368,17 @@
     "type": "managerial_best_first_most",
     "stem": "A company depends on a critical application from a small vendor that may not stay in business. Which contract provision BEST protects the company?",
     "options": {
-      "A": "A clause requiring the vendor to send a monthly newsletter about product updates",
-      "B": "A discount on license fees if the vendor misses its product roadmap deadlines",
+      "A": "A right to audit the vendor's financial statements yearly",
+      "B": "A longer contract term with fixed license pricing",
       "C": "A source code escrow agreement with defined release conditions",
-      "D": "A promise from the vendor's CEO that the company is financially stable"
+      "D": "A clause requiring the vendor to carry business insurance"
     },
     "answer": "C",
     "explanation": "Escrow places the source code with a neutral third party, to be released to the customer if the vendor fails, so the software can still be maintained.",
     "distractor_rationales": {
-      "A": "A newsletter provides no continuity.",
-      "B": "A discount does not help if the vendor disappears.",
-      "D": "A verbal assurance is not enforceable protection."
+      "A": "Financial audits may warn of trouble but do not give access to the code if the vendor fails.",
+      "B": "Price stability does not help if the vendor goes out of business.",
+      "D": "Insurance may pay some losses, but it does not keep the application maintainable."
     },
     "references_topic": "Source code escrow",
     "version": "0.3"
@@ -392,17 +392,17 @@
     "type": "application",
     "stem": "A download endpoint takes a filename parameter. A tester requests \"../../etc/passwd\" and receives the system password file. What is the BEST root-cause fix?",
     "options": {
-      "A": "Block requests that contain the word \"passwd\" at the web application firewall",
-      "B": "Run the web server under an account with a longer and more complex password",
-      "C": "Rename the system password file to something that attackers will not guess",
-      "D": "Map requests to allow-listed file IDs, or canonicalize paths and check the base directory"
+      "A": "Block requests containing ../ at the web application firewall",
+      "B": "Run the web server in a container with a read-only file system",
+      "C": "Encode the filename parameter before the server uses it to open files",
+      "D": "Use allow-listed file IDs, or canonicalize and confine paths"
     },
     "answer": "D",
     "explanation": "Path traversal happens when user input builds file paths. Using indirect IDs, or resolving the path and confirming it stays inside the allowed directory, removes the flaw.",
     "distractor_rationales": {
-      "A": "Blocking one keyword is easily bypassed and does not fix the code.",
-      "B": "Account passwords do not affect path handling.",
-      "C": "Renaming system files breaks the system and leaves other files exposed."
+      "A": "Encodings and variants get past blocklists. The application must constrain paths itself.",
+      "B": "A read-only container limits writes but still lets attackers read sensitive files.",
+      "C": "Encoding for output does not stop path traversal on the file system."
     },
     "references_topic": "Path traversal",
     "version": "0.3"
@@ -417,16 +417,16 @@
     "stem": "An ordinary user discovers that calling the API endpoint /admin/deleteUser directly succeeds, even though the admin menu is hidden in the app. What weakness is this?",
     "options": {
       "A": "Broken function-level authorization",
-      "B": "Insecure transport caused by a missing TLS configuration on the API gateway",
-      "C": "A denial-of-service weakness from missing rate limits on the endpoint",
-      "D": "Improper output encoding that allows scripts to run in the user's browser"
+      "B": "Broken object-level authorization on user records",
+      "C": "Missing authentication on the admin endpoint",
+      "D": "Security misconfiguration of the API gateway"
     },
     "answer": "A",
     "explanation": "The server does not check whether the caller's role permits the administrative function. Hiding the menu in the client is not access control.",
     "distractor_rationales": {
-      "B": "The issue is authorization, not encryption in transit.",
-      "C": "Rate limits do not decide who may call a function.",
-      "D": "Output encoding addresses XSS, not authorization."
+      "B": "Object-level flaws expose other users' records. Here an ordinary user can call an admin function.",
+      "C": "The user is authenticated. The missing check is whether their role may use the function.",
+      "D": "The gap is in the application's authorization, not gateway configuration."
     },
     "references_topic": "Broken function-level authorization",
     "version": "0.3"
@@ -464,17 +464,17 @@
     "type": "managerial_best_first_most",
     "stem": "The private key used to sign the company's software releases is stored as a file on the build server, readable by every pipeline job. What is the BEST improvement?",
     "options": {
-      "A": "Encrypt the key file with a password stored in a text file next to it on the server",
-      "B": "Copy the key to each developer's laptop so that signing does not depend on one server",
-      "C": "Move signing to an HSM or managed signing service, allowed only for release jobs",
-      "D": "Change the name of the key file each month so that attackers cannot find it easily"
+      "A": "Encrypt the key file and give its password to the pipeline",
+      "B": "Restrict the key file so that only the build service account can read it",
+      "C": "Sign in an HSM or managed signing service, for release jobs only",
+      "D": "Rotate the signing key every month on the build server"
     },
     "answer": "C",
     "explanation": "If an attacker can use the signing key, they can sign malware as the company. A hardware-backed signing service limited to approved release jobs protects the key and logs every use.",
     "distractor_rationales": {
-      "A": "A password stored next to the file protects nothing.",
-      "B": "Spreading the key to laptops multiplies exposure.",
-      "D": "Renaming the file is obscurity."
+      "A": "Any job that can read the password can still use the key.",
+      "B": "If every job runs as that account, every job can still read the key.",
+      "D": "Rotation shortens exposure, but each new key is just as exposed."
     },
     "references_topic": "Protecting code-signing keys",
     "version": "0.3"
@@ -515,14 +515,14 @@
       "A": "Bind only an allow-list of editable fields on the server",
       "B": "Hide the role field in the web form so that users do not see it on the page",
       "C": "Log every profile update so that role changes can be reviewed later on",
-      "D": "Add a CAPTCHA to the profile page to stop automated tools from sending requests"
+      "D": "Check the role field's value against the list of valid roles"
     },
     "answer": "A",
     "explanation": "Mass assignment occurs when the server binds whatever fields the client sends. Explicitly allowing only editable fields prevents privilege fields from being set by users.",
     "distractor_rationales": {
       "B": "Hiding a field in the client does not stop crafted requests.",
       "C": "Logging detects the abuse but does not prevent it.",
-      "D": "A CAPTCHA does not stop a manual attacker from adding a field."
+      "D": "\"admin\" is a valid role, so the check passes. The field should never be bindable by users."
     },
     "references_topic": "Mass assignment",
     "version": "0.3"
@@ -561,16 +561,16 @@
     "stem": "A DAST scan in the pipeline reports no findings, but a review shows it only ever reached the login page. What is the BEST correction?",
     "options": {
       "A": "Run the same scan more often so that it has more chances to find issues",
-      "B": "Replace DAST with a manual review of the login page's HTML source",
+      "B": "Add SAST to the pipeline instead of fixing the DAST setup",
       "C": "Configure authenticated scanning with a test account and session handling",
-      "D": "Accept the results, since no findings means the application is secure"
+      "D": "Point the scanner at the API documentation page as well"
     },
     "answer": "C",
     "explanation": "A scanner that cannot log in tests almost nothing. Giving it a dedicated test account and handling sessions lets it crawl and test the authenticated application.",
     "distractor_rationales": {
       "A": "Repeating an unauthenticated scan still reaches only the login page.",
-      "B": "Reviewing one page's source does not test the application.",
-      "D": "Zero findings reflects the missing coverage, not security."
+      "B": "SAST is valuable but different. The DAST scan still covers nothing behind the login.",
+      "D": "Another public page does not get the scanner past authentication."
     },
     "references_topic": "Authenticated DAST",
     "version": "0.3"
