@@ -250,15 +250,15 @@
     "options": {
       "A": "Acceptable use policy",
       "B": "Business impact analysis",
-      "C": "Service level agreement with the organization's main vendors",
-      "D": "Disaster recovery plan for the primary data center"
+      "C": "Nondisclosure agreement",
+      "D": "Information classification policy"
     },
     "answer": "A",
     "explanation": "An acceptable use policy defines permitted and prohibited use of company systems, and signing it records the employee's acknowledgment.",
     "distractor_rationales": {
       "B": "A business impact analysis assesses the effect of disruptions.",
-      "C": "SLAs define service commitments between organizations.",
-      "D": "A disaster recovery plan covers restoring systems after a disaster."
+      "C": "An NDA protects confidential information. It does not set the rules for using company systems.",
+      "D": "The classification policy says how to label and handle information, not how systems may be used."
     },
     "references_topic": "Acceptable use policy",
     "version": "0.4"
@@ -392,17 +392,17 @@
     "type": "managerial_best_first_most",
     "stem": "A company must comply with several overlapping security regulations and customer contracts, and each audit team tests the same controls separately. What is the BEST way to reduce this duplication?",
     "options": {
-      "A": "Choose the single regulation with the largest fines and comply only with that one",
+      "A": "Buy a compliance tool that tracks each regulation's audits",
       "B": "Assign a separate compliance team for each regulation so each can work independently",
       "C": "Map all requirements to one set of controls and test each control once",
-      "D": "Ask the regulators to accept the company's own summary instead of an audit"
+      "D": "Schedule all the audits in the same quarter"
     },
     "answer": "C",
     "explanation": "A common control framework maps many requirements to a single control set, so each control is implemented and evidenced once and reused across audits.",
     "distractor_rationales": {
-      "A": "Ignoring other obligations creates noncompliance.",
+      "A": "A tool organizes the separate audits, but each control is still tested once per framework.",
       "B": "Separate teams increase duplication.",
-      "D": "Regulators decide how they assess compliance."
+      "D": "Scheduling them together saves calendar time, not the duplicated testing of the same controls."
     },
     "references_topic": "Common control frameworks",
     "version": "0.4"
@@ -442,15 +442,15 @@
     "options": {
       "A": "As pseudonymized personal data that still needs protection",
       "B": "As anonymous data that is no longer subject to privacy law",
-      "C": "As public data that can be published without restriction",
-      "D": "As encrypted data that can be shared freely with any vendor"
+      "C": "As sensitive data that must be deleted after the analysis",
+      "D": "As non-personal data, provided the token table is encrypted"
     },
     "answer": "A",
     "explanation": "Because the mapping table exists, the data can be re-identified. Pseudonymization reduces risk, but the data is still personal data.",
     "distractor_rationales": {
       "B": "True anonymization is irreversible, which is not the case here.",
-      "C": "Pseudonymized data is not public.",
-      "D": "Tokenization is not encryption, and the data still needs controlled sharing."
+      "C": "Retention depends on purpose and law, not on tokenization. The key point is that it remains personal data.",
+      "D": "Encrypting the mapping table protects it, but the data can still be re-identified, so it stays personal data."
     },
     "references_topic": "Pseudonymization",
     "version": "0.4"
@@ -491,14 +491,14 @@
       "A": "Pay quickly and quietly, since involving outsiders will only increase the damage",
       "B": "Contact the attackers directly to negotiate a lower price before telling anyone",
       "C": "Escalate to legal counsel and senior management to decide on involving law enforcement",
-      "D": "Ignore the demand, since responding in any way encourages further extortion"
+      "D": "Restore from backups, since the data is still on hand"
     },
     "answer": "C",
     "explanation": "Extortion is a crime, and the decision to involve law enforcement has legal and business consequences. Counsel and senior management should make it with the facts in hand.",
     "distractor_rationales": {
       "A": "Paying without legal input may break laws and does not guarantee deletion.",
       "B": "Unilateral negotiation bypasses leadership and legal advice.",
-      "D": "Ignoring the demand skips required legal and notification decisions."
+      "D": "Backups restore access but do nothing about stolen data being published. The decision on how to respond belongs to legal and leadership."
     },
     "references_topic": "Involving law enforcement",
     "version": "0.4"
@@ -513,15 +513,15 @@
     "stem": "The security policy was last updated six years ago and refers to technologies the company no longer uses. What is the BEST long-term fix?",
     "options": {
       "A": "Rewrite the policy now and then leave it unchanged until the next audit finding",
-      "B": "Delete the policy, since the technical standards already cover the same material",
+      "B": "Add an appendix that lists the technologies now in use",
       "C": "Ask each department to write its own policy that matches its current technology",
-      "D": "Review the policy on a set schedule and after major changes, keeping it technology-neutral"
+      "D": "Review it on a set schedule and after major changes, keeping it tech-neutral"
     },
     "answer": "D",
     "explanation": "Policies should be reviewed regularly and when the business changes. Keeping them free of specific technologies means they stay valid while standards change underneath.",
     "distractor_rationales": {
       "A": "A one-time rewrite repeats the problem.",
-      "B": "Standards depend on policy for authority and direction.",
+      "B": "An appendix of current technology will go stale the same way. Policy should stay technology-neutral, with specifics in standards.",
       "C": "Separate departmental policies create inconsistency."
     },
     "references_topic": "Policy review cycles",
@@ -587,14 +587,14 @@
       "A": "It cannot express risk in monetary terms that executives understand",
       "B": "It ignores the value of assets when estimating the size of losses",
       "C": "It relies on accurate probability and loss data that is often unavailable",
-      "D": "It can only be performed by external auditors under professional standards"
+      "D": "It produces results too subjective to audit"
     },
     "answer": "C",
     "explanation": "Quantitative analysis needs reliable numbers for asset values, exposure, and frequency. When data is sparse, the precise-looking results can be misleading.",
     "distractor_rationales": {
       "A": "Monetary results are a strength of quantitative analysis.",
       "B": "Asset value is central to quantitative analysis.",
-      "D": "Internal teams can perform quantitative analysis."
+      "D": "Subjectivity is the usual criticism of qualitative analysis. Quantitative analysis struggles instead with missing data."
     },
     "references_topic": "Limits of quantitative analysis",
     "version": "0.4"
@@ -635,14 +635,14 @@
       "A": "Escalate the decision, since it exceeds the board's stated appetite",
       "B": "Accept the risk on the team's behalf so the launch date can be met",
       "C": "Approve the launch and schedule a compliance review for next year",
-      "D": "Ask the team to downgrade the risk rating so it fits the appetite"
+      "D": "Ask the team to add compensating controls and proceed"
     },
     "answer": "A",
     "explanation": "A risk above the organization's appetite cannot be accepted at project level. It must go to leadership with authority to accept it or require treatment.",
     "distractor_rationales": {
       "B": "The security manager does not have authority to accept risk beyond appetite.",
       "C": "Deferring review leaves a known high risk in place.",
-      "D": "Changing the rating to fit hides the risk."
+      "D": "Compensating controls may help, but the decision still exceeds the board's stated appetite, so it must be escalated."
     },
     "references_topic": "Risk appetite limits",
     "version": "0.4"
@@ -680,17 +680,17 @@
     "type": "knowledge",
     "stem": "When threat modeling from a data flow diagram, where should the team look MOST closely for threats?",
     "options": {
-      "A": "Inside a single process where no data enters or leaves at any time",
-      "B": "At the icons used to represent external users in the diagram legend",
+      "A": "Inside each process, where the business logic runs",
+      "B": "At external entities, where users first appear",
       "C": "Where data crosses trust boundaries between components",
-      "D": "At the storage devices that are fully encrypted at rest"
+      "D": "At data stores that hold the most records"
     },
     "answer": "C",
     "explanation": "Trust boundaries are where data moves between zones of different privilege, such as from the internet to an application. Most attacks target these crossings.",
     "distractor_rationales": {
-      "A": "A process with no inputs or outputs presents little attack surface.",
-      "B": "Diagram notation is not a source of threats.",
-      "D": "Encrypted storage still matters, but boundary crossings are where threats concentrate."
+      "A": "Processes matter, but threats concentrate where data moves between different levels of trust.",
+      "B": "External entities are one side of a boundary. The crossing itself is where to look most closely.",
+      "D": "Record volume affects impact, but trust boundaries are where most threats arise."
     },
     "references_topic": "Trust boundaries in data flow diagrams",
     "version": "0.4"
@@ -705,16 +705,16 @@
     "stem": "Attackers are sending convincing fake invoices and CEO payment requests to the finance team. General annual awareness training has not stopped the losses. What is the BEST next step?",
     "options": {
       "A": "Repeat the same general awareness training every month for all employees",
-      "B": "Block all email from outside the organization to the finance team",
-      "C": "Publicly name employees who pay fraudulent invoices as a deterrent",
-      "D": "Give finance staff targeted training plus a required call-back to verify payment changes"
+      "B": "Enable DMARC and add external-sender banners to all incoming email",
+      "C": "Run monthly invoice-fraud phishing simulations for the finance team",
+      "D": "Give finance targeted training and require call-back checks on payment changes"
     },
     "answer": "D",
     "explanation": "Role-specific training for the people targeted, backed by a verification procedure, addresses business email compromise directly.",
     "distractor_rationales": {
       "A": "More generic training does not address the specific attack.",
-      "B": "Blocking all external email would stop legitimate business.",
-      "C": "Shaming discourages reporting and undermines a just culture."
+      "B": "Email authentication and banners help, but lookalike domains and compromised partner mailboxes get past them. The payment process needs verification.",
+      "C": "Simulations measure behavior, but without a verification step one convincing request can still move money."
     },
     "references_topic": "Targeted training for business email compromise",
     "version": "0.4"
@@ -730,15 +730,15 @@
     "options": {
       "A": "Advise limiting tracking to work needs, since legal is not the same as ethical",
       "B": "Implement it as requested, since the law allows it and management has decided",
-      "C": "Refuse and report management to the regulator, since tracking is illegal",
-      "D": "Implement it quietly without telling employees to avoid complaints"
+      "C": "Implement it, but publish the tracking in the employee handbook",
+      "D": "Ask legal to confirm the law before implementing it"
     },
     "answer": "A",
     "explanation": "Ethics can require more than the law. The professional should advise limiting collection to legitimate business needs and being transparent, while respecting management's final authority.",
     "distractor_rationales": {
       "B": "Legality alone does not make excessive monitoring appropriate.",
-      "C": "The scenario states it is legal, so a regulator report is unfounded.",
-      "D": "Secret monitoring deepens the ethical problem."
+      "C": "Transparency helps, but off-duty tracking still goes far beyond what the job needs.",
+      "D": "The stem already says the law allows it. The question is whether it is proportionate and ethical."
     },
     "references_topic": "Legal but unethical monitoring",
     "version": "0.4"
@@ -752,16 +752,16 @@
     "type": "managerial_best_first_most",
     "stem": "After a cloud storage bucket was left public, the infrastructure team and the application team each said the other was responsible for its configuration. What should happen FIRST?",
     "options": {
-      "A": "Discipline both team leads so that each team takes the issue seriously",
+      "A": "Have both teams jointly fix the bucket and close the ticket",
       "B": "Have management define and document ownership, for example in a RACI chart",
-      "C": "Move all cloud resources to on-premises servers where ownership is clearer",
+      "C": "Turn on a cloud posture tool that flags public buckets",
       "D": "Ask the security team to take over configuration of every cloud resource"
     },
     "answer": "B",
     "explanation": "The root cause is unclear accountability. Management should assign ownership explicitly so every resource has a responsible and accountable party.",
     "distractor_rationales": {
-      "A": "Discipline does not fix the gap in ownership.",
-      "C": "Moving off the cloud is disproportionate and does not assign ownership.",
+      "A": "Fixing this bucket does not settle who owns the next one, so the dispute will recur.",
+      "C": "Detection helps, but alerts still need an owner. The root cause is undefined ownership.",
       "D": "Centralizing all configuration in security creates a bottleneck and blurs accountability."
     },
     "references_topic": "Defining ownership with RACI",
@@ -779,14 +779,14 @@
       "A": "None, since the company performed due diligence by logging the advisory",
       "B": "Only the vendor is liable, because the flaw was in the vendor's product",
       "C": "Negligence, because it knew the risk and failed to exercise due care",
-      "D": "Criminal liability for the attackers' actions carried out using the VPN"
+      "D": "Strict liability for any data breach, regardless of care"
     },
     "answer": "C",
     "explanation": "Knowing about a risk and failing to act reasonably on it is a failure of due care, which supports a negligence claim.",
     "distractor_rationales": {
       "A": "Logging the advisory is awareness; failing to act on it is the problem.",
       "B": "The vendor's flaw does not excuse the company's failure to act on a known fix.",
-      "D": "The company is not criminally liable for the attackers' crimes."
+      "D": "Liability here turns on failing to act on a known risk. Data breach claims generally turn on whether reasonable care was taken."
     },
     "references_topic": "Negligence from unaddressed known risk",
     "version": "0.4"
@@ -825,15 +825,15 @@
     "stem": "Business units rate risks with different scales and definitions, so leadership cannot compare them in the enterprise risk register. What is the BEST fix?",
     "options": {
       "A": "Adopt one rating method with defined likelihood and impact criteria for everyone",
-      "B": "Let each unit keep its scale, but convert every rating to \"medium\" for reporting",
-      "C": "Remove the likelihood rating from the register and track only the impact rating",
+      "B": "Let each unit keep its scale and add a mapping table to the register",
+      "C": "Rate every risk by its estimated annual dollar loss alone",
       "D": "Ask the external auditors to re-rate all of the risks once each year"
     },
     "answer": "A",
     "explanation": "A common methodology with defined criteria makes ratings comparable, so leadership can prioritize across the whole organization.",
     "distractor_rationales": {
-      "B": "Flattening ratings hides real differences.",
-      "C": "Dropping likelihood loses half of the risk picture.",
+      "B": "A mapping table cannot reconcile scales that define likelihood and impact differently. One method is needed.",
+      "C": "Dollar-only ratings need loss data the units may not have, and they drop likelihood criteria.",
       "D": "Annual external re-rating does not fix day-to-day consistency and removes ownership."
     },
     "references_topic": "Consistent risk rating criteria",
@@ -851,14 +851,14 @@
       "A": "Nothing, since the risk was formally accepted and signed off by leadership",
       "B": "Reassess the risk, since the original acceptance no longer reflects the exposure",
       "C": "Patch the server immediately without informing the partner or leadership",
-      "D": "Move the acceptance paperwork into the new project's documentation folder"
+      "D": "Extend the acceptance, since the server's software has not changed"
     },
     "answer": "B",
     "explanation": "Risk acceptance is based on conditions at the time. When exposure changes significantly, the risk must be reassessed and a new decision made.",
     "distractor_rationales": {
       "A": "The acceptance assumed internal-only exposure, which is no longer true.",
       "C": "Remediation may be right, but the decision needs reassessment and communication.",
-      "D": "Moving paperwork does not address the changed risk."
+      "D": "The software is the same, but the exposure is not. Internet access changes the likelihood, so the risk must be reassessed."
     },
     "references_topic": "Revisiting accepted risks",
     "version": "0.4"
@@ -872,17 +872,17 @@
     "type": "managerial_best_first_most",
     "stem": "A company's order process depends on a third-party payment gateway, but the business impact analysis lists only internal systems. What is the BEST correction?",
     "options": {
-      "A": "Remove the order process from the BIA, since part of it is outside the company's control",
-      "B": "Assume the payment gateway provider will handle any outage without the company's help",
+      "A": "Note the gateway as an accepted risk outside the BIA's scope",
+      "B": "Rely on the gateway's SLA credits to cover outage losses",
       "C": "Add upstream dependencies, including vendors, to the BIA and continuity plans",
-      "D": "Build an in-house payment gateway to replace the provider within one year"
+      "D": "Contract a second payment gateway as a hot standby for orders"
     },
     "answer": "C",
     "explanation": "A BIA must capture every dependency a critical process needs, including external providers, so continuity plans cover their failure.",
     "distractor_rationales": {
-      "A": "Dropping a critical process from the BIA leaves it unplanned.",
-      "B": "Assuming the provider will cope ignores the company's own continuity needs.",
-      "D": "Rebuilding the service is disproportionate and does not fix the analysis gap."
+      "A": "The order process cannot run without the gateway, so its outage impact must be analyzed, not set aside.",
+      "B": "SLA credits are usually small and do not restore orders. The dependency still needs analysis and a continuity plan.",
+      "D": "A standby gateway may be the right strategy, but the BIA must first capture the dependency and its impact."
     },
     "references_topic": "Third-party dependencies in the BIA",
     "version": "0.4"
@@ -896,16 +896,16 @@
     "type": "managerial_best_first_most",
     "stem": "A cloud vendor that processes the company's customer data uses several subcontractors, which the company learned about only by accident. What contract provision BEST addresses this?",
     "options": {
-      "A": "A clause requiring the vendor to send an annual thank-you letter to the company",
-      "B": "A lower monthly fee in exchange for the vendor's freedom to choose subcontractors",
+      "A": "A right to audit the vendor once a year",
+      "B": "A clause making the vendor liable for subcontractor breaches",
       "C": "A requirement that the company audit each subcontractor directly every month",
       "D": "Disclosure and approval of subprocessors, with security terms flowed down"
     },
     "answer": "D",
     "explanation": "The company must know who handles its data and ensure the same protections apply. Disclosure, approval rights, and flow-down clauses extend oversight to fourth parties.",
     "distractor_rationales": {
-      "A": "A thank-you letter provides no oversight.",
-      "B": "Trading oversight for a discount increases risk.",
+      "A": "Auditing the vendor does not reveal or control which subcontractors handle the data.",
+      "B": "Liability helps after a breach, but the company still would not know or approve who processes its data.",
       "C": "Monthly direct audits of every subcontractor are impractical."
     },
     "references_topic": "Subprocessor oversight",
@@ -922,14 +922,14 @@
     "options": {
       "A": "Tier vendors by data access and criticality, and assess the highest tiers most deeply",
       "B": "Send the same long questionnaire to all 500 vendors every year and review each one",
-      "C": "Review vendors in alphabetical order until the team runs out of time each year",
+      "C": "Rely on each vendor's SOC 2 report in place of assessments",
       "D": "Assess only the vendors that have reported a security breach in the past"
     },
     "answer": "A",
     "explanation": "Risk-based tiering puts limited effort where the exposure is greatest, with lighter review for low-risk vendors.",
     "distractor_rationales": {
       "B": "Treating every vendor the same wastes effort and overwhelms the team.",
-      "C": "Alphabetical order ignores risk.",
+      "C": "Many vendors have no SOC 2, and reports may not cover the services used. Effort should follow risk tiers.",
       "D": "Past breaches are only one signal; high-risk vendors without breaches would be missed."
     },
     "references_topic": "Tiering vendors by risk",
@@ -946,15 +946,15 @@
     "options": {
       "A": "Require each developer to repeat the same generic training module every month",
       "B": "Build a security champions program with role-based training for developers",
-      "C": "Withhold bonuses from teams whose code has any security findings at all",
-      "D": "Have the security team rewrite all code before release to fix the flaws"
+      "C": "Add a static analysis gate that blocks builds with findings",
+      "D": "Commission an external code audit before every release"
     },
     "answer": "B",
     "explanation": "Champions embedded in each team, supported by role-specific training, bring security knowledge into daily work and scale the security team's reach.",
     "distractor_rationales": {
       "A": "Repeating generic training that already failed will not change behavior.",
-      "C": "Harsh penalties discourage reporting and collaboration.",
-      "D": "Central rewriting does not scale and does not build developer skill."
+      "C": "Scanning catches some flaws late, but it does not build the skills that stop developers introducing them.",
+      "D": "External audits find flaws after they are written, at high cost. Embedded champions change behavior at the source."
     },
     "references_topic": "Security champions",
     "version": "0.4"

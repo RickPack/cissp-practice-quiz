@@ -128,17 +128,17 @@
     "type": "knowledge",
     "stem": "Under common privacy laws, which condition must valid consent meet?",
     "options": {
-      "A": "It must be buried in the terms of service so that users do not have to read it",
+      "A": "It must be collected once and then cover all future uses",
       "B": "It must be assumed whenever a user does not actively object",
-      "C": "It must be permanent and impossible for the person to withdraw",
+      "C": "It must be signed in writing on paper to be valid",
       "D": "It must be freely given, specific, informed, and clear"
     },
     "answer": "D",
     "explanation": "Valid consent is a clear, affirmative choice based on understandable information about a specific purpose, and people must be able to withdraw it.",
     "distractor_rationales": {
-      "A": "Hidden consent is not informed.",
+      "A": "Consent must be specific to a purpose. A single consent cannot cover every future use.",
       "B": "Silence or inaction is not valid consent.",
-      "C": "Consent must be withdrawable."
+      "C": "Written signatures are not generally required. Consent must be freely given, specific, informed, and clear, and it can be withdrawn."
     },
     "references_topic": "Valid consent",
     "version": "1.0"
@@ -155,14 +155,14 @@
       "A": "A license violation that needs a true-up or removal of extra installs",
       "B": "A copyright transfer, since the company paid for the software",
       "C": "A patent infringement claim by the software vendor against the company",
-      "D": "No issue, since the license was paid for in full"
+      "D": "A violation only if the extra installs are used at once"
     },
     "answer": "A",
     "explanation": "The license grants use on 50 seats. Using 80 exceeds the license, which exposes the company to penalties until it buys more seats or removes installs.",
     "distractor_rationales": {
       "B": "Buying a license does not transfer copyright.",
       "C": "Patents are not the issue.",
-      "D": "Payment covers only the licensed number of seats."
+      "D": "A per-seat license counts installations, not simultaneous use, unless the license says it is concurrent."
     },
     "references_topic": "License overuse",
     "version": "1.0"
@@ -176,17 +176,17 @@
     "type": "managerial_best_first_most",
     "stem": "Who should approve the organization's information security policy?",
     "options": {
-      "A": "The network administrator who will implement most of its technical controls",
+      "A": "The IT director who will implement most of its controls",
       "B": "Senior management",
-      "C": "An external vendor who supplies the organization's firewalls",
-      "D": "Each employee, who votes on whether to accept the policy"
+      "C": "The CISO, who writes and maintains it",
+      "D": "The legal department, which reviews its wording"
     },
     "answer": "B",
     "explanation": "Policy sets direction and carries management's authority, so senior management must approve it and support its enforcement.",
     "distractor_rationales": {
-      "A": "Administrators implement controls but lack authority to set organizational direction.",
-      "C": "Vendors have no authority over the organization's policy.",
-      "D": "Policy is not set by employee vote."
+      "A": "Implementers carry out the policy, but they do not have the authority to approve it.",
+      "C": "The CISO usually drafts and maintains the policy, but senior management approves it, giving it organizational authority.",
+      "D": "Legal reviews the policy for compliance, but approval rests with senior management."
     },
     "references_topic": "Approving security policy",
     "version": "1.0"
@@ -201,16 +201,16 @@
     "stem": "How does a business continuity plan differ from a disaster recovery plan?",
     "options": {
       "A": "Business continuity covers only IT systems, while disaster recovery covers the whole business",
-      "B": "They are two names for exactly the same document and the same set of activities",
-      "C": "Continuity keeps critical business functions going; DR restores IT systems and data",
-      "D": "Disaster recovery is written first, and continuity planning is optional afterward"
+      "B": "Continuity covers natural disasters; DR covers cyberattacks",
+      "C": "Continuity keeps key business functions running; DR restores IT",
+      "D": "Continuity is short-term; DR covers the full return to normal"
     },
     "answer": "C",
     "explanation": "Business continuity focuses on keeping essential business processes running during a disruption. Disaster recovery is the part focused on restoring IT systems and data.",
     "distractor_rationales": {
       "A": "The scopes are the other way around.",
-      "B": "They are related but distinct.",
-      "D": "Continuity planning is not optional; DR is a component of it."
+      "B": "Both plans cover any cause of disruption. They differ in scope, business functions versus IT.",
+      "D": "Both include near- and long-term actions. The difference is business processes versus IT systems."
     },
     "references_topic": "Business continuity versus disaster recovery",
     "version": "1.0"
@@ -224,17 +224,17 @@
     "type": "managerial_best_first_most",
     "stem": "What is the MOST important security purpose of an exit interview for a departing employee?",
     "options": {
-      "A": "To ask the employee to recommend friends for the company's open positions",
-      "B": "To collect feedback on the office's furniture and layout",
-      "C": "To confirm the employee's new job title and salary",
-      "D": "To remind them of ongoing obligations and recover company assets"
+      "A": "To ask why they are leaving, so HR can improve retention",
+      "B": "To collect the employee's final review of their manager",
+      "C": "To confirm their final pay, benefits, and leaving date",
+      "D": "To remind them of their obligations and recover company assets"
     },
     "answer": "D",
     "explanation": "An exit interview is the chance to remind departing staff of continuing duties, such as nondisclosure, and to recover badges, devices, and other property.",
     "distractor_rationales": {
-      "A": "Recruiting referrals is not a security purpose.",
-      "B": "Facilities feedback is not a security purpose.",
-      "C": "New job details are not the organization's concern here."
+      "A": "Retention feedback is an HR goal, not the security purpose of the interview.",
+      "B": "Manager feedback is useful to HR, but it is not the security purpose.",
+      "C": "Pay and benefits are administrative steps. Security's interest is ongoing obligations and returned assets."
     },
     "references_topic": "Exit interviews",
     "version": "1.0"
@@ -249,16 +249,16 @@
     "stem": "When valuing an information asset for risk analysis, which factor should be included?",
     "options": {
       "A": "The cost to replace it and its value to competitors",
-      "B": "The color of the server rack that holds it",
-      "C": "The number of letters in the asset's name",
-      "D": "The age and job title of the employee who created the asset"
+      "B": "The purchase price recorded in the asset register only",
+      "C": "The number of users who log in to it each day",
+      "D": "The cost of the security controls that protect it"
     },
     "answer": "A",
     "explanation": "Asset value includes replacement cost, the revenue it supports, its value to competitors, and liability if it is exposed.",
     "distractor_rationales": {
-      "B": "Rack color is irrelevant.",
-      "C": "Name length is irrelevant.",
-      "D": "The creator's age is irrelevant."
+      "B": "Purchase price misses the cost to replace or recreate it and what it is worth to others.",
+      "C": "Usage may hint at importance, but it is not a measure of the asset's value.",
+      "D": "Control cost is weighed against the asset's value. It is not part of that value."
     },
     "references_topic": "Asset valuation factors",
     "version": "1.0"
@@ -320,17 +320,17 @@
     "type": "knowledge",
     "stem": "How does privacy differ from confidentiality?",
     "options": {
-      "A": "Privacy applies only to paper records, while confidentiality applies to digital records",
+      "A": "Privacy covers employees' data; confidentiality covers company secrets",
       "B": "Privacy is a technical control, while confidentiality is a legal requirement",
-      "C": "They are identical terms, and security professionals use them interchangeably",
-      "D": "Privacy concerns people's rights over their personal data; confidentiality protects any data from disclosure"
+      "C": "Privacy is enforced by encryption; confidentiality by access control",
+      "D": "Privacy is people's rights over their data; confidentiality stops disclosure of any data"
     },
     "answer": "D",
     "explanation": "Confidentiality protects information from unauthorized disclosure, whatever it is. Privacy concerns individuals' rights over how their personal information is collected, used, and shared.",
     "distractor_rationales": {
-      "A": "Both apply to any format.",
+      "A": "Privacy covers any person's personal data, customers included, and confidentiality applies to all sensitive data, not just secrets.",
       "B": "Both involve legal and technical aspects.",
-      "C": "They overlap but are distinct."
+      "C": "Both use many controls. The difference is rights over personal data versus protection from disclosure."
     },
     "references_topic": "Privacy versus confidentiality",
     "version": "1.0"
@@ -346,15 +346,15 @@
     "options": {
       "A": "Assess the firm's security posture and bring it under the parent's governance",
       "B": "Connect the firm's network directly to the parent's network to share tools",
-      "C": "Let the acquired firm continue unchanged for several years to avoid disruption",
-      "D": "Replace all of the acquired firm's staff with the parent's own employees"
+      "C": "Require the firm to pass ISO 27001 certification within a year",
+      "D": "Deploy the parent's EDR agent on all of the firm's devices"
     },
     "answer": "A",
     "explanation": "The acquired firm's risks become the parent's risks. Assessing them and extending governance, including policies, ownership, and oversight, comes before integration.",
     "distractor_rationales": {
       "B": "Connecting networks before assessment can import threats.",
-      "C": "Leaving the firm ungoverned leaves unknown risks in place.",
-      "D": "Wholesale replacement is disproportionate and loses knowledge."
+      "C": "A certification target skips the first step: understanding the firm's current risk and bringing it under governance.",
+      "D": "EDR is a useful control, but deploying tools before assessing the firm's posture and governance is out of order."
     },
     "references_topic": "Governance after an acquisition",
     "version": "1.0"
@@ -392,17 +392,17 @@
     "type": "managerial_best_first_most",
     "stem": "A company passed its compliance audit last month but was breached this month through a weakness the audit did not cover. What lesson should leadership take?",
     "options": {
-      "A": "Compliance audits are pointless and should be stopped to save money",
-      "B": "The auditors should be blamed and replaced for missing the weakness",
+      "A": "Expand the next audit's scope to cover the missed weakness",
+      "B": "Switch to a different audit firm for next year",
       "C": "Compliance is a minimum baseline; risk must be managed beyond it",
-      "D": "The company should aim only for compliance, since it cannot prevent all breaches"
+      "D": "Buy cyber insurance to cover gaps the audit misses"
     },
     "answer": "C",
     "explanation": "Compliance frameworks set minimum requirements for specific scopes. Real security requires managing the organization's full risk picture, beyond audit checklists.",
     "distractor_rationales": {
-      "A": "Compliance still has legal and business value.",
-      "B": "The audit likely had a defined scope that did not include the weakness.",
-      "D": "Aiming only for compliance leaves risks unmanaged."
+      "A": "A wider audit closes one gap, but compliance will always cover only part of the real risk.",
+      "B": "A different auditor tests the same compliance scope. The lesson is to manage risk beyond it.",
+      "D": "Insurance transfers some loss but does not change the treatment of risk outside compliance scope."
     },
     "references_topic": "Compliance is not the same as security",
     "version": "1.0"
@@ -418,7 +418,7 @@
     "options": {
       "A": "Start the advertising and update the notice at the end of the year",
       "B": "Start the advertising, since customers already agreed to the original notice",
-      "C": "Hide the advertising use in a technical appendix that few customers read",
+      "C": "Run the advertising only for customers who have not opted out",
       "D": "Update the notice and obtain any consent the new purpose requires"
     },
     "answer": "D",
@@ -426,7 +426,7 @@
     "distractor_rationales": {
       "A": "Processing first and informing later breaches transparency.",
       "B": "Agreement to the old notice does not cover a new purpose.",
-      "C": "Hiding the change defeats transparency."
+      "C": "Waiting for opt-outs assumes agreement to a purpose the notice never mentioned. The notice and any needed consent come first."
     },
     "references_topic": "Updating privacy notices for new uses",
     "version": "1.0"
@@ -442,15 +442,15 @@
     "options": {
       "A": "The employer, as work made for hire",
       "B": "The employee, since they personally wrote the code",
-      "C": "The public, since software cannot be copyrighted",
-      "D": "The company that sold the employee their laptop"
+      "C": "The employee and employer jointly, as co-authors",
+      "D": "The client the software was written for"
     },
     "answer": "A",
     "explanation": "Work created by an employee within the scope of employment is generally owned by the employer, and employment agreements usually confirm this.",
     "distractor_rationales": {
       "B": "Authorship does not give ownership when the work is made for hire.",
-      "C": "Software is protected by copyright.",
-      "D": "Hardware vendors have no claim to the code."
+      "C": "Work written within the job is the employer's alone, not jointly owned.",
+      "D": "A client owns code only if a contract assigns it. By default the employer owns it as work made for hire."
     },
     "references_topic": "Work for hire",
     "version": "1.0"
@@ -465,16 +465,16 @@
     "stem": "A regulator sends a formal inquiry asking for documents about a recent data breach. What should the company do FIRST?",
     "options": {
       "A": "Answer immediately with whatever documents the security team can find",
-      "B": "Involve legal counsel, preserve relevant records, and respond through counsel",
-      "C": "Ignore the letter until the regulator follows up a second time",
-      "D": "Ask employees to delete informal messages about the breach"
+      "B": "Involve counsel, preserve relevant records, and respond through counsel",
+      "C": "Have the CISO call the regulator to explain informally",
+      "D": "Wait until the internal investigation has finished, then reply"
     },
     "answer": "B",
     "explanation": "Regulatory inquiries have legal consequences. Counsel should guide the response, and relevant records must be preserved.",
     "distractor_rationales": {
       "A": "An unmanaged response may be incomplete or harmful.",
-      "C": "Ignoring a regulator can bring penalties.",
-      "D": "Deleting records is spoliation and may be illegal."
+      "C": "Informal statements to a regulator can create legal exposure. Communication should go through counsel.",
+      "D": "A formal inquiry has deadlines. Records must be preserved and counsel engaged now."
     },
     "references_topic": "Responding to a regulator's inquiry",
     "version": "1.0"
@@ -488,17 +488,17 @@
     "type": "application",
     "stem": "A business unit cannot meet the encryption standard on a legacy system for the next year. What is the BEST way to handle this?",
     "options": {
-      "A": "Let the business unit quietly ignore the standard until the system is replaced",
+      "A": "Grant an open-ended exception until the system is replaced",
       "B": "Change the standard for the whole organization so the legacy system complies",
-      "C": "Grant a documented exception with owner approval, compensating controls, and an expiry",
-      "D": "Shut down the legacy system today, even though the business depends on it"
+      "C": "Grant a time-limited, approved exception with compensating controls",
+      "D": "Encrypt the network traffic to the system instead"
     },
     "answer": "C",
     "explanation": "A formal, time-limited exception makes the risk visible, assigns an accountable owner, and adds compensating controls until the system is fixed.",
     "distractor_rationales": {
-      "A": "Silent non-compliance hides risk.",
+      "A": "An exception with no expiry or compensating controls becomes a permanent gap that nobody revisits.",
       "B": "Weakening the standard for everyone is not justified by one system.",
-      "D": "Immediate shutdown may cause more harm than the risk."
+      "D": "Network encryption may be a useful compensating control, but it still needs a documented, approved, time-limited exception."
     },
     "references_topic": "Policy exception process",
     "version": "1.0"
@@ -512,17 +512,17 @@
     "type": "managerial_best_first_most",
     "stem": "During a continuity exercise, many staff did not know their roles or where to find the plan. What is the BEST improvement?",
     "options": {
-      "A": "Rewrite the plan in more technical language",
-      "B": "Store the plan only with the continuity manager",
-      "C": "Stop exercising until the plan is rewritten",
+      "A": "Make the plan longer, with a detailed step for every role",
+      "B": "Run the same exercise again next month to build familiarity",
+      "C": "Email the full plan to all staff once a year as a reminder",
       "D": "Train staff on their roles and make the plan easy to find"
     },
     "answer": "D",
     "explanation": "A plan works only if people know it. Regular training on roles, easy access to the plan, and repeated exercises build readiness.",
     "distractor_rationales": {
-      "A": "More technical language makes the plan harder to use.",
-      "B": "Restricting access makes the problem worse.",
-      "C": "Exercises are how gaps like this are found and fixed."
+      "A": "A longer document does not help people who do not know their roles or where to find it.",
+      "B": "Repeating the exercise without training reproduces the same confusion.",
+      "C": "An annual email is quickly lost. Staff need training on their roles and a plan they can find."
     },
     "references_topic": "Plan awareness and training",
     "version": "1.0"
@@ -633,16 +633,16 @@
     "stem": "Why should a contract with a critical service provider include a right-to-audit clause?",
     "options": {
       "A": "It lets the customer verify controls, directly or through a third party",
-      "B": "It lets the provider audit the customer's finances every year",
-      "C": "It guarantees that the provider will never suffer a security breach of any kind",
-      "D": "It transfers all legal liability for breaches to the provider"
+      "B": "It obliges the provider to fix every finding within 30 days",
+      "C": "It replaces the need to review the provider's SOC 2 report",
+      "D": "It gives the customer the right to terminate after a breach"
     },
     "answer": "A",
     "explanation": "A right-to-audit clause gives the customer a contractual way to check that the provider meets its security obligations, often through independent auditors.",
     "distractor_rationales": {
-      "B": "The clause benefits the customer, not the provider.",
-      "C": "No clause can guarantee no breaches.",
-      "D": "Audit rights do not transfer liability."
+      "B": "Remediation deadlines are a separate term. The audit right is about being able to verify.",
+      "C": "Assurance reports and audit rights work together. The clause adds the right to verify where reports fall short.",
+      "D": "Termination rights matter, but they act after a breach. The audit right lets the customer verify controls beforehand."
     },
     "references_topic": "Right-to-audit clauses",
     "version": "1.0"
@@ -656,17 +656,17 @@
     "type": "managerial_best_first_most",
     "stem": "Attackers have started sending phishing emails with QR codes that bypass link scanning. What is the BEST awareness response?",
     "options": {
-      "A": "Wait until next year's annual training to cover QR code phishing",
-      "B": "Send a short, targeted alert with examples and add QR codes to phishing simulations",
-      "C": "Ban all QR codes in the company, including those on product packaging",
-      "D": "Tell employees to stop reading any email that contains an image"
+      "A": "Update the email gateway so it decodes and scans QR code links",
+      "B": "Send a short targeted alert with examples and add QR codes to simulations",
+      "C": "Add a QR code phishing module to next year's annual training course",
+      "D": "Post a QR code phishing warning on the intranet home page"
     },
     "answer": "B",
     "explanation": "Timely, specific awareness helps people recognize a new technique now, and simulations reinforce it.",
     "distractor_rationales": {
-      "A": "Waiting a year leaves staff unprepared.",
-      "C": "Banning all QR codes is impractical.",
-      "D": "Ignoring all images disrupts normal work."
+      "A": "Technical scanning helps, but the question asks for the awareness response, and some QR codes will still get through.",
+      "C": "Annual training is months away while attacks are happening now.",
+      "D": "A passive intranet notice reaches few people and does not reinforce the lesson."
     },
     "references_topic": "Timely awareness for new attack techniques",
     "version": "1.0"
@@ -705,16 +705,16 @@
     "stem": "A company outsources its IT operations to a managed service provider. Who remains accountable for protecting the company's data?",
     "options": {
       "A": "The provider, since it now runs the systems day to day",
-      "B": "The provider's insurance company, since it covers breaches",
-      "C": "No one, since accountability ends when a function is outsourced",
+      "B": "The provider and the company equally, by contract",
+      "C": "The company's CISO alone",
       "D": "The company's own senior management"
     },
     "answer": "D",
     "explanation": "A company can outsource tasks and responsibilities, but not accountability. Senior management must still oversee the provider and the risk.",
     "distractor_rationales": {
       "A": "The provider is responsible for its duties under contract, but accountability stays with the company.",
-      "B": "Insurance covers some costs, not accountability.",
-      "C": "Accountability does not disappear."
+      "B": "A contract can share responsibility for tasks, but accountability for the company's data stays with its leadership.",
+      "C": "The CISO manages the program, but ultimate accountability rests with senior management."
     },
     "references_topic": "Accountability for outsourced functions",
     "version": "1.0"
@@ -728,17 +728,17 @@
     "type": "managerial_best_first_most",
     "stem": "A security engineer finds that the company's medical device has a flaw that could harm patients. Management decides to ship without fixing it or telling customers. What should the engineer do?",
     "options": {
-      "A": "Escalate internally in writing, then report to regulators if the risk is not addressed",
-      "B": "Stay silent, since management has made its decision",
-      "C": "Post the flaw's details publicly on social media at once",
-      "D": "Quietly fix the code without approval and ship the fix"
+      "A": "Escalate in writing internally, then report to regulators if unresolved",
+      "B": "Stay silent, since management has made and documented its decision",
+      "C": "Report the flaw to regulators right away, before escalating",
+      "D": "Ask a customer to report the flaw so the company must act"
     },
     "answer": "A",
     "explanation": "Protecting the public comes first. The engineer should use internal channels and, if they fail, report to the appropriate authority rather than leaking details or acting outside their authority.",
     "distractor_rationales": {
       "B": "Silence puts patients at risk.",
-      "C": "Public disclosure without a fix could help attackers and harm patients.",
-      "D": "Unapproved changes bypass controls and may introduce new risk."
+      "C": "Going straight to regulators skips internal escalation, which should come first unless the harm is imminent.",
+      "D": "Arranging a third-party report is a deceptive workaround. Escalate openly, in writing."
     },
     "references_topic": "Raising safety concerns",
     "version": "1.0"
@@ -754,15 +754,15 @@
     "options": {
       "A": "Transfer the data immediately, since the request came from a government",
       "B": "Escalate to legal counsel to weigh both legal obligations",
-      "C": "Refuse and publish the request online to show support for privacy",
-      "D": "Delete the data so that neither law can be broken"
+      "C": "Refuse, since local law always overrides foreign requests",
+      "D": "Transfer only data about the authority's own citizens"
     },
     "answer": "B",
     "explanation": "When laws conflict, legal counsel must assess the obligations, possible exceptions, and formal channels before any response.",
     "distractor_rationales": {
       "A": "Complying blindly may break the other country's law.",
-      "C": "Publishing may breach confidentiality obligations and escalate the conflict.",
-      "D": "Deleting data under a legal request may be illegal."
+      "C": "Neither law automatically wins. Counsel must weigh the conflict, which may involve treaties or court processes.",
+      "D": "Splitting by nationality does not solve the conflict. The local transfer ban may still apply."
     },
     "references_topic": "Conflicting legal obligations",
     "version": "1.0"
@@ -777,16 +777,16 @@
     "stem": "A customer opted out of marketing, but still received emails for weeks because three marketing systems each keep their own contact lists. What is the BEST fix?",
     "options": {
       "A": "Ask the customer to opt out separately in each of the three systems",
-      "B": "Apologize to the customer and change nothing, since some delay is normal and expected",
+      "B": "Remove the customer manually from all three marketing lists today",
       "C": "Keep one preference record and sync opt-outs to every system automatically",
-      "D": "Stop all marketing for every customer to avoid any further complaints"
+      "D": "Reduce the delay by syncing the three lists automatically once a week"
     },
     "answer": "C",
     "explanation": "A central preference record synced to every system honors the opt-out everywhere promptly.",
     "distractor_rationales": {
       "A": "Making the customer repeat the request shifts the burden unfairly.",
-      "B": "Ignoring the gap continues violating the customer's rights.",
-      "D": "Stopping all marketing is disproportionate."
+      "B": "Manual removal fixes this customer but leaves the same problem for everyone else.",
+      "D": "Weekly syncing still sends emails for days after an opt-out. A single preference record with immediate sync fixes the cause."
     },
     "references_topic": "Honoring objections across systems",
     "version": "1.0"
@@ -801,8 +801,8 @@
     "stem": "An internal investigation concerns possible misconduct by the head of IT operations. Who should lead it?",
     "options": {
       "A": "The head of IT operations, who knows the systems best",
-      "B": "A direct report of the head of IT operations",
-      "C": "A personal friend of the head of IT operations who works in another department",
+      "B": "A senior engineer who reports to the head of IT operations",
+      "C": "The CISO, who reports to the same CIO as the head of IT",
       "D": "An independent party, such as internal audit or an outside firm"
     },
     "answer": "D",
@@ -810,7 +810,7 @@
     "distractor_rationales": {
       "A": "The subject cannot investigate themselves.",
       "B": "A direct report may be pressured or biased.",
-      "C": "A personal relationship creates a conflict of interest."
+      "C": "A CISO in the same reporting line as the subject is not independent."
     },
     "references_topic": "Independence of internal investigators",
     "version": "1.0"
@@ -824,17 +824,17 @@
     "type": "application",
     "stem": "An audit finds that a published policy requiring clean desks is ignored throughout the company and has never been enforced. What is the BEST response?",
     "options": {
-      "A": "Either enforce it with awareness and checks, or revise it to reflect accepted risk",
-      "B": "Keep the policy unchanged, since having it on paper satisfies auditors",
-      "C": "Remove the policy quietly without telling anyone",
-      "D": "Discipline every employee who has ever left papers on a desk"
+      "A": "Enforce it with awareness and checks, or revise it to match accepted risk",
+      "B": "Add the policy to annual training and change nothing else",
+      "C": "Retire the policy, since no incident has resulted from it",
+      "D": "Add locking cabinets to every desk and keep the policy as written"
     },
     "answer": "A",
     "explanation": "A policy no one follows is a liability. Management should either commit to it with communication and monitoring, or formally revise it based on a risk decision.",
     "distractor_rationales": {
-      "B": "Unenforced policy can increase liability and misleads auditors.",
-      "C": "Quiet removal skips governance and leaves the risk unassessed.",
-      "D": "Mass discipline for a never-enforced rule is unfair and damaging."
+      "B": "Training alone has not worked, and an unenforced policy still misrepresents the control environment.",
+      "C": "Retiring a control without a risk decision is not justified by the absence of incidents.",
+      "D": "Cabinets make compliance easier, but without checks the policy stays ignored."
     },
     "references_topic": "Policies that are not followed",
     "version": "1.0"
@@ -848,17 +848,17 @@
     "type": "managerial_best_first_most",
     "stem": "A continuity plan covers loss of facilities and systems, but not a scenario where 40% of staff are unavailable because of illness. What is the BEST addition?",
     "options": {
-      "A": "Add more backup servers to the recovery site to compensate",
+      "A": "Arrange a staffing agency to supply temporary workers",
       "B": "Cross-train staff, identify critical roles, and define succession",
-      "C": "Assume staff will always be available, since illness affects few people",
-      "D": "Move all staff to a single office to simplify coordination"
+      "C": "Let critical staff work remotely during any outage",
+      "D": "Buy business interruption insurance for staff loss"
     },
     "answer": "B",
     "explanation": "People are a critical resource. Cross-training, backup personnel for critical roles, and succession plans keep essential functions running when many staff are absent.",
     "distractor_rationales": {
-      "A": "Servers do not replace people.",
-      "C": "Large-scale absences do happen and need planning.",
-      "D": "Concentrating staff increases the risk of widespread illness."
+      "A": "Temporary workers rarely have the skills or access for critical roles at short notice. Cross-training covers that.",
+      "C": "Remote work does not help when the staff themselves are ill.",
+      "D": "Insurance covers some losses, but it does not keep critical functions running."
     },
     "references_topic": "Planning for staff unavailability",
     "version": "1.0"
@@ -872,17 +872,17 @@
     "type": "application",
     "stem": "A disgruntled engineer who recently lost a promotion has started downloading large volumes of design files outside normal hours. What is the BEST response?",
     "options": {
-      "A": "Confront the engineer publicly at the next team meeting",
-      "B": "Ignore it until the engineer actually leaves the company",
+      "A": "Disable the engineer's accounts right away, before anything else",
+      "B": "Ask the engineer's manager to talk with them informally",
       "C": "Coordinate security, HR, and legal on monitoring and restricting access",
-      "D": "Fire the engineer immediately without gathering any evidence"
+      "D": "Block downloads of design files for all employees company-wide"
     },
     "answer": "C",
     "explanation": "Insider threat indicators call for a coordinated, lawful response: preserve evidence, monitor under policy, and limit exposure while HR and legal decide next steps.",
     "distractor_rationales": {
-      "A": "Public confrontation can prompt destruction of evidence.",
-      "B": "Waiting may allow data theft.",
-      "D": "Acting without evidence invites legal problems."
+      "A": "Abruptly disabling access before HR and legal are involved can damage the case and the employment process.",
+      "B": "An informal chat can tip off the engineer before evidence is preserved.",
+      "D": "A company-wide block disrupts everyone and is not targeted at the risk."
     },
     "references_topic": "Responding to insider threat indicators",
     "version": "1.0"
@@ -897,16 +897,16 @@
     "stem": "Twenty separate findings on the same payment system are each rated low. Together, they would let an attacker move from the internet to card data. How should the risk be treated?",
     "options": {
       "A": "As low, since each finding is individually rated low",
-      "B": "As low, but the findings should be fixed in alphabetical order",
-      "C": "As medium, since averaging twenty low risks produces a medium risk",
+      "B": "As low, but fix them all within the normal SLA",
+      "C": "As medium, since twenty findings is a large number",
       "D": "As high, since chained findings create a greater combined risk"
     },
     "answer": "D",
     "explanation": "Risks that combine into an attack path must be assessed together. Individually low findings can form a high risk when chained.",
     "distractor_rationales": {
       "A": "Rating each alone hides the combined exposure.",
-      "B": "Alphabetical order ignores the attack path.",
-      "C": "Averaging does not reflect how chained weaknesses combine."
+      "B": "Ratings must reflect the combined attack path to card data, which is high, not the individual scores.",
+      "C": "The count is not what matters. The chain gives an internet attacker a path to card data, a high risk."
     },
     "references_topic": "Aggregated risk",
     "version": "1.0"
@@ -922,14 +922,14 @@
     "options": {
       "A": "Not counted until the control is enforcing and its effectiveness is tested",
       "B": "Counted in full, since the tool has been purchased and installed",
-      "C": "Counted twice, since DLP covers both email and web traffic",
-      "D": "Counted as half, since the tool is partly configured"
+      "C": "Counted in full once the vendor confirms the tool is working",
+      "D": "Counted as half, since the tool is installed but only monitoring"
     },
     "answer": "A",
     "explanation": "A control reduces risk only when it works as intended. Until it is enforcing and verified, the report should not claim the reduction.",
     "distractor_rationales": {
       "B": "Purchase and installation do not prove effectiveness.",
-      "C": "Double counting inflates the reduction.",
+      "C": "A vendor's assurance does not show the control works in this environment. It must be enforcing and tested.",
       "D": "An arbitrary fraction is not based on evidence."
     },
     "references_topic": "Verifying control effectiveness",
@@ -944,17 +944,17 @@
     "type": "managerial_best_first_most",
     "stem": "A contract with a SaaS provider that held customer data is ending. What should the offboarding process include?",
     "options": {
-      "A": "Cancelling the invoice and letting the provider keep the data for its records",
-      "B": "Retrieving or certifying destruction of data, and removing all access and integrations",
-      "C": "Leaving API integrations active in case the company returns to the provider later",
-      "D": "Asking the provider to keep the data as a free backup"
+      "A": "Cancelling the contract and disabling every user login to the service",
+      "B": "Data return or certified destruction, plus removal of all access and integrations",
+      "C": "Exporting a copy of the data and leaving the account dormant for later",
+      "D": "Revoking the API keys and tokens the company issued to the provider"
     },
     "answer": "B",
     "explanation": "Offboarding must get the data back or verify its destruction, and remove accounts, keys, and connections so the former provider has no ongoing access.",
     "distractor_rationales": {
-      "A": "The provider should not retain customer data without a basis.",
-      "C": "Active integrations are an ongoing exposure.",
-      "D": "Using a former provider as an unmanaged backup keeps risk without oversight."
+      "A": "Disabling logins leaves customer data with the provider and integrations active.",
+      "C": "A dormant account still holds the data, and nobody will remember to close it.",
+      "D": "Revoking keys removes one integration, but the provider still holds the data."
     },
     "references_topic": "Vendor offboarding",
     "version": "1.0"

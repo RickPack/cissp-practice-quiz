@@ -82,7 +82,7 @@
     "options": {
       "A": "Mandate that every business unit complete security awareness training within the next 30 days",
       "B": "Purchase an integrated risk management platform to track initiative status",
-      "C": "Report the delays to the external auditor so they appear as a formal finding",
+      "C": "Define security KPIs for each initiative and report them monthly to the CIO",
       "D": "Establish a governance steering committee with business leaders who own risk decisions"
     },
     "answer": "D",
@@ -90,7 +90,7 @@
     "distractor_rationales": {
       "A": "Training raises awareness but does not create business ownership or decision rights.",
       "B": "A tool can track delays, but it cannot fix the lack of ownership. Buying tools before establishing governance is premature.",
-      "C": "Going to the external auditor bypasses internal governance and damages relationships. It still would not create business ownership."
+      "C": "KPIs reported to the CIO keep security inside IT. Business leaders still do not own the risk decisions, which is the cause of the delays."
     },
     "references_topic": "Security governance alignment with business strategy",
     "version": "0.1"
@@ -177,7 +177,7 @@
     "stem": "A logistics company plans to outsource its customer support platform to a SaaS provider that will store customer personal data. The provider's SOC 2 Type II report is 14 months old and carves out the third-party data center the provider uses. What is the BEST action before signing the contract?",
     "options": {
       "A": "Proceed, since a SOC 2 Type II report demonstrates the operating effectiveness of controls",
-      "B": "Reject the provider outright, because any assurance report older than twelve months is considered invalid",
+      "B": "Accept the report and add a clause requiring next year's SOC 2 report",
       "C": "Perform an on-site penetration test of the provider's production environment",
       "D": "Request a bridge letter or current report, plus assurance for the carved-out data center"
     },
@@ -185,7 +185,7 @@
     "explanation": "The report's age leaves a gap in the assurance period, and the carve-out means the data center's controls were never tested. The prudent step is to close both gaps, for example with a bridge (gap) letter or a newer report and the data center's own assurance report, and then add right-to-audit and breach-notification terms to the contract.",
     "distractor_rationales": {
       "A": "A Type II report speaks to operating effectiveness only for the period and scope it covers. A stale report with a carve-out leaves material gaps.",
-      "B": "Reports do not automatically become invalid at 12 months. The right response is to close the gap rather than reject the provider by rule.",
+      "B": "A future report does nothing about the 14-month gap or the carved-out data center today, before the data moves.",
       "C": "Providers rarely permit customers to test their production environments, and a penetration test would not evaluate governance controls. It is a disproportionate first step."
     },
     "references_topic": "Third-party assurance and SOC report scope",
@@ -227,14 +227,14 @@
       "A": "Control X, with a net annual value of $5,000",
       "B": "Control Y, with a net annual value of $8,000",
       "C": "Control X, because it produces the lowest residual ALE",
-      "D": "Neither, because both leave residual risk above zero"
+      "D": "Neither, because each control costs more than the loss it removes"
     },
     "answer": "B",
     "explanation": "Safeguard value = (ALE before - ALE after) - annual cost of the safeguard. Control X: ($50,000 - $15,000) - $30,000 = $5,000. Control Y: ($50,000 - $30,000) - $12,000 = $8,000. Control Y delivers more net value.",
     "distractor_rationales": {
       "A": "Control X does have positive value, but $5,000 is less than Control Y's $8,000.",
       "C": "The lowest residual risk is not the same as the best value. X's extra risk reduction costs more than it saves.",
-      "D": "Some residual risk always remains. A control is justified whenever its net value is positive."
+      "D": "Both controls remove more loss than they cost: X removes $35,000 for $30,000 and Y removes $20,000 for $12,000."
     },
     "references_topic": "Cost-benefit analysis of safeguards",
     "version": "0.1"

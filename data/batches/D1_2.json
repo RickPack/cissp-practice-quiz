@@ -82,7 +82,7 @@
     "options": {
       "A": "At the end of the employee's final week",
       "B": "After HR finishes processing the exit paperwork",
-      "C": "Within 30 days, as part of the next scheduled quarterly access review",
+      "C": "Same day, once the manager files the deprovisioning ticket",
       "D": "At or before the moment the employee is notified"
     },
     "answer": "D",
@@ -90,7 +90,7 @@
     "distractor_rationales": {
       "A": "A week of remaining access gives a disgruntled employee ample opportunity to cause harm.",
       "B": "Paperwork should never gate revocation of access.",
-      "C": "Periodic access reviews catch leftovers. They are not the mechanism for removing access at termination."
+      "C": "Waiting for a ticket leaves a window between notice and removal in which an unhappy employee still has payment access."
     },
     "references_topic": "Involuntary termination procedures",
     "version": "0.2"
@@ -226,15 +226,15 @@
     "options": {
       "A": "Purchase a third-party breach notification service",
       "B": "Analyze the requirement against current incident procedures",
-      "C": "Rewrite the entire incident response plan from scratch immediately",
-      "D": "Wait until a breach occurs to see how regulators respond"
+      "C": "Brief the board on the new regulation and its penalties",
+      "D": "Pre-draft notification templates for each regulator"
     },
     "answer": "B",
     "explanation": "Start with a gap analysis: understand exactly what the regulation requires and compare it with current detection, escalation, and notification procedures. The gaps then drive targeted updates.",
     "distractor_rationales": {
       "A": "Buying a service before understanding the requirement and the current gaps is premature.",
-      "C": "Rewriting everything wastes effort and may discard parts that already work. Analysis comes first.",
-      "D": "Waiting for a breach invites non-compliance and penalties."
+      "C": "Leadership should be informed, but first the team needs to know whether current procedures can meet 72 hours, so the briefing has substance.",
+      "D": "Templates help later, but the first step is to find the gaps between the requirement and how incidents are handled today."
     },
     "references_topic": "Regulatory gap analysis",
     "version": "0.2"
@@ -251,14 +251,14 @@
       "A": "That the data is encrypted in transit with strong TLS settings",
       "B": "That the provider holds an ISO 27001 certificate",
       "C": "That a lawful cross-border transfer mechanism exists",
-      "D": "That employees are notified after the transfer is complete"
+      "D": "That a data processing agreement with the provider is signed"
     },
     "answer": "C",
     "explanation": "Cross-border transfers need a legal basis before any data moves, such as an adequacy finding, approved contractual clauses, or binding corporate rules. Technical safeguards come afterward.",
     "distractor_rationales": {
       "A": "Encryption is necessary but does not satisfy the legal requirement for the transfer itself.",
       "B": "A certification shows a management system exists, but it is not a legal transfer mechanism.",
-      "D": "Notifying people after the fact does not create a lawful basis for the transfer."
+      "D": "A processing agreement governs how the provider handles the data, but by itself it does not make the cross-border export lawful."
     },
     "references_topic": "Transborder data transfer mechanisms",
     "version": "0.2"
@@ -320,16 +320,16 @@
     "type": "application",
     "stem": "A startup's developers copied source code from a library under a strong copyleft license into the company's proprietary product, which is distributed to customers. What is the PRIMARY risk?",
     "options": {
-      "A": "The copied code will make the product run more slowly",
+      "A": "The company may owe the library's authors royalties on every copy",
       "B": "The product may have to be released under the same license",
-      "C": "The license automatically transfers ownership of the startup's patents",
+      "C": "The copied code may carry undisclosed security vulnerabilities",
       "D": "The library's authors can revoke the license at any time"
     },
     "answer": "B",
     "explanation": "Strong copyleft licenses require that distributed derivative works be licensed under the same terms, which can mean releasing the product's source code. This is a license compliance and intellectual property risk.",
     "distractor_rationales": {
-      "A": "A license has no effect on performance.",
-      "C": "Some licenses include patent grants, but none transfer ownership of the licensee's patents.",
+      "A": "Copyleft licenses do not charge royalties. Their condition is that derivative works be shared under the same terms.",
+      "C": "Unreviewed third-party code can carry vulnerabilities, but the primary risk here is the license obligation on a distributed product.",
       "D": "Most open-source licenses are irrevocable for code already received, so revocation is not the main concern."
     },
     "references_topic": "Open-source license compliance",
@@ -345,16 +345,16 @@
     "stem": "After an annual security training course, phishing-simulation click rates drop for about a month and then return to their previous level. What is the BEST way to improve the program?",
     "options": {
       "A": "Make the annual course longer and more detailed",
-      "B": "Discipline every employee who clicks a simulated phishing link",
+      "B": "Require a remedial module for anyone who clicks a simulation",
       "C": "Move to short, frequent sessions with immediate feedback",
-      "D": "Stop running phishing simulations altogether"
+      "D": "Add a quiz at the end of the annual course to check retention"
     },
     "answer": "C",
     "explanation": "Knowledge fades quickly after a single annual event. Short, frequent, role-relevant reinforcement with feedback at the moment of a mistake sustains behavior change.",
     "distractor_rationales": {
       "A": "A longer annual course still leaves eleven months for the lesson to fade.",
-      "B": "Punishment discourages people from reporting mistakes and damages security culture.",
-      "D": "Stopping simulations removes both practice and the ability to measure progress."
+      "B": "Remedial training targets clickers after the fact. It does not fix the decay that follows a once-a-year course.",
+      "D": "A quiz measures retention right after the course. The problem is that the effect fades within weeks, which frequent reinforcement addresses."
     },
     "references_topic": "Sustaining awareness program effectiveness",
     "version": "0.2"
@@ -395,14 +395,14 @@
       "A": "Formally accept the risk and document the decision",
       "B": "Implement the control anyway to eliminate the risk",
       "C": "Ignore the risk, since the expected loss is small",
-      "D": "Transfer the risk by purchasing a policy regardless of cost"
+      "D": "Mitigate partially with a cheaper manual workaround"
     },
     "answer": "A",
     "explanation": "The control costs eight times the expected loss, and the risk is within appetite. The risk owner should formally accept the risk, document the rationale, and review it periodically.",
     "distractor_rationales": {
       "B": "Spending $40,000 a year to avoid $5,000 in expected losses is not justified.",
       "C": "Ignoring a risk is not the same as accepting it. Acceptance is a documented decision by an accountable owner.",
-      "D": "Transferring the risk \"regardless of cost\" could also cost more than the risk itself."
+      "D": "The risk is already within appetite, so spending effort on mitigation is not needed. The right response is documented acceptance."
     },
     "references_topic": "Risk acceptance",
     "version": "0.2"
@@ -441,16 +441,16 @@
     "stem": "A small software vendor that supplies a critical payroll integration has left a known vulnerability unpatched for six months and does not respond to inquiries. The contract has no security clauses. What should the security manager do FIRST?",
     "options": {
       "A": "Terminate the contract immediately and switch to a different vendor",
-      "B": "Publicly disclose the vulnerability to pressure the vendor",
+      "B": "Escalate to the vendor's executives and request a fix date",
       "C": "Assess the exposure and apply compensating controls",
-      "D": "Take no action, because the vendor is responsible for its own software"
+      "D": "Add security clauses at the next contract renewal"
     },
     "answer": "C",
     "explanation": "The company owns this risk no matter who wrote the software. Assess the impact, apply compensating controls such as restricted access and monitoring, keep escalating with the vendor, and plan contract changes and alternatives.",
     "distractor_rationales": {
       "A": "Abrupt termination could disrupt payroll, and a replacement takes time to put in place.",
-      "B": "Uncoordinated public disclosure can harm the company and other customers. It is not a first step.",
-      "D": "Accountability for protecting the company's data cannot be outsourced to a vendor."
+      "B": "Escalation is reasonable, but the vendor has ignored inquiries for six months. First understand the exposure and protect against it now.",
+      "D": "Contract clauses help in future, but they do nothing about the vulnerability exposed today."
     },
     "references_topic": "Managing vendor security risk",
     "version": "0.2"
@@ -490,15 +490,15 @@
     "options": {
       "A": "Report it through the organization's ethics channel",
       "B": "Confront the colleague privately and demand that it stop",
-      "C": "Post a warning about the colleague on a professional forum",
-      "D": "Ignore it, since it is not a technical security issue"
+      "C": "Gather evidence from the colleague's email before reporting",
+      "D": "Alert the vendor that its pricing has been disclosed"
     },
     "answer": "A",
     "explanation": "Acting honorably and protecting the organization means reporting through the proper channel, such as an ethics hotline, compliance, or management, so the matter is investigated fairly and evidence is preserved.",
     "distractor_rationales": {
       "B": "A private confrontation can tip off the colleague, lead to destroyed evidence, and escalate the situation.",
-      "C": "Public accusations harm reputations, may be defamatory, and breach confidentiality.",
-      "D": "Misuse of confidential information is squarely within a security professional's ethical responsibilities."
+      "C": "Collecting evidence is for authorized investigators. An analyst searching a colleague's email can break policy and taint the case.",
+      "D": "The vendor may need to be told, but that decision belongs to the organization after the report, not to the analyst first."
     },
     "references_topic": "Reporting ethical violations",
     "version": "0.2"
@@ -587,14 +587,14 @@
       "A": "Verify the request's legal validity with counsel before responding",
       "B": "Refuse outright, because the data legally belongs to the customer, not to the provider",
       "C": "Immediately provide all requested records to avoid penalties",
-      "D": "Delete the requested records to protect the employees' privacy"
+      "D": "Notify the customer before deciding whether to comply"
     },
     "answer": "A",
     "explanation": "First confirm with legal counsel that the request is authentic, within jurisdiction, and properly scoped. Then respond narrowly and notify the customer as the contract and law allow.",
     "distractor_rationales": {
       "B": "The provider is subject to local law, and an outright refusal may itself be unlawful.",
       "C": "Handing over everything without validation risks breaching contracts and privacy laws.",
-      "D": "Destroying data subject to a legal order is obstruction and spoliation."
+      "D": "Notice is promised only where legally permitted. Some orders forbid disclosure, so legal validity and any restrictions must be checked first."
     },
     "references_topic": "Responding to lawful data requests",
     "version": "0.2"
@@ -610,15 +610,15 @@
     "options": {
       "A": "After deployment, once real data shows what is being collected",
       "B": "During design, before the system is built or purchased",
-      "C": "Only if a customer files a complaint about the cameras",
-      "D": "At the next annual compliance audit"
+      "C": "Before go-live, once the vendor and cameras are selected",
+      "D": "During the pilot in two stores, using live data"
     },
     "answer": "B",
     "explanation": "Privacy by design places the PIA early, when its findings can still shape the system, for example through data minimization, anonymization, and notice, and when changes are cheapest.",
     "distractor_rationales": {
       "A": "After deployment, personal data has already been collected and the design is locked in.",
-      "C": "Waiting for a complaint is reactive and may mean unlawful processing has already occurred.",
-      "D": "An audit months later comes after the data has been collected."
+      "C": "By then the key design choices are fixed. A PIA is meant to shape what is collected and how, before selection.",
+      "D": "A pilot already collects real customers' data, so the privacy risks the PIA should prevent are already happening."
     },
     "references_topic": "Privacy impact assessment timing",
     "version": "0.2"
@@ -633,16 +633,16 @@
     "stem": "A software company hires contractors from a staffing agency to work on a product that contains sensitive customer data. Which approach BEST manages the personnel risk?",
     "options": {
       "A": "Rely on the agency's assurance that its contractors are trustworthy",
-      "B": "Give contractors the same broad access as senior employees to speed onboarding",
+      "B": "Require each contractor to sign the company's NDA on day one",
       "C": "Contract for equivalent screening, NDAs, and least-privilege access",
-      "D": "Prohibit contractors from accessing any company system"
+      "D": "Monitor contractor activity with enhanced logging"
     },
     "answer": "C",
     "explanation": "Third-party staff should meet the same screening standards through contract terms, sign NDAs, receive only the access they need, be monitored, and lose access promptly when the engagement ends.",
     "distractor_rationales": {
       "A": "An unverified assurance from the agency is not a control.",
-      "B": "Broad access violates least privilege and magnifies the damage one person could do.",
-      "D": "Contractors cannot do the work without some access, so a total ban is impractical."
+      "B": "An NDA alone does not screen contractors or limit what they can reach.",
+      "D": "Logging detects misuse after it happens. It does not replace screening and least-privilege access."
     },
     "references_topic": "Third-party personnel controls",
     "version": "0.2"
@@ -657,16 +657,16 @@
     "stem": "A company's business continuity plan was written three years ago. Since then, it has moved its core applications to a cloud provider and adopted remote work. What should the continuity manager do FIRST?",
     "options": {
       "A": "Run a full-interruption test of the existing continuity plan right away",
-      "B": "Distribute the existing plan to all employees",
-      "C": "Purchase additional cloud capacity for failover",
+      "B": "Review the plan's call tree and contact details",
+      "C": "Run a tabletop exercise of the current plan",
       "D": "Update the business impact analysis for current dependencies"
     },
     "answer": "D",
     "explanation": "Major changes in how the business operates invalidate the old BIA, and the BIA drives recovery priorities and strategies. Update it first, then revise the plan and test it.",
     "distractor_rationales": {
       "A": "Testing an outdated plan wastes effort, and a full-interruption test carries real business risk.",
-      "B": "Distributing an outdated plan spreads incorrect instructions.",
-      "C": "Buying capacity before knowing the recovery requirements is premature."
+      "B": "Contact details matter, but the plan's recovery strategy is built on dependencies that no longer exist.",
+      "C": "A tabletop of an outdated plan rehearses the wrong dependencies. Update the BIA first, then the plan, then exercise it."
     },
     "references_topic": "Maintaining the business impact analysis",
     "version": "0.2"
@@ -683,14 +683,14 @@
       "A": "The fraud-detection service, with a net value of $45,000",
       "B": "Cyber insurance, with a net value of $40,000",
       "C": "Both together, with a net value of $55,000",
-      "D": "Neither option, because some residual risk would remain in both cases"
+      "D": "Cyber insurance, because it costs $25,000 less per year"
     },
     "answer": "A",
     "explanation": "Service: ($120,000 - $30,000) - $45,000 = $45,000. Insurance: it cuts expected losses by $60,000 (50% of $120,000) for $20,000, a net of $40,000. The service alone delivers the most value.",
     "distractor_rationales": {
       "B": "Insurance nets $40,000, which is less than the service's $45,000.",
       "C": "Combined, the residual loss is $15,000 (half of $30,000) and the cost is $65,000, so the net value is $120,000 - $15,000 - $65,000 = $40,000, not $55,000.",
-      "D": "Residual risk is normal. Both options have positive net value, so doing nothing is not the best choice."
+      "D": "A lower price is not the measure. Insurance's net value is $60,000 reimbursed minus $20,000, or $40,000, less than the fraud service's $45,000."
     },
     "references_topic": "Comparing risk treatment options",
     "version": "0.2"
