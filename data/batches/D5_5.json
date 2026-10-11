@@ -80,17 +80,17 @@
     "type": "knowledge",
     "stem": "In a federated sign-in, what does the relying party (service provider) trust?",
     "options": {
-      "A": "The user's own claim about who they are, typed into the application",
-      "B": "A list of passwords that the identity provider sends to it each night",
-      "C": "The user's browser history as evidence of prior sign-ins to the service",
+      "A": "The user's password, which the IdP forwards to it",
+      "B": "The user's IP address range on the corporate network",
+      "C": "A cookie the relying party set at the user's last visit",
       "D": "The identity provider's signed assertions about the user"
     },
     "answer": "D",
     "explanation": "The relying party does not authenticate the user itself. It trusts signed assertions or tokens from an identity provider it has an established trust relationship with.",
     "distractor_rationales": {
-      "A": "Self-asserted identity is not trusted.",
-      "B": "Identity providers do not share password lists.",
-      "C": "Browser history is not an authentication mechanism."
+      "A": "In federation the password never reaches the relying party. It trusts the IdP's signed assertion.",
+      "B": "Network location is not identity. The relying party trusts what the IdP asserts.",
+      "C": "Its own old cookie proves only a past session, not a fresh authentication by the IdP."
     },
     "references_topic": "Relying party trust",
     "version": "1.0"
@@ -128,17 +128,17 @@
     "type": "application",
     "stem": "An external auditor was given read access to the finance system for a two-week audit. Six months later the access is still active. What control would have prevented this?",
     "options": {
-      "A": "A reminder email to the auditor to log out each day",
+      "A": "A monthly review of all active external accounts",
       "B": "Access granted with an automatic expiry date",
-      "C": "A stronger password on the auditor's account",
-      "D": "A larger monitor for the auditor's workstation"
+      "C": "Read-only rights restricted to the finance reports",
+      "D": "Detailed logging of every query the auditor ran"
     },
     "answer": "B",
     "explanation": "Temporary access should be granted with an end date that the system enforces, so it expires without relying on someone to remember.",
     "distractor_rationales": {
-      "A": "Logging out daily does not end the access.",
-      "C": "Password strength does not limit how long access lasts.",
-      "D": "Monitor size is irrelevant."
+      "A": "A monthly review would catch it, but only after weeks of unneeded access. Expiry removes it on time.",
+      "C": "Narrower rights limit what can be read, but the access still never ends.",
+      "D": "Logging records use but does not end the access."
     },
     "references_topic": "Time-bound access grants",
     "version": "1.0"
@@ -152,17 +152,17 @@
     "type": "knowledge",
     "stem": "What is \"birthright\" access in identity management?",
     "options": {
-      "A": "Access given only to employees who were born in the company's home country",
-      "B": "Administrator access granted to anyone who asks for it on their first day",
+      "A": "Access an employee keeps for life, even after transfers",
+      "B": "Access granted to everyone in the company regardless of role",
       "C": "Baseline access every new employee in a role receives automatically",
-      "D": "Access that can never be removed once it has been granted"
+      "D": "Access approved individually by each new hire's manager"
     },
     "answer": "C",
     "explanation": "Birthright access is the standard set of entitlements, such as email and intranet, that everyone in a given population receives automatically at hire.",
     "distractor_rationales": {
-      "A": "Birthright access has nothing to do with place of birth.",
-      "B": "Administrator rights are not granted on request.",
-      "D": "Birthright access is removed at termination like any other access."
+      "A": "Birthright access follows the role and changes when the role changes.",
+      "B": "It is baseline access for a role, not identical access for everyone.",
+      "D": "Birthright access is granted automatically by role, without individual approval."
     },
     "references_topic": "Birthright access",
     "version": "1.0"
@@ -176,17 +176,17 @@
     "type": "managerial_best_first_most",
     "stem": "A company is starting a privileged access management program. What should it do FIRST?",
     "options": {
-      "A": "Buy the most expensive password vault available on the market",
-      "B": "Require all administrators to change their passwords this week",
-      "C": "Remove every administrator's access until the vault is installed",
+      "A": "Buy a password vault and onboard the domain admins first",
+      "B": "Rotate every administrator password this week",
+      "C": "Require MFA for every administrator account",
       "D": "Discover and inventory all privileged accounts across systems"
     },
     "answer": "D",
     "explanation": "You cannot protect privileged accounts you do not know about. Discovery across servers, databases, cloud, and applications comes before vaulting and monitoring.",
     "distractor_rationales": {
-      "A": "Buying a tool before knowing the scope is premature.",
-      "B": "Password changes help but miss unknown accounts.",
-      "C": "Removing all access stops operations."
+      "A": "A vault protects only the accounts it knows about. Discovery comes first.",
+      "B": "Rotation without an inventory misses unknown privileged accounts.",
+      "C": "MFA is valuable, but without an inventory hidden privileged accounts stay unprotected."
     },
     "references_topic": "Discovering privileged accounts",
     "version": "1.0"
@@ -224,17 +224,17 @@
     "type": "application",
     "stem": "Factory workers share workstations and often leave sessions open because typing passwords with gloves is slow. What is the BEST solution?",
     "options": {
-      "A": "Remove passwords from the shared workstations so workers can use them freely",
-      "B": "Let workers tap their badge to sign in and switch users, with automatic locking",
-      "C": "Post each worker's password on a sticker on the side of the monitor",
-      "D": "Give all of the workers a single shared account for every factory floor workstation"
+      "A": "Lengthen the idle timeout so that workers sign in less often",
+      "B": "Badge-tap sign-in and fast user switching, with automatic locking",
+      "C": "Allow short four-digit passwords on factory workstations",
+      "D": "Give each line one shared account with automatic locking"
     },
     "answer": "B",
     "explanation": "Badge tap authentication is fast enough for the environment, keeps individual accountability, and pairs well with automatic locking.",
     "distractor_rationales": {
-      "A": "No authentication removes accountability.",
-      "C": "Posted passwords defeat authentication.",
-      "D": "Shared accounts destroy accountability."
+      "A": "A longer timeout leaves open sessions available to anyone for longer.",
+      "C": "Short passwords weaken security and are still slow with gloves.",
+      "D": "Shared accounts lose accountability for what each worker does."
     },
     "references_topic": "Tap-to-log-in on shared workstations",
     "version": "1.0"
@@ -272,17 +272,17 @@
     "type": "managerial_best_first_most",
     "stem": "Some employees do not have company smartphones and refuse to install an authenticator app on their personal phones. What is the BEST way to give them MFA?",
     "options": {
-      "A": "Exempt those employees from MFA permanently to avoid any conflict",
+      "A": "Send them one-time codes by SMS on their personal phones",
       "B": "Send one-time codes to their personal email addresses instead",
-      "C": "Let them share a colleague's authenticator app for sign-in approvals",
+      "C": "Let them use security questions as their second factor",
       "D": "Issue them hardware security keys or tokens"
     },
     "answer": "D",
     "explanation": "Hardware keys provide strong, often phishing-resistant MFA without requiring a phone.",
     "distractor_rationales": {
-      "A": "Exemptions leave accounts unprotected.",
+      "A": "SMS codes still use the personal phone they objected to, and they can be phished or intercepted.",
       "B": "Personal email is outside company control and weak as a factor.",
-      "C": "Sharing another person's authenticator breaks accountability."
+      "C": "Security questions are another thing you know, so they are not a true second factor."
     },
     "references_topic": "MFA options for users without smartphones",
     "version": "1.0"
@@ -320,16 +320,16 @@
     "type": "managerial_best_first_most",
     "stem": "Logs show one customer account with active sessions from five countries at the same time. What is the BEST control?",
     "options": {
-      "A": "Allow unlimited concurrent sessions, since customers use many devices",
+      "A": "Require customers to re-enter passwords every hour",
       "B": "Limit concurrent sessions and alert the user when a new one starts",
-      "C": "Disable logging of session locations to protect customer privacy",
+      "C": "Block sign-ins from any country but the account's home",
       "D": "Force all sessions to expire after thirty days of inactivity"
     },
     "answer": "B",
     "explanation": "Limiting concurrent sessions and notifying users of new sign-ins exposes account sharing or takeover and lets users end unknown sessions.",
     "distractor_rationales": {
-      "A": "Unlimited sessions hide takeover.",
-      "C": "Removing logs hides the problem.",
+      "A": "Frequent password prompts burden customers and do not stop parallel sessions with a stolen password.",
+      "C": "Travelers get blocked, and attackers can use local infrastructure.",
       "D": "A thirty-day idle limit does not address simultaneous sessions."
     },
     "references_topic": "Limiting concurrent sessions",
@@ -347,14 +347,14 @@
       "A": "That the person holding the license is physically present right now",
       "B": "That the license photo is a good likeness of the person",
       "C": "That the document is genuine and its details are current",
-      "D": "That the person has never committed fraud in the past"
+      "D": "That the person is entitled to the credential requested"
     },
     "answer": "C",
     "explanation": "Validation against an authoritative source confirms the document exists and its details are accurate. Verification, such as a liveness check, then links it to the person presenting it.",
     "distractor_rationales": {
       "A": "Presence is confirmed by liveness checks, not record lookups.",
       "B": "Photo matching is a separate verification step.",
-      "D": "A record check does not reveal fraud history."
+      "D": "Entitlement is decided separately. The issuer check confirms the document is genuine and current."
     },
     "references_topic": "Validating evidence with authoritative sources",
     "version": "1.0"
@@ -369,16 +369,16 @@
     "stem": "A tester sends the API a JSON Web Token whose header says \"alg\": \"none\" and whose signature is empty. The API accepts it. What is the BEST fix?",
     "options": {
       "A": "Shorten the token's lifetime so that forged tokens expire sooner",
-      "B": "Move the token from the Authorization header into a query parameter",
-      "C": "Encode the token payload twice so that it is harder to modify",
+      "B": "Validate the token's expiry and issuer claims more strictly",
+      "C": "Encrypt the token so that its header cannot be read",
       "D": "Require the expected signing algorithm and reject unsigned tokens"
     },
     "answer": "D",
     "explanation": "The API must verify every token's signature with the expected algorithm and key. Accepting unsigned tokens lets anyone forge any identity.",
     "distractor_rationales": {
       "A": "Short lifetimes do not stop forged tokens from working.",
-      "B": "Moving the token exposes it in logs and does not add verification.",
-      "C": "Encoding is not signing."
+      "B": "Claims checks help, but an unsigned token's claims are attacker-controlled. The signature must be required.",
+      "C": "Encryption does not fix accepting \"none\". The API must enforce the expected algorithm."
     },
     "references_topic": "JWT algorithm validation",
     "version": "1.0"
@@ -392,16 +392,16 @@
     "type": "managerial_best_first_most",
     "stem": "The identity provider's SAML signing certificate expires next month, and a previous rollover caused a day-long outage for several applications. What is the BEST approach?",
     "options": {
-      "A": "Publish the new certificate ahead of time and coordinate an overlap with each service provider",
-      "B": "Extend the old certificate's validity by editing its expiration date",
-      "C": "Switch every application to local passwords during the certificate change",
+      "A": "Publish the new certificate early and arrange an overlap with each SP",
+      "B": "Reissue the certificate with the same key pair to avoid changes",
+      "C": "Ask each application owner to watch closely for failures that day",
       "D": "Replace the certificate on the day it expires and fix applications as they fail"
     },
     "answer": "A",
     "explanation": "Publishing new metadata early and allowing a period where both certificates are trusted lets each service provider update before the old certificate is retired.",
     "distractor_rationales": {
-      "B": "A certificate's expiry cannot be edited without re-signing it.",
-      "C": "Reverting to local passwords weakens security.",
+      "B": "Many service providers pin the certificate itself, so a new certificate still breaks them. An overlap period is needed.",
+      "C": "Watching for failures repeats last time's outage.",
       "D": "Waiting for failures repeats the outage."
     },
     "references_topic": "SAML signing certificate rollover",
@@ -419,14 +419,14 @@
       "A": "Deny access until an administrator reassigns the patient during business hours",
       "B": "Allow an emergency override that requires a reason and is logged and reviewed",
       "C": "Give every doctor permanent access to all patient records in the hospital",
-      "D": "Let the doctor borrow a colleague's login for emergencies"
+      "D": "Let the doctor ask a ward nurse to read the records aloud"
     },
     "answer": "B",
     "explanation": "Break-the-glass access balances patient safety with accountability: the override is available, but each use is justified, logged, and reviewed.",
     "distractor_rationales": {
       "A": "Delays can harm patients.",
       "C": "Permanent universal access violates need to know.",
-      "D": "Shared logins destroy accountability."
+      "D": "A workaround hides who accessed the records and slows care. A logged emergency override is accountable."
     },
     "references_topic": "Break-the-glass access in health care",
     "version": "1.0"
@@ -440,15 +440,15 @@
     "type": "managerial_best_first_most",
     "stem": "Help desk staff can reset the password of any account, including domain administrator accounts. What is the BEST improvement?",
     "options": {
-      "A": "Require help desk staff to sign a code of conduct before each shift",
+      "A": "Require MFA for help desk staff before they perform any reset",
       "B": "Remove the help desk's ability to reset any passwords at all",
-      "C": "Limit help desk resets to standard accounts; handle privileged resets separately",
+      "C": "Limit help desk resets to standard accounts; handle privileged ones separately",
       "D": "Record every help desk phone call so resets can be reviewed later"
     },
     "answer": "C",
     "explanation": "A tiered model keeps lower-privileged staff from controlling higher-privileged accounts. Otherwise, compromising a help desk account leads straight to domain admin.",
     "distractor_rationales": {
-      "A": "A code of conduct does not restrict capability.",
+      "A": "MFA protects help desk logins, but a help desk account can still reset domain admin passwords.",
       "B": "Removing all resets breaks a necessary service.",
       "D": "Recording calls is detective, not preventive."
     },
@@ -464,17 +464,17 @@
     "type": "managerial_best_first_most",
     "stem": "Which approval workflow is BEST for granting access to a sensitive finance application?",
     "options": {
-      "A": "The requester approves their own request, since they know best what they need",
-      "B": "The help desk approves any request that includes a ticket number",
-      "C": "The application's vendor approves all requests on the company's behalf",
-      "D": "The requester's manager confirms need, and the data owner approves access"
+      "A": "The requester's manager approves the request alone, by email",
+      "B": "The IT security team approves every access request centrally",
+      "C": "The data owner approves without the manager's input",
+      "D": "The manager confirms need, and the data owner approves access"
     },
     "answer": "D",
     "explanation": "The manager confirms the business need, and the data owner decides who may access their data. The help desk then implements the approved request.",
     "distractor_rationales": {
-      "A": "Self-approval has no oversight.",
-      "B": "The help desk implements access but lacks the authority to approve it.",
-      "C": "The vendor does not own the company's data."
+      "A": "The manager confirms need, but the data owner should approve access to sensitive data.",
+      "B": "Security runs the process, but the business decides who needs the data.",
+      "C": "The owner approves access, but the manager is best placed to confirm the person needs it."
     },
     "references_topic": "Access request approvals",
     "version": "1.0"
@@ -489,16 +489,16 @@
     "stem": "Who should review whether service accounts on a critical application are still needed and correctly scoped?",
     "options": {
       "A": "The owner of the system that the accounts support",
-      "B": "An intern on the help desk who happens to have time",
-      "C": "The vendor that supplied the application's database",
-      "D": "Any employee who uses the application day to day"
+      "B": "The help desk team that created the accounts",
+      "C": "The security team that runs the access review tool",
+      "D": "The application's most active day-to-day users"
     },
     "answer": "A",
     "explanation": "Service accounts have no human manager, so the system owner, who understands what the accounts do, should review their need and rights.",
     "distractor_rationales": {
-      "B": "An intern lacks the knowledge and authority.",
-      "C": "The vendor does not own the organization's risk.",
-      "D": "Ordinary users do not know what service accounts do."
+      "B": "The help desk created them but does not know whether the system still needs them.",
+      "C": "Security runs reviews, but the system owner knows what each account is for.",
+      "D": "Users see the application but not the service accounts behind it."
     },
     "references_topic": "Reviewing service accounts",
     "version": "1.0"
@@ -512,16 +512,16 @@
     "type": "application",
     "stem": "An audit finds thousands of SSH keys on servers, many belonging to former staff and with no expiry. What is the BEST fix?",
     "options": {
-      "A": "Leave existing keys in place and require new keys to be longer",
-      "B": "Inventory and remove unneeded keys, then manage access with short-lived certificates or a central tool",
-      "C": "Disable SSH on every server and use Telnet for administration instead",
-      "D": "Ask current staff to delete any keys they no longer use"
+      "A": "Require new keys to be longer and leave all old keys in place",
+      "B": "Remove unneeded keys, then use short-lived certificates or a central tool",
+      "C": "Rotate every user's SSH key once and keep no inventory afterward",
+      "D": "Ask current staff to delete any keys that they no longer use"
     },
     "answer": "B",
     "explanation": "Unmanaged SSH keys are long-lived credentials outside normal identity controls. Inventory, removal, and central management with expiry bring them under control.",
     "distractor_rationales": {
-      "A": "Old keys from former staff stay valid.",
-      "C": "Telnet is cleartext and far worse.",
+      "A": "Former staff keys stay valid, which is the actual risk.",
+      "C": "One rotation without an inventory misses keys and lets the sprawl return.",
       "D": "Self-cleanup misses keys belonging to people who left."
     },
     "references_topic": "Managing SSH keys",
@@ -560,17 +560,17 @@
     "type": "application",
     "stem": "Several domain accounts have Kerberos pre-authentication disabled. An attacker requests authentication data for them and cracks their passwords offline. What is the BEST fix?",
     "options": {
-      "A": "Increase the Kerberos ticket lifetime for those accounts",
-      "B": "Move the accounts to a different organizational unit",
-      "C": "Disable logging for those accounts to reduce noise",
+      "A": "Shorten the Kerberos ticket lifetime for those accounts",
+      "B": "Rename the accounts so that attackers cannot guess them",
+      "C": "Alert on AS-REQ requests made for those accounts",
       "D": "Enable pre-authentication and set strong passwords"
     },
     "answer": "D",
     "explanation": "Without pre-authentication, anyone can request data encrypted with the account's key and attack it offline. Enabling pre-authentication and using strong passwords removes the weakness.",
     "distractor_rationales": {
-      "A": "Ticket lifetime does not affect this attack.",
-      "B": "Organizational units do not change pre-authentication.",
-      "C": "Removing logs hides attacks."
+      "A": "Cracking happens offline, so ticket lifetime does not matter.",
+      "B": "Accounts can be enumerated whatever their names.",
+      "C": "Detection helps, but the accounts stay crackable until pre-authentication is enabled."
     },
     "references_topic": "AS-REP roasting",
     "version": "1.0"
@@ -584,16 +584,16 @@
     "type": "knowledge",
     "stem": "What does \"zero standing privilege\" mean?",
     "options": {
-      "A": "No user holds privileged rights by default; rights are granted only when needed",
+      "A": "No one holds privileged rights by default; rights are granted when needed",
       "B": "No user is ever allowed to have privileged access to any system",
-      "C": "All users hold the same privileges so no one stands out",
+      "C": "Privileges are granted to roles rather than directly to people",
       "D": "Privileges are granted permanently but reviewed once a year"
     },
     "answer": "A",
     "explanation": "Zero standing privilege removes always-on admin rights. Elevation is granted just in time, for a task, and then removed.",
     "distractor_rationales": {
       "B": "Privileged work still happens, through temporary elevation.",
-      "C": "Equal privileges for all violates least privilege.",
+      "C": "That describes role-based access. Zero standing privilege means no one holds privileges until they are needed.",
       "D": "Permanent grants are standing privilege."
     },
     "references_topic": "Zero standing privilege",
@@ -608,17 +608,17 @@
     "type": "managerial_best_first_most",
     "stem": "Attackers are deliberately locking out customer accounts by entering wrong passwords, causing a flood of support calls. What is the BEST change?",
     "options": {
-      "A": "Remove all limits on failed logins so accounts never lock",
+      "A": "Lock accounts for 24 hours after five failures",
       "B": "Replace hard lockouts with throttling and risk-based challenges",
-      "C": "Lock accounts permanently after three failures",
-      "D": "Require customers to call the support line after every failed login attempt"
+      "C": "Notify customers by email after each lockout",
+      "D": "Raise the lockout threshold from five to twenty attempts"
     },
     "answer": "B",
     "explanation": "Hard lockouts can be abused for denial of service. Progressive delays, CAPTCHA, and risk-based challenges slow guessing without letting attackers lock people out.",
     "distractor_rationales": {
-      "A": "Unlimited attempts enable brute force.",
-      "C": "Permanent lockout makes the abuse worse.",
-      "D": "Calling support for every failure is unworkable."
+      "A": "Longer lockouts make the attackers' denial of service worse.",
+      "C": "Notifications add noise but do not stop the lockouts.",
+      "D": "A higher threshold delays the lockouts but still lets attackers trigger them."
     },
     "references_topic": "Lockout versus throttling",
     "version": "1.0"
@@ -656,17 +656,17 @@
     "type": "managerial_best_first_most",
     "stem": "A lender finds that some new accounts were opened with synthetic identities that combine real and fake details. What is the BEST improvement to onboarding?",
     "options": {
-      "A": "Accept any applicant whose details are formatted correctly",
-      "B": "Ask applicants to confirm that their details are genuine",
-      "C": "Rely on a single check of the applicant's email address",
-      "D": "Combine document checks, liveness, and consistency checks across sources"
+      "A": "Check that each applicant's SSN passes number format validation",
+      "B": "Verify each applicant's email and phone with one-time codes",
+      "C": "Run a single credit bureau check on each new applicant",
+      "D": "Combine document, liveness, and cross-source consistency checks"
     },
     "answer": "D",
     "explanation": "Synthetic identities pass single checks. Layering document validation, liveness verification, and consistency checks across data sources exposes them.",
     "distractor_rationales": {
-      "A": "Correct formatting says nothing about authenticity.",
-      "B": "Self-attestation does not stop fraud.",
-      "C": "Email addresses are trivial to create."
+      "A": "Synthetic identities often use validly formatted numbers.",
+      "B": "Fraudsters control the email and phone they supply.",
+      "C": "Synthetic identities often have credit files built up over time."
     },
     "references_topic": "Synthetic identity fraud",
     "version": "1.0"
@@ -680,17 +680,17 @@
     "type": "managerial_best_first_most",
     "stem": "A company moving to role-based access control has thousands of individual entitlements and no defined roles. What is the BEST way to design roles?",
     "options": {
-      "A": "Analyze existing access patterns to propose roles, then have business owners validate them",
+      "A": "Mine existing access to propose roles, then have business owners validate",
       "B": "Create one role per employee that copies each person's current access exactly",
-      "C": "Give every employee the same role and adjust permissions later if they complain",
-      "D": "Let each employee design the role they would like to have"
+      "C": "Copy the roles defined in an industry template as is",
+      "D": "Have IT define the roles from the organization chart alone"
     },
     "answer": "A",
     "explanation": "Role mining finds common patterns in current entitlements. Business owners then confirm which patterns reflect real job needs and remove excess.",
     "distractor_rationales": {
       "B": "One role per person recreates the problem.",
-      "C": "One role for everyone violates least privilege.",
-      "D": "Self-designed roles lead to excessive access."
+      "C": "A template may not match how the company actually works. Mining real access and owner validation fits roles to reality.",
+      "D": "The org chart misses how access is actually used. Owners must validate proposed roles."
     },
     "references_topic": "Role mining",
     "version": "1.0"
@@ -704,17 +704,17 @@
     "type": "application",
     "stem": "Several legacy applications keep their own user accounts and are not connected to the identity management system. How can the company find accounts that belong to people who have left?",
     "options": {
-      "A": "Wait for the applications to be replaced by modern systems",
+      "A": "Disable accounts that have been idle for 180 days",
       "B": "Regularly reconcile each application's accounts against HR records",
-      "C": "Ask each application's users whether any of the accounts look unfamiliar to them",
-      "D": "Reset all passwords in the legacy applications once a year"
+      "C": "Ask each application owner to confirm their accounts yearly",
+      "D": "Move the legacy applications behind the company's VPN"
     },
     "answer": "B",
     "explanation": "Comparing each application's account list with authoritative HR data exposes orphaned accounts so they can be disabled.",
     "distractor_rationales": {
-      "A": "Replacement may be years away.",
-      "C": "Users cannot identify orphaned accounts reliably.",
-      "D": "Password resets do not remove orphaned accounts."
+      "A": "Idle-based disabling misses leavers who still use their accounts and waits months.",
+      "C": "Yearly owner confirmation is slow and incomplete. Reconciling with HR finds leavers directly.",
+      "D": "A VPN limits network reach, but leavers' accounts still exist and may be reachable."
     },
     "references_topic": "Reconciling orphaned accounts",
     "version": "1.0"
@@ -728,17 +728,17 @@
     "type": "managerial_best_first_most",
     "stem": "The access review for a privileged group is assigned to a manager who is also a member of that group. What is the problem, and what is the BEST fix?",
     "options": {
-      "A": "No problem; the manager understands the group's needs best",
-      "B": "The review is too frequent; move it to every other year",
-      "C": "The manager would review their own access; assign an independent reviewer",
-      "D": "The group is too small; add more members before reviewing"
+      "A": "The manager is too senior; delegate the review to a team lead",
+      "B": "The review lacks evidence; attach screenshots of access",
+      "C": "The manager would review their own access; use an independent reviewer",
+      "D": "The group has no owner; assign one before the review is done"
     },
     "answer": "C",
     "explanation": "Reviewers should not certify their own access. An independent reviewer, such as the system owner or a peer outside the group, avoids this conflict.",
     "distractor_rationales": {
-      "A": "Familiarity does not remove the conflict of interest.",
-      "B": "Frequency is not the issue.",
-      "D": "Adding members does not fix the conflict."
+      "A": "Seniority is not the issue. A reviewer must not review their own access.",
+      "B": "Evidence matters, but the conflict of interest remains.",
+      "D": "Ownership may help, but the problem described is a member reviewing their own access."
     },
     "references_topic": "Reviewer independence",
     "version": "1.0"
@@ -752,16 +752,16 @@
     "type": "managerial_best_first_most",
     "stem": "Engineers use the cloud account's root user for daily administration because it is convenient. What is the BEST change?",
     "options": {
-      "A": "Share the root password with every engineer so no one is blocked",
-      "B": "Rename the root user so attackers cannot find it",
+      "A": "Require MFA on root and keep using it day to day",
+      "B": "Create one shared admin user to replace root for daily work",
       "C": "Rotate the root password every week and keep using it for daily work",
       "D": "Lock root away with strong MFA and use scoped roles for daily work"
     },
     "answer": "D",
     "explanation": "The root user has unlimited rights and limited restriction options. It should be reserved for rare tasks that need it, with strong MFA, while daily work uses least-privilege roles.",
     "distractor_rationales": {
-      "A": "Sharing multiplies exposure and removes accountability.",
-      "B": "Root user names cannot be hidden in this way.",
+      "A": "MFA helps, but daily use of the all-powerful root user is still too much exposure.",
+      "B": "A shared admin user loses accountability. Individual scoped roles are needed.",
       "C": "Rotation does not reduce daily risk from unlimited rights."
     },
     "references_topic": "Protecting cloud root accounts",
@@ -776,17 +776,17 @@
     "type": "managerial_best_first_most",
     "stem": "Analysis shows that just-in-time elevation requests are almost always approved within seconds by the requester's own teammates. What is the BEST improvement?",
     "options": {
-      "A": "Require independent approvers who see request context; auto-approve only low risk",
-      "B": "Remove approvals entirely, since they are clearly not adding any value",
-      "C": "Require the requester to approve their own request to save time",
-      "D": "Allow approvals only on weekdays between nine and five"
+      "A": "Independent approvers who see context, with auto-approval for low risk",
+      "B": "Require two teammates to approve each elevation request",
+      "C": "Log approvals and review a sample of them each quarter",
+      "D": "Shorten each elevation window to fifteen minutes at most"
     },
     "answer": "A",
     "explanation": "Approvals add value only when the approver is independent and informed. Low-risk tasks can be auto-approved, while high-risk elevation gets real scrutiny.",
     "distractor_rationales": {
-      "B": "Removing approval removes oversight.",
-      "C": "Self-approval is no control at all.",
-      "D": "Time windows do not fix rubber-stamping."
+      "B": "Two teammates may rubber-stamp just as fast. Approvers must be independent and see the context.",
+      "C": "Sampling finds the problem later but does not make approvals meaningful.",
+      "D": "Shorter windows help, but approvals remain a formality."
     },
     "references_topic": "Independent approval of elevation",
     "version": "1.0"

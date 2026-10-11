@@ -81,7 +81,7 @@
     "stem": "An employee is being terminated for cause this afternoon. When should the employee's access be revoked?",
     "options": {
       "A": "At the end of the employee's final pay period",
-      "B": "Within 30 days, during the next access review",
+      "B": "Right after the termination meeting has ended",
       "C": "At or just before the moment the employee is notified",
       "D": "After the employee returns their laptop, badge, and other company equipment"
     },
@@ -89,7 +89,7 @@
     "explanation": "Access should be removed at or just before notification so a departing employee cannot take revenge or copy data in the window after learning the news.",
     "distractor_rationales": {
       "A": "Waiting until the pay period ends leaves an unhappy insider with access.",
-      "B": "A monthly review is far too slow for a termination for cause.",
+      "B": "Even the length of the meeting is a window in which a dismissed employee can do damage.",
       "D": "Equipment return can be delayed, and access should not depend on it."
     },
     "references_topic": "Timely deprovisioning of leavers",
@@ -176,17 +176,17 @@
     "type": "managerial_best_first_most",
     "stem": "Administrators share the domain administrator password in a spreadsheet on a file server. What is the BEST fix?",
     "options": {
-      "A": "Password-protect the spreadsheet and email that password to each administrator on the team",
+      "A": "Move the spreadsheet to an encrypted folder only the admins can open",
       "B": "Change the domain administrator password every year and update the spreadsheet",
       "C": "Store it in a privileged access vault that logs checkouts and rotates it after use",
-      "D": "Print the password and keep it in a folder in the IT manager's desk drawer"
+      "D": "Give each administrator a personal domain admin account instead"
     },
     "answer": "C",
     "explanation": "A privileged access vault controls who can retrieve the credential, logs each checkout, and rotates the password so a retrieved copy does not stay valid.",
     "distractor_rationales": {
-      "A": "A password-protected spreadsheet is weak protection and emailing its password spreads it further.",
+      "A": "Encryption limits who can read it, but the shared password is still unlogged and never rotated.",
       "B": "Annual rotation leaves a long window, and the spreadsheet remains exposed.",
-      "D": "A printed copy has no logging and depends only on a desk drawer."
+      "D": "Personal accounts add accountability, but standing domain admin rights for everyone stay risky. A vault with checkout and rotation is better."
     },
     "references_topic": "Privileged password vaulting",
     "version": "0.3"
@@ -227,14 +227,14 @@
       "A": "The user's manager or the application's data owner",
       "B": "The help desk technician who originally created the account",
       "C": "The user, through a self-attestation form",
-      "D": "The network team that manages the firewall"
+      "D": "The security team, which manages the access review tool"
     },
     "answer": "A",
     "explanation": "Managers know what the user's job requires and data owners know who should see their data, so one of them should certify the access.",
     "distractor_rationales": {
       "B": "The help desk implements requests but does not know the business need.",
       "C": "Users have an incentive to keep access and cannot certify themselves.",
-      "D": "The network team has no knowledge of the user's job duties."
+      "D": "The security team runs the process but does not know what each user's job requires."
     },
     "references_topic": "Choosing access reviewers",
     "version": "0.3"
@@ -251,14 +251,14 @@
       "A": "The false acceptance rate and false rejection rate will both rise",
       "B": "The false acceptance rate will fall and the false rejection rate will rise",
       "C": "The false acceptance rate will rise while the false rejection rate will fall",
-      "D": "The crossover error rate will drop to zero once the change is complete"
+      "D": "Both rates fall, since the readers become more accurate"
     },
     "answer": "B",
     "explanation": "Tighter matching rejects more impostors, lowering false acceptances, but also rejects more legitimate users, raising false rejections.",
     "distractor_rationales": {
       "A": "The two error rates move in opposite directions as sensitivity changes.",
       "C": "Raising sensitivity reduces false acceptances rather than increasing them.",
-      "D": "The crossover error rate is a property of the device and never reaches zero."
+      "D": "Sensitivity trades one error for the other. Raising it lowers false acceptance and raises false rejection."
     },
     "references_topic": "Biometric sensitivity and error rates",
     "version": "0.3"
@@ -275,14 +275,14 @@
       "A": "Send users an email reminding them to be careful with push notifications",
       "B": "Switch the second factor to one-time codes sent by SMS messages",
       "C": "Require number matching in push approvals and limit repeated prompts",
-      "D": "Disable MFA for users who report too many unexpected prompts"
+      "D": "Lock accounts after three unanswered push prompts"
     },
     "answer": "C",
     "explanation": "Number matching forces the user to enter a code shown on the login screen, which an attacker cannot supply remotely, and rate limiting stops the flood. Phishing-resistant methods are the longer-term goal.",
     "distractor_rationales": {
       "A": "Awareness helps but does not stop a tired user from approving.",
       "B": "SMS codes are weaker and open the door to SIM swapping.",
-      "D": "Disabling MFA rewards the attack and removes protection."
+      "D": "Lockout stops the barrage but lets attackers lock users out at will, and it does not stop a tired user approving."
     },
     "references_topic": "MFA fatigue attacks",
     "version": "0.3"
@@ -323,14 +323,14 @@
       "A": "Verify a government ID with a live video check that matches the person to the document",
       "B": "Accept a scanned copy of any photo ID that the new hire emails to human resources",
       "C": "Ask the new hire to confirm their home address and date of birth over the phone",
-      "D": "Issue the credentials first and verify the person's identity at their first annual performance review"
+      "D": "Ship a hardware key to the address on the HR record only"
     },
     "answer": "A",
     "explanation": "Privileged access needs strong proofing. Validating a government document and matching it to the live person on video provides much higher assurance than self-asserted data.",
     "distractor_rationales": {
       "B": "Emailed scans are easily forged and are not matched to the person.",
       "C": "Address and birth date are often public or easy to obtain.",
-      "D": "Issuing credentials before proofing defeats the purpose."
+      "D": "Delivery to an address does not prove the recipient is the person hired."
     },
     "references_topic": "Remote identity proofing",
     "version": "0.3"
@@ -416,17 +416,17 @@
     "type": "managerial_best_first_most",
     "stem": "An audit found dozens of contractor accounts still active months after their contracts ended. What is the BEST control to prevent this?",
     "options": {
-      "A": "Set account expiry dates tied to contract end, renewable only by a named sponsor",
-      "B": "Ask contractors to email the help desk when they finish their assignments",
-      "C": "Review all contractor accounts once a year during the external audit",
-      "D": "Give contractors shared accounts so there are fewer accounts to track"
+      "A": "Account expiry tied to contract end, renewable only by a sponsor",
+      "B": "Have the help desk disable any account idle for 90 days",
+      "C": "Review contractor accounts every quarter together with HR",
+      "D": "Require sponsors to confirm each contractor every month"
     },
     "answer": "A",
     "explanation": "Automatic expiry ties access to the contract term, and sponsor renewal makes someone accountable for any extension. Accounts close by default rather than by memory.",
     "distractor_rationales": {
-      "B": "Relying on contractors to self-report is unreliable.",
-      "C": "An annual review leaves accounts active for months.",
-      "D": "Shared accounts destroy accountability."
+      "B": "Idle-based disabling still leaves accounts active for months after a contract ends.",
+      "C": "Quarterly reviews still leave accounts active for weeks or months.",
+      "D": "Monthly confirmations help, but an expiry tied to the contract end removes access automatically."
     },
     "references_topic": "Contractor account expiration",
     "version": "0.3"
@@ -440,17 +440,17 @@
     "type": "managerial_best_first_most",
     "stem": "After a quarterly access review, reviewers flagged 40 entitlements for removal. Three months later, 25 of them are still active. What should the organization do?",
     "options": {
-      "A": "Repeat the access review with a new group of reviewers next quarter",
-      "B": "Track each revocation as a ticket to closure and verify removal in the target system",
-      "C": "Accept the remaining entitlements because the reviewers already signed off",
-      "D": "Reduce the frequency of reviews to make the workload easier to finish"
+      "A": "Repeat the access review with a new group of reviewers next time",
+      "B": "Track each removal as a ticket and verify it in the target system",
+      "C": "Send reviewers a reminder about their pending removals",
+      "D": "Report the 25 open items to the audit committee"
     },
     "answer": "B",
     "explanation": "A review is only effective if its decisions are carried out. Tracking each revocation to closure and confirming it in the target system closes the gap.",
     "distractor_rationales": {
       "A": "A new review repeats the same decisions without fixing the execution gap.",
-      "C": "Sign-off means nothing if the access is never removed.",
-      "D": "Less frequent reviews make the problem worse."
+      "C": "Reviewers already decided. The failure is that removals are not tracked through to the target systems.",
+      "D": "Reporting escalates the problem but does not close it. Removals need tickets and verification."
     },
     "references_topic": "Tracking revocations from reviews",
     "version": "0.3"
@@ -464,17 +464,17 @@
     "type": "application",
     "stem": "Logs show administrators logging in to servers interactively with a backup service account because it has broad rights. What is the BEST control?",
     "options": {
-      "A": "Rename the service account to something less obvious to administrators",
-      "B": "Grant every administrator the same broad rights so they stop borrowing it",
-      "C": "Deny interactive logon for the service account and alert on any attempt",
-      "D": "Remind administrators in a staff meeting that the account is for backups"
+      "A": "Rotate the service account's password once every week",
+      "B": "Give administrators their own accounts with backup rights",
+      "C": "Deny interactive logon for the account and alert on attempts",
+      "D": "Log the service account's logons for a monthly review"
     },
     "answer": "C",
     "explanation": "Service accounts should be restricted to the non-interactive use they exist for. Denying interactive logon enforces this, and alerts reveal misuse.",
     "distractor_rationales": {
-      "A": "Renaming the account is obscurity and does not stop use.",
-      "B": "Expanding everyone's rights violates least privilege.",
-      "D": "A reminder does not enforce anything."
+      "A": "Rotation does not stop someone who has the current password from logging in interactively.",
+      "B": "Personal accounts help, but the service account can still be used interactively unless that is denied.",
+      "D": "Monthly review notices misuse weeks later. Denying interactive logon prevents it."
     },
     "references_topic": "Preventing interactive use of service accounts",
     "version": "0.3"
@@ -488,17 +488,17 @@
     "type": "application",
     "stem": "An attacker with a normal domain account requested service tickets for accounts with service principal names and cracked them offline. Which change MOST reduces this risk?",
     "options": {
-      "A": "Shorten the lifetime of user ticket-granting tickets to one hour",
-      "B": "Disable Kerberos and fall back to NTLM authentication domain-wide",
-      "C": "Move all domain controllers to a separate network segment right away",
-      "D": "Use managed service accounts with long, random, automatically rotated passwords"
+      "A": "Shorten the lifetime of service tickets to a single hour",
+      "B": "Require AES encryption for every service ticket in the domain",
+      "C": "Alert on unusual volumes of service ticket requests",
+      "D": "Managed service accounts with long, auto-rotated passwords"
     },
     "answer": "D",
     "explanation": "Kerberoasting works because service tickets are encrypted with the service account's password. Long random passwords that rotate automatically make offline cracking impractical.",
     "distractor_rationales": {
-      "A": "Shorter ticket-granting ticket lifetimes do not affect offline cracking of service tickets.",
-      "B": "NTLM is weaker and introduces its own attacks.",
-      "C": "Segmenting domain controllers does not stop authenticated users from requesting tickets."
+      "A": "Cracking happens offline, so ticket lifetime does not matter.",
+      "B": "AES slows cracking compared with RC4, but a weak service password still falls. Long random passwords fix the cause.",
+      "C": "Detection helps, but the weak passwords still crack once tickets are obtained."
     },
     "references_topic": "Kerberoasting",
     "version": "0.3"
@@ -512,17 +512,17 @@
     "type": "knowledge",
     "stem": "What risk does just-in-time privileged access PRIMARILY reduce?",
     "options": {
-      "A": "Standing privileges that an attacker can use at any time after compromising an account",
+      "A": "Standing privileges an attacker can use whenever an account is compromised",
       "B": "Weak passwords that users choose for their ordinary accounts",
       "C": "Unencrypted traffic between administrators and the servers they manage",
-      "D": "Help desk delays when users forget their passwords on weekends"
+      "D": "Shared administrator accounts that several different people use"
     },
     "answer": "A",
     "explanation": "Just-in-time access grants elevated rights only when approved and for a limited time, so a compromised account has no privileges to abuse most of the time.",
     "distractor_rationales": {
       "B": "Password strength is addressed by password policy and MFA.",
       "C": "Encryption in transit is a separate control.",
-      "D": "Password reset delays are a self-service issue."
+      "D": "Shared accounts are an accountability problem, fixed by unique accounts. Just-in-time access targets standing privilege."
     },
     "references_topic": "Standing privilege risk",
     "version": "0.3"
@@ -538,15 +538,15 @@
     "options": {
       "A": "Extend each elevation window to a full week to reduce repeated requests",
       "B": "Log elevated sessions and review them against the approved request",
-      "C": "Let administrators approve their own elevation requests after hours",
-      "D": "Grant permanent elevation to the three most active administrators"
+      "C": "Require MFA whenever administrators request elevation",
+      "D": "Shorten each elevation window to fifteen minutes"
     },
     "answer": "B",
     "explanation": "Elevation should be matched to what was approved. Logging and reviewing elevated sessions detects misuse and confirms that privileges were used as intended.",
     "distractor_rationales": {
       "A": "A week-long window turns just-in-time access back into standing privilege.",
-      "C": "Self-approval removes the separation that makes the control work.",
-      "D": "Permanent elevation defeats the purpose."
+      "C": "MFA strengthens the request, but without logging and review nobody checks what was done with the elevation.",
+      "D": "Shorter windows help a little, but the missing piece is reviewing elevated sessions against approvals."
     },
     "references_topic": "Reviewing elevated sessions",
     "version": "0.3"
@@ -611,14 +611,14 @@
       "A": "Validate the signature, audience, and expiry, then map partner claims to local roles",
       "B": "Trust the role claim exactly as sent, because the partner's identity provider is already federated",
       "C": "Reject all partner users until the partner moves them into the company's directory",
-      "D": "Grant every partner user the admin role, then remove it later during access reviews"
+      "D": "Accept the claim but require MFA for partner administrators"
     },
     "answer": "A",
     "explanation": "Federation establishes trust in authentication, not blanket trust in every attribute. The relying party should verify the assertion and decide locally what each partner claim is allowed to mean.",
     "distractor_rationales": {
       "B": "Accepting privilege claims as sent lets the partner, or an attacker in the partner's tenant, grant itself admin rights.",
       "C": "Rejecting all partner users defeats the purpose of federation.",
-      "D": "Over-granting and cleaning up later leaves a window of excessive access."
+      "D": "MFA proves the user's identity, not that the partner is entitled to grant admin rights in the company's application."
     },
     "references_topic": "Validating partner federation claims",
     "version": "0.3"
@@ -656,17 +656,17 @@
     "type": "application",
     "stem": "A mobile app uses long-lived OAuth refresh tokens. The team worries that a stolen refresh token could be used for months without detection. Which control BEST addresses this?",
     "options": {
-      "A": "Encrypt the refresh token with the same key embedded in every copy of the app",
+      "A": "Store the refresh token in the device's secure keystore",
       "B": "Double the access token lifetime so the app has to request token refreshes less often",
       "C": "Rotate refresh tokens on each use and revoke the token family if one is reused",
-      "D": "Store the refresh token in the app's shared preferences file with a new name"
+      "D": "Shorten the refresh token lifetime to a single day"
     },
     "answer": "C",
     "explanation": "With rotation, each use returns a new refresh token. If an old one is presented again, the server knows it was stolen and revokes the whole family, cutting off both copies.",
     "distractor_rationales": {
-      "A": "A key embedded in every app is extractable and does not detect theft.",
+      "A": "Secure storage makes theft harder but does not detect a stolen token being used.",
       "B": "Longer access tokens increase the window for abuse.",
-      "D": "Renaming the storage file is obscurity and adds no protection."
+      "D": "Short lifetimes help, but a stolen token is still usable until it expires, with nothing to detect reuse."
     },
     "references_topic": "Refresh token rotation",
     "version": "0.3"
@@ -755,14 +755,14 @@
       "A": "Ask the database administrators to sign a confidentiality agreement",
       "B": "Log all queries so card data access can be investigated afterward",
       "C": "Tokenize or encrypt the card column with keys the administrators cannot access",
-      "D": "Remove administrator access and let developers maintain the database"
+      "D": "Mask card numbers in query results for every user"
     },
     "answer": "C",
     "explanation": "Encrypting or tokenizing the sensitive column, with keys held outside the DBA role, separates the ability to administer the database from the ability to read the data.",
     "distractor_rationales": {
       "A": "An agreement deters misuse but does not prevent access.",
       "B": "Logging detects misuse after the fact but does not prevent it.",
-      "D": "Moving the duty to developers just shifts the same exposure to another group."
+      "D": "Administrators can often bypass or alter masking. Encryption or tokenization with keys they cannot reach enforces it."
     },
     "references_topic": "Separating administration from data access",
     "version": "0.3"

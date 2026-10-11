@@ -80,17 +80,17 @@
     "type": "managerial_best_first_most",
     "stem": "An internal audit finds that employees who transfer between departments keep their old access rights, accumulating permissions over time. What should the IAM manager implement FIRST to address the root cause?",
     "options": {
-      "A": "Quarterly password changes for all transferred employees",
-      "B": "A data loss prevention tool to monitor transferred employees",
-      "C": "Annual security awareness training on acceptable use",
+      "A": "Quarterly access reviews of transferred employees' rights",
+      "B": "Role templates applied to each employee's new department",
+      "C": "Automated alerts when a user holds two departments' roles",
       "D": "A transfer process that revokes old role access upon moving"
     },
     "answer": "D",
     "explanation": "Privilege creep comes from a gap in the identity lifecycle. Building transfers (movers) into provisioning so that previous role entitlements are removed when new ones are granted fixes the root cause. Access reviews then catch anything left over.",
     "distractor_rationales": {
-      "A": "Password changes do not affect entitlements.",
-      "B": "DLP monitors data movement but leaves the excessive access in place.",
-      "C": "Training does not change how access is provisioned or removed."
+      "A": "Reviews catch accumulation later. The cause is a transfer process that never removes old access.",
+      "B": "Templates grant the new role but leave the old access in place.",
+      "C": "Alerts flag the overlap after it exists. Removing old access at transfer prevents it."
     },
     "references_topic": "Preventing privilege creep for movers",
     "version": "0.1"
@@ -155,14 +155,14 @@
       "A": "Disable the account immediately, even though the integration job will fail",
       "B": "Leave the rights unchanged but enable detailed logging of its activity",
       "C": "Scope it to read-only on that database, and vault and rotate its secret",
-      "D": "Convert the account into an interactive user account assigned to one administrator"
+      "D": "Rotate its six-year-old password now and keep its current rights"
     },
     "answer": "C",
     "explanation": "Apply least privilege by limiting the account to read access on the one database, and manage its credential in a privileged access vault with automatic rotation (or use a managed identity). The job keeps working and the excess risk is removed.",
     "distractor_rationales": {
       "A": "Disabling the account breaks a business process when removing the excess rights would achieve the security goal without an outage.",
       "B": "Logging helps detect misuse but leaves the excessive rights in place.",
-      "D": "Letting a person use a service account interactively destroys accountability, and the account would still be over-privileged."
+      "D": "Rotation fixes the stale secret, but domain admin rights for a read-only job remain a huge exposure."
     },
     "references_topic": "Least privilege for service accounts",
     "version": "0.1"
@@ -176,17 +176,17 @@
     "type": "managerial_best_first_most",
     "stem": "Cloud administrators at a SaaS company hold standing global administrator rights, although most need elevated access only a few hours per month. Which approach BEST reduces risk while preserving their ability to do their jobs?",
     "options": {
-      "A": "Require administrators to sign an acceptable use agreement each quarter",
-      "B": "Remove all administrator rights and route every change through the CISO",
-      "C": "Keep standing rights but require every administrator to use a long, complex password",
-      "D": "Implement just-in-time elevation with approval, time limits, and session logging"
+      "A": "Require MFA for the standing global administrator accounts",
+      "B": "Split global admin into narrower standing administrator roles",
+      "C": "Review administrator role assignments every quarter",
+      "D": "Just-in-time elevation with approval, time limits, and logging"
     },
     "answer": "D",
     "explanation": "Just-in-time access removes standing privilege. Elevation is granted on request, approved, limited in time, and logged, which shrinks the window in which a compromised administrator account can do damage.",
     "distractor_rationales": {
-      "A": "Signing a policy acknowledgment does not reduce exposure from standing privilege.",
-      "B": "Routing every change through one executive creates a bottleneck, removes needed capability, and does not scale.",
-      "C": "Strong passwords do not address the exposure of always-on privilege to phishing or token theft."
+      "A": "MFA protects sign-in, but powerful standing rights remain available all month to anyone who hijacks a session.",
+      "B": "Narrower roles help, but they are still standing. Just-in-time elevation removes the rights when not in use.",
+      "C": "Reviews confirm who has rights; they do not remove standing access between uses."
     },
     "references_topic": "Just-in-time privileged access",
     "version": "0.1"
@@ -224,17 +224,17 @@
     "type": "managerial_best_first_most",
     "stem": "During a quarterly access review, managers approve nearly 100% of their staff's entitlements within minutes, and auditors question whether the reviews are meaningful. What is the BEST way to improve the effectiveness of the review process?",
     "options": {
-      "A": "Increase review frequency from quarterly to weekly",
+      "A": "Require managers to attest in writing to each approval",
       "B": "Give reviewers risk-ranked, plain-language entitlement data",
-      "C": "Move all review responsibility from managers to the IT help desk",
-      "D": "Stop the reviews, because managers already know what their staff need"
+      "C": "Move the reviews to the IT team, who know the systems best",
+      "D": "Require a written reason for every approved entitlement"
     },
     "answer": "B",
     "explanation": "Rubber-stamping happens when reviewers cannot understand entitlements or see which ones matter. Plain-language descriptions, risk ranking that highlights privileged access and separation-of-duties conflicts, and tracking of revocation outcomes make reviews meaningful.",
     "distractor_rationales": {
-      "A": "More frequent reviews would deepen reviewer fatigue and make rubber-stamping worse.",
-      "C": "The help desk lacks the business knowledge to judge what each person needs. Managers and data owners should attest.",
-      "D": "Dropping the reviews removes a key detective control that many frameworks require."
+      "A": "Signatures add formality, but reviewers still cannot judge entitlements they do not understand.",
+      "C": "IT knows the systems but not what each person's job requires.",
+      "D": "Reasons add friction, but without clear risk-ranked data managers still rubber-stamp."
     },
     "references_topic": "Effective user access reviews",
     "version": "0.1"
