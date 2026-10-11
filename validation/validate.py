@@ -1,14 +1,16 @@
 #!/usr/bin/env python3
-"""Validate the CISSP practice question bank.
+"""Validate a practice question bank: the CISSP bank in data/ by default, or another track.
 
 Hard failures (exit code 1): schema errors, duplicate IDs, manifest problems,
-content-rule violations, and near-duplicate stems. Everything else is reported
-as a warning or as progress information in validation/report.md.
+content-rule violations, near-duplicate stems, and question code that does not
+print what its answer key says. Everything else is reported as a warning or as
+progress information in validation/report.md (or the track's own report).
 
 Usage:
     python validation/validate.py                     # full bank from the manifest
     python validation/validate.py --include data/batches/D1_2.json   # stage a new batch
     python validation/validate.py --strict            # warnings also fail
+    python validation/validate.py --data-dir data-python   # the Python track
 """
 from __future__ import annotations
 
@@ -22,6 +24,8 @@ from dataclasses import dataclass, field
 from pathlib import Path
 
 from jsonschema import Draft202012Validator
+
+import snippets
 
 ROOT = Path(__file__).resolve().parent.parent
 LETTERS = "ABCD"
@@ -60,6 +64,18 @@ class Result:
         return not self.failures
 
 
+def track_info(taxonomy: dict) -> dict:
+    """Per-track naming from taxonomy.json's optional "track" block. The CISSP bank has none, so it gets these defaults."""
+    track = taxonomy.get("track", {})
+    return {
+        "id_prefix": track.get("id_prefix", "D"),
+        "unit_name": track.get("unit_name", "Domain"),
+        "unit_short": track.get("unit_short", "D"),
+        "question_types": tuple(track.get("question_types", TYPES)),
+        "report": track.get("report", "validation/report.md"),
+    }
+
+
 def load_json(path: Path, result: Result):
     try:
         return json.loads(path.read_text(encoding="utf-8"))
@@ -75,10 +91,12 @@ def rel(path: Path, root: Path) -> str:
         return path.name
 
 
-def load_bank(root: Path, include: list[Path] | None = None) -> tuple[Result, dict]:
+def load_bank(root: Path, include: list[Path] | None = None, data_dir: str = "data") -> tuple[Result, dict]:
     result = Result(root=root)
-    data = root / "data"
+    data = root / data_dir
     taxonomy = load_json(data / "taxonomy.json", result) or {}
+    prefix = track_info(taxonomy)["id_prefix"]
+    domain_count = len(taxonomy.get("domains", {})) or 8
     schema = load_json(data / "schema.json", result) or {}
     manifest = load_json(data / "manifest.json", result) or {}
     result.bank_version = str(manifest.get("bank_version", "?"))
@@ -90,7 +108,7 @@ def load_bank(root: Path, include: list[Path] | None = None) -> tuple[Result, di
     for entry in manifest.get("batches", []):
         path = data / entry.get("file", "")
         listed.append(path.resolve())
-        qs = load_batch(path, validator, result)
+        qs = load_batch(path, validator, result, prefix=prefix, domain_count=domain_count)
         if qs is None:
             continue
         if entry.get("count") != len(qs):
@@ -104,7 +122,7 @@ def load_bank(root: Path, include: list[Path] | None = None) -> tuple[Result, di
         if path.resolve() in listed:
             continue
         listed.append(path.resolve())
-        load_batch(path, validator, result, staged=True)
+        load_batch(path, validator, result, staged=True, prefix=prefix, domain_count=domain_count)
 
     for path in sorted((data / "batches").glob("*.json")):
         if path.resolve() not in listed:
@@ -112,13 +130,13 @@ def load_bank(root: Path, include: list[Path] | None = None) -> tuple[Result, di
     return result, taxonomy
 
 
-def load_batch(path: Path, validator, result: Result, staged: bool = False):
+def load_batch(path: Path, validator, result: Result, staged: bool = False, prefix: str = "D", domain_count: int = 8):
     name = rel(path, result.root)
     if not path.is_file():
         result.failures.append(f"{name}: file listed in manifest does not exist")
         return None
-    if not re.fullmatch(r"D[1-8]_\d+\.json", path.name):
-        result.failures.append(f"{name}: batch files must be named D{{n}}_{{k}}.json")
+    if not re.fullmatch(rf"{re.escape(prefix)}[1-{domain_count}]_\d+\.json", path.name):
+        result.failures.append(f"{name}: batch files must be named {prefix}{{n}}_{{k}}.json")
     batch = load_json(path, result)
     if batch is None:
         return None
@@ -139,6 +157,7 @@ def load_batch(path: Path, validator, result: Result, staged: bool = False):
 
 def check_content(result: Result, taxonomy: dict) -> None:
     domains = taxonomy.get("domains", {})
+    prefix = track_info(taxonomy)["id_prefix"]
     seen: dict[str, str] = {}
     for q in result.questions:
         qid, where = q.get("id", "?"), q["_file"]
@@ -148,7 +167,7 @@ def check_content(result: Result, taxonomy: dict) -> None:
             seen[qid] = where
         dom = str(q.get("domain"))
         spec = domains.get(dom)
-        if not isinstance(qid, str) or not qid.startswith(f"D{dom}-"):
+        if not isinstance(qid, str) or not qid.startswith(f"{prefix}{dom}-"):
             result.failures.append(f"{where}: {qid} id prefix does not match domain {dom}")
         if spec:
             if q.get("domain_name") != spec["name"]:
@@ -176,6 +195,18 @@ def check_content(result: Result, taxonomy: dict) -> None:
                 result.warnings.append(f"{where}: {qid} negation '{m.group(0)}' in stem is not emphasized as **{m.group(0)}**")
 
 
+def check_code(result: Result) -> None:
+    """Questions with code: it must parse and pass the lint; "what does this print?" questions are run and compared with the key."""
+    coded = [q for q in result.questions if q.get("code") or q.get("verify")]
+    verified = 0
+    for q in coded:
+        problems = snippets.check_question(q)
+        verified += q.get("verify") == "stdout" and not problems
+        for m in problems:
+            result.failures.append(f"{q['_file']}: {q.get('id', '?')} {m}")
+    result.info["code"] = {"with_code": len(coded), "verified": verified}
+
+
 def tokenize(text: str) -> list[str]:
     return [t for t in re.findall(r"[a-z0-9]+", text.lower()) if len(t) > 1 and t not in STOPWORDS]
 
@@ -195,7 +226,8 @@ def tfidf(docs: list[str]) -> list[dict[str, float]]:
 
 
 def similar_pairs(questions: list[dict], floor: float) -> list[tuple[float, str, str]]:
-    vectors = tfidf([str(q.get("stem", "")) for q in questions])
+    # Code counts too, so two "what does this print?" stems with different code are not duplicates.
+    vectors = tfidf([str(q.get("stem", "")) + ("\n" + q["code"] if q.get("code") else "") for q in questions])
     postings: dict[str, list[tuple[int, float]]] = defaultdict(list)
     for i, vec in enumerate(vectors):
         for t, w in vec.items():
@@ -297,6 +329,8 @@ def render_report(result: Result, taxonomy: dict) -> str:
     qs, domains = result.questions, taxonomy.get("domains", {})
     n = len(qs)
     status = "PASS" if result.ok else "FAIL"
+    track = track_info(taxonomy)
+    unit, short = track["unit_name"], track["unit_short"]
     out = [
         "# Question bank validation report",
         "",
@@ -322,7 +356,7 @@ def render_report(result: Result, taxonomy: dict) -> str:
         "",
         "Informational only; shortfalls are not failures.",
         "",
-        "| Domain | Questions | Easy | Medium | Hard |",
+        f"| {unit} | Questions | Easy | Medium | Hard |",
         "|---|---|---|---|---|",
     ]
     for d, spec in domains.items():
@@ -330,29 +364,37 @@ def render_report(result: Result, taxonomy: dict) -> str:
         tgt = spec["difficulty_targets"]
         count = sum(g["difficulty"].values())
         cells = [f"{g['difficulty'][k]}/{tgt[k]}" for k in DIFFICULTIES]
-        out.append(f"| D{d} {spec['name']} | {count}/{spec['target']} | " + " | ".join(cells) + " |")
+        out.append(f"| {short}{d} {spec['name']} | {count}/{spec['target']} | " + " | ".join(cells) + " |")
     total_target = sum(s["target"] for s in domains.values())
     out += [f"| **Total** | **{n}/{total_target}** | | | |", ""]
 
     nxt = next_milestone(taxonomy, n)
     if nxt:
         version, size = nxt
-        out += [f"### Next milestone: v{version} ({size} questions)", "", "| Domain | Have | Share of milestone | Still needed |", "|---|---|---|---|"]
+        out += [f"### Next milestone: v{version} ({size} questions)", "", f"| {unit} | Have | Share of milestone | Still needed |", "|---|---|---|---|"]
         shares = allocate(size, {d: spec["target"] for d, spec in domains.items()})
         for d, spec in domains.items():
             want = shares[d]
             have = sum(grid.get(d, {"difficulty": Counter()})["difficulty"].values())
-            out.append(f"| D{d} | {have} | {want} | {max(0, want - have)} |")
+            out.append(f"| {short}{d} | {have} | {want} | {max(0, want - have)} |")
         out.append("")
 
-    out += ["## Question types", "", "| Domain | Knowledge | Application | Managerial | Managerial share |", "|---|---|---|---|---|"]
-    for d in domains:
-        t = grid.get(d, {"type": Counter()})["type"]
-        tot = sum(t.values())
-        out.append(
-            f"| D{d} | {t['knowledge']} | {t['application']} | {t['managerial_best_first_most']} | {pct(t['managerial_best_first_most'], tot)} |"
-        )
-    out += [f"", f"Overall managerial share: {result.info.get('managerial_share', 0):.1%} (target at least 35%).", ""]
+    if "managerial_best_first_most" in track["question_types"]:
+        out += ["## Question types", "", "| Domain | Knowledge | Application | Managerial | Managerial share |", "|---|---|---|---|---|"]
+        for d in domains:
+            t = grid.get(d, {"type": Counter()})["type"]
+            tot = sum(t.values())
+            out.append(
+                f"| D{d} | {t['knowledge']} | {t['application']} | {t['managerial_best_first_most']} | {pct(t['managerial_best_first_most'], tot)} |"
+            )
+        out += [f"", f"Overall managerial share: {result.info.get('managerial_share', 0):.1%} (target at least 35%).", ""]
+    else:
+        names = [k.capitalize() for k in track["question_types"]]
+        out += ["## Question types", "", f"| {unit} | " + " | ".join(names) + " |", "|---|" + "---|" * len(names)]
+        for d in domains:
+            t = grid.get(d, {"type": Counter()})["type"]
+            out.append(f"| {short}{d} | " + " | ".join(str(t[k]) for k in track["question_types"]) + " |")
+        out.append("")
 
     letters = result.info.get("letters", {})
     gate = "checked" if n >= LETTER_MIN_BANK else f"not enforced until the bank has {LETTER_MIN_BANK} questions"
@@ -367,13 +409,23 @@ def render_report(result: Result, taxonomy: dict) -> str:
         f"Correct answer is the longest option (ties count) in {o[0]}/{o[2]} questions ({pct(o[0], o[2])}); warning above {LENGTH_BIAS_MAX:.0%}, and below {LENGTH_BIAS_MIN:.0%} once the bank has {LETTER_MIN_BANK} questions.",
         f"Correct answer is the shortest option in {o[1]}/{o[2]} ({pct(o[1], o[2])}).",
         "",
-        "| Domain | Longest | Shortest |",
+        f"| {unit} | Longest | Shortest |",
         "|---|---|---|",
     ]
     for d in domains:
         r = lb["by_domain"].get(d, [0, 0, 0])
-        out.append(f"| D{d} | {r[0]}/{r[2]} ({pct(r[0], r[2])}) | {r[1]}/{r[2]} ({pct(r[1], r[2])}) |")
+        out.append(f"| {short}{d} | {r[0]}/{r[2]} ({pct(r[0], r[2])}) | {r[1]}/{r[2]} ({pct(r[1], r[2])}) |")
     out.append("")
+
+    code = result.info.get("code", {"with_code": 0, "verified": 0})
+    if code["with_code"]:
+        out += [
+            "## Question code",
+            "",
+            f"{code['with_code']} questions include code; every snippet parses and passes the lint.",
+            f"{code['verified']} \"what does this print?\" questions were run, and each printed exactly its keyed option.",
+            "",
+        ]
 
     out += ["## Most similar stems", "", f"Pairs above {DUP_THRESHOLD} fail validation. Top pairs at or above 0.50:", ""]
     top = result.info.get("top_similar", [])
@@ -386,16 +438,17 @@ def render_report(result: Result, taxonomy: dict) -> str:
         names = list(spec.get("subtopics", {}))
         missing = [s for s in names if not have.get(s)]
         counts = ", ".join(f"{s} {have[s]}" for s in names if have.get(s))
-        out.append(f"- **D{d}** {len(names) - len(missing)}/{len(names)} covered. {counts}.")
+        out.append(f"- **{short}{d}** {len(names) - len(missing)}/{len(names)} covered. {counts}.")
         if missing:
             out.append(f"  - Not yet covered: {', '.join(missing)}")
     out.append("")
     return "\n".join(out)
 
 
-def run_checks(root: Path = ROOT, include: list[Path] | None = None) -> tuple[Result, dict]:
-    result, taxonomy = load_bank(root, include)
+def run_checks(root: Path = ROOT, include: list[Path] | None = None, data_dir: str = "data") -> tuple[Result, dict]:
+    result, taxonomy = load_bank(root, include, data_dir)
     check_content(result, taxonomy)
+    check_code(result)
     check_duplicates(result)
     check_distribution(result, taxonomy)
     return result, taxonomy
@@ -405,12 +458,13 @@ def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--root", type=Path, default=ROOT, help="repository root (default: parent of validation/)")
     parser.add_argument("--include", type=Path, action="append", default=[], help="extra batch file not yet in the manifest")
-    parser.add_argument("--report", type=Path, default=None, help="report path (default: validation/report.md)")
+    parser.add_argument("--data-dir", default="data", help="bank folder under the root (default: data; the Python track is data-python)")
+    parser.add_argument("--report", type=Path, default=None, help="report path (default: validation/report.md, or the track's report)")
     parser.add_argument("--strict", action="store_true", help="treat warnings as failures")
     args = parser.parse_args(argv)
 
-    result, taxonomy = run_checks(args.root, args.include)
-    report_path = args.report or args.root / "validation" / "report.md"
+    result, taxonomy = run_checks(args.root, args.include, args.data_dir)
+    report_path = args.report or args.root / track_info(taxonomy)["report"]
     report_path.write_text(render_report(result, taxonomy), encoding="utf-8")
 
     n = len(result.questions)
