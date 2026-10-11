@@ -1,0 +1,256 @@
+[
+  {
+    "id": "P1-0001",
+    "domain": 1,
+    "domain_name": "Collections and dataclasses",
+    "subtopic": "Counter",
+    "difficulty": "easy",
+    "type": "application",
+    "stem": "`check_distribution()` in `validate.py` counts answer letters with a `Counter`. What does this snippet print?",
+    "code": "from collections import Counter\n\nletters = Counter([\"A\", \"C\", \"A\", \"B\", \"A\"])\nprint(letters[\"A\"], letters[\"D\"])",
+    "verify": "stdout",
+    "options": {
+      "A": "`3 0`",
+      "B": "`3 None`",
+      "C": "`1 0`",
+      "D": "`3 1`"
+    },
+    "answer": "A",
+    "explanation": "Counter counts each item, so A is 3. Looking up a key that was never counted returns 0 instead of raising KeyError, which is why validate.py can read letters for every letter safely.",
+    "distractor_rationales": {
+      "B": "A Counter gives 0 for a missing key; None is what dict.get returns.",
+      "C": "Counter counts every occurrence, so A is counted three times.",
+      "D": "A letter that never appeared has a count of zero, not one."
+    },
+    "references_topic": "validate.py check_distribution()",
+    "version": "0.1"
+  },
+  {
+    "id": "P1-0002",
+    "domain": 1,
+    "domain_name": "Collections and dataclasses",
+    "subtopic": "Counter",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "`validate.py` reads `letters.get(L, 0)` from a `Counter` of answer letters. Why would plain `letters[L]` also work for a letter that never appeared?",
+    "options": {
+      "A": "A Counter is created with every letter of the alphabet already set to 0",
+      "B": "A Counter returns 0 for a missing key instead of raising KeyError",
+      "C": "It adds the key with the value None, and the report prints None as 0",
+      "D": "Counter turns any missing key into an empty string, which counts as zero"
+    },
+    "answer": "B",
+    "explanation": "Counter is a dict subclass whose missing-key lookup returns 0. The .get(L, 0) in validate.py is just explicit; letters[L] gives the same 0 without adding the key.",
+    "distractor_rationales": {
+      "A": "Counter starts empty; it only holds the items it has counted.",
+      "C": "Counter neither stores None nor relies on formatting; it returns 0 for missing keys.",
+      "D": "Counter returns the integer 0, not an empty string."
+    },
+    "references_topic": "validate.py check_distribution()",
+    "version": "0.1"
+  },
+  {
+    "id": "P1-0003",
+    "domain": 1,
+    "domain_name": "Collections and dataclasses",
+    "subtopic": "defaultdict",
+    "difficulty": "easy",
+    "type": "application",
+    "stem": "`check_distribution()` keeps per-domain tallies in a `defaultdict`. What does this snippet print?",
+    "code": "from collections import defaultdict\n\nlongest = defaultdict(lambda: [0, 0, 0])\nlongest[\"1\"][2] += 1\nlongest[\"1\"][0] += 1\nprint(dict(longest))",
+    "verify": "stdout",
+    "options": {
+      "A": "`{'1': [0, 0, 1]}`",
+      "B": "`{}`",
+      "C": "`{'1': [1, 0, 1]}`",
+      "D": "`defaultdict({'1': [1, 0, 1]})`"
+    },
+    "answer": "C",
+    "explanation": "The first access to longest[\"1\"] calls the lambda and stores a new [0, 0, 0]. Both += lines then update that same stored list, giving [1, 0, 1].",
+    "distractor_rationales": {
+      "A": "Both updates hit the same list, so position 0 is also incremented.",
+      "B": "Reading longest[\"1\"] creates the entry by calling the factory.",
+      "D": "dict() turns it into a plain dict, so no defaultdict wrapper is printed."
+    },
+    "references_topic": "validate.py check_distribution()",
+    "version": "0.1"
+  },
+  {
+    "id": "P1-0004",
+    "domain": 1,
+    "domain_name": "Collections and dataclasses",
+    "subtopic": "defaultdict",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "`validate.py` writes `defaultdict(lambda: [0, 0, 0])`. This variant hands back one list made in advance. What does it print?",
+    "code": "from collections import defaultdict\n\nrow = [0, 0, 0]\nlongest = defaultdict(lambda: row)\nlongest[\"1\"][0] += 1\nlongest[\"2\"][0] += 1\nprint(longest[\"1\"], longest[\"2\"])",
+    "verify": "stdout",
+    "options": {
+      "A": "`[1, 0, 0] [1, 0, 0]`",
+      "B": "`[1, 0, 0] [2, 0, 0]`",
+      "C": "`[2, 0, 0] [0, 0, 0]`",
+      "D": "`[2, 0, 0] [2, 0, 0]`"
+    },
+    "answer": "D",
+    "explanation": "The factory returns the same row object every time, so both keys point at one list that is incremented twice. Writing the list literal inside the lambda, as validate.py does, builds a new list per key.",
+    "distractor_rationales": {
+      "A": "Each domain would get its own list only if the factory built a new one.",
+      "B": "Both keys hold the same list object, so they always show the same values.",
+      "C": "The second key is not a fresh list; it is the shared row."
+    },
+    "references_topic": "validate.py check_distribution()",
+    "version": "0.1"
+  },
+  {
+    "id": "P1-0005",
+    "domain": 1,
+    "domain_name": "Collections and dataclasses",
+    "subtopic": "Dataclasses",
+    "difficulty": "medium",
+    "type": "knowledge",
+    "stem": "The `Result` dataclass in `validate.py` declares `failures: list = field(default_factory=list)`. What happens if you write `failures: list = []` instead?",
+    "options": {
+      "A": "@dataclass raises ValueError: a list default is not allowed",
+      "B": "Every Result shares one list, so failures from one run leak into the next",
+      "C": "It works the same, because dataclasses copy each default for every new instance",
+      "D": "The field becomes required, so Result(root=path) fails with a TypeError"
+    },
+    "answer": "A",
+    "explanation": "dataclasses refuse list, dict, and set defaults with ValueError (\"mutable default ... is not allowed: use default_factory\"). field(default_factory=list) calls list() for each new instance instead.",
+    "distractor_rationales": {
+      "B": "That is the trap with plain function defaults; dataclasses refuse the list default outright.",
+      "C": "Dataclasses do not copy defaults; that is exactly why they reject mutable ones.",
+      "D": "A default still makes the field optional; the error comes earlier, from the decorator."
+    },
+    "references_topic": "validate.py Result",
+    "version": "0.1"
+  },
+  {
+    "id": "P1-0006",
+    "domain": 1,
+    "domain_name": "Collections and dataclasses",
+    "subtopic": "Dataclasses",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "A cut-down `Result` dataclass like the one in `validate.py`. What does this snippet print?",
+    "code": "from dataclasses import dataclass, field\n\n\n@dataclass\nclass Result:\n    failures: list = field(default_factory=list)\n\n\na, b = Result(), Result()\na.failures.append(\"duplicate id\")\nprint(len(a.failures), len(b.failures))",
+    "verify": "stdout",
+    "options": {
+      "A": "`1 1`",
+      "B": "`1 0`",
+      "C": "`0 0`",
+      "D": "`1 None`"
+    },
+    "answer": "B",
+    "explanation": "default_factory=list runs list() for every new Result, so a and b each own a list. Appending to one leaves the other empty.",
+    "distractor_rationales": {
+      "A": "default_factory builds a separate list for each instance, so b is untouched.",
+      "C": "append changes a.failures in place, so its length is 1.",
+      "D": "len() of an empty list is 0, not None."
+    },
+    "references_topic": "validate.py Result",
+    "version": "0.1"
+  },
+  {
+    "id": "P1-0007",
+    "domain": 1,
+    "domain_name": "Collections and dataclasses",
+    "subtopic": "Dataclasses",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "`Result.ok` in `validate.py` is a property that looks only at `failures`. What does this snippet print?",
+    "code": "from dataclasses import dataclass, field\n\n\n@dataclass\nclass Result:\n    failures: list = field(default_factory=list)\n    warnings: list = field(default_factory=list)\n\n    @property\n    def ok(self) -> bool:\n        return not self.failures\n\n\nr = Result(warnings=[\"length bias\"])\nprint(r.ok, bool(r.warnings))",
+    "verify": "stdout",
+    "options": {
+      "A": "`False True`",
+      "B": "`True False`",
+      "C": "`True True`",
+      "D": "`False False`"
+    },
+    "answer": "C",
+    "explanation": "not [] is True, so ok is True; a list with one item is truthy, so bool(r.warnings) is True. This is why warnings alone never fail the CI step unless --strict is used.",
+    "distractor_rationales": {
+      "A": "ok checks failures only; warnings do not make a bank fail.",
+      "B": "warnings holds one item, and a non-empty list is truthy.",
+      "D": "Neither part is False: failures is empty and warnings is not."
+    },
+    "references_topic": "validate.py Result.ok",
+    "version": "0.1"
+  },
+  {
+    "id": "P1-0008",
+    "domain": 1,
+    "domain_name": "Collections and dataclasses",
+    "subtopic": "Comprehensions",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "`check_content()` flags duplicate option text by comparing a list with a set. What does this snippet print?",
+    "code": "options = {\"A\": \"Encrypt\", \"B\": \"encrypt \", \"C\": \"Hash\", \"D\": \"Sign\"}\ntexts = [options[L].strip().lower() for L in \"ABCD\"]\nprint(len(texts), len(set(texts)))",
+    "verify": "stdout",
+    "options": {
+      "A": "`4 4`",
+      "B": "`3 3`",
+      "C": "`4 {'encrypt', 'hash', 'sign'}`",
+      "D": "`4 3`"
+    },
+    "answer": "D",
+    "explanation": "The list comprehension keeps four normalised strings; the set removes the repeat of \"encrypt\". A length mismatch is how validate.py spots duplicate options.",
+    "distractor_rationales": {
+      "A": "After strip() and lower(), A and B are both \"encrypt\", so the set loses one.",
+      "B": "The list keeps all four entries; only the set drops the duplicate.",
+      "C": "len() returns a number, not the set itself."
+    },
+    "references_topic": "validate.py check_content()",
+    "version": "0.1"
+  },
+  {
+    "id": "P1-0009",
+    "domain": 1,
+    "domain_name": "Collections and dataclasses",
+    "subtopic": "Counter",
+    "difficulty": "hard",
+    "type": "application",
+    "stem": "`tfidf()` counts how many documents contain each word with `Counter(t for tf in tokenized for t in tf)`. What does this snippet print?",
+    "code": "from collections import Counter\n\ntokenized = [Counter([\"key\", \"risk\", \"risk\"]), Counter([\"risk\", \"audit\"])]\ndf = Counter(t for tf in tokenized for t in tf)\nprint(df[\"risk\"], df[\"key\"])",
+    "verify": "stdout",
+    "options": {
+      "A": "`2 1`",
+      "B": "`3 1`",
+      "C": "`2 2`",
+      "D": "`2 1 1`"
+    },
+    "answer": "A",
+    "explanation": "Looping over a Counter gives its distinct keys, so each document adds 1 for every word it contains. That is document frequency, which is what IDF needs.",
+    "distractor_rationales": {
+      "B": "Iterating a Counter yields each key once, not once per occurrence.",
+      "C": "key appears in only the first document.",
+      "D": "Only two values are printed: the counts for risk and key."
+    },
+    "references_topic": "validate.py tfidf()",
+    "version": "0.1"
+  },
+  {
+    "id": "P1-0010",
+    "domain": 1,
+    "domain_name": "Collections and dataclasses",
+    "subtopic": "Comprehensions",
+    "difficulty": "hard",
+    "type": "knowledge",
+    "stem": "`validate.py` builds `grid = {d: {\"difficulty\": Counter(), ...} for d in domains}`. Why not write `dict.fromkeys(domains, {\"difficulty\": Counter()})`?",
+    "options": {
+      "A": "fromkeys cannot take a dict as its value, so building grid would raise a TypeError",
+      "B": "fromkeys would share one inner dict, so every domain would show the same counts",
+      "C": "The comprehension is faster for small dicts, and speed is its only advantage",
+      "D": "fromkeys sorts the keys, which would put the domains in the wrong order"
+    },
+    "answer": "B",
+    "explanation": "dict.fromkeys stores the same value object under every key. The comprehension runs its value expression once per key, so each domain gets its own Counters.",
+    "distractor_rationales": {
+      "A": "fromkeys accepts any value; the problem is that it reuses that one object.",
+      "C": "Speed is not the point; fromkeys would share a single inner dict.",
+      "D": "fromkeys keeps the order of the keys it is given."
+    },
+    "references_topic": "validate.py check_distribution()",
+    "version": "0.1"
+  }
+]

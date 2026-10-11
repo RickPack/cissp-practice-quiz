@@ -1,0 +1,252 @@
+[
+  {
+    "id": "P5-0001",
+    "domain": 5,
+    "domain_name": "Algorithms in the validator",
+    "subtopic": "Cosine similarity",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "What is `similar_pairs()` in `validate.py` used for?",
+    "options": {
+      "A": "Finding stems so alike that they are probably duplicates",
+      "B": "Splitting the question bank into batch files of at most fifty questions",
+      "C": "Checking that each answer letter is the key for about a quarter of questions",
+      "D": "Finding answer options that repeat the same text inside one question"
+    },
+    "answer": "A",
+    "explanation": "It scores every pair of stems by cosine similarity of their TF-IDF vectors. Pairs above 0.85 fail validation as near-duplicates.",
+    "distractor_rationales": {
+      "B": "Batch size is checked elsewhere, by the schema.",
+      "C": "That is the answer-letter check in check_distribution().",
+      "D": "That is the duplicate-option check in check_content()."
+    },
+    "references_topic": "validate.py similar_pairs()",
+    "version": "0.1"
+  },
+  {
+    "id": "P5-0002",
+    "domain": 5,
+    "domain_name": "Algorithms in the validator",
+    "subtopic": "TF-IDF",
+    "difficulty": "easy",
+    "type": "application",
+    "stem": "`tfidf()` uses the smoothed formula `idf = log((1 + n) / (1 + c)) + 1`. What does this snippet print for a word found in every document?",
+    "code": "import math\n\nn, c = 3, 3  # 3 documents, and the word appears in all 3\nidf = math.log((1 + n) / (1 + c)) + 1\nprint(idf)",
+    "verify": "stdout",
+    "options": {
+      "A": "`0.0`",
+      "B": "`1.0`",
+      "C": "`1`",
+      "D": "`2.0`"
+    },
+    "answer": "B",
+    "explanation": "(1 + 3) / (1 + 3) is 1, log(1) is 0.0, and adding 1 gives 1.0. Common words get a low weight but never zero.",
+    "distractor_rationales": {
+      "A": "The + 1 at the end keeps the weight from reaching zero.",
+      "C": "math.log returns a float, so the sum prints as 1.0.",
+      "D": "log(4 / 4) is log(1), which is 0."
+    },
+    "references_topic": "validate.py tfidf()",
+    "version": "0.1"
+  },
+  {
+    "id": "P5-0003",
+    "domain": 5,
+    "domain_name": "Algorithms in the validator",
+    "subtopic": "TF-IDF",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "Why does `tfidf()` divide each vector by its length (its L2 norm)?",
+    "options": {
+      "A": "To turn every weight into a whole number so the scores are easy to compare",
+      "B": "To remove stopwords and single letters from each stem before scoring",
+      "C": "So a dot product equals cosine similarity, whatever the stem lengths",
+      "D": "So that a longer stem always scores as more similar to the others"
+    },
+    "answer": "C",
+    "explanation": "With unit-length vectors, a dot product is the cosine of the angle between them, a score from 0 to 1 that does not depend on how long each stem is.",
+    "distractor_rationales": {
+      "A": "Dividing by the norm gives fractions, not whole numbers.",
+      "B": "tokenize() removes those.",
+      "D": "Normalising removes the effect of length."
+    },
+    "references_topic": "validate.py tfidf()",
+    "version": "0.1"
+  },
+  {
+    "id": "P5-0004",
+    "domain": 5,
+    "domain_name": "Algorithms in the validator",
+    "subtopic": "TF-IDF",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "This is the normalising step from `tfidf()`. What does it print?",
+    "code": "import math\n\nvec = {\"risk\": 3.0, \"audit\": 4.0}\nnorm = math.sqrt(sum(v * v for v in vec.values())) or 1.0\nprint({t: v / norm for t, v in vec.items()})",
+    "verify": "stdout",
+    "options": {
+      "A": "`{'risk': 3.0, 'audit': 4.0}`",
+      "B": "`{'risk': 0.75, 'audit': 1.0}`",
+      "C": "`{'risk': 0.43, 'audit': 0.57}`",
+      "D": "`{'risk': 0.6, 'audit': 0.8}`"
+    },
+    "answer": "D",
+    "explanation": "The norm is sqrt(9 + 16) = 5.0, so the weights become 0.6 and 0.8. The or 1.0 only guards against dividing by zero for an empty stem.",
+    "distractor_rationales": {
+      "A": "Each weight is divided by the norm, 5.0.",
+      "B": "That divides by the largest weight, not by the length.",
+      "C": "That divides by the sum, 7, not by the square root of the sum of squares."
+    },
+    "references_topic": "validate.py tfidf()",
+    "version": "0.1"
+  },
+  {
+    "id": "P5-0005",
+    "domain": 5,
+    "domain_name": "Algorithms in the validator",
+    "subtopic": "Cosine similarity",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "Two normalised vectors are stored as dicts, as in `similar_pairs()`. What does this dot product print?",
+    "code": "a = {\"risk\": 0.6, \"audit\": 0.8}\nb = {\"audit\": 1.0}\nprint(round(sum(w * b.get(t, 0) for t, w in a.items()), 2))",
+    "verify": "stdout",
+    "options": {
+      "A": "`0.8`",
+      "B": "`1.4`",
+      "C": "`0.48`",
+      "D": "`1.0`"
+    },
+    "answer": "A",
+    "explanation": "Only words in both dicts contribute. audit gives 0.8 × 1.0 and risk gives 0.6 × 0, so the cosine similarity is 0.8.",
+    "distractor_rationales": {
+      "B": "That adds the weights; a dot product multiplies matching weights.",
+      "C": "Only the shared word, audit, contributes: 0.8 times 1.0.",
+      "D": "risk is missing from b, so it contributes 0."
+    },
+    "references_topic": "validate.py similar_pairs()",
+    "version": "0.1"
+  },
+  {
+    "id": "P5-0006",
+    "domain": 5,
+    "domain_name": "Algorithms in the validator",
+    "subtopic": "Cosine similarity",
+    "difficulty": "medium",
+    "type": "knowledge",
+    "stem": "`similar_pairs()` builds `postings`: for each word, the stems that contain it. Why not compare every pair of stems directly?",
+    "options": {
+      "A": "Postings make the cosine scores more accurate than direct comparison would",
+      "B": "Only stems that share a word are paired, so most pairs are skipped",
+      "C": "Postings remove stopwords, which direct comparison would have to keep",
+      "D": "Postings sort the stems alphabetically, so duplicates end up side by side"
+    },
+    "answer": "B",
+    "explanation": "A 1,000-question bank has about 500,000 stem pairs. Accumulating dot products through shared words touches only pairs with something in common.",
+    "distractor_rationales": {
+      "A": "The scores are the same; only the amount of work changes.",
+      "C": "tokenize() drops stopwords before postings are built.",
+      "D": "Postings are grouped by word, not sorted by stem."
+    },
+    "references_topic": "validate.py similar_pairs()",
+    "version": "0.1"
+  },
+  {
+    "id": "P5-0007",
+    "domain": 5,
+    "domain_name": "Algorithms in the validator",
+    "subtopic": "Largest-remainder allocation",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "`allocate()` splits a total by weight with largest remainders. What does this version print?",
+    "code": "import math\n\n\ndef allocate(total, weights):\n    wsum = sum(weights.values())\n    raw = {k: total * w / wsum for k, w in weights.items()}\n    parts = {k: math.floor(v) for k, v in raw.items()}\n    leftover = total - sum(parts.values())\n    for k in sorted(raw, key=lambda k: raw[k] - parts[k], reverse=True)[:leftover]:\n        parts[k] += 1\n    return parts\n\n\nprint(allocate(10, {\"easy\": 3, \"medium\": 4.5, \"hard\": 2.5}))",
+    "verify": "stdout",
+    "options": {
+      "A": "`{'easy': 3, 'medium': 4, 'hard': 3}`",
+      "B": "`{'easy': 3, 'medium': 4, 'hard': 2}`",
+      "C": "`{'easy': 3, 'medium': 5, 'hard': 2}`",
+      "D": "`{'easy': 3.0, 'medium': 4.5, 'hard': 2.5}`"
+    },
+    "answer": "C",
+    "explanation": "Floors are 3, 4, and 2, leaving 1. Fractions are 0, 0.5, and 0.5; the tie keeps medium first, so medium gets the extra one.",
+    "distractor_rationales": {
+      "A": "medium and hard tie at 0.5, and the stable sort keeps medium first, so medium gets the spare.",
+      "B": "The leftover 1 is handed out, so the parts sum to 10.",
+      "D": "Those are the raw shares; the function returns whole numbers."
+    },
+    "references_topic": "validate.py allocate()",
+    "version": "0.1"
+  },
+  {
+    "id": "P5-0008",
+    "domain": 5,
+    "domain_name": "Algorithms in the validator",
+    "subtopic": "Largest-remainder allocation",
+    "difficulty": "medium",
+    "type": "knowledge",
+    "stem": "Why does `allocate()` use largest remainders instead of rounding each share?",
+    "options": {
+      "A": "Python cannot reliably round floating-point numbers to the nearest whole number",
+      "B": "Largest remainders always give each part an even number of questions",
+      "C": "Rounding would sort the keys alphabetically and lose the domain order",
+      "D": "Rounded parts can miss the total; largest remainders always add up exactly"
+    },
+    "answer": "D",
+    "explanation": "Floor every share, then give the leftover units to the largest fractional parts. The parts always sum exactly to the total.",
+    "distractor_rationales": {
+      "A": "round() works; the issue is that rounded parts may not sum to the total.",
+      "B": "Parts can be odd or even.",
+      "C": "Rounding does not reorder anything."
+    },
+    "references_topic": "validate.py allocate()",
+    "version": "0.1"
+  },
+  {
+    "id": "P5-0009",
+    "domain": 5,
+    "domain_name": "Algorithms in the validator",
+    "subtopic": "Largest-remainder allocation",
+    "difficulty": "hard",
+    "type": "application",
+    "stem": "Here is what goes wrong when each share is rounded on its own. What does this snippet print?",
+    "code": "shares = {\"A\": 3.5, \"B\": 3.5, \"C\": 3.0}  # the shares of a 10-question split\nprint(sum(round(v) for v in shares.values()))",
+    "verify": "stdout",
+    "options": {
+      "A": "`11`",
+      "B": "`10`",
+      "C": "`9`",
+      "D": "`12`"
+    },
+    "answer": "A",
+    "explanation": "round() rounds halves to the nearest even number, so 3.5 becomes 4. Two of them plus 3 is 11, one more than the total.",
+    "distractor_rationales": {
+      "B": "Both 3.5 shares round up to 4, so the total overshoots.",
+      "C": "round(3.5) is 4, not 3.",
+      "D": "3.0 stays 3."
+    },
+    "references_topic": "validate.py allocate()",
+    "version": "0.1"
+  },
+  {
+    "id": "P5-0010",
+    "domain": 5,
+    "domain_name": "Algorithms in the validator",
+    "subtopic": "TF-IDF",
+    "difficulty": "hard",
+    "type": "knowledge",
+    "stem": "A word that appears in nearly every stem would make the pair loop in `similar_pairs()` slow, because its posting list is huge. What in `validate.py` prevents that?",
+    "options": {
+      "A": "The 0.85 threshold stops the loop as soon as any one pair of stems passes it",
+      "B": "tokenize() drops stopwords, so the commonest words never get posting lists",
+      "C": "Python caches the dot products between runs, so they are computed once",
+      "D": "postings is a set, which removes the repeated stems automatically"
+    },
+    "answer": "B",
+    "explanation": "The loop over a posting list is quadratic in its length. Removing stopwords such as the, and, and which keeps the longest lists out entirely.",
+    "distractor_rationales": {
+      "A": "The threshold is applied after the scores are computed.",
+      "C": "Nothing is cached between runs.",
+      "D": "postings is a defaultdict of lists."
+    },
+    "references_topic": "validate.py tokenize()",
+    "version": "0.1"
+  }
+]

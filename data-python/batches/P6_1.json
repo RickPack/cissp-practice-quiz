@@ -1,0 +1,252 @@
+[
+  {
+    "id": "P6-0001",
+    "domain": 6,
+    "domain_name": "Calling an API safely",
+    "subtopic": "Secrets and configuration",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "How does `audit.py` get the Anthropic API key when it runs locally?",
+    "options": {
+      "A": "From a key.txt file that sits next to audit.py in the validation folder",
+      "B": "From a constant typed near the top of audit.py before each run",
+      "C": "From the ANTHROPIC_API_KEY environment variable",
+      "D": "From the question bank's manifest.json, which lists the account details"
+    },
+    "answer": "C",
+    "explanation": "main() checks os.environ.get(\"ANTHROPIC_API_KEY\") and stops with a message if it is missing. In Colab the key comes from Colab Secrets.",
+    "distractor_rationales": {
+      "A": "No key file is read; a key in the repository would leak.",
+      "B": "Hard-coding a key risks committing it.",
+      "D": "The manifest lists batch files only."
+    },
+    "references_topic": "audit.py main()",
+    "version": "0.1"
+  },
+  {
+    "id": "P6-0002",
+    "domain": 6,
+    "domain_name": "Calling an API safely",
+    "subtopic": "Secrets and configuration",
+    "difficulty": "easy",
+    "type": "application",
+    "stem": "`main()` in `audit.py` tests `os.environ.get(\"ANTHROPIC_API_KEY\")`. This snippet uses a plain dict in its place. What does it print?",
+    "code": "env = {\"ANTHROPIC_MODEL\": \"claude-sonnet-5\"}\nprint(env.get(\"ANTHROPIC_API_KEY\"), bool(env.get(\"ANTHROPIC_API_KEY\")))",
+    "verify": "stdout",
+    "options": {
+      "A": "`'' False`",
+      "B": "`None True`",
+      "C": "`False False`",
+      "D": "`None False`"
+    },
+    "answer": "D",
+    "explanation": "get returns None when the key is missing, and None is falsy. That is why audit.py writes if not os.environ.get(...): it catches both a missing and an empty key.",
+    "distractor_rationales": {
+      "A": "get returns None for a missing key, not an empty string.",
+      "B": "bool(None) is False.",
+      "C": "get returns None, which prints as None."
+    },
+    "references_topic": "audit.py main()",
+    "version": "0.1"
+  },
+  {
+    "id": "P6-0003",
+    "domain": 6,
+    "domain_name": "Calling an API safely",
+    "subtopic": "Errors and retries",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "`audit_sync()` writes every result to `.audit_cache.json` straight away. What does that allow?",
+    "options": {
+      "A": "A rerun after a crash skips questions that already have results",
+      "B": "Two people can run the same audit at the same time without clashing",
+      "C": "The model sees its earlier answers and so answers more consistently",
+      "D": "The API charges less for questions that appear in the cache file"
+    },
+    "answer": "A",
+    "explanation": "On start, audit_sync() loads the cache and only sends questions with no result or with an error. A crash or a rate limit costs nothing already done.",
+    "distractor_rationales": {
+      "B": "Nothing coordinates two runs; they would overwrite the same file.",
+      "C": "The cache is never sent to the model.",
+      "D": "The cache avoids repeat requests; it does not change prices."
+    },
+    "references_topic": "audit.py audit_sync()",
+    "version": "0.1"
+  },
+  {
+    "id": "P6-0004",
+    "domain": 6,
+    "domain_name": "Calling an API safely",
+    "subtopic": "Model output",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "`parse_message()` clamps the model's confidence to 0 to 100. What does this snippet print?",
+    "code": "def clamp(value):\n    return max(0, min(100, int(value)))\n\n\nprint(clamp(\"85\"), clamp(140), clamp(-3.7))",
+    "verify": "stdout",
+    "options": {
+      "A": "`85 140 0`",
+      "B": "`85 100 0`",
+      "C": "`85 100 -3`",
+      "D": "`'85' 100 0`"
+    },
+    "answer": "B",
+    "explanation": "int() handles the string and truncates -3.7 to -3; min caps at 100 and max lifts to 0. Clamping protects the threshold check from out-of-range values.",
+    "distractor_rationales": {
+      "A": "min(100, ...) caps 140 at 100.",
+      "C": "max(0, ...) lifts -3 to 0.",
+      "D": "int(\"85\") converts the text to the integer 85."
+    },
+    "references_topic": "audit.py parse_message()",
+    "version": "0.1"
+  },
+  {
+    "id": "P6-0005",
+    "domain": 6,
+    "domain_name": "Calling an API safely",
+    "subtopic": "Model output",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "`parse_message()` returns an error entry when the model's reply is not JSON. What does this snippet print?",
+    "code": "import json\n\n\ndef parse(text):\n    try:\n        out = json.loads(text)\n    except json.JSONDecodeError:\n        return {\"error\": \"unparseable response: \" + text[:10]}\n    return out\n\n\nprint(parse('{\"answer\": \"B\"}')[\"answer\"], parse(\"Sure! Here is\")[\"error\"])",
+    "verify": "stdout",
+    "options": {
+      "A": "`B unparseable response: Sure! Here is`",
+      "B": "`B None`",
+      "C": "`B unparseable response: Sure! Here`",
+      "D": "`{\"answer\": \"B\"} unparseable response: Sure! Here`"
+    },
+    "answer": "C",
+    "explanation": "Good JSON becomes a dict. Bad JSON raises JSONDecodeError, caught to return a short preview, ten characters here, instead of crashing the audit.",
+    "distractor_rationales": {
+      "A": "text[:10] keeps only the first ten characters.",
+      "B": "The except branch returns a dict with an error message.",
+      "D": "Valid JSON is parsed into a dict, and [\"answer\"] reads B."
+    },
+    "references_topic": "audit.py parse_message()",
+    "version": "0.1"
+  },
+  {
+    "id": "P6-0006",
+    "domain": 6,
+    "domain_name": "Calling an API safely",
+    "subtopic": "Errors and retries",
+    "difficulty": "medium",
+    "type": "knowledge",
+    "stem": "On a rate-limit error, `audit_sync()` sleeps for the number of seconds in the `retry-after` header. Why use the header instead of a fixed wait?",
+    "options": {
+      "A": "The header contains a fresh API key to use for the next request",
+      "B": "Python's time module does not accept a fixed number of seconds as its argument",
+      "C": "The header tells the script which question it should skip next",
+      "D": "The server says how long to wait, so retries are not too early or late"
+    },
+    "answer": "D",
+    "explanation": "retry-after is the API's own estimate of when capacity frees up. Waiting that long avoids hammering the service and avoids idling longer than needed.",
+    "distractor_rationales": {
+      "A": "Headers never carry new keys.",
+      "B": "time.sleep accepts any number of seconds.",
+      "C": "It gives a delay, not a question."
+    },
+    "references_topic": "audit.py audit_sync()",
+    "version": "0.1"
+  },
+  {
+    "id": "P6-0007",
+    "domain": 6,
+    "domain_name": "Calling an API safely",
+    "subtopic": "Batch processing",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "`audit_batch()` polls until the batch's status is `ended`. This simulation feeds it three statuses. What does it print?",
+    "code": "statuses = iter([\"in_progress\", \"in_progress\", \"ended\"])\nstatus = next(statuses)\npolls = 0\nwhile status != \"ended\":\n    polls += 1\n    status = next(statuses)\nprint(polls)",
+    "verify": "stdout",
+    "options": {
+      "A": "`2`",
+      "B": "`3`",
+      "C": "`1`",
+      "D": "`0`"
+    },
+    "answer": "A",
+    "explanation": "The first status comes from the create call, then the loop retrieves until ended. Two in_progress statuses mean two polls.",
+    "distractor_rationales": {
+      "B": "The first status is read before the loop, so only two more reads happen.",
+      "C": "The loop runs again after the second in_progress.",
+      "D": "The first status is in_progress, so the loop body runs."
+    },
+    "references_topic": "audit.py audit_batch()",
+    "version": "0.1"
+  },
+  {
+    "id": "P6-0008",
+    "domain": 6,
+    "domain_name": "Calling an API safely",
+    "subtopic": "Errors and retries",
+    "difficulty": "hard",
+    "type": "application",
+    "stem": "In the API library, `RateLimitError` is a subclass of `APIStatusError`. This handler lists them in the opposite order to `audit_sync()`. What does it print?",
+    "code": "class APIStatusError(Exception):\n    pass\n\n\nclass RateLimitError(APIStatusError):\n    pass\n\n\ndef handle(exc):\n    try:\n        raise exc\n    except APIStatusError:\n        return \"status\"\n    except RateLimitError:\n        return \"rate limit\"\n\n\nprint(handle(RateLimitError()), handle(APIStatusError()))",
+    "verify": "stdout",
+    "options": {
+      "A": "`rate limit status`",
+      "B": "`status status`",
+      "C": "`status rate limit`",
+      "D": "`rate limit rate limit`"
+    },
+    "answer": "B",
+    "explanation": "Python checks except clauses top to bottom and takes the first match. A base class listed first swallows its subclasses, which is why audit_sync() puts RateLimitError before APIStatusError.",
+    "distractor_rationales": {
+      "A": "The first matching except wins, and APIStatusError matches its subclasses.",
+      "C": "An APIStatusError is not a RateLimitError, so it can never reach that branch.",
+      "D": "The RateLimitError branch is unreachable in this order."
+    },
+    "references_topic": "audit.py audit_sync()",
+    "version": "0.1"
+  },
+  {
+    "id": "P6-0009",
+    "domain": 6,
+    "domain_name": "Calling an API safely",
+    "subtopic": "Batch processing",
+    "difficulty": "hard",
+    "type": "knowledge",
+    "stem": "Message Batches API results can come back in any order. How does `audit_batch()` match each result to its question?",
+    "options": {
+      "A": "It assumes results come back in exactly the order in which the requests were submitted",
+      "B": "It sorts the results by the answer letter each one contains",
+      "C": "Each request carries the question ID as custom_id, used to file each result",
+      "D": "It sends any result it cannot match to the API a second time"
+    },
+    "answer": "C",
+    "explanation": "Request(custom_id=q[\"id\"], ...) tags each request, and results[item.custom_id] = ... files each result under its question, whatever the order.",
+    "distractor_rationales": {
+      "A": "Results are unordered, so position would mismatch.",
+      "B": "Answer letters do not identify questions.",
+      "D": "Every result carries its custom_id, so nothing needs resending."
+    },
+    "references_topic": "audit.py audit_batch()",
+    "version": "0.1"
+  },
+  {
+    "id": "P6-0010",
+    "domain": 6,
+    "domain_name": "Calling an API safely",
+    "subtopic": "Model output",
+    "difficulty": "hard",
+    "type": "knowledge",
+    "stem": "`question_prompt()` sends the model only the stem and options. Why keep the key, explanation, and rationales out?",
+    "options": {
+      "A": "The API refuses any prompt that is longer than one stem plus its four options",
+      "B": "Explanations contain markup that would break the JSON output format",
+      "C": "Sending the rationales would double the cost of the batch request",
+      "D": "A model that can see the key tends to agree with it, hiding wrong keys"
+    },
+    "answer": "D",
+    "explanation": "An answer formed without the key is independent evidence. Disagreements and low confidence then point at questions a human should check.",
+    "distractor_rationales": {
+      "A": "Prompts can be far longer.",
+      "B": "The text is plain; the reason is independence.",
+      "C": "Cost is not the reason; a visible key biases the answer."
+    },
+    "references_topic": "audit.py question_prompt()",
+    "version": "0.1"
+  }
+]

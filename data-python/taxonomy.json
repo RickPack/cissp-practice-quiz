@@ -1,0 +1,154 @@
+{
+  "track": {
+    "id_prefix": "P",
+    "unit_name": "Topic",
+    "unit_short": "T",
+    "question_types": ["knowledge", "application"],
+    "report": "validation/report-python.md",
+    "audit_prompt": "You are an experienced Python developer reviewing practice questions about a small Python code base. Choose the single correct answer. For code, reason about exactly what Python 3.12 would do. Then critique the item as a reviewer: list any other option you consider equally defensible, and note any flaw such as an ambiguous stem, a factual error, or a clue that gives the answer away."
+  },
+  "target_line": 0.7,
+  "min_domain_n": 4,
+  "difficulty_mix": { "easy": 0.3, "medium": 0.45, "hard": 0.25 },
+  "difficulty_weights": { "easy": 1.0, "medium": 1.5, "hard": 2.0 },
+  "managerial_min_share": 0,
+  "bank_milestones": { "0.1": 60 },
+  "domains": {
+    "1": {
+      "name": "Collections and dataclasses",
+      "weight": 0.1667,
+      "target": 10,
+      "difficulty_targets": { "easy": 3, "medium": 5, "hard": 2 },
+      "subtopics": {
+        "Counter": [
+          "Re-read check_distribution() in validation/validate.py, which counts answer letters with Counter",
+          "Practise what Counter returns for a missing key and what iterating a Counter yields"
+        ],
+        "defaultdict": [
+          "Trace longest = defaultdict(lambda: [0, 0, 0]) in check_distribution()",
+          "Explain when a default factory runs and why it must build a new object each time"
+        ],
+        "Dataclasses": [
+          "Read the Result dataclass at the top of validation/validate.py",
+          "Explain why a list field needs field(default_factory=list)"
+        ],
+        "Comprehensions": [
+          "Rewrite the grid and texts comprehensions in validate.py as plain loops",
+          "Compare a dict comprehension with dict.fromkeys when the value is mutable"
+        ]
+      }
+    },
+    "2": {
+      "name": "Regular expressions and formatting",
+      "weight": 0.1667,
+      "target": 10,
+      "difficulty_targets": { "easy": 3, "medium": 4, "hard": 3 },
+      "subtopics": {
+        "Regex patterns": [
+          "Read BANNED_OPTION and NEGATION near the top of validation/validate.py",
+          "Practise \\b word boundaries, character classes, and re.fullmatch versus re.search"
+        ],
+        "Regex flags and matches": [
+          "Explain what re.I changes and what a match object's span() returns",
+          "Trace the negation-emphasis check in check_content()"
+        ],
+        "String formatting": [
+          "Practise f-string format specs such as :.1% and :.2f, and doubled braces",
+          "Read the report lines built in render_report()"
+        ]
+      }
+    },
+    "3": {
+      "name": "Files, JSON, and errors",
+      "weight": 0.1667,
+      "target": 10,
+      "difficulty_targets": { "easy": 3, "medium": 5, "hard": 2 },
+      "subtopics": {
+        "Paths": [
+          "Read rel() in validation/validate.py and the pathlib parts it uses",
+          "Practise name, stem, suffix, and relative_to on PurePosixPath"
+        ],
+        "JSON": [
+          "Read load_json() in validate.py and load_questions() in validation/audit.py",
+          "Predict the Python types json.loads returns"
+        ],
+        "Exceptions": [
+          "Explain which errors load_json() catches and why it records them instead of stopping",
+          "Practise exception subclasses such as json.JSONDecodeError and ValueError"
+        ],
+        "CSV": [
+          "Read write_flags() in validation/audit.py",
+          "Explain csv.DictWriter and why CSV files are opened with newline=\"\""
+        ]
+      }
+    },
+    "4": {
+      "name": "Functions and the command line",
+      "weight": 0.1667,
+      "target": 10,
+      "difficulty_targets": { "easy": 3, "medium": 4, "hard": 3 },
+      "subtopics": {
+        "Type hints": [
+          "Read the signatures of load_bank() and run_checks() in validation/validate.py",
+          "Explain what from __future__ import annotations changes"
+        ],
+        "argparse": [
+          "Read main() in validate.py and audit.py",
+          "Practise action=\"append\", action=\"store_true\", and type=Path"
+        ],
+        "Script structure": [
+          "Explain if __name__ == \"__main__\" and sys.exit(main())",
+          "Trace how main() turns failures and --strict into an exit code"
+        ],
+        "Sorting and keys": [
+          "Practise sorted() with key functions and reverse=True",
+          "Explain how Python compares lists and tuples element by element"
+        ]
+      }
+    },
+    "5": {
+      "name": "Algorithms in the validator",
+      "weight": 0.1667,
+      "target": 10,
+      "difficulty_targets": { "easy": 3, "medium": 5, "hard": 2 },
+      "subtopics": {
+        "TF-IDF": [
+          "Read tokenize() and tfidf() in validation/validate.py",
+          "Work out a smoothed IDF and an L2-normalised vector by hand"
+        ],
+        "Cosine similarity": [
+          "Read similar_pairs() and explain what the postings lists save",
+          "Compute a dot product of two sparse vectors stored as dicts"
+        ],
+        "Largest-remainder allocation": [
+          "Read allocate() in validate.py and core.js",
+          "Show why rounding each share separately can miss the total"
+        ]
+      }
+    },
+    "6": {
+      "name": "Calling an API safely",
+      "weight": 0.1667,
+      "target": 10,
+      "difficulty_targets": { "easy": 3, "medium": 4, "hard": 3 },
+      "subtopics": {
+        "Secrets and configuration": [
+          "Read how main() in validation/audit.py checks ANTHROPIC_API_KEY",
+          "Explain why keys belong in environment variables or a secrets store, never in the repository"
+        ],
+        "Errors and retries": [
+          "Read the except chain in audit_sync() and why the most specific error comes first",
+          "Explain the retry-after header and resumable caching"
+        ],
+        "Batch processing": [
+          "Read audit_batch() and its polling loop",
+          "Explain why batch results are matched by custom_id"
+        ],
+        "Model output": [
+          "Read parse_message() and question_prompt() in audit.py",
+          "Explain why the audit never shows the model the answer key"
+        ]
+      }
+    }
+  }
+}

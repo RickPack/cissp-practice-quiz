@@ -1,0 +1,256 @@
+[
+  {
+    "id": "P3-0001",
+    "domain": 3,
+    "domain_name": "Files, JSON, and errors",
+    "subtopic": "Exceptions",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "`load_json()` in `validate.py` wraps its read in `except (OSError, json.JSONDecodeError)`. What does that catch?",
+    "options": {
+      "A": "A file that is missing or unreadable, and text that is not valid JSON",
+      "B": "Only a missing file; text that is not valid JSON still stops the script",
+      "C": "Every possible exception, because OSError is the base class of all errors",
+      "D": "Only bad JSON; for a missing file the function quietly returns an empty dict"
+    },
+    "answer": "A",
+    "explanation": "A tuple in except catches any of the listed types. OSError covers missing or unreadable files; json.JSONDecodeError covers malformed JSON. Both are recorded as failures.",
+    "distractor_rationales": {
+      "B": "json.JSONDecodeError in the tuple catches bad JSON too.",
+      "C": "OSError covers file and system errors only; Exception is the broad base.",
+      "D": "OSError covers missing files, and the function returns None after recording the failure."
+    },
+    "references_topic": "validate.py load_json()",
+    "version": "0.1"
+  },
+  {
+    "id": "P3-0002",
+    "domain": 3,
+    "domain_name": "Files, JSON, and errors",
+    "subtopic": "JSON",
+    "difficulty": "easy",
+    "type": "application",
+    "stem": "`json.loads` turns a batch file's text into Python objects. What does this snippet print?",
+    "code": "import json\n\nq = json.loads('{\"domain\": 3, \"answer\": \"B\", \"flagged\": false}')\nprint(type(q[\"domain\"]).__name__, q[\"flagged\"])",
+    "verify": "stdout",
+    "options": {
+      "A": "`str False`",
+      "B": "`int False`",
+      "C": "`int 0`",
+      "D": "`float None`"
+    },
+    "answer": "B",
+    "explanation": "JSON numbers become int or float and true/false become True/False. That is why validate.py can compare q.get(\"domain\") with an integer.",
+    "distractor_rationales": {
+      "A": "A JSON number without quotes becomes an int.",
+      "C": "JSON false becomes the bool False, which prints as False, not 0.",
+      "D": "3 has no decimal point, so it becomes int; and false becomes False, not None."
+    },
+    "references_topic": "validate.py load_json()",
+    "version": "0.1"
+  },
+  {
+    "id": "P3-0003",
+    "domain": 3,
+    "domain_name": "Files, JSON, and errors",
+    "subtopic": "Paths",
+    "difficulty": "easy",
+    "type": "application",
+    "stem": "`validate.py` uses `pathlib` for batch paths. What does this snippet print?",
+    "code": "from pathlib import PurePosixPath\n\npath = PurePosixPath(\"data/batches/D4_3.json\")\nprint(path.name, path.stem, path.suffix)",
+    "verify": "stdout",
+    "options": {
+      "A": "`D4_3.json D4_3 json`",
+      "B": "`batches D4_3 .json`",
+      "C": "`D4_3.json D4_3 .json`",
+      "D": "`data/batches/D4_3.json D4_3 .json`"
+    },
+    "answer": "C",
+    "explanation": "name is the final component, stem is the name without its suffix, and suffix is the extension including the dot.",
+    "distractor_rationales": {
+      "A": "suffix keeps the leading dot.",
+      "B": "name is the last part, the file name.",
+      "D": "name drops the folders."
+    },
+    "references_topic": "validate.py load_batch()",
+    "version": "0.1"
+  },
+  {
+    "id": "P3-0004",
+    "domain": 3,
+    "domain_name": "Files, JSON, and errors",
+    "subtopic": "Paths",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "`rel()` in `validate.py` shows paths relative to the repository, falling back to the file name. What does this simplified version print?",
+    "code": "from pathlib import PurePosixPath\n\n\ndef rel(path, root):\n    try:\n        return path.relative_to(root).as_posix()\n    except ValueError:\n        return path.name\n\n\nroot = PurePosixPath(\"/repo\")\nprint(rel(PurePosixPath(\"/repo/data/manifest.json\"), root), rel(PurePosixPath(\"/tmp/D1_9.json\"), root))",
+    "verify": "stdout",
+    "options": {
+      "A": "`/repo/data/manifest.json D1_9.json`",
+      "B": "`data/manifest.json /tmp/D1_9.json`",
+      "C": "`manifest.json D1_9.json`",
+      "D": "`data/manifest.json D1_9.json`"
+    },
+    "answer": "D",
+    "explanation": "relative_to strips the root when the path is under it and raises ValueError otherwise; the except branch then returns just the file name.",
+    "distractor_rationales": {
+      "A": "relative_to removes the /repo prefix.",
+      "B": "/tmp is outside /repo, so relative_to raises ValueError and the name is used.",
+      "C": "The first path is inside root, so its relative path keeps the data folder."
+    },
+    "references_topic": "validate.py rel()",
+    "version": "0.1"
+  },
+  {
+    "id": "P3-0005",
+    "domain": 3,
+    "domain_name": "Files, JSON, and errors",
+    "subtopic": "Exceptions",
+    "difficulty": "medium",
+    "type": "knowledge",
+    "stem": "When a file cannot be read, `load_json()` appends a message to `result.failures` and returns `None` instead of raising. Why?",
+    "options": {
+      "A": "So one bad file is reported while the rest of the bank is still checked",
+      "B": "Raising an exception inside a function that receives a dataclass is not allowed",
+      "C": "Returning None makes the JSON parser try the file again automatically",
+      "D": "To hide the error so the CI step can stay green when a file is broken"
+    },
+    "answer": "A",
+    "explanation": "Collecting failures lets the validator report every problem in one run. The caller skips a None batch, and main() still exits with status 1 because the failure list is not empty.",
+    "distractor_rationales": {
+      "B": "Any function may raise; this is a design choice about reporting.",
+      "C": "Nothing retries; the caller sees None and skips the file.",
+      "D": "The failure is recorded, and any failure makes the script exit with status 1."
+    },
+    "references_topic": "validate.py load_json()",
+    "version": "0.1"
+  },
+  {
+    "id": "P3-0006",
+    "domain": 3,
+    "domain_name": "Files, JSON, and errors",
+    "subtopic": "JSON",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "`audit_sync()` caches results with `json.dumps` and reads them back with `json.loads`. What does this snippet print?",
+    "code": "import json\n\nresults = {\"D1-0002\": {\"answer\": \"C\"}, \"D1-0001\": {\"answer\": \"A\"}}\ntext = json.dumps(results)\nprint(list(json.loads(text)))",
+    "verify": "stdout",
+    "options": {
+      "A": "`['D1-0001', 'D1-0002']`",
+      "B": "`['D1-0002', 'D1-0001']`",
+      "C": "`[{'answer': 'C'}, {'answer': 'A'}]`",
+      "D": "`['answer', 'answer']`"
+    },
+    "answer": "B",
+    "explanation": "Dicts keep insertion order, json.dumps writes keys in that order, and json.loads rebuilds the dict in the same order. list(d) returns the keys.",
+    "distractor_rationales": {
+      "A": "json.dumps keeps insertion order unless sort_keys=True is passed.",
+      "C": "list() of a dict gives its keys, not its values.",
+      "D": "The outer keys are the question IDs."
+    },
+    "references_topic": "audit.py audit_sync()",
+    "version": "0.1"
+  },
+  {
+    "id": "P3-0007",
+    "domain": 3,
+    "domain_name": "Files, JSON, and errors",
+    "subtopic": "CSV",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "`write_flags()` in `audit.py` writes rows with `csv.DictWriter`. What is the second line of output?",
+    "code": "import csv\nimport io\n\nbuf = io.StringIO()\nwriter = csv.DictWriter(buf, fieldnames=[\"id\", \"reasons\"], lineterminator=\"\\n\")\nwriter.writeheader()\nwriter.writerow({\"id\": \"D2-0007\", \"reasons\": \"disagrees with key; item issue noted\"})\nprint(buf.getvalue().splitlines()[1])",
+    "verify": "stdout",
+    "options": {
+      "A": "`\"D2-0007\",\"disagrees with key; item issue noted\"`",
+      "B": "`id,reasons`",
+      "C": "`D2-0007,disagrees with key; item issue noted`",
+      "D": "`D2-0007;disagrees with key; item issue noted`"
+    },
+    "answer": "C",
+    "explanation": "DictWriter writes the header first, then each row in fieldnames order separated by commas. Semicolons inside a field need no quoting.",
+    "distractor_rationales": {
+      "A": "csv quotes a field only when it needs to, for example when it holds a comma.",
+      "B": "That is the header, the first line.",
+      "D": "The default delimiter is a comma."
+    },
+    "references_topic": "audit.py write_flags()",
+    "version": "0.1"
+  },
+  {
+    "id": "P3-0008",
+    "domain": 3,
+    "domain_name": "Files, JSON, and errors",
+    "subtopic": "CSV",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "`write_flags()` keeps old rows only for questions that were not audited in this run. What does this snippet print?",
+    "code": "existing = {\"D1-0001\": \"old\", \"D1-0002\": \"old\"}\naudited_ids = {\"D1-0002\", \"D1-0003\"}\nkept = {k: v for k, v in existing.items() if k not in audited_ids}\nfor qid, row in [(\"D1-0003\", \"new\")]:\n    kept[qid] = row\nprint(sorted(kept.items()))",
+    "verify": "stdout",
+    "options": {
+      "A": "`[('D1-0001', 'old'), ('D1-0002', 'old'), ('D1-0003', 'new')]`",
+      "B": "`[('D1-0003', 'new')]`",
+      "C": "`[('D1-0001', 'old'), ('D1-0002', 'new'), ('D1-0003', 'new')]`",
+      "D": "`[('D1-0001', 'old'), ('D1-0003', 'new')]`"
+    },
+    "answer": "D",
+    "explanation": "Rows for re-audited questions are removed, then this run's flags are added. A question that was audited and not flagged again simply disappears from flags.csv.",
+    "distractor_rationales": {
+      "A": "D1-0002 was audited again, so its old row is dropped.",
+      "B": "D1-0001 was not audited this run, so its row is kept.",
+      "C": "No new flag was raised for D1-0002, so nothing replaces it."
+    },
+    "references_topic": "audit.py write_flags()",
+    "version": "0.1"
+  },
+  {
+    "id": "P3-0009",
+    "domain": 3,
+    "domain_name": "Files, JSON, and errors",
+    "subtopic": "CSV",
+    "difficulty": "hard",
+    "type": "knowledge",
+    "stem": "`write_flags()` opens `flags.csv` with `newline=\"\"`. Why?",
+    "options": {
+      "A": "csv writes its own line endings; without it, Windows adds blank rows between records",
+      "B": "It strips blank lines at the end of the file when the file is read back",
+      "C": "It makes Python write the file as UTF-8, whatever the operating system's own settings say",
+      "D": "It stops csv from quoting fields that contain commas or quote characters"
+    },
+    "answer": "A",
+    "explanation": "The csv docs say to open files with newline=\"\". Otherwise text mode translates the \\r\\n that csv writes into \\r\\r\\n on Windows, which spreadsheets show as blank rows.",
+    "distractor_rationales": {
+      "B": "newline controls line-ending translation, not stripping.",
+      "C": "That is the encoding argument.",
+      "D": "Quoting is controlled by csv's quoting options."
+    },
+    "references_topic": "audit.py write_flags()",
+    "version": "0.1"
+  },
+  {
+    "id": "P3-0010",
+    "domain": 3,
+    "domain_name": "Files, JSON, and errors",
+    "subtopic": "Exceptions",
+    "difficulty": "hard",
+    "type": "application",
+    "stem": "`json.JSONDecodeError` is a subclass of `ValueError`. What does this snippet print?",
+    "code": "import json\n\n\ndef load(text):\n    try:\n        return json.loads(text)\n    except ValueError as exc:\n        return type(exc).__name__\n\n\nprint(load(\"{bad\"), load(\"[1, 2]\"))",
+    "verify": "stdout",
+    "options": {
+      "A": "`ValueError [1, 2]`",
+      "B": "`JSONDecodeError [1, 2]`",
+      "C": "`JSONDecodeError (1, 2)`",
+      "D": "`{bad [1, 2]`"
+    },
+    "answer": "B",
+    "explanation": "except ValueError catches its subclasses too, and type(exc).__name__ reports the real class. Valid JSON returns normally as a list.",
+    "distractor_rationales": {
+      "A": "type(exc) is the actual class raised, JSONDecodeError, even when caught as ValueError.",
+      "C": "A JSON array becomes a Python list.",
+      "D": "The bad text raises an exception, so the except branch returns the class name."
+    },
+    "references_topic": "validate.py load_json()",
+    "version": "0.1"
+  }
+]

@@ -1,0 +1,258 @@
+[
+  {
+    "id": "P2-0001",
+    "domain": 2,
+    "domain_name": "Regular expressions and formatting",
+    "subtopic": "Regex patterns",
+    "difficulty": "easy",
+    "type": "application",
+    "stem": "`BANNED_OPTION` in `validate.py` rejects all-of-the-above style options. What does this cut-down version print?",
+    "code": "import re\n\nBANNED = re.compile(r\"\\b(all|none) of (the )?(above|these)\\b\", re.I)\nprint(bool(BANNED.search(\"None of the above\")), bool(BANNED.search(\"noneofthe above\")))",
+    "verify": "stdout",
+    "options": {
+      "A": "`False False`",
+      "B": "`True True`",
+      "C": "`True False`",
+      "D": "`False True`"
+    },
+    "answer": "C",
+    "explanation": "re.I makes \"None\" match \"none\", and the pattern requires literal spaces, so only the first string matches.",
+    "distractor_rationales": {
+      "A": "re.I ignores case, so \"None of the above\" matches.",
+      "B": "The pattern needs spaces between the words, so the run-together text fails.",
+      "D": "The first text is the one that fits the pattern."
+    },
+    "references_topic": "validate.py BANNED_OPTION",
+    "version": "0.1"
+  },
+  {
+    "id": "P2-0002",
+    "domain": 2,
+    "domain_name": "Regular expressions and formatting",
+    "subtopic": "Regex flags and matches",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "What does `re.I` change in `re.compile(pattern, re.I)`?",
+    "options": {
+      "A": "The dot also matches line breaks, so a match can span several lines",
+      "B": "Whitespace and # comments inside the pattern are ignored",
+      "C": "The ^ and $ anchors match at the start and end of every line",
+      "D": "Letters in the pattern match both upper and lower case"
+    },
+    "answer": "D",
+    "explanation": "re.I (re.IGNORECASE) makes matching case-insensitive. BANNED_OPTION uses it so \"None of the above\" and \"none of the above\" are both caught.",
+    "distractor_rationales": {
+      "A": "That is re.DOTALL.",
+      "B": "That is re.VERBOSE.",
+      "C": "That is re.MULTILINE."
+    },
+    "references_topic": "validate.py BANNED_OPTION",
+    "version": "0.1"
+  },
+  {
+    "id": "P2-0003",
+    "domain": 2,
+    "domain_name": "Regular expressions and formatting",
+    "subtopic": "String formatting",
+    "difficulty": "easy",
+    "type": "application",
+    "stem": "`validate.py` writes shares with format specs such as `{share:.1%}`. What does this snippet print?",
+    "code": "share = 7 / 20\nprint(f\"{share:.1%}\", f\"{share:.0%}\")",
+    "verify": "stdout",
+    "options": {
+      "A": "`35.0% 35%`",
+      "B": "`0.35% 0%`",
+      "C": "`35.0 35`",
+      "D": "`0.3% 0%`"
+    },
+    "answer": "A",
+    "explanation": "The % format multiplies by 100 and adds %, with the number after the dot as decimal places: .1% gives 35.0%, .0% gives 35%.",
+    "distractor_rationales": {
+      "B": "The % spec multiplies by 100 before adding the sign.",
+      "C": "The % spec also appends a percent sign.",
+      "D": "7 / 20 is 0.35, which % shows as 35 percent."
+    },
+    "references_topic": "validate.py check_distribution()",
+    "version": "0.1"
+  },
+  {
+    "id": "P2-0004",
+    "domain": 2,
+    "domain_name": "Regular expressions and formatting",
+    "subtopic": "Regex flags and matches",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "`check_content()` warns when a negation word in a stem is not wrapped in `**`. What does this snippet print?",
+    "code": "import re\n\nNEGATION = re.compile(r\"\\b(NOT|EXCEPT|LEAST)\\b\")\nstem = \"Which control is **NOT** preventive, and which is LEAST costly?\"\nflagged = []\nfor m in NEGATION.finditer(stem):\n    start, end = m.span()\n    if stem[max(0, start - 2):start] != \"**\" or stem[end:end + 2] != \"**\":\n        flagged.append(m.group(0))\nprint(flagged)",
+    "verify": "stdout",
+    "options": {
+      "A": "`['NOT', 'LEAST']`",
+      "B": "`['LEAST']`",
+      "C": "`[]`",
+      "D": "`['NOT']`"
+    },
+    "answer": "B",
+    "explanation": "span() gives the match's start and end. The slices look at the two characters before and after each word; only LEAST lacks the ** markers.",
+    "distractor_rationales": {
+      "A": "NOT has ** on both sides, so it passes the check.",
+      "C": "LEAST has no ** around it, so it is flagged.",
+      "D": "The emphasised word is the one that passes."
+    },
+    "references_topic": "validate.py check_content()",
+    "version": "0.1"
+  },
+  {
+    "id": "P2-0005",
+    "domain": 2,
+    "domain_name": "Regular expressions and formatting",
+    "subtopic": "Regex patterns",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "`NEGATION` in `validate.py` is compiled without `re.I`. How many matches does `findall` return here?",
+    "code": "import re\n\nNEGATION = re.compile(r\"\\b(NOT|EXCEPT|LEAST)\\b\")\nprint(len(NEGATION.findall(\"Which is not true? NOTE: one is NOT.\")))",
+    "verify": "stdout",
+    "options": {
+      "A": "`3`",
+      "B": "`2`",
+      "C": "`1`",
+      "D": "`0`"
+    },
+    "answer": "C",
+    "explanation": "Without re.I only upper case matches, and \\b requires a word boundary, so NOTE does not count. Only the final NOT matches.",
+    "distractor_rationales": {
+      "A": "Lower-case \"not\" does not match without re.I, and NOTE has no word boundary after NOT.",
+      "B": "NOTE fails because \\b needs a break after the T, and E follows it.",
+      "D": "The final \"NOT.\" is a whole upper-case word, so it matches."
+    },
+    "references_topic": "validate.py NEGATION",
+    "version": "0.1"
+  },
+  {
+    "id": "P2-0006",
+    "domain": 2,
+    "domain_name": "Regular expressions and formatting",
+    "subtopic": "Regex patterns",
+    "difficulty": "medium",
+    "type": "knowledge",
+    "stem": "Why are the patterns in `validate.py` written as raw strings, such as `r\"\\b(all|none) of\\b\"`?",
+    "options": {
+      "A": "Raw strings make re.compile run faster on long patterns",
+      "B": "Without the r prefix, re.compile rejects any pattern that has parentheses",
+      "C": "The r prefix makes the pattern match regardless of upper or lower case",
+      "D": "So \\b stays a word boundary instead of becoming a backspace character"
+    },
+    "answer": "D",
+    "explanation": "In a normal string literal \\b is the backspace character. A raw string keeps the backslash, so the regex engine sees \\b and treats it as a word boundary.",
+    "distractor_rationales": {
+      "A": "Raw strings change how the literal is read, not regex speed.",
+      "B": "Parentheses work either way; the escapes are the problem.",
+      "C": "Case-insensitivity comes from re.I, not from raw strings."
+    },
+    "references_topic": "validate.py NEGATION",
+    "version": "0.1"
+  },
+  {
+    "id": "P2-0007",
+    "domain": 2,
+    "domain_name": "Regular expressions and formatting",
+    "subtopic": "Regex patterns",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "`load_batch()` checks batch file names with `re.fullmatch`. Which names pass?",
+    "code": "import re\n\nnames = [\"D1_2.json\", \"D9_1.json\", \"D3_10.json\", \"d2_1.json\"]\nprint([n for n in names if re.fullmatch(r\"D[1-8]_\\d+\\.json\", n)])",
+    "verify": "stdout",
+    "options": {
+      "A": "`['D1_2.json', 'D3_10.json']`",
+      "B": "`['D1_2.json']`",
+      "C": "`['D1_2.json', 'D3_10.json', 'd2_1.json']`",
+      "D": "`['D1_2.json', 'D9_1.json', 'D3_10.json']`"
+    },
+    "answer": "A",
+    "explanation": "[1-8] allows one digit from 1 to 8, \\d+ allows any number of digits, and fullmatch requires the whole name to fit. Only D1_2.json and D3_10.json do.",
+    "distractor_rationales": {
+      "B": "\\d+ allows more than one digit, so D3_10.json passes.",
+      "C": "The pattern has an upper-case D and no re.I.",
+      "D": "[1-8] excludes 9."
+    },
+    "references_topic": "validate.py load_batch()",
+    "version": "0.1"
+  },
+  {
+    "id": "P2-0008",
+    "domain": 2,
+    "domain_name": "Regular expressions and formatting",
+    "subtopic": "Regex patterns",
+    "difficulty": "hard",
+    "type": "application",
+    "stem": "`validate.py` keeps only useful words with a regex and two filters. What does this cut-down `tokenize()` print?",
+    "code": "import re\n\nSTOPWORDS = {\"the\", \"is\", \"a\", \"of\"}\n\n\ndef tokenize(text):\n    return [t for t in re.findall(r\"[a-z0-9]+\", text.lower()) if len(t) > 1 and t not in STOPWORDS]\n\n\nprint(tokenize(\"The CIA triad: C, I, and A of security.\"))",
+    "verify": "stdout",
+    "options": {
+      "A": "`['cia', 'triad', 'security']`",
+      "B": "`['cia', 'triad', 'and', 'security']`",
+      "C": "`['cia', 'triad', 'c', 'i', 'and', 'a', 'security']`",
+      "D": "`['the', 'cia', 'triad', 'and', 'of', 'security']`"
+    },
+    "answer": "B",
+    "explanation": "lower() then findall gives the, cia, triad, c, i, and, a, of, security. Single letters and the stopwords the and of are dropped, leaving cia, triad, and, security.",
+    "distractor_rationales": {
+      "A": "\"and\" is not in this STOPWORDS set and has more than one letter.",
+      "C": "len(t) > 1 drops the single letters c, i, and a.",
+      "D": "\"the\" and \"of\" are stopwords and are dropped."
+    },
+    "references_topic": "validate.py tokenize()",
+    "version": "0.1"
+  },
+  {
+    "id": "P2-0009",
+    "domain": 2,
+    "domain_name": "Regular expressions and formatting",
+    "subtopic": "Regex patterns",
+    "difficulty": "hard",
+    "type": "application",
+    "stem": "`load_bank()` checks `bank_version` with `re.fullmatch(r\"\\d+\\.\\d+\", ...)`. Which versions pass?",
+    "code": "import re\n\nversions = [\"1.0\", \"1.0.2\", \"v1.0\", \"10.25\"]\nprint([v for v in versions if re.fullmatch(r\"\\d+\\.\\d+\", v)])",
+    "verify": "stdout",
+    "options": {
+      "A": "`['1.0', '1.0.2', '10.25']`",
+      "B": "`['1.0']`",
+      "C": "`['1.0', '10.25']`",
+      "D": "`['1.0', '1.0.2', 'v1.0', '10.25']`"
+    },
+    "answer": "C",
+    "explanation": "fullmatch succeeds only if the entire string matches: digits, a dot, digits. 1.0.2 has an extra part and v1.0 has a leading letter.",
+    "distractor_rationales": {
+      "A": "re.match would accept 1.0.2, but fullmatch needs the whole string to fit.",
+      "B": "\\d+ allows several digits, so 10.25 passes.",
+      "D": "v1.0 starts with a letter, so it cannot fully match."
+    },
+    "references_topic": "validate.py load_bank()",
+    "version": "0.1"
+  },
+  {
+    "id": "P2-0010",
+    "domain": 2,
+    "domain_name": "Regular expressions and formatting",
+    "subtopic": "String formatting",
+    "difficulty": "hard",
+    "type": "application",
+    "stem": "`load_batch()` builds its error message with an f-string that contains `{{` and `}}`. What does this snippet print?",
+    "code": "n, k = 3, 2\nprint(f\"batch files must be named D{{n}}_{{k}}.json\")",
+    "verify": "stdout",
+    "options": {
+      "A": "`batch files must be named D3_2.json`",
+      "B": "`batch files must be named D{3}_{2}.json`",
+      "C": "`batch files must be named D{{n}}_{{k}}.json`",
+      "D": "`batch files must be named D{n}_{k}.json`"
+    },
+    "answer": "D",
+    "explanation": "In an f-string, {{ and }} are escapes for literal { and }. The message shows the naming pattern instead of particular numbers.",
+    "distractor_rationales": {
+      "A": "Doubled braces are literal braces, so n and k are not substituted.",
+      "B": "Nothing inside doubled braces is evaluated.",
+      "C": "Each doubled brace prints as a single brace."
+    },
+    "references_topic": "validate.py load_batch()",
+    "version": "0.1"
+  }
+]

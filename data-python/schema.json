@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rickpack.github.io/cissp-practice-quiz/data-python/schema.json",
+  "title": "Python practice question batch",
+  "description": "A batch file is a JSON array of original practice questions about this repository's own Python code. Same shape as the CISSP bank, plus optional code.",
+  "type": "array",
+  "minItems": 1,
+  "maxItems": 50,
+  "items": { "$ref": "#/$defs/question" },
+  "$defs": {
+    "letter": { "type": "string", "enum": ["A", "B", "C", "D"] },
+    "text": { "type": "string", "minLength": 1, "pattern": "\\S" },
+    "question": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id", "domain", "domain_name", "subtopic", "difficulty", "type", "stem",
+        "options", "answer", "explanation", "distractor_rationales",
+        "references_topic", "version"
+      ],
+      "dependentRequired": { "verify": ["code"] },
+      "properties": {
+        "id": { "type": "string", "pattern": "^P[1-6]-[0-9]{4}$" },
+        "domain": { "type": "integer", "minimum": 1, "maximum": 6 },
+        "domain_name": {
+          "type": "string",
+          "enum": [
+            "Collections and dataclasses",
+            "Regular expressions and formatting",
+            "Files, JSON, and errors",
+            "Functions and the command line",
+            "Algorithms in the validator",
+            "Calling an API safely"
+          ]
+        },
+        "subtopic": { "$ref": "#/$defs/text" },
+        "difficulty": { "type": "string", "enum": ["easy", "medium", "hard"] },
+        "type": { "type": "string", "enum": ["knowledge", "application"] },
+        "stem": { "type": "string", "minLength": 20 },
+        "code": { "type": "string", "minLength": 1, "maxLength": 1500, "description": "Python shown in a code block under the stem. It must parse and pass the lint in validation/snippets.py." },
+        "verify": { "type": "string", "enum": ["stdout"], "description": "stdout: the code is run and must print exactly the keyed option's text." },
+        "options": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["A", "B", "C", "D"],
+          "properties": {
+            "A": { "$ref": "#/$defs/text" },
+            "B": { "$ref": "#/$defs/text" },
+            "C": { "$ref": "#/$defs/text" },
+            "D": { "$ref": "#/$defs/text" }
+          }
+        },
+        "answer": { "$ref": "#/$defs/letter" },
+        "explanation": { "type": "string", "minLength": 20 },
+        "distractor_rationales": {
+          "type": "object",
+          "propertyNames": { "$ref": "#/$defs/letter" },
+          "additionalProperties": { "$ref": "#/$defs/text" },
+          "minProperties": 3,
+          "maxProperties": 3
+        },
+        "references_topic": { "$ref": "#/$defs/text" },
+        "version": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+$" }
+      }
+    }
+  }
+}

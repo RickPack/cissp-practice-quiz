@@ -1,0 +1,41 @@
+{
+  "bank_version": "0.1",
+  "batches": [
+    {
+      "file": "batches/P1_1.json",
+      "domain": 1,
+      "count": 10,
+      "added_in": "0.1"
+    },
+    {
+      "file": "batches/P2_1.json",
+      "domain": 2,
+      "count": 10,
+      "added_in": "0.1"
+    },
+    {
+      "file": "batches/P3_1.json",
+      "domain": 3,
+      "count": 10,
+      "added_in": "0.1"
+    },
+    {
+      "file": "batches/P4_1.json",
+      "domain": 4,
+      "count": 10,
+      "added_in": "0.1"
+    },
+    {
+      "file": "batches/P5_1.json",
+      "domain": 5,
+      "count": 10,
+      "added_in": "0.1"
+    },
+    {
+      "file": "batches/P6_1.json",
+      "domain": 6,
+      "count": 10,
+      "added_in": "0.1"
+    }
+  ]
+}

@@ -1,0 +1,252 @@
+[
+  {
+    "id": "P4-0001",
+    "domain": 4,
+    "domain_name": "Functions and the command line",
+    "subtopic": "Script structure",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "`validate.py` ends with `if __name__ == \"__main__\": sys.exit(main())`. What does the `if` line do?",
+    "options": {
+      "A": "It runs main() only the first time the module is imported in a session",
+      "B": "It stops the script before any of the function definitions are loaded",
+      "C": "main() runs only when the file is run directly, not when it is imported",
+      "D": "It checks that the file is named __main__.py before it runs anything at all"
+    },
+    "answer": "C",
+    "explanation": "Python sets __name__ to \"__main__\" for the file being run. The Colab notebook imports validate, so the guard keeps main() and sys.exit from running there.",
+    "distractor_rationales": {
+      "A": "Imports never trigger it; only running the file directly does.",
+      "B": "The definitions above it have already run when the if is reached.",
+      "D": "__name__ is \"__main__\" for whichever file is run directly."
+    },
+    "references_topic": "validate.py main()",
+    "version": "0.1"
+  },
+  {
+    "id": "P4-0002",
+    "domain": 4,
+    "domain_name": "Functions and the command line",
+    "subtopic": "Script structure",
+    "difficulty": "easy",
+    "type": "application",
+    "stem": "`main()` turns failures, warnings, and `--strict` into an exit code. What does this snippet print?",
+    "code": "def exit_code(failures, warnings, strict=False):\n    if failures or (strict and warnings):\n        return 1\n    return 0\n\n\nprint(exit_code([], [\"length bias\"]), exit_code([], [\"length bias\"], strict=True))",
+    "verify": "stdout",
+    "options": {
+      "A": "`1 1`",
+      "B": "`0 0`",
+      "C": "`1 0`",
+      "D": "`0 1`"
+    },
+    "answer": "D",
+    "explanation": "An empty failures list is falsy, so the result depends on strict and warnings. Only the strict call returns 1.",
+    "distractor_rationales": {
+      "A": "Without strict, warnings alone do not fail.",
+      "B": "With strict=True, a warning counts as a failure.",
+      "C": "The strict call is the one that returns 1."
+    },
+    "references_topic": "validate.py main()",
+    "version": "0.1"
+  },
+  {
+    "id": "P4-0003",
+    "domain": 4,
+    "domain_name": "Functions and the command line",
+    "subtopic": "Type hints",
+    "difficulty": "easy",
+    "type": "knowledge",
+    "stem": "`load_bank(root: Path, include: list[Path] | None = None)` has type hints. What does Python do with them when the function runs?",
+    "options": {
+      "A": "Nothing at run time; type checkers and editors read them",
+      "B": "It raises TypeError if include is not None and is not a list of Path objects",
+      "C": "It converts any strings passed as include into Path objects automatically",
+      "D": "It makes include required unless the caller passes None explicitly"
+    },
+    "answer": "A",
+    "explanation": "Annotations are metadata. Python stores them but does not enforce them; tools such as mypy and IDEs use them to catch mistakes before running.",
+    "distractor_rationales": {
+      "B": "Python does not check argument types at call time.",
+      "C": "Hints never convert values.",
+      "D": "The = None default is what makes include optional."
+    },
+    "references_topic": "validate.py load_bank()",
+    "version": "0.1"
+  },
+  {
+    "id": "P4-0004",
+    "domain": 4,
+    "domain_name": "Functions and the command line",
+    "subtopic": "Type hints",
+    "difficulty": "medium",
+    "type": "knowledge",
+    "stem": "`validate.py` starts with `from __future__ import annotations`. What does that line change?",
+    "options": {
+      "A": "It switches on type checking while the program runs",
+      "B": "Annotations stay unevaluated strings, so list[Path] | None parses on old Pythons",
+      "C": "It is required for the @dataclass decorator to work at all",
+      "D": "It makes the script refuse to run on any Python version older than the newest release"
+    },
+    "answer": "B",
+    "explanation": "With this import, annotations are stored as strings instead of being evaluated when the function is defined. The X | None form, which needs Python 3.10 to evaluate, then also parses on older versions.",
+    "distractor_rationales": {
+      "A": "Python still does not enforce annotations.",
+      "C": "dataclasses work without it.",
+      "D": "It is a compatibility feature, not a version gate."
+    },
+    "references_topic": "validate.py imports",
+    "version": "0.1"
+  },
+  {
+    "id": "P4-0005",
+    "domain": 4,
+    "domain_name": "Functions and the command line",
+    "subtopic": "argparse",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "`validate.py` declares `--include` with `action=\"append\"` and `--strict` with `action=\"store_true\"`. What does this snippet print?",
+    "code": "import argparse\n\nparser = argparse.ArgumentParser()\nparser.add_argument(\"--include\", action=\"append\", default=[])\nparser.add_argument(\"--strict\", action=\"store_true\")\nargs = parser.parse_args([\"--include\", \"a.json\", \"--include\", \"b.json\"])\nprint(args.include, args.strict)",
+    "verify": "stdout",
+    "options": {
+      "A": "`b.json False`",
+      "B": "`['b.json'] False`",
+      "C": "`['a.json', 'b.json'] False`",
+      "D": "`['a.json', 'b.json'] None`"
+    },
+    "answer": "C",
+    "explanation": "action=\"append\" adds each --include value to a list; store_true sets True only if the flag is given and is False otherwise.",
+    "distractor_rationales": {
+      "A": "append collects every value into a list.",
+      "B": "append adds each occurrence; it does not replace the list.",
+      "D": "store_true defaults to False when the flag is absent."
+    },
+    "references_topic": "validate.py main()",
+    "version": "0.1"
+  },
+  {
+    "id": "P4-0006",
+    "domain": 4,
+    "domain_name": "Functions and the command line",
+    "subtopic": "Script structure",
+    "difficulty": "medium",
+    "type": "application",
+    "stem": "`run_checks()` returns two values, and `main()` unpacks them. What does this snippet print?",
+    "code": "def run_checks():\n    failures = [\"duplicate id\"]\n    return failures, {\"domains\": {}}\n\n\nresult, taxonomy = run_checks()\nprint(len(result), list(taxonomy))",
+    "verify": "stdout",
+    "options": {
+      "A": "`2 ['domains']`",
+      "B": "`1 {}`",
+      "C": "`1 ['domains', {}]`",
+      "D": "`1 ['domains']`"
+    },
+    "answer": "D",
+    "explanation": "return a, b returns a tuple, and result, taxonomy = ... unpacks it. len(result) is 1 and list(taxonomy) is ['domains'].",
+    "distractor_rationales": {
+      "A": "result is the first value, the one-item list.",
+      "B": "list() of the dict gives its keys.",
+      "C": "list() of a dict lists keys only, not values."
+    },
+    "references_topic": "validate.py run_checks()",
+    "version": "0.1"
+  },
+  {
+    "id": "P4-0007",
+    "domain": 4,
+    "domain_name": "Functions and the command line",
+    "subtopic": "argparse",
+    "difficulty": "medium",
+    "type": "knowledge",
+    "stem": "`validate.py` declares `parser.add_argument(\"--root\", type=Path, default=ROOT)`. What does `type=Path` do?",
+    "options": {
+      "A": "It converts the text after --root into a Path object",
+      "B": "It checks that the folder exists and stops the script if it does not",
+      "C": "It restricts --root to folders that are inside the repository",
+      "D": "It makes --root a required option that must always be given"
+    },
+    "answer": "A",
+    "explanation": "argparse passes the command-line string to the type callable. With Path, args.root supports the / operator used later, such as args.root / \"validation\".",
+    "distractor_rationales": {
+      "B": "type converts the value; it does not check the file system.",
+      "C": "No such restriction is applied.",
+      "D": "required=True does that; here there is a default."
+    },
+    "references_topic": "validate.py main()",
+    "version": "0.1"
+  },
+  {
+    "id": "P4-0008",
+    "domain": 4,
+    "domain_name": "Functions and the command line",
+    "subtopic": "Sorting and keys",
+    "difficulty": "hard",
+    "type": "application",
+    "stem": "`allocate()` sorts keys by their fractional part with `reverse=True`. Two keys tie. What does this snippet print?",
+    "code": "raw = {\"1\": 2.5, \"2\": 1.5, \"3\": 0.75}\nparts = {k: int(v) for k, v in raw.items()}\norder = sorted(raw, key=lambda k: raw[k] - parts[k], reverse=True)\nprint(order)",
+    "verify": "stdout",
+    "options": {
+      "A": "`['1', '2', '3']`",
+      "B": "`['3', '1', '2']`",
+      "C": "`['3', '2', '1']`",
+      "D": "`['2', '1', '3']`"
+    },
+    "answer": "B",
+    "explanation": "The fractions are 0.5, 0.5, and 0.75. reverse=True puts 0.75 first, and stability keeps the tied keys 1 and 2 in their original order.",
+    "distractor_rationales": {
+      "A": "3 has the largest fraction, 0.75, so it comes first.",
+      "C": "Python's sort is stable even with reverse=True, so tied keys keep their order.",
+      "D": "The largest fraction comes first in a reverse sort."
+    },
+    "references_topic": "validate.py allocate()",
+    "version": "0.1"
+  },
+  {
+    "id": "P4-0009",
+    "domain": 4,
+    "domain_name": "Functions and the command line",
+    "subtopic": "Sorting and keys",
+    "difficulty": "hard",
+    "type": "application",
+    "stem": "`load_batch()` sorts schema errors with `key=lambda e: list(e.path)`, so errors are ordered by path lists like these. What does this snippet print?",
+    "code": "paths = [[3, \"options\"], [0, \"stem\"], [3, \"answer\"], [10, \"id\"]]\nprint(sorted(paths))",
+    "verify": "stdout",
+    "options": {
+      "A": "`[[0, 'stem'], [10, 'id'], [3, 'answer'], [3, 'options']]`",
+      "B": "`[[0, 'stem'], [3, 'options'], [3, 'answer'], [10, 'id']]`",
+      "C": "`[[0, 'stem'], [3, 'answer'], [3, 'options'], [10, 'id']]`",
+      "D": "`[[10, 'id'], [3, 'options'], [3, 'answer'], [0, 'stem']]`"
+    },
+    "answer": "C",
+    "explanation": "Lists compare element by element: first by question index as a number, then by field name as text. That groups each question's errors together.",
+    "distractor_rationales": {
+      "A": "The first elements are integers, so 3 sorts before 10.",
+      "B": "On a tie in the first element, the second decides: answer before options.",
+      "D": "sorted() is ascending unless reverse=True."
+    },
+    "references_topic": "validate.py load_batch()",
+    "version": "0.1"
+  },
+  {
+    "id": "P4-0010",
+    "domain": 4,
+    "domain_name": "Functions and the command line",
+    "subtopic": "Script structure",
+    "difficulty": "hard",
+    "type": "knowledge",
+    "stem": "`main()` returns 0 or 1, and the script ends with `sys.exit(main())`. Why does this matter in CI?",
+    "options": {
+      "A": "sys.exit prints the return value so that it shows up in the CI log",
+      "B": "Any return value lets CI pass, so the code matters only on a local machine",
+      "C": "sys.exit(1) makes the script run once more before it reports a failure",
+      "D": "The return value becomes the exit code, and non-zero fails the CI step"
+    },
+    "answer": "D",
+    "explanation": "A process's exit status is how CI knows whether a step passed. Returning 1 from main() and passing it to sys.exit fails the validation job, which blocks the deploy.",
+    "distractor_rationales": {
+      "A": "sys.exit with an integer sets the exit status; it prints nothing.",
+      "B": "CI checks the exit status, so 1 fails the step.",
+      "C": "sys.exit never retries."
+    },
+    "references_topic": "validate.py main()",
+    "version": "0.1"
+  }
+]
