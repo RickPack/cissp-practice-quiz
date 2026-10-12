@@ -399,8 +399,13 @@ code { font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", m
 @media print { .code-block { white-space: pre-wrap; overflow: visible; } .track-toggle { display: none !important; } }
 
 /* Commute mode */
-.commute-letters { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 1rem; }
-.commute-letters .btn { font-size: 1.15rem; font-weight: 700; min-height: 3rem; }
+.commute-letters { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 1rem; }
+.commute-letters .btn { font-size: 1.6rem; font-weight: 700; min-height: 4.5rem; }
+#commute-run .quiz-nav { margin-top: 1.25rem; }
+#commute-next { flex: 1 1 100%; order: -1; min-height: 4.5rem; font-size: 1.35rem; font-weight: 700; background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+@media (max-width: 480px) {
+  .commute-letters { grid-template-columns: repeat(2, 1fr); }
+}
 @media print { #commute { display: none !important; } }
 
 /* Review deck */

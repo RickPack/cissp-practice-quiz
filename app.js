@@ -10,6 +10,7 @@ import {
   recordResult, tallyChange, emptySummary, commuteQueue,
 } from './lib/review-deck.js';
 import { createCommute } from './lib/commute.js';
+import { createMediaKeys, isSupported as mediaKeysSupported } from './lib/media-keys.js';
 import { TRACKS, loadTrack, saveTrack, sanitizeTrack, trackKeys, unitLabel } from './lib/tracks.js';
 import { inlineRuns } from './lib/rich-text.js';
 
@@ -1081,6 +1082,7 @@ function retakeFocused() {
 // A separate study mode where feedback is the point. It never runs inside a quiz session: it does not read or write
 // the session's answers, and it writes nothing to the report. Its results only update the review deck.
 let commute = null;
+let mediaKeys = null;
 let voiceAnchor = null;
 const run = { ids: [], perms: [], tally: null, deckSummary: null, counts: null };
 
@@ -1171,6 +1173,7 @@ function finishCommute({ stopped }) {
 }
 
 function renderCommuteState({ phase }) {
+  if (phase === 'done' || phase === 'idle') mediaKeys?.stop();
   const asking = phase === 'question';
   for (const b of $('commute-letters').querySelectorAll('button')) b.disabled = !asking;
   $('commute-repeat').disabled = !asking;
@@ -1219,6 +1222,7 @@ function startCommute() {
   $('commute-intro').hidden = true;
   $('commute-summary').hidden = true;
   $('commute-run').hidden = false;
+  mediaKeys?.start(); // from the Start tap, so iOS allows the silent audio that carries the headphone buttons
   commute.start(run.ids.length);
 }
 
@@ -1232,6 +1236,19 @@ function setupCommute() {
     onChange: renderCommuteState,
     onVoiceChange: (v) => { if (commuteActive()) renderVoice(v); },
   });
+  if (mediaKeysSupported()) {
+    mediaKeys = createMediaKeys({
+      audio: new Audio('silence.wav'),
+      mediaSession: navigator.mediaSession,
+      Metadata: globalThis.MediaMetadata || null,
+      handlers: {
+        next: () => commute.next(),
+        repeat: () => commute.repeat(),
+        pause: () => commute.pause(),
+        resume: () => commute.resume(),
+      },
+    });
+  }
   $('commute-card').hidden = false;
   $('commute-open').addEventListener('click', openCommute);
   $('commute-start').addEventListener('click', startCommute);

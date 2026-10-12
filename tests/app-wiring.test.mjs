@@ -62,3 +62,11 @@ test('commute mode is reached only from the start screen and only with speech ou
   const quiz = html.slice(html.indexOf('<section id="quiz"'), html.indexOf('<section id="report"'));
   assert.ok(!/commute/.test(quiz), 'no commute entry inside the quiz');
 });
+
+test('headphone buttons: silence.wav is cached offline and allowed by the CSP, and the buttons start from the Start tap', () => {
+  const sw = read('sw.js');
+  assert.ok(sw.includes("'silence.wav'"), 'sw.js SHELL is missing silence.wav');
+  assert.match(read('index.html'), /default-src 'self'/); // media falls back to default-src, so no blob: or data: is needed
+  assert.match(app, /function startCommute\(\)[\s\S]*?mediaKeys\?\.start\(\);[\s\S]*?commute\.start\(/);
+  assert.match(app, /phase === 'done' \|\| phase === 'idle'\) mediaKeys\?\.stop\(\)/);
+});
