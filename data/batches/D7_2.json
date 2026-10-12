@@ -198,18 +198,18 @@
     "subtopic": "Configuration management",
     "difficulty": "medium",
     "type": "application",
-    "stem": "Monthly audits keep finding servers whose settings no longer match the approved baseline because administrators make ad hoc changes. Which control BEST addresses this?",
+    "stem": "Monthly audits keep finding servers whose settings no longer match the approved baseline. Administrators already file change tickets, but ad hoc changes still happen on the servers. Which control BEST addresses this?",
     "options": {
-      "A": "Lock down admin rights so that no one can change settings",
+      "A": "Remove administrators' rights to change server settings",
       "B": "Automated drift detection that restores the baseline",
-      "C": "Require a change ticket for each setting change",
+      "C": "Require peer review of each change ticket before approval",
       "D": "Run the configuration audits weekly instead of monthly"
     },
     "answer": "B",
     "explanation": "Automated configuration management continuously compares systems to the desired state, alerts on drift, and restores the approved settings.",
     "distractor_rationales": {
       "A": "Admins still need to make legitimate changes. Drift detection with remediation keeps the baseline.",
-      "C": "Tickets help, but ad hoc changes still slip through without automated detection.",
+      "C": "Review improves the tickets, but ad hoc changes made outside them still slip through without automated detection.",
       "D": "More frequent audits find drift sooner but still do not correct it."
     },
     "references_topic": "Configuration drift",

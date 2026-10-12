@@ -174,19 +174,19 @@
     "subtopic": "Privileged and service accounts",
     "difficulty": "easy",
     "type": "managerial_best_first_most",
-    "stem": "Administrators share the domain administrator password in a spreadsheet on a file server. What is the BEST fix?",
+    "stem": "Each administrator has a named admin account, but the built-in domain administrator password is shared in a spreadsheet on a file server for emergencies. What is the BEST fix?",
     "options": {
       "A": "Move the spreadsheet to an encrypted folder only the admins can open",
       "B": "Change the domain administrator password every year and update the spreadsheet",
       "C": "Store it in a privileged access vault that logs checkouts and rotates it after use",
-      "D": "Give each administrator a personal domain admin account instead"
+      "D": "Require a second administrator to witness every use of the account"
     },
     "answer": "C",
     "explanation": "A privileged access vault controls who can retrieve the credential, logs each checkout, and rotates the password so a retrieved copy does not stay valid.",
     "distractor_rationales": {
       "A": "Encryption limits who can read it, but the shared password is still unlogged and never rotated.",
       "B": "Annual rotation leaves a long window, and the spreadsheet remains exposed.",
-      "D": "Personal accounts add accountability, but standing domain admin rights for everyone stay risky. A vault with checkout and rotation is better."
+      "D": "Witnessing adds oversight, but the password stays in the spreadsheet, unrotated and unlogged."
     },
     "references_topic": "Privileged password vaulting",
     "version": "0.3"
@@ -462,7 +462,7 @@
     "subtopic": "Privileged and service accounts",
     "difficulty": "medium",
     "type": "application",
-    "stem": "Logs show administrators logging in to servers interactively with a backup service account because it has broad rights. What is the BEST control?",
+    "stem": "Logs show administrators logging in to servers interactively with a backup service account because it has broad rights. Management wants that interactive use stopped. What is the BEST control?",
     "options": {
       "A": "Rotate the service account's password once every week",
       "B": "Give administrators their own accounts with backup rights",
@@ -473,7 +473,7 @@
     "explanation": "Service accounts should be restricted to the non-interactive use they exist for. Denying interactive logon enforces this, and alerts reveal misuse.",
     "distractor_rationales": {
       "A": "Rotation does not stop someone who has the current password from logging in interactively.",
-      "B": "Personal accounts help, but the service account can still be used interactively unless that is denied.",
+      "B": "Personal accounts help accountability, but the goal is to stop interactive use, and the service account would still allow it.",
       "D": "Monthly review notices misuse weeks later. Denying interactive logon prevents it."
     },
     "references_topic": "Preventing interactive use of service accounts",
@@ -534,18 +534,18 @@
     "subtopic": "Just-in-time access",
     "difficulty": "medium",
     "type": "managerial_best_first_most",
-    "stem": "An organization rolled out just-in-time elevation for cloud administrators. What should it add to get the full benefit?",
+    "stem": "An organization rolled out just-in-time elevation for cloud administrators, with MFA and approval already required on each request. It can show who requested each elevation but not what was done during it. What should it add to get the full benefit?",
     "options": {
       "A": "Extend each elevation window to a full week to reduce repeated requests",
       "B": "Log elevated sessions and review them against the approved request",
-      "C": "Require MFA whenever administrators request elevation",
+      "C": "Require a second approver to sign off on every elevation request",
       "D": "Shorten each elevation window to fifteen minutes"
     },
     "answer": "B",
     "explanation": "Elevation should be matched to what was approved. Logging and reviewing elevated sessions detects misuse and confirms that privileges were used as intended.",
     "distractor_rationales": {
       "A": "A week-long window turns just-in-time access back into standing privilege.",
-      "C": "MFA strengthens the request, but without logging and review nobody checks what was done with the elevation.",
+      "C": "A second approver gates the request, but approval already exists and nobody checks what was done during the elevation.",
       "D": "Shorter windows help a little, but the missing piece is reviewing elevated sessions against approvals."
     },
     "references_topic": "Reviewing elevated sessions",
@@ -654,7 +654,7 @@
     "subtopic": "Session management",
     "difficulty": "hard",
     "type": "application",
-    "stem": "A mobile app uses long-lived OAuth refresh tokens. The team worries that a stolen refresh token could be used for months without detection. Which control BEST addresses this?",
+    "stem": "A mobile app uses long-lived OAuth refresh tokens. The team worries that a stolen refresh token could be used for months without detection, and it wants a control that notices reuse, not one that only makes theft harder. Which control BEST addresses this?",
     "options": {
       "A": "Store the refresh token in the device's secure keystore",
       "B": "Double the access token lifetime so the app has to request token refreshes less often",

@@ -582,19 +582,19 @@
     "subtopic": "Physical security operations",
     "difficulty": "medium",
     "type": "managerial_best_first_most",
-    "stem": "Staff at a warehouse loading dock often prop the door open for deliveries, and the area is unattended between trucks. Which control is BEST?",
+    "stem": "Staff at a warehouse loading dock often wedge the door open against its closer for deliveries, and the area is unattended between trucks. Which control is BEST?",
     "options": {
-      "A": "Post a guard at the dock only during delivery hours",
+      "A": "Post a guard at the dock during scheduled delivery hours",
       "B": "Install a camera that records the loading dock door at all hours",
       "C": "Add a door-prop alarm and have staff receive and escort deliveries",
-      "D": "Fit a self-closing hinge to the loading dock door"
+      "D": "Fit a heavier self-closing closer to the loading dock door"
     },
     "answer": "C",
     "explanation": "A door-prop alarm alerts when the door is left open, and having staff receive deliveries ensures no one enters unescorted.",
     "distractor_rationales": {
       "A": "Staff prop the door between deliveries too, when no guard would be present.",
       "B": "A camera records the propped door but does not alert anyone or change behavior.",
-      "D": "Staff prop the door open on purpose, so a closer is defeated."
+      "D": "Staff already wedge the door against its closer, so a heavier one is defeated the same way."
     },
     "references_topic": "Securing loading docks",
     "version": "0.3"

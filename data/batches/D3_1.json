@@ -78,7 +78,7 @@
     "subtopic": "Zero trust and secure access architecture",
     "difficulty": "medium",
     "type": "managerial_best_first_most",
-    "stem": "A company with a flat internal network suffers a breach in which an attacker moves from a compromised laptop to the finance database. The board asks for an architectural change that reduces implicit trust inside the network. What should the security architect recommend as the BEST approach?",
+    "stem": "A company with a flat internal network suffers a breach in which an attacker moves from a compromised laptop to the finance database. The board asks for an architectural change that removes network location as a basis for trust across the whole environment, not only around finance. What should the security architect recommend as the BEST approach?",
     "options": {
       "A": "Adding a second perimeter firewall from a different security vendor",
       "B": "Segmenting finance systems behind an internal firewall",
@@ -89,7 +89,7 @@
     "explanation": "Zero trust removes trust based on network location. Every request is authenticated and authorized using identity, device posture, and context, and micro-segmentation limits lateral movement between systems.",
     "distractor_rationales": {
       "A": "A second perimeter firewall strengthens the edge but leaves the interior flat and implicitly trusted.",
-      "B": "Segmentation helps, but it still trusts whatever sits inside each segment. Zero trust checks every request.",
+      "B": "Segmenting the finance systems helps, but it covers only that segment and still trusts whatever sits inside it. Zero trust checks every request everywhere.",
       "C": "EDR improves detection, but it does not remove the implicit trust that let the attacker move freely."
     },
     "references_topic": "Zero trust architecture",

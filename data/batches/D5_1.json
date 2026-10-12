@@ -78,10 +78,10 @@
     "subtopic": "Provisioning lifecycle",
     "difficulty": "medium",
     "type": "managerial_best_first_most",
-    "stem": "An internal audit finds that employees who transfer between departments keep their old access rights, accumulating permissions over time. What should the IAM manager implement FIRST to address the root cause?",
+    "stem": "An internal audit finds that employees who transfer between departments keep their old access rights, accumulating permissions over time. Access for the new department is already granted through role templates. What should the IAM manager implement FIRST to address the root cause?",
     "options": {
       "A": "Quarterly access reviews of all transferred employees' rights",
-      "B": "Role templates applied to each employee's new department",
+      "B": "A manager approval step before each new role is granted",
       "C": "Automated alerts when a user holds two departments' roles",
       "D": "A transfer process that revokes old role access upon moving"
     },
@@ -89,7 +89,7 @@
     "explanation": "Privilege creep comes from a gap in the identity lifecycle. Building transfers (movers) into provisioning so that previous role entitlements are removed when new ones are granted fixes the root cause. Access reviews then catch anything left over.",
     "distractor_rationales": {
       "A": "Reviews catch accumulation later. The cause is a transfer process that never removes old access.",
-      "B": "Templates grant the new role but leave the old access in place.",
+      "B": "Approval controls what is added. The audit finding is that old access is never removed.",
       "C": "Alerts flag the overlap after it exists. Removing old access at transfer prevents it."
     },
     "references_topic": "Preventing privilege creep for movers",

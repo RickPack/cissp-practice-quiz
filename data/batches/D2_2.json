@@ -246,7 +246,7 @@
     "subtopic": "Data states and protection",
     "difficulty": "medium",
     "type": "managerial_best_first_most",
-    "stem": "A healthcare startup wants analysts to query patient records for research without exposing patient identities. Which approach BEST reduces privacy risk while preserving analytical value?",
+    "stem": "A healthcare startup wants analysts to follow individual patients' records over time for research without exposing patient identities. Which approach BEST reduces privacy risk while preserving analytical value?",
     "options": {
       "A": "Pseudonymize records and keep re-identification keys separate",
       "B": "Give analysts full patient records under a signed NDA",
@@ -258,7 +258,7 @@
     "distractor_rationales": {
       "B": "An NDA still exposes identities that the analysis does not need.",
       "C": "Encryption at rest does not stop authorized analysts from seeing identities.",
-      "D": "Aggregates protect identities but lose much of the record-level analytical value the research needs."
+      "D": "Aggregates protect identities but cannot follow individual patients over time, so the research cannot be done."
     },
     "references_topic": "Pseudonymization",
     "version": "0.2"

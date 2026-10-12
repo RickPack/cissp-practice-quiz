@@ -318,12 +318,12 @@
     "subtopic": "Acquired software security",
     "difficulty": "medium",
     "type": "managerial_best_first_most",
-    "stem": "A company is negotiating a contract for commercial software that will process customer data. Which security term is MOST important to include?",
+    "stem": "A company is negotiating a contract for commercial software that it will install on its own servers to process customer data. Which security term is MOST important to include?",
     "options": {
       "A": "A service level guaranteeing 99.9% software uptime",
       "B": "Vulnerability notification and patch timelines based on severity",
       "C": "A right to audit the vendor's offices once a year",
-      "D": "Indemnity covering losses from any software defect"
+      "D": "Indemnity covering the company's losses from software defects"
     },
     "answer": "B",
     "explanation": "No software is flawless. Commitments to notify the customer and patch within defined timelines give the customer a way to manage vulnerabilities as they appear.",
@@ -414,9 +414,9 @@
     "subtopic": "Change and release management",
     "difficulty": "medium",
     "type": "managerial_best_first_most",
-    "stem": "The codebase contains hundreds of old feature flags, some of which switch on untested code paths. What is the BEST practice?",
+    "stem": "The codebase contains hundreds of old feature flags that nobody owns, new ones are added every sprint, and some switch on untested code paths. What is the BEST practice?",
     "options": {
-      "A": "Add automated tests that cover both states of every active flag",
+      "A": "Add automated tests for every combination of flag states across the codebase",
       "B": "Give each flag an owner and removal date, and restrict who can change flags",
       "C": "Move flag configuration into a dedicated feature-management service",
       "D": "Run a one-time cleanup sprint to delete flags that are no longer used"
@@ -424,7 +424,7 @@
     "answer": "B",
     "explanation": "Feature flags are changes to production behavior. Owners, expiry, and restricted, logged changes keep them from becoming hidden, untested paths.",
     "distractor_rationales": {
-      "A": "Testing both states helps, but hundreds of stale flags remain, each able to switch on behavior nobody owns.",
+      "A": "Combinations multiply across hundreds of flags, so full testing cannot scale, and unowned stale flags remain.",
       "C": "A dedicated service centralizes the flags, but without owners, expiry, and change restrictions the sprawl continues there.",
       "D": "A one-time cleanup helps today, but without owners and removal dates the flags pile up again."
     },
@@ -558,7 +558,7 @@
     "subtopic": "Acquired software security",
     "difficulty": "hard",
     "type": "application",
-    "stem": "A security researcher discloses that a commercial product the company uses contains a hidden, hard-coded administrator account. The vendor has not released a fix. What should the company do FIRST?",
+    "stem": "A security researcher discloses that a commercial product the company uses contains a hidden, hard-coded administrator account. The vendor has not released a fix, and the product's management interfaces are reachable from untrusted networks. What should the company do FIRST?",
     "options": {
       "A": "Change the hard-coded account's password on each of the affected devices",
       "B": "Monitor the product's logs for logins by that account",

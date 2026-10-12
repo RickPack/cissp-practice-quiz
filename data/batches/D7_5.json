@@ -150,19 +150,19 @@
     "subtopic": "Patch and vulnerability management",
     "difficulty": "easy",
     "type": "application",
-    "stem": "A critical patch was installed on a server last week, but the vulnerability scanner still reports the flaw. What is the MOST likely cause?",
+    "stem": "A critical patch was installed on this server last week, and the change record confirms it was the correct server. A scan run yesterday still reports the flaw. What is the MOST likely cause?",
     "options": {
       "A": "The server's firewall is blocking the scanner",
       "B": "The server has not been rebooted to complete the patch",
       "C": "The patch was installed on a different server",
-      "D": "The scan ran before the patch was installed"
+      "D": "The scan used an outdated vulnerability signature set"
     },
     "answer": "B",
     "explanation": "Many patches take effect only after a restart. Patch verification should confirm reboots and rescan to prove the fix is active.",
     "distractor_rationales": {
       "A": "A blocked scanner usually reports nothing at all, not a specific unpatched flaw.",
-      "C": "Possible, but a pending reboot is the far more common cause.",
-      "D": "The stem says the patch was installed last week, before the scan."
+      "C": "The change record confirms the correct server was patched.",
+      "D": "Outdated signatures cause missed findings, not a report of a flaw that has already been fixed."
     },
     "references_topic": "Verifying patch installation",
     "version": "1.0"
@@ -654,7 +654,7 @@
     "subtopic": "SIEM, SOAR, and threat intelligence",
     "difficulty": "hard",
     "type": "managerial_best_first_most",
-    "stem": "After a log source changed its format, several SIEM detections silently stopped working for months. What is the BEST prevention?",
+    "stem": "After a log source changed its format, several SIEM detections silently stopped working for months, even though the source kept sending the same volume of events. What is the BEST prevention?",
     "options": {
       "A": "Alert whenever a log source's event volume drops sharply",
       "B": "Review each detection rule by hand once a year",
@@ -664,7 +664,7 @@
     "answer": "C",
     "explanation": "Detections should be version-controlled and tested automatically against known-bad events, so a broken rule is noticed quickly.",
     "distractor_rationales": {
-      "A": "Volume alerts catch some failures, but a format change can keep volume steady while parsing breaks.",
+      "A": "Volume alerts catch some failures, but here the volume stayed steady while parsing broke.",
       "B": "Annual reviews let failures last for months.",
       "D": "More rules do not fix broken ones."
     },

@@ -702,7 +702,7 @@
     "subtopic": "Security awareness, education, and training",
     "difficulty": "medium",
     "type": "application",
-    "stem": "Attackers are sending convincing fake invoices and CEO payment requests to the finance team. General annual awareness training has not stopped the losses. What is the BEST next step?",
+    "stem": "Attackers are sending convincing fake invoices and CEO payment requests to the finance team, mostly from lookalike domains and compromised partner mailboxes. General annual awareness training has not stopped the losses. What is the BEST next step?",
     "options": {
       "A": "Repeat the same general awareness training every month for all employees",
       "B": "Enable DMARC and add external-sender banners to all incoming email",
@@ -750,9 +750,9 @@
     "subtopic": "Security governance and roles",
     "difficulty": "hard",
     "type": "managerial_best_first_most",
-    "stem": "After a cloud storage bucket was left public, the infrastructure team and the application team each said the other was responsible for its configuration. What should happen FIRST?",
+    "stem": "After a cloud storage bucket was left public, the infrastructure team and the application team each said the other was responsible for its configuration. The bucket has since been made private and the exposure reviewed. What should happen FIRST?",
     "options": {
-      "A": "Have both teams jointly fix the bucket and close the ticket",
+      "A": "Have both teams document the incident and close the ticket",
       "B": "Have management define and document ownership, for example in a RACI chart",
       "C": "Turn on a cloud posture tool that flags public buckets",
       "D": "Ask the security team to take over the configuration of every cloud resource"
@@ -760,7 +760,7 @@
     "answer": "B",
     "explanation": "The root cause is unclear accountability. Management should assign ownership explicitly so every resource has a responsible and accountable party.",
     "distractor_rationales": {
-      "A": "Fixing this bucket does not settle who owns the next one, so the dispute will recur.",
+      "A": "Closing the ticket leaves ownership undefined, so the dispute will recur on the next resource.",
       "C": "Detection helps, but alerts still need an owner. The root cause is undefined ownership.",
       "D": "Centralizing all configuration in security creates a bottleneck and blurs accountability."
     },

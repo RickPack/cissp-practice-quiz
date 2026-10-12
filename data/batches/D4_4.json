@@ -54,7 +54,7 @@
     "subtopic": "Secure protocols",
     "difficulty": "easy",
     "type": "managerial_best_first_most",
-    "stem": "What is the BEST way to protect email in transit between the company's mail servers and its partners' mail servers?",
+    "stem": "What is the BEST way to protect email in transit between the company's mail servers and its partners' mail servers, given that attackers on the network path have forced deliveries to fall back to cleartext before?",
     "options": {
       "A": "Require S/MIME encryption for every message employees send",
       "B": "Require TLS for server-to-server delivery, with policies such as MTA-STS",

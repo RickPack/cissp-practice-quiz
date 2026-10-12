@@ -174,7 +174,7 @@
     "subtopic": "Access policy enforcement",
     "difficulty": "medium",
     "type": "managerial_best_first_most",
-    "stem": "A database administrator can read every record in an HR database containing salaries, although the job requires only performance tuning and backups. Which principle is violated, and what should be done?",
+    "stem": "A database administrator's role correctly grants tuning and backup functions, but it also lets the account read every record in an HR database containing salaries. Which principle is violated, and what should be done?",
     "options": {
       "A": "Separation of duties; hire a second administrator to share the work",
       "B": "Least privilege; remove the administrator role from the account",
@@ -185,7 +185,7 @@
     "explanation": "Need to know limits access to the information required for a person's duties. Administrators can manage the database without reading its contents, for example through data masking, encryption with keys they do not hold, or separate administrative roles.",
     "distractor_rationales": {
       "A": "Adding a second administrator does not limit what either one can read.",
-      "B": "The administrator still needs admin functions for tuning and backups. The issue is access to the data itself.",
+      "B": "The administrator role is correctly scoped for tuning and backups. The excess is access to the data itself.",
       "D": "Encryption at rest is transparent to an administrator querying the database."
     },
     "references_topic": "Need to know",
@@ -342,9 +342,9 @@
     "subtopic": "Provisioning lifecycle",
     "difficulty": "medium",
     "type": "managerial_best_first_most",
-    "stem": "A growing company provisions accounts manually from emailed requests, which causes delays and orphaned accounts. What should the IAM manager implement FIRST?",
+    "stem": "A growing company provisions accounts manually from emailed requests, which causes delays and orphaned accounts. Its HR system already tracks hires, transfers, and departures accurately. What should the IAM manager implement FIRST?",
     "options": {
-      "A": "Quarterly access reviews as the only control",
+      "A": "Quarterly access reviews of all accounts to find the orphans",
       "B": "Automated provisioning driven by the HR system of record",
       "C": "A ticketing form that standardizes access requests",
       "D": "Role templates that the help desk applies by hand"

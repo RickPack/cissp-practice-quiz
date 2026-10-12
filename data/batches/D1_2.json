@@ -222,18 +222,18 @@
     "subtopic": "Legal, regulatory, and contractual compliance",
     "difficulty": "medium",
     "type": "managerial_best_first_most",
-    "stem": "A payment processor operating in several countries learns that a new regulation will require breach notification to authorities within 72 hours. What should the security manager do FIRST?",
+    "stem": "A payment processor operating in several countries learns that a new regulation, already enacted and briefed to the board by legal counsel, will require breach notification to authorities within 72 hours. What should the security manager do FIRST?",
     "options": {
       "A": "Purchase a third-party breach notification service",
       "B": "Analyze the requirement against current incident procedures",
-      "C": "Brief the board on the new regulation and its penalties",
+      "C": "Ask the board to approve an incident response budget increase",
       "D": "Pre-draft notification templates for each regulator"
     },
     "answer": "B",
     "explanation": "Start with a gap analysis: understand exactly what the regulation requires and compare it with current detection, escalation, and notification procedures. The gaps then drive targeted updates.",
     "distractor_rationales": {
       "A": "Buying a service before understanding the requirement and the current gaps is premature.",
-      "C": "Leadership should be informed, but first the team needs to know whether current procedures can meet 72 hours, so the briefing has substance.",
+      "C": "A funding request needs a basis. First find out whether current procedures can meet 72 hours, so the request has substance.",
       "D": "Templates help later, but the first step is to find the gaps between the requirement and how incidents are handled today."
     },
     "references_topic": "Regulatory gap analysis",
@@ -246,19 +246,19 @@
     "subtopic": "Privacy and transborder data flow",
     "difficulty": "medium",
     "type": "managerial_best_first_most",
-    "stem": "A multinational company plans to transfer employee personal data from a subsidiary in a jurisdiction with strict data export rules to an analytics provider in another country. What should the privacy officer ensure FIRST?",
+    "stem": "A multinational company plans to transfer employee personal data from a subsidiary in a jurisdiction with strict data export rules to an analytics provider in another country, and a data processing agreement is already signed. What should the privacy officer ensure FIRST?",
     "options": {
       "A": "That the data is encrypted in transit with strong TLS settings",
       "B": "That the provider holds an ISO 27001 certificate",
       "C": "That a lawful cross-border transfer mechanism exists",
-      "D": "That a data processing agreement with the provider is signed"
+      "D": "That the provider's staff have signed confidentiality undertakings"
     },
     "answer": "C",
     "explanation": "Cross-border transfers need a legal basis before any data moves, such as an adequacy finding, approved contractual clauses, or binding corporate rules. Technical safeguards come afterward.",
     "distractor_rationales": {
       "A": "Encryption is necessary but does not satisfy the legal requirement for the transfer itself.",
       "B": "A certification shows a management system exists, but it is not a legal transfer mechanism.",
-      "D": "A processing agreement governs how the provider handles the data, but by itself it does not make the cross-border export lawful."
+      "D": "Staff confidentiality is a useful safeguard, but it does not make the cross-border export lawful."
     },
     "references_topic": "Transborder data transfer mechanisms",
     "version": "0.2"
@@ -438,10 +438,10 @@
     "subtopic": "Supply chain risk management",
     "difficulty": "medium",
     "type": "managerial_best_first_most",
-    "stem": "A small software vendor that supplies a critical payroll integration has left a known vulnerability unpatched for six months and does not respond to inquiries. The contract has no security clauses. What should the security manager do FIRST?",
+    "stem": "A small software vendor that supplies a critical payroll integration has left a known vulnerability unpatched for six months and does not respond to inquiries. Earlier escalations to the vendor's executives also went unanswered, and the contract has no security clauses. What should the security manager do FIRST?",
     "options": {
       "A": "Terminate the contract immediately and switch to a different vendor",
-      "B": "Escalate to the vendor's executives and request a fix date",
+      "B": "Escalate again to the vendor's executives and request a fix date",
       "C": "Assess the exposure and apply compensating controls",
       "D": "Add security clauses at the next contract renewal"
     },
@@ -449,7 +449,7 @@
     "explanation": "The company owns this risk no matter who wrote the software. Assess the impact, apply compensating controls such as restricted access and monitoring, keep escalating with the vendor, and plan contract changes and alternatives.",
     "distractor_rationales": {
       "A": "Abrupt termination could disrupt payroll, and a replacement takes time to put in place.",
-      "B": "Escalation is reasonable, but the vendor has ignored inquiries for six months. First understand the exposure and protect against it now.",
+      "B": "Escalation has already failed once and the vendor has ignored six months of inquiries. First understand the exposure and protect against it now.",
       "D": "Contract clauses help in future, but they do nothing about the vulnerability exposed today."
     },
     "references_topic": "Managing vendor security risk",

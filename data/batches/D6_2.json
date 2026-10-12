@@ -438,7 +438,7 @@
     "subtopic": "Reporting and remediation",
     "difficulty": "hard",
     "type": "managerial_best_first_most",
-    "stem": "A security tester employed by a bank discovers a serious vulnerability in a widely used commercial product during internal testing. What is the MOST appropriate course of action?",
+    "stem": "A security tester employed by a bank discovers a serious vulnerability in a widely used commercial product during internal testing. The bank's security team and legal counsel already know and have approved external disclosure. What is the MOST appropriate course of action?",
     "options": {
       "A": "Publish an advisory without exploit details right away",
       "B": "Report it only to the bank's own security team",
@@ -449,7 +449,7 @@
     "explanation": "Coordinated disclosure gives the vendor time to fix the flaw before details become public, protecting all users. The tester should follow the bank's policy and apply internal mitigations in the meantime.",
     "distractor_rationales": {
       "A": "Publishing before the vendor can fix it exposes every customer.",
-      "B": "The bank should protect itself, but the vendor must also be told so it can fix the product for everyone.",
+      "B": "The bank's teams already know. The vendor must also be told so it can fix the product for everyone.",
       "C": "Sharing with peers before the vendor knows spreads the flaw before a fix exists."
     },
     "references_topic": "Coordinated vulnerability disclosure",

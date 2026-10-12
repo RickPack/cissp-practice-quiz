@@ -30,7 +30,7 @@
     "subtopic": "Asset inventory and ownership",
     "difficulty": "easy",
     "type": "managerial_best_first_most",
-    "stem": "Expense reports reveal that several teams pay for SaaS tools that IT has never reviewed. What should happen FIRST?",
+    "stem": "Expense reports reveal that several teams pay for SaaS tools that IT has never reviewed. The reports name each tool and the team that pays for it. What should happen FIRST?",
     "options": {
       "A": "Add them to the inventory, assign owners, and assess their risk",
       "B": "Block the unreviewed SaaS domains at the web proxy",
@@ -42,7 +42,7 @@
     "distractor_rationales": {
       "B": "Blocking without review may break business processes and drives use further underground.",
       "C": "A purchasing rule helps in future, but the existing tools still need owners and risk assessment.",
-      "D": "Discovery helps, but the tools still need to be inventoried, owned, and assessed."
+      "D": "The expense reports already identify each tool. Scanning for data comes after the tools are inventoried, owned, and assessed."
     },
     "references_topic": "Shadow IT discovery",
     "version": "0.4"

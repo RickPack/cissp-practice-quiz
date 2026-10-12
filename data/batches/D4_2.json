@@ -198,19 +198,19 @@
     "subtopic": "Transmission media",
     "difficulty": "medium",
     "type": "application",
-    "stem": "A factory runs Ethernet cables alongside heavy electric motors and sees frequent packet errors on those links. Which change BEST fixes the problem?",
+    "stem": "A factory runs Ethernet cables alongside heavy electric motors and sees frequent packet errors on those links. Shielding was tried on the worst runs and helped only partly. Which change BEST fixes the problem?",
     "options": {
       "A": "Replace the copper runs with fiber-optic cable",
-      "B": "Shielded twisted-pair cable with grounded runs",
-      "C": "Rerouting the cables a few inches from the motors",
-      "D": "Enabling error correction on the switch ports"
+      "B": "Extend grounded shielded twisted-pair cable to all the runs",
+      "C": "Reroute the cables a few inches farther from the motors",
+      "D": "Lower the link speed on the affected switch ports"
     },
     "answer": "A",
-    "explanation": "Motors generate electromagnetic interference that corrupts signals on copper. Fiber is immune to it (shielded cable is a partial alternative).",
+    "explanation": "Motors generate electromagnetic interference that corrupts signals on copper. Fiber is immune to it, while shielding only reduces it.",
     "distractor_rationales": {
-      "B": "Shielding reduces interference, but fiber is immune to it, which suits heavy motors best.",
+      "B": "Shielding was already tried and helped only partly. Fiber is immune to the interference, which suits heavy motors best.",
       "C": "A few inches does little against strong motor fields.",
-      "D": "Error handling hides symptoms; the interference keeps corrupting frames."
+      "D": "Slower links tolerate some noise, but the interference keeps corrupting frames."
     },
     "references_topic": "EMI and media selection",
     "version": "0.2"

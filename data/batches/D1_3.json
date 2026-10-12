@@ -582,7 +582,7 @@
     "subtopic": "Supply chain risk management",
     "difficulty": "medium",
     "type": "managerial_best_first_most",
-    "stem": "A company is selecting a managed service provider that will have administrative access to its network. Which contract provision is MOST important from a security perspective?",
+    "stem": "A company is selecting a managed service provider that will have administrative access to its network. All shortlisted providers hold ISO 27001 and screen their administrators. Which contract provision is MOST important from a security perspective?",
     "options": {
       "A": "A service level for uptime with financial penalties",
       "B": "A requirement that the provider hold ISO 27001",
@@ -593,8 +593,8 @@
     "explanation": "A provider with administrative access is a major risk. The contract should define its security obligations, require prompt breach notification, and give the company the right to audit or to receive independent assurance.",
     "distractor_rationales": {
       "A": "Uptime terms protect availability, but not how a provider with admin access must protect the network.",
-      "B": "A certificate shows a management system exists. It does not set the provider's specific duties, notice deadlines, or audit rights.",
-      "D": "Screening helps, but it is one control. The contract must define security duties, breach notice, and the right to verify."
+      "B": "All shortlisted providers hold the certificate, and it sets no specific duties, notice deadlines, or audit rights.",
+      "D": "All shortlisted providers already screen staff, and screening does not define security duties, breach notice, or the right to verify."
     },
     "references_topic": "Security terms in outsourcing contracts",
     "version": "0.3"

@@ -726,7 +726,7 @@
     "subtopic": "Voice, video, and collaboration",
     "difficulty": "hard",
     "type": "managerial_best_first_most",
-    "stem": "Legal needs outside counsel to work in the company's collaboration platform on a sensitive matter. What is the BEST approach?",
+    "stem": "Legal needs outside counsel to work in the company's collaboration platform on one sensitive matter. Other legal matters in the existing channels must stay confidential from the firm. What is the BEST approach?",
     "options": {
       "A": "Issue the law firm's staff standard employee accounts through the joiner process",
       "B": "Grant named guest access to a dedicated workspace with an expiry date and owner reviews",

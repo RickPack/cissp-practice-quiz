@@ -558,7 +558,7 @@
     "subtopic": "DR plan testing",
     "difficulty": "medium",
     "type": "knowledge",
-    "stem": "Which DR test has teams act out a specific disaster scenario and perform recovery tasks up to the point of actually relocating operations?",
+    "stem": "Which DR test has teams act out a specific disaster scenario and perform recovery tasks as if it were real, without processing any production work at the recovery site?",
     "options": {
       "A": "Checklist review",
       "B": "Full-interruption test",
@@ -570,7 +570,7 @@
     "distractor_rationales": {
       "A": "A checklist review only confirms plan contents.",
       "B": "Full interruption shuts down the primary site.",
-      "D": "A parallel test runs operations at the recovery site alongside production."
+      "D": "A parallel test processes real work at the recovery site alongside production."
     },
     "references_topic": "Simulation tests",
     "version": "0.4"

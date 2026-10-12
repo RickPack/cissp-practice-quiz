@@ -150,17 +150,17 @@
     "subtopic": "Scoping, tailoring, and baselines",
     "difficulty": "medium",
     "type": "knowledge",
-    "stem": "An organization adopts a published security control baseline but removes the controls for wireless networking because it operates no wireless infrastructure. What is this activity called?",
+    "stem": "An organization adopts a published security control baseline but removes the controls for wireless networking because it operates no wireless infrastructure. Which tailoring activity is this?",
     "options": {
       "A": "Scoping",
-      "B": "Tailoring",
+      "B": "Parameterization",
       "C": "Compensating",
       "D": "Benchmarking"
     },
     "answer": "A",
     "explanation": "Scoping reviews a baseline and keeps only the controls that apply to the systems in scope. Removing wireless controls where no wireless exists is scoping.",
     "distractor_rationales": {
-      "B": "Tailoring modifies the applicable controls, for example by adjusting parameters, so they fit the organization's mission and environment.",
+      "B": "Parameterization assigns values to a control's settings, such as a password length or review interval. It does not remove controls.",
       "C": "Compensating controls are alternatives used when a primary control cannot be implemented. Nothing is being substituted here.",
       "D": "Benchmarking compares configurations or performance against a reference. It does not remove controls from a baseline."
     },
