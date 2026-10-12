@@ -48,19 +48,19 @@ Allowed range 20%-30% per letter (checked).
 
 ## Length bias
 
-Correct answer is the longest option (ties count) in 259/1000 questions (26%); warning above 35%, and below 15% once the bank has 200 questions.
-Correct answer is the shortest option in 220/1000 (22%).
+Correct answer is the longest option (ties count) in 256/1000 questions (26%); warning above 35%, and below 15% once the bank has 200 questions.
+Correct answer is the shortest option in 222/1000 (22%).
 
 | Domain | Longest | Shortest |
 |---|---|---|
-| D1 | 34/160 (21%) | 42/160 (26%) |
+| D1 | 33/160 (21%) | 42/160 (26%) |
 | D2 | 25/100 (25%) | 23/100 (23%) |
 | D3 | 32/130 (25%) | 27/130 (21%) |
-| D4 | 41/130 (32%) | 26/130 (20%) |
-| D5 | 34/130 (26%) | 17/130 (13%) |
+| D4 | 41/130 (32%) | 27/130 (21%) |
+| D5 | 33/130 (25%) | 17/130 (13%) |
 | D6 | 32/120 (27%) | 35/120 (29%) |
-| D7 | 34/130 (26%) | 24/130 (18%) |
-| D8 | 27/100 (27%) | 26/100 (26%) |
+| D7 | 34/130 (26%) | 25/130 (19%) |
+| D8 | 26/100 (26%) | 26/100 (26%) |
 
 ## Most similar stems
 
@@ -69,9 +69,9 @@ Pairs above 0.85 fail validation. Top pairs at or above 0.50:
 - D5-0011 / D5-0098: 0.83
 - D1-0042 / D1-0093: 0.77
 - D1-0010 / D1-0039: 0.70
-- D6-0006 / D6-0036: 0.68
+- D6-0006 / D6-0036: 0.69
 - D4-0005 / D4-0044: 0.68
-- D1-0056 / D2-0061: 0.67
+- D1-0056 / D2-0061: 0.68
 - D2-0036 / D2-0068: 0.65
 - D3-0045 / D3-0059: 0.62
 - D1-0041 / D1-0081: 0.61
