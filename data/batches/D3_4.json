@@ -329,7 +329,7 @@
     "explanation": "The security target describes the specific product (the target of evaluation) and its security functions and claims, often by conforming to a protection profile.",
     "distractor_rationales": {
       "B": "A protection profile defines requirements for a product category, not one product.",
-      "C": "The assurance level describes how rigorous the evaluation was.",
+      "C": "An EAL is an assurance package claimed in the security target that sets how rigorous the evaluation is. It is not simply a label assigned afterward.",
       "D": "An authorization to operate is a customer decision, not part of the evaluation."
     },
     "references_topic": "Common Criteria security target",

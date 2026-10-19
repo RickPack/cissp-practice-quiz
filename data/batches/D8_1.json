@@ -14,7 +14,7 @@
       "D": "Restricting the database account to read-only access"
     },
     "answer": "C",
-    "explanation": "Parameterized queries keep code and data separate, so user input can never change the structure of the query.",
+    "explanation": "Parameterized queries keep code and data separate, so user input is handled as data and cannot change the structure of the query. Parts that cannot be parameterized, such as table names, still need allow-listing.",
     "distractor_rationales": {
       "A": "Hand-written escaping is error-prone and can be bypassed through alternate encodings or numeric contexts.",
       "B": "Hiding errors slows an attacker's reconnaissance but does not prevent injection. Blind SQL injection still works.",
@@ -150,7 +150,7 @@
     "subtopic": "Acquired software security",
     "difficulty": "medium",
     "type": "managerial_best_first_most",
-    "stem": "A company plans to buy a commercial off-the-shelf HR application that will store employee personal data. The vendor refuses to share source code. What is the BEST way to evaluate the software's security before purchase?",
+    "stem": "A company plans to buy a commercial off-the-shelf HR application that will store employee personal data. The vendor refuses to share source code and has not authorized any testing of its systems. What is the BEST way to evaluate the software's security before purchase?",
     "options": {
       "A": "Request third-party test results and secure development attestations",
       "B": "Run a vulnerability scan against the vendor's demo site",
@@ -160,7 +160,7 @@
     "answer": "A",
     "explanation": "Without source access, rely on independent evidence: third-party penetration test or certification reports, secure development attestations, and an SBOM, backed by contract terms for vulnerability notification, patch timelines, and audit rights.",
     "distractor_rationales": {
-      "B": "Scanning a vendor's systems without permission is unauthorized, and a demo may not match the product.",
+      "B": "Scanning a vendor's systems without authorization is not permitted, and a demo may not match the product.",
       "C": "References speak to satisfaction, not to tested security.",
       "D": "Policies show intent, not that the software was built and tested securely."
     },
@@ -210,7 +210,7 @@
     "distractor_rationales": {
       "A": "SHA-512 is still a fast general-purpose hash, and without salt it remains vulnerable to precomputed tables.",
       "B": "Encryption is reversible, and a key stored in the application configuration is likely to be stolen along with the database.",
-      "D": "A single salt still lets identical passwords match, and SHA-256 is too fast for passwords."
+      "D": "One global salt is the same for every user, so identical passwords still produce identical hashes and attackers can crack all hashes in parallel once it leaks. SHA-256 is also too fast for passwords."
     },
     "references_topic": "Password storage with adaptive hashing",
     "version": "0.1"

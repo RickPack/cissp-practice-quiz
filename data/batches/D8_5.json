@@ -232,7 +232,7 @@
     "answer": "C",
     "explanation": "SAMM groups its security practices under five business functions that follow the software lifecycle and its governance.",
     "distractor_rationales": {
-      "A": "These are the NIST Cybersecurity Framework functions.",
+      "A": "These are the original five NIST Cybersecurity Framework functions (CSF 2.0 adds Govern), not SAMM's business functions.",
       "B": "This is the Deming improvement cycle.",
       "D": "These are Capability Maturity Model levels."
     },
@@ -448,7 +448,7 @@
     "answer": "D",
     "explanation": "Limiting depth and cost stops resource-exhaustion queries, and restricting introspection reduces what attackers can learn about the schema.",
     "distractor_rationales": {
-      "A": "One crafted query is enough to exhaust resources, so request counts do not help.",
+      "A": "Rate limiting still limits how many expensive queries arrive, but one crafted query can exhaust resources, so request counts alone are insufficient.",
       "B": "Attackers send new queries that are not cached.",
       "C": "Authentication helps attribution, but any authenticated client can still send the crafted query."
     },

@@ -38,7 +38,7 @@
       "D": "Baseboard management controller"
     },
     "answer": "C",
-    "explanation": "A TPM stores keys and platform measurements in its registers, supports measured and secure boot, and can seal secrets such as disk encryption keys to a known-good boot state.",
+    "explanation": "A TPM protects keys in its own key hierarchy and records boot component measurements (hashes) in its platform configuration registers. It enables measured boot and can seal secrets such as disk encryption keys to a known-good boot state.",
     "distractor_rationales": {
       "A": "An HSM is a dedicated appliance or card for enterprise key management, not a chip on a laptop motherboard.",
       "B": "The MMU translates virtual addresses and enforces memory protection. It does not store keys.",
@@ -113,7 +113,7 @@
     "explanation": "Each pair of users needs its own key, so the count is n(n - 1)/2 = 10 x 9 / 2 = 45.",
     "distractor_rationales": {
       "A": "One key per user would let every user read everyone's traffic, so it does not give pairwise privacy.",
-      "C": "20 is the number of keys for 10 users with asymmetric key pairs (2n).",
+      "C": "20 is the number of keys in 10 asymmetric key pairs (2n). It does not apply to pairwise symmetric keys.",
       "D": "90 counts every pair twice."
     },
     "references_topic": "Symmetric key scaling",
@@ -186,7 +186,7 @@
     "distractor_rationales": {
       "B": "Customer-managed encryption may be valuable, but deciding on it before knowing the responsibility split is premature.",
       "C": "Providers rarely allow customer physical audits. Customers rely on independent attestations instead.",
-      "D": "Testing the provider's platform usually needs its permission and comes later. First establish who owns which controls."
+      "D": "Customers usually may not test the provider's underlying platform at all, only their own workloads within the rules of engagement. First establish who owns which controls."
     },
     "references_topic": "Shared responsibility mapping",
     "version": "0.2"
@@ -376,7 +376,7 @@
     "answer": "A",
     "explanation": "Segmentation with allow-listed flows limits who can reach devices that cannot be patched quickly and prevents lateral movement. Monitoring the segment adds detection.",
     "distractor_rationales": {
-      "B": "MFA protects the programming workflow, but not the pumps' unpatchable network exposure.",
+      "B": "Infusion pumps often cannot enforce clinician MFA at the device, and MFA does nothing about the pumps' unpatchable network exposure.",
       "C": "Rotating a password does not address firmware vulnerabilities.",
       "D": "Monitoring detects attacks but does not reduce the pumps' exposure the way isolation does."
     },
@@ -425,7 +425,7 @@
     "explanation": "The customer cannot patch the provider's hypervisor. The practical step is to confirm the provider's remediation timeline and reduce exposure, for example by moving the most sensitive workloads to dedicated hosts until the fix is applied.",
     "distractor_rationales": {
       "A": "An escaped attacker may read memory where data is already decrypted, so encryption at rest does not stop this threat.",
-      "B": "Other regions run the same hypervisor, so moving does not avoid the flaw.",
+      "B": "Other regions probably run the same hypervisor and may be patched on a different schedule, so moving does not remove multi-tenancy or reliably avoid the flaw.",
       "D": "Monitoring may catch the result of an escape, but it does not reduce the exposure on shared hosts."
     },
     "references_topic": "VM escape and tenant isolation",

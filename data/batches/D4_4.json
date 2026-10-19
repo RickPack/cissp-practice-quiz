@@ -302,7 +302,7 @@
       "D": "Disagree, since NAT translates addresses but does not enforce security policy"
     },
     "answer": "D",
-    "explanation": "NAT was designed to conserve addresses. It offers some incidental hiding but no filtering policy, inspection, or logging, so a firewall is still needed.",
+    "explanation": "NAT was designed to conserve addresses. It offers some incidental hiding, but it enforces no security policy and does no inspection, and its translation logs are not security event logs, so a firewall is still needed.",
     "distractor_rationales": {
       "A": "NAT does not block outbound-initiated attacks, malware callbacks, or exposed port forwards.",
       "B": "NAT does not encrypt traffic.",
@@ -400,7 +400,7 @@
     "answer": "D",
     "explanation": "A separate guest network with client isolation and no route to internal systems gives visitors internet access without exposing corporate resources.",
     "distractor_rationales": {
-      "A": "Sharing the corporate passphrase puts visitors on the internal network.",
+      "A": "A shared passphrase puts visitors on the corporate network, anyone who knows it can derive keys and decrypt traffic, and it cannot be revoked per person.",
       "B": "A guest SSID on the corporate VLAN still puts visitors on the internal network.",
       "C": "A portal on the corporate network still gives visitors internal reach once they pass it."
     },
@@ -448,9 +448,9 @@
     "answer": "B",
     "explanation": "SD-WAN builds encrypted tunnels, usually IPsec, over any transport and applies routing and security policy centrally.",
     "distractor_rationales": {
-      "A": "SD-WAN often replaces dedicated circuits with internet links. Its security comes from encrypted overlays.",
+      "A": "SD-WAN often supplements or replaces dedicated circuits, and its security comes from encrypted overlays.",
       "C": "Link failover improves availability, but it is not the security feature asked about.",
-      "D": "SD-WAN works at the network level. It does not protect endpoints."
+      "D": "Endpoint protection is not a core SD-WAN function, because SD-WAN works at the network level."
     },
     "references_topic": "SD-WAN security features",
     "version": "0.4"
@@ -534,7 +534,7 @@
     "subtopic": "Voice, video, and collaboration",
     "difficulty": "medium",
     "type": "managerial_best_first_most",
-    "stem": "The company's phone bill shows thousands of dollars of international calls made overnight through its PBX. What should the company do?",
+    "stem": "The company's phone bill shows thousands of dollars of international calls made overnight through its PBX. What is the BEST way to stop it from recurring?",
     "options": {
       "A": "Change the PBX administrator password and keep the settings",
       "B": "Limit international dialing, reset voicemail PINs, and alert on anomalies",
@@ -568,7 +568,7 @@
     "answer": "C",
     "explanation": "A rogue DHCP server can hand out a malicious gateway to intercept traffic. DHCP snooping allows DHCP offers only from trusted ports.",
     "distractor_rationales": {
-      "A": "Loop guard prevents layer 2 loops.",
+      "A": "Loop guard protects against loops caused by unidirectional links or lost BPDUs. It does not address rogue DHCP.",
       "B": "DAI depends on DHCP snooping bindings. A rogue DHCP server is stopped by DHCP snooping itself.",
       "D": "Limiting MACs does not stop a single laptop from answering DHCP requests."
     },
@@ -590,11 +590,11 @@
       "D": "It spreads attack traffic across many edge locations"
     },
     "answer": "D",
-    "explanation": "With anycast, traffic goes to the nearest location announcing the address, so a large attack is divided across many sites instead of hitting one.",
+    "explanation": "With anycast, traffic goes to the nearest location announcing the address, so a large attack is spread across the sites closest to its sources instead of all hitting one.",
     "distractor_rationales": {
       "A": "Caching helps, but dynamic requests still reach the origin. Anycast's benefit is spreading the traffic.",
       "B": "Geographic filtering is a separate control. Anycast shares the load across many edge sites.",
-      "C": "The CDN does hide the origin, but advertising one address worldwide helps by spreading the traffic."
+      "C": "A CDN can hide the origin only if the origin accepts traffic solely from the CDN, and the address can leak through DNS history. Spreading the attack traffic across many sites is what helps here."
     },
     "references_topic": "Anycast routing at the edge",
     "version": "0.4"
@@ -630,18 +630,18 @@
     "subtopic": "Converged and multilayer protocols",
     "difficulty": "hard",
     "type": "application",
-    "stem": "IP phones and PCs share wall ports, with phones placed on a voice VLAN. A tester unplugs a phone, connects a laptop, and reaches the voice VLAN. What BEST prevents this?",
+    "stem": "IP phones and PCs share wall ports, with phones placed on a voice VLAN. A tester unplugs a phone, clones its MAC address on a laptop, and reaches the voice VLAN. What BEST prevents this?",
     "options": {
       "A": "Use a separate voice VLAN for each floor of the building",
-      "B": "Authenticate devices with 802.1X or MAB before the voice VLAN",
+      "B": "Authenticate devices with 802.1X before the voice VLAN",
       "C": "Enable port security that locks each port to the phone's MAC",
       "D": "Encrypt all voice traffic with SRTP on every one of the phones"
     },
     "answer": "B",
-    "explanation": "Assigning the voice VLAN only after the device authenticates as a phone keeps laptops from joining it. MAC authentication alone is weaker, so certificates on phones are better where supported.",
+    "explanation": "Assigning the voice VLAN only after the device authenticates as a phone keeps laptops from joining it. 802.1X, ideally with certificates on the phones, is stronger than MAC-based checks, which a cloned address defeats.",
     "distractor_rationales": {
       "A": "More VLANs do not stop a laptop on a phone's port from joining them.",
-      "C": "A laptop can copy the phone's MAC address. Authentication is needed.",
+      "C": "A laptop that clones the phone's MAC address passes the lock. Authentication is needed.",
       "D": "SRTP protects call contents but does not stop a laptop reaching the voice VLAN."
     },
     "references_topic": "Securing voice VLAN access",
@@ -690,7 +690,7 @@
     "distractor_rationales": {
       "A": "Public addresses expose every meter to internet scanning.",
       "B": "TLS protects the data, but the meters still sit on a network that reaches the internet.",
-      "C": "Meters on the consumer APN can still reach and be reached from the internet. The head-end rule protects only one side."
+      "C": "Meters on the consumer APN share an open carrier network with outbound internet access, and the head-end rule protects only one side."
     },
     "references_topic": "Private APNs for IoT",
     "version": "0.4"
@@ -726,7 +726,7 @@
     "subtopic": "Remote access and VPN",
     "difficulty": "hard",
     "type": "managerial_best_first_most",
-    "stem": "Contractors need access to one internal web application, but the current VPN gives them access to the whole internal network. What is the BEST solution?",
+    "stem": "Contractors need access to one internal web application and must never join the internal network, but the current VPN gives them access to the whole network. What is the BEST solution?",
     "options": {
       "A": "Give contractors the same full VPN but ask them to use only the one application",
       "B": "Use zero trust network access that publishes only that application to them",
@@ -737,7 +737,7 @@
     "explanation": "Zero trust network access grants per-application access after verifying identity and context, so contractors never land on the internal network.",
     "distractor_rationales": {
       "A": "Relying on contractors to limit themselves is not a control.",
-      "C": "A filtered VPN is better, but it still grants network-level access without per-request identity and device checks.",
+      "C": "A filtered VPN still puts contractors on the internal network at the network layer, and it grants access by network path, not per request.",
       "D": "The full VPN still exposes the whole network on the way to the jump host."
     },
     "references_topic": "Zero trust network access",

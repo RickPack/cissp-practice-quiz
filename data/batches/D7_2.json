@@ -40,7 +40,7 @@
     "answer": "C",
     "explanation": "A security baseline is a documented, approved set of minimum security settings that systems of a given type must meet, which gives a reference for building and auditing them.",
     "distractor_rationales": {
-      "A": "Approved software lists are standards. A baseline is the approved minimum configuration.",
+      "A": "A list of approved software is an allow list or inventory. A baseline is the approved minimum configuration.",
       "B": "That is a change log. A baseline is the approved starting configuration.",
       "D": "A first backup is a recovery artifact."
     },
@@ -89,8 +89,8 @@
     "explanation": "Encryption keeps the data unreadable to anyone who finds or steals a lost drive.",
     "distractor_rationales": {
       "B": "Custody tracking shows who had the drive, but a lost unencrypted drive still exposes the data.",
-      "C": "A bonded courier reduces loss but does not protect the data if a drive goes missing.",
-      "D": "Two copies improve availability but double the chance that one is lost."
+      "C": "Bonding compensates for loss or misconduct after the fact. It does not reduce the chance of loss or protect the data on a missing drive.",
+      "D": "Shipping two copies keeps two unencrypted drives in transit, which doubles the exposure of confidential data."
     },
     "references_topic": "Encrypting media in transit",
     "version": "0.2"
@@ -113,8 +113,8 @@
     "explanation": "A zero-day is a vulnerability that is unknown to the vendor or has no patch available, so defenders have had \"zero days\" to fix it.",
     "distractor_rationales": {
       "A": "Same-day patching describes a fast response, not a zero-day.",
-      "C": "Where a flaw was found does not matter. Zero-day means no patch exists yet.",
-      "D": "End-of-support software never gets patches, but zero-day refers to newly found flaws with no fix yet."
+      "C": "A vendor-found, unpatched flaw can also be a zero-day, but the discovery source does not define the term. Zero-day means no patch exists yet.",
+      "D": "End-of-support software normally gets no routine patches, but that does not define a zero-day. A zero-day is a newly found flaw with no fix yet."
     },
     "references_topic": "Zero-day vulnerabilities",
     "version": "0.2"
@@ -198,7 +198,7 @@
     "subtopic": "Configuration management",
     "difficulty": "medium",
     "type": "application",
-    "stem": "Monthly audits keep finding servers whose settings no longer match the approved baseline. Administrators already file change tickets, but ad hoc changes still happen on the servers. Which control BEST addresses this?",
+    "stem": "Monthly audits keep finding servers whose settings no longer match the approved baseline. Administrators must keep the ability to fix outages, and they already file change tickets, but ad hoc changes still happen on the servers. Which control BEST addresses this?",
     "options": {
       "A": "Remove administrators' rights to change server settings",
       "B": "Automated drift detection that restores the baseline",
@@ -230,7 +230,7 @@
       "D": "Keep a second copy of backups on the same storage system"
     },
     "answer": "C",
-    "explanation": "Dual control (separation of duties) means one compromised account cannot destroy backups on its own, and immutable storage prevents deletion or alteration during the retention period.",
+    "explanation": "Requiring two approvers (dual control) means one compromised account cannot destroy backups on its own, and immutable storage prevents deletion or alteration during the retention period.",
     "distractor_rationales": {
       "A": "Monthly review notices deletion after the backups are gone.",
       "B": "Encryption does not stop deletion, and the key is held by the same person.",
@@ -424,7 +424,7 @@
     "answer": "C",
     "explanation": "The real problem is alert fatigue. Use outcome data to tune or retire the noisiest rules, and prioritize alerts by asset criticality and threat context so real incidents stand out.",
     "distractor_rationales": {
-      "A": "More rules would add more noise.",
+      "A": "Adding rules without tuning the noisy ones already in place adds more alerts to review and does not fix the noise.",
       "B": "A blanket threshold change may hide real attacks. Tuning should use outcome data.",
       "D": "More analysts reviewing poor alerts does not improve the signal."
     },

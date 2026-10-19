@@ -40,7 +40,7 @@
     "answer": "D",
     "explanation": "A failed SSD cannot accept overwrite or secure-erase commands, and flash memory does not store data magnetically. Physical destruction to a small particle size is the reliable option.",
     "distractor_rationales": {
-      "A": "Degaussing works on magnetic media. Flash memory cells are not magnetic, so degaussing leaves the data intact.",
+      "A": "Degaussing works on magnetic media. Flash cells store charge, not magnetic fields, so degaussing does not reliably erase the data and may only damage the drive.",
       "B": "Overwriting requires a working drive. Even on a working SSD, wear leveling and over-provisioning can leave data in cells the host cannot address.",
       "C": "A quick format rewrites only file-system structures. The underlying data remains recoverable."
     },

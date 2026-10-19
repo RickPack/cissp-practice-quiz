@@ -400,8 +400,8 @@
     "answer": "A",
     "explanation": "Encryption and access limited to the intended recipients protect the drafts in transit and at the recipient, with an audit trail.",
     "distractor_rationales": {
-      "B": "Opportunistic TLS between servers is not guaranteed end to end, and anyone the email reaches can read it.",
-      "C": "Anyone who obtains the link can open it before it expires. Access should be limited to named recipients.",
+      "B": "TLS protects only the transport hop, and the message stays readable on mail servers and in mailboxes.",
+      "C": "A link that expires but is not limited to named recipients can be opened by anyone who obtains it before it expires.",
       "D": "A fax to a shared line can be read by anyone nearby and leaves no access control."
     },
     "references_topic": "Sending confidential files externally",
@@ -592,7 +592,7 @@
     "answer": "A",
     "explanation": "Retention means the data must stay usable. Migrating to a supported format, with integrity checks and existing legal holds intact, keeps records accessible without depending on unsupported software.",
     "distractor_rationales": {
-      "B": "Isolation helps, but an unsupported application for 15 years risks losing access entirely, and it still needs patching.",
+      "B": "Isolation only partly mitigates an application that is unsupported and unpatched, and the knowledge to run it over 15 years may be lost.",
       "C": "Spreadsheets lose formatting and integrity evidence, and they may break legal hold requirements.",
       "D": "Printing large archives is costly and loses searchability."
     },

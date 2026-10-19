@@ -102,7 +102,7 @@
     "subtopic": "Authorization models",
     "difficulty": "easy",
     "type": "knowledge",
-    "stem": "Which access control approach defines, for each pair of subject and object, the greatest lower bound and least upper bound of access?",
+    "stem": "Which access control approach assigns security labels to subjects and objects and defines, for every pair of labels, a least upper bound and a greatest lower bound?",
     "options": {
       "A": "Lattice-based access control",
       "B": "Discretionary access control set by each file's owner",
@@ -110,7 +110,7 @@
       "D": "Role-based access control using job-function roles"
     },
     "answer": "A",
-    "explanation": "Lattice-based access control arranges security levels so that each subject and object pair has defined upper and lower bounds, a form of mandatory access control.",
+    "explanation": "Lattice-based access control arranges security levels so that every pair of labels has a least upper bound and a greatest lower bound, a form of mandatory access control.",
     "distractor_rationales": {
       "B": "Discretionary control relies on owner choices, not bounded levels.",
       "C": "Rule-based control applies global rules.",
@@ -136,7 +136,7 @@
     "answer": "B",
     "explanation": "Temporary access should be granted with an end date that the system enforces, so it expires without relying on someone to remember.",
     "distractor_rationales": {
-      "A": "A monthly review would catch it, but only after weeks of unneeded access. Expiry removes it on time.",
+      "A": "A monthly review is a detective control that would catch the account only some time after the audit ends. Expiry removes access on time.",
       "C": "Narrower rights limit what can be read, but the access still never ends.",
       "D": "Logging records use but does not end the access."
     },
@@ -150,7 +150,7 @@
     "subtopic": "Provisioning lifecycle",
     "difficulty": "easy",
     "type": "knowledge",
-    "stem": "What is \"birthright\" access in identity management?",
+    "stem": "What is \"birthright\" access in role-based identity management?",
     "options": {
       "A": "Access an employee keeps for life, even after transfers",
       "B": "Access granted to everyone in the company regardless of role",
@@ -161,7 +161,7 @@
     "explanation": "Birthright access is the standard set of entitlements, such as email and intranet, that everyone in a given population receives automatically at hire.",
     "distractor_rationales": {
       "A": "Birthright access follows the role and changes when the role changes.",
-      "B": "It is baseline access for a role, not identical access for everyone.",
+      "B": "Birthright access follows the role or population, so access granted regardless of role does not describe it.",
       "D": "Birthright access is granted automatically by role, without individual approval."
     },
     "references_topic": "Birthright access",
@@ -280,7 +280,7 @@
     "answer": "D",
     "explanation": "Hardware keys provide strong, often phishing-resistant MFA without requiring a phone.",
     "distractor_rationales": {
-      "A": "SMS codes still use the personal phone they objected to, and they can be phished or intercepted.",
+      "A": "SMS codes are weak and can be intercepted, and they still depend on the personal phone the employees objected to using.",
       "B": "Personal email is outside company control and weak as a factor.",
       "C": "Security questions are another thing you know, so they are not a true second factor."
     },

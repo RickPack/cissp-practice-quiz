@@ -182,7 +182,7 @@
       "D": "Replicate data near-continuously to a warm or hot recovery site"
     },
     "answer": "D",
-    "explanation": "Nightly tapes can lose up to 24 hours of data, which fails the 15-minute RPO. A cold site takes days to stand up, which fails the 4-hour RTO. Near-continuous replication to a warm or hot site meets both objectives.",
+    "explanation": "Nightly tapes can lose up to 24 hours of data, which fails the 15-minute RPO. A cold site typically takes days to weeks to stand up, which fails the 4-hour RTO. Near-continuous replication to a warm or hot site meets both objectives.",
     "distractor_rationales": {
       "A": "The current solution misses both the RTO and the RPO.",
       "B": "A closer cold site still has to be equipped and configured, and the RPO problem remains.",
@@ -233,7 +233,7 @@
     "explanation": "A clean loaner device carries little data that can be inspected or copied, and corporate resources are reached through a secure remote connection with MFA. After the trip the device is wiped or examined before reuse.",
     "distractor_rationales": {
       "A": "Refusing to disclose keys can lead to detention, device seizure, or legal penalties, which puts the traveler at risk. Encryption laws also vary by country.",
-      "C": "Powering off helps encryption, but officials can still demand access to a device full of corporate data.",
+      "C": "A courier shipment can be intercepted, inspected, or held in customs, and the laptop still holds full corporate data when it arrives.",
       "D": "An encrypted drive can still be inspected under compulsion, and it still carries the documents."
     },
     "references_topic": "Travel security and device inspection",

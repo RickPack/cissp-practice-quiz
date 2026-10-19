@@ -66,7 +66,7 @@
     "distractor_rationales": {
       "A": "Full packet capture records contents; flow data does not.",
       "C": "Flow data records connection metadata, not request contents.",
-      "D": "User identity is not part of flow records. They show addresses, ports, and volumes."
+      "D": "Standard flow records show addresses, ports, and volumes. They do not include user identity unless it is enriched from other sources."
     },
     "references_topic": "Flow data",
     "version": "1.0"
@@ -254,11 +254,11 @@
       "D": "Remove the SIM card and battery at once"
     },
     "answer": "B",
-    "explanation": "A Faraday bag blocks network signals, preventing remote wipe or new data, while keeping the phone powered preserves volatile data and its unlocked state.",
+    "explanation": "A Faraday bag blocks network signals, preventing remote wipe or new data. Keeping the phone powered, for example with a power bank, preserves volatile data and avoids a return to a locked, fully encrypted state.",
     "distractor_rationales": {
       "A": "Relying on the suspect and interacting with the phone risks alteration.",
       "C": "Syncing to an office computer changes data and is not forensically sound.",
-      "D": "Removing power loses volatile data and may lock the device."
+      "D": "Most phones have non-removable batteries, and powering off returns an encrypted phone to a locked state, losing volatile data."
     },
     "references_topic": "Isolating seized mobile devices",
     "version": "1.0"
@@ -614,9 +614,9 @@
       "D": "Wait for a court subpoena before contacting the provider"
     },
     "answer": "A",
-    "explanation": "Time-limited evidence must be preserved quickly. A formal preservation request, backed by the contract or legal process, keeps the logs available and admissible.",
+    "explanation": "Time-limited evidence must be preserved quickly. A formal preservation request, backed by the contract or legal process, asks the provider to retain the logs, and chain of custody still has to be kept for them to be admissible.",
     "distractor_rationales": {
-      "B": "An informal request may not be honored or documented. A formal preservation request through counsel is.",
+      "B": "An informal request may not be honored or documented. A formal preservation request through counsel creates a documented, legally grounded request.",
       "C": "Endpoint logs help, but they do not replace the provider's records.",
       "D": "A subpoena takes time, and the logs may be deleted first. Preserve now."
     },
@@ -642,7 +642,7 @@
     "distractor_rationales": {
       "A": "That fixes one region and leaves five others blind.",
       "C": "More review of monitored regions does not cover the gap.",
-      "D": "Attackers will not self-report."
+      "D": "Manual self-reporting is unreliable and unenforceable, and it is not a technical detective control for resources an attacker creates."
     },
     "references_topic": "Organization-wide cloud audit logging",
     "version": "1.0"

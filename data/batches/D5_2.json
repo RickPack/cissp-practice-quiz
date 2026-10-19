@@ -186,7 +186,7 @@
     "distractor_rationales": {
       "A": "Adding a second administrator does not limit what either one can read.",
       "B": "The administrator role is correctly scoped for tuning and backups. The excess is access to the data itself.",
-      "D": "Encryption at rest is transparent to an administrator querying the database."
+      "D": "Transparent encryption at rest is invisible to an administrator querying the database. Encryption with keys the administrator does not hold would help, but this option does not say so."
     },
     "references_topic": "Need to know",
     "version": "0.2"
@@ -306,7 +306,7 @@
     "distractor_rationales": {
       "A": "Password reuse is a risk with or without SSO. The concentrated risk is the IdP itself.",
       "B": "Integration gaps are an operational issue, not the main security risk.",
-      "C": "Session length is tunable. A single IdP failure affects every application."
+      "C": "Long SSO sessions can outlast an application's own timeout, which is a tunable setting. The bigger risk is that a single identity provider failure affects every application."
     },
     "references_topic": "Identity provider concentration risk",
     "version": "0.2"

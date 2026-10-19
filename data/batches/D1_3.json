@@ -113,7 +113,7 @@
     "explanation": "PII is any information that can identify an individual directly, such as a name, or indirectly in combination, such as birth date plus postal code.",
     "distractor_rationales": {
       "A": "Metadata is data about data. It may contain PII, but the term does not mean identifying information.",
-      "B": "Public data is a classification level, not a description of identifiability.",
+      "B": "Public describes a classification level, not identifiability. Public data can still contain PII, such as names in a directory.",
       "D": "Properly anonymized aggregates cannot be linked to individuals."
     },
     "references_topic": "Personally identifiable information",
@@ -161,7 +161,7 @@
     "explanation": "Regulatory investigations are conducted by government agencies, or on their behalf, to determine whether an organization complied with the rules the agency enforces.",
     "distractor_rationales": {
       "B": "Criminal investigations concern crimes and may lead to prosecution.",
-      "C": "Civil matters are disputes between private parties.",
+      "C": "Civil matters are typically disputes between private parties, although agencies can also bring civil actions.",
       "D": "Administrative investigations are internal, dealing with policy violations."
     },
     "references_topic": "Regulatory investigations",
@@ -353,7 +353,7 @@
     "explanation": "Many countries regulate the export and import of cryptography. Selling without checking these controls can bring penalties or blocked shipments.",
     "distractor_rationales": {
       "B": "Residency rules matter for storing customer data, but shipping encryption products abroad is first governed by export controls.",
-      "C": "Validation is a product-quality and procurement question. It does not decide whether the product may legally be sold abroad.",
+      "C": "FIPS 140 validation is a procurement requirement for cryptographic modules. It does not decide whether a product may legally be sold abroad.",
       "D": "Key escrow is a policy question in some countries, but export controls decide first whether the product can be shipped at all."
     },
     "references_topic": "Export controls on encryption",
@@ -642,7 +642,7 @@
     "distractor_rationales": {
       "B": "Even if judgment is unaffected, the appearance of a conflict damages trust.",
       "C": "The gift still comes from a bidder to the company during the evaluation. The policy, not a workaround, decides.",
-      "D": "Retaliating against the vendor is also unfair and still involves accepting the gift."
+      "D": "Awarding the contract elsewhere after accepting the gift still leaves a conflict of interest, or the appearance of one."
     },
     "references_topic": "Conflicts of interest and gifts",
     "version": "0.3"
@@ -762,7 +762,7 @@
     "distractor_rationales": {
       "A": "Deleting tax records would breach the legal retention obligation.",
       "C": "A partial legal obligation does not justify refusing the whole request.",
-      "D": "Anonymizing the tax records would break the retention duty, which requires identifiable records for the legal period."
+      "D": "Anonymizing the tax records would normally defeat the retention duty, which requires intact, identifiable records for the legal period."
     },
     "references_topic": "Erasure requests and legal retention",
     "version": "0.3"
@@ -832,9 +832,9 @@
     "answer": "A",
     "explanation": "Insurers increasingly require baseline controls before they will cover a risk. Implementing MFA both reduces the likelihood of compromise and makes the transfer possible. Misrepresenting controls could void coverage.",
     "distractor_rationales": {
-      "B": "The policy may not pay out until MFA exists, so buying first leaves the risk both uncovered and unmitigated.",
+      "B": "The quote requires MFA as a condition of coverage, so buying without it risks a denied claim or a voided policy and leaves the risk both uncovered and unmitigated.",
       "C": "Shopping for weaker terms ignores that MFA itself reduces the ransomware risk.",
-      "D": "Remote access without MFA is a leading ransomware entry point. Its cost is small next to the risk."
+      "D": "Remote access without MFA is a leading ransomware entry point, and MFA is generally inexpensive compared with ransomware losses."
     },
     "references_topic": "Insurer control requirements",
     "version": "0.3"
@@ -882,7 +882,7 @@
     "distractor_rationales": {
       "A": "A feed reports the vulnerability, but without SBOMs the company still cannot tell which products contain the library.",
       "B": "Questionnaires after each incident repeat the same weeks of delay. SBOMs answer the question in advance.",
-      "D": "Scans miss components hidden inside vendor products and do not establish vendor notice duties."
+      "D": "Scans cover only deployed hosts, give no component inventory for each vendor product, and create no vendor notification duty."
     },
     "references_topic": "SBOM requirements for vendors",
     "version": "0.3"
@@ -954,7 +954,7 @@
     "distractor_rationales": {
       "A": "Public shaming suppresses reporting across the organization.",
       "C": "Termination for a single click sends the same message and ignores control gaps.",
-      "D": "Singling out one person still puts the focus on blame. The lasting fix is stronger controls and a culture where people report mistakes."
+      "D": "Retraining one person addresses only the individual and leaves the control gaps in place. The lasting fix is stronger controls and a culture where people report mistakes."
     },
     "references_topic": "Just culture in security",
     "version": "0.3"

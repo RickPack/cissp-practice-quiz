@@ -62,10 +62,10 @@
       "D": "Review the platform's user accounts once every quarter"
     },
     "answer": "C",
-    "explanation": "Source code platforms hold valuable intellectual property and can inject code into builds. SSO with MFA ties access to managed identities and blocks most credential attacks.",
+    "explanation": "Source code platforms hold valuable intellectual property and can inject code into builds. SSO with MFA ties access to managed identities and blocks most password-based attacks, and phishing-resistant MFA is needed against session-theft attacks.",
     "distractor_rationales": {
-      "A": "Strong passwords and keys help, but without SSO and MFA there is no central control or second factor.",
-      "B": "Network restriction helps, but phished credentials still work from inside.",
+      "A": "Strong passwords and SSH keys help, but there is no central identity lifecycle control or MFA enforcement for web and token access.",
+      "B": "Network restriction helps, but phished credentials still work once used from a compromised endpoint or VPN, and it adds no second factor.",
       "D": "Reviews find stale accounts but do not stop credential theft."
     },
     "references_topic": "Protecting source code platform accounts",
@@ -544,7 +544,7 @@
     "answer": "C",
     "explanation": "When a dependency loses its maintainer, the company must take ownership of the risk: move to a maintained alternative or take on the fix itself, and add project health to dependency reviews.",
     "distractor_rationales": {
-      "A": "Community review does not happen for abandoned projects.",
+      "A": "Community review is no longer reliable for an abandoned project, and the known vulnerability stays unpatched.",
       "B": "Abrupt removal can cause outages.",
       "D": "The company cannot compel a volunteer maintainer."
     },

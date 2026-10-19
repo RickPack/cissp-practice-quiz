@@ -106,11 +106,11 @@
     "options": {
       "A": "A criminal statute passed by a national legislature",
       "B": "A regulation issued by a government agency",
-      "C": "A contractual obligation enforced through card brand agreements",
+      "C": "A contractual obligation enforced through the acquirer and card brand rules",
       "D": "A voluntary guideline with no consequences for noncompliance"
     },
     "answer": "C",
-    "explanation": "PCI DSS is an industry standard. Merchants are bound to it by their agreements with acquiring banks and card brands, which can impose fines or end card acceptance.",
+    "explanation": "PCI DSS is an industry standard. Merchants are bound to it through their merchant agreements with acquiring banks, which pass down the card brands' rules and can impose fines or end card acceptance.",
     "distractor_rationales": {
       "A": "PCI DSS is not a law passed by a legislature.",
       "B": "It is not issued by a government regulator, although some laws reference it.",
@@ -185,7 +185,7 @@
     "explanation": "Disputes between private parties, such as breach of contract claims, are civil matters and are decided on the preponderance of the evidence.",
     "distractor_rationales": {
       "A": "Criminal investigations concern violations of criminal law prosecuted by the state.",
-      "C": "Administrative investigations are internal, such as employee policy violations.",
+      "C": "Administrative investigations usually cover operational or policy matters, often internal, and they are not the investigation described here.",
       "D": "Regulatory investigations are driven by a government agency's authority."
     },
     "references_topic": "Civil investigations",
@@ -330,7 +330,7 @@
     "distractor_rationales": {
       "A": "Encryption protects confidentiality, and the clerk was already authorized.",
       "B": "Segmentation does not stop an authorized user.",
-      "C": "Phishing training does not address insider changes."
+      "C": "Awareness training is a weak, indirect control against an authorized user's fraud. It does not prevent or detect unauthorized vendor changes."
     },
     "references_topic": "Protecting integrity with dual control",
     "version": "0.4"
@@ -400,7 +400,7 @@
     "answer": "C",
     "explanation": "A common control framework maps many requirements to a single control set, so each control is implemented and evidenced once and reused across audits.",
     "distractor_rationales": {
-      "A": "A tool organizes the separate audits, but each control is still tested once per framework.",
+      "A": "A tool can track the separate audits, but without a unified control set it only tracks the duplication.",
       "B": "Separate teams increase duplication.",
       "D": "Scheduling them together saves calendar time, not the duplicated testing of the same controls."
     },
@@ -558,7 +558,7 @@
     "subtopic": "Personnel security",
     "difficulty": "medium",
     "type": "managerial_best_first_most",
-    "stem": "A senior network administrator resigns with two weeks' notice to join a competitor. What is the BEST approach during the notice period?",
+    "stem": "A senior network administrator resigns with two weeks' notice to join a competitor, and the company needs the administrator's handover to keep production running. What is the BEST approach during the notice period?",
     "options": {
       "A": "Leave all access in place so the administrator can finish every open project",
       "B": "Reduce privileged access to what handover needs and increase monitoring",
@@ -569,7 +569,7 @@
     "explanation": "A departing privileged user is a higher risk. Limiting access to what is needed for handover, with closer monitoring, balances continuity with protection.",
     "distractor_rationales": {
       "A": "Full access leaves unnecessary exposure during a risky period.",
-      "C": "Immediate removal may be justified in some cases but is not the default for a voluntary resignation.",
+      "C": "Immediate removal loses the handover that production needs, and it is not the default for a voluntary resignation.",
       "D": "A promise is not a control."
     },
     "references_topic": "Privileged users giving notice",
@@ -713,7 +713,7 @@
     "explanation": "Role-specific training for the people targeted, backed by a verification procedure, addresses business email compromise directly.",
     "distractor_rationales": {
       "A": "More generic training does not address the specific attack.",
-      "B": "Email authentication and banners help, but lookalike domains and compromised partner mailboxes get past them. The payment process needs verification.",
+      "B": "Email authentication and banners help, but DMARC does not stop lookalike domains, and compromised partner mailboxes can pass authentication. The payment process needs verification.",
       "C": "Simulations measure behavior, but without a verification step one convincing request can still move money."
     },
     "references_topic": "Targeted training for business email compromise",
@@ -832,8 +832,8 @@
     "answer": "A",
     "explanation": "A common methodology with defined criteria makes ratings comparable, so leadership can prioritize across the whole organization.",
     "distractor_rationales": {
-      "B": "A mapping table cannot reconcile scales that define likelihood and impact differently. One method is needed.",
-      "C": "Dollar-only ratings need loss data the units may not have, and they drop likelihood criteria.",
+      "B": "A mapping table is a weaker, less consistent fix than one method, because the scales define likelihood and impact differently.",
+      "C": "Dollar-only ratings need quantitative loss data the units may not have, and they ignore non-monetary impacts.",
       "D": "Annual external re-rating does not fix day-to-day consistency and removes ownership."
     },
     "references_topic": "Consistent risk rating criteria",
@@ -904,7 +904,7 @@
     "answer": "D",
     "explanation": "The company must know who handles its data and ensure the same protections apply. Disclosure, approval rights, and flow-down clauses extend oversight to fourth parties.",
     "distractor_rationales": {
-      "A": "Auditing the vendor does not reveal or control which subcontractors handle the data.",
+      "A": "An audit may reveal subcontractors, but it gives no approval or control over which subprocessors handle the data, and once a year is not proactive disclosure.",
       "B": "Liability helps after a breach, but the company still would not know or approve who processes its data.",
       "C": "Monthly direct audits of every subcontractor are impractical."
     },

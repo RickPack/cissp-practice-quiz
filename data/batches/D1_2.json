@@ -65,7 +65,7 @@
     "explanation": "Criminal investigations can lead to prosecution, and a conviction requires proof beyond a reasonable doubt, the highest standard in common legal systems.",
     "distractor_rationales": {
       "A": "Civil cases are generally decided on a preponderance of the evidence.",
-      "B": "Administrative investigations enforce internal policy and use the organization's own, less formal standards.",
+      "B": "Administrative investigations are usually internal policy matters and use less formal standards than criminal or civil cases.",
       "D": "Regulatory investigations vary by regulator, but they rarely require the criminal standard."
     },
     "references_topic": "Standards of proof by investigation type",
@@ -280,7 +280,7 @@
     "answer": "D",
     "explanation": "Mandatory vacations (like job rotation) are a detective control. Fraud that needs the perpetrator's constant involvement tends to surface when someone else performs the duties for a period.",
     "distractor_rationales": {
-      "A": "Passwords keep out outsiders. They do nothing about a trusted insider who already has access.",
+      "A": "Passwords authenticate users, insiders included, but they do not detect or prevent a trusted insider from committing fraud with legitimate access.",
       "B": "Training raises awareness and may deter, but it does not detect fraud in progress.",
       "C": "Background checks screen people at hiring. They do not detect fraud that begins later."
     },
@@ -330,7 +330,7 @@
     "distractor_rationales": {
       "A": "Copyleft licenses do not charge royalties. Their condition is that derivative works be shared under the same terms.",
       "C": "Unreviewed third-party code can carry vulnerabilities, but the primary risk here is the license obligation on a distributed product.",
-      "D": "Most open-source licenses are irrevocable for code already received, so revocation is not the main concern."
+      "D": "Open-source licenses do not let authors revoke them at will for code already received, although a license can end for a violation of its terms."
     },
     "references_topic": "Open-source license compliance",
     "version": "0.2"
@@ -390,7 +390,7 @@
     "subtopic": "Risk response and control selection",
     "difficulty": "medium",
     "type": "managerial_best_first_most",
-    "stem": "Management reviews a risk with an annualized loss expectancy of $5,000. The only available control costs $40,000 per year, and the risk falls within the organization's documented risk appetite. What is the MOST appropriate response?",
+    "stem": "Management reviews a risk with an annualized loss expectancy of $5,000. The available automated control costs $40,000 per year, and the risk falls within the organization's documented risk appetite. What is the MOST appropriate response?",
     "options": {
       "A": "Formally accept the risk and document the decision",
       "B": "Implement the control anyway to eliminate the risk",
@@ -400,7 +400,7 @@
     "answer": "A",
     "explanation": "The control costs eight times the expected loss, and the risk is within appetite. The risk owner should formally accept the risk, document the rationale, and review it periodically.",
     "distractor_rationales": {
-      "B": "Spending $40,000 a year to avoid $5,000 in expected losses is not justified.",
+      "B": "A control reduces risk but cannot eliminate it, and spending $40,000 a year to avoid $5,000 in expected losses is not justified.",
       "C": "Ignoring a risk is not the same as accepting it. Acceptance is a documented decision by an accountable owner.",
       "D": "The risk is already within appetite, so spending effort on mitigation is not needed. The right response is documented acceptance."
     },
@@ -710,11 +710,11 @@
       "D": "Terminate the employee and close the case"
     },
     "answer": "B",
-    "explanation": "When an administrative matter may be criminal, counsel should decide whether to refer it to law enforcement, and evidence handling must meet criminal admissibility standards from that point on.",
+    "explanation": "When an administrative matter may be criminal, counsel should decide whether to refer it to law enforcement. Evidence should be handled to a standard that holds up in court from the start of any investigation, and especially once a crime is suspected.",
     "distractor_rationales": {
-      "A": "Continuing alone risks tainting evidence and delaying a required referral.",
+      "A": "Continuing alone risks tainting evidence and delaying the referral decision, which counsel should make.",
       "C": "Confrontation risks evidence destruction and can create legal problems such as claims of coercion.",
-      "D": "Premature termination can tip off the employee, lose evidence, and ignore legal obligations."
+      "D": "Premature termination can tip off the employee, lose evidence, and bypass counsel's decision on referral."
     },
     "references_topic": "Escalating an investigation to criminal",
     "version": "0.2"

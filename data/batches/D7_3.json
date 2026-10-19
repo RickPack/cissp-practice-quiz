@@ -162,7 +162,7 @@
     "distractor_rationales": {
       "B": "Deleting profiles leaves recoverable data on the drive.",
       "C": "A new image may not overwrite every area of the drive, so HR data can remain.",
-      "D": "Encrypting over old data does not remove it."
+      "D": "Encrypting with a new key is not a verified sanitization method, and it does not prove the old data is gone."
     },
     "references_topic": "Sanitizing media before reuse",
     "version": "0.3"
@@ -256,8 +256,8 @@
     "answer": "A",
     "explanation": "Evidence must be relevant, reliable, and legally obtained. Accessing a personal account without authorization may be illegal and can make the evidence unusable.",
     "distractor_rationales": {
-      "B": "Business emails can often be admitted. The bigger problem is the unlawful access.",
-      "C": "Handling matters, but the core problem is that the access itself was unauthorized.",
+      "B": "Emails can usually be admitted through exceptions such as party admissions or business records. The bigger problem is the unlawful access.",
+      "C": "A write blocker applies to imaging storage media. The core problem is that the access to the cloud email was unauthorized.",
       "D": "Provider review is not a requirement. The evidence was obtained unlawfully."
     },
     "references_topic": "Lawfully obtained evidence",
@@ -520,7 +520,7 @@
     "answer": "D",
     "explanation": "An incremental backup copies files changed since the last full or incremental backup and resets the archive bit, making backups fast but restores longer.",
     "distractor_rationales": {
-      "A": "A full backup copies everything.",
+      "A": "A full backup copies every file and clears the archive bit, so it does not capture only the data changed since the last backup.",
       "B": "A differential copies changes since the last full backup and does not clear the archive bit.",
       "C": "A mirror is a continuous copy, not a backup type defined by the archive bit."
     },
@@ -592,7 +592,7 @@
     "answer": "C",
     "explanation": "A door-prop alarm alerts when the door is left open, and having staff receive deliveries ensures no one enters unescorted.",
     "distractor_rationales": {
-      "A": "Staff prop the door between deliveries too, when no guard would be present.",
+      "A": "A guard covers only part of the time and does not stop staff from propping the door open.",
       "B": "A camera records the propped door but does not alert anyone or change behavior.",
       "D": "Staff already wedge the door against its closer, so a heavier one is defeated the same way."
     },

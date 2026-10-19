@@ -18,7 +18,7 @@
     "distractor_rationales": {
       "A": "Showing regulated data helps audits, but the program's main benefit is proportionate protection.",
       "B": "Retention periods come from the retention schedule and legal requirements, not from classification itself.",
-      "C": "Ownership is assigned through governance and the inventory. Classification decides how much protection the data needs."
+      "C": "Ownership is assigned through governance and policy, and the inventory records it. Classification decides how much protection the data needs."
     },
     "references_topic": "Purpose of classification",
     "version": "0.4"
@@ -134,7 +134,7 @@
       "D": "In transit between the laptop and a cloud service"
     },
     "answer": "A",
-    "explanation": "Full-disk encryption protects stored data when the device is powered off or locked, such as when a laptop is lost.",
+    "explanation": "Full-disk encryption protects stored data when the device is powered off or hibernated, such as when a laptop is lost. While the laptop is running and unlocked, the volume is accessible and protection comes from other controls.",
     "distractor_rationales": {
       "B": "Network encryption such as TLS or a VPN protects data in transit.",
       "C": "Once the user unlocks the laptop, data is decrypted for use.",
@@ -302,10 +302,10 @@
       "D": "Shredding the discs in a shredder rated for optical media"
     },
     "answer": "D",
-    "explanation": "Most DVDs are read-only and non-magnetic, so they cannot be overwritten or degaussed. Physical destruction with an optical-media shredder is the reliable method.",
+    "explanation": "Most DVDs are read-only, so they cannot be overwritten, and they are non-magnetic, so degaussing has no effect. Physical destruction with an optical-media shredder is the reliable method.",
     "distractor_rationales": {
       "A": "Optical discs are not magnetic, so degaussing has no effect.",
-      "B": "Read-only discs cannot be overwritten.",
+      "B": "Pressed or write-once discs cannot be overwritten, and overwriting hundreds of discs is impractical even where the media allows it.",
       "C": "Pieces of a broken disc can still hold readable data. Optical media needs a rated shredder."
     },
     "references_topic": "Destroying optical media",
@@ -426,7 +426,7 @@
     "distractor_rationales": {
       "B": "Blocking alone leaves staff with no approved way to work remotely, so they find another route.",
       "C": "Deleting later does not undo the exposure while the documents sit in personal accounts.",
-      "D": "Document passwords are weak and still put data in personal accounts."
+      "D": "Document passwords are an unmanaged control that still place the data in uncontrolled personal accounts, where the company cannot manage keys or retention."
     },
     "references_topic": "Removing the need for unsafe workarounds",
     "version": "0.4"
@@ -521,7 +521,7 @@
     "explanation": "Data in backups is still data. Backup retention must follow the schedule, or any legitimate reason for a longer period must be documented and controlled.",
     "distractor_rationales": {
       "B": "Encryption protects the tapes, but keeping data for ten years still conflicts with the three-year schedule.",
-      "C": "Deleting at restore time is a recognized technique only when it is documented and approved. Undocumented, the conflict remains.",
+      "C": "Deleting at restore time keeps the expired data on tapes for up to ten years, so the retention conflict remains.",
       "D": "Extending retention for convenience increases exposure without a business reason."
     },
     "references_topic": "Backups and retention schedules",

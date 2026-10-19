@@ -246,7 +246,7 @@
     "subtopic": "Identification and authentication",
     "difficulty": "medium",
     "type": "application",
-    "stem": "A data center raises the sensitivity of its fingerprint readers after an unauthorized person was admitted. What effect should the security team expect?",
+    "stem": "A data center tightens the matching threshold on its fingerprint readers after an unauthorized person was admitted. What effect should the security team expect?",
     "options": {
       "A": "The false acceptance rate and false rejection rate will both rise",
       "B": "The false acceptance rate will fall and the false rejection rate will rise",
@@ -256,9 +256,9 @@
     "answer": "B",
     "explanation": "Tighter matching rejects more impostors, lowering false acceptances, but also rejects more legitimate users, raising false rejections.",
     "distractor_rationales": {
-      "A": "The two error rates move in opposite directions as sensitivity changes.",
-      "C": "Raising sensitivity reduces false acceptances rather than increasing them.",
-      "D": "Sensitivity trades one error for the other. Raising it lowers false acceptance and raises false rejection."
+      "A": "The two error rates move in opposite directions as the threshold changes.",
+      "C": "Tightening the threshold reduces false acceptances rather than increasing them.",
+      "D": "Tightening the threshold trades one error for the other: false acceptance falls and false rejection rises."
     },
     "references_topic": "Biometric sensitivity and error rates",
     "version": "0.3"
@@ -278,7 +278,7 @@
       "D": "Lock accounts after three unanswered push prompts"
     },
     "answer": "C",
-    "explanation": "Number matching forces the user to enter a code shown on the login screen, which an attacker cannot supply remotely, and rate limiting stops the flood. Phishing-resistant methods are the longer-term goal.",
+    "explanation": "Number matching shows a number on the login screen and asks the user to enter it in the app. A user who is not actually signing in cannot know the number, so blindly approving an attacker's prompt fails, and rate limiting stops the flood. A user can still be tricked into reading the number out, so phishing-resistant methods are the longer-term goal.",
     "distractor_rationales": {
       "A": "Awareness helps but does not stop a tired user from approving.",
       "B": "SMS codes are weaker and open the door to SIM swapping.",
@@ -424,7 +424,7 @@
     "answer": "A",
     "explanation": "Automatic expiry ties access to the contract term, and sponsor renewal makes someone accountable for any extension. Accounts close by default rather than by memory.",
     "distractor_rationales": {
-      "B": "Idle-based disabling still leaves accounts active for months after a contract ends.",
+      "B": "Idle-based disabling is not tied to the contract end date, so the account can stay active for months after the contract ends.",
       "C": "Quarterly reviews still leave accounts active for weeks or months.",
       "D": "Monthly confirmations help, but an expiry tied to the contract end removes access automatically."
     },
@@ -438,7 +438,7 @@
     "subtopic": "Access reviews",
     "difficulty": "medium",
     "type": "managerial_best_first_most",
-    "stem": "After a quarterly access review, reviewers flagged 40 entitlements for removal. Three months later, 25 of them are still active. What should the organization do?",
+    "stem": "After a quarterly access review, reviewers flagged 40 entitlements for removal, but no one is assigned to carry out the removals. Three months later, 25 of them are still active. What should the organization do?",
     "options": {
       "A": "Repeat the access review with a new group of reviewers next quarter instead",
       "B": "Track each removal as a ticket and verify it in the target system",
@@ -450,7 +450,7 @@
     "distractor_rationales": {
       "A": "A new review repeats the same decisions without fixing the execution gap.",
       "C": "Reviewers already decided. The failure is that removals are not tracked through to the target systems.",
-      "D": "Reporting escalates the problem but does not close it. Removals need tickets and verification."
+      "D": "Reporting escalates the problem but assigns no one to the removals. They need tickets and verification."
     },
     "references_topic": "Tracking revocations from reviews",
     "version": "0.3"
@@ -662,7 +662,7 @@
       "D": "Shorten the refresh token lifetime to a single day"
     },
     "answer": "C",
-    "explanation": "With rotation, each use returns a new refresh token. If an old one is presented again, the server knows it was stolen and revokes the whole family, cutting off both copies.",
+    "explanation": "With rotation, each use returns a new refresh token. If an old one is presented again, the server treats it as stolen and revokes the whole family, cutting off both copies.",
     "distractor_rationales": {
       "A": "Secure storage makes theft harder but does not detect a stolen token being used.",
       "B": "Longer access tokens increase the window for abuse.",
@@ -762,7 +762,7 @@
     "distractor_rationales": {
       "A": "An agreement deters misuse but does not prevent access.",
       "B": "Logging detects misuse after the fact but does not prevent it.",
-      "D": "Administrators can often bypass or alter masking. Encryption or tokenization with keys they cannot reach enforces it."
+      "D": "Masking for every user does not separate duties. Encryption or tokenization with keys the administrators cannot reach enforces the restriction."
     },
     "references_topic": "Separating administration from data access",
     "version": "0.3"

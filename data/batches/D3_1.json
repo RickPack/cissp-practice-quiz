@@ -230,11 +230,11 @@
       "D": "A dry-pipe sprinkler system with standard smoke detectors"
     },
     "answer": "B",
-    "explanation": "A pre-action system needs a detection event before its pipes fill with water, and heads must also activate before water flows. That sharply reduces accidental discharge while still providing reliable suppression that is safe for occupants. Early-warning detection lets staff respond before the system discharges.",
+    "explanation": "A pre-action system keeps its pipes dry until a detection event occurs, and in a double-interlock design a sprinkler head must also activate before water flows. That sharply reduces accidental discharge while still providing reliable suppression that is safe for occupants. Early-warning detection lets staff respond before the system discharges.",
     "distractor_rationales": {
       "A": "Carbon dioxide flooding displaces oxygen and is lethal in occupied spaces.",
-      "C": "Wet-pipe systems are always charged with water, so a leak or accidental activation can damage equipment.",
-      "D": "Dry-pipe systems suit freezing spaces. Pre-action adds a second trigger that prevents accidental discharge, and early-warning detection finds fires sooner."
+      "C": "Wet-pipe pipes are always charged with water, so a leak or accidental activation can damage equipment, and heads directly above every rack put the equipment at risk.",
+      "D": "Dry-pipe systems suit unheated spaces that could freeze, and they have no detection interlock, so a damaged head or pipe can still release water. Pre-action adds that second trigger."
     },
     "references_topic": "Data center fire suppression selection",
     "version": "0.1"

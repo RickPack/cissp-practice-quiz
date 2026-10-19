@@ -90,7 +90,7 @@
     "distractor_rationales": {
       "A": "DAI stops ARP spoofing, not a flood of random source MAC addresses.",
       "B": "DHCP snooping protects address assignment, not the MAC table.",
-      "D": "Storm control limits broadcast floods. This attack overflows the MAC table with unicast source addresses."
+      "D": "Storm control limits broadcast floods. This attack overflows the MAC table with frames from many random source addresses."
     },
     "references_topic": "MAC flooding and port security",
     "version": "0.3"
@@ -182,7 +182,7 @@
       "D": "Plain SIP over UDP"
     },
     "answer": "C",
-    "explanation": "SIP over TLS (SIPS) encrypts and authenticates the signaling channel that carries call setup, caller identities, and dialed numbers.",
+    "explanation": "SIP over TLS encrypts the signaling channel hop by hop, protecting call setup, caller identities, and dialed numbers, and it authenticates the server (and the client with mutual TLS).",
     "distractor_rationales": {
       "A": "RTP carries the media stream, not the signaling, and plain RTP is unencrypted.",
       "B": "Unencrypted H.323 exposes the same signaling information.",
@@ -424,7 +424,7 @@
     "answer": "A",
     "explanation": "The northbound API can reprogram the whole network. Unique, least-privilege credentials for each tool plus logging provide accountability and limit what any single compromised tool can do.",
     "distractor_rationales": {
-      "B": "Storing the key in more places increases exposure.",
+      "B": "Moving the shared key into a protected file on each server leaves it shared and all-powerful, with no per-tool accountability or least privilege.",
       "C": "Annual rotation still leaves a single, all-powerful shared secret.",
       "D": "Network restriction helps, but every tool still shares one all-powerful key with no accountability."
     },
@@ -474,7 +474,7 @@
     "distractor_rationales": {
       "A": "Admitting a noncompliant device defeats the purpose of posture assessment.",
       "B": "Blocking with no automatic remediation path wastes time and invites workarounds.",
-      "D": "Guest internet access does not get the laptop updated or keep it separate in a controlled way."
+      "D": "A guest VLAN is not a controlled remediation path. Guest internet access does not ensure the laptop gets the required updates or is checked before it joins the network."
     },
     "references_topic": "NAC quarantine and remediation",
     "version": "0.3"
@@ -498,7 +498,7 @@
     "distractor_rationales": {
       "A": "A longer community string is still sent in cleartext and can be sniffed.",
       "B": "A nonstandard port is obscurity and does not add authentication or encryption.",
-      "C": "Restricting write sources helps but leaves traffic unencrypted and unauthenticated."
+      "C": "Restricting write sources helps, but SNMPv2c has only a cleartext community string, with no strong authentication, integrity, or encryption."
     },
     "references_topic": "SNMPv3",
     "version": "0.3"
@@ -542,7 +542,7 @@
       "D": "Disabling all unused ports on the access switches"
     },
     "answer": "B",
-    "explanation": "Double tagging works when the attacker's access VLAN matches the trunk's native VLAN. Using an unused native VLAN that is tagged explicitly, and disabling automatic trunk negotiation, closes the path.",
+    "explanation": "Double tagging works when the attacker's access VLAN matches the trunk's native VLAN. Using an unused native VLAN that is tagged explicitly, and keeping user ports out of the native VLAN, closes the path.",
     "distractor_rationales": {
       "A": "DHCP snooping and ARP inspection stop rogue DHCP servers and ARP spoofing, not VLAN hopping.",
       "C": "Port security stops MAC flooding, not VLAN hopping by double tagging.",
@@ -664,9 +664,9 @@
     "answer": "C",
     "explanation": "Attackers spoof the victim's address and send small queries that trigger large responses, such as monlist. Disabling the feature and restricting queries stops the server from being used as an amplifier.",
     "distractor_rationales": {
-      "A": "More bandwidth makes the server a more effective amplifier.",
+      "A": "More bandwidth does not stop the abuse. It lets the server send more amplified attack traffic.",
       "B": "Rate limiting helps, but monlist still lets small queries produce large responses.",
-      "D": "Attackers find NTP on any port. The amplification feature must be disabled."
+      "D": "Moving to a nonstandard port is security through obscurity, and scanners can still find the service. The amplification feature must be disabled."
     },
     "references_topic": "NTP reflection and amplification",
     "version": "0.3"
@@ -704,17 +704,17 @@
     "type": "managerial_best_first_most",
     "stem": "After a CDN goes live, users occasionally see another user's account page. What is the BEST fix?",
     "options": {
-      "A": "Mark logged-in responses uncacheable and key caches by session",
+      "A": "Mark logged-in responses as no-store so the CDN never caches them",
       "B": "Shorten the CDN cache lifetime for all of the site's content to five minutes",
       "C": "Turn off caching for the whole website at the CDN to be safe",
       "D": "Add each user's IP address to the CDN cache key for every page"
     },
     "answer": "A",
-    "explanation": "The CDN is caching personalized responses and serving them to others. Setting Cache-Control to private or no-store for authenticated pages, and making sure cache keys account for session, stops the leak.",
+    "explanation": "The CDN is caching personalized responses and serving them to others. Setting Cache-Control to private or no-store for authenticated pages keeps those responses out of the shared cache and stops the leak.",
     "distractor_rationales": {
       "B": "Shorter cache lifetimes reduce but do not eliminate cross-user exposure.",
       "C": "Disabling all caching works but throws away the CDN's benefit. Only personal responses need excluding.",
-      "D": "Many users share IP addresses behind NAT, so pages would still leak."
+      "D": "Keying the cache on IP address does not tie a response to an authenticated user, fragments the cache, and users behind shared NAT addresses could still see each other's pages."
     },
     "references_topic": "Caching of authenticated content",
     "version": "0.3"

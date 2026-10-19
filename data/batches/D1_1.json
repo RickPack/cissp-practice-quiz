@@ -62,10 +62,10 @@
       "D": "Work recovery time (WRT)"
     },
     "answer": "C",
-    "explanation": "Maximum tolerable downtime (also called the maximum tolerable period of disruption) is the longest a business function can be unavailable before the consequences become unacceptable. The recovery time objective must be set at or below it.",
+    "explanation": "Maximum tolerable downtime (also called the maximum tolerable period of disruption) is the longest a business function can be unavailable before the consequences become unacceptable. The recovery time objective plus the work recovery time must fit within it.",
     "distractor_rationales": {
       "A": "RPO is the maximum acceptable amount of data loss, measured in time. It does not describe how long the function can be down.",
-      "B": "MTBF is a hardware reliability measure. It is not a business tolerance for disruption.",
+      "B": "MTBF measures how long a system or component runs between failures. It is a reliability figure, not a business tolerance for disruption.",
       "D": "WRT is the time needed after systems are restored to verify data and resume work. It is one component that must fit inside the MTD."
     },
     "references_topic": "Business impact analysis recovery metrics",
@@ -182,7 +182,7 @@
       "D": "Request a bridge letter or current report, plus assurance for the carved-out data center"
     },
     "answer": "D",
-    "explanation": "The report's age leaves a gap in the assurance period, and the carve-out means the data center's controls were never tested. The prudent step is to close both gaps, for example with a bridge (gap) letter or a newer report and the data center's own assurance report, and then add right-to-audit and breach-notification terms to the contract.",
+    "explanation": "The report's age leaves a gap in the assurance period, and the carve-out means this report does not test the data center's controls. The prudent step is to close both gaps, for example with a bridge (gap) letter or a newer report and the data center's own assurance report, and then add right-to-audit and breach-notification terms to the contract.",
     "distractor_rationales": {
       "A": "A Type II report speaks to operating effectiveness only for the period and scope it covers. A stale report with a carve-out leaves material gaps.",
       "B": "A future report does nothing about the 14-month gap or the carved-out data center today, before the data moves.",
@@ -206,7 +206,7 @@
       "D": "Advancing and protecting the security profession"
     },
     "answer": "A",
-    "explanation": "When duties conflict, the higher-ranked duty prevails. Protecting society and public trust ranks first, above honesty toward others, service to the client, and the profession. Hiding an ongoing legal violation that harms patients conflicts directly with that first duty.",
+    "explanation": "When duties conflict, the higher-ranked duty prevails. Protecting society and public trust ranks first, above acting honorably and legally, serving the client, and advancing the profession. Hiding an ongoing legal violation that harms patients conflicts directly with that first duty.",
     "distractor_rationales": {
       "B": "Honesty and legality also apply here, but that duty ranks second. The question asks which duty weighs most.",
       "C": "Duty to the client ranks below duties to society and to honesty. It cannot justify concealing wrongdoing.",

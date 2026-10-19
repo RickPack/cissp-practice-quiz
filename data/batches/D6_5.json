@@ -89,8 +89,8 @@
     "explanation": "Synthetic monitoring runs scripted journeys whenever scheduled, so it works before launch and during quiet periods when there is no real traffic.",
     "distractor_rationales": {
       "A": "Real user monitoring needs real users.",
-      "B": "Load testing measures capacity, not whether key journeys work as a user would run them.",
-      "C": "Real user monitoring needs real users, which a new application does not have yet."
+      "B": "Load testing measures performance under load before release. It is not ongoing monitoring of key user journeys before real users exist.",
+      "C": "A closed beta already has real users, so it cannot test the key journeys before any exist."
     },
     "references_topic": "Monitoring before launch",
     "version": "1.0"
@@ -426,7 +426,7 @@
     "distractor_rationales": {
       "A": "A configuration review shows intent, not that the limit actually works.",
       "C": "Logs show past behavior, not whether excess requests are rejected.",
-      "D": "Vulnerability scans do not test whether a rate limit is enforced."
+      "D": "A generic vulnerability scan is not designed to verify that a specific rate limit, such as 100 requests per minute, is enforced."
     },
     "references_topic": "Testing API rate limits",
     "version": "1.0"
@@ -498,7 +498,7 @@
     "distractor_rationales": {
       "B": "Staffing may help, but without finding where the delay is, it may be wasted.",
       "C": "Narrowing the metric hides the problem rather than fixing it.",
-      "D": "Moving the target accepts a fourfold slowdown without understanding it."
+      "D": "Moving the target from 10 days to 60 days accepts a sixfold slowdown without understanding why it happened."
     },
     "references_topic": "Investigating remediation bottlenecks",
     "version": "1.0"
@@ -688,7 +688,7 @@
     "answer": "A",
     "explanation": "Databases need backups that capture a consistent state, either by pausing writes or by using the database's own backup mechanism.",
     "distractor_rationales": {
-      "B": "More frequent crash-inconsistent snapshots are still inconsistent.",
+      "B": "Crash-consistent snapshots do not guarantee application-level transactional consistency, and taking them more often does not fix that.",
       "C": "More generations of inconsistent copies do not help.",
       "D": "A checksum confirms the file copied correctly, not that the database inside is consistent."
     },

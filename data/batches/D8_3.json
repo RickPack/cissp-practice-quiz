@@ -158,7 +158,7 @@
       "D": "Block the IP addresses that send the most guesses"
     },
     "answer": "B",
-    "explanation": "Rate limiting slows automated guessing to the point where it is ineffective, while legitimate users are unaffected.",
+    "explanation": "Rate limiting slows automated guessing sharply and alerts defenders, while leaving legitimate users largely unaffected. It is not perfect, since distributed or low-and-slow attacks can evade limits, so it works best alongside MFA.",
     "distractor_rationales": {
       "A": "CAPTCHA on every attempt burdens real users, and solving services can bypass it.",
       "C": "Permanent lockouts let attackers lock out real customers.",
@@ -185,7 +185,7 @@
     "explanation": "Building once and promoting the same signed artifact from test to production means the tested bits are the deployed bits.",
     "distractor_rationales": {
       "A": "Separate rebuilds can differ due to changed dependencies or settings.",
-      "B": "A tag marks the source, but separate builds can still differ. One signed artifact guarantees identity.",
+      "B": "A tag marks the source, but separate builds can still differ. Building once, signing that single artifact, and verifying the signature at each promotion keeps its identity consistent.",
       "D": "Retesting finds differences after deployment instead of preventing them."
     },
     "references_topic": "Promoting the same build artifact",

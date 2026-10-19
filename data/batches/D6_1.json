@@ -18,7 +18,7 @@
     "distractor_rationales": {
       "A": "Both need the system owner's authorization.",
       "B": "Penetration tests usually go deeper on a narrower scope. The defining difference is exploitation.",
-      "D": "Social engineering may be in either, depending on scope. It does not define a vulnerability assessment."
+      "D": "A vulnerability assessment is typically scan-based and does not normally include social engineering. That is an optional penetration-test activity."
     },
     "references_topic": "Vulnerability assessment versus penetration test",
     "version": "0.1"
@@ -186,7 +186,7 @@
     "distractor_rationales": {
       "A": "The security manager is not the risk owner, and closing the finding hides an open risk.",
       "C": "Isolation may be a good compensating control, but without a documented, time-bound exception nobody owns the decision.",
-      "D": "Retesting tracks the issue but does not reduce the risk or record who accepted it."
+      "D": "Regulators do not deliver vendor fixes, and escalating to them does not reduce the risk or record who accepted it."
     },
     "references_topic": "Risk exceptions and compensating controls",
     "version": "0.1"
@@ -206,7 +206,7 @@
       "D": "Keeping three generations of backups instead of one"
     },
     "answer": "C",
-    "explanation": "A successful job only confirms that files were copied. Regular test restores followed by integrity and application-level validation are the only way to confirm backups are actually recoverable.",
+    "explanation": "A successful job only confirms that files were copied. Regular test restores followed by integrity and application-level validation are the most reliable way to confirm backups are actually recoverable.",
     "distractor_rationales": {
       "A": "The job reports already showed success, so reviewing them more often would not reveal the inconsistency.",
       "B": "More frequent backups made the same way would be just as inconsistent.",

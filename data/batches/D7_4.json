@@ -41,7 +41,7 @@
     "explanation": "Matching cryptographic hashes show that every bit is identical. Recording the hashes also lets the analyst prove later that the image has not changed.",
     "distractor_rationales": {
       "B": "Equal file counts do not prove the contents are identical.",
-      "C": "Opening sample files does not verify the whole image and may alter metadata.",
+      "C": "Sampling a few files cannot verify the whole image, and opening files on an image that is not write-protected can alter metadata.",
       "D": "Equal size does not prove identical content."
     },
     "references_topic": "Hashing forensic images",
@@ -185,7 +185,7 @@
     "explanation": "Reciprocal agreements are cheap but hard to enforce. The partner may not have spare capacity when needed, and both sites may be affected by the same event.",
     "distractor_rationales": {
       "A": "Data can be encrypted anywhere. The real weakness is capacity and shared regional risk.",
-      "B": "Legal review is normal for any agreement and is not the main weakness.",
+      "B": "Legal review is normal for any agreement. Enforceability is a concern, but the main weakness is shared capacity in the same region.",
       "D": "Hosting operations does not require sharing source code."
     },
     "references_topic": "Reciprocal agreements",
@@ -233,8 +233,8 @@
     "explanation": "Floor wardens guide people out and confirm that the area is clear, so responders know if anyone is missing.",
     "distractor_rationales": {
       "B": "Going back into the building puts the warden at risk. The sweep happens while leaving, then everyone is reported at assembly.",
-      "C": "Calling responders is someone else's role. The warden's job is accounting for people.",
-      "D": "Locking doors can trap people and hinder responders."
+      "C": "Calling emergency services is usually assigned to a designated person or the control center. The warden's job is accounting for people.",
+      "D": "Closing doors can slow fire spread, but locking them can trap people and hinder responders."
     },
     "references_topic": "Floor wardens",
     "version": "0.4"
@@ -590,7 +590,7 @@
       "D": "Publish a policy and login banner saying that systems may be monitored"
     },
     "answer": "D",
-    "explanation": "Clear notice through policy and banners removes any reasonable expectation of privacy on company systems, which supports lawful monitoring and the use of its records.",
+    "explanation": "Clear notice through policy and banners greatly reduces any reasonable expectation of privacy on company systems, which supports lawful monitoring and the use of its records, subject to local law.",
     "distractor_rationales": {
       "A": "Consent at that moment is late and inconsistent. Notice should be standing, in policy and banners.",
       "B": "Case approval helps, but employees still have no notice that monitoring may happen.",

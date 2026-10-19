@@ -305,7 +305,7 @@
     "explanation": "Interactive application security testing places an agent inside the running application. It watches real data flows during tests and ties each finding to a code location.",
     "distractor_rationales": {
       "A": "SAST analyzes code without runtime context, which tends to produce more false positives.",
-      "C": "Fuzzing finds crashes and anomalies but does not map them to specific code lines.",
+      "C": "Fuzzing finds crashes and anomalies with random or malformed input. It is not an instrumented functional-test approach that reports data-flow vulnerabilities with few false positives.",
       "D": "Manual review is slow and does not instrument the running application."
     },
     "references_topic": "Interactive application security testing",
@@ -450,7 +450,7 @@
     "distractor_rationales": {
       "A": "Publishing before the vendor can fix it exposes every customer.",
       "B": "The bank's teams already know. The vendor must also be told so it can fix the product for everyone.",
-      "C": "Sharing with peers before the vendor knows spreads the flaw before a fix exists."
+      "C": "ISACs are trusted sharing communities, but the vendor should be told first so it can prepare a fix before others learn of the flaw."
     },
     "references_topic": "Coordinated vulnerability disclosure",
     "version": "0.2"

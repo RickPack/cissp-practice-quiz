@@ -160,7 +160,7 @@
     "answer": "A",
     "explanation": "Selective split tunneling for one trusted, high-bandwidth SaaS destination removes that traffic from the concentrator while internal resources remain reachable only through the tunnel. It can be paired with endpoint and cloud security controls.",
     "distractor_rationales": {
-      "B": "A bigger concentrator works but costs more and still hauls trusted SaaS traffic through it for no security gain.",
+      "B": "A bigger concentrator works but costs more and sends trusted SaaS traffic through the corporate stack for little security benefit.",
       "C": "Splitting all internet traffic removes inspection of general browsing, weakening protection more than needed.",
       "D": "Blocking video harms the business and works around the problem rather than solving it."
     },

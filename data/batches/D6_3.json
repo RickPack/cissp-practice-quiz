@@ -14,10 +14,10 @@
       "D": "An internal checklist completed by the IT department each quarter"
     },
     "answer": "A",
-    "explanation": "A qualified external firm has no stake in the outcome and follows professional standards, so its opinion carries the most weight with outside parties.",
+    "explanation": "A qualified external firm is organizationally independent of the system owners and follows professional standards, so its opinion carries the most weight with outside parties.",
     "distractor_rationales": {
       "B": "System owners assessing themselves have a clear conflict of interest.",
-      "C": "The team that built the system cannot objectively evaluate its own work.",
+      "C": "A review by the team that built the system lacks organizational independence and carries a self-review threat, so outside parties give it less assurance.",
       "D": "An internal checklist is useful for readiness but lacks independence."
     },
     "references_topic": "Third-party assessments",
@@ -280,7 +280,7 @@
     "answer": "D",
     "explanation": "No one can travel that distance in twenty minutes. Without a VPN or proxy to explain it, the pattern points to someone else using the credentials.",
     "distractor_rationales": {
-      "A": "A clock issue does not produce sign-ins from two distant locations.",
+      "A": "Clock skew can distort log timestamps, but it does not change the geolocation of the source IP addresses, and credential compromise is the more likely cause.",
       "B": "Changing carriers does not move a device across continents.",
       "C": "Even frequent travelers cannot cross the Pacific in twenty minutes."
     },
@@ -522,7 +522,7 @@
     "distractor_rationales": {
       "A": "A SOC 1 addresses financial reporting controls, and an internal report lacks independence.",
       "C": "A SOC 3 covers the same period, so it does not fill the gap.",
-      "D": "A questionnaire is self-reported and does not speak to the months since the report ended."
+      "D": "A questionnaire is self-reported and not independently attested, so it gives much weaker assurance about the months since the report ended."
     },
     "references_topic": "Bridge letters",
     "version": "0.3"

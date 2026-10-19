@@ -137,7 +137,7 @@
     "explanation": "Valid consent is a clear, affirmative choice based on understandable information about a specific purpose, and people must be able to withdraw it.",
     "distractor_rationales": {
       "A": "Consent must be specific to a purpose. A single consent cannot cover every future use.",
-      "B": "Silence or inaction is not valid consent.",
+      "B": "Under GDPR-style laws, silence or inaction is not valid consent, although some regimes allow opt-out or implied consent in limited contexts.",
       "C": "Written signatures are not generally required. Consent must be freely given, specific, informed, and clear, and it can be withdrawn."
     },
     "references_topic": "Valid consent",
@@ -161,7 +161,7 @@
     "explanation": "The license grants use on 50 seats. Using 80 exceeds the license, which exposes the company to penalties until it buys more seats or removes installs.",
     "distractor_rationales": {
       "B": "Buying a license does not transfer copyright.",
-      "C": "Patents are not the issue.",
+      "C": "Exceeding the licensed installs breaches the license terms and copyright, not patent law.",
       "D": "A per-seat license counts installations, not simultaneous use, unless the license says it is concurrent."
     },
     "references_topic": "License overuse",
@@ -401,7 +401,7 @@
     "explanation": "Compliance frameworks set minimum requirements for specific scopes. Real security requires managing the organization's full risk picture, beyond audit checklists.",
     "distractor_rationales": {
       "A": "A wider audit closes one gap, but compliance will always cover only part of the real risk.",
-      "B": "A different auditor tests the same compliance scope. The lesson is to manage risk beyond it.",
+      "B": "A different auditor does not change the need to manage risk beyond the compliance scope.",
       "D": "Insurance transfers some loss but does not change the treatment of risk outside compliance scope."
     },
     "references_topic": "Compliance is not the same as security",
@@ -426,7 +426,7 @@
     "distractor_rationales": {
       "A": "Processing first and informing later breaches transparency.",
       "B": "Agreement to the old notice does not cover a new purpose.",
-      "C": "Waiting for opt-outs assumes agreement to a purpose the notice never mentioned. The notice and any needed consent come first."
+      "C": "Opt-out depends on notice, and none was given, so no one could meaningfully opt out. Under GDPR-style regimes, consent or another lawful basis is needed first."
     },
     "references_topic": "Updating privacy notices for new uses",
     "version": "1.0"
@@ -806,11 +806,11 @@
       "D": "An independent party, such as internal audit or an outside firm"
     },
     "answer": "D",
-    "explanation": "Investigators must be independent of the subject. People in the subject's reporting line or personal circle have conflicts of interest.",
+    "explanation": "Investigators must be independent of the subject. People in the subject's reporting line or personal circle may have conflicts of interest, and a peer under the same executive may lack the independence the case needs.",
     "distractor_rationales": {
       "A": "The subject cannot investigate themselves.",
       "B": "A direct report may be pressured or biased.",
-      "C": "A CISO in the same reporting line as the subject is not independent."
+      "C": "The CISO reports to the same executive as the head of IT, so the CISO lacks organizational independence and may have a conflict of interest."
     },
     "references_topic": "Independence of internal investigators",
     "version": "1.0"

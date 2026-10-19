@@ -401,7 +401,7 @@
     "explanation": "Under MAC with compartments, access requires both sufficient clearance and membership in the compartment, which enforces need to know.",
     "distractor_rationales": {
       "B": "Matching clearance is necessary but not sufficient.",
-      "C": "In MAC, the system enforces labels and compartments. A supervisor cannot override a missing compartment.",
+      "C": "In MAC, supervisor approval in the system cannot bypass label and compartment enforcement. Access changes require the formal authorization process.",
       "D": "Owner discretion describes DAC, not MAC."
     },
     "references_topic": "Need to know in MAC compartments",
@@ -496,7 +496,7 @@
     "answer": "A",
     "explanation": "A local administrator password solution gives each machine its own random password, stored securely and rotated, which stops lateral movement with one reused credential.",
     "distractor_rationales": {
-      "B": "Attackers find the account by its ID, not its name. The shared password is the problem.",
+      "B": "The built-in administrator is identified by its well-known SID (RID 500), so renaming it does not hide it. The shared password is the problem.",
       "C": "A shared password changed quarterly still works on every machine.",
       "D": "Alerts detect lateral movement but leave the shared password usable everywhere."
     },
@@ -522,7 +522,7 @@
     "distractor_rationales": {
       "A": "NTLMv2 resists cracking better, but it can still be relayed without signing.",
       "C": "Segmentation limits reach, but relays work wherever clients can reach the servers.",
-      "D": "Relay does not crack passwords, so length does not matter."
+      "D": "Relay attacks do not crack passwords, so longer passwords do not stop them, although length still helps against offline cracking."
     },
     "references_topic": "NTLM relay mitigation",
     "version": "0.4"
@@ -594,7 +594,7 @@
     "distractor_rationales": {
       "B": "A small clock error does not explain a full day with no entry.",
       "C": "Forgetting to badge is possible but unlikely for someone on leave.",
-      "D": "A scheduled task does not produce an interactive sign-in by the user."
+      "D": "A scheduled task would not appear as an interactive workstation sign-in by the user, which is what the stem describes."
     },
     "references_topic": "Correlating physical and logical access",
     "version": "0.4"
@@ -618,7 +618,7 @@
     "distractor_rationales": {
       "A": "Liveness detection helps at the reader, but the stolen templates still cannot be changed.",
       "C": "The key problem is permanence, and deleting later does not undo the theft.",
-      "D": "Templates can be protected cryptographically. Keeping them off central servers avoids mass theft."
+      "D": "Templates can be encrypted, and plain hashes do not work for fuzzy biometric matching. Keeping templates off central servers avoids mass theft."
     },
     "references_topic": "Protecting biometric templates",
     "version": "0.4"
@@ -638,9 +638,9 @@
       "D": "Block the app's domain at the web proxy for all users"
     },
     "answer": "C",
-    "explanation": "Consent phishing abuses legitimate OAuth grants, which survive password resets and MFA. Revoking the grants and restricting user consent to low-risk scopes stops the abuse.",
+    "explanation": "Consent phishing abuses legitimate OAuth grants. A grant is not a password, so resetting passwords or adding MFA does not necessarily remove the app's access. Revoking the grants and restricting user consent to low-risk scopes stops the abuse.",
     "distractor_rationales": {
-      "A": "Password resets do not necessarily revoke OAuth tokens already granted.",
+      "A": "A password reset does not remove the app's consent grant. The grant must be revoked explicitly.",
       "B": "MFA does not stop a user from granting consent.",
       "D": "Blocking the domain does not revoke tokens the app already holds, and it can call the mail API from anywhere."
     },
@@ -664,7 +664,7 @@
     "answer": "D",
     "explanation": "Caching improves performance but delays revocation. Short lifetimes plus active invalidation when access changes make revocation take effect quickly.",
     "distractor_rationales": {
-      "A": "The directory change is already made. The gateway keeps using its cached allow decision.",
+      "A": "Disabling the directory account alone does not clear the gateway's cached allow decision, so access continues.",
       "B": "Daily re-authentication still leaves hours of access, and cached decisions can outlast it.",
       "C": "Alerts detect use after revocation but do not stop it."
     },

@@ -17,7 +17,7 @@
     "explanation": "Fiber carries light rather than electrical signals, so it is immune to electromagnetic interference, and tapping it requires physical intrusion that causes measurable signal loss.",
     "distractor_rationales": {
       "B": "Unshielded twisted pair is susceptible to interference and emits signals that can be intercepted.",
-      "C": "Coaxial cable is susceptible to interference and relatively easy to tap.",
+      "C": "Coaxial cable is shielded and resists interference better than unshielded twisted pair, but it is less resistant than fiber and is still relatively easy to tap.",
       "D": "Wi-Fi is broadcast radio that anyone in range can receive."
     },
     "references_topic": "Transmission media security",
@@ -184,8 +184,8 @@
     "answer": "D",
     "explanation": "Network access control checks each device's posture at connection time, admits compliant devices, and places noncompliant ones on a remediation network where they can receive updates.",
     "distractor_rationales": {
-      "A": "A VPN encrypts traffic but does not check patch or protection status.",
-      "B": "802.1X proves who the user is, but without posture checks an unpatched laptop still gets on.",
+      "A": "A basic VPN client encrypts traffic but does not check patch or protection status unless posture checking is added.",
+      "B": "802.1X authenticates the user or device, but on its own it does not evaluate posture, so an unpatched laptop can still connect.",
       "C": "Scans find problems after devices are already connected. They do not gate admission."
     },
     "references_topic": "NAC posture assessment",
@@ -306,7 +306,7 @@
     "distractor_rationales": {
       "B": "An internet-facing server on the internal network gives an attacker direct internal access if it is compromised.",
       "C": "Putting the customer database in the DMZ exposes it to the internet-facing zone.",
-      "D": "A tunnel gives the web server broad internal access, more than the single database port it needs."
+      "D": "A tunnel adds complexity and is unnecessary because the DMZ-to-internal link is already controlled. It would also have to be restricted to the single database port the web server needs."
     },
     "references_topic": "DMZ (screened subnet) design",
     "version": "0.2"
@@ -521,7 +521,7 @@
     "explanation": "Direct internet breakout bypasses the headquarters security stack. Equivalent inspection must happen at each branch or in a cloud security service.",
     "distractor_rationales": {
       "A": "Weekly log review is detective and late. Branch traffic needs inspection as it leaves.",
-      "C": "Headquarters bandwidth no longer matters for this traffic.",
+      "C": "More headquarters bandwidth does not address the missing inspection of branch internet traffic.",
       "D": "A backup link improves availability, not inspection of traffic that now bypasses headquarters."
     },
     "references_topic": "SD-WAN direct internet access security",

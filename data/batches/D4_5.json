@@ -113,7 +113,7 @@
     "explanation": "The WPS PIN design lets attackers guess it in two halves, which makes brute force quick and reveals the passphrase. Turning WPS off removes that path.",
     "distractor_rationales": {
       "B": "WPS gives up the passphrase whatever its length, so a longer one does not help.",
-      "C": "Changing the encryption mode does not help if WPS stays enabled and reveals the credentials.",
+      "C": "WPA3-Personal does not use WPS PIN registration, but moving to WPA3 does not help if the device still offers WPS, which reveals the credentials.",
       "D": "MAC filtering is easily bypassed and does not close the WPS weakness."
     },
     "references_topic": "Disabling Wi-Fi Protected Setup",
@@ -184,7 +184,7 @@
     "answer": "D",
     "explanation": "Voices can be cloned convincingly. An independent verification step using known contact details defeats impersonation regardless of how real the voice sounds.",
     "distractor_rationales": {
-      "A": "The assistant may be fooled too, and an assistant's approval is not independent verification.",
+      "A": "The assistant may be deceived by the same caller, and approval is not tied to out-of-band verification through a separate known channel.",
       "B": "Personal details are often public or easy to find.",
       "C": "Answers can be researched, and a cloned voice can be paired with stolen facts. Call back on a known number."
     },
@@ -302,11 +302,11 @@
       "D": "Put the controllers on a separate SSID for wireless use"
     },
     "answer": "A",
-    "explanation": "Building systems often use weak protocols and are hard to patch. Segmenting them and allowing only required traffic stops laptop malware from reaching them.",
+    "explanation": "Building systems often use weak protocols and are hard to patch. Segmenting them and allowing only required traffic greatly reduces the chance that laptop malware can reach them.",
     "distractor_rationales": {
       "B": "New passwords help, but the controllers stay reachable from every laptop on the flat network.",
       "C": "Monitoring detects attacks but does not reduce the controllers' exposure.",
-      "D": "A different SSID can still bridge to the same flat network. Proper segmentation is needed."
+      "D": "An SSID only names a wireless network. It segments nothing unless it is mapped to a separate VLAN with access controls, and the stem never says the controllers are wireless."
     },
     "references_topic": "Building automation on the corporate network",
     "version": "1.0"
@@ -350,7 +350,7 @@
       "D": "Lowering the access point's transmit power"
     },
     "answer": "C",
-    "explanation": "Protected Management Frames authenticate management traffic, so forged deauthentication and disassociation frames are rejected. WPA3 requires it.",
+    "explanation": "Protected Management Frames add integrity and replay protection to management frames such as deauthentication and disassociation, so forged ones are rejected. WPA3 requires it.",
     "distractor_rationales": {
       "A": "Hiding the SSID does not protect management frames.",
       "B": "MAC filtering is easily bypassed and does not authenticate frames.",
@@ -376,7 +376,7 @@
     "answer": "D",
     "explanation": "SMS depends on carrier networks the bank does not control. Authenticator apps or phishing-resistant methods remove reliance on SMS delivery.",
     "distractor_rationales": {
-      "A": "Number age addresses SIM swaps, not interception in the carrier's signaling network.",
+      "A": "Number age does not stop SIM swaps or interception in the carrier's signaling network, which targets any number regardless of age.",
       "B": "Longer codes are intercepted just as easily.",
       "C": "Codes intercepted in real time are used within seconds, so a short expiry does not help."
     },
@@ -450,7 +450,7 @@
     "distractor_rationales": {
       "A": "MAC addresses are easily spoofed, and the main network gives these devices far more reach than they need.",
       "B": "Replacement is costly and often impossible.",
-      "D": "Printers and cameras cannot use a captive portal."
+      "D": "Headless devices such as printers, cameras, and badge readers typically cannot complete a captive portal login."
     },
     "references_topic": "NAC for devices without agents",
     "version": "1.0"
@@ -593,7 +593,7 @@
     "explanation": "An edge WAF filters attacks close to their source, protecting origin capacity and applications, while origin security still matters.",
     "distractor_rationales": {
       "B": "Encryption of that leg is a separate setting, not a WAF benefit.",
-      "C": "Hiding the origin is a CDN benefit, but the WAF's benefit is blocking malicious requests.",
+      "C": "The origin address is hidden only if the origin accepts traffic solely from the CDN and the address has not leaked. The WAF's benefit is blocking malicious requests.",
       "D": "Speed is a CDN benefit, not a security one."
     },
     "references_topic": "Edge web application firewalls",
@@ -738,7 +738,7 @@
     "distractor_rationales": {
       "A": "Attacks can exceed any single connection.",
       "B": "More servers do not help when the internet link itself is flooded.",
-      "D": "Attack traffic comes from everywhere, and geographic blocking also blocks customers."
+      "D": "Botnet sources are distributed and can be spoofed, so geographic blocking is ineffective and also blocks legitimate customers."
     },
     "references_topic": "Preparing for DDoS attacks",
     "version": "1.0"

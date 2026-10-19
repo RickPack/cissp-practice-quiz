@@ -112,7 +112,7 @@
     "answer": "C",
     "explanation": "Negative testing supplies bad, unexpected, or malicious input to confirm that the system rejects it safely rather than failing or behaving insecurely.",
     "distractor_rationales": {
-      "A": "Normal load testing confirms expected behavior, not handling of bad input.",
+      "A": "Normal-load testing measures performance and capacity, not how the application handles bad input.",
       "B": "That is positive testing. Negative testing checks how the system handles invalid or unexpected input.",
       "D": "Removing features is not a recognized test type. Negative testing feeds bad input."
     },
@@ -377,7 +377,7 @@
     "explanation": "A traceability matrix links every requirement to the tests that verify it, so untested requirements are visible before release.",
     "distractor_rationales": {
       "A": "A checklist helps, but it does not link each requirement to the test that proves it.",
-      "C": "Penetration tests find flaws after release. A traceability matrix ensures every requirement is tested before.",
+      "C": "A penetration test does not map coverage to specific requirements, so untested requirements stay invisible. A traceability matrix does.",
       "D": "More functional tests do not ensure security requirements are covered."
     },
     "references_topic": "Traceability of security requirements",
@@ -473,7 +473,7 @@
     "explanation": "A restore that misses the RTO is a failed test. The owner must know, and the recovery approach must change to meet the business requirement, or the business must formally accept a different target.",
     "distractor_rationales": {
       "A": "Meeting the data requirement but missing the time requirement is still a failure.",
-      "C": "Changing the target to match the result ignores the business need.",
+      "C": "Changing the target only to match the test result, without a business decision and impact analysis, ignores the business need.",
       "D": "Stopping tests hides the problem."
     },
     "references_topic": "Reporting RTO gaps from restore tests",
@@ -522,7 +522,7 @@
     "distractor_rationales": {
       "A": "Type I does not test operation over time.",
       "B": "Rejecting the vendor may be unnecessary if other assurance is obtained.",
-      "C": "SOC 1 covers controls over financial reporting, not security."
+      "C": "SOC 1 addresses controls relevant to financial reporting, so it is the wrong report type for assessing a cloud vendor's security and availability."
     },
     "references_topic": "Using a SOC 2 Type I report",
     "version": "0.4"
@@ -690,7 +690,7 @@
     "distractor_rationales": {
       "A": "Access control helps, but all IT staff is far wider than need to know for exploitation details.",
       "B": "Encryption protects transit, but most unit heads need only the summary.",
-      "D": "Auditors need evidence of findings and fixes, not the full exploitation steps."
+      "D": "Auditors can receive technical evidence under need-to-know and confidentiality controls, but handing them every appendix without that determination is unnecessary."
     },
     "references_topic": "Protecting assessment reports",
     "version": "0.4"

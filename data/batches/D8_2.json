@@ -41,7 +41,7 @@
     "explanation": "Separation protects the integrity of production. Changes must pass through testing and change control, and developers do not need standing access to production data.",
     "distractor_rationales": {
       "B": "Licensing is not the reason. Separation protects production from untested changes.",
-      "C": "Accuracy of tests is a side benefit, not the main security reason.",
+      "C": "Accurate performance results depend on the test environment mirroring production, and separation does not guarantee that. The main security reason is keeping untested code away from production data.",
       "D": "Separation is meant to keep real data out of development, not bring it in."
     },
     "references_topic": "Environment separation",
@@ -282,7 +282,7 @@
     "distractor_rationales": {
       "A": "A certificate helps, but its scope may not cover the tool, and contract terms are still needed.",
       "B": "A questionnaire is self-reported. Independent assurance and contract terms are needed too.",
-      "D": "Testing a vendor's production systems without permission is unauthorized."
+      "D": "Vendors generally do not allow customers to test their multi-tenant production systems, and a business-unit test is no substitute for independent assurance."
     },
     "references_topic": "SaaS security due diligence",
     "version": "0.2"

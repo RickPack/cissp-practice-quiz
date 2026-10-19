@@ -88,7 +88,7 @@
     "answer": "B",
     "explanation": "At end of support, the vendor no longer issues security patches or provides technical support, so new vulnerabilities stay unfixed.",
     "distractor_rationales": {
-      "A": "Ending sales (end of life or end of sale) often happens before support ends.",
+      "A": "End of sale, when the vendor stops selling, usually comes before end of support. End of life is used inconsistently and often means end of support.",
       "C": "End of support means the vendor stops patching. It does not hand the product to a community.",
       "D": "Third-party support is something a customer might buy, but it is not what end of support means."
     },
@@ -278,10 +278,10 @@
       "D": "Put the servers behind a stricter firewall and accept the risk"
     },
     "answer": "B",
-    "explanation": "Extended support, where available, keeps patches flowing during the gap. Compensating controls such as tighter filtering and monitoring reduce the remaining risk while the migration speeds up.",
+    "explanation": "Extended support, where available, keeps patches flowing during the gap. Compensating controls such as tighter filtering and monitoring reduce the remaining risk while the migration continues.",
     "distractor_rationales": {
       "A": "No new fixes will come after support ends, so the servers become steadily more exposed.",
-      "C": "A rushed cutover risks outages and still leaves a gap after support ends.",
+      "C": "A rushed big-bang cutover risks outages and may not finish before support ends.",
       "D": "Compensating controls help, but without extended support new flaws stay unpatched during the migration."
     },
     "references_topic": "Extended support and compensating controls",
